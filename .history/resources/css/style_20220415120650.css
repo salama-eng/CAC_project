@@ -1,0 +1,14 @@
+:root {
+  --yellow: #E39100;
+  --darkgrey: #191919;
+  --lightgrey: #1C1C1C;
+  --whitecolor: #fff2eb;
+  
+}
+
+* {
+ font-family:tajwal;
+  box-sizing: border-box;
+}
+
+body {}
