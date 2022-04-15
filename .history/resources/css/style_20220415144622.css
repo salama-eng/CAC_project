@@ -108,3 +108,32 @@ ul li
 	-webkit-transition:rotate(45deg) translate(-6px,-8px);
 	transform: rotate(45deg) translate(-6px,-8px );
 }
+
+.open .mobile
+{
+
+	
+	padding-top:30px;
+	padding-left:10px;
+	height:auto;
+    width:50%;
+	display: flex;
+	flex-direction: column;
+	align-items:flex-start;
+	justify-content:flex-start;
+	background-color:rgb(0,0,0,0.5);
+	border-radius: 2rem;
+	
+
+}
+
+.mobile
+{
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	height: calc(100vh-50px);
+	width: 100%;
+
+}

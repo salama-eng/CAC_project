@@ -11,7 +11,8 @@
     <title>login</title>
 
   </head>
-  <body  >
+  <body  style="background-repeat: no-repeat;
+  background-image: url(assets/back.jpg); background-size:cover">
     <header>
       <div class="header-container">
         <div class="head">
@@ -43,11 +44,5 @@
       
       </div>  
     </header>
-
-    <div style="background-repeat: no-repeat;
-    background-image: url(assets/back.jpg); background-size:cover"></div>
-
   </body>
-
-
 </html>
