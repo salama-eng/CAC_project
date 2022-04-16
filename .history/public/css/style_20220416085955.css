@@ -1,0 +1,101 @@
+:root {
+  --yellow: #E39100;
+  --darkgrey: #191919;
+  --lightgrey: #1C1C1C;
+  --whitecolor: #fff2eb;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Tajawal;
+}
+.yellow{ color: var(--yellow); }
+.bg-yellow{ background-color: var(--yellow); }
+
+.btn-close{ z-index: 1000; }
+body{
+	direction: rtl;
+}
+.container{
+	
+}
+.modal-header .btn-close {
+    padding: 0.5rem 0.5rem;
+    margin: 0;
+}
+.modal-content{
+	background-color: var(--darkgrey);
+}
+
+
+.login-container
+{
+  margin: 0;
+  padding: 0;
+  direction: ltr;
+  
+}
+
+.yellow-box-login
+{
+  background-color: var(--yellow);
+  width:5rem;
+  height: 10rem;
+
+}
+
+.login-header
+{
+  color: var(--whitecolor);
+  direction: ltr;
+}
+.logo-box 
+{
+  text-align: center;
+
+  border: 1px solid var(--whitecolor);
+  position: absolute;
+  top: 2.5rem;
+  left: 3rem;
+  width:4rem;
+  height: 4rem;
+}
+
+.logo-box h2
+{
+
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content:center;
+
+  
+
+}
+
+.login-text
+{
+text-align:center;
+display:flex;
+flex-direction: column;
+}
+
+.login-text input
+{
+text-align:right;
+
+}
+.login-text h3
+{
+
+color: var(--yellow);
+}
+@media (min-width: 576px){
+	.modal-dialog {
+		max-width: 685px;
+		margin: 1.75rem auto;
+	}
+}
