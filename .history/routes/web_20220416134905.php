@@ -30,14 +30,14 @@ Route::group(['middleware'=>'role:admin'],function(){
     Route::get('/index', function () {
         return view('index')->name('index');
     });
-  
+    
+    Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
+
 
 
 });
 
-    
-Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
- 
+   
 
 });
 

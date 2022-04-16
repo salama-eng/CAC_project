@@ -17,34 +17,31 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>'auth'],function(){
 
-Route::group(['middleware'=>'role:admin'],function(){
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+
+
+
     
-    Route::get('/dash', function () {
-        return view('dash')->name('dash');
-    });
-    
-    Route::get('/index', function () {
-        return view('index')->name('index');
-    });
-  
 
 
+
+Route::get('/', function () {
+    return view('welcome');
 });
 
-    
-Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
- 
+Route::get('/dash', function () {
+    return view('dash')->name('dash');
+});
 
+Route::get('/index', function () {
+    return view('index')->name('index');
 });
 
 
 Route::get('/login', function () {
     return view('admin.layout.dashboard');
 });
+Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
 
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
