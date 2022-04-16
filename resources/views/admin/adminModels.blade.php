@@ -1,5 +1,5 @@
 @extends('admin.layout.dashboard')
-@section('showmodels')
+@section('content')
 
 
 
