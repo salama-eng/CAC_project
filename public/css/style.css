@@ -1,194 +1,178 @@
 :root {
-  --yellow: #E39100;
-  --yellow2:rgb(255, 183, 49);
-  --yellow1:rgba(227, 145, 0,0.8);
-  --darkgrey: #191919;
-  --lightgrey: #1C1C1C;
-  --lightgrey1: rgb(28, 28, 28,0.8);
-  --whitecolor: #fff2eb;
-  --whitecolor1: rgba(255, 242, 235,0.4);
-  
+    --semiOrange: #e3911e;
+    --darkgrey: #191919;
+    --lightgrey: #1C1C1C;
+    --whitecolor: #f6f6f6;
+
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Tajawal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal';
 }
 
 
-body{
-	direction: rtl;
+body {
+    direction: rtl;
+    background-color: var(--darkgrey) !important;
+    font-family: 'Tajawal';
 }
-.container{
-	
+
+/* navbar */
+.w-96 {
+    width: 96%;
 }
-.modal-header .btn-close {
-    padding: 0.5rem 0.5rem;
-    margin: 0;background-color: var(--yellow);
+
+.cornerstyle {
+    background-color: var(--semiOrange);
+    height: 33vh;
+    width: 4%;
+}
+
+.contact {
+    background-color: var(--semiOrange) !important;
+}
+
+.bttn {
+    direction: ltr;
+    background-color: inherit;
 
 }
-.modal-content{
-	background-color: var(--darkgrey);
-}
-.table-responsive
-{
-  color: var(--whitecolor);
-  background-color: var(--lightgrey);
-}
-.yellow{ color: var(--yellow); }
-.bg-yellow{ background-color: var(--yellow); }
 
-.btn-close{
-   z-index: 1000;
-   
-   }
+.bttn:hover .menu,
+.bttn:focus .menu {
+    background-color: var(--semiOrange) !important;
+}
 
-  .btn
-  {
-    background-color: var(--yellow);
+.menu {
+    height: 2px;
+    width: 10px;
+}
+
+.contactnavbar {
+    height: 60vh;
+}
+
+.fs-7 {
+    font-size: .8rem;
+}
+
+.wrapper {
+
+    perspective: 1500px;
+}
+
+a,
+a:hover,
+a:focus {
     color: var(--whitecolor);
-    border-radius:0;
-    padding:.5rem;
-    margin-bottom: 1rem;
-  }
-.modal-content
-{
-  background-color: var(--lightgrey);
-  border:none;
+    text-decoration: none !important;
+    transition: all 0.3s;
 }
 
-.modal-title
-{
-  color: var( --yellow2);
+#sidebar {
+    min-width: 300px;
+    max-width: 300px;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+    transform-origin: bottom right;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+    transform: rotateY(100deg);
+
+}
+
+
+#sidebar ul li a {
+
+    display: block;
+}
+
+#sidebar ul li a:hover {
+
+    color: var(--semiOrange) !important;
+
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: var(--semiOrange) !important;
+}
+
+#sidebar .cornerstyle {
+    height: 100px;
+}
+
+
+#content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
 }
 
 
 
-.modal-content input
-{
-  background-color: var(--whitecolor1);
-  
-  font-weight: lighter;
-  padding:.5rem;
-  border-radius:0;
-}
-
-  .back-dash
-  {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-.table-responsive tr td
-{
-  color: var(--whitecolor);
+#sidebarCollapse .menu {
  
+    height: 2px;
+     width: 20px;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
 }
-.text-center
-{
-  color: var(--whitecolor);
-}
-.login-container
-{
-  margin: 0;
-  padding: 0;
-  direction: ltr;
-  
-}
+#sidebarCollapse:hover .menu, #sidebarCollapse:focus .menu{
+    background-color: var(--second-color) !important;
 
-.yellow-box-login
-{
-  background-color: var(--yellow);
-  width:5rem;
-  height: 10rem;
+ }
 
+#sidebarCollapse .menu:first-of-type {
+    transform: rotate(45deg) translate(2px, 2px);
+    
 }
 
-.login-header
-{
-  color: var(--whitecolor);
-  direction: ltr;
-}
-.logo-box 
-{
-  text-align: center;
-
-  border: 1px solid var(--whitecolor);
-  position: absolute;
-  top: 2.5rem;
-  left: 3rem;
-  width:4rem;
-  height: 4rem;
-}
-
-.logo-box h2
-{
- 
-  display: flex;
-  align-items: center;
-  margin: auto;
-  justify-content:center;
-
-  font-family: Comic Sans MS;
-
-
-}
-
-.login-text form
-{
-
-text-align:center;
-display:flex;
-flex-direction: column;
-}
-
-.login-text form input 
-{
-text-align:right;
-padding:0.6rem;
-margin: 0.3rem;
-color: var(--whitecolor);
-margin-bottom: 1.5rem;
-border: 0.8px solid var(--whitecolor1);
-background: transparent;
-
+#sidebarCollapse .menu:last-of-type {
+    transform: rotate(-45deg) translate(1px, -1px);
 }
 
 
 
-.login-text form button
-{
-color: var(--whitecolor);
-padding:0.6rem;
-margin: 0.3rem;
-border: 0.8px solid var(--yellow);
-background: transparent;
-margin-bottom:1.9rem;
+@media only screen and (min-width: 992px) {
 
+    .bttn {
+        direction: rtl;
+    }
 }
 
-.login-text button:hover
-{
-color: var(--darkgrey);
-border: 0.8px solid var(--lightgrey);
-background-color: var(--yellow);
-transition: 0.4s;
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+        transform: rotateY(90deg);
+    }
 
+    #sidebar.active {
+        margin-left: 0;
+        transform: none;
+    }
 
-}
+    #sidebarCollapse .menu:first-of-type,
+    #sidebarCollapse .menu:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
 
-.login-text h3
-{
-  margin-bottom: 1.5rem;
-color: var(--yellow);
-}
-@media (min-width: 576px){
-	.modal-dialog {
-		max-width: 685px;
-		margin: 1.75rem auto;
-	}
+    #sidebarCollapse.active .menu {
+        margin: 0 auto;
+    }
+
+    #sidebarCollapse.active .menu:first-of-type {
+        transform: rotate(45deg) translate(2px, 2px);
+    }
+
+    #sidebarCollapse.active .menu:last-of-type {
+        transform: rotate(-45deg) translate(1px, -1px);
+    }
+
 }

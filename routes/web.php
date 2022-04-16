@@ -19,10 +19,7 @@ Route::group(['middleware'=>'auth'],function(){
 
 Route::group(['middleware'=>'role:admin'],function(){
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    
+  
     Route::get('/dash', function () {
         return view('dash')->name('dash');
     });
@@ -34,8 +31,7 @@ Route::group(['middleware'=>'role:admin'],function(){
 
 
 });
-
-    
+ 
 Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
  
 
@@ -50,3 +46,9 @@ Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::get('/save_user',[AuthController::class,'register'])->name('save_user');
 
+Route::get('/', function () {
+    return view('front.home');
+});
+Route::get('/admin_dash', function () {
+return view('admin.adminDashboard');
+});  
