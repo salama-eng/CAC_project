@@ -15,7 +15,7 @@
 
 body {
 	direction: rtl;
-	}
+}
 
  .header-container 
 {
@@ -25,6 +25,7 @@ body {
   margin: 0;
   padding: 0;
 	width: 20rem;
+	margin-right: -20%;
 
 }
 
@@ -69,7 +70,9 @@ div .head{
 	flex-direction: column;
 	align-items:center;
 }
-
+.head, .body{
+	
+}
 ul li 
 {
 	list-style: none;

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\admin\ModelsAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +19,6 @@ Route::get('/', function () {
 
 
 Route::get('/login', function () {
-    return view('login');
+    return view('admin.layout.dashboard');
 });
+Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
