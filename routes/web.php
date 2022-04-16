@@ -50,5 +50,5 @@ Route::get('/', function () {
     return view('front.home');
 });
 Route::get('/admin_dash', function () {
-return view('admin.layout.adminDashboard');
+return view('admin.layout.dashboard');
 });  
