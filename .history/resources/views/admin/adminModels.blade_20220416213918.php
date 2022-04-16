@@ -1,11 +1,11 @@
-@extends('admin.layout.dashboard')
-@section('showmodels')
+@extends('admin.layout.adminDashboard')
+@section('cobtent')
 
 
 
 <h1 class="text-center">ادارة الموديلات</h1>
     <div class="container">
-        <a href="" class="btn1 btn-sm " data-bs-toggle="modal" data-bs-target="#addModel">
+        <a href="" class="btn btn-sm " data-bs-toggle="modal" data-bs-target="#addModel">
             <i class="fa fa-plus"></i> اضافة موديل
         </a>
         <div class="table-responsive">
@@ -137,7 +137,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">تراجع</button>
-                        <input type="submit" class="btn btn-secondary text-white" value="اضافة" />
+                        <input type="submit" class="btn btn-primary text-white" value="اضافة" />
                     </div>
                 </form>
             </div>
