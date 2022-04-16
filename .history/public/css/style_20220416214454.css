@@ -186,9 +186,6 @@ transition: 0.4s;
   margin-bottom: 1.5rem;
 color: var(--yellow);
 }
-
-
-
 @media (min-width: 576px){
 	.modal-dialog {
 		max-width: 685px;
