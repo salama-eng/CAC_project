@@ -21,11 +21,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="{{ URL::asset('js/main.js')}}"></script>
 
+<div >
 
   
-<img class="back-dash" src="assets/back.jpg" alt="">
+<img style=" position: absolute; z-index:-1" src="assets/back.jpg" alt="">
 
 
-
+</div>
   </body>
 </html>

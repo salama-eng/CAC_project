@@ -22,9 +22,7 @@
     <script src="{{ URL::asset('js/main.js')}}"></script>
 
 
-  
-<img class="back-dash" src="assets/back.jpg" alt="">
-
+<img src="assets/back.jpg" alt="">
 
 
   </body>

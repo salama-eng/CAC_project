@@ -1,10 +1,8 @@
 :root {
   --yellow: #E39100;
-  --yellow2:rgb(255, 183, 49);
   --yellow1:rgba(227, 145, 0,0.8);
   --darkgrey: #191919;
   --lightgrey: #1C1C1C;
-  --lightgrey1: rgb(28, 28, 28,0.8);
   --whitecolor: #fff2eb;
   --whitecolor1: rgba(255, 242, 235,0.4);
   
@@ -16,33 +14,11 @@
   box-sizing: border-box;
   font-family: Tajawal;
 }
-
-
-body{
-	direction: rtl;
-}
-.container{
-	
-}
-.modal-header .btn-close {
-    padding: 0.5rem 0.5rem;
-    margin: 0;background-color: var(--yellow);
-
-}
-.modal-content{
-	background-color: var(--darkgrey);
-}
-.table-responsive
-{
-  color: var(--whitecolor);
-  background-color: var(--lightgrey);
-}
 .yellow{ color: var(--yellow); }
 .bg-yellow{ background-color: var(--yellow); }
 
 .btn-close{
    z-index: 1000;
-   
    }
 
   .btn
@@ -53,43 +29,7 @@ body{
     padding:.5rem;
     margin-bottom: 1rem;
   }
-.modal-content
-{
-  background-color: var(--lightgrey);
-  border:none;
-}
 
-.modal-title
-{
-  color: var( --yellow2);
-}
-.modal-content .btn
-{
-  background:transparent ;
-  background-color: var(--yellow);
-  
-  font-weight: lighter;
-  padding:.5rem;
-
-}
-
-.modal-content .btn:hover
-{
- 
-  background-color: var(--yellow2);
-  
-
-
-}
-
-.modal-content input
-{
-  background-color: var(--whitecolor1);
-  
-  font-weight: lighter;
-  padding:.5rem;
-  border-radius:0;
-}
 
   .back-dash
   {
@@ -99,6 +39,26 @@ body{
     height: 100%;
     z-index: -1;
   }
+
+body{
+	direction: rtl;
+}
+.container{
+	
+}
+.modal-header .btn-close {
+    padding: 0.5rem 0.5rem;
+    margin: 0;
+}
+.modal-content{
+	background-color: var(--darkgrey);
+}
+.table-responsive
+{
+  color: var(--whitecolor);
+  background-color: var(--lightgrey);
+}
+
 .table-responsive tr td
 {
   color: var(--whitecolor);

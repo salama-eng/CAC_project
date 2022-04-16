@@ -67,21 +67,11 @@ body{
 {
   background:transparent ;
   background-color: var(--yellow);
-  
+  border:solid 0.5px var(--whitecolor);
   font-weight: lighter;
   padding:.5rem;
-
+  color: var(--darkgrey);
 }
-
-.modal-content .btn:hover
-{
- 
-  background-color: var(--yellow2);
-  
-
-
-}
-
 .modal-content input
 {
   background-color: var(--whitecolor1);

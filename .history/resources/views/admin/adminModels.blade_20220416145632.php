@@ -122,7 +122,7 @@
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title " id="exampleModalLabel">اضافة موديل</h5>
-                        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close bg-yellow" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body border-0">
                         <!-- Start Model -->

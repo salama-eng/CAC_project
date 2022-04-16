@@ -1,13 +1,7 @@
 @extends('admin.layout.dashboard')
 @section('showmodels')
-
-
-
 <h1 class="text-center">ادارة الموديلات</h1>
     <div class="container">
-        <a href="" class="btn btn-sm " data-bs-toggle="modal" data-bs-target="#addModel">
-            <i class="fa fa-plus"></i> اضافة موديل
-        </a>
         <div class="table-responsive">
             <table class="main-table manage-members text-center table table-bordered">
                 <tr>
@@ -113,7 +107,9 @@
                 @endforeach
             </table>
         </div>
-       
+        <a href="" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addModel">
+            <i class="fa fa-plus"></i> اضافة موديل
+        </a>
     </div>
     <div class="modal fade user" id="addModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -121,8 +117,8 @@
                 <form action="add_admin_model" method="POST">
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title " id="exampleModalLabel">اضافة موديل</h5>
-                        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title text-white" id="exampleModalLabel">اضافة موديل</h5>
+                        <button type="button" class="btn-close bg-yellow" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body border-0">
                         <!-- Start Model -->
@@ -143,7 +139,4 @@
             </div>
         </div>
     </div>
-
-           
-@endsection
-                
+@stop

@@ -26,7 +26,7 @@ body{
 }
 .modal-header .btn-close {
     padding: 0.5rem 0.5rem;
-    margin: 0;background-color: var(--yellow);
+    margin: 0;
 
 }
 .modal-content{
@@ -65,23 +65,11 @@ body{
 }
 .modal-content .btn
 {
-  background:transparent ;
-  background-color: var(--yellow);
-  
+  background:transparent !important;
+  border:solid 0.5px var(--whitecolor);
   font-weight: lighter;
   padding:.5rem;
-
 }
-
-.modal-content .btn:hover
-{
- 
-  background-color: var(--yellow2);
-  
-
-
-}
-
 .modal-content input
 {
   background-color: var(--whitecolor1);
