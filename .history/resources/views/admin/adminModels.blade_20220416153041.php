@@ -137,7 +137,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">تراجع</button>
-                        <input type="submit" class="btn btn-primary text-white" value="اضافة" />
+                        <input type="submit" class="btn btn-secondary text-white" value="اضافة" />
                     </div>
                 </form>
             </div>

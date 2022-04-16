@@ -63,8 +63,24 @@ body{
 {
   color: var( --yellow2);
 }
+.modal-content .btn
+{
+  background:transparent ;
+ 
+  
+  font-weight: lighter;
+  padding:.5rem;
+
+}
+
+.modal-content .btn:hover
+{
+ 
+  background-color: var(--yellow2);
+  
 
 
+}
 
 .modal-content input
 {
