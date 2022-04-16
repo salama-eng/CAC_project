@@ -46,6 +46,7 @@ Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::get('/save_user',[AuthController::class,'register'])->name('save_user');
 
+
 Route::get('/', function () {
     return view('front.home');
 });
