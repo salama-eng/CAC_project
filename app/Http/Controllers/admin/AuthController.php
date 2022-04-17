@@ -53,6 +53,7 @@ class AuthController extends Controller
       
 
         $u=new User();
+
         $u->name='khalifa';
         $u->password=Hash::make('123123123');
         $u->email='khalifa@gmail.com';

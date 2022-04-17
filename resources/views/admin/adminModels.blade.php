@@ -1,10 +1,17 @@
 @extends('admin.layout.dashboard')
 @section('content')
+
 <h1 class="text-center">ادارة الموديلات</h1>
+
+<h1 class="text-center  text-white">ادارة الموديلات</h1>
+
     <div class="container">
-        <div class="table-responsive">
-            <table class="main-table manage-members text-center table table-bordered">
-                <tr>
+        <a href="" class="btn1 btn-sm text-white" data-bs-toggle="modal" data-bs-target="#addModel">
+            <i class="fa fa-plus"></i> اضافة موديل
+        </a>
+        <div class="table-responsive text-white">
+            <table class="main-table manage-members text-center table table-bordered  text-white">
+                <tr >
                     <td>#ID</td>
                     <td>الموديل</td>
                     <td>التحكم</td>
@@ -39,7 +46,7 @@
                             <form action="edit_admin_model" method="post" >
                                 @csrf
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل الموديل</h5>
+                                    <h5 class="modal-title  text-white" id="exampleModalLabel">تعديل الموديل</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -107,17 +114,18 @@
                 @endforeach
             </table>
         </div>
-        <a href="adminModels#addModel" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addModel">
-            <i class="fa fa-plus"></i> اضافة موديل
-        </a>
+
     </div>
     <div class="modal fade user" id="addModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content border-1 border-white">
                 <form action="add_admin_model" method="POST">
-                    @error('model') <h1>{{$message}}</h1>@enderror
-                        <h5 class="modal-title text-white" id="exampleModalLabel">اضافة موديل</h5>
-                        <button type="button" class="btn-close bg-yellow" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title " id="exampleModalLabel">اضافة موديل</h5>
+                        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+
                     </div>
                     <div class="modal-body border-0">
                         <!-- Start Model -->
@@ -131,11 +139,14 @@
                         
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">تراجع</button>
-                        <input type="submit" class="btn bg-yellow text-white" value="اضافة" />
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">تراجع</button>
+                        <input type="submit" class="btn btn-secondary text-white" value="اضافة" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
-@stop
+
+           
+@endsection
+                

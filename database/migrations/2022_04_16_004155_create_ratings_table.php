@@ -17,6 +17,17 @@ return new class extends Migration
             $table->id();
             $table->integer('rating');
             $table->string('message');
+            
+            $table->unsignedBigInteger('owner_user_id')->unique();
+            $table->foreign('owner_user_id')->constrained()
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unsignedBigInteger('aw_user_id')->unique();
+            $table->foreign('aw_user_id')->constrained()
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')->onDelete('cascade');
+
             $table->boolean('is_active')->default(0);
             $table->timestamps();
         });

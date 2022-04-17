@@ -15,8 +15,28 @@ return new class extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $table->string('user_name');
             $table->string('message');
+
+            $table->unsignedBigInteger('owner_user_id')->unique();
+            $table->foreign('owner_user_id')->constrained()
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unsignedBigInteger('aw_user_id')->unique();
+            $table->foreign('aw_user_id')->constrained()
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unsignedBigInteger('admin_id')->unique();
+            $table->foreign('admin_id')->constrained()
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->unsignedBigInteger('post_id')->unique();
+            $table->foreign('post_id')->constrained()
+                    ->references('id')->on('posts')
+                    ->onUpdate('cascade')->onDelete('cascade');
+
             $table->boolean('is_active')->default(0);
             $table->timestamps();
         });

@@ -19,11 +19,6 @@ Route::group(['middleware'=>'auth'],function(){
 
 Route::group(['middleware'=>'role:admin'],function(){
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-});
-
 });
 
 
@@ -43,6 +38,7 @@ Route::group(['middleware'=>'auth'],function(){
     });
 });
 
+
 Route::group(['middleware'=>'auth'],function(){
 	Route::group(['middleware'=>'role:client'],function(){
         Route::get('/index', function () {
@@ -50,3 +46,4 @@ Route::group(['middleware'=>'auth'],function(){
         });
     });
 });
+
