@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['middleware'=>'auth'],function(){
+
+Route::group(['middleware'=>'role:admin'],function(){
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
+
+});
 
 
 
@@ -28,13 +38,9 @@ Route::group(['middleware'=>'auth'],function(){
         Route::get('/dash', function () {
             return view('dash')->name('dash');
         });
-       
+        Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
+        Route::post('/addAdminModel', [ModelsAdminController::class, 'addAdminModel']);
     });
-
-
-
-    Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
-    Route::post('/addAdminModel', [ModelsAdminController::class, 'addAdminModel']);
 });
 
 

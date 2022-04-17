@@ -28,13 +28,9 @@ Route::group(['middleware'=>'auth'],function(){
         Route::get('/dash', function () {
             return view('dash')->name('dash');
         });
-       
+        Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
+        Route::post('/addAdminModel', [ModelsAdminController::class, 'addAdminModel']);
     });
-
-
-
-    Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
-    Route::post('/addAdminModel', [ModelsAdminController::class, 'addAdminModel']);
 });
 
 
