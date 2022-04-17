@@ -131,13 +131,15 @@
         <div id="content">
             <div class="w-100" style="background-image: url(assets/back.jpg) ;
              background-size: contain;">
+
+    @yield('content')
+
             </div>
 
         </div>
 
     </div>
 
-    @yield('content')
     {{-- <div style="background-repeat: no-repeat;
      background-image: url(assets/back.jpg); background-size:cover"></div>
 

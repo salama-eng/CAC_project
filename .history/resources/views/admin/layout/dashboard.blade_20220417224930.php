@@ -92,6 +92,7 @@
         </aside>
 
 
+<div>
 
 
         <div class="text-light me-auto mt-5">
@@ -135,9 +136,9 @@
 
         </div>
 
+    @yield('content')</div>
     </div>
 
-    @yield('content')
     {{-- <div style="background-repeat: no-repeat;
      background-image: url(assets/back.jpg); background-size:cover"></div>
 

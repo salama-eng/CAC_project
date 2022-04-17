@@ -91,48 +91,48 @@
             </ul>
         </aside>
 
+        <div>
 
 
+            <div class="text-light me-auto mt-5">
+                <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
+                <p class="fa fa-wechat px-2"></p>
+                <p class="fa fa-user px-2"></p>
+                <ul class="dropdown-menu notification bg-dark">
+                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
+                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
+                        <p class="dropdown-divider mx-2"></p>
+                    </li>
 
-        <div class="text-light me-auto mt-5">
-            <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
-            <p class="fa fa-wechat px-2"></p>
-            <p class="fa fa-user px-2"></p>
-            <ul class="dropdown-menu notification bg-dark">
-                <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                        <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
-                    <p class="dropdown-divider mx-2"></p>
-                </li>
+                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
+                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
+                        <p class="dropdown-divider mx-2"></p>
+                    </li>
+                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
+                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
+                        <p class="dropdown-divider mx-2"></p>
+                    </li>
+                </ul>
+                <ul class="dropdown-menu bg-dark userinfo">
+                    <li>
+                        <h6 class="dropdown-item text-light" href="#">اسم المستخدم
+                        </h6>
 
-                <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                        <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
-                    <p class="dropdown-divider mx-2"></p>
-                </li>
-                <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                        <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
-                    <p class="dropdown-divider mx-2"></p>
-                </li>
-            </ul>
-            <ul class="dropdown-menu bg-dark userinfo">
-                <li>
-                    <h6 class="dropdown-item text-light" href="#">اسم المستخدم
-                    </h6>
-
-                </li>
+                    </li>
 
 
-                <li><a class="dropdown-item text-light fs-7" href="#">تسجيل الخروج</a>
-                    <p class="dropdown-divider mx-2"></p>
-                </li>
-            </ul>
-        </div>
-        <!-- Page Content Holder -->
-
-        <div id="content">
-            <div class="w-100" style="background-image: url(assets/back.jpg) ;
-             background-size: contain;">
+                    <li><a class="dropdown-item text-light fs-7" href="#">تسجيل الخروج</a>
+                        <p class="dropdown-divider mx-2"></p>
+                    </li>
+                </ul>
             </div>
+            <!-- Page Content Holder -->
 
+            <div id="content">
+                <div class="w-100" style="background-image: url(assets/back.jpg) ; background-size: contain;">
+                </div>
+
+            </div>
         </div>
 
     </div>

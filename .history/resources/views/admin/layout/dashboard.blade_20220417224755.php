@@ -94,7 +94,7 @@
 
 
 
-        <div class="text-light me-auto mt-5">
+        <div class="text-light mt-5">
             <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
             <p class="fa fa-wechat px-2"></p>
             <p class="fa fa-user px-2"></p>
@@ -128,16 +128,18 @@
         </div>
         <!-- Page Content Holder -->
 
-        <div id="content">
+      
             <div class="w-100" style="background-image: url(assets/back.jpg) ;
              background-size: contain;">
-            </div>
+
+    @yield('content')
+
+           
 
         </div>
 
     </div>
 
-    @yield('content')
     {{-- <div style="background-repeat: no-repeat;
      background-image: url(assets/back.jpg); background-size:cover"></div>
 

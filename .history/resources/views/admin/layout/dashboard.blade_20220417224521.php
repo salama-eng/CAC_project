@@ -129,8 +129,7 @@
         <!-- Page Content Holder -->
 
         <div id="content">
-            <div class="w-100" style="background-image: url(assets/back.jpg) ;
-             background-size: contain;">
+            <div class="w-100" style="background-image: url(assets/back.jpg) ; background-size: contain;">
             </div>
 
         </div>

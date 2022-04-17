@@ -90,10 +90,6 @@
                 </li>
             </ul>
         </aside>
-
-
-
-
         <div class="text-light me-auto mt-5">
             <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
             <p class="fa fa-wechat px-2"></p>
@@ -129,15 +125,14 @@
         <!-- Page Content Holder -->
 
         <div id="content">
-            <div class="w-100" style="background-image: url(assets/back.jpg) ;
-             background-size: contain;">
+            <div class="w-100" style="background-image: url(assets/back.jpg) ; background-size: contain;">
             </div>
-
+            @yield('content')
         </div>
 
     </div>
 
-    @yield('content')
+
     {{-- <div style="background-repeat: no-repeat;
      background-image: url(assets/back.jpg); background-size:cover"></div>
 
