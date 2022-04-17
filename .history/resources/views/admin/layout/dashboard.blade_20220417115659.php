@@ -114,20 +114,25 @@
       <!-- Example single danger button -->
 <div class="d-flex flex-lg-row-reverse m-3 gap-4" >
 
+  <div><img  class="rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
+ 
 
-  <div class="dropdown-avatar">
-    <div class="dropbtn-avatar">
-    <img  class=" rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
 
-    <div class="dropdown-content-avatar">
-      <a href="#">اسم المستخدم</a>
-      <hr class=" m-0 text-white">
-      <a href="#">تسجيل الخروج</a>
-      
-    </div>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown button
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <li><a class="dropdown-item active" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
   </div>
-<style>
- </style>
+
+  
+
   <div><img src="assets/icons/bell.png" alt="" width="32px" height=""></div>
 
 </div>

@@ -114,16 +114,14 @@
       <!-- Example single danger button -->
 <div class="d-flex flex-lg-row-reverse m-3 gap-4" >
 
-
+  <div></div>
   <div class="dropdown-avatar">
-    <div class="dropbtn-avatar">
-    <img  class=" rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
-
+    <img  class="dropbtn-avatar rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height="">
+    <button class="">Dropdown</button>
     <div class="dropdown-content-avatar">
-      <a href="#">اسم المستخدم</a>
-      <hr class=" m-0 text-white">
-      <a href="#">تسجيل الخروج</a>
-      
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
     </div>
   </div>
 <style>

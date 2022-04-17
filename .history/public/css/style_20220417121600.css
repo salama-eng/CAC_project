@@ -191,6 +191,7 @@ color: var(--yellow);
 
 
 
+
 @media (min-width: 576px){
 	.modal-dialog {
 		max-width: 685px;

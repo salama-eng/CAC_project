@@ -3,14 +3,14 @@
 
 
 
-<h1 class="text-center  text-white">ادارة الموديلات</h1>
+<h1 class="text-center">ادارة الموديلات</h1>
     <div class="container">
-        <a href="" class="btn1 btn-sm text-white" data-bs-toggle="modal" data-bs-target="#addModel">
+        <a href="" class="btn1 btn-sm " data-bs-toggle="modal" data-bs-target="#addModel">
             <i class="fa fa-plus"></i> اضافة موديل
         </a>
         <div class="table-responsive text-white">
-            <table class="main-table manage-members text-center table table-bordered  text-white">
-                <tr >
+            <table class="main-table manage-members text-center table table-bordered">
+                <tr>
                     <td>#ID</td>
                     <td>الموديل</td>
                     <td>التحكم</td>

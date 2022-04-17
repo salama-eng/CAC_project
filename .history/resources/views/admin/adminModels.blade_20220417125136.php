@@ -3,9 +3,9 @@
 
 
 
-<h1 class="text-center  text-white">ادارة الموديلات</h1>
+<h1 class="text-center  text-yellow">ادارة الموديلات</h1>
     <div class="container">
-        <a href="" class="btn1 btn-sm text-white" data-bs-toggle="modal" data-bs-target="#addModel">
+        <a href="" class="btn1 btn-sm " data-bs-toggle="modal" data-bs-target="#addModel">
             <i class="fa fa-plus"></i> اضافة موديل
         </a>
         <div class="table-responsive text-white">

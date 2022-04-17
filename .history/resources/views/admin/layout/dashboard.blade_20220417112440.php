@@ -11,11 +11,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400&display=swap" rel="stylesheet">
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Cars Auction</title>
 </head>
 
@@ -114,20 +110,26 @@
       <!-- Example single danger button -->
 <div class="d-flex flex-lg-row-reverse m-3 gap-4" >
 
-
-  <div class="dropdown-avatar">
-    <div class="dropbtn-avatar">
-    <img  class=" rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
-
-    <div class="dropdown-content-avatar">
-      <a href="#">اسم المستخدم</a>
-      <hr class=" m-0 text-white">
-      <a href="#">تسجيل الخروج</a>
-      
-    </div>
+  <div  class="custom-select"><img class="rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
+ 
+  <div class="custom-select" style="width:200px;">
+    <select>
+      <option value="0">Select car:</option>
+      <option value="1">Audi</option>
+      <option value="2">BMW</option>
+      <option value="3">Citroen</option>
+      <option value="4">Ford</option>
+      <option value="5">Honda</option>
+      <option value="6">Jaguar</option>
+      <option value="7">Land Rover</option>
+      <option value="8">Mercedes</option>
+      <option value="9">Mini</option>
+      <option value="10">Nissan</option>
+      <option value="11">Toyota</option>
+      <option value="12">Volvo</option>
+    </select>
   </div>
-<style>
- </style>
+
   <div><img src="assets/icons/bell.png" alt="" width="32px" height=""></div>
 
 </div>

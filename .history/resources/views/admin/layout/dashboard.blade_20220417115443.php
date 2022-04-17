@@ -11,11 +11,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400&display=swap" rel="stylesheet">
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Cars Auction</title>
 </head>
 
@@ -114,20 +110,30 @@
       <!-- Example single danger button -->
 <div class="d-flex flex-lg-row-reverse m-3 gap-4" >
 
+  <div><img  class="rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
+ 
 
-  <div class="dropdown-avatar">
-    <div class="dropbtn-avatar">
-    <img  class=" rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
+  <!-- Large button groups (default and split) -->
+<div class="btn-group">
+  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Large button
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+<div class="btn-group">
+  <button class="btn btn-secondary btn-lg" type="button">
+    Large split button
+  </button>
+  <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
 
-    <div class="dropdown-content-avatar">
-      <a href="#">اسم المستخدم</a>
-      <hr class=" m-0 text-white">
-      <a href="#">تسجيل الخروج</a>
-      
-    </div>
-  </div>
-<style>
- </style>
   <div><img src="assets/icons/bell.png" alt="" width="32px" height=""></div>
 
 </div>

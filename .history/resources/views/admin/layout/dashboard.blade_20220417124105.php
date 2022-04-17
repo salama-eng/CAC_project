@@ -118,12 +118,11 @@
   <div class="dropdown-avatar">
     <div class="dropbtn-avatar">
     <img  class=" rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
-
+    <button class="">Dropdown</button>
     <div class="dropdown-content-avatar">
-      <a href="#">اسم المستخدم</a>
-      <hr class=" m-0 text-white">
-      <a href="#">تسجيل الخروج</a>
-      
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
     </div>
   </div>
 <style>

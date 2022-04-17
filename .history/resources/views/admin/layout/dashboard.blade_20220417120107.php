@@ -114,20 +114,41 @@
       <!-- Example single danger button -->
 <div class="d-flex flex-lg-row-reverse m-3 gap-4" >
 
+  <div><img  class="rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
+ 
 
-  <div class="dropdown-avatar">
-    <div class="dropbtn-avatar">
-    <img  class=" rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
 
-    <div class="dropdown-content-avatar">
-      <a href="#">اسم المستخدم</a>
-      <hr class=" m-0 text-white">
-      <a href="#">تسجيل الخروج</a>
-      
+  <div class="container">
+    <div class="row">
+        <div class="col-md-4 col-sm-10 col-xs-8">
+            <div class="panel panel-default">
+                <div class="panel-body"> <img src="https://i.imgur.com/Ur43esv.jpg" alt="profile"> </div>
+                <div class="panel-footer"><b><u>WILLIAM SHAKESPEARE</b></u><br><br>
+                    <p>William shakespeare was an English poet, playwright and actor, widely regarded as the greatest writer in the English language and the world's greatest dramatist.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-10 col-xs-8">
+            <div class="panel panel-default">
+                <div class="panel-body"> <img src="https://i.imgur.com/8RKXAIV.jpg" alt="profile"> </div>
+                <div class="panel-footer"><b><u>JK ROWLING</b></u><br><br>
+                    <p>JK Rowling better known by her pen names J. K. Rowling and Robert Galbraith, is a British novelist, screenwriter, producer, and philanthropist.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-10 col-xs-8">
+            <div class="panel panel-default">
+                <div class="panel-body"> <img src="https://i.imgur.com/J6l19aF.jpg" alt="profile"> </div>
+                <div class="panel-footer"><b><u>WILLIAM SHAKESPEARE</b></u><br><br>
+                    <p>William shakespeare was an English poet, playwright and actor, widely regarded as the greatest writer in the English language and the world's greatest dramatist.</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-<style>
- </style>
+</div>
+
+  
+
   <div><img src="assets/icons/bell.png" alt="" width="32px" height=""></div>
 
 </div>

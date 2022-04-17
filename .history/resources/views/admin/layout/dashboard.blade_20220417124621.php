@@ -121,7 +121,6 @@
 
     <div class="dropdown-content-avatar">
       <a href="#">اسم المستخدم</a>
-      <hr class=" m-0 text-white">
       <a href="#">تسجيل الخروج</a>
       
     </div>

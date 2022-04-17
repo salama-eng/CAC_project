@@ -114,20 +114,22 @@
       <!-- Example single danger button -->
 <div class="d-flex flex-lg-row-reverse m-3 gap-4" >
 
+  <div><img  class="rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
+ 
 
-  <div class="dropdown-avatar">
-    <div class="dropbtn-avatar">
-    <img  class=" rounded-circle" src="assets/images/avatar.jpg" alt="" width="32px" height=""></div>
-
-    <div class="dropdown-content-avatar">
-      <a href="#">اسم المستخدم</a>
-      <hr class=" m-0 text-white">
-      <a href="#">تسجيل الخروج</a>
-      
+  <h2>Hoverable Dropdown</h2>
+  <p>Move the mouse over the button to open the dropdown menu.</p>
+  
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
     </div>
   </div>
-<style>
- </style>
+  
+
   <div><img src="assets/icons/bell.png" alt="" width="32px" height=""></div>
 
 </div>
