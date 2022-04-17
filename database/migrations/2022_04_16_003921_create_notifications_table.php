@@ -17,6 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
+            $table->string('auction_number');
+
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->constrained()
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')->onDelete('cascade');
+                    
             $table->boolean('is_active')->default(0);
             $table->timestamps();
         });

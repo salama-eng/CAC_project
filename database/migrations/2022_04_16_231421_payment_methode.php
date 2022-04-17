@@ -13,24 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ratings', function (Blueprint $table) {
+        Schema::create('payment_methode', function (Blueprint $table) {
             $table->id();
-            $table->integer('rating');
-            $table->string('message');
-            
-            $table->unsignedBigInteger('owner_user_id')->unique();
-            $table->foreign('owner_user_id')->constrained()
+            $table->string('account_number');
+
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->constrained()
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedBigInteger('aw_user_id')->unique();
-            $table->foreign('aw_user_id')->constrained()
-                    ->references('id')->on('users')
+            $table->unsignedBigInteger('payment_id')->unique();
+            $table->foreign('payment_id')->constrained()
+                    ->references('id')->on('payments')
                     ->onUpdate('cascade')->onDelete('cascade');
-
+                    
             $table->boolean('is_active')->default(0);
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -40,6 +40,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ratings');
+        Schema::dropIfExists('payment_methode');
+
     }
 };
