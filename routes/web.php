@@ -15,27 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware'=>'auth'],function(){
-
-Route::group(['middleware'=>'role:admin'],function(){
-
-  
-    Route::get('/dash', function () {
-        return view('dash')->name('dash');
-    });
-    
-    Route::get('/index', function () {
-        return view('index')->name('index');
-    });
-  
-
-
-});
- 
-Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
- 
-
-});
 
 
 
@@ -43,6 +22,16 @@ Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::get('/save_user',[AuthController::class,'register'])->name('save_user');
+Route::group(['middleware'=>'auth'],function(){
+	Route::group(['middleware'=>'role:admin'],function(){
+        // 
+        Route::get('/dash', function () {
+            return view('dash')->name('dash');
+        });
+        Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
+        Route::post('/addAdminModel', [ModelsAdminController::class, 'addAdminModel']);
+    });
+});
 
 
 Route::get('/', function () {

@@ -33,8 +33,6 @@ class AuthController extends Controller
        // if(Auth::attempt(['email'=>$request->email_username,'password'=>$request->user_pass,'is_active'=>1])){
             if(Auth::attempt(['email'=>$request->email,'password'=>$request->pass])){
                 $user = Auth::user();
-        
-            
                  if($user->hasRole('admin'))
                  return "admin";
                  else 
@@ -55,12 +53,14 @@ class AuthController extends Controller
       
 
         $u=new User();
-        $u->name='admin';
-        $u->password=Hash::make('123456');
-        $u->email='';
-        if($u->save())
-        return redirect()->route('/')
-        ->with(['success'=>'user created successful']);
+        $u->name='khalifa';
+        $u->password=Hash::make('123123123');
+        $u->email='khalifa@gmail.com';
+        if($u->save()){
+            $u->attachRole('client');
+            return redirect()->route('/')
+            ->with(['success'=>'user created successful']);
+        }
         return back()->with(['error'=>'can not create user']);
 
     }
@@ -78,7 +78,7 @@ class AuthController extends Controller
         if(Auth::user()->hasRole('admin'))
         return 'dash';
             else 
-            return '/';
+            return 'admin.login';
         
     }
 
