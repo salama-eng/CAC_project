@@ -22,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::get('/save_user',[AuthController::class,'register'])->name('save_user');
+Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
+Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
+Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
+Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
 Route::group(['middleware'=>'auth'],function(){
 	Route::group(['middleware'=>'role:admin'],function(){
         // 
@@ -33,8 +37,7 @@ Route::group(['middleware'=>'auth'],function(){
 
 
 
-    Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels']);
-    Route::post('/addAdminModel', [ModelsAdminController::class, 'addAdminModel']);
+    
 });
 
 
