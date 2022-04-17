@@ -58,7 +58,9 @@ body {
 .fs-7 {
     font-size: .8rem;
 }
-
+.fs-8{
+    font-size: .6rem;
+}
 .wrapper {
 
     perspective: 1500px;
@@ -72,18 +74,7 @@ a:focus {
     transition: all 0.3s;
 }
 
-#sidebar {
-    min-width: 300px;
-    max-width: 300px;
-    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
-    transform-origin: bottom right;
-}
 
-#sidebar.active {
-    margin-left: -250px;
-    transform: rotateY(100deg);
-
-}
 
 
 #sidebar ul li a {
@@ -128,16 +119,44 @@ a[aria-expanded="true"] {
  }
 
 #sidebarCollapse .menu:first-of-type {
-    transform: rotate(45deg) translate(2px, 2px);
+    transform: rotate(45deg) translate(2px, 2px) !important;
     
 }
 
 #sidebarCollapse .menu:last-of-type {
-    transform: rotate(-45deg) translate(1px, -1px);
+    transform: rotate(-45deg) translate(1px, -1px) !important;
 }
 
-
-
+.logo-box{
+    font-family: Comic Sans MS;
+}
+.fa-bell{
+    transform: rotate(-30deg);
+}
+.notiy{
+  left: 22px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: red;
+}
+.dropdown-menu{
+    left: 25px;
+    text-align: right;
+}
+.dropdown-menu .dropdown-item:hover {
+background-color:  var(--lightgrey);
+}
+.semiOrange{
+    color: var(--semiOrange);
+}
+.sidemenu{
+    height: 2px;
+    width: 10px;
+}
+.navbar-header2:hover .sidemenu,.navbar-header2:focus .sidemenu{
+    background-color: var(--semiOrange) !important;
+}
 @media only screen and (min-width: 992px) {
 
     .bttn {
@@ -146,14 +165,12 @@ a[aria-expanded="true"] {
 }
 
 @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-        transform: rotateY(90deg);
-    }
+ 
 
-    #sidebar.active {
-        margin-left: 0;
-        transform: none;
+    #sidebar {
+        position: absolute;
+        z-index: 9999;
+        background-color: var(--lightgrey);
     }
 
     #sidebarCollapse .menu:first-of-type,
@@ -171,50 +188,7 @@ a[aria-expanded="true"] {
         transform: rotate(45deg) translate(2px, 2px);
     }
 
-    #sidebarCollapse.active .menu:last-of-type {
-        transform: rotate(-45deg) translate(1px, -1px);
-    }
+   
+  
 
 }
-
- /* Dropdown Button */
- .dropbtn-avatar {
-    
-    font-size: 16px;
-    border: none;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown-avatar {
-    
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content-avatar {
-    display: none;
-    position: absolute;
-    left:0.5rem;
-    background-color: var(--lightgrey);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content-avatar a {
-    color: var(--whitecolor);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content-avatar a:hover {background-color: #ddd;}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown-avatar:hover .dropdown-content-avatar {display: block;}
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown-avatar:hover .dropbtn-avatar {}
