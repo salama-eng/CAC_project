@@ -1,5 +1,5 @@
 @extends('admin.layout.dashboard')
-@section('showmodels')
+@section('content')
 <h1 class="text-center">ادارة الموديلات</h1>
     <div class="container">
         <div class="table-responsive">
@@ -107,7 +107,7 @@
                 @endforeach
             </table>
         </div>
-        <a href="" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addModel">
+        <a href="adminModels#addModel" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addModel">
             <i class="fa fa-plus"></i> اضافة موديل
         </a>
     </div>
@@ -115,8 +115,7 @@
         <div class="modal-dialog">
             <div class="modal-content border-1 border-white">
                 <form action="add_admin_model" method="POST">
-                    @csrf
-                    <div class="modal-header">
+                    @error('model') <h1>{{$message}}</h1>@enderror
                         <h5 class="modal-title text-white" id="exampleModalLabel">اضافة موديل</h5>
                         <button type="button" class="btn-close bg-yellow" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -125,7 +124,7 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label text-white">موديل جديد</label>
                             <div class="col-sm-8 col-md-9">
-                                <input type="text" name="model" class="form-control" autocomplete="off" required="required" placeholder="اضف موديل جديد">
+                                <input type="text" name="model" class="form-control" autocomplete="off" placeholder="اضف موديل جديد">
                             </div>
                         </div>
                         <!-- End Model -->
