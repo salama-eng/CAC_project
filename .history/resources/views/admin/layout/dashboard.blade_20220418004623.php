@@ -107,7 +107,7 @@
         <div class="w-100" style="background-image: url(assets/back.jpg) ;
         background-size: contain;">
 
-            <div class="text-light dirction me-auto mt-4">
+            <div class="text-light dirction me-auto mt-5">
               <div class="d-flex justify-content-end">
                 <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
                 <p class="fa fa-wechat px-2"></p>

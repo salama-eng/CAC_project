@@ -97,22 +97,18 @@
 
             <!-- Page Content Holder -->
 
-
+            
 
         </div>
 
 
 
 
-        <div class="w-100" style="background-image: url(assets/back.jpg) ;
-        background-size: contain;">
-
-            <div class="text-light dirction me-auto mt-4">
-              <div class="d-flex justify-content-end">
+        <div>
+            <div class="text-light me-auto mt-5">
                 <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
                 <p class="fa fa-wechat px-2"></p>
                 <p class="fa fa-user px-2"></p>
-</div>
                 <ul class="dropdown-menu notification bg-dark">
                     <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
                             <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
@@ -140,13 +136,12 @@
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>
-            </div>
-<hr class="text-white"> 
-            <div class="w-100">
-
-                @yield('content')
-            </div>
+            </div> <div class="w-100" style="background-image: url(assets/back.jpg) ;
+            background-size: contain;">
+              
+@yield('content')
         </div>
+ </div>
         {{-- <div style="background-repeat: no-repeat;
      background-image: url(assets/back.jpg); background-size:cover"></div>
 
