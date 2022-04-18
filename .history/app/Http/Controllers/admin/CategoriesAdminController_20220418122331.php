@@ -92,22 +92,4 @@ class CategoriesAdminController extends Controller
       
 
     }
-
-   
-
-
-    function activeCategory($id){
-
-        $category=category::find($id);
-    
-        if($category->is_active==0)
-        $category->is_active=1;
-        else 
-        $category->is_active=0;
-        if($category->save())
-        return redirect('adminModels')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
-        
-    }
 }

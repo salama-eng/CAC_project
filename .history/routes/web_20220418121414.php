@@ -39,8 +39,8 @@ Route::post('/delete_admin_Payment', [PaymentsAdminController::class, 'deletePay
 // Admin categries Manage
 Route::get('/admincategories', [CategoriesAdminController::class, 'showAdminCategories'])->name('admincategories');
 Route::post('/add_admin_category', [CategoriesAdminController::class, 'addAdminCategory']);
-Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
-Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
+Route::post('/edit_admin_category', [CategoriesAdminController::class, 'editAdminCategory'])->name('editAdminCategory');
+Route::post('/active_admin_category', [CategoriesAdminController::class, 'activeCategory']);
 Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
 
 

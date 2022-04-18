@@ -1,34 +1,37 @@
 <?php
-
 namespace App\Http\Controllers\admin;
 use App\Models\Models;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ModelsAdminController extends Controller
+class CategoriesAdminController extends Controller
 {
-    //
-    function showAdminModels(){
+    function showAdminCategories(){
         $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
-        $models = Models::select()->get();
+        $categories = Category::select()->get();
         return view('admin.adminModels', [
-            'models' => $models,
+            'categories' => $categories,
             'do'     => $do
         ]);
     }
-    function showAdminaddModel(){
-        return view('admin.adminModels#addModel');
+
+
+    function showAdminaddCategory(){
+        return view('admin.adminCategories#addCategory');
     }
-    function addAdminModel(Request $request){
+
+
+    function addAdminCategory(Request $request){
         Validator::validate($request->all(),[
-            'model'=>'required|integer'
+            'category'=>'required|string'
         ],[
-            'model.required'=>'حقل الاسم مطلوب',
-            'model.integer'=>'لا يمكنك ادخال نص يمكنك ادخال ابيانات كارقام',
+            'category.required'=>'حقل الاسم مطلوب',
+            'category.string'=>'لا يمكنك ادخال ارقام يمكنك ادخال ابيانات كنص',
         ]);
-        $modal = new Models;
-        $modal->name = $request->model;
+        $category = new Category;
+        $category->name = $request->model;
         if($modal->save())
         return redirect('adminModels')
         ->with(['success'=>'تم اضافة الموديل بنجاح']);
@@ -50,8 +53,6 @@ class ModelsAdminController extends Controller
         ->with(['success'=>'تم التعديل بنجاح']);
         return back()->with(['error'=>'can not create user']);
     }
-
-    
     function activeModel(Request $request){
         $modelid = $request->modelid;
         $models = Models::select()->where('id', $modelid)->find($modelid);

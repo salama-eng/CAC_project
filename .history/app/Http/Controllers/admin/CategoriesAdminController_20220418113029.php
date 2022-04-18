@@ -25,7 +25,7 @@ class CategoriesAdminController extends Controller
 
     function addAdminCategory(Request $request){
       
-     // return $request->file('image');
+      return $request->file('image');
         Validator::validate($request->all(),[
             'image'=>['required'],
             'name'=>['required','string'],
@@ -42,72 +42,48 @@ class CategoriesAdminController extends Controller
         $category = new Category;
         $category->name = $request->name;
 
-        if($request->hasFile('image'))
-        $category->image=$this->uploadFile($request->file('image'));
-
-        else  $category->image='defualt.png';
+        if($request->image){
+            $file= $request->image;
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('Images'), $filename);
+            $category->image= $filename;
+        }
         if($category->active==null)
         $category->is_active=0;
         else 
         $category->is_active=1;
         if($category->save())
-        return redirect('admincategories')
+        return redirect('adminCategories')
         ->with(['success'=>'تم اضافة التصنيف بنجاح']);
         return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
     }
 
     
-    function editAdminCategory(Request $request,$id){
-
-
-        $category=category::find($id);
-        $category->name=$request->name;
-       $old=$request->image_old;
-
-       if($request->active==null)
-        $category->is_active=0;
-        else 
-        $category->is_active=1;
+    function editAdminCategory(Request $request){
+        Validator::validate($request->all(),[
+            'category'=>'required|string'
+        ],[
+            'category.required'=>'هدا الحقل مطلوب',
+            'category.string'=>'لا يمكنك ادخال ارقام يمكنك ادخال ابيانات كنص',
+        ]);
         
-        if($request->hasFile('image'))
-        $category->image=$this->uploadFile($request->file('image'));
-        else
-        $category->image=$old;
-        if($category->save())
-
-      
-        return redirect('admincategories')
-        ->with(['success'=>'تم تعديل التصنيف بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
-    }
-
-
-    public function uploadFile($files)
-    {
-        
-            $file= $files;
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('Images'), $filename);
-            return $filename;
-      
-
-    }
-
-   
-
-
-    function activeCategory($id){
-
-        $category=category::find($id);
-    
-        if($category->is_active==0)
-        $category->is_active=1;
-        else 
-        $category->is_active=0;
-        if($category->save())
+        $id = $request->categoryid;
+        $name = $request->name;
+        $model = Models::where('id', $id)->update(['name' => $name]);
+        if($model)
         return redirect('adminModels')
         ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
-        
+        return back()->with(['error'=>'can not create user']);
+    }
+    function activeCategory(Request $request){
+        $modelid = $request->modelid;
+        $models = Models::select()->where('id', $modelid)->find($modelid);
+        if($models->is_active == 1){
+            $active = Models::where('id', $models->id)->update(['is_active' => 0]);
+        }else{
+            $active = Models::where('id', $models->id)->update(['is_active' => 1]);
+        }
+        return redirect('adminModels')
+            ->with(['success'=>'تم التعديل بنجاح']);
     }
 }

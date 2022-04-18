@@ -96,7 +96,7 @@ class CategoriesAdminController extends Controller
    
 
 
-    function activeCategory($id){
+    function activeModel($id){
 
         $category=category::find($id);
     

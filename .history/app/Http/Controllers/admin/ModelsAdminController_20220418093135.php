@@ -50,8 +50,6 @@ class ModelsAdminController extends Controller
         ->with(['success'=>'تم التعديل بنجاح']);
         return back()->with(['error'=>'can not create user']);
     }
-
-    
     function activeModel(Request $request){
         $modelid = $request->modelid;
         $models = Models::select()->where('id', $modelid)->find($modelid);

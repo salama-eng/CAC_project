@@ -42,10 +42,13 @@ class CategoriesAdminController extends Controller
         $category = new Category;
         $category->name = $request->name;
 
-        if($request->hasFile('image'))
-        $category->image=$this->uploadFile($request->file('image'));
-
-        else  $category->image='defualt.png';
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('Images'), $filename);
+            $category->image= $filename;
+        }
+        else  $category->image=$request->file('image');
         if($category->active==null)
         $category->is_active=0;
         else 
@@ -57,57 +60,40 @@ class CategoriesAdminController extends Controller
     }
 
     
-    function editAdminCategory(Request $request,$id){
+    function editAdminCategory(Request $request){
+        Validator::validate($request->all(),[
+           
+            'name'=>['required','string'],
+            
 
+        ],[
+            
+            'name.required'=>' حقل الاسم مطلوب ',
+            'name.string'=>' يحب ان يكون حقل الاسم نص',
+            
 
-        $category=category::find($id);
-        $category->name=$request->name;
-       $old=$request->image_old;
+        ]);
 
-       if($request->active==null)
-        $category->is_active=0;
-        else 
-        $category->is_active=1;
-        
-        if($request->hasFile('image'))
-        $category->image=$this->uploadFile($request->file('image'));
-        else
-        $category->image=$old;
-        if($category->save())
+        $category = new Category;
+        $category->name = $request->name;
 
-      
-        return redirect('admincategories')
-        ->with(['success'=>'تم تعديل التصنيف بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
-    }
-
-
-    public function uploadFile($files)
-    {
-        
-            $file= $files;
+        if($request->file('image')!=null){
+            $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('Images'), $filename);
-            return $filename;
-      
-
-    }
-
-   
-
-
-    function activeCategory($id){
-
-        $category=category::find($id);
-    
-        if($category->is_active==0)
-        $category->is_active=1;
-        else 
+            $category->image= $filename;
+        }
+        else  $category->image=$request->image_old;
+        if($category->active==null)
         $category->is_active=0;
-        if($category->save())
-        return redirect('adminModels')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
-        
+        else 
+        $category->is_active=1;
+
+        $category = category::where('id', $id)->update(['name' => $name]);
+        if($category)
+
+        return redirect('admincategories')
+        ->with(['success'=>'تم اضافة التصنيف بنجاح']);
+        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
     }
 }

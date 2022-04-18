@@ -42,10 +42,13 @@ class CategoriesAdminController extends Controller
         $category = new Category;
         $category->name = $request->name;
 
-        if($request->hasFile('image'))
-        $category->image=$this->uploadFile($request->file('image'));
-
-        else  $category->image='defualt.png';
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('Images'), $filename);
+            $category->image= $filename;
+        }
+        else  $category->image=$request->file('image');
         if($category->active==null)
         $category->is_active=0;
         else 
@@ -75,9 +78,39 @@ class CategoriesAdminController extends Controller
         $category->image=$old;
         if($category->save())
 
-      
+        // Validator::validate($request->all(),[
+           
+        //     'name'=>['required','string'],
+            
+
+        // ],[
+            
+        //     'name.required'=>' حقل الاسم مطلوب ',
+        //     'name.string'=>' يحب ان يكون حقل الاسم نص',
+            
+
+        // ]);
+
+        // $category = new Category;
+        // $category->name = $request->name;
+
+        // if($request->file('image')!=null){
+        //     $file= $request->file('image');
+        //     $filename= date('YmdHi').$file->getClientOriginalName();
+        //     $file-> move(public_path('Images'), $filename);
+        //     $category->image= $filename;
+        // }
+        // else  $category->image=$request->image_old;
+        // if($category->active==null)
+        // $category->is_active=0;
+        // else 
+        // $category->is_active=1;
+
+        // $category = category::where('id', $id)->update(['name' => $name]);
+        // if($category)
+
         return redirect('admincategories')
-        ->with(['success'=>'تم تعديل التصنيف بنجاح']);
+        ->with(['success'=>'تم اضافة التصنيف بنجاح']);
         return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
     }
 
@@ -91,23 +124,5 @@ class CategoriesAdminController extends Controller
             return $filename;
       
 
-    }
-
-   
-
-
-    function activeCategory($id){
-
-        $category=category::find($id);
-    
-        if($category->is_active==0)
-        $category->is_active=1;
-        else 
-        $category->is_active=0;
-        if($category->save())
-        return redirect('adminModels')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
-        
     }
 }

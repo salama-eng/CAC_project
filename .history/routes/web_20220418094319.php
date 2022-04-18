@@ -2,7 +2,6 @@
 use App\Http\Controllers\admin\ModelsAdminController;
 
 use App\Http\Controllers\admin\AuthController;
-use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,11 +36,11 @@ Route::post('/active_admin_Payment', [PaymentsAdminController::class, 'activePay
 Route::post('/delete_admin_Payment', [PaymentsAdminController::class, 'deletePayment']);
 
 // Admin categries Manage
-Route::get('/admincategories', [CategoriesAdminController::class, 'showAdminCategories'])->name('admincategories');
-Route::post('/add_admin_category', [CategoriesAdminController::class, 'addAdminCategory']);
-Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
-Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
-Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
+Route::get('/admincategories', [PaymentsAdminController::class, 'showAdminCategories'])->name('admincategories');
+Route::post('/add_admin_category', [PaymentsAdminController::class, 'addAdminCategory']);
+Route::post('/edit_admin_category', [PaymentsAdminController::class, 'editAdminCategory']);
+Route::post('/active_admin_category', [PaymentsAdminController::class, 'activeCategory']);
+Route::post('/delete_admin_category', [PaymentsAdminController::class, 'deleteCategory']);
 
 
 

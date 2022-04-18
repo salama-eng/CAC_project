@@ -1,17 +1,15 @@
 <?php
-
 namespace App\Http\Controllers\admin;
 use App\Models\Models;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ModelsAdminController extends Controller
+class CategoriesAdminController extends Controller
 {
-    //
     function showAdminModels(){
         $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
-        $models = Models::select()->get();
+        $models = Model::select()->get();
         return view('admin.adminModels', [
             'models' => $models,
             'do'     => $do
@@ -50,8 +48,6 @@ class ModelsAdminController extends Controller
         ->with(['success'=>'تم التعديل بنجاح']);
         return back()->with(['error'=>'can not create user']);
     }
-
-    
     function activeModel(Request $request){
         $modelid = $request->modelid;
         $models = Models::select()->where('id', $modelid)->find($modelid);
