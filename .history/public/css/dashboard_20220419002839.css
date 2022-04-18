@@ -37,7 +37,6 @@ body {
 .bg-yellow
 {
     background-color: var(--semiOrange) !important;
-    padding:0;
 }
 .bttn {
     direction: ltr;

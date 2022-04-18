@@ -112,7 +112,7 @@
 
 
         <div class="w-100" style="background-image: url(assets/back.jpg) ;
-        background-size: cover;">
+        background-size: contain;">
 
             <div class="text-light dirction me-auto mt-4">
               <div class="d-flex justify-content-end">
@@ -139,20 +139,20 @@
 
 
 
-                <ul class="dropdown-menu bg-dark userinfo text-center p-0">
+                <ul class="dropdown-menu bg-dark userinfo text-center">
                     <li>
                        <div class="d-flex flex-column justify-center">
-                           <div class="bg-yellow p-2  mb-2 ">
+                           <div class="bg-yellow p-2">
                         <img src="assets/images/avatar.jpg" class=" rounded-circle m-auto mt-1 " width="50" alt="" >
 </div>
-                        
+                        <hr class="text-white m-0 ">
                         <h6 class="dropdown-item text-light mt-1  fs-7 " href="#">اسم المستخدم
                         </h6>
-                        <h6 class="dropdown-item text-light mt-1 mb-0 fs-7" href="#">بروفايل المستخدم
+                        <h6 class="dropdown-item text-light mt-1  fs-7" href="#">بروفايل المستخدم
                         </h6>
                     </div>
                     </li>
-                    <li><hr class="text-white mb-2 ">
+                    <li>
                         <div  class="d-flex justify-content-center align-items-center p-2">
                         <a class="  text-light  fs-7 " href="#">تسجيل الخروج</a> 
                         <img src="assets/icons/logout.png" class=" m-1 " width="20" height="20" alt="" > 

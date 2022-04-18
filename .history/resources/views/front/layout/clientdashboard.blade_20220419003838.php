@@ -112,7 +112,7 @@
 
 
         <div class="w-100" style="background-image: url(assets/back.jpg) ;
-        background-size: cover;">
+        background-size: contain;">
 
             <div class="text-light dirction me-auto mt-4">
               <div class="d-flex justify-content-end">

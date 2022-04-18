@@ -112,7 +112,7 @@
 
 
         <div class="w-100" style="background-image: url(assets/back.jpg) ;
-        background-size: cover;">
+        background-size: contain;">
 
             <div class="text-light dirction me-auto mt-4">
               <div class="d-flex justify-content-end">
@@ -148,7 +148,7 @@
                         
                         <h6 class="dropdown-item text-light mt-1  fs-7 " href="#">اسم المستخدم
                         </h6>
-                        <h6 class="dropdown-item text-light mt-1 mb-0 fs-7" href="#">بروفايل المستخدم
+                        <h6 class="dropdown-item text-light mt-1  fs-7" href="#">بروفايل المستخدم
                         </h6>
                     </div>
                     </li>
