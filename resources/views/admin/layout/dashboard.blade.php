@@ -70,7 +70,11 @@
 
                 </li>
                 <li>
-                    <a href="#" class="text-center p-3 text-light">إدارة موديل السيارة</a>
+                    <a href="adminModels" class="text-center p-3 text-light">إدارة موديل السيارة</a>
+
+                </li>
+                <li>
+                    <a href="adminPayments" class="text-center p-3 text-light">إدارة طرق الدفع</a>
 
                 </li>
 
