@@ -31,9 +31,9 @@
                         <a href="adminPayments?do=Edit&Paymentid={{$Payment->id}}" class="btn btn-success">
                             <i class='fa fa-edit'></i> Edit
                         </a>
-                        {{-- <a href="" class='btn btn-danger' data-bs-toggle="modal" data-bs-target="#deletePayment{{$Payment->id}}">
+                        <a href="" class='btn btn-danger' data-bs-toggle="modal" data-bs-target="#deletePayment{{$Payment->id}}">
                             <i class='fa fa-close'></i> Delete
-                        </a> --}}
+                        </a>
                         @if($Payment->is_active == 1)
                             <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activePayment{{$Payment->id}}">
                                 <i class='fa fa-check'></i> Active

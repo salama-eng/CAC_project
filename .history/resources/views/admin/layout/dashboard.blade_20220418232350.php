@@ -52,12 +52,12 @@
                     <li class="active dropdown">
                         <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
                             aria-expanded="false">إدارة
-                            المزادات</a>
+                            طلبات اضافة مزاد</a>
                         <ul class="collapse list-unstyled fs-6" id="manage">
-                            <li><a href="#" class="text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة العروض</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة المزادات الحالية</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة المزادات المنتهية</a></li>
+                            <li><a href="#" class="text-light text-center p-3"> اضافة مزاد  </a></li>
+                            <li><a href="#" class="text-light text-center p-3">  عرض السيارات المضافة في المزاد  </a></li>
+                            <li><a href="#" class="text-light text-center p-3">    </a></li>
+                           
 
                         </ul>
                     </li>

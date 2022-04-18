@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::get('/save_user',[AuthController::class,'register'])->name('save_user');
-
+Route::get('/save_user',[AuthController::class,'register'])->name('save_user');
 
 
 
@@ -52,7 +52,8 @@ Route::post('/delete_admin_category', [CategoriesAdminController::class, 'delete
 
 Route::group(['middleware'=>'auth'],function(){
 	Route::group(['middleware'=>'role:admin'],function(){
-
+        // 
+        
         });
        
     });
@@ -60,6 +61,7 @@ Route::group(['middleware'=>'auth'],function(){
 
 
     
+});
 
 
 Route::get('/', function () {
@@ -68,7 +70,3 @@ Route::get('/', function () {
 Route::get('/admin_dash', function () {
 return view('admin.layout.dashboard');
 });  
-Route::get('/home', function () {
-    return view('front.home');
-    });  
-    

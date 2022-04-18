@@ -1,4 +1,4 @@
-@extends('front.layout.clientdashboard')
+@extends('front.layout.dashboard')
 @section('content')
 
 

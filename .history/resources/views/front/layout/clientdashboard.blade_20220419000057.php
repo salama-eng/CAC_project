@@ -48,36 +48,38 @@
                 </div>
 
                 <ul class="list-unstyled components fs-6 mt-4">
+                    <li>
+                        <a href="#" class="text-center p-3 text-light">المعلومات الشخصية </a>
 
+                    </li>
                     <li class="active dropdown">
                         <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
                             aria-expanded="false">إدارة
-                            المزادات</a>
+                            طلبات اضافة مزاد</a>
                         <ul class="collapse list-unstyled fs-6" id="manage">
-                            <li><a href="#" class="text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة العروض</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة المزادات الحالية</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة المزادات المنتهية</a></li>
+                            <li><a href="#" class="text-light text-center p-3"> اضافة مزاد  </a></li>
+                            <li><a href="#" class="text-light text-center p-3">  عرض السيارات المضافة في المزاد  </a></li>
+                            <li><a href="#" class="text-light text-center p-3"> عرض المزادات الغير مكتملة  </a></li>
+                            <li><a href="#" class="text-light text-center p-3"> عرض المزادات المكتملة  </a></li>
+                           
 
                         </ul>
                     </li>
-                    <li>
-                        <a href="#" class="text-center p-3 text-light">إدارة المستخدمين</a>
 
-                    </li>
-                    <li>
-                        <a href="{{ route('admincategories') }}" class="text-center p-3 text-light">إدارة تصنيفات السيارات</a>
+                    <li class="active dropdown">
+                        <a class="dropdown-toggle text-center text-light pb-2 " data-toggle="collapse"
+                            aria-expanded="false">إدارة
+                            طلبات  المزايدة</a>
+                        <ul class="collapse list-unstyled fs-6 " id="manage">
+                            <li><a href="#" class="text-light text-center p-3">  عرض السيارات  التي تمت المزايدة عليها   </a></li>
+                            <li><a href="#" class="text-light text-center p-3"> عرض المزادات الغير مكتملة  </a></li>
+                            <li><a href="#" class="text-light text-center p-3"> عرض المزادات المكتملة  </a></li>
+                           
 
-                    </li>
-                    <li>
-                        <a href="{{ route('adminModels') }}" class="text-center p-3 text-light">إدارة موديل السيارة</a>
-
-                    </li>
-                    <li>
-                        <a href="{{ route('adminPayments') }}" class="text-center p-3 text-light">إدارة طرق الدفع</a>
-
+                        </ul>
                     </li>
 
+                  
 
                 </ul>
 
@@ -133,11 +135,17 @@
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>
+
+
+
+
                 <ul class="dropdown-menu bg-dark userinfo">
                     <li>
+                       <div class="d-flex flex-column justify-center">
+                        <img src="assets/images/avatar.jpg" class=" rounded-circle m-auto " width="50" alt="" >
                         <h6 class="dropdown-item text-light" href="#">اسم المستخدم
                         </h6>
-
+                    </div>
                     </li>
 
 

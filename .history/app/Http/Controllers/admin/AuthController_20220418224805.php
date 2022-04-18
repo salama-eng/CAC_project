@@ -49,6 +49,9 @@ class AuthController extends Controller
 
 
     public function register(){
+
+      
+
         $u=new User();
         $u->name='khalifa';
         $u->password=Hash::make('123123123');

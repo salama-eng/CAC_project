@@ -52,7 +52,9 @@ Route::post('/delete_admin_category', [CategoriesAdminController::class, 'delete
 
 Route::group(['middleware'=>'auth'],function(){
 	Route::group(['middleware'=>'role:admin'],function(){
-
+        // 
+Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
+        
         });
        
     });
@@ -60,6 +62,7 @@ Route::group(['middleware'=>'auth'],function(){
 
 
     
+});
 
 
 Route::get('/', function () {
@@ -68,7 +71,3 @@ Route::get('/', function () {
 Route::get('/admin_dash', function () {
 return view('admin.layout.dashboard');
 });  
-Route::get('/home', function () {
-    return view('front.home');
-    });  
-    

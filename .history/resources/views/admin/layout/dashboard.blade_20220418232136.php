@@ -54,10 +54,9 @@
                             aria-expanded="false">إدارة
                             المزادات</a>
                         <ul class="collapse list-unstyled fs-6" id="manage">
-                            <li><a href="#" class="text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة العروض</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة المزادات الحالية</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة المزادات المنتهية</a></li>
+                            <li><a href="#" class="text-light text-center p-3">  المعلومات الشخصية </a></li>
+                            <li><a href="#" class="text-light text-center p-3">  </a></li>
+                           
 
                         </ul>
                     </li>

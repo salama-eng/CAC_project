@@ -68,7 +68,3 @@ Route::get('/', function () {
 Route::get('/admin_dash', function () {
 return view('admin.layout.dashboard');
 });  
-Route::get('/home', function () {
-    return view('front.home');
-    });  
-    

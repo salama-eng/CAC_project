@@ -62,7 +62,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="text-center p-3 text-light">إدارة المستخدمين</a>
+                        <a href="{{ route('#') }}" class="text-center p-3 text-light">إدارة المستخدمين</a>
 
                     </li>
                     <li>
