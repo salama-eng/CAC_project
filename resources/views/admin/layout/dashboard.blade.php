@@ -22,14 +22,15 @@
 <body>
 
     <div class="d-flex">
-        <div class="wrapper d-flex align-items-stretch">
+        <div class="navbar-header2 my-5 justify-content-between d-none ">
+            <button type="button" id="sidebarCollapse" class="bttn border-0 px-4">
+                <div class=" my-1 px-3 bg-light sidemenu"> </div>
+                <div class=" bg-light sidemenu"> </div>
+            </button>
+        </div>
+        <div class="holder aside">
             <!-- Sidebar Holder -->
-            <div class="navbar-header2 my-5 d-none">
-                <button type="button" id="sidebarCollapse" class="bttn border-0 px-4">
-                    <div class=" my-1 px-3 bg-light sidemenu"> </div>
-                    <div class=" bg-light sidemenu"> </div>
-                </button>
-            </div>
+
             <aside id="sidebar">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo">
@@ -47,7 +48,7 @@
 
                 </div>
 
-                <ul class="list-unstyled components fs-6 mt-4">
+                <ul class="list-unstyled components fs-6 mt-4 ">
 
                     <li class="active dropdown">
                         <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
@@ -66,11 +67,13 @@
 
                     </li>
                     <li>
-                        <a href="{{ route('admincategories') }}" class="text-center p-3 text-light">إدارة تصنيفات السيارات</a>
+                        <a href="{{ route('admincategories') }}" class="text-center p-3 text-light">إدارة تصنيفات
+                            السيارات</a>
 
                     </li>
                     <li>
-                        <a href="{{ route('adminModels') }}" class="text-center p-3 text-light">إدارة موديل السيارة</a>
+                        <a href="{{ route('adminModels') }}" class="text-center p-3 text-light">إدارة موديل
+                            السيارة</a>
 
                     </li>
                     <li>
@@ -89,9 +92,9 @@
                         <div class="fa fa-facebook text-light"></div>
                         <div class="fa  fa-envelope-o text-light"></div>
                     </div>
-                    <li><a class="nav-item text-center contact text-light fs-5 py-2 m-5 mt-3"> <i
-                                class="fa fa-phone px-3 fs-5">&nbsp;
-                                777(777)- 777</i></a>
+                    <li class="w-100"><a
+                            class="nav-item text-center contact text-light fs-5 py-2  mt-3 mx-5 d-block px-3">
+                            777 777 777<i class="fa fa-phone px-2 fs-4"></i></a>
                     </li>
                 </ul>
             </aside>
@@ -109,15 +112,14 @@
 
 
 
-        <div class="w-100" style="background-image: url(assets/back.jpg) ;
-        background-size: contain;">
+        <div class="w-100 ">
 
-            <div class="text-light dirction me-auto mt-4">
-              <div class="d-flex justify-content-end">
-                <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
-                <p class="fa fa-wechat px-2"></p>
-                <p class="fa fa-user px-2"></p>
-</div>
+            <div class="text-light dirction me-auto mt-4 fixed-top">
+                <div class="d-flex justify-content-end pt-3">
+                    <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
+                    <p class="fa fa-wechat px-2"></p>
+                    <p class="fa fa-user px-2"></p>
+                </div>
                 <ul class="dropdown-menu notification bg-dark">
                     <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
                             <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
@@ -146,8 +148,8 @@
                     </li>
                 </ul>
             </div>
-<hr class="text-white"> 
-            <div class="w-100">
+            <div class="dropdown-divider"></div>
+            <div class="w-100 bg-main vh-100">
 
                 @yield('content')
             </div>

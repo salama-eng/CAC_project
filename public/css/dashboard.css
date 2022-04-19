@@ -33,6 +33,7 @@ body {
 
 .contact {
     background-color: var(--semiOrange) !important;
+    
 }
 .bg-yellow
 {
@@ -67,6 +68,7 @@ body {
 }
 .wrapper {
 
+   
     perspective: 1500px;
 }
 
@@ -79,7 +81,9 @@ a:focus {
 }
 
 
-
+.aside{
+    width: 30%;
+}
 
 #sidebar ul li a {
 
@@ -108,7 +112,10 @@ a[aria-expanded="true"] {
     transition: all 0.3s;
 }
 
-
+#sidebarCollapse{
+    position: relative;
+    z-index: 3333;
+}
 
 #sidebarCollapse .menu {
  
@@ -158,9 +165,27 @@ background-color:  var(--lightgrey);
     height: 2px;
     width: 10px;
 }
+.navbar-header2{
+    height: 20px;
+}
+.navbar-header2 ,.sidemenu{
+    position: fixed;
+    top: 45px;
+    right: 10px;
+    z-index: 4444;
+}
 .navbar-header2:hover .sidemenu,.navbar-header2:focus .sidemenu{
     background-color: var(--semiOrange) !important;
 }
+a{
+    cursor: pointer;
+}
+.bg-main{
+    background: url('../assets/back.jpg') no-repeat center center fixed;
+        background-size: cover;
+     
+}
+
 @media only screen and (min-width: 992px) {
 
     .bttn {
@@ -170,12 +195,6 @@ background-color:  var(--lightgrey);
 
 @media (max-width: 768px) {
  
-
-    #sidebar {
-        position: absolute;
-        z-index: 9999;
-        background-color: var(--lightgrey);
-    }
 
     #sidebarCollapse .menu:first-of-type,
     #sidebarCollapse .menu:last-of-type {
@@ -194,5 +213,14 @@ background-color:  var(--lightgrey);
 
    
   
+
+}
+@media (max-width: 1162px) {
+    #sidebar {
+        position: absolute;
+        z-index: 9999;
+        background-color: var(--lightgrey);
+    }
+ 
 
 }

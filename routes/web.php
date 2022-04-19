@@ -59,9 +59,6 @@ Route::group(['middleware'=>'auth'],function(){
 
 
 
-    
-
-
 Route::get('/', function () {
     return view('front.home');
 });
@@ -70,5 +67,9 @@ return view('admin.layout.dashboard');
 });  
 Route::get('/home', function () {
     return view('front.home');
-    });  
+}); 
+Route::get('/client',function(){
+    return view('front.layout.clientdashboard');
+
+}); 
     
