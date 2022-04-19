@@ -138,13 +138,14 @@ a[aria-expanded="true"] {
     transform: rotate(-45deg) translate(1px, -1px) !important;
 }
 
-.logo-box{
+.logo-box1{
     font-family: Comic Sans MS;
 }
 .fa-bell{
     transform: rotate(-30deg);
 }
 .notiy{
+ 
   left: 22px;
     height: 8px;
     width: 8px;

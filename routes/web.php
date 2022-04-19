@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\ModelsAdminController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
+use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,7 @@ Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'a
 Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
 
 
+Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 
 
 Route::group(['middleware'=>'auth'],function(){
