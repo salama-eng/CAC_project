@@ -33,6 +33,7 @@ body {
 
 .contact {
     background-color: var(--semiOrange) !important;
+    
 }
 .bg-yellow
 {
@@ -57,6 +58,8 @@ body {
 
 .contactnavbar {
     height: 60vh;
+    position: absolute;
+    z-index: 88888;
 }
 
 .fs-7 {
@@ -67,6 +70,7 @@ body {
 }
 .wrapper {
 
+   
     perspective: 1500px;
 }
 
@@ -79,7 +83,9 @@ a:focus {
 }
 
 
-
+.aside{
+    width: 30%;
+}
 
 #sidebar ul li a {
 
@@ -92,10 +98,10 @@ a:focus {
 
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
+.active{
     color: var(--semiOrange) !important;
 }
+
 
 #sidebar .cornerstyle {
     height: 100px;
@@ -108,7 +114,10 @@ a[aria-expanded="true"] {
     transition: all 0.3s;
 }
 
-
+#sidebarCollapse{
+    position: relative;
+    z-index: 3333;
+}
 
 #sidebarCollapse .menu {
  
@@ -133,6 +142,8 @@ a[aria-expanded="true"] {
 
 .logo-box{
     font-family: Comic Sans MS;
+    position: absolute;
+    z-index: 8888;
 }
 .fa-bell{
     transform: rotate(-30deg);
@@ -158,8 +169,54 @@ background-color:  var(--lightgrey);
     height: 2px;
     width: 10px;
 }
+.navbar-header2{
+    height: 20px;
+}
+.navbar-header2 ,.sidemenu{
+    position: fixed;
+    top: 45px;
+    right: 10px;
+    z-index: 4444;
+}
 .navbar-header2:hover .sidemenu,.navbar-header2:focus .sidemenu{
     background-color: var(--semiOrange) !important;
+}
+a{
+    cursor: pointer;
+}
+.bg-main{
+    background: url('../assets/back.jpg') no-repeat center center fixed;
+        background-size: cover;
+     
+}
+.input-group input,.form-select,.form-control {
+    background-color: var(--darkgrey);
+    color: gray !important;
+ border-radius: 0;
+}
+.form-select option{
+    background-color: var(--darkgrey);
+    color: gray !important;
+
+}
+.input-group input:focus, .form-select option:focus ,.form-control:focus{
+    background-color: var(--darkgrey);
+    color: var(--whitecolor) !important;
+    border-color: var(--semiOrange);
+    box-shadow: none;
+    box-shadow: none;
+}
+.save-btn button:hover,.save-btn button:focus{
+    background-color: var(--semiOrange);
+    border-radius: 0;
+    border-color: var(--semiOrange);
+    box-shadow: none;
+}
+.card{
+    background-color: inherit !important;
+}
+.card-details{
+    color: gray;
 }
 @media only screen and (min-width: 992px) {
 
@@ -170,12 +227,6 @@ background-color:  var(--lightgrey);
 
 @media (max-width: 768px) {
  
-
-    #sidebar {
-        position: absolute;
-        z-index: 9999;
-        background-color: var(--lightgrey);
-    }
 
     #sidebarCollapse .menu:first-of-type,
     #sidebarCollapse .menu:last-of-type {
@@ -192,7 +243,27 @@ background-color:  var(--lightgrey);
         transform: rotate(45deg) translate(2px, 2px);
     }
 
-   
+    .w-lg-100{
+        width: 100% !important;
+    }
   
+
+}
+@media (max-width: 1162px) {
+    #sidebar {
+        position: absolute;
+        z-index: 9999;
+        background-color: var(--lightgrey);
+    }
+    .collapse{
+        background-color: var(--lightgrey);
+        padding: 25px;
+         
+        }
+        .logo-box{
+            
+            position: relative;
+          
+        }
 
 }
