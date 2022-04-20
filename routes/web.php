@@ -61,7 +61,9 @@ Route::group(['middleware'=>'auth'],function(){
 
 
     
-
+    Route::get('/client', function () {
+        return view('front.layout.clientdashboard');
+    });
 
 Route::get('/', function () {
     return view('front.home');
