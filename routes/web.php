@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\ModelsAdminController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
+use App\Http\Controllers\admin\PostsAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,7 +69,6 @@ Route::get('/', function () {
 Route::get('/admin_dash', function () {
 return view('admin.layout.dashboard');
 });  
-Route::get('/home', function () {
-    return view('front.home');
-    });  
+Route::get('/addAuction', [PostsAdminController::class, 'showAdminPosts']);
+ 
     
