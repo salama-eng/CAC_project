@@ -1,5 +1,5 @@
 :root {
-    --semiOrange: #e3911e;
+    --semiOrange: #E39100;
     --darkgrey: #191919;
     --lightgrey: #1C1C1C;
     --whitecolor: #f6f6f6;
@@ -140,7 +140,7 @@ a:focus {
     transform: rotate(-45deg) translate(1px, -1px) !important;
 }
 
-.logo-box{
+.logo-box1{
     font-family: Comic Sans MS;
     position: absolute;
     z-index: 8888;
@@ -149,6 +149,7 @@ a:focus {
     transform: rotate(-30deg);
 }
 .notiy{
+ 
   left: 22px;
     height: 8px;
     width: 8px;

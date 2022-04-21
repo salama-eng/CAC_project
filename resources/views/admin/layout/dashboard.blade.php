@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +38,7 @@
                     <div class="logo">
                         <div class="cornerstyle px-4 pt-3">
                             <br>
-                            <a class="navbar-brand border p-2 text-light mx-auto logo-box" href="#">CAC</a>
+                            <a class="navbar-brand border p-2 text-light mx-auto logo-box1" href="#">CAC</a>
                         </div>
                     </div>
                     <div class="navbar-header">
@@ -51,11 +53,11 @@
                 <ul class="list-unstyled components fs-6 mt-4 ">
 
                     <li class="active dropdown">
-                        <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
+                        <a class="dropdown-toggle text-center text-light pb-2 " data-toggle="collapse"
                             aria-expanded="false">إدارة
                             المزادات</a>
                         <ul class="collapse list-unstyled fs-6" id="manage">
-                            <li><a href="#" class="text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
+                            <li><a href="#" class="text-light text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
                             <li><a href="#" class="text-light text-center p-3">إدارة العروض</a></li>
                             <li><a href="#" class="text-light text-center p-3">إدارة المزادات الحالية</a></li>
                             <li><a href="#" class="text-light text-center p-3">إدارة المزادات المنتهية</a></li>
@@ -112,7 +114,8 @@
 
 
 
-        <div class="w-100 ">
+        <div class="w-100" style="background-image: url(assets/back.jpg) ;
+        background-size: contain; height:100vh">
 
             <div class="text-light dirction me-auto mt-4 fixed-top">
                 <div class="d-flex justify-content-end pt-3">
@@ -137,20 +140,22 @@
                 </ul>
                 <ul class="dropdown-menu bg-dark userinfo">
                     <li>
-                        <h6 class="dropdown-item text-light" href="#">اسم المستخدم
+                        <h6 class="dropdown-item text-light" href="#">{{Auth::user()->name}}
                         </h6>
 
                     </li>
 
 
-                    <li><a class="dropdown-item text-light fs-7" href="#">تسجيل الخروج</a>
+                    <li><a class="dropdown-item text-light fs-7" href="{{route('logout')}}">تسجيل الخروج</a>
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>
             </div>
-            <div class="dropdown-divider"></div>
-            <div class="w-100 bg-main vh-100">
+ <div class="dropdown-divider mb-5"></div>
+            <div class="w-100  vh-100 mb-5">
 
+<hr class="mb-3">
+        
                 @yield('content')
             </div>
         </div>

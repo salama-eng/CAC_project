@@ -37,6 +37,7 @@ class ModelsAdminController extends Controller
         ->with(['success'=>'تم اضافة الموديل بنجاح']);
         return back()->with(['error'=>'can not create user']);
     }
+
     function editAdminModel(Request $request){
         $year = date('Y');
         Validator::validate($request->all(),[
