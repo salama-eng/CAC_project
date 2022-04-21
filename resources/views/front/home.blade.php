@@ -33,10 +33,10 @@
     <!-- nav -->
     <nav class="navbar navbar-expand-lg navbar-dark ">
 
-        <div class="container-fluid w-96 my-5 ">
+        <div class="container-fluid w-96 my-5">
 
             <a class="navbar-brand border p-2 logo-box " href="#">CAC</a>
-            <button class="bttn border-0 px-4 navbar-toggle" type="button">
+            <button class="bttn border-0 px-4 navbar-toggle me-5 pe-5" type="button">
                 <div class="menu my-1 px-3 bg-light"> </div>
                 <div class="menu bg-light"> </div>
             </button>
@@ -90,7 +90,7 @@
      
         <div class="card-body d-flex justify-content-between">
             <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">3000$</span></p>
-            <a href="#" class="card-link active">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+            <a href="/makeAuction" class="card-link active">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
         </div>
     </div>
     <div class="card text-light m-auto" style="width: 18rem;">
