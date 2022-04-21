@@ -109,7 +109,7 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">موديل جديد</label>
             <div class="col-sm-8 col-md-9">
-                <input  type="text" name="model" class="form-control input" autocomplete="off" placeholder="اضف موديل جديد">
+                <input type="text" name="model" value="{{old('model')}}" class="form-control" autocomplete="off" placeholder="اضف موديل جديد">
             </div>
         </div>
         <!-- End Model -->
