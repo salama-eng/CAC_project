@@ -10,8 +10,8 @@
                 {{ session()->get('success') }}
             </div>
         @endif
-        <a href="" class="btn1 btn-sm text-white" data-bs-toggle="modal" data-bs-target="#addModel">
-            <i class="fa fa-plus"></i> اضافة موديل
+        <a href="adminModels?do=Add" class="btn btn-sm btn-primary">
+            <i class="fa fa-plus"></i> اضافة  تصنيف
         </a>
         <div class="table-responsive text-white">
             <table class="main-table manage-members text-center table table-bordered  text-white">
@@ -20,10 +20,10 @@
                     <td>الموديل</td>
                     <td>التحكم</td>
                 </tr>
-
+                <?php $i = 1?>
                 @foreach($models as $model)
                 <tr>
-                    <td>1</td>
+                    <td>{{$i++}}</td>
                     <td>{{$model->name}}</td>
                     <td>
                         <a href="adminModels?do=Edit&modelid={{$model->id}}" class="btn btn-success">
@@ -87,17 +87,13 @@
                 @endforeach
             </table>
         </div>
-       
-        <a href="adminModels?do=Add" class="btn btn-sm btn-primary">
-            <i class="fa fa-plus"></i> اضافة موديل
-        </a>
     </div>
 @elseif($do == 'Add')
 
 <h1 class="text-center">Add New Modal</h1>
 <div class="container">
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger message">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -111,8 +107,14 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">موديل جديد</label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="model" class="form-control" autocomplete="off" placeholder="اضف موديل جديد">
+                <input type="text" name="model" value="{{old('model')}}" class="form-control" autocomplete="off" placeholder="اضف موديل جديد">
             </div>
+        </div>
+        <!-- End Model -->
+        <!-- End Model -->
+        <div class="form-check d-flex  justify-content-center mt-5 ">
+            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1" aria-label="...">
+            <label class="col-6 mx-5 text-white" for="">تفعيل</label>    
         </div>
         <!-- End Model -->
         <!-- Start Submit -->
@@ -129,7 +131,7 @@
 <h1 class="text-center">Edit Modal</h1>
 <div class="container">
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger message">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

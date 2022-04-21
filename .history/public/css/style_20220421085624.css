@@ -24,7 +24,7 @@ body{
 
 .modal-header .btn-close {
     padding: 0.5rem 0.5rem;
-    margin: 0;background-color: var(--yellow);
+    margin: 0;
 
 }
 .modal-content{
@@ -36,20 +36,40 @@ body{
   background-color: var(--lightgrey);
 }
 .yellow{ color: var(--yellow); }
-.bg-yellow{ background-color: var(--yellow); }
+
+.bg-grey{ background-color: var(--lightgrey); }
 
 .btn-close{
    z-index: 1000;
    
    }
-
+  .edite-container
+  { 
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+    background-color: var(--darkgrey);
+  }
+  .edite-container input
+  { 
+   width:80%;
+   border: 1px solid var(--whitecolor1);
+  }
   .btn
   {
-    background-color: var(--yellow);
+   
     color: var(--whitecolor);
     border-radius:0;
     padding:.5rem;
     margin-bottom: 1rem;
+  }
+
+
+  .input 
+  {
+    background-color: var(--lightgrey) !important;
+    border-radius: 0;
+    color: var(--whitecolor);
   }
 .modal-content
 {
@@ -62,8 +82,14 @@ body{
   color: var( --yellow2);
 }
 
-
 .input
+{
+  background-color: var(--lightgrey) !important;
+  border-radius: 0;
+  color: var(--whitecolor);
+}
+.table-editprofile input
+
 {
   background-color: transparent;
   border-radius: 0;
@@ -229,26 +255,60 @@ color: var(--yellow);
 .table-editprofile 
 { 
 font-size:0.8rem;
-font-weight: lighter!important;
+font-weight: lighter;
 }
 .table-profile td
 {
   padding:0.6rem;
  border-bottom: 0.1px solid var(--whitecolor1);
 
-
 }
 .table-editprofile td
 {
-  padding:0.3rem;
-
+  padding:0.6rem;
    border-bottom:none;
-   margin: 0;
+
+}
+
+
+@keyframes inim {
+  0% {opacity:100;}
+  25% {opacity:100;}
+  50% {opacity:100;}
+  75% {opacity:100;}
+  100% {opacity:0;}
+}
+
+.message
+{
+  position:absolute;
+  left:0.5rem;
+  top:6rem;
+  opacity: 0;
+  animation-name: inim;
+  animation-duration: 5s;
+  animation-iteration-count: none;
+  width:22rem;
+  border-radius:0;
+ 
+}
+
+.prrofile
+{
+  background-color: var(--yellow);
+  padding:0.8rem;
+  margin-top:1rem;
+}
+.prrofile:hover
+{ 
+ 
+  background-color: var(--yellow2);
 
 }
 
 
 
+.bg-yellow{ background-color: var(--yellow); }
 @media (min-width: 576px){
 	.modal-dialog {
 		max-width: 685px;
