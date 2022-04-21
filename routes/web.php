@@ -65,12 +65,13 @@ Route::group(['middleware'=>'auth'],function(){
         return view('front.layout.clientdashboard');
     });
 
-Route::get('/', function () {
-    return view('front.home');
-});
-Route::get('/admin_dash', function () {
-return view('admin.layout.dashboard');
-});  
-Route::get('/addAuction', [PostsAdminController::class, 'showAdminPosts']);
- 
-    
+    Route::get('/', function () {
+        return view('front.home');
+    });
+    Route::get('/admin_dash', function () {
+    return view('admin.layout.dashboard');
+    });  
+    Route::get('/addAuction', [PostsAdminController::class, 'showAdminPosts']);
+    Route::get('/auctionDetails', [PostsAdminController::class, 'showauctionDetails']);
+     
+     
