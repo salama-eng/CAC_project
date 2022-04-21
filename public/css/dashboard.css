@@ -21,6 +21,10 @@ body {
 }
 
 /* navbar */
+.navbar{
+    z-index: 888888;
+
+}
 .w-96 {
     width: 96%;
 }
@@ -250,6 +254,7 @@ a{
 
 }
 @media (max-width: 1162px) {
+
     #sidebar {
         position: absolute;
         z-index: 9999;
