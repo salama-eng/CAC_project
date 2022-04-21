@@ -29,41 +29,54 @@ Route::get('/save_user',[AuthController::class,'register'])->name('save_user');
 
 
 
-Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
-Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
-Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
-Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
-
-// Admin Payments Manage
-Route::get('/adminPayments', [PaymentsAdminController::class, 'showAdminPayments'])->name('adminPayments');
-Route::post('/add_admin_Payment', [PaymentsAdminController::class, 'addAdminPayment']);
-Route::post('/edit_admin_Payment', [PaymentsAdminController::class, 'editAdminPayment']);
-Route::post('/active_admin_Payment', [PaymentsAdminController::class, 'activePayment']);
-Route::post('/delete_admin_Payment', [PaymentsAdminController::class, 'deletePayment']);
-
-// Admin categries Manage
-Route::get('/admincategories', [CategoriesAdminController::class, 'showAdminCategories'])->name('admincategories');
-Route::post('/add_admin_category', [CategoriesAdminController::class, 'addAdminCategory']);
-Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
-Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
-Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
-
-
-// client profile Manage
-
-Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
-Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
-Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
-
-
 Route::group(['middleware'=>'auth'],function(){
 	Route::group(['middleware'=>'role:admin'],function(){
+        
 
         });
-       
+
+
+
+
+        Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
+        Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
+        Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
+        Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
+        
+        // Admin Payments Manage
+        Route::get('/adminPayments', [PaymentsAdminController::class, 'showAdminPayments'])->name('adminPayments');
+        Route::post('/add_admin_Payment', [PaymentsAdminController::class, 'addAdminPayment']);
+        Route::post('/edit_admin_Payment', [PaymentsAdminController::class, 'editAdminPayment']);
+        Route::post('/active_admin_Payment', [PaymentsAdminController::class, 'activePayment']);
+        Route::post('/delete_admin_Payment', [PaymentsAdminController::class, 'deletePayment']);
+        
+        // Admin categries Manage
+        Route::get('/admincategories', [CategoriesAdminController::class, 'showAdminCategories'])->name('admincategories');
+        Route::post('/add_admin_category', [CategoriesAdminController::class, 'addAdminCategory']);
+        Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
+        Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
+        Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
+        
+        
+        // client profile Manage
+        
+        Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+        Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
+        Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
+        
+        
+
+
+
+        Route::get('/logout',[AuthController::class,'logout'])->name('logout');
     });
 
 
+
+    
+    Route::get('/client', function () {
+        return view('front.layout.clientdashboard');
+    });
 
 Route::get('/', function () {
     return view('front.home');
@@ -78,4 +91,6 @@ Route::get('/client',function(){
     return view('front.layout.clientdashboard');
 
 }); 
+Route::get('/addAuction', [PostsAdminController::class, 'showAdminPosts']);
+ 
     

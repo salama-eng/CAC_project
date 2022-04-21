@@ -140,13 +140,13 @@
                 </ul>
                 <ul class="dropdown-menu bg-dark userinfo">
                     <li>
-                        <h6 class="dropdown-item text-light" href="#">اسم المستخدم
+                        <h6 class="dropdown-item text-light" href="#">{{Auth::user()->name}}
                         </h6>
 
                     </li>
 
 
-                    <li><a class="dropdown-item text-light fs-7" href="#">تسجيل الخروج</a>
+                    <li><a class="dropdown-item text-light fs-7" href="{{route('logout')}}">تسجيل الخروج</a>
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>

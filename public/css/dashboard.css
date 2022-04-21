@@ -58,6 +58,8 @@ body {
 
 .contactnavbar {
     height: 60vh;
+    position: absolute;
+    z-index: 88888;
 }
 
 .fs-7 {
@@ -96,10 +98,10 @@ a:focus {
 
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
+.active{
     color: var(--semiOrange) !important;
 }
+
 
 #sidebar .cornerstyle {
     height: 100px;
@@ -140,6 +142,8 @@ a[aria-expanded="true"] {
 
 .logo-box1{
     font-family: Comic Sans MS;
+    position: absolute;
+    z-index: 8888;
 }
 .fa-bell{
     transform: rotate(-30deg);
@@ -186,7 +190,35 @@ a{
         background-size: cover;
      
 }
+.input-group input,.form-select,.form-control {
+    background-color: var(--darkgrey);
+    color: gray !important;
+ border-radius: 0;
+}
+.form-select option{
+    background-color: var(--darkgrey);
+    color: gray !important;
 
+}
+.input-group input:focus, .form-select option:focus ,.form-control:focus{
+    background-color: var(--darkgrey);
+    color: var(--whitecolor) !important;
+    border-color: var(--semiOrange);
+    box-shadow: none;
+    box-shadow: none;
+}
+.save-btn button:hover,.save-btn button:focus{
+    background-color: var(--semiOrange);
+    border-radius: 0;
+    border-color: var(--semiOrange);
+    box-shadow: none;
+}
+.card{
+    background-color: inherit !important;
+}
+.card-details{
+    color: gray;
+}
 @media only screen and (min-width: 992px) {
 
     .bttn {
@@ -212,7 +244,9 @@ a{
         transform: rotate(45deg) translate(2px, 2px);
     }
 
-   
+    .w-lg-100{
+        width: 100% !important;
+    }
   
 
 }
@@ -222,6 +256,15 @@ a{
         z-index: 9999;
         background-color: var(--lightgrey);
     }
- 
+    .collapse{
+        background-color: var(--lightgrey);
+        padding: 25px;
+         
+        }
+        .logo-box{
+            
+            position: relative;
+          
+        }
 
 }
