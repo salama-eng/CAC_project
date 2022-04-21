@@ -28,6 +28,4 @@ class UserPostsController extends Controller
         return view('client.UserUncomplatePosts',[]);
     }
 
-    
-
 }
