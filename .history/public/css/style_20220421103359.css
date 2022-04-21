@@ -21,10 +21,12 @@
 body{
 	direction: rtl;
 }
-
+.container{
+	
+}
 .modal-header .btn-close {
     padding: 0.5rem 0.5rem;
-    margin: 0;
+    margin: 0;background-color: var(--yellow);
 
 }
 .modal-content{
@@ -36,40 +38,20 @@ body{
   background-color: var(--lightgrey);
 }
 .yellow{ color: var(--yellow); }
-
-.bg-grey{ background-color: var(--lightgrey); }
+.bg-yellow{ background-color: var(--yellow); }
 
 .btn-close{
    z-index: 1000;
    
    }
-  .edite-container
-  { 
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-    background-color: var(--darkgrey);
-  }
-  .edite-container input
-  { 
-   width:80%;
-   border: 1px solid var(--whitecolor1);
-  }
+
   .btn
   {
-   
+    background-color: var(--yellow);
     color: var(--whitecolor);
     border-radius:0;
     padding:.5rem;
     margin-bottom: 1rem;
-  }
-
-
-  .input 
-  {
-    background-color: var(--lightgrey) !important;
-    border-radius: 0;
-    color: var(--whitecolor);
   }
 .modal-content
 {
@@ -82,22 +64,8 @@ body{
   color: var( --yellow2);
 }
 
-.input
-{
-  background-color: var(--lightgrey) !important;
-  border-radius: 0;
-  color: var(--whitecolor);
-}
-.table-editprofile input
 
-{
-  background-color: transparent;
-  border-radius: 0;
-  border:0.5px solid var(--whitecolor1);
-  padding:0.4rem;
-  width:100%;
-  color: var(--whitecolor);
-}
+
 .modal-content input
 {
   background-color: var(--whitecolor1);
@@ -220,10 +188,13 @@ color: var(--yellow);
 }
 
 
-
+.table-profile
+{
+ background-color: ;
+ 
+}
 .table-profile tr th
 {
-  width: 30%;
   padding:0.8rem;
 }
 
@@ -231,41 +202,23 @@ color: var(--yellow);
 {
  text-align: right;
  width: 100%;
- font-size: 0.9rem;
+ font-size: 0.8rem;
 }
 .profile-container h5
 {
   color: var(--whitecolor1);
-  margin-top:2.5rem;
-}
-.profilename
-{
-  color: var(--whitecolor1);
+  margin-top: 1.9rem;
 }
 
+
 .table-profile tr
-{ 
- border-bottom: 0.1px solid var(--whitecolor1);
-}
-.table-editprofile tr
-{ 
- border-bottom:none;
-}
-.table-editprofile 
-{ 
-font-size:0.8rem;
+{
+ border: 0.1px solid var(--whitecolor1);
 }
 .table-profile td
 {
   padding:0.6rem;
- border-bottom: 0.1px solid var(--whitecolor1);
-
-}
-.table-editprofile td
-{
-  padding:0.6rem;
-   border-bottom:none;
-
+ border-right: 0.1px solid var(--whitecolor1);
 }
 
 
