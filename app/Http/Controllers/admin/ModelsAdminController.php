@@ -11,35 +11,41 @@ class ModelsAdminController extends Controller
     //
     function showAdminModels(){
         $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
-        $models = Models::select()->get();
+        $models = Models::select()->orderBy('id', 'DESC')->get();
         return view('admin.adminModels', [
             'models' => $models,
             'do'     => $do
         ]);
     }
-    function showAdminaddModel(){
-        return view('admin.adminModels#addModel');
-    }
     function addAdminModel(Request $request){
+        $year = date('Y');
         Validator::validate($request->all(),[
-            'model'=>'required|integer'
+            'model'=>'required|integer|between:1988, "'.$year.'"|unique:models,name',
         ],[
             'model.required'=>'حقل الاسم مطلوب',
             'model.integer'=>'لا يمكنك ادخال نص يمكنك ادخال ابيانات كارقام',
+            'model.between'=>'يمكنك ادخال الموديل من عام 1985 الى عام "'.$year.'"',
+            'model.unique'=>'هذا الاسم موجد مسبقا',
         ]);
         $modal = new Models;
         $modal->name = $request->model;
+        if($request->active != NULL){
+            $modal->is_active = 1;
+        }
         if($modal->save())
         return redirect('adminModels')
         ->with(['success'=>'تم اضافة الموديل بنجاح']);
         return back()->with(['error'=>'can not create user']);
     }
     function editAdminModel(Request $request){
+        $year = date('Y');
         Validator::validate($request->all(),[
-            'model'=>'required|integer'
+            'model'=>'required|integer|between:1988, "'.$year.'"|unique:models,name'
         ],[
             'model.required'=>'حقل الاسم مطلوب',
             'model.integer'=>'لا يمكنك ادخال نص يمكنك ادخال ابيانات كارقام',
+            'model.between'=>'يمكنك ادخال الموديل من عام 1985 الى عام "'.$year.'"',
+            'model.unique'=>'خطأ في عملية التحديث او ان هذا الاسم موجود مسبقا',
         ]);
         // $modal = new Models;
         $id = $request->modelid;
