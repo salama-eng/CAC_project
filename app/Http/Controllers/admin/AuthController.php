@@ -46,9 +46,10 @@ class AuthController extends Controller
   
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
                  if(Auth::user()->hasRole('admin'))
-                 return 'admin';
+                 return  redirect()->route('admincategories');
                  else 
-                 return 'client';
+                 return redirect()->route('profile')';
+        
         }
         else {
             return redirect()->route('login')->with(['message'=>'اسم المستخدم او كلمة المرور غير صحيحة ']);
@@ -91,6 +92,7 @@ class AuthController extends Controller
         // $u->remember_token=$token;
 
        
+
         if($u->save()){
         $u->attachRole('client');
 
