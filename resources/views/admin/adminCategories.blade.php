@@ -21,10 +21,10 @@
                     <td> صورة التصنيف</td>
                     <td>التحكم</td>
                 </tr>
-
+                <?php $i = 1 ?>
                 @foreach($category as $category)
                 <tr>
-                    <td>{{$category->id}}</td>
+                    <td>{{$i++}}</td>
                     <td>{{$category->name}}</td>
                     <td><img src="images/{{$category->image}}" width="80" alt="{{$category->image}}" ></td>
                     <td>
@@ -111,25 +111,24 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> إاضافة تصنيف جديد  </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="name" class="form-control" autocomplete="off" placeholder=" اضف تصنيف  ">
+                <input type="text" name="name" class="form-control" value="{{old('name')}}" autocomplete="off" placeholder=" اضف تصنيف  ">
             </div>
         </div>
-                <div class="mb-3 row">
+        <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
             <div class="col-sm-8 col-md-9">
-                <input type="file" name="image" class="form-control" autocomplete="off">
+                <input type="file" name="image" value="{{old('image')}}" class="form-control" autocomplete="off">
             </div>
         </div>
-
         <div class="form-check d-flex  justify-content-center mt-5 ">
-         
-          <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1" aria-label="...">
-          <label class="col-6 mx-5 text-white" for="">تفعيل</label>    </div>
+            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1" aria-label="...">
+            <label class="col-6 mx-5 text-white" for="">تفعيل</label>    
+        </div>
         <!-- End category -->
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
-                <input type="submit" value="اضافة تصنيف '" class=" btn btn-primary ">
+                <input type="submit" value="اضافة تصنيف" class=" btn btn-primary ">
             </div>
         </div>
         <!-- End Submit -->
@@ -155,13 +154,15 @@
             <form action="{{ route('edit_admin_category',$categoryid) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="categoryid" value="{{$categoryid}}">
-                <!-- Start Payment -->
+                <!-- Start Name -->
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white"> اسم الصنف   </label>
                     <div class="col-sm-8 col-md-9">
                         <input type="text" name="name" value="{{$cat->name}}" class="form-control" autocomplete="off" placeholder="ادخل طريقة الدفع ">
                     </div>
                 </div>
+                <!-- End Name -->
+                <!-- Start Image -->
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white"> صورة الصنف  </label>
                     <div class="col-sm-8 col-md-9">
@@ -169,11 +170,13 @@
                         <input type="hidden" name="image_old" value="{{$cat->image}}" class="form-control" autocomplete="off" placeholder="ادخل اسم البنك">
                     </div>
                 </div> 
+                <!-- End Image -->
+                <!-- Start Active -->
                 <div class="form-check d-flex  justify-content-center mt-5 ">
-         
                     <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1" aria-label="...">
-                    <label class="col-6 mx-5 text-white" for="">تفعيل</label>    </div> 
-                <!-- End Payment -->
+                    <label class="col-6 mx-5 text-white" for="">تفعيل</label>    
+                </div> 
+                <!-- End Active -->
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
