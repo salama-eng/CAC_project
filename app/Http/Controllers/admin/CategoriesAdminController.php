@@ -10,46 +10,34 @@ class CategoriesAdminController extends Controller
 {
     function showAdminCategories(){
         $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
-        $categories = Category::select()->get();
+        $categories = Category::select()->orderBy('id', 'DESC')->get();
         return view('admin.adminCategories', [
             'category' => $categories,
             'do'     => $do
         ]);
     }
 
-
-    function showAdminaddCategory(){
-        return view('admin.adminCategories#addCategory');
-    }
-
-
     function addAdminCategory(Request $request){
       
-     // return $request->file('image');
         Validator::validate($request->all(),[
             'image'=>['required'],
-            'name'=>['required','string'],
-            
-
+            'name'=>['required','string', 'between: 5, 20', 'unique:categories,name'],
         ],[
             'image.required'=>'حقل الصورة مطلوب',
             'name.required'=>' حقل الاسم مطلوب ',
-            'name.string'=>' يحب ان يكون حقل الاسم نص',
-            
-
+            'name.string'=>' يحب ان يكون حقل الاسم نص  ',
+            'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
+            'name.unique'=>'اوبس! هذا الاسم موجود مسبقا',
         ]);
 
         $category = new Category;
         $category->name = $request->name;
-
         if($request->hasFile('image'))
-        $category->image=$this->uploadFile($request->file('image'));
-
-        else  $category->image='defualt.png';
-        if($category->active==null)
-        $category->is_active=0;
-        else 
-        $category->is_active=1;
+            $category->image=$this->uploadFile($request->file('image'));
+        // else  $category->image='defualt.png';
+        if($request->active != null){
+            $category->is_active=1;
+        }
         if($category->save())
         return redirect('admincategories')
         ->with(['success'=>'تم اضافة التصنيف بنجاح']);
@@ -58,16 +46,22 @@ class CategoriesAdminController extends Controller
 
     
     function editAdminCategory(Request $request,$id){
-
-
+        Validator::validate($request->all(),[
+            'name'=>['required', 'string', 'between: 5, 20', 'unique:categories,name'],
+        ],[
+            'name.required'=>' حقل الاسم مطلوب ',
+            'name.string'=>' يحب ان يكون حقل الاسم نص  ',
+            'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
+            'name.unique'=>'اوبس! هناك خطأ في عملية التعديل او ان هذا الاسم موجود مسبقا',
+        ]);
         $category=category::find($id);
         $category->name=$request->name;
-       $old=$request->image_old;
+        $old=$request->image_old;
 
-       if($request->active==null)
-        $category->is_active=0;
-        else 
-        $category->is_active=1;
+        if($request->active != null)
+            $category->is_active = 1;
+        // else 
+        // $category->is_active=1;
         
         if($request->hasFile('image'))
         $category->image=$this->uploadFile($request->file('image'));
@@ -75,7 +69,7 @@ class CategoriesAdminController extends Controller
         $category->image=$old;
         if($category->save())
 
-      
+        
         return redirect('admincategories')
         ->with(['success'=>'تم تعديل التصنيف بنجاح']);
         return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
