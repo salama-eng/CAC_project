@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+
 
 class AuthController extends Controller
 {
@@ -46,9 +48,9 @@ class AuthController extends Controller
   
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
                  if(Auth::user()->hasRole('admin'))
-                 return 'admin';
+                 return redirect()->route('admincategories');
                  else 
-                 return 'client';
+                 return redirect()->route('profile');
         }
         else {
             return redirect()->route('login')->with(['message'=>'اسم المستخدم او كلمة المرور غير صحيحة ']);
