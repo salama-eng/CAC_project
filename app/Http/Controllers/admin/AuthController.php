@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-
+use App\Mail\VerificationEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -19,7 +21,7 @@ class AuthController extends Controller
     }
 
     public function showLogin(){
-        return view('admin.login');
+        // return view('admin.login');
         if(Auth::check())
         return redirect()->route($this->checkRole());
         else 
@@ -27,43 +29,84 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-     //  return request();
-       // return $request->pass; return $request->email;
-  
-       // if(Auth::attempt(['email'=>$request->email_username,'password'=>$request->user_pass,'is_active'=>1])){
-            if(Auth::attempt(['email'=>$request->email,'password'=>$request->pass])){
-                $user = Auth::user();
-                 if($user->hasRole('admin'))
-                 return "admin";
-                 else 
-                 return "client";
+    //   return request();
+     
+      Validator::validate($request->all(),[
+            'email'=>['required','email'],
+            'password'=>['required','min:5'],
 
-        
+
+        ],[ 
+            'email.required'=>'هذا الحقل مطلوب ',
+            'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
+            'password.required'=>'هذا الحقل مطلوب ',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+        ]);
+
+  
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+                 if(Auth::user()->hasRole('admin'))
+                 return 'admin';
+                 else 
+                 return 'client';
         }
         else {
-            return redirect()->route('login')->with(['message'=>'incorerct username or password ']);
+            return redirect()->route('login')->with(['message'=>'اسم المستخدم او كلمة المرور غير صحيحة ']);
         }
 
     }
 
 
 
-    public function register(){
+    public function showregister(){
+        return view('front.register');
 
-      
+    }
+
+    public function register(Request $request){
+
+      Validator::validate($request->all(),[
+            'name'=>['required','min:3','max:20'],
+            'email'=>['required','email','unique:users,email'],
+            'password'=>['required','min:5'],
+
+
+        ],[
+            'name.required'=>'هذا الحقل مطلوب ',
+            'name.min'=>'يجب ان يكوا اكبر من 3 احرف', 
+            'email.unique'=>'هذا الايميل غير متاح',
+            'email.required'=>'هذا الحقل مطلوب ',
+            'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
+            'password.required'=>'هذا الحقل مطلوب ',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+        ]);
+
+        
 
         $u=new User();
-        $u->name='khalifa';
-        $u->password=Hash::make('123123123');
-        $u->email='khalifa@gmail.com';
+        $u->name=$request->name;
+        $u->password=Hash::make($request->password);
+        $u->email=$request->email;
+        // $token=Str::uuid();
+        // $u->remember_token=$token;
+
+       
         if($u->save()){
-            $u->attachRole('client');
-            return redirect()->route('/')
-            ->with(['success'=>'user created successful']);
-        }
-        return back()->with(['error'=>'can not create user']);
+        $u->attachRole('client');
+
+        // $email_data=array('name' =>$request->name ,
+        // 'activation_url'=>URL::to('/')."/verify_email/".$token);
+
+        // Mail::to($request->email)->send(new VerificationEmail($email_data));
+ 
+        return redirect()->route('login')
+        ->with(['success'=>'user created successful']);
+    }
+        return redirect()->route('register')->with(['message'=>'  لم يتم حفظ المستخدم ']);
 
     }
+
+
     public function resetPassword(){
 
     }
@@ -76,8 +119,8 @@ class AuthController extends Controller
 
     public function checkRole(){
         if(Auth::user()->hasRole('admin'))
-        return 'dash';
-            else 
+            return 'dash';
+        else 
             return 'admin.login';
         
     }

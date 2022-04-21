@@ -39,6 +39,7 @@ body{
 }
 .yellow{ color: var(--yellow); }
 .bg-yellow{ background-color: var(--yellow); }
+.yellow2{color: var(--yellow2);}
 
 .btn-close{
    z-index: 1000;
@@ -96,7 +97,6 @@ body{
 {
   margin: 0;
   padding: 0;
-  direction: ltr;
   
 }
 
