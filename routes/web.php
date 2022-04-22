@@ -87,6 +87,10 @@ Route::group(['middleware'=>'auth'],function(){
         return view('front.auctionDetails');
     });
 
+    Route::get('/addauction', function () {
+        return view('front.addAuction');
+    });
+
     //     client postes mangment  ----------------------------------------------------------------
     Route::get('/addAuction', [UserPostsController::class, 'addPost']);
     Route::get('/postedcars', [UserPostsController::class, 'showpstedcars'])->name('postedcars');
