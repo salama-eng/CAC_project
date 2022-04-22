@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\settingsController;
+use App\Http\Controllers\admin\UserAdminController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -24,7 +25,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 
@@ -34,8 +38,11 @@ Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
 Route::get('/register',[AuthController::class,'showregister'])->name('register');
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> main
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -43,6 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
     Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
     Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
+
+    // Admin Manage User
+    Route::get('/showAllUsers', [UserAdminController::class,'showAllUsers'])->name('showAllUsers');
+    Route::post('/active_admin_user', [UserAdminController::class, 'activeUser'])->name('active_admin_user');
 
     // Admin Payments Manage
     Route::get('/adminPayments', [PaymentsAdminController::class, 'showAdminPayments'])->name('adminPayments');
@@ -57,8 +68,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
     Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
     Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
-    // client profile Manage
 
+<<<<<<< HEAD
+    // client profile Manage
+=======
 Route::group(['middleware'=>'auth'],function(){
 	Route::group(['middleware'=>'role:admin'],function(){
         // 
@@ -66,6 +79,7 @@ Route::group(['middleware'=>'auth'],function(){
             return view('dash')->name('dash');
         });
        
+>>>>>>> main
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
     Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
