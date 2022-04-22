@@ -97,7 +97,7 @@
 <h1 class="text-center fs-3 m-4"> اضافة صنف جديد </h1>
 <div class="container col-lg-9 col-11">
     @if ($errors->any())
-        <div class="alert alert-danger error">
+        <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
