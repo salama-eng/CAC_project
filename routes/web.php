@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\settingsController;
+use App\Http\Controllers\admin\UserAdminController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -41,6 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
     Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
 
+    // Admin Manage User
+    Route::get('/showAllUsers', [UserAdminController::class,'showAllUsers'])->name('showAllUsers');
+    Route::post('/active_admin_user', [UserAdminController::class, 'activeUser'])->name('active_admin_user');
+
     // Admin Payments Manage
     Route::get('/adminPayments', [PaymentsAdminController::class, 'showAdminPayments'])->name('adminPayments');
     Route::post('/add_admin_Payment', [PaymentsAdminController::class, 'addAdminPayment']);
@@ -54,8 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
     Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
     Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
-    // client profile Manage
 
+    // client profile Manage
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
     Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
