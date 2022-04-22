@@ -57,15 +57,15 @@
                             aria-expanded="false">إدارة
                             المزادات</a>
                         <ul class="collapse list-unstyled fs-6" id="manage">
-                            <li><a href="#" class="text-light text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة العروض</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة المزادات الحالية</a></li>
-                            <li><a href="#" class="text-light text-center p-3">إدارة المزادات المنتهية</a></li>
+                            <li><a href="{{route('admin_posts')}}" class="text-light text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
+                            <li><a href="{{route('Start_auction')}}" class="text-light text-center p-3">إدارة العروض</a></li>
+                            <li><a href="{{route('admin_acution')}}" class="text-light text-center p-3">إدارة المزادات الحالية</a></li>
+                            <li><a href="{{route('endede_acution')}}" class="text-light text-center p-3">إدارة المزادات المنتهية</a></li>
 
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="text-center p-3 text-light">إدارة المستخدمين</a>
+                        <a href="showAllUsers" class="text-center p-3 text-light">إدارة المستخدمين</a>
 
                     </li>
                     <li>

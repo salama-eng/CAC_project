@@ -8,4 +8,16 @@ use Illuminate\Http\Request;
 class AuctionsAdminController extends Controller
 {
     //
-}
+    public function showAdminAuction(){
+        return view('admin.adminManageAuction');
+    }
+
+    public function showAdminStartAuction(){
+        return view('admin.adminManageStartedAuction');
+    }
+
+    public function showAdminEndedAuction(){
+        return view('admin.adminManageEndedAuction');
+    }
+
+}                                                                                
