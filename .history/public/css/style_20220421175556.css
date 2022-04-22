@@ -36,7 +36,6 @@ body{
   background-color: var(--lightgrey);
 }
 .yellow{ color: var(--yellow); }
-.bg-yellow{ background-color: var(--yellow); }
 
 .bg-grey{ background-color: var(--lightgrey); }
 
@@ -129,6 +128,7 @@ body{
 {
   margin: 0;
   padding: 0;
+  direction: ltr;
   
 }
 
@@ -305,7 +305,6 @@ background: rgba(160, 156, 156, 0.1);
 border-radius: 10px;
 border:none;
 color :#ffb434;
-backdrop-filter: blur(5px);
 border-right:6px solid #E39100 ;
 }
 
@@ -325,12 +324,11 @@ border-right:6px solid #E39100 ;
 /* From https://css.glass */
 /* From https://css.glass */
 /* From https://css.glass */
-background: rgba(65, 63, 63, 0.4);
+background: rgba(216, 204, 204, 0.5);
 border-radius: 10px;
 border:none;
-color :#ffb398;
-border-right:6px solid #ff5031;
-backdrop-filter: blur(5px);
+color :#e1321f;
+border-right:6px solid #9d0808;
 }
 
 
