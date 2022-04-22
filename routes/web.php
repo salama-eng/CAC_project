@@ -5,6 +5,11 @@ use App\Http\Controllers\admin\ModelsAdminController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
+use App\Http\Controllers\admin\settingsController;
+use App\Mail\VerificationEmail;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\user\UserPostsController;
 use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,13 +25,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// generate role
+Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 
+Route::get('/login',[AuthController::class,'showLogin'])->name('login');
+Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
+Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
+Route::get('/register',[AuthController::class,'showregister'])->name('register');
 
-// Admin  Manage
-
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/do_login', [AuthController::class, 'login'])->name('do_login');
-Route::get('/save_user', [AuthController::class, 'register'])->name('save_user');
 
 
 
@@ -53,6 +59,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
     // client profile Manage
 
+Route::group(['middleware'=>'auth'],function(){
+	Route::group(['middleware'=>'role:admin'],function(){
+        // 
+        Route::get('/dash', function () {
+            return view('dash')->name('dash');
+        });
+       
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
     Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
