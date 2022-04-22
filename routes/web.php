@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
     Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
     // client profile Manage
-
+    Route::post('/save_profile', [UserProfileController::class, 'save_profile'])->name('save_profile');
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
     Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
@@ -75,7 +75,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     //     client postes mangment  ----------------------------------------------------------------
-    Route::get('/addAuction', [UserPostsController::class, 'addPost']);
+    Route::get('/addAuction', [UserPostsController::class, 'addPost'])->name('addAuction');
+    Route::post('/save_post', [UserPostsController::class, 'save_post'])->name('save_post');
     Route::get('/postedcars', [UserPostsController::class, 'showpstedcars'])->name('postedcars');
     Route::get('/UserUncomplatePosts', [UserPostsController::class, 'uncomplate'])->name('UserUncomplatePosts');
     Route::get('/UserComplatePosts', [UserPostsController::class, 'complate'])->name('UserComplatePosts');
