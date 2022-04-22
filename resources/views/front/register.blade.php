@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
-    <title> login </title>
+    <title> register </title>
 
 </head>
 
@@ -34,7 +34,6 @@
    
     <div class="login-container d-flex  align-items-center justify-content-around flex-wrap">
 
-
             <div class="login-image col-lg-6 col-11 order-lg-2">
 
             <img class=" img-fluid" src="assets/car.png" alt="">
@@ -42,34 +41,40 @@
         </div>
 
           <div class="login-text col-lg-4 col-11 align-middle order-lg-1">
-        <form class="mb-3" action="{{ route('do_login') }}" method="POST">
-            @csrf
+            <form class="mb-3" action="{{ route('save_user') }}"  method="POST">
+             @csrf
 
-          
-            @if (session()->has('message'))
-            {
-            <p class="message">{{ session()->get('message') }}</p>
-            }
-            @endif
 
-                <h3 class="font-weight-light"> تسجيل الدخول </h3>
+                <h3 class="font-weight-light"> انشاء حساب  </h3>
+                @error('name')
+              <span class="text-end yellow"> * {{ $message }} </span>
+              @enderror
+                <input name="name" autocomplete="off" type="text" class="text-white" placeholder="إسم المستخدم" value="{{old('name')}}">
 
                 @error('email')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="email" autocomplete="off" type="text" placeholder="إسم المستخدم">
-                @error('password')
+                <input name="email" autocomplete="off" type="text" placeholder="ايميل المستخدم" value="{{old('email')}}">
+                
+                 @error('password')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="password" autocomplete="off" type="password" placeholder="كلمة المرور">
-                <button type="submit" name="">تسجيل الدخول</button>
+                <input name="password" autocomplete="off" type="password" class="btn-block" placeholder="كلمة المرور" value="">
+                @error('confirm_pass')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
+                <input name="confirm_pass" autocomplete="off" type="password" placeholder="تأكيد كلمة المرور " value="">
+            
+                <button type="submit" name="">انشاء حساب</button>
+
                 <div class=" text-center ">
-                <p class="font-weight-light ">ليس لديك حساب ؟ <a href="register" class=" text-warning  text-decoration-none ">  انشاء حساب ؟ </a></p>             </div>
+                <p class="font-weight-light ">لديك حساب بالفعل ؟<a href="login" class=" text-warning  text-decoration-none ">  تسجيل الدخول ؟ </a></p>             </div>
+
+             </form>
 
 
-        </form>
+         </div>
 
-        </div>
     </div>
 
 </body>

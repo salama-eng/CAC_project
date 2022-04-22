@@ -1,5 +1,5 @@
 :root {
-    --semiOrange: #E39100;
+    --semiOrange: #e3911e;
     --darkgrey: #191919;
     --lightgrey: #1C1C1C;
     --whitecolor: #f6f6f6;
@@ -19,22 +19,38 @@ body {
     background-color: var(--darkgrey) !important;
     font-family: 'Tajawal';
 }
-
+.bg-dark-nav{
+    background-color: var(--darkgrey) !important;
+}
 /* navbar */
+nav{
+    background-color: var(--darkgrey);
+}
 .navbar{
-    z-index: 888888;
+    z-index: 1;
 
 }
 .w-96 {
     width: 96%;
 }
+.contact-parent{
+    width: 10%;
+    z-index: 2;
+    
 
+}
 .cornerstyle {
+
     background-color: var(--semiOrange);
     height: 33vh;
     width: 5%;
 }
-
+.contactnavbar {
+    height: 60%;
+    position: fixed;
+    bottom: 50px;
+  
+}
 .contact {
     background-color: var(--semiOrange) !important;
     
@@ -60,11 +76,7 @@ body {
     width: 10px;
 }
 
-.contactnavbar {
-    height: 60vh;
-    position: absolute;
-    z-index: 88888;
-}
+
 
 .fs-7 {
     font-size: .8rem;
@@ -144,16 +156,15 @@ a:focus {
     transform: rotate(-45deg) translate(1px, -1px) !important;
 }
 
-.logo-box1{
+.logo-box{
     font-family: Comic Sans MS;
     position: absolute;
-    z-index: 8888;
+    z-index: 3;
 }
 .fa-bell{
     transform: rotate(-30deg);
 }
 .notiy{
- 
   left: 22px;
     height: 8px;
     width: 8px;
@@ -223,6 +234,15 @@ a{
 .card-details{
     color: gray;
 }
+.img-responsive{
+    width: 6.5em;
+    
+}
+.list-group li{
+    background-color: inherit !important;
+    color: gray;
+}
+
 @media only screen and (min-width: 992px) {
 
     .bttn {
@@ -231,7 +251,9 @@ a{
 }
 
 @media (max-width: 768px) {
- 
+    .contactnavbar{
+        display: none !important;
+    }
 
     #sidebarCollapse .menu:first-of-type,
     #sidebarCollapse .menu:last-of-type {
@@ -255,7 +277,7 @@ a{
 
 }
 @media (max-width: 1162px) {
-
+ 
     #sidebar {
         position: absolute;
         z-index: 9999;

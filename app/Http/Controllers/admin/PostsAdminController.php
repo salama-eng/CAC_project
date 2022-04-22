@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class PostsAdminController extends Controller
 {
-<<<<<<< Updated upstream
     public function showAdminPosts(){
         $categories = Category::select()->get();
         return view('front.addAuction',[ 'categories' => $categories ]);
@@ -16,7 +15,5 @@ class PostsAdminController extends Controller
     public function showauctionDetails(){
         return view('front.auctionDetails');
     }
-=======
     
->>>>>>> Stashed changes
 }
