@@ -60,10 +60,10 @@
                             aria-expanded="false">إدارة
                             طلبات إضافة مزاد</a>
                         <ul class="collapse list-unstyled fs-6" id="manage">
-                            <li><a href="{{route('profile')}}" class="text-light text-center p-3">إضافة مزاد</a></li>
+                            <li><a href="{{route('addAuction')}}" class="text-light text-center p-3">إضافة مزاد</a></li>
                             <li><a href="{{route('postedcars')}}" class="text-light text-center p-3"> السيارات المضافة في المزاد</a></li>
                             <li><a href="{{route('UserUncomplatePosts')}}" class="text-light text-center p-3"> المزادات الغير مكتملة</a></li>
-                            <li><a href=""{{route('UserComplatePosts')}}"" class="text-light text-center p-3"> المزادات المكتملة</a></li>
+                            <li><a href="{{route('UserComplatePosts')}}" class="text-light text-center p-3"> المزادات المكتملة</a></li>
 
                         </ul>
                     </li>
@@ -141,8 +141,8 @@
                        <div class="d-flex flex-column justify-center">
                            <div class="bg-yellow p-2  mb-2 ">
 
-                            @if (isset($user->profile->avatar))
-                            <img src="assets/images/{{$user->profile->avatar}}" width="80" class="rounded-circle "alt="">
+                            @if (isset(Auth::user()->profile->avatar))
+                            <img src="images/{{Auth::user()->profile->avatar}}" width="80" class="rounded-circle "alt="">
                         @else
                 
                             <img src="assets/images/avatar.png" class="rounded-circle" width="80" alt="">
@@ -150,9 +150,11 @@
                 
                     @endif
                            </div>
-                        <h6 class="dropdown-item text-light mt-1  fs-7 " href="#"> {{Auth::user()->name}}
+                        <h6 class="dropdown-item text-light mt-1  fs-7 " href="#"> 
+                            {{Auth::user()->name}}
                         </h6>
-                        <h6 class="dropdown-item text-light mt-1 mb-0 fs-7" href="{{route('profile')}}">بروفايل المستخدم
+                        <h6 class="dropdown-item text-light mt-1 mb-0 fs-7">
+                            <a href="{{route('profile')}}">بروفايل المستخدم </a>
                         </h6>
                     </div>
                     </li>

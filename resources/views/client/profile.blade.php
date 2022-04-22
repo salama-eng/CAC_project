@@ -5,7 +5,7 @@
         <div class=" align-self-center col-lg-4 col-md-5 col-11 d-flex flex-column align-items-center">
 
             @if (isset($user->profile->avatar))
-            <img src="assets/images/{{$user->profile->avatar}}" class="rounded-circle " alt="">
+            <img src="images/{{$user->profile->avatar}}" class="rounded-circle img-fluid " alt="">
         @else
 
             <img src="assets/images/avatar.png" class="rounded-circle " alt="">
@@ -23,7 +23,7 @@
                 <img src="assets/icons/star.png" class="" width="20" height="20" alt="">
                 <em class=" text-white mx-1 fs-5">8.8</em>
             </div>
-            @if (isset($bank))
+            @if (isset($user->profile->user_id) == Auth::id())
             <a href="editprofile">
                 <p style="background-color: var(--yellow);
                 padding:0.8rem;
@@ -60,9 +60,10 @@
                     <td>
                       *********
                     </td>
+                    
                 </tr>
                     
-            @if (isset($bank))
+            @if(isset($user->profile->user_id) == Auth::id())
 
                     <th>
                         رقم التلفون
@@ -94,7 +95,7 @@
                             طريقة الدفع
                         </th>
                         <td>
-                           {{$bank->name}}
+                           Visa
                         </td>
                     </tr>
     
@@ -104,7 +105,7 @@
                             اسم البنك
                         </th>
                         <td>
-                            {{$bank->bank_name}}
+                            paypal
                         </td>
                     </tr>
                     <tr>
@@ -112,7 +113,7 @@
                             رقم الحساب 
                         </th>
                         <td>
-                          *************** {{$acount}}
+                          ***************
                         </td>
                     </tr>
                 </table>

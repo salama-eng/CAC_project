@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
+use App\Http\Controllers\admin\UserAdminController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 
@@ -36,12 +38,18 @@ Route::get('/register',[AuthController::class,'showregister'])->name('register')
 
 
 
+
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
     Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
     Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
     Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
+
+    // Admin Manage User
+    Route::get('/showAllUsers', [UserAdminController::class,'showAllUsers'])->name('showAllUsers');
+    Route::post('/active_admin_user', [UserAdminController::class, 'activeUser'])->name('active_admin_user');
 
     // Admin Payments Manage
     Route::get('/adminPayments', [PaymentsAdminController::class, 'showAdminPayments'])->name('adminPayments');
@@ -69,6 +77,11 @@ Route::group(['middleware' => 'auth'], function () {
     // Admin Manage Ended Auction
     Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminEndedAuction'])->name('endede_acution');
     
+
+    // client profile Manage
+    Route::post('/save_profile', [UserProfileController::class, 'save_profile'])->name('save_profile');
+
+
     // client profile Manage
 
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
@@ -92,8 +105,13 @@ Route::group(['middleware' => 'auth'], function () {
         return view('front.auctionDetails');
     });
 
+    Route::get('/addauction', function () {
+        return view('front.addAuction');
+    });
+
     //     client postes mangment  ----------------------------------------------------------------
-    Route::get('/addAuction', [UserPostsController::class, 'addPost']);
+    Route::get('/addAuction', [UserPostsController::class, 'addPost'])->name('addAuction');
+    Route::post('/save_post', [UserPostsController::class, 'save_post'])->name('save_post');
     Route::get('/postedcars', [UserPostsController::class, 'showpstedcars'])->name('postedcars');
     Route::get('/UserUncomplatePosts', [UserPostsController::class, 'uncomplate'])->name('UserUncomplatePosts');
     Route::get('/UserComplatePosts', [UserPostsController::class, 'complate'])->name('UserComplatePosts');

@@ -36,13 +36,13 @@ body{
   background-color: var(--lightgrey);
 }
 .yellow{ color: var(--yellow); }
-<<<<<<< HEAD
+
 .bg-yellow{ background-color: var(--yellow); }
 .yellow2{color: var(--yellow2);}
-=======
+
 
 .bg-grey{ background-color: var(--lightgrey); }
->>>>>>> 818690df9eef9a68239f69fd35fd4eadf79515b1
+
 
 .btn-close{
    z-index: 1000;
@@ -299,10 +299,44 @@ font-size:0.8rem;
   animation-duration: 5s;
   animation-iteration-count: none;
   width:22rem;
-  border-radius:0;
+
   list-style:none;
- 
+ /* From https://css.glass */
+/* From https://css.glass */
+/* From https://css.glass */
+/* From https://css.glass */
+background: rgba(160, 156, 156, 0.1);
+border-radius: 10px;
+border:none;
+color :#ffb434;
+backdrop-filter: blur(5px);
+border-right:6px solid #E39100 ;
 }
+
+.error
+{
+  position:absolute;
+  left:0.5rem;
+  top:6rem;
+  opacity: 0;
+  animation-name: inim;
+  animation-duration: 5s;
+  animation-iteration-count: none;
+  width:22rem;
+
+  list-style:none;
+ /* From https://css.glass */
+/* From https://css.glass */
+/* From https://css.glass */
+/* From https://css.glass */
+background: rgba(65, 63, 63, 0.4);
+border-radius: 10px;
+border:none;
+color :#ffb398;
+border-right:6px solid #ff5031;
+backdrop-filter: blur(5px);
+}
+
 
 .prrofile
 {
