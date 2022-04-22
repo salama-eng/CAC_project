@@ -1,8 +1,8 @@
 @extends('front.layout.clientdashboard')
 @section('content')
-    <form class="container  px-5 fs-6 d-flex flex-wrap">
+    <form class="container px-5 fs-6 d-flex flex-wrap">
         @csrf
-        <h5 class="w-100 text-light mx-2 "><i class="fa fa-plus p-2 fs-6"></i>إضافة مزاد</h5>
+        <h5 class="w-100 text-light mx-2 my-4"><i class="fa fa-plus p-2 fs-6"></i>إضافة مزاد</h5>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
             <div class="input-group">

@@ -1,6 +1,6 @@
 @extends('front.layout.clientdashboard')
 @section('content')
-    <form class="container  px-5 fs-6 d-flex flex-wrap">
+    <form class="container mt-5 pt-5 px-5 fs-6 d-flex flex-wrap">
         @csrf
         <h5 class="w-100 text-light mx-2 "><i class="fa fa-plus p-2 fs-6"></i>إضافة مزاد</h5>
 

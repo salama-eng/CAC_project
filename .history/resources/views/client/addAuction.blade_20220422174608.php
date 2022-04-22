@@ -1,6 +1,6 @@
 @extends('client.layout.clientdashboard')
 @section('content')
-    <form class="container px-5 fs-6 d-flex flex-wrap" action="save_post" method="POST" enctype="multipart/form-data">
+    <form class="container mt-5 pt-5 px-5 fs-6 d-flex flex-wrap" action="save_post" method="POST" enctype="multipart/form-data">
         @csrf
         @if (session()->has('message'))
             <p class="alert alert-danger">{{ session()->get('message') }}</p>
