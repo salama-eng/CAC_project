@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class PostsAdminController extends Controller
 {
     public function showAdminPosts(){
-        $categories = Category::select()->get();
-        return view('front.addAuction',[ 'categories' => $categories ]);
+        // $categories = Category::select()->get();
+        return view('admin.adminManagePosts');
     }
     public function showauctionDetails(){
         return view('front.auctionDetails');

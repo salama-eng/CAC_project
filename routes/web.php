@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\ModelsAdminController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
+use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -54,6 +55,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
     Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
     Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
+    
+    // Admin Manage Posts
+    Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
+    
     // client profile Manage
 
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
