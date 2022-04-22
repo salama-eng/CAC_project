@@ -25,6 +25,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 
@@ -34,6 +38,11 @@ Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
 Route::get('/register',[AuthController::class,'showregister'])->name('register');
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -60,7 +69,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
     Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
 
+<<<<<<< HEAD
     // client profile Manage
+=======
+Route::group(['middleware'=>'auth'],function(){
+	Route::group(['middleware'=>'role:admin'],function(){
+        // 
+        Route::get('/dash', function () {
+            return view('dash')->name('dash');
+        });
+       
+>>>>>>> main
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
     Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
@@ -80,6 +99,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::get('/auctiondetails', function () {
         return view('front.auctionDetails');
+    });
+
+    Route::get('/addauction', function () {
+        return view('front.addAuction');
     });
 
     //     client postes mangment  ----------------------------------------------------------------
