@@ -37,6 +37,8 @@ Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
 Route::get('/register',[AuthController::class,'showregister'])->name('register');
 
 
+// Send Email
+Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');
 
 
 

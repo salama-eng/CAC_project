@@ -71,7 +71,7 @@ class AuthController extends Controller
             'name'=>['required','min:3','max:20'],
             'email'=>['required','email','unique:users,email'],
             'password'=>['required','min:5'],
-
+            'confirm_pass'=>['same:password']
 
         ],[
             'name.required'=>'هذا الحقل مطلوب ',
@@ -81,6 +81,8 @@ class AuthController extends Controller
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'password.required'=>'هذا الحقل مطلوب ',
             'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'confirm_pass.same'=>'كلمة المرور غير مطابقة',
         ]);
 
         
@@ -97,8 +99,8 @@ class AuthController extends Controller
         if($u->save()){
         $u->attachRole('client');
 
-        // $email_data=array('name' =>$request->name ,
-        // 'activation_url'=>URL::to('/')."/verify_email/".$token);
+        // $email_data=array('id'=>$request->id,'name' =>$request->name ,
+        // 'activation_url'=>URL::to('/')."/verify_email");
 
         // Mail::to($request->email)->send(new VerificationEmail($email_data));
  
@@ -109,6 +111,16 @@ class AuthController extends Controller
 
     }
 
+
+    public function activeUser(Request $request){
+        $userId = $request->id;
+        $user = User::select()->where('id', $userId)->find($userId);
+            $active = User::where('id', $user->id)->update(['is_active' => 1]);
+
+        return redirect()->route('login')
+            ->with(['success'=>'تم التعديل بنجاح']);
+    
+    } 
 
     public function resetPassword(){
 
@@ -122,9 +134,9 @@ class AuthController extends Controller
 
     public function checkRole(){
         if(Auth::user()->hasRole('admin'))
-            return 'dash';
+            return 'home';
         else 
-            return 'admin.login';
+            return 'login';
         
     }
 

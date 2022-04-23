@@ -46,26 +46,26 @@
 
 
                 <h3 class="font-weight-light"> انشاء حساب  </h3>
+
+                <input name="name" autocomplete="off" type="text" class="text-white mb-0" placeholder="إسم المستخدم" value="{{old('name')}}">
                 @error('name')
               <span class="text-end yellow"> * {{ $message }} </span>
               @enderror
-                <input name="name" autocomplete="off" type="text" class="text-white" placeholder="إسم المستخدم" value="{{old('name')}}">
-
-                @error('email')
+                <!-- @error('email')
               <span class="text-end yellow">* {{ $message }}  </span>
-              @enderror
-                <input name="email" autocomplete="off" type="text" placeholder="ايميل المستخدم" value="{{old('email')}}">
+              @enderror -->
+                <input name="email" autocomplete="off" type="text" class="mt-4 mb-0" placeholder="ايميل المستخدم" value="{{old('email')}}">
                 
                  @error('password')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="password" autocomplete="off" type="password" class="btn-block" placeholder="كلمة المرور" value="">
+                <input name="password" autocomplete="off" type="password" class="btn-block mt-4 mb-0" placeholder="كلمة المرور" value="">
                 @error('confirm_pass')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="confirm_pass" autocomplete="off" type="password" placeholder="تأكيد كلمة المرور " value="">
+                <input name="confirm_pass" autocomplete="off" type="password" class="mt-4 mb-0" placeholder="تأكيد كلمة المرور " value="">
             
-                <button type="submit" name="">انشاء حساب</button>
+                <button type="submit" class="mt-4 " name="">انشاء حساب</button>
 
                 <div class=" text-center ">
                 <p class="font-weight-light ">لديك حساب بالفعل ؟<a href="login" class=" text-warning  text-decoration-none ">  تسجيل الدخول ؟ </a></p>             </div>
