@@ -38,8 +38,9 @@ Route::get('/register',[AuthController::class,'showregister'])->name('register')
 
 
 
-
-
+Route::get('/auctiondetails', function () {
+    return view('front.auctionDetails');
+});
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
@@ -101,9 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', function () {
         return view('front.home');
     });
-    Route::get('/auctiondetails', function () {
-        return view('front.auctionDetails');
-    });
+
 
     Route::get('/addauction', function () {
         return view('front.addAuction');

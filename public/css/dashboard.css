@@ -232,11 +232,16 @@ a{
     background-color: inherit !important;
 }
 .card-details{
-    color: gray;
+    color: #535252;
 }
 .img-responsive{
-    width: 6.5em;
+    width: 7.7rem;
+    height: 5.5rem;
     
+}
+.img-responsive img{
+    height: 100%;
+    width: 100%;
 }
 .list-group li{
     background-color: inherit !important;
