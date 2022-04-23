@@ -5,11 +5,11 @@
         @if (session()->has('message'))
             <p class="alert alert-danger">{{ session()->get('message') }}</p>
         @endif
-        @if ($errors->any())
-            @foreach ($errors->all() as $err)
-                <p class="alert alert-danger ">{{ $err }}</p>
-            @endforeach
-        @endif
+        <!-- @if ($errors->any())
+            @foreach ($errors->all() as $err) -->
+                <!-- <p class="alert alert-danger ">{{ $err }}</p> -->
+            <!-- @endforeach
+        @endif -->
         <h5 class="w-100 text-light mx-2 my-4"><i class="fa fa-plus p-2 fs-6"></i>إضافة مزاد</h5>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
@@ -18,6 +18,9 @@
                 <input type="text" value="{{old('carname')}}" name="carname" placeholder="اسم السيارة" class="form-control" id="basic-url"
                     aria-describedby="basic-addon3">
             </div>
+            @error('carname')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <select name="category_id" value="{{old('category_id')}}" class="form-select text-light" id="inputGroupSelect03"
@@ -26,8 +29,11 @@
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
-            </select>
+            </select>   
         </div>
+         @error('category_id')
+        <span class="text-end yellow">* {{ $message }}  </span>
+        @enderror
         <div class="mb-3 w-50 px-2 w-lg-100">
             <div class="input-group">
 
@@ -39,6 +45,9 @@
                     @endforeach
                 </select>
             </div>
+            @error('model_id')
+        <span class="text-end yellow">* {{ $message }}  </span>
+        @enderror
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
@@ -47,6 +56,9 @@
                 <input type="text" name="name_enige" value="{{old('name_enige')}}" placeholder="اسم المحرك" class="form-control" id="basic-url"
                     aria-describedby="basic-addon3">
             </div>
+            @error('name_enige')
+        <span class="text-end yellow">* {{ $message }}  </span>
+        @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <div class="input-group">
@@ -54,6 +66,9 @@
                 <input type="text" name="start_price" value="{{old('start_price')}}" placeholder="سعر المزايدة" class="form-control" id="basic-url"
                     aria-describedby="basic-addon3">
             </div>
+            @error('start_price')
+        <span class="text-end yellow">* {{ $message }}  </span>
+        @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <div class="input-group">
@@ -61,6 +76,9 @@
                 <input type="text" name="auction_price" value="{{old('auction_price')}}" placeholder="سقف سعر المزايدة" class="form-control" id="basic-url"
                     aria-describedby="basic-addon3">
             </div>
+            @error('start_price')
+        <span class="text-end yellow">* {{ $message }}  </span>
+        @enderror
         </div>
 
         
@@ -70,13 +88,20 @@
                 <input type="text" name="address_car" value="{{old('address_car')}}" placeholder="عنوان تواجد السيارة" class="form-control" id="basic-url"
                     aria-describedby="basic-addon3">
             </div>
+            @error('address_car')
+        <span class="text-end yellow">* {{ $message }}  </span>
+        @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <div class="input-group">
 
                 <input type="text" name="color" value="{{old('color')}}" placeholder="لون السيارة" class="form-control" id="basic-url"
                     aria-describedby="basic-addon3">
+                
             </div>
+            @error('color')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
         </div>
         
 
@@ -88,6 +113,9 @@
                 <input type="date" name="end_date" value="{{old('end_date')}}" title ="تاريخ انتهاء العرض" placeholder="تاريخ انتهاء العرض" class="form-control" id="basic-url"
                     aria-describedby="basic-addon3">
             </div>
+            @error('end_date')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <div class="input-group">
@@ -95,11 +123,17 @@
                 <input type="text" name="type_damage" value="{{old('type_damage')}}" placeholder="نوع الضرر" class="form-control" id="basic-url"
                     aria-describedby="basic-addon3">
             </div>
+            @error('type_damage')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <div class="input-group">
                 <textarea name="description" value="{{old('description')}}" class="form-control" placeholder="وصف السيارة" aria-label="With textarea"></textarea>
             </div>
+            @error('description')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="img" class="form-label text-light">الصورة الرئيسية للسيارة</label>
@@ -107,6 +141,9 @@
                 <input type="file" name="image" id="img" class="form-control"
                     id="inputGroupFile01">
             </div>
+            @error('image')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
@@ -115,6 +152,9 @@
 
                 <input type="file" name="images[]"  class="form-control text-light" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" multiple>
             </div>
+            @error('images')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="basic-url" class="form-label text-light"> حالة السيارة</label>
@@ -131,8 +171,11 @@
                     <label class="form-check-label text-light" for="flexRadioDefault2">
                         مستخدم
                     </label>
-                </div>
+                </div>php
             </div>
+            @error('care_type')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
         </div>
 
         
