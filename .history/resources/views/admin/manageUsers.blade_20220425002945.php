@@ -33,7 +33,6 @@
                     <td>{{$user->profile->address}}</td>
                 @else
                 <td class="text-warning">لم يتم ادخال بيانات البروفايل</td>
-                <td class="text-warning">لم يتم ادخال بيانات البروفايل</td>
                 @endif
 
 

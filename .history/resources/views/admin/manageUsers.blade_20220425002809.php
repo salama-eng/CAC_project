@@ -29,15 +29,20 @@
                     <td>{{$user->email}}</td>
 
                     @if (isset($user->profile->user_id) == Auth::id())
-                    <td>{{$user->profile->phone}}</td>
-                    <td>{{$user->profile->address}}</td>
+                    <a href="editprofile">
+                        <p style="background-color: var(--yellow);
+                        padding:0.8rem;
+                        margin-top:1rem;" class="prrofile"> تعديل المعلومات الشخصية </p>
+                    </a>
                 @else
-                <td class="text-warning">لم يتم ادخال بيانات البروفايل</td>
-                <td class="text-warning">لم يتم ادخال بيانات البروفايل</td>
+                    <a href="complate_regester">
+                        <p class="prrofile"> اتمام عملية التسجيل </p>
+                    </a>
                 @endif
 
 
-                    
+                    <td>{{$user->profile->phone}}</td>
+                    <td>{{$user->profile->address}}</td>
                     <td>
                         
                         @if($user->is_active == 1)
