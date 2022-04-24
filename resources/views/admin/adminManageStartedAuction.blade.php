@@ -22,26 +22,22 @@
                     <td>التحكم </td>
 
                 </tr>
-                <?php $i = 1 ?>
-  
-                <tr>
-                    <td>{{$i++}}</td>
-                    <td>اسم السيارة</td>
-                    <td>اسم المستخدم</td>
-                    <td>2022/6/2</td>
-                    <td>3400</td>
-                    <td>رابط صفحة المزايدة</td>
-                    <td>
+                @php $i = 1 @endphp
+                @foreach($postsAll as $post)
+                    <tr>
+                        <td>{{$i++}}</td>
+                        <td>{{$post->name}}</td>
+                        <td>{{$post->category_name}}</td>
+                        <td>{{$post->end_date}}</td>
+                        <td>{{$post->starting_price}}</td>
+                        <td>رابط صفحة المزايدة</td>
+                        <td>
                             <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
                                 <i class='fa fa-check'></i> Active
                             </a>
-                            <!-- <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
-                                <i class='fa fa-close'></i> noActive
-                            </a> -->
-                        
-                    </td>
-                </tr>
-
+                        </td>
+                    </tr>
+                @endforeach
                 <div class="modal fade user" id="activeCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark">

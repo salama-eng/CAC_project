@@ -32,11 +32,11 @@
                 @endif
 
                 <h3 class="font-weight-light mt-5 "> اتمام عملية التسجيل </h3>
-                <input name="address" type="text" class="mt-4 mb-0" placeholder=" العنوان ">
+                <input name="address" type="text" value="{{old('address')}}" class="mt-4 mb-0" placeholder=" العنوان ">
                 @error('address')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="phone" type="text" class="mt-4 mb-0" placeholder=" رقم التلفون ">
+                <input name="phone" type="text" value="{{old('phone')}}" class="mt-4 mb-0" placeholder=" رقم التلفون ">
                 @error('phone')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
@@ -44,7 +44,7 @@
                 @error('avatar')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="card" type="text" class="mt-4 mb-0" placeholder=" رقم الحساب في باي بال">
+                <input name="card" type="text" value="{{old('card')}}" class="mt-4 mb-0" placeholder=" رقم الحساب في باي بال">
                 @error('card')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror

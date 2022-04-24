@@ -2,56 +2,70 @@
 @section('content')
 
 
-<h3 class="text-warning  mt-5 mb-5 text-center">عروض السيارات المعلقة </h3>
+<h1 class="text-center fs-3 text-white mb-5">ادارة  طلبات المزاد </h1>
+    <div class="container">
+        @if(session()->has('success'))
+            <div class="alert alert-success message">
+                {{ session()->get('success') }}
+            </div>
+        @endif
 
-<section class="card-container  d-flex flex-wrap justify-content-between ">
-  <div class="card text-light m-auto" style="width: 18rem;">
-    <img src="{{ URL::asset('images/car4.jpg') }}" class="card-img-top" height="220" alt="...">
-    <div class="card-body  mt-4">
-        <h5 class="card-title text-center">Mercedes-Benz</h5>
-        <p class="text-center fs-7 card-details"> تنتهي في  <em> 20.58.55 </em></p>
+        <div class="table-responsive text-white">
+            <table class="main-table manage-members text-center table table-bordered  text-white">
+                <tr >
+                    <td>#ID</td>
+                    <td>السيارة </td>
+                    <td> اسم المستخدم</td>
+                    <td>انتهاء وقت المزايدة</td>
+                    <td>السعر الابتدائي  </td>
+                    <td>المبلغ الذي وصل اليه </td>
+                    <td>تفاصيل المزايدة </td>
+                    <td>التحكم </td>
+
+                </tr>
+                @php $i = 1 @endphp
+                @foreach($postsAll as $post)
+                <tr>
+                    <td>{{$i++}}</td>
+                    <td>{{$post->name}}</td>
+                    <td>اسم المستخدم</td>
+                    <td>2022/6/2</td>
+                    <td>3400</td>
+                    <td>4400</td>
+                    <td>رابط صفحة المزايدة</td>
+                    <td>   
+                        <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
+                            <i class='fa fa-close'></i> noActive
+                        </a> 
+                    </td>
+                </tr>
+                @endforeach
+                <div class="modal fade user" id="activeCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark">
+                            <form action="" method="post">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">حالة الموديل</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                   
+                                    <h2>هل انت متاكد</h2>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">تراجع</button>
+                                    <input type="submit" class="btn btn-primary" value="تعديل الحالة" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </table>
+        </div>
+       
+       
     </div>
-    <div class="card-body d-flex justify-content-between  p-0 ">
-        <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">3000$</span></p>
-        <a href="#" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-    </div>
-    <a href="" class="btn btn-sm bg-yellow">
-         عرض الطلب في الرئيسية 
-    </a>
-</div>
-
-  <div class="card text-light m-auto" style="width: 18rem;">
-    <img src="{{ URL::asset('images/car4.jpg') }}" class="card-img-top" height="220" alt="...">
-    <div class="card-body  mt-4">
-        <h5 class="card-title text-center">Mercedes-Benz</h5>
-        <p class="text-center fs-7 card-details"> تنتهي في  <em> 20.58.55 </em></p>
-    </div>
-    <div class="card-body d-flex justify-content-between  p-0 ">
-        <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">3000$</span></p>
-        <a href="#" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-    </div>
-    <a href="" class="btn btn-sm bg-yellow">
-         عرض الطلب في الرئيسية 
-    </a>
-</div>
-
-<div class="card text-light m-auto" style="width: 18rem;">
-  <img src="{{ URL::asset('images/car4.jpg') }}" class="card-img-top" height="220" alt="...">
-  <div class="card-body  mt-4">
-      <h5 class="card-title text-center">Mercedes-Benz</h5>
-      <p class="text-center fs-7 card-details"> تنتهي في  <em> 20.58.55 </em></p>
-  </div>
-  <div class="card-body d-flex justify-content-between  p-0 ">
-      <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">3000$</span></p>
-      <a href="#" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-  </div>
-  <a href="" class="btn btn-sm bg-yellow">
-         عرض الطلب في الرئيسية 
-    </a>
-</div>
-
-
-
-</section>
 
 @endsection
+                

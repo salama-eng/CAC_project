@@ -53,16 +53,13 @@
             @endif
 
                 <h3 class="font-weight-light"> تسجيل الدخول </h3>
-
+                <span class="text-end yellow">* {{ $errors->first() }}  </span>
                
                 <input name="email" autocomplete="off" class="mt-4 mb-0" type="text" value="{{old('email')}}" placeholder="إسم المستخدم">
-                 @error('email')
-              <span class="text-end yellow">* {{ $message }}  </span>
-                 @enderror
+                 
                 <input name="password" autocomplete="off" type="password" class="mt-4 mb-0"  placeholder="كلمة المرور">
-                @error('password')
-                <span class="text-end yellow">* {{ $message }}  </span>
-                 @enderror
+                
+                 <input name="is_active" type="hidden" value="1">
                 <button type="submit" class="mt-4" name="">تسجيل الدخول</button>
                 <div class=" text-center ">
                 <p class="font-weight-light ">ليس لديك حساب ؟ <a href="register" class=" text-warning  text-decoration-none ">  انشاء حساب ؟ </a></p>             </div>
