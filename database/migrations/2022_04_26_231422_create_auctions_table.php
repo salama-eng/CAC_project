@@ -31,7 +31,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('payment_methode_id')->unique();
             $table->foreign('payment_methode_id')->constrained()
-                    ->references('id')->on('payment_methodes')
+                    ->references('id')->on('payment_methode')
                     ->onUpdate('cascade')->onDelete('cascade');
 
             $table->boolean('is_active')->default(0);

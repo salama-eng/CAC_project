@@ -38,7 +38,8 @@ Route::get('/register',[AuthController::class,'showregister'])->name('register')
 
 
 // Send Email
-Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');
+Route::get('/verify_email/{token}',[AuthController::class,'activeUser'])->name('verify_email');
+Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
 
 
 

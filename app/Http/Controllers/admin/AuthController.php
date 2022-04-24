@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -42,7 +43,7 @@ class AuthController extends Controller
             'email.required'=>'هذا الحقل مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'password.required'=>'هذا الحقل مطلوب ',
-            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
         ]);
 
   
@@ -66,6 +67,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
+    //   return request();
 
       Validator::validate($request->all(),[
             'name'=>['required','min:3','max:20'],
@@ -80,45 +82,69 @@ class AuthController extends Controller
             'email.required'=>'هذا الحقل مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'password.required'=>'هذا الحقل مطلوب ',
-            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
-            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
             'confirm_pass.same'=>'كلمة المرور غير مطابقة',
         ]);
 
         
 
+        $v=$request->password;
         $u=new User();
         $u->name=$request->name;
         $u->password=Hash::make($request->password);
         $u->email=$request->email;
-        // $token=Str::uuid();
-        // $u->remember_token=$token;
+        $token=Str::uuid();
+        $u->remember_token=$token;
 
+        // echo $u->name;
        
 
         if($u->save()){
         $u->attachRole('client');
 
-        // $email_data=array('id'=>$request->id,'name' =>$request->name ,
-        // 'activation_url'=>URL::to('/')."/verify_email");
 
-        // Mail::to($request->email)->send(new VerificationEmail($email_data));
- 
-        return redirect()->route('login')
-        ->with(['success'=>'user created successful']);
+        $email_data=array('name' =>$request->name ,'email'=>$request->email,'password'=>$v,
+        'activation_url'=>URL::to('/')."/verify_email/".$token);
+
+        // print_r ($email_data);
+        Mail::to($request->email)->send(new VerificationEmail($email_data));
+            // echo 'true';
+
+                return view('mail.resend_email', [
+                'email_data' => $email_data,
+            ]);
+        
+        }
+        return  redirect()->route('register')->with(['message'=>' تأكد من كتابة البيانات بالشكل الصحيح ']);
+
     }
-        return redirect()->route('register')->with(['message'=>'  لم يتم حفظ المستخدم ']);
 
+    public function resendEmail( Request $request){
+        $email_data=array('name' =>$request->name ,'email'=>$request->email,
+        'activation_url'=>$request->activation_url);
+
+        Mail::to($request->email)->send(new VerificationEmail($email_data));
+
+        return view('mail.resend_email', [
+            'email_data' => $email_data,
+        ]);
     }
 
-
-    public function activeUser(Request $request){
-        $userId = $request->id;
-        $user = User::select()->where('id', $userId)->find($userId);
-            $active = User::where('id', $user->id)->update(['is_active' => 1]);
-
-        return redirect()->route('login')
-            ->with(['success'=>'تم التعديل بنجاح']);
+    public function activeUser($token){
+        $user = User::select()->where('remember_token', $token)->first();
+        $active = User::where('remember_token', $user->remember_token)->update(['is_active' => 1]);
+        $user->is_active=1;
+        // print_r($user->password);
+        if(Auth::user($user)){
+                 if(Auth::user()->hasRole('admin'))
+                 return redirect()->route('admincategories');
+                 else 
+                 return redirect()->route('profile');
+        }
+        else {
+            return redirect()->route('login')
+            ->with(['message'=>'اسم المستخدم او كلمة المرور غير صحيحة ']);
+        }
     
     } 
 

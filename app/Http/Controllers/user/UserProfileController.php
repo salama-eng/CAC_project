@@ -36,7 +36,6 @@ if(isset($user_payment->payment_id)){
 
 
 
-
     function showedit(){
  
       $id=Auth::id();
