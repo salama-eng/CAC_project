@@ -18,13 +18,13 @@ class UserProfileController extends Controller
     {
       $id=Auth::id();
       $user=User::with(['profile'])->find($id);
-     $user_payment=PaymentMethode::with(['user'])->find($id);
-if(isset($user_payment->payment_id)){
-      $bank =payment::select()->where('id', $user_payment->payment_id)->first();
+      $user_payment=PaymentMethode::with(['user'])->find($id);
+        if(isset($user_payment->payment_id)){
+              $bank =payment::select()->where('id', $user_payment->payment_id)->first();
 
-   $acount=$user_payment->acount_number;
- 
-}
+          $acount=$user_payment->acount_number;
+        
+        }
       
         return view('client.profile', [
             'user' => $user,
@@ -48,7 +48,7 @@ if(isset($user_payment->payment_id)){
       $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
        
       
-   $acount=$user_payment->acount_number;
+      $acount=$user_payment->acount_number;
  
 
       
@@ -72,7 +72,7 @@ if(isset($user_payment->payment_id)){
     public function save_profile(Request $request){
         Validator::validate($request->all(),[
             'address'=>'required|string|between:3,15',
-            'phone'=>'required|regex:/^([0-9]*)$/|not_regex:/[a-z]/|min:9|max:9|starts_with: 77,73,71,70',
+            'phone'=>'required|regex:/^([0-9]*)$/|not_regex:/[a-z]/|min:9|max:9|starts_with:77,73,71,70',
             'avatar'=>'required',
             'card'=>'required|regex:/^([0-9]*)$/|not_regex:/[a-z]/|min:14|max:14|starts_with:4444',
         ],[

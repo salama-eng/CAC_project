@@ -40,8 +40,9 @@ Route::get('/register',[AuthController::class,'showregister'])->name('register')
 // Send Email
 Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');
 
-
-
+Route::get('/auctiondetails', function () {
+    return view('front.auctionDetails');
+});
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
@@ -95,17 +96,16 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/', function () {
-        return view('client.home')->name('/');
+        return view('front.index');
     });
+
     Route::get('/admin_dash', function () {
         return view('admin.layout.dashboard');
     });
     Route::get('/home', function () {
         return view('front.home');
     });
-    Route::get('/auctiondetails', function () {
-        return view('front.auctionDetails');
-    });
+
 
     Route::get('/addauction', function () {
         return view('front.addAuction');

@@ -8,7 +8,7 @@
     @foreach($users->posts as $post)
         @if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
             <div class="card text-light m-auto" style="width: 18rem;">
-                <img src="images/{{$post->image}}" class="card-img-top" height="220" alt="...">
+                <img src="images/{{$post->image}}" class="card-img-top" height="220" alt="{{$post->image}}">
                 <div class="card-body  mt-4">
                     <h5 class="card-title text-center">{{$post->name}}</h5>
                     <p class="text-center fs-7 card-details"> تنتهي في  <em> {{$post->end_date}} </em></p>
