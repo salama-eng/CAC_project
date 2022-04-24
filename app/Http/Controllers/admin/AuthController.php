@@ -33,10 +33,19 @@ class AuthController extends Controller
 
     public function login(Request $request){
     //   return request();
+        Validator::extend('checkHashedPass', function($attribute, $value, $parameters)
+        {
+            if( ! Hash::check( $value , $parameters[0] ) )
+            {
+                return false;
+            }
+            return true;
+        });
+        $password = Hash::make($request->password);
      
       Validator::validate($request->all(),[
             'email'=>['required','email','exists:users,email'],
-            'password'=>['required','exists:users,password'],
+            'password'=>['required', 'checkHashedPass:"'.$password.'"','exists:users,password'],
             'is_active'=>'integer|exists:users,is_active',
 
 
@@ -56,7 +65,7 @@ class AuthController extends Controller
                  else 
                  return redirect()->route('profile');
         }else{
-            return redirect()->route('login')->with(['message'=>'  لم يتم حفظ المستخدم ']);
+            return redirect()->route('login')->with(['message'=>'  عذرا! حسابك قيد التفعيل']);
         }
 
     }
