@@ -155,7 +155,15 @@ class AuthController extends Controller
         }
     }
 
-   
+    public function activeUser(Request $request)
+    {
+        $userId = $request->id;
+        $user = User::select()->where('id', $userId)->find($userId);
+        $active = User::where('id', $user->id)->update(['is_active' => 1]);
+
+        return redirect()->route('login')
+            ->with(['success' => 'تم التعديل بنجاح']);
+    }
 
     public function resetPassword()
     {
