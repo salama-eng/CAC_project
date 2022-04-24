@@ -36,7 +36,6 @@ class UserProfileController extends Controller
 
 
 
-
     function showedit(){
  
       $id=Auth::id();
