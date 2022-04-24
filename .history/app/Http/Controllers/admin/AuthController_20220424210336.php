@@ -38,12 +38,13 @@ class AuthController extends Controller
             }
             return true;
         });
-        // $password = Hash::make($request->password);
+        $password = Hash::make($request->password);
      
       Validator::validate($request->all(),[
             'email'=>['required','email','exists:users,email'],
-            'password'=>['required'],
+            'password'=>['required','exists:users,password'],
             'is_active'=>'integer|exists:users,is_active',
+
 
         ],[ 
             'email.required'=>'هذا الحقل مطلوب ',
@@ -52,7 +53,7 @@ class AuthController extends Controller
             'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
         ]);
 
-        
+  
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
                  if(Auth::user()->hasRole('admin'))
                  return  redirect()->route('admincategories');

@@ -52,7 +52,7 @@ class AuthController extends Controller
             'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
         ]);
 
-        
+  
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
                  if(Auth::user()->hasRole('admin'))
                  return  redirect()->route('admincategories');
