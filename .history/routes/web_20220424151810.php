@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
-Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
+Route::get('/save_user',[AuthController::class,'register'])->name('save_user');
 Route::get('/register',[AuthController::class,'showregister'])->name('register');
 // Send Email
 Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');

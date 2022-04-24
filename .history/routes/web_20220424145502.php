@@ -40,7 +40,7 @@ Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_
 Route::get('/auctiondetails', function () {
     return view('front.auctionDetails');
 });
-Route::group(['middleware' => 'auth'], function () {
+// Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
     Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
@@ -118,6 +118,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-});
+// });
 
 

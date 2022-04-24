@@ -53,7 +53,7 @@
             @endif
 
                 <h3 class="font-weight-light"> تسجيل الدخول </h3>
-                <span class="text-end yellow"> {{ $errors->first() }}  </span>
+                <span class="text-end yellow">* {{ $errors->first() }}  </span>
               
                 <input name="email" class="mt-4 mb-0" type="text" value="{{old('email')}}" placeholder="إسم المستخدم">
                  @error('email')

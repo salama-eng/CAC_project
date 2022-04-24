@@ -9,9 +9,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+// use Illuminate\Foundation\Validation\ValidatesRequests;
+
 
 class AuthController extends Controller
 {
@@ -32,27 +35,28 @@ class AuthController extends Controller
     //   return request();
      
       Validator::validate($request->all(),[
-            'email'=>['required','email'],
-            'password'=>['required','min:5'],
+            'email'=>['required','email','exists:users,email'],
+            'password'=>['required','exists:users,password'],
+            'is_active'=>'integer|exists:users,is_active',
 
 
         ],[ 
-            'email.required'=>'هذا الحقل مطلوب ',
+            'email.required'=>' حقل البريد الالكتروني مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-            'password.required'=>'هذا الحقل مطلوب ',
-            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'email.exists'=>'عذرا! البريد الالكتروني غير موجود',
+            'password.required'=>' حقل كلمة السر مطلوب ',
+            'password.exists' => ' عذرا! كلمة المرور غير صحيحة',
+            'is_active.exists'=>'عذرا! حسابك قيد التفعيل',
         ]);
 
   
-        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password,'is_active'=>$request->is_active])){
                  if(Auth::user()->hasRole('admin'))
-                 return  redirect()->route('admincategories');
+                 return redirect()->route('admincategories');
                  else 
                  return redirect()->route('profile');
-        
-        }
-        else {
-            return redirect()->route('login')->with(['message'=>'اسم المستخدم او كلمة المرور غير صحيحة ']);
+        }else{
+            return redirect()->route('login')->with(['message'=>'  لم يتم حفظ المستخدم ']);
         }
 
     }
@@ -70,7 +74,7 @@ class AuthController extends Controller
             'name'=>['required','min:3','max:20'],
             'email'=>['required','email','unique:users,email'],
             'password'=>['required','min:5'],
-
+            'confirm_pass'=>['same:password']
 
         ],[
             'name.required'=>'هذا الحقل مطلوب ',
@@ -80,6 +84,8 @@ class AuthController extends Controller
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'password.required'=>'هذا الحقل مطلوب ',
             'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'confirm_pass.same'=>'كلمة المرور غير مطابقة',
         ]);
 
         
@@ -96,8 +102,8 @@ class AuthController extends Controller
         if($u->save()){
         $u->attachRole('client');
 
-        // $email_data=array('name' =>$request->name ,
-        // 'activation_url'=>URL::to('/')."/verify_email/".$token);
+        // $email_data=array('id'=>$request->id,'name' =>$request->name ,
+        // 'activation_url'=>URL::to('/')."/verify_email");
 
         // Mail::to($request->email)->send(new VerificationEmail($email_data));
  
@@ -108,6 +114,16 @@ class AuthController extends Controller
 
     }
 
+
+    public function activeUser(Request $request){
+        $userId = $request->id;
+        $user = User::select()->where('id', $userId)->find($userId);
+            $active = User::where('id', $user->id)->update(['is_active' => 1]);
+
+        return redirect()->route('login')
+            ->with(['success'=>'تم التعديل بنجاح']);
+    
+    } 
 
     public function resetPassword(){
 
@@ -121,9 +137,9 @@ class AuthController extends Controller
 
     public function checkRole(){
         if(Auth::user()->hasRole('admin'))
-            return 'dash';
+            return 'home';
         else 
-            return 'admin.login';
+            return 'login';
         
     }
 
