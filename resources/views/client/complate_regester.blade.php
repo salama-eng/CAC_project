@@ -30,17 +30,25 @@
                 @if (session()->has('message'))
                     <p class="alert alert-danger">{{ session()->get('message') }}</p>
                 @endif
-                @if ($errors->any())
-                    @foreach ($errors->all() as $err)
-                        <p class="alert alert-danger message">{{ $err }}</p>
-                    @endforeach
-                @endif
-                <h3 class="font-weight-light mt-5"> اتمام عملية التسجيل </h3>
-                <input name="address" type="text" placeholder=" العنوان ">
-                <input name="phone" type="text" placeholder=" رقم التلفون ">
-                <input name="avatar" type="file" title = "Choose a video please">
-                <input name="card" type="text" placeholder=" رقم الحساب في باي بال">
-                <button type="submit" name=""> حفظ</button>
+
+                <h3 class="font-weight-light mt-5 "> اتمام عملية التسجيل </h3>
+                <input name="address" type="text" class="mt-4 mb-0" placeholder=" العنوان ">
+                @error('address')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
+                <input name="phone" type="text" class="mt-4 mb-0" placeholder=" رقم التلفون ">
+                @error('phone')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
+                <input name="avatar" type="file" class="mt-4 mb-0" title = "Choose a video please">
+                @error('avatar')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
+                <input name="card" type="text" class="mt-4 mb-0" placeholder=" رقم الحساب في باي بال">
+                @error('card')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
+                <button type="submit" class="mt-4 mb-0" name=""> حفظ</button>
             </form>
         </div>
     </div>

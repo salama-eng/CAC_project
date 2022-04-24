@@ -160,6 +160,8 @@ a:focus {
     font-family: Comic Sans MS;
     position: absolute;
     z-index: 3;
+    top:3.5rem;
+   right: 2rem;
 }
 .fa-bell{
     transform: rotate(-30deg);
@@ -253,6 +255,7 @@ a{
     .bttn {
         direction: rtl;
     }
+   
 }
 
 @media (max-width: 768px) {
@@ -277,6 +280,10 @@ a{
 
     .w-lg-100{
         width: 100% !important;
+    } .logo-box{
+        
+        top:3.5rem;
+       right: -1rem;
     }
   
 
