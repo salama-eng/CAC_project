@@ -6,7 +6,7 @@
 
 <section class="card-container  d-flex flex-wrap justify-content-between ">
     @foreach($users->posts as $post)
-        @if($post->is_active == 1)
+        @if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
             <div class="card text-light m-auto" style="width: 18rem;">
                 <img src="images/{{$post->image}}" class="card-img-top" height="220" alt="{{$post->image}}">
                 <div class="card-body  mt-4">

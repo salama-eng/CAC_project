@@ -106,13 +106,4 @@ class UserProfileController extends Controller
           return back()->with(['error'=>'خطاء لانستطيع اضافة بياناتك']);
         }
     }
-
-
-    public function uploadFile($files)
-    { 
-        $file= $files;
-        $filename= date('YmdHi').$file->getClientOriginalName();
-        $file->move(public_path('images'), $filename);
-        return $filename;
-    }
 }

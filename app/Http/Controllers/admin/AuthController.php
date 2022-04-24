@@ -13,6 +13,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+// use Illuminate\Foundation\Validation\ValidatesRequests;
 
 
 class AuthController extends Controller
@@ -34,29 +35,28 @@ class AuthController extends Controller
     //   return request();
      
       Validator::validate($request->all(),[
-            'email'=>['required','email'],
-            'password'=>['required','min:5'],
-           
+            'email'=>['required','email','exists:users,email'],
+            'password'=>['required','exists:users,password'],
+            'is_active'=>'integer|exists:users,is_active',
 
 
         ],[ 
-            'email.required'=>'هذا الحقل مطلوب ',
+            'email.required'=>' حقل البريد الالكتروني مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-            'password.required'=>'هذا الحقل مطلوب ',
-            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
-            'password.required'=>'هذا الحقل مطلوب ',
-            'is_active'=>'هدا المستخدم غير مفعل',
+            'email.exists'=>'اوبس! البريد الالكتروني غير موجود',
+            'password.required'=>' حقل كلمة السر مطلوب ',
+            'password.exists' => ' اوبس! كلمة المرور غير صحيحة',
+            'is_active.exists'=>'عذرا! حسابك قيد التفعيل',
         ]);
 
   
-        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password,'is_active'=>$request->is_active])){
                  if(Auth::user()->hasRole('admin'))
                  return redirect()->route('admincategories');
                  else 
                  return redirect()->route('profile');
-        }
-        else {
-            return redirect()->route('login')->with(['message'=>'اسم المستخدم او كلمة المرور غير صحيحة ']);
+        }else{
+            return redirect()->route('login')->with(['message'=>'  لم يتم حفظ المستخدم ']);
         }
 
     }

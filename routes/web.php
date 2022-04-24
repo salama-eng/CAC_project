@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
     
     // Admin Manage Started Auction
-    Route::get('/Start_auction', [AuctionsAdminController::class, 'showAdminStartAuction'])->name('Start_auction');
+    Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
     
     // Admin Manage Auction
     Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
