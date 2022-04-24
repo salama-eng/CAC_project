@@ -14,8 +14,6 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
-// use Illuminate\Foundation\Validation\ValidatesRequests;
-
 
 class AuthController extends Controller
 {
@@ -34,27 +32,36 @@ class AuthController extends Controller
 
     public function login(Request $request){
     //   return request();
+        Validator::extend('checkHashedPass', function($attribute, $value, $parameters)
+        {
+            if( ! Hash::check( $value , $parameters[0] ) )
+            {
+                return false;
+            }
+            return true;
+        });
+        // $password = Hash::make($request->password);
+     
       Validator::validate($request->all(),[
             'email'=>['required','email','exists:users,email'],
             'password'=>['required'],
-      ],[ 
-            'email.required'=>' حقل البريد الالكتروني مطلوب ',
+            'is_active'=>'integer|exists:users,is_active',
+
+        ],[ 
+            'email.required'=>'هذا الحقل مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-            'email.exists'=>'اوبس! البريد الالكتروني غير موجود',
-            'password.required'=>' حقل كلمة السر مطلوب ',
-            'password.exists' => ' اوبس! كلمة المرور غير صحيحة',
+            'password.required'=>'هذا الحقل مطلوب ',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
         ]);
 
-  
-        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password,'is_active'=>1])){
+        
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
                  if(Auth::user()->hasRole('admin'))
-                 return redirect()->route('admincategories');
+                 return  redirect()->route('admincategories');
                  else 
                  return redirect()->route('profile');
         }else{
-            return redirect()->route('login')->with([
-                'message'=>'  عذرا! يمكنك  تفعيل حسابك اولا',
-            ]);
+            return redirect()->route('login')->with(['message'=>'  عذرا! حسابك قيد التفعيل']);
         }
 
     }
@@ -73,7 +80,7 @@ class AuthController extends Controller
             'name'=>['required','min:3','max:20'],
             'email'=>['required','email','unique:users,email'],
             'password'=>['required','min:5'],
-            'confirm_pass'=>['same:password']
+
 
         ],[
             'name.required'=>'هذا الحقل مطلوب ',
@@ -82,7 +89,7 @@ class AuthController extends Controller
             'email.required'=>'هذا الحقل مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'password.required'=>'هذا الحقل مطلوب ',
-            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
             'confirm_pass.same'=>'كلمة المرور غير مطابقة',
         ]);
 
@@ -102,8 +109,8 @@ class AuthController extends Controller
         if($u->save()){
         $u->attachRole('client');
 
-        // $email_data=array('id'=>$request->id,'name' =>$request->name ,
-        // 'activation_url'=>URL::to('/')."/verify_email");
+        // $email_data=array('name' =>$request->name ,
+        // 'activation_url'=>URL::to('/')."/verify_email/".$token);
 
         $email_data=array('name' =>$request->name ,'email'=>$request->email,'password'=>$v,
         'activation_url'=>URL::to('/')."/verify_email/".$token);
@@ -150,16 +157,6 @@ class AuthController extends Controller
     
     } 
 
-    public function activeUser(Request $request){
-        $userId = $request->id;
-        $user = User::select()->where('id', $userId)->find($userId);
-            $active = User::where('id', $user->id)->update(['is_active' => 1]);
-
-        return redirect()->route('login')
-            ->with(['success'=>'تم التعديل بنجاح']);
-    
-    } 
-
     public function resetPassword(){
 
     }
@@ -172,9 +169,9 @@ class AuthController extends Controller
 
     public function checkRole(){
         if(Auth::user()->hasRole('admin'))
-            return 'home';
+            return 'dash';
         else 
-            return 'login';
+            return 'admin.login';
         
     }
 

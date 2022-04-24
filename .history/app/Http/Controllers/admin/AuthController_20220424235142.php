@@ -34,12 +34,14 @@ class AuthController extends Controller
 
     public function login(Request $request){
     //   return request();
+
       Validator::validate($request->all(),[
             'email'=>['required','email','exists:users,email'],
             'password'=>['required'],
-      ],[ 
+        ],[ 
             'email.required'=>' حقل البريد الالكتروني مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
+<<<<<<< HEAD
             'email.exists'=>'اوبس! البريد الالكتروني غير موجود',
             'password.required'=>' حقل كلمة السر مطلوب ',
             'password.exists' => ' اوبس! كلمة المرور غير صحيحة',
@@ -47,6 +49,14 @@ class AuthController extends Controller
 
   
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password,'is_active'=>1])){
+=======
+            'password.required'=>'هذا الحقل مطلوب ',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
+        ]);
+
+        
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+>>>>>>> main
                  if(Auth::user()->hasRole('admin'))
                  return redirect()->route('admincategories');
                  else 
@@ -82,7 +92,12 @@ class AuthController extends Controller
             'email.required'=>'هذا الحقل مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'password.required'=>'هذا الحقل مطلوب ',
+<<<<<<< HEAD
             'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+=======
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
+>>>>>>> main
             'confirm_pass.same'=>'كلمة المرور غير مطابقة',
         ]);
 

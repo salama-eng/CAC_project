@@ -44,26 +44,31 @@
             <form class="mb-3" action="{{ route('save_user') }}"  method="POST">
              @csrf
 
+             @if (session()->has('message'))
+            {
+            <p class="message">{{ session()->get('message') }}</p>
+            }
+            @endif
 
                 <h3 class="font-weight-light"> انشاء حساب  </h3>
 
-                <input name="name" autocomplete="off" type="text" class="text-white mb-0" placeholder="إسم المستخدم" value="{{old('name')}}">
+                <input name="name"  type="text" class="text-white mb-0" placeholder="إسم المستخدم" value="{{old('name')}}">
                 @error('name')
               <span class="text-end yellow"> * {{ $message }} </span>
               @enderror
                 <!-- @error('email')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror -->
-                <input name="email" autocomplete="off" type="text" class="mt-4 mb-0" placeholder="ايميل المستخدم" value="{{old('email')}}">
+                <input name="email"  type="text" class="mt-4 mb-0" placeholder="ايميل المستخدم" value="{{old('email')}}">
                 
                  @error('password')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="password" autocomplete="off" type="password" class="btn-block mt-4 mb-0" placeholder="كلمة المرور" value="">
+                <input name="password"  type="password" class="btn-block mt-4 mb-0" placeholder="كلمة المرور" value="">
                 @error('confirm_pass')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="confirm_pass" autocomplete="off" type="password" class="mt-4 mb-0" placeholder="تأكيد كلمة المرور " value="">
+                <input name="confirm_pass"  type="password" class="mt-4 mb-0" placeholder="تأكيد كلمة المرور " value="">
             
                 <button type="submit" class="mt-4 " name="">انشاء حساب</button>
 

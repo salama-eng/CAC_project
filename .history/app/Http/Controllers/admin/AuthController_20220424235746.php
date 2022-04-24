@@ -82,7 +82,12 @@ class AuthController extends Controller
             'email.required'=>'هذا الحقل مطلوب ',
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'password.required'=>'هذا الحقل مطلوب ',
+<<<<<<< HEAD
             'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+=======
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
+>>>>>>> main
             'confirm_pass.same'=>'كلمة المرور غير مطابقة',
         ]);
 
