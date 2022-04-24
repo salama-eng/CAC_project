@@ -144,6 +144,63 @@
                 </div>
 
         </section>
+        <section class="col-11  col-lg-5 mt-5">
+            <div class="card mt-5 me-4">
+                
+                <ul class="list-group list-group-flush ">
+                  <li class="list-group-item w-100 d-flex justify-content-between">
+                      <p>اسم السياره</p>
+                      <p>pmw</p>
+                  </li>
+                  <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p>الصنف</p>
+                    <p>تويوتا</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p>موديل السياره</p>
+                    <p>2006</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p> نوع المحرك</p>
+                    <p>أوتوماتك</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p> تاريخ انتهاء المزاد</p>
+                    <p>2022 - 5 -17</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p>  سعر السيارة البدائي </p>
+                    <p>$2000</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p>  مقدار الزيادة كأدنى حد</p>
+                    <p>$50</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p>  لون السيارة</p>
+                    <p>اسود</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p> العنوان</p>
+                    <p>حدة</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p> نوع الضرر</p>
+                    <p>سطحي</p>
+                </li>
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p>حالة السياره</p>
+                    <p>مستخدم</p>
+                </li>
+                
+                <li class="list-group-item w-100 d-flex justify-content-between">
+                    <p>الوصف</p>
+                    <p>pmw</p>
+                </li>
+                </ul>
+              
+              </div>
+        </section>
 
     </section>
 
