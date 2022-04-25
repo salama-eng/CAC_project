@@ -53,16 +53,18 @@
             @endif
 
                 <h3 class="font-weight-light"> تسجيل الدخول </h3>
-
-               
-                <input name="email"  class="mt-4 mb-0" type="text" value="{{old('email')}}" placeholder="إسم المستخدم">
+                <span class="text-end yellow"> {{ $errors->first() }}  </span>
+              
+                <input name="email" class="mt-4 mb-0" type="text" value="{{old('email')}}" placeholder="إسم المستخدم">
                  @error('email')
               <span class="text-end yellow">* {{ $message }}  </span>
                  @enderror
                 <input name="password"  type="password" class="mt-4 mb-0"  placeholder="كلمة المرور">
-                @error('password')
-                <span class="text-end yellow">* {{ $message }}  </span>
-                 @enderror
+                @if (session()->has('password'))
+            {
+            <p class="message">{{ session()->get('password') }}</p>
+            }
+            @endif
                 <button type="submit" class="mt-4" name="">تسجيل الدخول</button>
 
                 <div class="d-flex justify-content-between align-items-start">

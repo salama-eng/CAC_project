@@ -27,8 +27,17 @@
                     <td>{{$i++}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
+
+                    @if (isset($user->profile->user_id) == Auth::id())
                     <td>{{$user->profile->phone}}</td>
                     <td>{{$user->profile->address}}</td>
+                @else
+                <td class="text-warning">لم يتم ادخال بيانات البروفايل</td>
+                <td class="text-warning">لم يتم ادخال بيانات البروفايل</td>
+                @endif
+
+
+                    
                     <td>
                         
                         @if($user->is_active == 1)

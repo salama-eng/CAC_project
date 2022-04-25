@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
+use App\Http\Controllers\front\HomeController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -26,20 +27,19 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/    Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
-
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
 Route::get('/register',[AuthController::class,'showregister'])->name('register');
-
-
 // Send Email
-Route::get('/verify_email/{token}',[AuthController::class,'activeUser'])->name('verify_email');
-Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
+Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');
+
+
+Route::get('/auctiondetails',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
 
 // Reset Password
 Route::get('/showResetPassword',[AuthController::class,'showResetPassword'])->name('showResetPassword');
@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
     
     // Admin Manage Started Auction
-    Route::get('/Start_auction', [AuctionsAdminController::class, 'showAdminStartAuction'])->name('Start_auction');
+    Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
     
     // Admin Manage Auction
     Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
@@ -101,21 +101,17 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/', function () {
-        return view('client.home')->name('/');
+        return view('front.index');
     });
+
     Route::get('/admin_dash', function () {
         return view('admin.layout.dashboard');
     });
     Route::get('/home', function () {
         return view('front.home');
     });
-    Route::get('/auctiondetails', function () {
-        return view('front.auctionDetails');
-    });
 
-    Route::get('/addauction', function () {
-        return view('front.addAuction');
-    });
+
 
     //     client postes mangment  ----------------------------------------------------------------
     Route::get('/addAuction', [UserPostsController::class, 'addPost'])->name('addAuction');
@@ -131,3 +127,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+

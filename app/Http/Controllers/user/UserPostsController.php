@@ -12,13 +12,16 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 class UserPostsController extends Controller
 {
+    // required_if:payment_type,cc
     public function addPost(){
         if (isset(Auth::user()->profile->id)){
+            $damage = ['لا يوجد', 'سطحي', 'ثانوي'];
             $categories = Category::select()->get();
-            $models = Models::select()->get();
+            $models = Models::select()->orderBy('name', 'ASC')->get();
             return view('client.addAuction',[ 
-                'categories' => $categories, 
-                'models' => $models, 
+                'categories'    => $categories, 
+                'models'        => $models,
+                'damage'        => $damage, 
             ]);
         }else{
             return redirect('profile');
@@ -29,9 +32,9 @@ class UserPostsController extends Controller
     public function showpstedcars(){
         if (isset(Auth::user()->profile->id)){
             $id=Auth::id();
-            $users=User::With('posts')->find($id);
-
-            $categories = Category::select()->get();
+            
+            $users=User::with(['posts','auctions'])->find($id);
+            //return $users;
             return view('client.showpstedcars', [
                 'users'     => $users,
             ]);
@@ -53,29 +56,17 @@ class UserPostsController extends Controller
             'end_date'=>'required|date|after:now',
             'type_damage'=>'required',
             'description'=>'required',
-            'image'=>'required',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
             'images'=>'required',
-            'care_type'=>'required',
+            'care_type'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
         ],[
-            'carname.required'=>'حقل اسم السيارة مطلوب',
-            'category_id.required'=>'حقل الصنف مطلوب',
-            'model_id.required'=>'حقل الموديل مطلوب',
-            'name_enige.required'=>'حقل المحرك مطلوب',
-            'start_price.required'=>'حقل السعر البدائي مطلوب',
-            'start_price.not_regex'=>'السعر البدائي لا يحتوي عن حروف',
-            'auction_price.required'=>'حقل سعر المزايدة مطلوب',
-            'auction_price.not_regex'=>'سعر سقف المزايدة لا يحتوي عن حروف ',
-            'address_car.required'=>'حقل العنوان مطلوب',
-            'address_car.between'=>'حقل العنوان لا يقل عن 3 ولا يزيد 50 حرف',
-            'color.required'=>'حقل اللون مطلوب',
-            'color.not_regex'=>'حقل اللون لا يقبل ارقام',
-            'end_date.required'=>'حقل تاريخ النهاية مطلوب',
-            'end_date.after'=>'حقل تاريخ النهاية لازم ان يكون بعد تاريخ البداية',
-            'type_damage.required'=>'حقل الضرر مطلوب',
-            'description.required'=>'حقل الوصف مطلوب',
-            'image.required'=>'حقل الصورة مطلوب',
-            'images.required'=>'حقل الصور مطلوب',
-            'care_type.required'=>'حقل حالة السيارة مطلوب',
+            'start_price.not_regex'     =>'السعر البدائي لا يحتوي عن حروف',
+            'auction_price.not_regex'   =>'سعر سقف المزايدة لا يحتوي عن حروف ',
+            'address_car.between'       =>'حقل العنوان لا يقل عن 3 ولا يزيد 50 حرف',
+            'color.not_regex'           =>'حقل اللون لا يقبل ارقام',
+            'end_date.after'            =>'حقل تاريخ النهاية لازم ان يكون بعد تاريخ البداية',
+            'required'                  =>'هذا الحقل مطلوب',
+            'mimes'                     => 'يجب ان يكون الامتداد من نوع صور',
         ]);
         $post = new Post;
         $post->name = $request->carname;
@@ -137,13 +128,4 @@ class UserPostsController extends Controller
             return redirect('profile');
         }
     }
-    public function uploadFile($files)
-    { 
-        $file= $files;
-        $filename= date('YmdHi').$file->getClientOriginalName();
-        $file->move(public_path('images'), $filename);
-        return $filename;
-    }
-    
-
 }

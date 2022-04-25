@@ -42,6 +42,8 @@ body{
 
 
 .bg-grey{ background-color: var(--lightgrey); }
+.bg-darkgrey {background-color: var(--darkgrey);}
+.bg-lightgrey{ background-color: var(--lightgrey); }
 
 
 .btn-close{
@@ -351,12 +353,56 @@ backdrop-filter: blur(5px);
 
 }
 
+/*-------------------------- home --------------------------------------*/
+.landscape-image
+{
+  
+  position:absolute;
+  z-index: -1;
+  left:0;
+}
 
+.landscape-text
+{
+  position:relative;
+  margin:1rem;
+  top:5rem;
+  
+}
+.landscape-text h1
+{
+ font-size:5rem;
+  font-weight: bolder;
+}
+.landscape
+{
+  
+  position:relative;
+  top:4rem;
+  z-index: -1;
+  left:0;
+}
+.btn-yellow
+{
+  color: var(--whitecolor);
+  border: 1px solid var(--yellow);
+padding: 0.8rem 1.3rem  0.8rem 1.3rem ;
+}
 
+.btn-yellow a :hover
+{
+  background-color:var(--yellow);
+}
 .bg-yellow{ background-color: var(--yellow); }
 @media (min-width: 576px){
+
 	.modal-dialog {
 		max-width: 685px;
 		margin: 1.75rem auto;
 	}
+ 
 }
+
+
+
+

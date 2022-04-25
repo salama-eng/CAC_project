@@ -39,11 +39,11 @@ $(document).ready(function() {
     $('.dropdown2').click(function(){
       $('#manage2').toggle();
     });
-    $('.img-responsive').click(function(){
+    $('.img-responsive img').click(function(){
   
       var img= $(this).attr('src');
       $('.main-img').attr('src',img);
-      $('.img-responsive').attr('style','border:none');
+      $('.img-responsive img').attr('style','border:none');
       $(this).attr('style','border:1px solid #e3911e');
     });
   });
