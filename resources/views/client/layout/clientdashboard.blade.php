@@ -111,9 +111,7 @@
 
 
 
-        <div class="w-100"  style="background-image: url(assets/back.jpg) ;
-        background-size: cover;    background-repeat: no-repeat;
-            background-position:fixed !important ;height:100vh ">
+        <div class="w-100 bg-grey"  style="">
 
             <div class="text-light dirction me-auto mt-4">
               <div class="d-flex justify-content-end" >

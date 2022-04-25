@@ -13,6 +13,19 @@ class PostsAdminController extends Controller
 {
     public function showAdminPosts(){
         // $categories = Category::select()->get();
+        $user=User::with(['posts'])->get();
+        // $laravelPosts = Category::find(1)->post()->where('title', 'laravel')->all();
+        // $user = user::find('1')->posts()->get();
+        return $user;
+        foreach($user as $users)
+        {
+
+              foreach($users->posts as $posts)
+        {
+            return $posts->name;
+        }
+        }
+         //return  $user;
         $postsAll = Post::select('posts.*','categories.name as category_name')
                             ->join("categories", "categories.id", "=", "posts.category_id");
         
@@ -28,8 +41,5 @@ class PostsAdminController extends Controller
             ]);
         }
     }
-    public function showauctionDetails(){
-        return view('front.auctionDetails');
-    }
-    
+ 
 }

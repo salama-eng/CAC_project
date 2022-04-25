@@ -12,4 +12,10 @@ class Post extends Model
     public function users(){
         return $this->belongsTo(User::class,'user_id');
     }
+
+    
+    public function auctions()
+    {
+        return $this->hasMany(Auction::class ,'post_id');
+    }
 }

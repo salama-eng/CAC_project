@@ -14,13 +14,15 @@
                     <p class="text-center fs-7 card-details"> تنتهي في  <em> {{$post->end_date}} </em></p>
                 </div>
                 <div class="card-body d-flex justify-content-between  p-0 ">
-                    <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">{{$post->starting_price}}$</span></p>
+                    <p href="#" class="card-link card-details">سعر المزايدة/<span class="active"> @foreach($users->auctions as $post)
+                        {{$post->bid_total}}
+                        @endforeach$</span></p>
                     <a href="#" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                 </div>
             </div>
         @endif
     @endforeach
-  
+   
 </section>
 
 @endsection

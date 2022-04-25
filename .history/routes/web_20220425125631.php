@@ -39,7 +39,8 @@ Route::get('/register',[AuthController::class,'showregister'])->name('register')
 Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');
 
 
-Route::get('/auctiondetails',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
+Route::post('/auctiondetails',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
+
 
 
 

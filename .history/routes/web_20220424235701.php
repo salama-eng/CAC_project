@@ -9,7 +9,6 @@ use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
-use App\Http\Controllers\front\HomeController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -27,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/    Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+*/
 
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
@@ -36,13 +35,12 @@ Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
 Route::get('/register',[AuthController::class,'showregister'])->name('register');
 // Send Email
-Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');
+Route::get('/verify_email/{token}',[AuthController::class,'activeUser'])->name('verify_email');
+Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
 
-
-Route::get('/auctiondetails',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
-
-
-
+Route::get('/auctiondetails', function () {
+    return view('front.auctionDetails');
+});
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');

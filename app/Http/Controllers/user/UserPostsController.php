@@ -32,9 +32,9 @@ class UserPostsController extends Controller
     public function showpstedcars(){
         if (isset(Auth::user()->profile->id)){
             $id=Auth::id();
-            $users=User::With('posts')->find($id);
-
-            $categories = Category::select()->get();
+            
+            $users=User::with(['posts','auctions'])->find($id);
+            //return $users;
             return view('client.showpstedcars', [
                 'users'     => $users,
             ]);
