@@ -41,6 +41,11 @@ Route::get('/register',[AuthController::class,'showregister'])->name('register')
 Route::get('/verify_email/{token}',[AuthController::class,'activeUser'])->name('verify_email');
 Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
 
+// Reset Password
+Route::get('/showResetPassword',[AuthController::class,'showResetPassword'])->name('showResetPassword');
+Route::post('/resetPassword',[AuthController::class,'resetPassword'])->name('resetPassword');
+Route::get('/verify_password/{token}',[AuthController::class,'formPassword'])->name('verify_password');
+Route::post('/new_password',[AuthController::class,'newPassword'])->name('new_password');
 
 
 Route::group(['middleware' => 'auth'], function () {
