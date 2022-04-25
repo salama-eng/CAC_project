@@ -39,7 +39,7 @@ Route::get('/register',[AuthController::class,'showregister'])->name('register')
 Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');
 
 
-Route::post('/auctiondetails/{id}',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
+Route::get('/auctiondetails/{id}',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
 
 // Reset Password
 Route::get('/showResetPassword',[AuthController::class,'showResetPassword'])->name('showResetPassword');
