@@ -35,7 +35,7 @@ class UserPostsController extends Controller
             $id=Auth::id();
 
             $count=User::With('posts')->find(1)->count();
-           //return $count;
+           
             if($count>0)
             {
                $message="";

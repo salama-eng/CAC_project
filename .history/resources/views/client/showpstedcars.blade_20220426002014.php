@@ -6,8 +6,8 @@
 
 <section class="card-container  d-flex flex-wrap justify-content-between ">
 
-@if ($message=='no data')
-
+@if ($message='no data')
+ggggggggggggggggggggggggg
 <img src="assets/images/nodata.png" alt="">
     
 @endif

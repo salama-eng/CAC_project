@@ -34,8 +34,8 @@ class UserPostsController extends Controller
         if (isset(Auth::user()->profile->id)){
             $id=Auth::id();
 
-            $count=User::With('posts')->find(1)->count();
-           //return $count;
+            $count=User::With('posts')->find(4)->count();
+           return $count;
             if($count>0)
             {
                $message="";

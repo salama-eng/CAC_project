@@ -25,8 +25,7 @@ class UserProfileController extends Controller
           $acount=$user_payment->acount_number;
         
         }
-
-        else $bank="";
+      
         return view('client.profile', [
             'user' => $user,
             'bank' => $bank

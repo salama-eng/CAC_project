@@ -33,22 +33,16 @@ class UserPostsController extends Controller
         $message="";
         if (isset(Auth::user()->profile->id)){
             $id=Auth::id();
-
-            $count=User::With('posts')->find(1)->count();
-           //return $count;
-            if($count>0)
+            if(User::With('posts')->find($id)->count()>0)
             {
-               $message="";
+                $users=User::With('posts')->find($id);
+                
             }
-            else
-            $message="no data";
-
-            $users=User::With('posts')->find($id);
+           
 
            
             return view('client.showpstedcars', [
                 'users'     => $users,
-                'message'     => $message
             ]);
         }else{
             return redirect('profile');

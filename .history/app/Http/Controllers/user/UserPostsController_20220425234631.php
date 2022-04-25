@@ -30,25 +30,13 @@ class UserPostsController extends Controller
     }
     
     public function showpstedcars(){
-        $message="";
         if (isset(Auth::user()->profile->id)){
             $id=Auth::id();
-
-            $count=User::With('posts')->find(1)->count();
-           //return $count;
-            if($count>0)
-            {
-               $message="";
-            }
-            else
-            $message="no data";
-
-            $users=User::With('posts')->find($id);
-
-           
+            
+            $users=User::with(['posts','auctions'])->find($id);
+            //return $users;
             return view('client.showpstedcars', [
                 'users'     => $users,
-                'message'     => $message
             ]);
         }else{
             return redirect('profile');
@@ -70,7 +58,7 @@ class UserPostsController extends Controller
             'description'=>'required',
             'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
             'images'=>'required',
-            'care_type'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
+           
         ],[
             'start_price.not_regex'     =>'السعر البدائي لا يحتوي عن حروف',
             'auction_price.not_regex'   =>'سعر سقف المزايدة لا يحتوي عن حروف ',
