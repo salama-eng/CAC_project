@@ -52,8 +52,8 @@
             <div id="carouselExampleControls" class="carousel slide col-12 mt-5" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/images/{{$post->image}}" class="d-block w-100 main-img" alt="{{$post->image}}">
-            
+                        <img src="images/{{$post->image}}" class="d-block w-100 main-img" alt="{{$post->image}}">
+                       
                     </div>
 
                 </div>

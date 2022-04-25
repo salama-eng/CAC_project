@@ -53,7 +53,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="/images/{{$post->image}}" class="d-block w-100 main-img" alt="{{$post->image}}">
-            
+                       
                     </div>
 
                 </div>

@@ -14,7 +14,7 @@
                         {{$post->starting_price}}$
                         <span class="card-details fs-6"> /السعر الحالي</span></h3>
                         <h5 class="active my-1">
-                            {{-- {{$post->auctions->bid_total}}$ --}}
+                            {{$post->auctions->bid_total}}$
                             <span class="card-details fs-6"> /السعر الاولي</span></h5>
                 </div>
                 <div class="d-flex flex-wrap">
@@ -52,8 +52,8 @@
             <div id="carouselExampleControls" class="carousel slide col-12 mt-5" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/images/{{$post->image}}" class="d-block w-100 main-img" alt="{{$post->image}}">
-            
+                        <img src="/images/{{$post->image}}" class="d-block w-100 main-img" alt="">
+                       
                     </div>
 
                 </div>
@@ -61,7 +61,10 @@
                 <div class="col-lg-12 col-sm-12 d-flex flex-wrap">
 
 
-                   
+                 
+                    <div class="img-responsive">
+                        <img src="{{ URL::asset('/images/$post->multiple_image[0] ') }}" class="img-fluid" alt=" ">
+                    </div>
                     <div class="img-responsive">
                         <img src="{{ URL::asset('images/4.png') }}" class="img-fluid" alt="...">
                     </div>
