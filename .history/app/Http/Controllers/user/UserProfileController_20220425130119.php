@@ -28,7 +28,6 @@ class UserProfileController extends Controller
       
         return view('client.profile', [
             'user' => $user,
-            'bank' => $bank
   
         
         ]);

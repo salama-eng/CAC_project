@@ -91,7 +91,7 @@
                             طريقة الدفع
                         </th>
                         <td>
-                             {{ $bank->name }}
+                            <input type="text" value="  {{ $bank->name }}">
                         </td>
                     </tr>
 
@@ -101,7 +101,7 @@
                             اسم البنك
                         </th>
                         <td>
-                           {{ $bank->bank_name }}
+                            <input type="text" value=" {{ $bank->bank_name }}">
                         </td>
                     </tr>
                     <tr>
@@ -109,7 +109,8 @@
                             رقم الحساب
                         </th>
                         <td>
-                             **** </td>
+                            <input type="text" value="  {{ $acount }} ">
+                        </td>
                     </tr>
                 </table>
 

@@ -58,7 +58,7 @@ class UserPostsController extends Controller
             'description'=>'required',
             'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
             'images'=>'required',
-           
+            'care_type'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
         ],[
             'start_price.not_regex'     =>'السعر البدائي لا يحتوي عن حروف',
             'auction_price.not_regex'   =>'سعر سقف المزايدة لا يحتوي عن حروف ',
