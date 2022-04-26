@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    use DB;
     public function run()
     {
         // \App\Models\User::factory(10)->create();
