@@ -37,7 +37,8 @@ class UserPostsController extends Controller
            
          
             $users=User::With('posts')->find($id);
-          
+
+           
             return view('client.showpstedcars', [
                 'users'     => $users
            
