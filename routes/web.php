@@ -87,6 +87,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
+    Route::post('/save_editprofile', [UserProfileController::class, 'save_edit_profile'])->name('save_editprofile');
+    Route::post('/edit_image_profile', [UserProfileController::class, 'editImageProfile'])->name('edit_image_profile');
     Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
 
     Route::get('/client', function () {

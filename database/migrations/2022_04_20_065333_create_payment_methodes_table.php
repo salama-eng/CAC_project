@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_methode', function (Blueprint $table) {
+        Schema::create('payment_methodes', function (Blueprint $table) {
             $table->id();
             $table->string('account_number');
 
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->constrained()
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedBigInteger('payment_id')->unique();
+            $table->unsignedBigInteger('payment_id');
             $table->foreign('payment_id')->constrained()
                     ->references('id')->on('payments')
                     ->onUpdate('cascade')->onDelete('cascade');

@@ -44,6 +44,20 @@
                 @error('avatar')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
+              <select name="pank" id="" class="mt-4 mb-0 form-select bg-transparent text-light">
+                    @foreach ($payments as $payment)
+                        @if($payment->is_active == 1)
+                            @if (old('pank') == $payment->id)
+                                <option value="{{ $payment->id  }}" selected>{{ $payment->name }}</option>
+                            @else
+                                <option value="{{ $payment->id  }}">{{ $payment->name }}</option>
+                            @endif
+                        @endif
+                    @endforeach
+              </select>
+              @error('pank')
+              <span class="text-end yellow">* {{ $message }}  </span>
+              @enderror
                 <input name="card" type="text" value="{{old('card')}}" class="mt-4 mb-0" placeholder=" رقم الحساب في باي بال">
                 @error('card')
               <span class="text-end yellow">* {{ $message }}  </span>
