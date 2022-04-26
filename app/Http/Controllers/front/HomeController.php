@@ -8,14 +8,17 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function showauctionDetails(){
+    public function showauctionDetails(Request $request,$id){
 
-        $posts=Post::with(['auctions'])->get();
-return $posts;
-        return view('front.auctionDetails');
+        $posts=Post::with(['auctions','users','category','model'])->find($id)->first();
+        // dd($posts);
+//  return $posts->auctions->bid_amount;
+        return view('front.auctionDetails', [
+            'post' => $posts,
+
+        ]);
+     
     }
-
-
 
 
 }

@@ -47,7 +47,10 @@ class AuthController extends Controller
             'password.required' => ' حقل كلمة السر مطلوب ',
             'password.exists' => ' اوبس! كلمة المرور غير صحيحة',
         ]);
-
+        $user = User::where('email', '=', $request->email)->first();
+        if (!Hash::check($request->password, $user->password)) {
+            return redirect()->route('login')->with(['password'=>false, 'password' => 'اوبس! كلمة السر غير صحيحة']);
+         }
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_active' => 1])) {
             if (Auth::user()->hasRole('admin'))
