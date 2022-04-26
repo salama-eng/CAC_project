@@ -56,9 +56,6 @@
                 @error('name')
               <span class="text-end yellow"> * {{ $message }} </span>
               @enderror
-                <!-- @error('email')
-              <span class="text-end yellow">* {{ $message }}  </span>
-              @enderror -->
                 <input name="email"  type="text" class="mt-4 mb-0" placeholder="ايميل المستخدم" value="{{old('email')}}">
                 
                  @error('password')

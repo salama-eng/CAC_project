@@ -20,7 +20,7 @@
             <h2 class="d-flex align-items-center ">CAC</h2>
         </div>
     </header>
-    <div class="login-container d-flex  align-items-center justify-content-around flex-wrap">
+    <div class="login-container d-flex  align-items-end justify-content-around flex-wrap">
         <div class="login-image col-lg-6 col-11">
             <img class=" img-fluid" src="assets/images/regester.png" alt="">
         </div>

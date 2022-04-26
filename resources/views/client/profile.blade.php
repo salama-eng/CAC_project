@@ -12,7 +12,7 @@
             @else
                 <img src="assets/images/avatar.png" class="rounded-circle " alt="">
             @endif
-
+            
             <p class="profilename fs-5 text-center col-lg-8 mt-4"> {{ $user->name }} </p>
             <div class="col-8 d-flex justify-content-center gap-2 mt-2">
                 <img src="assets/icons/star.png" class="" width="20" height="20" alt="">
@@ -93,7 +93,7 @@
                             طريقة الدفع
                         </th>
                         <td>
-                            Visa
+                             {{ $bank->name }}
                         </td>
                     </tr>
 
@@ -103,7 +103,7 @@
                             اسم البنك
                         </th>
                         <td>
-                            paypal
+                           {{ $bank->bank_name }}
                         </td>
                     </tr>
                     <tr>
@@ -111,8 +111,7 @@
                             رقم الحساب
                         </th>
                         <td>
-                            ***************
-                        </td>
+                             **** </td>
                     </tr>
                 </table>
 

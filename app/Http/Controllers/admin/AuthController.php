@@ -4,13 +4,13 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\VerificationEmail;
+use App\Mail\VerificationPassword;
+use App\Models\ResetPassword;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -156,15 +156,71 @@ class AuthController extends Controller
             return redirect()->route('login')
                 ->with(['message' => 'اسم المستخدم او كلمة المرور غير صحيحة ']);
         }
+    
+    } 
+
+    public function showResetPassword(){
+        return view('password.writeEmailForResetPassword');
     }
 
+    public function resetPassword(Request $request){
+         Validator::validate($request->all(),[
+            'email'=>['required','email'],
+        ],[
+            'email.required'=>'هذا الحقل مطلوب ',
+            'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
+        ]);
+
+        $e=new ResetPassword();
+        $e->email=$request->email;
+
+        $token=Str::uuid();
+        $e->token=$token;
+
+        if($e->save()){
+        $email_data=array('email'=>$request->email,
+        'activation_url'=>URL::to('/')."/verify_password/".$token);
+
+        // print_r ($email_data);
+        Mail::to($request->email)->send(new VerificationPassword($email_data));
+        }
+        return  redirect()->back()->with(['message'=>' يرجى مراجعة الايميل لتستطيع تغيير كلمة المرور ']);
+    }
+
+    public function formPassword($token){
+        $resetPass = ResetPassword::select()->where('token', $token)->first();
+        $userInfo = User::select()->where('email', $resetPass->email)->first();
+         return view('password.newPassword', [
+            'userInfo' => $userInfo
+        ]);
+    }
    
+    public function newPassword(Request $request){
+        // return $request;
+        Validator::validate($request->all(),[
+            'email'=>['required','email'],
+            'password'=>['required','min:5'],
+            'confirm_pass'=>['same:password']
 
-    public function resetPassword()
-    {
+        ],[
+            'email.required'=>'هذا الحقل مطلوب ',
+            'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
+            'password.required'=>'هذا الحقل مطلوب ',
+            'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
+            'confirm_pass.same'=>'كلمة المرور غير مطابقة',
+        ]);
+
+        $id = $request->id;
+        $password = Hash::make($request->password);
+        $user = User::where('id', $id)->update(['password' => $password]);
+        if($user)
+        return redirect('login')
+        ->with(['message'=>'تم التعديل بنجاح']);
+        return redirect('login')->with(['message'=>'لم يتم التعديل']);
+
     }
-    public function logout()
-    {
+
+    public function logout(){
 
         Auth::logout();
         return redirect()->route('login');

@@ -66,9 +66,13 @@
                     <p class="text-end yellow">{{ session()->get('password') }}</p>
                 @endif
                 <button type="submit" class="mt-4" name="">تسجيل الدخول</button>
-                <div class=" text-center ">
-                <p class="font-weight-light ">ليس لديك حساب ؟ <a href="register" class=" text-warning  text-decoration-none ">  انشاء حساب ؟ </a></p>             </div>
 
+                <div class="d-flex justify-content-between align-items-start">
+                <p class="font-weight-light text-end  text-white">ليس لديك حساب ؟ <a href="register" class=" text-warning  text-decoration-none ">  انشاء حساب ؟ </a></p>
+
+                <a href="{{route('showResetPassword')}}" class="link-warning text-decoration-none text-start">هل نسيت كلمة المرور؟</a>
+
+                </div>
 
         </form>
 

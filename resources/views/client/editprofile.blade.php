@@ -1,6 +1,8 @@
 @extends('client.layout.clientdashboard')
 @section('content')
 
+
+
     @if ($do == 'Manage')
         <div class="profile-container d-flex flex-wrap g-5  align-items-center">
 
@@ -118,12 +120,6 @@
 
 
                 </div>
-
-
-
-
-
-
 
 
             </div>

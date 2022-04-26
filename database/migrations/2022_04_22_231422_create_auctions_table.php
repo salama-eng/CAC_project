@@ -34,6 +34,12 @@ return new class extends Migration
                     ->references('id')->on('payment_methodes')
                     ->onUpdate('cascade')->onDelete('cascade');
 
+                    $table->unsignedBigInteger('post_id')->unique();
+                    $table->foreign('post_id')->constrained()
+                            ->references('id')->on('posts')
+                            ->onUpdate('cascade')->onDelete('cascade');
+        
+
             $table->boolean('is_active')->default(0);
             $table->timestamps();
         });
