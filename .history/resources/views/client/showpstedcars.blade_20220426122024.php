@@ -30,9 +30,8 @@
 
                 <p href="#" class="card-link card-details">سعر المزايدة/<span class="active"> 
                     {{$post->starting_price}}
-                   
                  $</span></p>
-            <a href="{{route('auctiondetails',$post->id)}}" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+            <a href="#" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
         </div>
     </div>
 @endif

@@ -10,6 +10,21 @@
     $i=0;
 @endphp
 
+
+@if ($i >= 0)
+<div class="d-flex flex-wrap  justify-content-center align-items-center text-center">
+
+
+    <h1 class="text-warning col-12 my-5">  عذرا لايوجد مزادات حالية</h1>
+    <h6 class="col-10 ">  قد تكون المزادات منتهية التاريخ او غير مفعلة </h6>
+    
+    <img class=" image-fluid m-auto col-9 col-lg-4  my-3" src="assets/images/nodata.png"  height=""alt="">
+    <a href="{{route('addAuction')}}" class="card-link active text-center mt-5 mb-2 col-12">   اضافة مزاد  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+    
+    
+    </div> 
+@endif
+
 @foreach($users->posts as $post)
 
 @if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
@@ -30,25 +45,14 @@
 
                 <p href="#" class="card-link card-details">سعر المزايدة/<span class="active"> 
                     {{$post->starting_price}}
-                   
                  $</span></p>
-            <a href="{{route('auctiondetails',$post->id)}}" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+            <a href="#" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
         </div>
     </div>
 @endif
 @endforeach
 
-@if ($i <= 0)
-<div class="d-flex flex-wrap  justify-content-center align-items-center text-center">
 
-    <h6 class="col-10 ">  قد تكون المزادات منتهية التاريخ او غير مفعلة </h6>
-    
-    <img class=" image-fluid m-auto col-9 col-lg-4  my-3" src="assets/images/nodata.png"  height=""alt="">
-    <a href="{{route('addAuction')}}" class="card-link active text-center mt-5 mb-2 col-12">   اضافة مزاد  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-    
-    
-    </div> 
-@endif
 </section>
 
 @endsection

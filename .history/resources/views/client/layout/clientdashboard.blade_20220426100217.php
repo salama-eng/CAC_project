@@ -140,10 +140,10 @@
                            <div class="bg-yellow p-2  mb-2 ">
 
                             @if (isset(Auth::user()->profile->avatar))
-                            <img src="/images/{{Auth::user()->profile->avatar}}" width="80" class="rounded-circle "alt="{{Auth::user()->profile->avatar}}">
+                            <img src="assets/images/{{Auth::user()->profile->avatar}}" width="80" class="rounded-circle "alt="{{Auth::user()->profile->avatar}}">
                         @else
                 
-                            <img src="/assets/images/avatar.png" class="rounded-circle" width="80" alt="avatar.png">
+                            <img src="assets/images/avatar.png" class="rounded-circle" width="80" alt="avatar.png">
                 
                 
                     @endif

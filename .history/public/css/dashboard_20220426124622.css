@@ -69,7 +69,6 @@ nav{
 .bttn:hover .menu,
 .bttn:focus .menu {
     background-color: var(--semiOrange) !important;
-
 }
 
 .menu {
@@ -141,13 +140,8 @@ a:focus {
     height: 2px;
      width: 20px;
     transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
-    transition-delay: 0.1s;
+    transition-delay: 0.2s;
 }
-
-#sidebarCollapse .menu:hover {
-    transform: rotate(180);
-}
-
 #sidebarCollapse:hover .menu, #sidebarCollapse:focus .menu{
     background-color: var(--semiOrange) !important;
 
@@ -255,8 +249,8 @@ a{
     background-color: inherit !important;
     color: gray;
 }
-.main-img-div{
-   width:100%;
+.main-img{
+   
     height:400px;
 }
 @media only screen and (min-width: 992px) {

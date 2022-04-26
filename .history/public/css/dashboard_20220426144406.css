@@ -145,7 +145,7 @@ a:focus {
 }
 
 #sidebarCollapse .menu:hover {
-    transform: rotate(180);
+    transform: rotate(180)
 }
 
 #sidebarCollapse:hover .menu, #sidebarCollapse:focus .menu{

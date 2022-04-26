@@ -12,17 +12,10 @@
                     <h3 class="text-light fw-bold mt-2">{{$post->name}}</h3>
                     <h3 class="active my-3">
                         {{$post->starting_price}}$
-                        <span class="card-details fs-6"> /السعر الاولي</span></h3>
-                        @if (isset($post->auctions[0]->bid_total))
+                        <span class="card-details fs-6"> /السعر الحالي</span></h3>
                         <h5 class="active my-1">
                             {{$post->auctions[0]->bid_total}}$
-                            <span class="card-details fs-6"> /السعر الحالي</span></h5>
-                            @else
-                            <h3 class="active my-3">
-                                {{$post->starting_price}}$
-                                <span class="card-details fs-6"> /السعر الحالي</span></h3>
-                        @endif
-                       
+                            <span class="card-details fs-6"> /السعر الاولي</span></h5>
                 </div>
                 <div class="d-flex flex-wrap">
                     <div class="col-6 col-lg-4">
@@ -57,18 +50,17 @@
         </section>
         <section class="col-lg-6 col-sm-12 mt-5">
             <div id="carouselExampleControls" class="carousel slide col-12 mt-5" data-bs-ride="carousel">
-                <div class="carousel-inner main-img-div w-100">
-                    <div class="carousel-item active w-100">
-                        <img src="/images/{{$post->image}}" class="d-block w-100 h-100 main-img" alt="{{$post->image}}">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/images/{{$post->image}}" class="d-block w-100 main-img" alt="{{$post->image}}">
             
                     </div>
 
                 </div>
 
-                <div class="col-lg-12 col-sm-12 d-flex flex-wrap justify-content-center">
+                <div class="col-lg-12 col-sm-12 d-flex flex-wrap">
 
 
-                  
                    
                     <div class="img-responsive">
                         <img src="{{ URL::asset('images/4.png') }}" class="img-fluid" alt="...">

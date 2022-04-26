@@ -38,7 +38,7 @@
     
         <h6 class="col-12 "> عذرا لايوجد بيانات؟؟ </h6>
         
-        <img class=" image-fluid m-auto col-8 col-lg-3  my-3" src="assets/images/nodata.png"  height=""alt="">
+        <img class=" image-fluid m-auto col-9 col-lg-5  my-3" src="assets/images/nodata.png"  height=""alt="">
         <a href="{{route('addAuction')}}" class="card-link active text-center mt-5 mb-2 col-12">   اضافة مزاد  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
         
         

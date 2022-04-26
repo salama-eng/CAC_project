@@ -30,7 +30,6 @@ return new class extends Migration
                     ->onUpdate('cascade')->onDelete('cascade');
             $table->string('description');
             $table->string('engin_car');
-            $table->string('start_date');
             $table->date('end_date');
             $table->string('starting_price');
             $table->string('auction_ceiling');
