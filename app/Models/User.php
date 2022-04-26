@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
@@ -43,4 +43,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class,'user_id');
+    }
+    public function userPayment()
+    {
+        return $this->hasOne(PaymentMethode::class,'user_id');
+    }
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function auctions()
+    {
+        return $this->hasMany(Auction::class ,'owner_user_id');
+    }
+
+    public function postAdmin()
+    {
+        return $this->hasOne(Post::class, 'user_id');
+    }
+
+  
 }
