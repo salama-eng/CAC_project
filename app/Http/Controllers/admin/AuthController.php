@@ -113,7 +113,7 @@ class AuthController extends Controller
 
             $email_data = array(
                 'name' => $request->name, 'email' => $request->email, 'password' => $v,
-                'activation_url' => URL::to('/') . "/verify_email/" . $token
+                'activation_url' => URL::to('/') . "/verify_email/" . $token . "/".$v
             );
 
             // print_r ($email_data);
@@ -141,13 +141,13 @@ class AuthController extends Controller
         ]);
     }
 
-    public function activeUser($token)
+    public function activeUser($token, $password)
     {
         $user = User::select()->where('remember_token', $token)->first();
         $active = User::where('remember_token', $user->remember_token)->update(['is_active' => 1]);
         $user->is_active = 1;
         // print_r($user->password);
-        if (Auth::user($user)) {
+        if (Auth::attempt(['email' => $user->email, 'password' => $password])) {
             if (Auth::user()->hasRole('admin'))
                 return redirect()->route('admincategories');
             else
