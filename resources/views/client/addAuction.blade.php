@@ -18,7 +18,7 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">اسم السيارة</label>
             <div class="input-group">
-                <input type="text" value="{{ old('carname') }}" name="carname" placeholder="اسم السيارة"
+                <input type="text" value="{{ old('carname') }}" name="carname"
                     class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('carname')
@@ -68,7 +68,7 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">اسم المحرك</label>
             <div class="input-group">
-                <input type="text" name="name_enige" value="{{ old('name_enige') }}" placeholder="اسم المحرك"
+                <input type="text" name="name_enige" value="{{ old('name_enige') }}"
                     class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('name_enige')
@@ -78,7 +78,7 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white"> سعر السيارة البدائي</label>
             <div class="input-group">
-                <input type="text" name="start_price" value="{{ old('start_price') }}" placeholder="سعر المزايدة"
+                <input type="text" name="start_price" value="{{ old('start_price') }}"
                     class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('start_price')
@@ -86,10 +86,10 @@
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">مقدار المزايدة. <span class="yellow fs-6"> لا يقل عن 100
+            <label for="" class="form-label text-white">مقدار المزايدة. <span class="yellow fs-6"> لا يقل عن 100 الف
                     الف</span></label>
             <div class="input-group">
-                <input type="text" name="auction_price" value="{{ old('auction_price') }}" placeholder="سقف سعر المزايدة"
+                <input type="text" name="auction_price" value="{{ old('auction_price') }}"
                     class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('auction_price')
@@ -101,7 +101,7 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">عنوان تواجد السيارة</label>
             <div class="input-group">
-                <input type="text" name="address_car" value="{{ old('address_car') }}" placeholder="عنوان تواجد السيارة"
+                <input type="text" name="address_car" value="{{ old('address_car') }}" 
                     class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('address_car')
@@ -111,7 +111,7 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">لون السيارة</label>
             <div class="input-group">
-                <input type="text" name="color" value="{{ old('color') }}" placeholder="لون السيارة"
+                <input type="text" name="color" value="{{ old('color') }}" 
                     class="form-control" id="basic-url" aria-describedby="basic-addon3">
 
             </div>
@@ -122,7 +122,7 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">التأريخ النهائي للمزاد</label>
             <div class="input-group">
-                <input type="date" name="end_date" value="{{ old('end_date') }}" placeholder="تاريخ انتهاء العرض"
+                <input type="date" name="end_date" value="{{ old('end_date') }}"
                     class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('end_date')
@@ -149,8 +149,8 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">معلومات اخرى حول السيارة</label>
             <div class="input-group">
-                <textarea name="description" value="{{ old('description') }}" class="form-control" placeholder="وصف السيارة"
-                    aria-label="With textarea"></textarea>
+                <textarea name="description" class="form-control" 
+                    aria-label="With textarea">{{old('description')}}</textarea>
             </div>
             @error('description')
                 <span class="text-end yellow">* {{ $message }} </span>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Auction;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Models;
+use App\Models\order;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +16,7 @@ class UserPostsController extends Controller
 {
     // required_if:payment_type,cc
     public function addPost(){
-        if (isset(Auth::user()->profile->id)){
+      
             $damage = ['لا يوجد', 'سطحي', 'ثانوي'];
             $categories = Category::select()->get();
             $models = Models::select()->orderBy('name', 'ASC')->get();
@@ -23,28 +25,20 @@ class UserPostsController extends Controller
                 'models'        => $models,
                 'damage'        => $damage, 
             ]);
-        }else{
-            return redirect('profile');
-        }
+       
         
     }
     
     public function showpstedcars(){
-        $message="";
-        if (isset(Auth::user()->profile->id)){
+     
             $id=Auth::id();
-
-           
-         
             $users=User::With('posts')->find($id);
           
             return view('client.showpstedcars', [
                 'users'     => $users
-           
+        
             ]);
-        }else{
-            return redirect('profile');
-        }
+     
     }
 
     public function save_post(Request $request){
@@ -54,7 +48,7 @@ class UserPostsController extends Controller
             'model_id'=>'required',
             'name_enige'=>'required',
             'start_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
-            'auction_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
+            'auction_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/|min:100",
             'address_car' => 'required|string|between:3,50',
             'color'=>'required|not_regex:/[1-9]/',
             'end_date'=>'required|date|after:now',
@@ -66,6 +60,7 @@ class UserPostsController extends Controller
         ],[
             'start_price.not_regex'     =>'السعر البدائي لا يحتوي عن حروف',
             'auction_price.not_regex'   =>'سعر سقف المزايدة لا يحتوي عن حروف ',
+            'auction_price.min'         =>'سعر سقف المزايدة يجب ان لا يقل عن 100 ',
             'address_car.between'       =>'حقل العنوان لا يقل عن 3 ولا يزيد 50 حرف',
             'color.not_regex'           =>'حقل اللون لا يقبل ارقام',
             'end_date.after'            =>'حقل تاريخ النهاية لازم ان يكون بعد تاريخ البداية',
@@ -110,27 +105,29 @@ class UserPostsController extends Controller
     }
 
     public function complate(){
-        if (isset(Auth::user()->profile->id)){
+       
             $id=Auth::id();
-            $users = User::With('posts')->find($id);
+
+            $order = order::With(['post.auctions','user'])->get();
+        
+          $post=Post::with('auctions')->get();
+       
             return view('client.UserComplatePosts', [
-                'users'     => $users
+                'orders' => $order,
+                'post' => $post,
             ]);
-        }else{
-            return redirect('profile');
-        }
     }
     
 
     public function uncomplate(){
-        if (isset(Auth::user()->profile->id)){
+        $id=Auth::id();
+
+        $auction=Auction::with(['auction_post'])->where('auctions.owner_user_id',$id)->get();
+    //  return $auction[0]->auction_post->name;
             $id=Auth::id();
-            $users = User::With('posts')->find($id);
             return view('client.UserUncomplatePosts', [
-                'users'     => $users
+                'auctions'     => $auction
             ]);
-        }else{
-            return redirect('profile');
-        }
+        
     }
 }
