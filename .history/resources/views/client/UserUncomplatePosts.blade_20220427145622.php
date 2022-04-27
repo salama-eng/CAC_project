@@ -20,6 +20,8 @@
 @endphp
 
 
+          
+
 
             <div class="card text-light m-auto my-4" style="width: 18rem;">
                 <img src="/images/{{$auction->auction_post->image}}" class="card-img-top p-3" height="220" alt="{{$auction->auction_post->image}}">

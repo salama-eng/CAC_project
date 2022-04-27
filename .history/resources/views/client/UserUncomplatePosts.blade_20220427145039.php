@@ -20,22 +20,17 @@
 @endphp
 
 
-
-            <div class="card text-light m-auto my-4" style="width: 18rem;">
-                <img src="/images/{{$auction->auction_post->image}}" class="card-img-top p-3" height="220" alt="{{$auction->auction_post->image}}">
-                <div class="card-body py-0">
+            <div class="card text-light m-auto" style="width: 18rem;">
+                <img src="images/{{$post->image}}" class="card-img-top" height="220" alt="...">
+                <div class="card-body  mt-4">
                     <h5 class="card-title text-center">{{$auction->auction_post->name}}</h5>
                     <p class="text-center fs-7 card-details"> تنتهي في  <em> {{$auction->auction_post->end_date}} </em></p>
                 </div>
-            
-                <div class="card-body d-flex justify-content-between py-0">
-                    <p href="#" class="card-link card-details fs-7">سعر المزايدة/<span class="active"> {{$auction->bid_total}}$</span>
-                    </p>
-                    <a href="{{route('auctiondetails',$auction->auction_post->id)}}" class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                <div class="card-body d-flex justify-content-between  p-0 ">
+                    <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">{{$auction->bid_total}}$</span></p>
+                    <a href="#" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                 </div>
             </div>
-
-
         @endif
     @endforeach
 

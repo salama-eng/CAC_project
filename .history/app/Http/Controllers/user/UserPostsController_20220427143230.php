@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
-use App\Models\Auction;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Models;
@@ -117,13 +116,12 @@ class UserPostsController extends Controller
     
 
     public function uncomplate(){
-        $id=Auth::id();
-
-        $auction=Auction::with(['auction_post'])->where('auctions.owner_user_id',$id)->get();
-    //  return $auction[0]->auction_post->name;
+    
+       
             $id=Auth::id();
+            $users = User::With('posts')->find($id);
             return view('client.UserUncomplatePosts', [
-                'auctions'     => $auction
+                'users'     => $users
             ]);
         
     }

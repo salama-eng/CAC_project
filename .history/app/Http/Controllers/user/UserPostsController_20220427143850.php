@@ -118,12 +118,12 @@ class UserPostsController extends Controller
 
     public function uncomplate(){
         $id=Auth::id();
-
-        $auction=Auction::with(['auction_post'])->where('auctions.owner_user_id',$id)->get();
-    //  return $auction[0]->auction_post->name;
+        $posts=Auction::with(['auction_post'])->where('auctions.owner_user_id',$id)->get();
+       return $posts;
             $id=Auth::id();
+            $users = User::With('posts')->find($id);
             return view('client.UserUncomplatePosts', [
-                'auctions'     => $auction
+                'users'     => $users
             ]);
         
     }

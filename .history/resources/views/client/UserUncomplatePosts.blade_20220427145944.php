@@ -20,9 +20,11 @@
 @endphp
 
 
+          
+
 
             <div class="card text-light m-auto my-4" style="width: 18rem;">
-                <img src="/images/{{$auction->auction_post->image}}" class="card-img-top p-3" height="220" alt="{{$auction->auction_post->image}}">
+                <img src="images/{{$auction->auction_post->image}}" class="card-img-top p-3" height="220" alt="{{$auction->auction_post->image}}">
                 <div class="card-body py-0">
                     <h5 class="card-title text-center">{{$auction->auction_post->name}}</h5>
                     <p class="text-center fs-7 card-details"> تنتهي في  <em> {{$auction->auction_post->end_date}} </em></p>
