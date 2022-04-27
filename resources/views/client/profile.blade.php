@@ -111,7 +111,8 @@
                             رقم الحساب
                         </th>
                         <td>
-                             **** </td>
+                            {{ $user_payment->userPayment->account_number }}
+                        </td>
                     </tr>
                 </table>
 
