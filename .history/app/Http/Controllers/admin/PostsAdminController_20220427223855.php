@@ -15,10 +15,19 @@ class PostsAdminController extends Controller
         
         $user=User::with(['posts'])->get();
        
+        return $user;
+        foreach($user as $users)
+        {
+
+              foreach($users->posts as $posts)
+        {
+            return $posts->name;
+        }
+        }
         
         $postsAll = Post::select('posts.*','categories.name as category_name')
                             ->join("categories", "categories.id", "=", "posts.category_id");
-        
+    
         $route = Route::current()->getName();
         if($route == 'admin_posts'){
             return view('admin.adminManagePosts', [
