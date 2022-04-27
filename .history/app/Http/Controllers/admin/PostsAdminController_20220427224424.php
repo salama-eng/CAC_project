@@ -15,6 +15,7 @@ class PostsAdminController extends Controller
         
         $user=User::with(['posts'])->get();
        
+      
         
         $postsAll = Post::select('posts.*','categories.name as category_name')
                             ->join("categories", "categories.id", "=", "posts.category_id");

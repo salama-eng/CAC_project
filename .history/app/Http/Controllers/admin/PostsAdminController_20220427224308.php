@@ -13,12 +13,11 @@ class PostsAdminController extends Controller
 {
     public function showAdminPosts(){
         
-        $user=User::with(['posts'])->get();
-       
         
+
         $postsAll = Post::select('posts.*','categories.name as category_name')
                             ->join("categories", "categories.id", "=", "posts.category_id");
-        
+    
         $route = Route::current()->getName();
         if($route == 'admin_posts'){
             return view('admin.adminManagePosts', [

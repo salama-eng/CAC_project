@@ -48,7 +48,7 @@ class UserPostsController extends Controller
             'model_id'=>'required',
             'name_enige'=>'required',
             'start_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
-            'auction_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/|min:100",
+            'auction_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
             'address_car' => 'required|string|between:3,50',
             'color'=>'required|not_regex:/[1-9]/',
             'end_date'=>'required|date|after:now',
@@ -60,7 +60,6 @@ class UserPostsController extends Controller
         ],[
             'start_price.not_regex'     =>'السعر البدائي لا يحتوي عن حروف',
             'auction_price.not_regex'   =>'سعر سقف المزايدة لا يحتوي عن حروف ',
-            'auction_price.min'         =>'سعر سقف المزايدة يجب ان لا يقل عن 100 ',
             'address_car.between'       =>'حقل العنوان لا يقل عن 3 ولا يزيد 50 حرف',
             'color.not_regex'           =>'حقل اللون لا يقبل ارقام',
             'end_date.after'            =>'حقل تاريخ النهاية لازم ان يكون بعد تاريخ البداية',
@@ -109,12 +108,12 @@ class UserPostsController extends Controller
             $id=Auth::id();
 
             $order = order::With(['post.auctions','user'])->get();
-        
           $post=Post::with('auctions')->get();
-       
+          return   $post->auctions->id;
+         return $post;
             return view('client.UserComplatePosts', [
-                'orders' => $order,
-                'post' => $post,
+                'orders'     => $order,
+    
             ]);
     }
     
