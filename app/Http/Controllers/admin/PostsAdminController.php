@@ -25,5 +25,16 @@ class PostsAdminController extends Controller
             ]);
         }
     }
+
+    public function editActive(Request $request){
+        $id = $request->postid;
+        $active = Post::where('id', $id)->update(['is_active' => 1]);
+        if($active){
+            return redirect('admin_posts')
+            ->with(['success'=>'تم الموافقة بنجاح']);
+        }else{
+            return back()->with(['error'=>'خطاء هناك مشكلة في عملية الموافقة على المزاد']);
+        }
+    }
  
 }
