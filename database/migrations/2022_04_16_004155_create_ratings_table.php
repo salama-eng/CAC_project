@@ -18,12 +18,12 @@ return new class extends Migration
             $table->integer('rating');
             $table->string('message');
             
-            $table->unsignedBigInteger('owner_user_id')->unique();
+            $table->unsignedBigInteger('owner_user_id');
             $table->foreign('owner_user_id')->constrained()
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedBigInteger('aw_user_id')->unique();
+            $table->unsignedBigInteger('aw_user_id');
             $table->foreign('aw_user_id')->constrained()
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');

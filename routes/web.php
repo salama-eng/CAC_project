@@ -35,11 +35,12 @@ Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
 Route::get('/register',[AuthController::class,'showregister'])->name('register');
+
 // Send Email
-Route::post('/verify_email',[AuthController::class,'activeUser'])->name('verify_email');
+Route::get('/verify_email/{token}/{password}',[AuthController::class,'activeUser'])->name('verify_email');
+Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
 
-
-Route::get('/auctiondetails',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
+Route::get('/auctiondetails/{id}',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
 
 // Reset Password
 Route::get('/showResetPassword',[AuthController::class,'showResetPassword'])->name('showResetPassword');
@@ -94,6 +95,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
     Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
+    Route::post('/save_editprofile', [UserProfileController::class, 'save_edit_profile'])->name('save_editprofile');
+    Route::post('/edit_image_profile', [UserProfileController::class, 'editImageProfile'])->name('edit_image_profile');
     Route::get('/complate_regester', [UserProfileController::class, 'complate_regester'])->name('complate_regester');
 
     Route::get('/client', function () {

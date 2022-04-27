@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->float('price');
             
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->constrained()
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
 
 
-            $table->unsignedBigInteger('post_id')->unique();
+            $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')->constrained()
                     ->references('id')->on('posts')
                     ->onUpdate('cascade')->onDelete('cascade');
