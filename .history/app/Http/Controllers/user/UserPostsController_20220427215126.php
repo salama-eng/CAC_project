@@ -109,11 +109,10 @@ class UserPostsController extends Controller
 
             $order = order::With(['post.auctions','user'])->get();
         
-          $post=Post::with('auctions')->get();
-       
+          $posts=Post::with('auctions')->get();
+        return $posts;
             return view('client.UserComplatePosts', [
                 'orders' => $order,
-                'post' => $post,
             ]);
     }
     
