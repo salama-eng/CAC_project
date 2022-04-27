@@ -24,13 +24,21 @@ main{
     background-attachment: fixed;
     z-index: 6;
 }
+@media (max-width:760px){
+section.social h5{
+    font-size: 4vw;
+}
+section.social span{
+    font-size: 2vw;
+}
+}
 
 section.social .box{
     width: calc(100% / 3);
 }
 section.social .box:not(:last-child){
     position: relative;
-    border-left: 2px solid #433111;
+    border-left: 1px solid #555;
 }
 
 section.send_message{

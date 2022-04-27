@@ -10,7 +10,7 @@
 
 <main class="d-flex justify-content-center align-items-center  ">
     <div class="overlay "></div>
-    <div class="text container text-center  w-50">
+    <div class="text container text-center col-11 col-lg-6 ">
         <h1 class="  yellow mb-5 fw-bold">تواصل معنا</h1>
         <p class="fs-3 ">نحن نعمل باستمرار لجعل تجربتكمن خلال الخدمات أسهل, سنقوم بالرد على رسائلكم خلال 24 ساعة.</p>
 
@@ -21,7 +21,7 @@
     <h3 class="yellow">تواصل معنا عبر</h3>
     <div class="container my-5 d-flex justify-content-around ">
         <div class="box border-left">
-            <i class="fa fa-location-arrow yellow my-4 fs-1 "></i>
+            <i class="fa fa-location-arrow yellow my-4 fs-1  "></i>
             <h5 class="my-3">العنوان</h5>
             <span>العاصمة صنعاء</span>
         </div>
@@ -29,12 +29,12 @@
         <div class="box bd-highlight"> 
         <i class="fa fa-envelope yellow my-4 fs-1"></i>
             <h5 class="my-3">بريد الكتروني</h5>
-            <span> cac.cars.auction@gmail.com</span>
+            <span > cac.cars.auction@gmail.com</span>
         </div>
         <div class="box">
             <i class="fa fa-mobile yellow my-4 fs-1"></i>
             <h5 class="my-3">تلفون</h5>
-            <span >+967 777 777 777</span>
+            <span > 777 777 777</span>
         </div>
     </div>
 </section>
