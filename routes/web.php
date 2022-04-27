@@ -114,6 +114,7 @@ Route::group(['middleware' => 'auth'], function () {
         
         // Admin Manage Posts
         Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
+        Route::post('/active', [PostsAdminController::class, 'editActive'])->name('active');
         
         // Admin Manage Started Auction
         Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
