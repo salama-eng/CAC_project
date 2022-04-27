@@ -16,20 +16,21 @@
 
      
         <div class="card text-light m-auto my-4" style="width: 18rem;">
-            <img src="/images/{{$order->post->image}}" class="card-img-top p-3" height="220" alt="{{$order->post->image}}">
-<h5 class="card-title text-center">{{$order->post->name}}</h5>
+            <img src="/images/{{$auction->auction_post->image}}" class="card-img-top p-3" height="220" alt="{{$auction->auction_post->image}}">
+<h5 class="card-title text-center">{{$order->post->->name}}</h5>
          
         
             <div class="card-body d-flex justify-content-between py-0">
                 <p href="#" class="card-link card-details fs-7">سعر المزايدة/<span class="active"> {{$order->post->auctions[0]->bid_total}}$</span>
                 </p>
-                <a href="{{route('auctiondetails',$order->post->id)}}" class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                <a href="{{route('auctiondetails',$auction->auction_post->id)}}" class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
             </div>
 
             <div class="card-body d-flex justify-content-between py-0">
                 
-               
-                <a href="#" class="card-link card-details fs-7 bg-yellow m-auto p-1 px-3 my-2 card-btn text-white text-center ">تم تاكيد الاستلام <i class="fa fa-check p-2 pt-1"> </i></a>
+                <a href="{{route('auctiondetails',$auction->auction_post->id)}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-white  fs-7"> الدردشة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+          
+                <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white">تاكيد الاستلام </a>
                  </div>
           
         </div>

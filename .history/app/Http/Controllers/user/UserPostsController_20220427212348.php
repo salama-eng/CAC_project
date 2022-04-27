@@ -113,7 +113,7 @@ class UserPostsController extends Controller
          return $post;
             return view('client.UserComplatePosts', [
                 'orders'     => $order,
-               
+                'post'     => $post
             ]);
     }
     

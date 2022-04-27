@@ -29,7 +29,7 @@
             <div class="card-body d-flex justify-content-between py-0">
                 
                
-                <a href="#" class="card-link card-details fs-7 bg-yellow m-auto p-1 px-3 my-2 card-btn text-white text-center ">تم تاكيد الاستلام <i class="fa fa-check p-2 pt-1"> </i></a>
+                <a href="#" class="card-link card-details fs-7 bg-yellow m-auto p-1 px-3 my-2 card-btn text-white text-center ">تم تاكيد الاستلام</a>
                  </div>
           
         </div>
