@@ -54,18 +54,21 @@
 
                 <input name="name"  type="text" class="text-white mb-0" placeholder="إسم المستخدم" value="{{old('name')}}">
                 @error('name')
-              <span class="text-end yellow"> * {{ $message }} </span>
-              @enderror
+                  <span class="text-end yellow"> * {{ $message }} </span>
+                @enderror
                 <input name="email"  type="text" class="mt-4 mb-0" placeholder="ايميل المستخدم" value="{{old('email')}}">
                 
-                 @error('password')
-              <span class="text-end yellow">* {{ $message }}  </span>
-              @enderror
+                @error('email')
+                  <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
                 <input name="password"  type="password" class="btn-block mt-4 mb-0" placeholder="كلمة المرور" value="">
-                @error('confirm_pass')
-              <span class="text-end yellow">* {{ $message }}  </span>
-              @enderror
+                @error('password')
+                  <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
                 <input name="confirm_pass"  type="password" class="mt-4 mb-0" placeholder="تأكيد كلمة المرور " value="">
+                @error('confirm_pass')
+                  <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             
                 <button type="submit" class="mt-4 " name="">انشاء حساب</button>
 
