@@ -34,9 +34,9 @@
 
                 <div class="card-body d-flex justify-content-between py-0">
                     
-                    <a href="{{route('auctiondetails',$auction->auction_post->id)}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-white  fs-7"> الدردشة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                    <a href="{{route('auctiondetails',$auction->auction_post->id)}}" class="card-link active bg-darkgrey p-1 px-3 m-1 text-white  fs-7"> الدردشة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
               
-                    <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white">تاكيد الاستلام </a>
+                    <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 text-white">تاكيد الاستلام </a>
                      </div>
               
             </div>

@@ -7,7 +7,6 @@ use App\Models\Auction;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Models;
-use App\Models\order;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Facades\Validator;
@@ -108,7 +107,7 @@ class UserPostsController extends Controller
        
             $id=Auth::id();
            
-            $order = order::With(['post','user'])->get();
+            $order = User::With(['post','user'])->find($id);
 
             return $order;
             return view('client.UserComplatePosts', [
