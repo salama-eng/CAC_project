@@ -1,0 +1,86 @@
+:root {
+  --yellow: #E39100;
+  --yellow2:rgb(255, 183, 49);
+  --yellow1:rgba(227, 145, 0,0.8);
+  --darkgrey: #191919;
+  --lightgrey: #1C1C1C;
+  --lightgrey1: rgb(28, 28, 28,0.8);
+  --whitecolor: #fff2eb;
+  --whitecolor1: rgba(255, 242, 235,0.4);
+  
+}
+body{
+    /* background-color: transparent; */
+}
+main{
+    background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../images/contact_us.jpg") ;
+    height: 90vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    margin-top: 100px;
+    background-attachment: fixed;
+    z-index: 6;
+}
+
+section.social .box{
+    width: calc(100% / 3);
+}
+section.social .box:not(:last-child){
+    position: relative;
+    border-left: 2px solid #433111;
+}
+
+section.send_message{
+    margin: 150px 0;
+    min-height: 500px;
+}
+section.send_message .box img{
+    /* width: 40rem ; */
+    position: relative;
+    z-index: 2;
+    left: -5rem;
+    top: 40px; 
+}
+
+.yellow_box{
+  height: 110%;
+    width: 10%;
+    left: 0;
+    /* z-index: 6; */
+    position: absolute;
+}
+
+input, textarea{
+    text-align:right;
+padding:0.6rem;
+margin: 0.3rem;
+color: var(--whitecolor);
+margin-bottom: 1.5rem;
+border: 0.8px solid var(--whitecolor1);
+background: transparent;
+
+}
+
+ form button
+{
+color: var(--whitecolor);
+padding:0.6rem;
+margin: 0.3rem;
+border: 0.8px solid var(--yellow);
+background-color: var(--yellow);
+margin-bottom:1.9rem;
+
+}
+
+ button:hover
+{
+color: var(--darkgrey);
+border: 0.8px solid var(--lightgrey);
+background-color: var(--yellow);
+transition: 0.4s;
+
+
+}

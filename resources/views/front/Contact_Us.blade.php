@@ -10,7 +10,7 @@
 
 <main class="d-flex justify-content-center align-items-center  ">
     <div class="overlay "></div>
-    <div class="text container text-center w-50">
+    <div class="text container text-center  w-50">
         <h1 class="  yellow mb-5 fw-bold">تواصل معنا</h1>
         <p class="fs-3 ">نحن نعمل باستمرار لجعل تجربتكمن خلال الخدمات أسهل, سنقوم بالرد على رسائلكم خلال 24 ساعة.</p>
 
@@ -38,30 +38,34 @@
         </div>
     </div>
 </section>
-<section class="send_message  position-relative">
-    <div class="yellow_box position-absolute bg-yellow z-0"></div>
-    <div class="boxes container d-flex justify-content-between align-items-center">
-    <div class="box  ">
-        <h5 class="yellow ">ارسال رسالة</h5>
-        <form action="" class="d-flex ">
+
+<section class="send_message  position-relative ">
+    <div class="boxes d-flex container  my-5 align-items-center">
+    <div class="box col-6 ">
+        <h5 class="yellow my-4">ارسال رسالة</h5>
+        <form action="" class="d-flex flex-wrap">
             <div class="group col-md-6 p-2 ">
                 <input type="text" name="" placeholder="الاسم" id="" class=" my-1 col-11">
                 <input type="text" name="" id="" placeholder="عنوان البريد الالكتروني" class=" my-1 col-11">
                 <input type="text" name="" id="" placeholder="رقم التلفون" class=" my-1 col-11 ">
 
             </div>
-            <div class="group col-md-6">
-                <textarea name="" id="" cols="30" rows="3" placeholder="نص الرسالة" class="col-10 mt-3 mb-0"></textarea>
-                <button type="submit"  name="" class="col-10">ارسال </button>
+            <div class="group col-md-6 ">
+                <textarea name="" id="" cols="30" rows="3" placeholder="نص الرسالة" class="col-11 mt-3 mb-0"></textarea>
+                <button type="submit"  name="" class="col-11">ارسال </button>
             </div>
         </form>
     </div>
-    <div class="box my-3 ">
+    <div class="box  position-relative">
         
-        <img src="{{ URL::asset('images/map.png') }}" class="position-relative z-10 w-50 " alt="">
+        <img src="{{ URL::asset('images/map.png') }}" class=" shadow w-100  posistion relative z-3" alt="">
 
     </div>
+
     </div>
+        <div class="yellow_box  top-0  bg-yellow z-8"></div>
+        
+
 </section>
 
 @endsection
