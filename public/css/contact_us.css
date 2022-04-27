@@ -10,85 +10,86 @@
   
 }
 body{
-    /* background-color: transparent; */
+    overflow-x: hidden;
 }
 main{
     background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../images/contact_us.jpg") ;
-    height: 90vh;
+    height: 80vh;
+    width: 100vw;
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
     color: #fff;
     margin-top: 100px;
     background-attachment: fixed;
-    z-index: 6;
 }
-@media (max-width:760px){
+@media (max-width:750px){
 section.social h5{
     font-size: 4vw;
 }
 section.social span{
-    font-size: 2vw;
+    font-size: 3vw;
 }
 }
 
-section.social .box{
-    width: calc(100% / 3);
-}
 section.social .box:not(:last-child){
-    position: relative;
-    border-left: 1px solid #555;
+    border-left: 0.2vw solid #555;
 }
 
-section.send_message{
-    margin: 150px 0;
-    min-height: 500px;
-}
+
 section.send_message .box img{
-    /* width: 40rem ; */
     position: relative;
     z-index: 2;
-    left: -5rem;
-    top: 40px; 
 }
 
 .yellow_box{
-  height: 110%;
+    height: 100%;
     width: 10%;
     left: 0;
-    /* z-index: 6; */
     position: absolute;
+}
+@media (min-width:836px){
+section.send_message .box img{
+    left: -7.6vw;
+    top: 40px; 
+} 
+
+section.send_message .box img{
+    width: 34vw;
+}
+.yellow_box{
+    height: 120%;
+    width: 10%;
+    left: 0;
+    position: absolute;
+}
 }
 
 input, textarea{
     text-align:right;
-padding:0.6rem;
-margin: 0.3rem;
-color: var(--whitecolor);
-margin-bottom: 1.5rem;
-border: 0.8px solid var(--whitecolor1);
-background: transparent;
+    padding:0.6rem;
+    margin: 0.3rem;
+    color: var(--whitecolor);
+    margin-bottom: 1.5rem;
+    border: 0.8px solid var(--whitecolor1);
+    background: transparent;
 
 }
 
  form button
 {
-color: var(--whitecolor);
-padding:0.6rem;
-margin: 0.3rem;
-border: 0.8px solid var(--yellow);
-background-color: var(--yellow);
-margin-bottom:1.9rem;
+    color: var(--whitecolor);
+    padding:0.6rem;
+    margin: 0.3rem;
+    border: 0.8px solid var(--yellow);
+    background-color: var(--yellow);
+    margin-bottom:1.9rem;
 
 }
 
- button:hover
-{
-color: var(--darkgrey);
-border: 0.8px solid var(--lightgrey);
-background-color: var(--yellow);
-transition: 0.4s;
-
-
+ button:hover{
+    color: var(--darkgrey);
+    border: 0.8px solid var(--lightgrey);
+    background-color: var(--yellow);
+    transition: 0.4s;
 }
