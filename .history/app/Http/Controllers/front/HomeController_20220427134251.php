@@ -12,7 +12,7 @@ class HomeController extends Controller
 
         $posts=Post::with(['auctions','users','category','model'])->find($id);
         // dd($posts);
-//  return $posts;
+ return $posts;
         return view('front.auctionDetails', [
             'post' => $posts,
 
