@@ -379,28 +379,21 @@ backdrop-filter: blur(5px);
   
   position:relative;
   top:4rem;
-  z-index: 4;
+  z-index: -1;
   left:0;
 }
 .btn-yellow
 {
-  border: 1px solid var(--yellow) !important;
+  color: var(--whitecolor);
+  border: 1px solid var(--yellow);
 padding: 0.8rem 1.3rem  0.8rem 1.3rem ;
 }
-.btn-yellow:hover{
-width: 200px;
-transition: 3s;
 
+.btn-yellow a :hover
+{
+  background-color:var(--yellow);
 }
 .bg-yellow{ background-color: var(--yellow); }
-.offers{
-  margin-top: 26%;
-
-}
-.card{
-  background-color: #1e1e1e !important;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
 @media (min-width: 576px){
 
 	.modal-dialog {
@@ -409,14 +402,7 @@ transition: 3s;
 	}
  
 }
-@media (max-width: 1199px){
-  /* .landscape{
-    height: 25vh !important;
-  } */
-  .landscape-div{display: none;}
-  .landscape-image{position:  relative !important;
-  }
-}
+
 
 
 

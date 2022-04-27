@@ -22,8 +22,6 @@
                     <a href="#" class="card-link active">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                 </div>
             </div>
-
-      
         @endif
     @endforeach
 </section>

@@ -12,15 +12,15 @@
                     <h3 class="text-light fw-bold mt-2">{{$post->name}}</h3>
                     <h3 class="active my-3">
                         {{$post->starting_price}}$
-                        <span class="card-details fs-6"> /السعر الحالي</span></h3>
+                        <span class="card-details fs-6"> /السعر الاولي</span></h3>
                         @if (isset($post->auctions[0]->bid_total))
                         <h5 class="active my-1">
                             {{$post->auctions[0]->bid_total}}$
                             <span class="card-details fs-6"> /السعر الحالي</span></h5>
                             @else
-                            <h3 class="active my-3 fs-5">
+                            <h3 class="active my-3">
                                 {{$post->starting_price}}$
-                                <span class="card-details fs-5"> /السعر الاولي</span></h3>
+                                <span class="card-details fs-6"> /السعر الحالي</span></h3>
                         @endif
                        
                 </div>

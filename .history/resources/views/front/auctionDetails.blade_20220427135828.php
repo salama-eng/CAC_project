@@ -12,15 +12,15 @@
                     <h3 class="text-light fw-bold mt-2">{{$post->name}}</h3>
                     <h3 class="active my-3">
                         {{$post->starting_price}}$
-                        <span class="card-details fs-6"> /السعر الحالي</span></h3>
+                        <span class="card-details fs-6"> /السعر الاولي</span></h3>
                         @if (isset($post->auctions[0]->bid_total))
                         <h5 class="active my-1">
                             {{$post->auctions[0]->bid_total}}$
                             <span class="card-details fs-6"> /السعر الحالي</span></h5>
                             @else
-                            <h3 class="active my-3 fs-5">
+                            <h3 class="active my-3">
                                 {{$post->starting_price}}$
-                                <span class="card-details fs-5"> /السعر الاولي</span></h3>
+                                <span class="card-details fs-6"> /السعر الحالي</span></h3>
                         @endif
                        
                 </div>
@@ -69,20 +69,22 @@
 
 
                   @php
-                      $images=json_decode($post->multiple_image,true);
+                      $image=json_decode($post->multipule_image,true);
        
                   @endphp
                    
-
-                   @foreach ($images as $image)
-                   <div class="img-responsive">
-                    <img src="{{ URL::to('/images/'.$image)}}" class="img-fluid" alt="{{$image}}">
-                </div>
-                   @endforeach
                     <div class="img-responsive">
-                        <img src="{{ URL::to('/images/'.$post->image) }}" class="img-fluid" alt="...">
+                        <img src="{{ URL::asset('images/4.png') }}" class="img-fluid" alt="...">
                     </div>
-                  
+                    <div class="img-responsive">
+                        <img src="{{ URL::asset('images/5.png') }}" class="img-fluid" alt="...">
+                    </div>
+                    <div class="img-responsive">
+                        <img src="{{ URL::asset('images/1.png') }}" class="img-fluid " alt="...">
+                    </div>
+                    <div class="img-responsive">
+                        <img src="{{ URL::asset('images/2.png') }}" class="img-fluid" alt="...">
+                    </div>
                     
                 </div>
 
