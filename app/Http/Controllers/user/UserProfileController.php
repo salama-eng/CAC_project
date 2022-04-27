@@ -21,12 +21,9 @@ class UserProfileController extends Controller
       $user_payment=User::with(['userPayment'])->find($id);
         if(isset($user_payment->userPayment->payment_id)){
           $bank =payment::select()->where('id', $user_payment->userPayment->payment_id)->first();
-
-          $acount=$user_payment->userPayment->acount_number;
         }
         else
         $bank="";
-        $acount="";
         return view('client.profile', [
             'user'          => $user,
             'bank'          => $bank,

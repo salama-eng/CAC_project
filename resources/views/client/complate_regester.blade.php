@@ -40,10 +40,14 @@
                 @error('phone')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-                <input name="avatar" type="file" class="mt-4 mb-0" title = "Choose a video please">
+                <input name="avatar" type="file" class="mt-4 mb-0" id="image" title = "Choose a video please">
                 @error('avatar')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
+              <div class="col-md-12 mb-2">
+                  <img id="preview-image-before-upload" src="assets/images/avatar.png"
+                    alt="preview image" style="max-height: 250px;">
+              </div>
               <select name="pank" id="" class="mt-4 mb-0 form-select bg-transparent text-light">
                     @foreach ($payments as $payment)
                         @if($payment->is_active == 1)
@@ -65,6 +69,18 @@
                 <button type="submit" class="mt-4 mb-0" name=""> حفظ</button>
             </form>
         </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function (e) {
+                $('#image').change(function(){      
+                    let reader = new FileReader();
+                    reader.onload = (e) => { 
+                        $('#preview-image-before-upload').attr('src', e.target.result); 
+                    }
+                    reader.readAsDataURL(this.files[0]); 
+                });
+            });
+        </script>
     </div>
 </body>
 </html>
