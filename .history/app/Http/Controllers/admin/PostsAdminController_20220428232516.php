@@ -13,6 +13,7 @@ class PostsAdminController extends Controller
 {
     public function showAdminPosts(){
         
+        $posts=post::with(['users'])->get();
         $user=User::with(['posts'])->get();
        
         
@@ -26,8 +27,8 @@ class PostsAdminController extends Controller
             ]);
         }elseif($route == 'Start_auction'){
             return view('admin.adminManageStartedAuction', [
-                'postsAll' => $postsAll->where('posts.is_active', 1)
-                                        ->where('end_date', '>=', date('Y-m-d'))->get()
+                'postsAll' => $posts->where('posts.is_active', 1)
+                                        ->where('end_date', '>=', date('Y-m-d'))
             ]);
         }
     }

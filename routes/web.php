@@ -9,7 +9,6 @@ use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
-use App\Http\Controllers\front\ContactUsController;
 use App\Http\Controllers\front\HomeController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -42,8 +41,6 @@ Route::get('/verify_email/{token}/{password}',[AuthController::class,'activeUser
 Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
 
 Route::get('/auctiondetails/{id}',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
-Route::get('/contact_us',[ContactUsController::class,'showContactUs'])->name('contact_us');
-
 
 // Reset Password
 Route::get('/showResetPassword',[AuthController::class,'showResetPassword'])->name('showResetPassword');
@@ -77,9 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin_dash', function () {
         return view('admin.layout.dashboard');
     });
-    Route::get('/home', function () {
-        return view('front.home');
-    });
+    // Route::get('/home', function () {
+    //     return view('front.home');
+    // });
 
 
 
@@ -131,63 +128,15 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
-    Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
-    Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
-    Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
-    Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
-
-    // Admin Manage User
-    Route::get('/showAllUsers', [UserAdminController::class,'showAllUsers'])->name('showAllUsers');
-    Route::post('/active_admin_user', [UserAdminController::class, 'activeUser'])->name('active_admin_user');
-
-    // Admin Payments Manage
-    Route::get('/adminPayments', [PaymentsAdminController::class, 'showAdminPayments'])->name('adminPayments');
-    Route::post('/add_admin_Payment', [PaymentsAdminController::class, 'addAdminPayment']);
-    Route::post('/edit_admin_Payment', [PaymentsAdminController::class, 'editAdminPayment']);
-    Route::post('/active_admin_Payment', [PaymentsAdminController::class, 'activePayment']);
-    Route::post('/delete_admin_Payment', [PaymentsAdminController::class, 'deletePayment']);
-
-    // Admin categries Manage
-    Route::get('/admincategories', [CategoriesAdminController::class, 'showAdminCategories'])->name('admincategories');
-    Route::post('/add_admin_category', [CategoriesAdminController::class, 'addAdminCategory']);
-    Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
-    Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
-    Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
-    
-    // Admin Manage Posts
-    Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
-    
-    // Admin Manage Started Auction
-    Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
-    
-    // Admin Manage Auction
-    Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
-    
-    // Admin Manage Ended Auction
-    Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminEndedAuction'])->name('endede_acution');
-    
-
-
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('front.index');
-});
+})->name('home');
 
 Route::get('/auctions', function () {
     return view('front.auctions');
-});
-    Route::get('/aboutUs', function () {
-        return view('front.aboutUs');
-});
-
-
-
-
-Route::get('/resend_email', function () {
-    return view('mail.resend_email');
-});
-
-Route::get('/email', function () {
-    return view('mail.email_verify');
-});
+})->name('auctions');
+Route::get('/offers', function () {
+    return view('front.offers');
+})->name('offers');

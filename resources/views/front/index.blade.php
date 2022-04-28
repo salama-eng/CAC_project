@@ -5,14 +5,12 @@
         <div class="landscape  d-flex align-items-start col-12 ">
 
 
-            <div class=" pe-5 landscape-div mt-5 ">
+            <div class=" pe-5 landscape-div">
                 <div class="landscape-text d-flex flex-wrap  
                  p-5 me-5 w-50">
 
-                    <h1 class="  text-white ">  شركة 
-                         <h1 class="yellow"> كاك </h1>
-                           <h1 class="text-white"> مزاد </h1>
-                    <p class="text-light white mt-lg-4 fs-5 fw-light">
+                    <h2 class="  yellow fs-1">شركة كاك مزاد </h2>
+                    <p class="text-light  mt-lg-4 fs-5 fw-light">
                         لجميع السيارات والشاحنات المستعملة والجديدة <br>تجعل من السهل على الاعضاء العثور والمزايدة على جميع
                         السيارات
                     </p>
@@ -40,15 +38,15 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="10000">
-                            <img src="assets/images/slider1.jpg" class="img-fluid w-100" alt="...">
+                            <img src="/images/slider3.jpg" class="img-fluid w-100" alt="...">
 
                         </div>
                         <div class="carousel-item" data-bs-interval="2000">
-                            <img src="assets/images/slider2.jpg" class="img-fluid w-100" alt="...">
+                            <img src="/images/slider3.jpg" class="img-fluid w-100" alt="...">
 
                         </div>
                         <div class="carousel-item">
-                            <img src="assets/images/slider3.jpg" class="img-fluid w-100" alt="...">
+                            <img src="/images/slider3.jpg" class="img-fluid w-100" alt="...">
 
                         </div>
                     </div>
@@ -74,7 +72,8 @@
         <div class="offers d-flex flex-column align-items-center pt-5 ">
             <h1 class="d-flex flex-wrap   yellow fs-3">العروض الحالية </h1>
             <div class="w-75 more">
-                <a href="" style="text-align: left" class="px-4 text-light fs-6 d-block">المزيد<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                <a href="" class="px-4 text-light fs-6 d-block text-lg-start text-center  py-2">المزيد<i
+                        class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
             </div>
             <div class="d-flex flex-wrap  col-8 col-lg-9">
 
@@ -145,29 +144,30 @@
 
                 <div class="col-12 col-lg-7 img-3-sec d-flex align-items-center justify-content-end">
                     <div class="">
-                   
+
                     </div>
-                         
-                   
+
+
                     <a href="" class="text-light p-2 px-4 d-none">من نحن
                         <i class="fa fa-arrow-left"></i>
                     </a>
-                    <p class="text-light ">تقنية المزاد على <span class="active"> كاك مزاد </span>المنصة المحركة لمزادات السيارات عبر الانترنت</p>
+                    <p class="text-light ">تقنية المزاد على <span class="active"> كاك مزاد </span>المنصة المحركة
+                        لمزادات السيارات عبر الانترنت</p>
                 </div>
 
             </div>
 
             <div class="d-flex col-12 about2">
                 <div class=" d-flex align-items-center justify-content-end">
-                    <p class="col-4 p-5 text-light m-auto section-text">مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد</p>
+                    <p class="col-4 p-5 text-light m-auto section-text">مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك
+                        مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة
+                        الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
+                    </p>
                     <div class="img-3-sec2 col-6"><img src=""></div>
                 </div>
             </div>
 
         </div>
-
-
-
 
 
     </section>

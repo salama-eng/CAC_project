@@ -35,29 +35,29 @@
             </button>
             <div class="collapse navbar-collapse ">
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0 w-75 d-flex justify-content-between fs-7">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">الصفحة الرئيسية</a>
+                    <li class="nav-item ">
+                        <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : 'text-light' }}"  href="{{ url('home' )}}">الصفحة الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">العروض</a>
+                        <a class="nav-link   {{ Request::segment(1) === 'offers' ? 'active' : 'text-light' }}" href="{{ url('offers' )}}">العروض</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="/auctions">المزادات</a>
+                        <a class="nav-link   {{ Request::segment(1) === 'auctions' ? 'active' : 'text-light' }}" href="{{ url('auctions' )}}">المزادات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="contact_us">تواصل معنا
+                        <a class="nav-link link text-light" href="#">تواصل معنا
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="aboutUs">من نحن
+                        <a class="nav-link link text-light" href="#">من نحن
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="login">تسجيل الدخول
+                        <a class="nav-link link text-light" href="#">تسجيل الدخول
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">انشاء حساب
+                        <a class="nav-link link text-light" href="#">انشاء حساب
                         </a>
                     </li>
 
@@ -118,7 +118,7 @@
                 </p>
 
             </div>
-            <div class="py-5 col-10 col-lg-2">
+            <div class="py-5 col-12 col-lg-2">
                 <h6 class="active ">تواصل معنا</h6>
                 <p class="text-light my-2 mt-3"><i class="fa  fa-globe ps-3 active"></i>www.cac.com</p>
                 <p class="text-light my-2"><i class="fa fa-envelope-o ps-3 active"></i>cac@gmail.com</p>
@@ -127,15 +127,15 @@
 
             </div>
             <form action="" class=" mt-5 contact-form col-12 col-lg-4  ">
-                <h6 class="active w-75">إرسال رسالة</h6>
-                <div class="d-flex flex-wrap mt-3  ">
-                    <div class="mx-1 ">
+                <h6 class="active w-100">إرسال رسالة</h6>
+                <div class="d-flex mt-3">
+                    <div class="mx-1">
 
                         <input type="text" placeholder="الاسم" class="d-block my-1 py-2 text-light">
                         <input type="text" placeholder="الايميل" class="d-block my-1 py-2 text-light">
                         <input type="text" placeholder="رقم الهاتف" class="d-block my-1 py-2 text-light">
                     </div>
-                    <div class="mx-1 ">
+                    <div class="mx-1">
                         <textarea name="" id=""  placeholder="نص الرسالة"
                             class=" py-2 text-light d-block px-sm-2 my-1"></textarea>
                         <button class=" text-light rounded-0 py-2">
