@@ -14,8 +14,10 @@
 
 @foreach ($post as $post )
     
-@if (!isset($post->auctions[0]->is_active))
-@if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date <= date('Y-m-d') && $post->id == Auth::id())
+
+@if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date <= date('Y-m-d'))
+
+
 
 
 <div class="card text-light m-auto my-4" style="width: 18rem;">
@@ -42,7 +44,7 @@ $i++;
 @endphp
 
 
-   @endif  
+
 
 
 @endif

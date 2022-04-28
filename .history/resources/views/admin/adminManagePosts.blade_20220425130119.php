@@ -18,19 +18,19 @@
                     <td> اسم المستخدم</td>
                     <td>انتهاء وقت المزايدة</td>
                     <td>السعر الابتدائي  </td>
-                    <td>  صورة السيارة  </td>
-                    <td>تفاصيل السيارة </td>
+                    <td>المبلغ الذي وصل اليه </td>
+                    <td>تفاصيل المزايدة </td>
                     <td>التحكم </td>
 
                 </tr>
-              
+                @php $i = 1 @endphp
                 @foreach($postsAll as $post)
                 <tr>
-                    <td>{{$post->id}}</td>
+                    <td>{{$i++}}</td>
                     <td>{{$post->name}}</td>
-                    <td>{{$post->users->name}} </td>
-                    <td>{{$post->end_date}} </td>
-                    <td>{{$post->starting_price}} </td>
+                    <td>اسم المستخدم</td>
+                    <td>2022/6/2</td>
+                    <td>3400</td>
                     <td>4400</td>
                     <td>رابط صفحة المزايدة</td>
                     <td>   

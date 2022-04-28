@@ -109,12 +109,12 @@ class UserPostsController extends Controller
             $id=Auth::id();
 
             $order = order::With(['post.auctions','user'])->get();
-        
           $post=Post::with('auctions')->get();
-       
+        //   if($post->auction->id)
+        //  return $post;
             return view('client.UserComplatePosts', [
-                'orders' => $order,
-                'post' => $post,
+                'orders'     => $order,
+               
             ]);
     }
     
@@ -123,7 +123,7 @@ class UserPostsController extends Controller
         $id=Auth::id();
 
         $auction=Auction::with(['auction_post'])->where('auctions.owner_user_id',$id)->get();
-
+    //  return $auction[0]->auction_post->name;
             $id=Auth::id();
             return view('client.UserUncomplatePosts', [
                 'auctions'     => $auction

@@ -13,7 +13,7 @@
  
     @foreach($auctions as $auction)
     
-        @if($auction->auction_post->is_active == 1 && $auction->auction_post->status_auction == 0 && $auction->auction_post->end_date <= date('Y-m-d'))
+        @if($auction->auction_post->is_active == 1 && $auction->auction_post->status_auction == 0 && $auction->auction_post->end_date < date('Y-m-d'))
         
         @php
     $i++;

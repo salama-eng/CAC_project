@@ -9,7 +9,6 @@ use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
-use App\Http\Controllers\front\ContactUsController;
 use App\Http\Controllers\front\HomeController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -42,7 +41,6 @@ Route::get('/verify_email/{token}/{password}',[AuthController::class,'activeUser
 Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
 
 Route::get('/auctiondetails/{id}',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
-Route::get('/contact_us',[ContactUsController::class,'showContactUs'])->name('contact_us');
 
 // Reset Password
 Route::get('/showResetPassword',[AuthController::class,'showResetPassword'])->name('showResetPassword');
