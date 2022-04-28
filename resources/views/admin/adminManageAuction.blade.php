@@ -15,8 +15,7 @@
                 <tr >
                     <td>#ID</td>
                     <td>السيارة </td>
-                    <td> اسم البايع</td>
-                    <td> اسم المزايد</td>
+                    <td> اسم المستخدم</td>
                     <td>انتهاء وقت المزايدة</td>
                     <td>السعر الابتدائي  </td>
                     <td>المبلغ الذي وصل اليه </td>
@@ -24,28 +23,26 @@
                     <td>التحكم </td>
 
                 </tr>
-                @php $i = 1 @endphp
-                @foreach($auctions as $auction)
-                    @if($auction->auction_post->is_active == 1 && $auction->auction_post->end_date >= date('Y-m-d') && $auction->auction_post->status_auction == 0)
-                        <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$auction->auction_post->name}}</td>
-                            <td>{{$auction->userOwner->name}}</td>
-                            <td>{{$auction->userAw->name}}</td>
-                            <td>{{$auction->auction_post->end_date}}</td>
-                            <td>{{$auction->bid_amount}}</td>
-                            <td>{{$auction->bid_total}}</td>
-                            <td>
-                                <a href="" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-                            </td>
-                            <td>
-                                <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
-                                    <i class='fa fa-check'></i> Active
-                                </a>
-                            </td>
-                        </tr>
-                    @endif
-                @endforeach
+                <?php $i = 1 ?>
+  
+                <tr>
+                    <td>{{$i++}}</td>
+                    <td>اسم السيارة</td>
+                    <td>اسم المستخدم</td>
+                    <td>2022/6/2</td>
+                    <td>3400</td>
+                    <td>4400</td>
+                    <td>رابط صفحة المزايدة</td>
+                    <td>
+                            <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
+                                <i class='fa fa-check'></i> Active
+                            </a>
+                            <!-- <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
+                                <i class='fa fa-close'></i> noActive
+                            </a> -->
+                        
+                    </td>
+                </tr>
 
                 <div class="modal fade user" id="activeCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">

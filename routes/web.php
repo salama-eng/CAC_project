@@ -9,7 +9,6 @@ use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
-use App\Http\Controllers\front\ContactUsController;
 use App\Http\Controllers\front\HomeController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -42,8 +41,6 @@ Route::get('/verify_email/{token}/{password}',[AuthController::class,'activeUser
 Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
 
 Route::get('/auctiondetails/{id}',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
-Route::get('/contact_us',[ContactUsController::class,'showContactUs'])->name('contact_us');
-
 
 // Reset Password
 Route::get('/showResetPassword',[AuthController::class,'showResetPassword'])->name('showResetPassword');
@@ -77,9 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin_dash', function () {
         return view('admin.layout.dashboard');
     });
-    Route::get('/home', function () {
-        return view('front.home');
-    });
+    // Route::get('/home', function () {
+    //     return view('front.home');
+    // });
 
 
 
@@ -172,24 +169,13 @@ Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('front.index');
-});
+})->name('home');
 
 Route::get('/auctions', function () {
     return view('front.auctions');
-});
-    Route::get('/aboutUs', function () {
-        return view('front.aboutUs');
-});
-
-
-
-
-Route::get('/resend_email', function () {
-    return view('mail.resend_email');
-});
-
-Route::get('/email', function () {
-    return view('mail.email_verify');
-});
+})->name('auctions');
+Route::get('/offers', function () {
+    return view('front.offers');
+})->name('offers');
