@@ -30,7 +30,7 @@
                     <td>{{$post->name}}</td>
                     <td>{{$post->users->name}} </td>
                     <td>{{$post->end_date}} </td>
-                    <td>{{$post->starting_price}} </td>
+                    <td>3400</td>
                     <td>4400</td>
                     <td>رابط صفحة المزايدة</td>
                     <td>   

@@ -132,11 +132,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-Route::get('/', function () {
-    return view('front.index');
-});
 
-Route::get('/auctions', function () {
-    return view('front.auctions');
-});
 

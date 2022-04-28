@@ -122,7 +122,7 @@ class UserPostsController extends Controller
         $id=Auth::id();
 
         $auction=Auction::with(['auction_post'])->where('auctions.owner_user_id',$id)->get();
-
+ return $auction;
             $id=Auth::id();
             return view('client.UserUncomplatePosts', [
                 'auctions'     => $auction
