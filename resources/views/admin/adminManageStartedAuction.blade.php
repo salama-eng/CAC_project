@@ -24,7 +24,7 @@
                 </tr>
                 @php $i = 1 @endphp
                 @foreach($postsAll as $post)
-                    @if($post->is_active == 1)
+                    @if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$post->name}}</td>
