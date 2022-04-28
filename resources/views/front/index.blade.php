@@ -32,6 +32,7 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="10000">
+<<<<<<< Updated upstream
                             <img src="/images/slider1.jpg" class="d-block w-100" alt="...">
 
                         </div>
@@ -41,6 +42,17 @@
                         </div>
                         <div class="carousel-item">
                             <img src="/images/slider3.jpg" class="d-block w-100" alt="...">
+=======
+                            <img src="/assets/images/slider2.jpg" class="img-fluid w-100" alt="...">
+
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="/assets/images/slider3.jpg" class="img-fluid w-100" alt="...">
+
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/images/slider1.jpg" class="img-fluid w-100" alt="...">
+>>>>>>> Stashed changes
 
                         </div>
                     </div>
