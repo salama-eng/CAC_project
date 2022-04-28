@@ -9,10 +9,8 @@
                 <div class="landscape-text d-flex flex-wrap  
                  p-5 me-5 w-50">
 
-                    <h1 class="  text-white ">  شركة 
-                         <h1 class="yellow"> كاك </h1>
-                           <h1 class="text-white"> مزاد </h1>
-                    <p class="text-light white mt-lg-4 fs-5 fw-light">
+                    <h1 class="  text-white ">شركة كاك مزاد </h1>
+                    <p class="text-light  mt-lg-4 fs-6 fw-light">
                         لجميع السيارات والشاحنات المستعملة والجديدة <br>تجعل من السهل على الاعضاء العثور والمزايدة على جميع
                         السيارات
                     </p>
