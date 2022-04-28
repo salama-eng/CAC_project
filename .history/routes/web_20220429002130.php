@@ -90,6 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/UserUncomplatePosts', [UserPostsController::class, 'uncomplate'])->name('UserUncomplatePosts');
     Route::get('/UserComplatePosts', [UserPostsController::class, 'complate'])->name('UserComplatePosts');
    
+
     Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
         Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
@@ -115,7 +116,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
         
         
-
+    
     });
 
 // Admin Manage Posts
@@ -132,6 +133,7 @@ Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'
 Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
 
 // Admin Manage Ended Auction
+
 
     Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
     Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
@@ -166,7 +168,7 @@ Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])
     Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
     
     // Admin Manage Ended Auction
-    Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
+    Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminEndedAuction'])->name('endede_acution');
     
 
 

@@ -22,7 +22,8 @@ class PostsAdminController extends Controller
             ]);
         }elseif($route == 'Start_auction'){
             return view('admin.adminManageStartedAuction', [
-                'postsAll' => $postsAll
+                'postsAll' => $posts->where('posts.is_active', 1)
+                                        ->where('end_date', '>=', date('Y-m-d'))
             ]);
         }
     }

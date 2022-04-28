@@ -90,6 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/UserUncomplatePosts', [UserPostsController::class, 'uncomplate'])->name('UserUncomplatePosts');
     Route::get('/UserComplatePosts', [UserPostsController::class, 'complate'])->name('UserComplatePosts');
    
+
     Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
         Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
@@ -115,7 +116,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
         
         
-
+    
     });
 
 // Admin Manage Posts

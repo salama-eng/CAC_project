@@ -22,7 +22,7 @@ class PostsAdminController extends Controller
             ]);
         }elseif($route == 'Start_auction'){
             return view('admin.adminManageStartedAuction', [
-                'postsAll' => $postsAll
+                'postsAll' => $posts;
             ]);
         }
     }
