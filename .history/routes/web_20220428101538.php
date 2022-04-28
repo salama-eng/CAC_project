@@ -177,7 +177,7 @@ Route::get('/', function () {
 Route::get('/auctions', function () {
     return view('front.auctions');
 });
-    Route::get('/aboutUs', function () {
-        return view('front.aboutUs');
+    Route::get('/auctions', function () {
+        return view('front.auctions');
 });
 

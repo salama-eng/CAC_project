@@ -436,41 +436,6 @@ line-height: 30px;
   position: relative;
   top: -15px;
 }
-
-.img-4-sec2{
-  background-image: url('../assets/images/about2.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 300px;
-  width: 500px;
-  position: relative;
-  top: -15px;
-}
-
-.img-4-sec{
-  background-image: url('../assets/images/about1.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 300px;
-
-}
-
-.img-4-sec div{
-  height: 120px;
-  width: 50px;
-background-color: var(--yellow);
-position: absolute;
-left: 40%;
-}
-.img-4-sec p{
-  width: 16%;
-  position: absolute;
-left: 26%;
-line-height: 30px;
-}
-
 .section-text{
   line-height: 30px;
 }
@@ -483,7 +448,7 @@ line-height: 30px;
 }
 
 .main-contact{
-  background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.7)), url("../assets/images/aboutus.jpg") ;
+  background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.7)), url("../images/contact_us.jpg") ;
   height: 80vh;
   width: 100vw;
   position: relative;
@@ -494,33 +459,7 @@ line-height: 30px;
   background-attachment: fixed;
 }
 
-.main-contact1{
-  background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.7)), url("../assets/images/contact_us.jpg") ;
-  height: 80vh;
-  width: 100vw;
-  position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #fff;
-  margin-top: 100px;
-  background-attachment: fixed;
-}
-.aboutheader
-{
-  font-size:1.3vw;
-  line-height:2.3rem;
-  font-weight:lighter;
-}
-.border1
-{
-  border: 0.7px solid var(--yellow);
-}
-.border1:hover
-{
-  color: white;
-  background-color: var(--yellow);
-  border: 0.7px solid var(--yellow);
-}
+
 
 .auctions-bg-child{
   background-color:black;
@@ -563,190 +502,56 @@ footer .contact-form textarea{
 footer .contact-form button:hover{
   background-color: var(--yellow);
 }
+@media (min-width: 576px){
 
+	.modal-dialog {
+		max-width: 685px;
+		margin: 1.75rem auto;
+	}
  
-  section.social .box:not(:last-child){
-      border-left: 0.2vw solid #555;
-  }
-  
-  
-  section.send_message .box img{
-      position: relative;
-      z-index: 2;
-  }
-  
-  .yellow_box{
-      height: 100%;
-      width: 10%;
-      left: 0;
-      position: absolute;
-  }
-
-
-  .send_message input, textarea{
-    text-align:right;
-    padding:0.6rem;
-    margin: 0.3rem;
-    color: var(--whitecolor);
-    margin-bottom: 1.5rem;
-    border: 0.8px solid var(--whitecolor1);
-    background: transparent;
-
 }
-.contactheader
-{
-  font-size:2vw;
-  font-weight: lighter;
-}
-.contactheader h1
-{
-  font-size:3vw;
-  font-weight: lighter;
-}
-.send_message form button
-{
-    color: var(--whitecolor);
-    padding:0.6rem;
-    margin: 0.3rem;
-    border: 0.8px solid var(--yellow);
-    background-color: var(--yellow);
-    margin-bottom:1.9rem;
-
-}
-
-.send_message button:hover{
-    color: var(--darkgrey);
-    border: 0.8px solid var(--lightgrey);
-    background-color: var(--yellow);
-    transition: 0.4s;
-}
-
-
-@media (min-width:836px){
-  section.send_message .box img{
-      left: -7.6vw;
-      top: 40px; 
-  } 
-  
-  section.send_message .box img{
-      width: 34vw;
-  }
-  .yellow_box{
-      height: 120%;
-      width: 10%;
-      left: 0;
-      position: absolute;
-  }
-
+@media (max-width: 1000px){
+  .about .about1 .img-3-sec{
+position: relative;
+width: 100%;
 
   }
-  @media (max-width: 1199px){
-
-    .landscape-div{display: none;}
-    .landscape-image{position:  relative !important;
-    }
-  }
-  @media (max-width:750px){
-    section.social h5{
-        font-size: 4vw;
-    }
-    section.social span{
-        font-size: 3vw;
-    }
-    .contactheader
-    {
-      font-size:1rem;
-      font-weight: lighter;
-    }
-    .contactheader h1
-    {
-      font-size:2.5rem;
-      
-    }
-   
-  
-    }
-
-    @media (min-width: 576px){
-
-      .modal-dialog {
-        max-width: 685px;
-        margin: 1.75rem auto;
-      }
-      
-     
-    }
-    @media (max-width: 1000px){
-      .about .about1 .img-3-sec{
+  .about .about1 .img-3-sec div{
     position: relative;
     width: 100%;
+    height: 100%;
+    background-color: var(--lightgrey);
+    opacity: .8;
+  }
+  .about .about1 .img-3-sec a{
+    display: block !important;
+    position: absolute;
+    right: 20%;
+    border: 1px solid var(--yellow);
+  }
+  .about .about1 .img-3-sec a:hover{
+    border: none;
+    color: var(--yellow) !important;
     
-      }
-      .about .about1 .img-4-sec{
-        position: relative;
-        width: 100%;
-        
-          }
-    
-      .aboutheader
-    {
-      font-size:0.8rem;
-    }
-    
-      .about .about1 .img-3-sec div{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: var(--lightgrey);
-        opacity: .8;
-      }
-      .about .about1 .img-4-sec div{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: var(--lightgrey);
-        opacity: .8;
-      }
-      .about .about1 .img-3-sec a{
-        display: block !important;
-        position: absolute;
-        right: 20%;
-        border: 1px solid var(--yellow);
-      }
-      .about .about1 .img-4-sec a{
-        display: block !important;
-        position: absolute;
-        right: 20%;
-        border: 1px solid var(--yellow);
-      }
-      .about .about1 .img-3-sec a:hover{
-        border: none;
-        color: var(--yellow) !important;
-        
-      }
-      .about .about1 .img-4-sec a:hover{
-        border: none;
-        color: var(--yellow) !important;
-        
-      }
-      .about .about1 .img-3-sec a:hover i{
-        width: 20% !important;
-      }
-      .about .about1 .img-4-sec a:hover i{
-        width: 20% !important;
-      }
-      .about .about1 .img-3-sec p{
-       
-        width: 30%;
-        left: 40px;
-      }
-      .about .about1 .img-4-sec p{
-       
-        width: 30%;
-        left: 40px;
-      }
-      .about .about2{
-        display: none !important;
-      }  
-    }
-    
+  }
+  .about .about1 .img-3-sec a:hover i{
+    width: 20% !important;
+  }
+  .about .about1 .img-3-sec p{
+   
+    width: 30%;
+    left: 40px;
+  }
+  .about .about2{
+    display: none !important;
+  }  
+}
+@media (max-width: 1199px){
+
+  .landscape-div{display: none;}
+  .landscape-image{position:  relative !important;
+  }
+}
+
+
+

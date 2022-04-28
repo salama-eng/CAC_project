@@ -3,12 +3,15 @@
 
 <main class=" main-contact1 d-flex justify-content-center align-items-center mt-5 ">
     <div class="overlay"></div>
-    <div class="text container contactheader text-center">
-        <h1 class="mt-5   mb-5  yellow fw-bold "> <i class="bi bi-send"></i> تواصل معنا </h1>
-        <p class="col-8  m-auto mb-5"> نحن نعمل باستمرار لجعل تجربتك من خلال الخدمات أسهل, سنقوم بالرد على رسالتكم خلال 24 ساعة
+    <div class="text container aboutheader ">
+        <h1 class="  yellow mb-5 fw-bold "> شركة مزاد كاك</h1>
+        <p class=" col-lg-9 col-11 mb-5">شركة مزاد تأسست في 1982 بواسطة ويليس ج. جونسون، وبدأت كساحة واحدة في كاليفورنيا. 
+            الآن يقع المقر الرئيسي في دالاس، تكساس، تعد كوبارت الشركة الرائدة على مستوى العالم في مزادات السيارات على الإنترنت، ووجهة رئيسية لإعادة بيع وإعادة تسويق السيارات. تقنية كوبارت المبتكرة ومنصة المزادات على الإنترنت تربط بين البائعين و لمشترين حول العالم. كوبارت تقوم بتشغيل أكثر من 200 موقع 
+            في 11 بلد، وأكثر من 150,000 سيارة للمزاد كل يوم.
+
         </p>
-        
-    </div> 
+        <a href="{{route('contact_us')}}" class=" border1 text-center mb-2 px-3 py-2 mt-5"> تواصل معنا  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+    </div>
 </main>
 
     <section class="social text-center my-5">
@@ -33,7 +36,7 @@
         </div>
     </section>
 
-    <section class="send_message  position-relative mb-5 ">
+    <section class="send_message  position-relative ">
         <div class="boxes d-flex container flex-wrap my-5 align-items-center">
             <div class="box col-12 col-md-7 order-2 order-md-1 col-lg-6">
                 <h5 class="yellow my-3 p-3 fs-3 ">ارسال رسالة</h5>
@@ -58,7 +61,7 @@
             </div>
 
         </div>
-        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8 mb-5"></div>
+        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8"></div>
 
 
     </section>

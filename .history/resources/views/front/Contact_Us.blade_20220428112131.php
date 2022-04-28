@@ -1,15 +1,21 @@
 @extends('front.layout.home')
 @section('content')
 
-<main class=" main-contact1 d-flex justify-content-center align-items-center mt-5 ">
-    <div class="overlay"></div>
-    <div class="text container contactheader text-center">
-        <h1 class="mt-5   mb-5  yellow fw-bold "> <i class="bi bi-send"></i> تواصل معنا </h1>
-        <p class="col-8  m-auto mb-5"> نحن نعمل باستمرار لجعل تجربتك من خلال الخدمات أسهل, سنقوم بالرد على رسالتكم خلال 24 ساعة
-        </p>
-        
-    </div> 
-</main>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400&display=swap" rel="stylesheet">
+    <title>Cars Auction</title>
+    </head>
+
+    <main class="d-flex justify-content-center align-items-center mt-5 ">
+        <div class="overlay "></div>
+        <div class="text container text-center col-11 col-lg-6 ">
+            <h1 class="  yellow mb-5 fw-bold ">تواصل معنا</h1>
+            <p class="fs-3 fw-light ">نحن نعمل باستمرار لجعل تجربتكمن خلال الخدمات أسهل, سنقوم بالرد على رسائلكم خلال 24
+                ساعة.</p>
+
+        </div>
+    </main>
 
     <section class="social text-center my-5">
         <h3 class="yellow">تواصل معنا عبر</h3>
@@ -33,7 +39,7 @@
         </div>
     </section>
 
-    <section class="send_message  position-relative mb-5 ">
+    <section class="send_message  position-relative ">
         <div class="boxes d-flex container flex-wrap my-5 align-items-center">
             <div class="box col-12 col-md-7 order-2 order-md-1 col-lg-6">
                 <h5 class="yellow my-3 p-3 fs-3 ">ارسال رسالة</h5>
@@ -58,7 +64,7 @@
             </div>
 
         </div>
-        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8 mb-5"></div>
+        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8"></div>
 
 
     </section>

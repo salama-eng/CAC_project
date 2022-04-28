@@ -563,8 +563,103 @@ footer .contact-form textarea{
 footer .contact-form button:hover{
   background-color: var(--yellow);
 }
+@media (min-width: 576px){
 
+	.modal-dialog {
+		max-width: 685px;
+		margin: 1.75rem auto;
+	}
+  
  
+}
+@media (max-width: 1000px){
+  .about .about1 .img-3-sec{
+position: relative;
+width: 100%;
+
+  }
+  .about .about1 .img-4-sec{
+    position: relative;
+    width: 100%;
+    
+      }
+
+  .aboutheader
+{
+  font-size:0.8rem;
+}
+
+  .about .about1 .img-3-sec div{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--lightgrey);
+    opacity: .8;
+  }
+  .about .about1 .img-4-sec div{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--lightgrey);
+    opacity: .8;
+  }
+  .about .about1 .img-3-sec a{
+    display: block !important;
+    position: absolute;
+    right: 20%;
+    border: 1px solid var(--yellow);
+  }
+  .about .about1 .img-4-sec a{
+    display: block !important;
+    position: absolute;
+    right: 20%;
+    border: 1px solid var(--yellow);
+  }
+  .about .about1 .img-3-sec a:hover{
+    border: none;
+    color: var(--yellow) !important;
+    
+  }
+  .about .about1 .img-4-sec a:hover{
+    border: none;
+    color: var(--yellow) !important;
+    
+  }
+  .about .about1 .img-3-sec a:hover i{
+    width: 20% !important;
+  }
+  .about .about1 .img-4-sec a:hover i{
+    width: 20% !important;
+  }
+  .about .about1 .img-3-sec p{
+   
+    width: 30%;
+    left: 40px;
+  }
+  .about .about1 .img-4-sec p{
+   
+    width: 30%;
+    left: 40px;
+  }
+  .about .about2{
+    display: none !important;
+  }  
+}
+@media (max-width: 1199px){
+
+  .landscape-div{display: none;}
+  .landscape-image{position:  relative !important;
+  }
+}
+@media (max-width:750px){
+  section.social h5{
+      font-size: 4vw;
+  }
+  section.social span{
+      font-size: 3vw;
+  }
+  }
+  
   section.social .box:not(:last-child){
       border-left: 0.2vw solid #555;
   }
@@ -580,6 +675,22 @@ footer .contact-form button:hover{
       width: 10%;
       left: 0;
       position: absolute;
+  }
+  @media (min-width:836px){
+  section.send_message .box img{
+      left: -7.6vw;
+      top: 40px; 
+  } 
+  
+  section.send_message .box img{
+      width: 34vw;
+  }
+  .yellow_box{
+      height: 120%;
+      width: 10%;
+      left: 0;
+      position: absolute;
+  }
   }
 
 
@@ -620,133 +731,3 @@ footer .contact-form button:hover{
     background-color: var(--yellow);
     transition: 0.4s;
 }
-
-
-@media (min-width:836px){
-  section.send_message .box img{
-      left: -7.6vw;
-      top: 40px; 
-  } 
-  
-  section.send_message .box img{
-      width: 34vw;
-  }
-  .yellow_box{
-      height: 120%;
-      width: 10%;
-      left: 0;
-      position: absolute;
-  }
-
-
-  }
-  @media (max-width: 1199px){
-
-    .landscape-div{display: none;}
-    .landscape-image{position:  relative !important;
-    }
-  }
-  @media (max-width:750px){
-    section.social h5{
-        font-size: 4vw;
-    }
-    section.social span{
-        font-size: 3vw;
-    }
-    .contactheader
-    {
-      font-size:1rem;
-      font-weight: lighter;
-    }
-    .contactheader h1
-    {
-      font-size:2.5rem;
-      
-    }
-   
-  
-    }
-
-    @media (min-width: 576px){
-
-      .modal-dialog {
-        max-width: 685px;
-        margin: 1.75rem auto;
-      }
-      
-     
-    }
-    @media (max-width: 1000px){
-      .about .about1 .img-3-sec{
-    position: relative;
-    width: 100%;
-    
-      }
-      .about .about1 .img-4-sec{
-        position: relative;
-        width: 100%;
-        
-          }
-    
-      .aboutheader
-    {
-      font-size:0.8rem;
-    }
-    
-      .about .about1 .img-3-sec div{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: var(--lightgrey);
-        opacity: .8;
-      }
-      .about .about1 .img-4-sec div{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: var(--lightgrey);
-        opacity: .8;
-      }
-      .about .about1 .img-3-sec a{
-        display: block !important;
-        position: absolute;
-        right: 20%;
-        border: 1px solid var(--yellow);
-      }
-      .about .about1 .img-4-sec a{
-        display: block !important;
-        position: absolute;
-        right: 20%;
-        border: 1px solid var(--yellow);
-      }
-      .about .about1 .img-3-sec a:hover{
-        border: none;
-        color: var(--yellow) !important;
-        
-      }
-      .about .about1 .img-4-sec a:hover{
-        border: none;
-        color: var(--yellow) !important;
-        
-      }
-      .about .about1 .img-3-sec a:hover i{
-        width: 20% !important;
-      }
-      .about .about1 .img-4-sec a:hover i{
-        width: 20% !important;
-      }
-      .about .about1 .img-3-sec p{
-       
-        width: 30%;
-        left: 40px;
-      }
-      .about .about1 .img-4-sec p{
-       
-        width: 30%;
-        left: 40px;
-      }
-      .about .about2{
-        display: none !important;
-      }  
-    }
-    

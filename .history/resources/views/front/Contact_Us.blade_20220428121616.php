@@ -58,7 +58,7 @@
             </div>
 
         </div>
-        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8 mb-5"></div>
+        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8"></div>
 
 
     </section>

@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <section class="send_message  position-relative mb-5 ">
+    <section class="send_message  position-relative ">
         <div class="boxes d-flex container flex-wrap my-5 align-items-center">
             <div class="box col-12 col-md-7 order-2 order-md-1 col-lg-6">
                 <h5 class="yellow my-3 p-3 fs-3 ">ارسال رسالة</h5>
@@ -58,7 +58,7 @@
             </div>
 
         </div>
-        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8 mb-5"></div>
+        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8"></div>
 
 
     </section>
