@@ -22,7 +22,7 @@
                     <td>التحكم </td>
 
                 </tr>
-              
+                @php $i = 1 @endphp
                 @foreach($postsAll as $post)
                     @if($post->is_active == 0)
                         <tr>

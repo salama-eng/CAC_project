@@ -168,7 +168,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
     
     // Admin Manage Ended Auction
-    Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminEndedAuction'])->name('endede_acution');
     
 
 
