@@ -19,6 +19,8 @@ class PostsAdminController extends Controller
             return view('admin.adminManagePosts', [
                 'postsAll' => $postsAll,
             ]);
+
+            
         }elseif($route == 'Start_auction'){
             return view('admin.adminManageStartedAuction', [
                 'postsAll' => $postsAll,
