@@ -11,8 +11,8 @@
 <main class="d-flex justify-content-center align-items-center mt-5 ">
     <div class="overlay "></div>
     <div class="text container text-center col-11 col-lg-6 ">
-        <h1 class="  yellow mb-5 fw-bold ">تواصل معنا</h1>
-        <p class="fs-3 fw-bold ">نحن نعمل باستمرار لجعل تجربتكمن خلال الخدمات أسهل, سنقوم بالرد على رسائلكم خلال 24 ساعة.</p>
+        <h1 class=" h1contact yellow mb-5 fw-bold ">تواصل معنا</h1>
+        <p class="fs-3 fw-light ">نحن نعمل باستمرار لجعل تجربتكمن خلال الخدمات أسهل, سنقوم بالرد على رسائلكم خلال 24 ساعة.</p>
 
     </div>
 </main>
@@ -43,7 +43,7 @@
     <div class="boxes d-flex container flex-wrap my-5 align-items-center">
     <div class="box col-12 col-md-7 order-2 order-md-1 col-lg-6">
         <h5 class="yellow my-3 p-3 fs-3 ">ارسال رسالة</h5>
-        <form action="" class="d-flex flex-wrap m-2">
+        <form action="" class="d-flex  m-2">
             <div class="group col-11 col-md-6  ">
                 <input type="text" name="" placeholder="الاسم" id="" class=" my-1 col-11">
                 <input type="text" name="" id="" placeholder="عنوان البريد الالكتروني" class=" my-1 col-11">

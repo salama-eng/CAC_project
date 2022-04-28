@@ -126,7 +126,7 @@
                 <p class="text-light my-2"><i class="fa fa-phone ps-3 active"></i> 777 777 777</p>
 
             </div>
-            <form action="" class=" mt-5 contact-form col-12 col-lg-4  ">
+            <form action="" class=" mt-5 contact-form col-10 col-lg-4  ">
                 <h6 class="active w-75">إرسال رسالة</h6>
                 <div class="d-flex flex-wrap mt-3  ">
                     <div class="mx-1 ">

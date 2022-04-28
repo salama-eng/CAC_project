@@ -118,7 +118,8 @@
                 </p>
 
             </div>
-            <div class="py-5 col-10 col-lg-2">
+            <div class="py-5 col-12 col-lg-2">
+            
                 <h6 class="active ">تواصل معنا</h6>
                 <p class="text-light my-2 mt-3"><i class="fa  fa-globe ps-3 active"></i>www.cac.com</p>
                 <p class="text-light my-2"><i class="fa fa-envelope-o ps-3 active"></i>cac@gmail.com</p>
@@ -126,16 +127,16 @@
                 <p class="text-light my-2"><i class="fa fa-phone ps-3 active"></i> 777 777 777</p>
 
             </div>
-            <form action="" class=" mt-5 contact-form col-12 col-lg-4  ">
-                <h6 class="active w-75">إرسال رسالة</h6>
-                <div class="d-flex flex-wrap mt-3  ">
-                    <div class="mx-1 ">
+            <form action="" class=" mt-5 d-flex flex-wrap contact-form col-12 col-lg-4  ">
+                <h6 class="active w-100">إرسال رسالة</h6>
+                <div class="d-flex flex-wrap mt-3">
+                    <div class="mx-1 col-sm-9 col-lg-12">
 
                         <input type="text" placeholder="الاسم" class="d-block my-1 py-2 text-light">
                         <input type="text" placeholder="الايميل" class="d-block my-1 py-2 text-light">
                         <input type="text" placeholder="رقم الهاتف" class="d-block my-1 py-2 text-light">
                     </div>
-                    <div class="mx-1 ">
+                    <div class="mx-1 col-sm-9 col-lg-12">
                         <textarea name="" id=""  placeholder="نص الرسالة"
                             class=" py-2 text-light d-block px-sm-2 my-1"></textarea>
                         <button class=" text-light rounded-0 py-2">

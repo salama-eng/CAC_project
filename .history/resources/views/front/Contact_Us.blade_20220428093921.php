@@ -12,7 +12,7 @@
     <div class="overlay "></div>
     <div class="text container text-center col-11 col-lg-6 ">
         <h1 class="  yellow mb-5 fw-bold ">تواصل معنا</h1>
-        <p class="fs-3 fw-bold ">نحن نعمل باستمرار لجعل تجربتكمن خلال الخدمات أسهل, سنقوم بالرد على رسائلكم خلال 24 ساعة.</p>
+        <p class="fs-3 fw-light ">نحن نعمل باستمرار لجعل تجربتكمن خلال الخدمات أسهل, سنقوم بالرد على رسائلكم خلال 24 ساعة.</p>
 
     </div>
 </main>

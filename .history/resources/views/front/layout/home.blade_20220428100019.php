@@ -126,16 +126,16 @@
                 <p class="text-light my-2"><i class="fa fa-phone ps-3 active"></i> 777 777 777</p>
 
             </div>
-            <form action="" class=" mt-5 contact-form col-12 col-lg-4  ">
+            <form action="" class=" mt-5 contact-form col-10 col-lg-4  ">
                 <h6 class="active w-75">إرسال رسالة</h6>
-                <div class="d-flex flex-wrap mt-3  ">
-                    <div class="mx-1 ">
+                <div class="d-flex flex-wrap mt-3  w-75">
+                    <div class="mx-1 w-75">
 
                         <input type="text" placeholder="الاسم" class="d-block my-1 py-2 text-light">
                         <input type="text" placeholder="الايميل" class="d-block my-1 py-2 text-light">
                         <input type="text" placeholder="رقم الهاتف" class="d-block my-1 py-2 text-light">
                     </div>
-                    <div class="mx-1 ">
+                    <div class="mx-1 w-75">
                         <textarea name="" id=""  placeholder="نص الرسالة"
                             class=" py-2 text-light d-block px-sm-2 my-1"></textarea>
                         <button class=" text-light rounded-0 py-2">
