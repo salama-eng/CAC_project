@@ -14,6 +14,7 @@ class PostsAdminController extends Controller
     public function showAdminPosts(){
         
         $posts=post::with(['users'])->get();
+        $user=User::with(['posts'])->get();
        
         
         $postsAll = Post::select('posts.*','categories.name as category_name')
