@@ -13,8 +13,6 @@ class PostsAdminController extends Controller
 {
     public function showAdminPosts(){
         
-        $postsAll=Post::with(['users'])->get();
-        $posts=post::with(['users'])->get();
         $user=User::with(['posts'])->get();
        
         
@@ -24,24 +22,13 @@ class PostsAdminController extends Controller
         $route = Route::current()->getName();
         if($route == 'admin_posts'){
             return view('admin.adminManagePosts', [
-                'postsAll' => $postsAll,
+                'postsAll' => $postsAll->where('posts.is_active', 0)->get(),
             ]);
         }elseif($route == 'Start_auction'){
             return view('admin.adminManageStartedAuction', [
-                'postsAll' => $posts->where('posts.is_active', 1)
-                                        ->where('end_date', '>=', date('Y-m-d'))
+                'postsAll' => $postsAll->where('posts.is_active', 1)
+                                        ->where('end_date', '>=', date('Y-m-d'))->get()
             ]);
-        }
-    }
-
-    public function editActive(Request $request){
-        $id = $request->postid;
-        $active = Post::where('id', $id)->update(['is_active' => 1]);
-        if($active){
-            return redirect('admin_posts')
-            ->with(['success'=>'تم الموافقة بنجاح']);
-        }else{
-            return back()->with(['error'=>'خطاء هناك مشكلة في عملية الموافقة على المزاد']);
         }
     }
  

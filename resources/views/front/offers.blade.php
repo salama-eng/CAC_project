@@ -1,7 +1,7 @@
 @extends('front.layout.home')
 @section('content')
     <section>
-        <div class="auctions-bg w-100 mt-5">
+        <div class="auctions-bg offers-bg w-100 mt-5">
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
@@ -192,4 +192,5 @@
         </div>
 
     </section>
+
 @endsection
