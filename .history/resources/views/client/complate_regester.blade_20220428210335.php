@@ -44,13 +44,7 @@
                 @error('avatar')
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
-             
-              
-
-              <div class="col-md-12 mb-2">
-                  <img id="preview-image-before-upload" src="preview image"
-                    alt="preview image" style="max-height: 250px;">
-              </div>
+      
               <select name="pank" id="" class="mt-4 mb-0 form-select bg-transparent text-light">
                     @foreach ($payments as $payment)
                         @if($payment->is_active == 1)

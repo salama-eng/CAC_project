@@ -183,11 +183,6 @@ Route::get('/auctions', function () {
 
 
 
-
-Route::get('/resend_email', function () {
-    return view('mail.resend_email');
-});
-
 Route::get('/email', function () {
-    return view('mail.email_verify');
+    return view('email.email_verify');
 });

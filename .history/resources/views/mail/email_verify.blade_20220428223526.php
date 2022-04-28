@@ -19,7 +19,7 @@
         <style>
             body
             {
-                background-color:#131313;
+
             }
 .container
 {
@@ -28,23 +28,7 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
-    text-align: center;
-    font-family: tajawal;
-   
-    
-    color: rgb(247, 247, 247);
-   
-}
-em
-{
-    color:#E39100;
-}
-.bg-yellow
-{
-    background-color:#E39100;
     color: #fff;
-    margin: 1rem;
-    padding:0.6rem;
 }
 
         </style>
@@ -53,16 +37,11 @@ em
 <body>
 
     <div class="container"><img src="assets/images/email.png" width ="300" height=""alt="">
-    <h1>اهلا {{$data['name']}}    CAC</h1>
-    <h1>مرحبا بك في موقع
-         <em>كاك</em>
-          مزاد</h1>
+    {{-- <h1>اهلا {{$data['name']}} مرحبا بك معنا في   CAC</h1> --}}
     <p >CAC هو موقع للمزايدة على سيارات نتمنى ان نقد لكم الخدمة المطلوبه </p>
-    <p > نحن نرسل لك هذا الايميل لتفعيل حسابك لتستفيد من خدمات الموقع</p>
     <p>لتفعيل حسابك يرجى الضغط على الزر في الاسفل</p>
-    <em >ملاحضة :</em>هذة الرسالة من البريد الالكتروني تم ارسالها تلقائيا من فضلك عدم الرد
-{{$data['activation_url']}}
-    <a href="" class="btn btn-sm bg-yellow">تفعيل الحساب</a>
+
+    {{-- <a href="{{$data['activation_url']}}" class="btn btn-sm bg-yellow">تفعيل الحساب</a> --}}
 </div>
 </body>
 </html>

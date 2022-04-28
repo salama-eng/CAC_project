@@ -45,8 +45,6 @@
               <span class="text-end yellow">* {{ $message }}  </span>
               @enderror
              
-              
-
               <div class="col-md-12 mb-2">
                   <img id="preview-image-before-upload" src="preview image"
                     alt="preview image" style="max-height: 250px;">

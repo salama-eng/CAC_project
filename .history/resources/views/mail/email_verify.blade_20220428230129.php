@@ -53,7 +53,7 @@ em
 <body>
 
     <div class="container"><img src="assets/images/email.png" width ="300" height=""alt="">
-    <h1>اهلا {{$data['name']}}    CAC</h1>
+    {{-- <h1>اهلا {{$data['name']}}    CAC</h1> --}}
     <h1>مرحبا بك في موقع
          <em>كاك</em>
           مزاد</h1>
@@ -61,7 +61,7 @@ em
     <p > نحن نرسل لك هذا الايميل لتفعيل حسابك لتستفيد من خدمات الموقع</p>
     <p>لتفعيل حسابك يرجى الضغط على الزر في الاسفل</p>
     <em >ملاحضة :</em>هذة الرسالة من البريد الالكتروني تم ارسالها تلقائيا من فضلك عدم الرد
-{{$data['activation_url']}}
+{{-- {{$data['activation_url']}} --}}
     <a href="" class="btn btn-sm bg-yellow">تفعيل الحساب</a>
 </div>
 </body>
