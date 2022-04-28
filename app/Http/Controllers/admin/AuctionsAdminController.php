@@ -22,7 +22,13 @@ class AuctionsAdminController extends Controller
             $posts=Post::with(['auctions', 'users'])->get();
             return view('admin.adminManageEndedAuction', [
                 'posts'   => $posts,
-                'auctions'   => $auctions,
+                'auctions'   => $auctions->first(),
+            ]);
+        }elseif($route == 'un_complate'){
+            $posts=Post::with(['auctions', 'users'])->get();
+            return view('admin.adminManageUncomplateAuction', [
+                'posts'   => $posts,
+                'auctions'   => $auctions->first(),
             ]);
         }
     }

@@ -60,6 +60,7 @@
                             <li><a href="{{route('admin_posts')}}" class="text-light text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
                             <li><a href="{{route('Start_auction')}}" class="text-light text-center p-3">إدارة العروض</a></li>
                             <li><a href="{{route('admin_acution')}}" class="text-light text-center p-3">إدارة المزادات الحالية</a></li>
+                            <li><a href="{{route('un_complate')}}" class="text-light text-center p-3">إدارة المزادات المعلقة</a></li>
                             <li><a href="{{route('endede_acution')}}" class="text-light text-center p-3">إدارة المزادات المنتهية</a></li>
 
                         </ul>

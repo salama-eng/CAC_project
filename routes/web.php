@@ -122,6 +122,9 @@ Route::group(['middleware' => 'auth'], function () {
         // Admin Manage Auction
         Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
         
+        // Admin Manage Uncomplate Auction
+        Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
+        
         // Admin Manage Ended Auction
         Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
         

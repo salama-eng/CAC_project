@@ -62,8 +62,8 @@ class UserProfileController extends Controller
         ],[
             'required'=>'هذا الحقل مطلوب',
             'phone.not_regex'=>'لا يمكنك ادخال حروف او رموز',
-            'phone.min'=>'يجب ان لا يقل عن 7 ارقام',
-            'phone.max'=>'يجب ان لا يزيد عن 7 ارقام',
+            'phone.min'=>'يجب ان لا يقل عن 9 ارقام',
+            'phone.max'=>'يجب ان لا يزيد عن 9 ارقام',
             'phone.starts_with'=>'يمكنك ادخال 77 او 73 او 71 او 70 في البداية',
             'card.regex'=>'لا يمكنك ادخال حروف او رموز',
             'card.min'=>'يجب ان لا يقل عن 14 ارقام',
