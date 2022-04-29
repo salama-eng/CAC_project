@@ -24,23 +24,19 @@
                 </tr>
                 @php $i = 1 @endphp
                 @foreach($postsAll as $post)
-                    @if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
-                        <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$post->name}}</td>
-                            <td>{{$post->users->name}}</td>
-                            <td>{{$post->end_date}}</td>
-                            <td>{{$post->starting_price}}</td>
-                            <td>
-                                <a href="" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-                            </td>
-                            <td>   
-                                <a href="" class='btn btn-success activate' data-bs-toggle="modal" data-bs-target="#active{{$post->id}}">
-                                    <i class='fa fa-check'></i> تم الموافقة
-                                </a> 
-                            </td>
-                        </tr>
-                    @endif
+                    <tr>
+                        <td>{{$i++}}</td>
+                        <td>{{$post->name}}</td>
+                        <td>{{$post->category_name}}</td>
+                        <td>{{$post->end_date}}</td>
+                        <td>{{$post->starting_price}}</td>
+                        <td>رابط صفحة المزايدة</td>
+                        <td>
+                            <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
+                                <i class='fa fa-check'></i> Active
+                            </a>
+                        </td>
+                    </tr>
                 @endforeach
                 <div class="modal fade user" id="activeCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -70,3 +66,4 @@
     </div>
 
 @endsection
+                

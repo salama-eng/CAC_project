@@ -12,12 +12,5 @@ class Auction extends Model
     public function auction_post(){
         return $this->belongsTo(post::class,'post_id');
     }
-    public function userOwner(){
-        return $this->belongsTo(User::class,'Owner_user_id');
-    }
-    public function userAw(){
-        return $this->belongsTo(User::class,'aw_user_id');
-    }
-    
     
 }
