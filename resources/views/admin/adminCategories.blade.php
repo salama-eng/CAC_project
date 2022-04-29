@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{$i++}}</td>
                     <td>{{$category->name}}</td>
-                    <td><img src="images/{{$category->image}}" width="80" alt="{{$category->image}}" ></td>
+                    <td><img src="{{ URL::asset('images/'.$category->image) }}" width="80" alt="{{$category->image}}" ></td>
                     <td>
                         <a href="admincategories?do=Edit&categoryid={{$category->id}}" class="btn btn-success">
                             <i class='fa fa-edit'></i> Edit
@@ -117,7 +117,7 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
             <div class="col-sm-8 col-md-9">
-                <input type="file" name="image" value="{{old('image')}}" class="form-control" autocomplete="off">
+                <input type="file" name="image" accept="{{old('image')}}" value="{{old('image')}}" class="form-control" autocomplete="off">
             </div>
         </div>
         <div class="form-check d-flex  justify-content-center mt-5 ">

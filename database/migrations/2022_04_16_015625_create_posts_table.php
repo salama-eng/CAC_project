@@ -25,9 +25,7 @@ return new class extends Migration
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('model_id');
-            $table->foreign('model_id')->constrained()
-                    ->references('id')->on('models')
-                    ->onUpdate('cascade')->onDelete('cascade');
+            $table->string('models');
             $table->string('description');
             $table->string('engin_car');
             $table->string('start_date');
