@@ -1,14 +1,14 @@
 @extends('front.layout.home')
 @section('content')
     <section>
-        <div class="auctions-bg w-100 mt-5">
+        <div class="auctions-bg offers-bg w-100 mt-5">
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
-                <h1 class="fw-bold w-100 text-center active mb-2">
+                <h1 class="fw-bold w-100 text-center active m-3">
                     مستكشف المركبات
                 </h1>
-                <p class="w-100 text-center text-lighter m-2 mb-5">
+                <p class="w-100 text-center text-light mb-2">
                     هل تبحث عن سيارات بحالة معينة؟
                     <br>
                     تبسيط البحث عن طريق تحديد فئة لتضييق تطاق نتائجك
@@ -192,4 +192,5 @@
         </div>
 
     </section>
+
 @endsection

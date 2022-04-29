@@ -8,7 +8,7 @@
                 <h1 class="fw-bold w-100 text-center active mb-2">
                     مستكشف المركبات
                 </h1>
-                <p class="w-100 text-center text-lighter m-2 mb-5">
+                <p class="w-100 text-center text-light m-2 mb-5">
                     هل تبحث عن سيارات بحالة معينة؟
                     <br>
                     تبسيط البحث عن طريق تحديد فئة لتضييق تطاق نتائجك
