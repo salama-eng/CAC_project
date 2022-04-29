@@ -9,7 +9,6 @@ use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
-use App\Http\Controllers\front\ContactUsController;
 use App\Http\Controllers\front\HomeController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -42,8 +41,6 @@ Route::get('/verify_email/{token}/{password}',[AuthController::class,'activeUser
 Route::post('/resendEmail',[AuthController::class,'resendEmail'])->name('resendEmail');
 
 Route::get('/auctiondetails/{id}',[HomeController::class,'showauctionDetails'])->name('auctiondetails');
-Route::get('/contact_us',[ContactUsController::class,'showContactUs'])->name('contact_us');
-
 
 // Reset Password
 Route::get('/showResetPassword',[AuthController::class,'showResetPassword'])->name('showResetPassword');
@@ -77,9 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin_dash', function () {
         return view('admin.layout.dashboard');
     });
-    Route::get('/home', function () {
-        return view('front.home');
-    });
+    // Route::get('/home', function () {
+    //     return view('front.home');
+    // });
 
 
 
@@ -90,7 +87,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/UserUncomplatePosts', [UserPostsController::class, 'uncomplate'])->name('UserUncomplatePosts');
     Route::get('/UserComplatePosts', [UserPostsController::class, 'complate'])->name('UserComplatePosts');
    
-
     Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
         Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
@@ -115,21 +111,24 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
         Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
         
-        // Admin Manage Posts
-        Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
         
-        // Admin Manage Started Auction
-        Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
-        
-        // Admin Manage Auction
-        Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
-        
-        // Admin Manage Ended Auction
-        Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminEndedAuction'])->name('endede_acution');
-        
-    
+
     });
 
+// Admin Manage Posts
+Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
+Route::post('/active', [PostsAdminController::class, 'editActive'])->name('active');
+
+// Admin Manage Started Auction
+Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
+
+// Admin Manage Auction
+Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
+
+// Admin Manage Uncomplate Auction
+Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
+
+// Admin Manage Ended Auction
 
     Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
     Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
@@ -164,41 +163,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
     
     // Admin Manage Ended Auction
-    Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminEndedAuction'])->name('endede_acution');
+    Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
     
 
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('front.index');
-});
-
-Route::get('/auctions', function () {
-    return view('front.auctions');
-});
-    Route::get('/aboutUs', function () {
-        return view('front.aboutUs');
-});
-
-
-
-
-Route::get('/resend_email', function () {
-    return view('mail.resend_email');
-});
-
-Route::get('/email', function () {
-    return view('mail.email_verify');
-});
+})->name('home');
 
 Route::get('/auctions', function () {
     return view('front.auctions');
 })->name('auctions');
 Route::get('/offers', function () {
     return view('front.offers');
-})->name('offers');
-
-Route::get('/contact_us', function () {
-    return view('front.Contact_Us');
 })->name('offers');

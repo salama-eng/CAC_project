@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse ">
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0 w-75 d-flex justify-content-between fs-7">
                     <li class="nav-item ">
-                        <a class="nav-link {{ Request::segment(1) === '/' ? 'active' : 'text-light' }}"  href="{{ url('/' )}}">الصفحة الرئيسية</a>
+                        <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : 'text-light' }}"  href="{{ url('home' )}}">الصفحة الرئيسية</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link   {{ Request::segment(1) === 'offers' ? 'active' : 'text-light' }}" href="{{ url('offers' )}}">العروض</a>
@@ -45,11 +45,11 @@
                         <a class="nav-link   {{ Request::segment(1) === 'auctions' ? 'active' : 'text-light' }}" href="{{ url('auctions' )}}">المزادات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link{{ Request::segment(1) === 'contact_us' ? 'active' : 'text-light' }}"" href="contact_us">تواصل معنا
+                        <a class="nav-link link text-light" href="#">تواصل معنا
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link {{ Request::segment(1) === 'aboutUs' ? 'active' : 'text-light' }}"" href="aboutUs">من نحن
+                        <a class="nav-link link text-light" href="#">من نحن
                         </a>
                     </li>
                     <li class="nav-item">

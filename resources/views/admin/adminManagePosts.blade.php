@@ -18,52 +18,49 @@
                     <td> اسم المستخدم</td>
                     <td>انتهاء وقت المزايدة</td>
                     <td>السعر الابتدائي  </td>
-                    <td>تفاصيل المزايدة </td>
+                    <td>  صورة السيارة  </td>
+                    <td>تفاصيل السيارة </td>
                     <td>التحكم </td>
 
                 </tr>
               
                 @foreach($postsAll as $post)
-                    @if($post->is_active == 0)
-                        <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$post->name}}</td>
-                            <td>{{$post->users->name}}</td>
-                            <td>{{$post->end_date}}</td>
-                            <td>{{$post->starting_price}}</td>
-                            <td>
-                                <a href="" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-                            </td>
-                            <td>   
-                                <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#active{{$post->id}}">
-                                    <i class='fa fa-close'></i> قبول
-                                </a> 
-                            </td>
-                        </tr>
-                    @endif
-                
-                    <div class="modal fade user" id="active{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content bg-dark">
-                                <form action="active" method="post">
-                                    @csrf
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">قبول المزاد</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h2>هل انت متاكد</h2>
-                                        <input type="hidden" name="postid" value="{{$post->id}}">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">تراجع</button>
-                                        <input type="submit" class="btn btn-primary" value=" قبول" />
-                                    </div>
-                                </form>
-                            </div>
+                <tr>
+                    <td>{{$post->id}}</td>
+                    <td>{{$post->name}}</td>
+                    <td>{{$post->users->name}} </td>
+                    <td>{{$post->end_date}} </td>
+                    <td>{{$post->starting_price}} </td>
+                    <td>4400</td>
+                    <td>رابط صفحة المزايدة</td>
+                    <td>   
+                        <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
+                            <i class='fa fa-close'></i> noActive
+                        </a> 
+                    </td>
+                </tr>
+                @endforeach
+                <div class="modal fade user" id="activeCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark">
+                            <form action="" method="post">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">حالة الموديل</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                   
+                                    <h2>هل انت متاكد</h2>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">تراجع</button>
+                                    <input type="submit" class="btn btn-primary" value="تعديل الحالة" />
+                                </div>
+                            </form>
                         </div>
                     </div>
-                @endforeach
+                </div>
             </table>
         </div>
        

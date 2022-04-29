@@ -198,7 +198,3 @@ Route::get('/auctions', function () {
 Route::get('/offers', function () {
     return view('front.offers');
 })->name('offers');
-
-Route::get('/contact_us', function () {
-    return view('front.Contact_Us');
-})->name('offers');

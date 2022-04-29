@@ -4,33 +4,12 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Auction;
-use App\Models\User;
-use App\Models\Post;
-use Illuminate\Support\Facades\Route;
+use App\Models\Category;
 class AuctionsAdminController extends Controller
 {
     //
     public function showAdminAuction(){
-        $auctions = Auction::with(['auction_post', 'userOwner', 'userAw'])->get();
-        $route = Route::current()->getName();
-        if($route == 'admin_acution'){
-            return view('admin.adminManageAuction', [
-                'auctions'   => $auctions,
-            ]);
-        }elseif($route == 'endede_acution'){
-            $posts=Post::with(['auctions', 'users'])->get();
-            return view('admin.adminManageEndedAuction', [
-                'posts'   => $posts,
-                'auctions'   => $auctions->first(),
-            ]);
-        }elseif($route == 'un_complate'){
-            $posts=Post::with(['auctions', 'users'])->get();
-            return view('admin.adminManageUncomplateAuction', [
-                'posts'   => $posts,
-                'auctions'   => $auctions->first(),
-            ]);
-        }
+        return view('admin.adminManageAuction');
     }
 
     public function showAdminStartAuction(){
