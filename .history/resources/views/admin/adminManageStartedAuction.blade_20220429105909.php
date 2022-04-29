@@ -32,7 +32,7 @@
                             <td>{{$post->end_date}}</td>
                             <td>{{$post->starting_price}}</td>
                             <td>
-                                <a href="{{route('auctiondetails',$post->id)}}" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                                <a href="" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                             </td>
                             <td>   
                                 <a href="" class='btn btn-success activate' data-bs-toggle="modal" data-bs-target="#active{{$post->id}}">

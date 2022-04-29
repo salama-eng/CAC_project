@@ -2,7 +2,7 @@
 @section('content')
 
 
-<h1 class="text-center fs-3 text-white mb-5">ادارة العروض </h1>
+<h1 class="text-center fs-3 text-white mb-5">ادارة  طلبات المزاد </h1>
     <div class="container">
         @if(session()->has('success'))
             <div class="alert alert-success message">
@@ -18,29 +18,27 @@
                     <td> اسم المستخدم</td>
                     <td>انتهاء وقت المزايدة</td>
                     <td>السعر الابتدائي  </td>
-                    <td>تفاصيل المزايدة </td>
+                    <td>  صورة السيارة  </td>
+                    <td>تفاصيل السيارة </td>
                     <td>التحكم </td>
 
                 </tr>
-                @php $i = 1 @endphp
+              
                 @foreach($postsAll as $post)
-                    @if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
-                        <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$post->name}}</td>
-                            <td>{{$post->users->name}}</td>
-                            <td>{{$post->end_date}}</td>
-                            <td>{{$post->starting_price}}</td>
-                            <td>
-                                <a href="{{route('auctiondetails',$post->id)}}" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-                            </td>
-                            <td>   
-                                <a href="" class='btn btn-success activate' data-bs-toggle="modal" data-bs-target="#active{{$post->id}}">
-                                    <i class='fa fa-check'></i> تم الموافقة
-                                </a> 
-                            </td>
-                        </tr>
-                    @endif
+                <tr>
+                    <td>{{$post->id}}</td>
+                    <td>{{$post->name}}</td>
+                    <td>{{$post->users->name}} </td>
+                    <td>{{$post->end_date}} </td>
+                    <td>{{$post->starting_price}} </td>
+                    <td>4400</td>
+                    <td>رابط صفحة المزايدة</td>
+                    <td>   
+                        <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
+                            <i class='fa fa-close'></i> noActive
+                        </a> 
+                    </td>
+                </tr>
                 @endforeach
                 <div class="modal fade user" id="activeCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -70,3 +68,4 @@
     </div>
 
 @endsection
+                

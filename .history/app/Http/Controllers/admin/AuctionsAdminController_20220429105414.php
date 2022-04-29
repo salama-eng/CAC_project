@@ -10,7 +10,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 class AuctionsAdminController extends Controller
 {
-    
+    //
     public function showAdminAuction(){
         $auctions = Auction::with(['auction_post', 'userOwner', 'userAw'])->get();
         $route = Route::current()->getName();

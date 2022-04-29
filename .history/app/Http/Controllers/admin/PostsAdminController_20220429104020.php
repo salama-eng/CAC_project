@@ -17,25 +17,18 @@ class PostsAdminController extends Controller
         $route = Route::current()->getName();
         if($route == 'admin_posts'){
             return view('admin.adminManagePosts', [
-                'postsAll' => $postsAll,
+                'postsAll' => $postsAll->where('posts.is_active', 0)->get(),
             ]);
 
             
         }elseif($route == 'Start_auction'){
             return view('admin.adminManageStartedAuction', [
+<<<<<<< HEAD
                 'postsAll' => $postsAll,
+=======
+                'postsAll' => $postsAll
+>>>>>>> main
             ]);
-        }
-    }
-
-    public function editActive(Request $request){
-        $id = $request->postid;
-        $active = Post::where('id', $id)->update(['is_active' => 1]);
-        if($active){
-            return redirect('admin_posts')
-            ->with(['success'=>'تم الموافقة بنجاح']);
-        }else{
-            return back()->with(['error'=>'خطاء هناك مشكلة في عملية الموافقة على المزاد']);
         }
     }
  
