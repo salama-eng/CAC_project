@@ -53,11 +53,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link text-light" href="#">تسجيل الدخول
+                        <a class="nav-link {{ Request::segment(1) === 'login' ? 'active' : 'text-light' }}" href="{{ url('login' )}}">تسجيل الدخول
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link text-light" href="#">انشاء حساب
+                        <a class="nav-link {{ Request::segment(1) === 'register' ? 'active' : 'text-light' }}" href="{{ url('register' )}}">انشاء حساب
                         </a>
                     </li>
 
