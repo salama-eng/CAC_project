@@ -14,15 +14,16 @@ class PostsAdminController extends Controller
     public function showAdminPosts(){
         
         $postsAll=Post::with(['users'])->get();
-         
         $route = Route::current()->getName();
         if($route == 'admin_posts'){
             return view('admin.adminManagePosts', [
                 'postsAll' => $postsAll->where('posts.is_active', 0)->get(),
             ]);
+
+            
         }elseif($route == 'Start_auction'){
             return view('admin.adminManageStartedAuction', [
-                'postsAll' => $postsAll
+                'postsAll' => $postsAll,
             ]);
         }
     }

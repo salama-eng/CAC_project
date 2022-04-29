@@ -2,7 +2,7 @@
 @section('content')
 
 
-<h1 class="text-center fs-3 text-white mb-5">ادارة  طلبات المزاد </h1>
+<h1 class="text-center fs-3 text-white mb-5">ادارة  االمزادات الحالية </h1>
     <div class="container">
         @if(session()->has('success'))
             <div class="alert alert-success message">
@@ -15,31 +15,38 @@
                 <tr >
                     <td>#ID</td>
                     <td>السيارة </td>
-                    <td> اسم المستخدم</td>
+                    <td> اسم البايع</td>
+                    <td> اسم المزايد</td>
                     <td>انتهاء وقت المزايدة</td>
                     <td>السعر الابتدائي  </td>
-                    <td>  صورة السيارة  </td>
-                    <td>تفاصيل السيارة </td>
+                    <td>المبلغ الذي وصل اليه </td>
+                    <td>تفاصيل المزايدة </td>
                     <td>التحكم </td>
 
                 </tr>
                 @php $i = 1 @endphp
-                @foreach($postsAll as $post)
-                <tr>
-                    <td>{{$post->id}}</td>
-                    <td>{{$post->name}}</td>
-                    <td>{{$post->users->name}} </td>
-                    <td>{{$post->end_date}} </td>
-                    <td>{{$post->starting_price}} </td>
-                    <td>4400</td>
-                    <td>رابط صفحة المزايدة</td>
-                    <td>   
-                        <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
-                            <i class='fa fa-close'></i> noActive
-                        </a> 
-                    </td>
-                </tr>
+                @foreach($auctions as $auction)
+                    @if($auction->auction_post->is_active == 1 && $auction->auction_post->end_date >= date('Y-m-d') && $auction->auction_post->status_auction == 0)
+                        <tr>
+                            <td>{{$i++}}</td>
+                            <td>{{$auction->auction_post->name}}</td>
+                            <td>{{$auction->userOwner->name}}</td>
+                            <td>{{$auction->userAw->name}}</td>
+                            <td>{{$auction->auction_post->end_date}}</td>
+                            <td>{{$auction->bid_amount}}</td>
+                            <td>{{$auction->bid_total}}</td>
+                            <td>
+                                <a href="" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                            </td>
+                            <td>
+                                <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
+                                    <i class='fa fa-check'></i> Active
+                                </a>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
+
                 <div class="modal fade user" id="activeCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark">
