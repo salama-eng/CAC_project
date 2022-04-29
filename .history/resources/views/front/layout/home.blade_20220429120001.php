@@ -109,7 +109,7 @@
             <div class="py-5 px-4 col-12 col-lg-2">
                 <h6 class="active">تصفح <i class="fa fa-arrow-left"></i></h6>
                 <p class="text-light mt-3">
-                    <a href="" class="d-block text-light py-1">الرئيسية</a>
+                    <a href="{{route('')}}" class="d-block text-light py-1">الرئيسية</a>
                     <a href="{{route('offers')}}" class="d-block text-light py-1">العروض</a>
                     <a href="{{route('auctions')}}" class="d-block text-light py-1">المزادات</a>
                     <a href="{{route('aboutUs')}}" class="d-block text-light py-1">عن الشركة</a>
