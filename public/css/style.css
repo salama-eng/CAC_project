@@ -831,7 +831,7 @@ textarea {
 
 @media(max-width:768px){
   .avatar-img{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
   }
 }
