@@ -177,6 +177,10 @@ Route::get('/', function () {
 Route::get('/auctions', function () {
     return view('front.auctions');
 });
+    Route::get('/aboutUs', function () {
+        return view('front.aboutUs');
+});
+
 
 
 
@@ -197,8 +201,8 @@ Route::get('/offers', function () {
 
 Route::get('/contact_us', function () {
     return view('front.Contact_Us');
-})->name('contact_us');
+})->name('offers');
 
 Route::get('/aboutUs', function () {
     return view('front.aboutUs');
-})->name('aboutUs');
+})->name('offers');
