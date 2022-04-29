@@ -245,8 +245,8 @@ class AuthController extends Controller
     }
     public function admin(){
         $role = new Role;
-        $role->name = 'admin';
-        $role->display_name = 'management project';
+        $role->name = 'client';
+        $role->display_name = 'website';
         if($role->save()){
             return redirect()->route('profile');
         }
