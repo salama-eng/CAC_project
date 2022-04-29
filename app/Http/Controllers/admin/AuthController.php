@@ -101,28 +101,29 @@ class AuthController extends Controller
         $u->email = $request->email;
         $token = Str::uuid();
         $u->remember_token = $token;
+        $u->is_active = 1;
 
         // echo $u->name;
 
 
         if ($u->save()) {
-            $u->attachRole('client');
-
+            $u->attachRole('admin');
+            return redirect()->route('login');
             // $email_data=array('id'=>$request->id,'name' =>$request->name ,
             // 'activation_url'=>URL::to('/')."/verify_email");
 
-            $email_data = array(
-                'name' => $request->name, 'email' => $request->email, 'password' => $v,
-                'activation_url' => URL::to('/') . "/verify_email/" . $token . "/".$v
-            );
+            // $email_data = array(
+            //     'name' => $request->name, 'email' => $request->email, 'password' => $v,
+            //     'activation_url' => URL::to('/') . "/verify_email/" . $token . "/".$v
+            // );
 
             // print_r ($email_data);
-            Mail::to($request->email)->send(new VerificationEmail($email_data));
+            //Mail::to($request->email)->send(new VerificationEmail($email_data));
             // echo 'true';
 
-            return view('mail.resend_email', [
-                'email_data' => $email_data,
-            ]);
+            // return view('mail.resend_email', [
+            //     'email_data' => $email_data,
+            // ]);
         }
         return  redirect()->route('register')->with(['message' => ' تأكد من كتابة البيانات بالشكل الصحيح ']);
     }
