@@ -71,10 +71,6 @@ Route::group(['middleware' => 'auth'], function () {
             return view('front.layout.clientdashboard');
         });
 
-        Route::get('/', function () {
-            return view('front.index');
-        });
-
         Route::get('/admin_dash', function () {
             return view('admin.layout.dashboard');
         });
@@ -138,7 +134,9 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/home', function () {
     return view('front.index');
 })->name('home');
-
+Route::get('/', function () {
+    return view('front.index');
+});
 Route::get('/auctions', function () {
     return view('front.auctions');
 })->name('auctions');
