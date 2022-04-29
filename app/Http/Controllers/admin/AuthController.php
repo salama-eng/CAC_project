@@ -7,6 +7,7 @@ use App\Mail\VerificationEmail;
 use App\Mail\VerificationPassword;
 use App\Models\ResetPassword;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -108,22 +109,22 @@ class AuthController extends Controller
 
         if ($u->save()) {
             $u->attachRole('admin');
-            return redirect()->route('login');
+
             // $email_data=array('id'=>$request->id,'name' =>$request->name ,
             // 'activation_url'=>URL::to('/')."/verify_email");
 
-            // $email_data = array(
-            //     'name' => $request->name, 'email' => $request->email, 'password' => $v,
-            //     'activation_url' => URL::to('/') . "/verify_email/" . $token . "/".$v
-            // );
+            $email_data = array(
+                'name' => $request->name, 'email' => $request->email, 'password' => $v,
+                'activation_url' => URL::to('/') . "/verify_email/" . $token . "/".$v
+            );
 
             // print_r ($email_data);
-            //Mail::to($request->email)->send(new VerificationEmail($email_data));
+            Mail::to($request->email)->send(new VerificationEmail($email_data));
             // echo 'true';
 
-            // return view('mail.resend_email', [
-            //     'email_data' => $email_data,
-            // ]);
+            return view('mail.resend_email', [
+                'email_data' => $email_data,
+            ]);
         }
         return  redirect()->route('register')->with(['message' => ' تأكد من كتابة البيانات بالشكل الصحيح ']);
     }
@@ -233,5 +234,21 @@ class AuthController extends Controller
             return 'home';
         else
             return 'login';
+    }
+    public function client(){
+        $role = new Role;
+        $role->name = 'client';
+        $role->display_name = 'website';
+        if($role->save()){
+            return redirect()->route('profile');
+        }
+    }
+    public function admin(){
+        $role = new Role;
+        $role->name = 'admin';
+        $role->display_name = 'management project';
+        if($role->save()){
+            return redirect()->route('profile');
+        }
     }
 }

@@ -37,6 +37,8 @@ Route::get('/login',[AuthController::class,'showLogin'])->name('login');
 Route::post('/do_login',[AuthController::class,'login'])->name('do_login');
 Route::post('/save_user',[AuthController::class,'register'])->name('save_user');
 Route::get('/register',[AuthController::class,'showregister'])->name('register');
+Route::get('/admin',[AuthController::class,'admin'])->name('admin');
+Route::get('/client',[AuthController::class,'client'])->name('client');
 
 // Send Email
 Route::get('/verify_email/{token}/{password}',[AuthController::class,'activeUser'])->name('verify_email');
