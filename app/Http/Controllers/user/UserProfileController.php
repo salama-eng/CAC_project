@@ -18,16 +18,14 @@ class UserProfileController extends Controller
     {
       $id=Auth::id();
       $user=User::with(['profile'])->find($id);
-      $user_payment=User::with(['userPayment'])->find($id);
-        if(isset($user_payment->userPayment->payment_id)){
-          $bank =payment::select()->where('id', $user_payment->userPayment->payment_id)->first();
-        }
-        else
-        $bank="";
+      // $user_payment=User::with(['userPayment'])->find($id);
+      //   if(isset($user_payment->userPayment->payment_id)){
+      //     $bank =payment::select()->where('id', $user_payment->userPayment->payment_id)->first();
+      //   }
+        // else
+        // $bank="";
         return view('client.profile', [
             'user'          => $user,
-            'bank'          => $bank,
-            'user_payment'  => $user_payment
         ]);
 
     }

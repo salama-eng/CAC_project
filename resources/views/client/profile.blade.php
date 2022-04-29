@@ -93,17 +93,17 @@
                             طريقة الدفع
                         </th>
                         <td>
-                             {{ $bank->name }}
+                            visa 
                         </td>
                     </tr>
 
 
                     <tr>
                         <th>
-                            اسم البنك
+                        paypal
                         </th>
                         <td>
-                           {{ $bank->bank_name }}
+                        اسم البنك
                         </td>
                     </tr>
                     <tr>
@@ -111,7 +111,7 @@
                             رقم الحساب
                         </th>
                         <td>
-                            {{ $user_payment->userPayment->account_number }}
+                            ***********
                         </td>
                     </tr>
                 </table>
