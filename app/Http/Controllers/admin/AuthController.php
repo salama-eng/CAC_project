@@ -108,7 +108,7 @@ class AuthController extends Controller
 
 
         if ($u->save()) {
-            $u->attachRole('admin');
+            $u->attachRole('client');
 
             // $email_data=array('id'=>$request->id,'name' =>$request->name ,
             // 'activation_url'=>URL::to('/')."/verify_email");
@@ -234,21 +234,5 @@ class AuthController extends Controller
             return 'home';
         else
             return 'login';
-    }
-    public function client(){
-        $role = new Role;
-        $role->name = 'client';
-        $role->display_name = 'website';
-        if($role->save()){
-            return redirect()->route('profile');
-        }
-    }
-    public function admin(){
-        $role = new Role;
-        $role->name = 'client';
-        $role->display_name = 'website';
-        if($role->save()){
-            return redirect()->route('profile');
-        }
     }
 }
