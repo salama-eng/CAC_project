@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="form-check d-flex  justify-content-center mt-5 ">
-            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1" aria-label="...">
+            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"  {{ ( old('active') == '1') ? ' checked' : '' }} aria-label="...">
             <label class="col-6 mx-5 text-white" for="">تفعيل</label>    
         </div>
         <!-- End category -->

@@ -90,10 +90,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['middleware' => 'role:admin'], function () {
-        Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
-        Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
-        Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
-        Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
+        //Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
+        //Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
+        //Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
+        //Route::post('/active_admin_model', [ModelsAdminController::class, 'activeModel']);
     
         // Admin Manage User
         Route::get('/showAllUsers', [UserAdminController::class,'showAllUsers'])->name('showAllUsers');
