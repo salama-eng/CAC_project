@@ -45,7 +45,7 @@ class UserPostsController extends Controller
         Validator::validate($request->all(),[
             'carname'=>'required|string|between:3,15',
             'category_id'=>'required',
-            'model_id'=>'required',
+            'model'=>'required',
             'name_enige'=>'required',
             'start_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
             'auction_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/|min:100",
@@ -71,7 +71,7 @@ class UserPostsController extends Controller
         $post->name = $request->carname;
         $post->category_id = $request->category_id;
         $post->user_id  = Auth::id();
-        $post->model_id = $request->model_id;
+        $post->models = $request->model;
         $post->engin_car = $request->name_enige;
         $post->starting_price = $request->start_price;
         $post->auction_ceiling = $request->auction_price;

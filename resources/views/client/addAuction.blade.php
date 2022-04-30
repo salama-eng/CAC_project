@@ -45,20 +45,10 @@
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">اختار موديل السيارة</label>
+            <label for="" class="form-label text-white"> موديل السيارة</label>
             <div class="input-group">
-                <select name="model_id" value="{{ old('model_id') }}" class="form-select text-light"
-                    id="inputGroupSelect03" aria-label="Example select with button addon">
-                    @foreach ($models as $model)
-                        @if ($model->is_active == 1)
-                            @if (old('model_id') == $model->id)
-                                <option value="{{ $model->id }}" selected>{{ $model->name }}</option>
-                            @else
-                                <option value="{{ $model->id }}">{{ $model->name }}</option>
-                            @endif
-                        @endif
-                    @endforeach
-                </select>
+            <input type="text" value="{{ old('model') }}" name="model"
+                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('model_id')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -179,14 +169,14 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="basic-url" class="form-label text-light"> حالة السيارة</label>
             <div class=" d-flex">
-                <input class="form-check-input mx-2" type="radio" name="care_type" value="1" id="flexRadioDefault1">
+                <input class="form-check-input mx-2" type="radio" name="care_type" value="1" {{ (old('care_type') == '1') ? 'checked' : ''}}  id="flexRadioDefault1">
                 <div class="form-check ">
                     <label class="form-check-label text-light" for="flexRadioDefault1">
                         جديد
                     </label>
 
                 </div>
-                <input class="form-check-input mx-2" type="radio" name="care_type" value="2" id="flexRadioDefault2" checked>
+                <input class="form-check-input mx-2" type="radio" name="care_type" value="2" {{ (old('care_type') == '2') ? 'checked' : ''}} id="flexRadioDefault2">
                 <div class="form-check ">
                     <label class="form-check-label text-light" for="flexRadioDefault2">
                         مستخدم

@@ -19,7 +19,7 @@
 
 
 <div class="card text-light m-auto my-4" style="width: 18rem;">
-    <img src="/images/{{$post->image}}" class="card-img-top p-3" height="220" alt="{{$post->image}}">
+    <img src="{{ URL::asset('images/'.$post->image) }}" class="card-img-top p-3" height="220" alt="{{$post->image}}">
 <h5 class="card-title text-center">{{$post->name}}</h5>
  
 
@@ -55,7 +55,7 @@ $i++;
 
      
         <div class="card text-light m-auto my-4" style="width: 18rem;">
-            <img src="/images/{{$order->post->image}}" class="card-img-top p-3" height="220" alt="{{$order->post->image}}">
+            <img src="{{ URL::asset('images/'.$order->post->image) }}" class="card-img-top p-3" height="220" alt="{{$order->post->image}}">
 <h5 class="card-title text-center">{{$order->post->name}}</h5>
          
         
