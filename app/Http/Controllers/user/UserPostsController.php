@@ -72,6 +72,7 @@ class UserPostsController extends Controller
         $post->category_id = $request->category_id;
         $post->user_id  = Auth::id();
         $post->models = $request->model;
+        $post->model_id = 1;
         $post->engin_car = $request->name_enige;
         $post->starting_price = $request->start_price;
         $post->auction_ceiling = $request->auction_price;
