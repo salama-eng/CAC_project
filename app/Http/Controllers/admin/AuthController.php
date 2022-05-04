@@ -102,6 +102,7 @@ class AuthController extends Controller
         $u->email = $request->email;
         $token = Str::uuid();
         $u->remember_token = $token;
+        $u->is_active = 1;
 
         // echo $u->name;
 
