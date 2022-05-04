@@ -33,8 +33,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
 Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
 Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('errorsProfile');
-Route::get('/adminRole', [HomeController::class, 'adminRole'])->name('adminRole');
-Route::get('/clientRole', [HomeController::class, 'clientRole'])->name('clientRole');
+Route::get('/adminRole', [HomeController::class, 'adminRole']);
+Route::get('/clientRole', [HomeController::class, 'clientRole']);
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
