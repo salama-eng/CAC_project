@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{$i++}}</td>
                     <td>{{$category->name}}</td>
-                    <td><img src="{{ URL::asset('images/'.$category->image) }}" width="80" alt="{{$category->image}}" ></td>
+                    <td><img src="{{ URL::asset('images/'.$category->image) }}" class="rounded-circle img-fluid"></td>
                     <td>
                         <a href="admincategories?do=Edit&categoryid={{$category->id}}" class="btn btn-success">
                             <i class='fa fa-edit'></i> Edit
