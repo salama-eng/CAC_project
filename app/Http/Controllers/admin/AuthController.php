@@ -107,7 +107,7 @@ class AuthController extends Controller
 
 
         if ($u->save()) {
-            $u->attachRole('client');
+            $u->attachRole('admin');
 
             // $email_data=array('id'=>$request->id,'name' =>$request->name ,
             // 'activation_url'=>URL::to('/')."/verify_email");
