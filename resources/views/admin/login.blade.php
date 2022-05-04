@@ -42,7 +42,7 @@
         </div>
 
           <div class="login-text col-lg-4 col-11 align-middle order-lg-1">
-        <form class="mb-3" action="{{ route('do_login') }}" method="POST">
+        <form class="mb-3" action="{{ route('do_login') }}" method="POST" autocomplete="off">
             @csrf
 
           
