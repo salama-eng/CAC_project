@@ -117,7 +117,7 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
             <div class="col-sm-8 col-md-9">
-                <input type="file" name="image" class="form-control">
+                <input type="file" name="image" class="form-control" id="inputGroupFile01">
             </div>
         </div>
         <div class="form-check d-flex  justify-content-center mt-5 ">
