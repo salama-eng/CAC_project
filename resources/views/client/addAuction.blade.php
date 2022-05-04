@@ -76,7 +76,7 @@
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">مقدار المزايدة. <span class="yellow fs-6"> لا يقل عن 100 الف
+            <label for="" class="form-label text-white">مقدار المزايدة. <span class="yellow fs-6"> لا يقل عن 100000 الف
                     الف</span></label>
             <div class="input-group">
                 <input type="text" name="auction_price" value="{{ old('auction_price') }}"

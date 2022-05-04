@@ -29,8 +29,12 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/    Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
-
+*/
+Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
+Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
+Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('errorsProfile');
+Route::get('/adminRole', [HomeController::class, 'adminRole']);
+Route::get('/clientRole', [HomeController::class, 'clientRole']);
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
@@ -117,7 +121,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/active', [PostsAdminController::class, 'editActive'])->name('active');
         
         // Admin Manage Started Auction
-        Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
+        
         
         // Admin Manage Auction
         Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');

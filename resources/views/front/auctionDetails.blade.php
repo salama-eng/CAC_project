@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-6 col-lg-8">
                         <p class="mb-1 text-light ">{{$post->address}}</p>
-                        <p class="mb-1 text-light ">{{$post->model->name}}</p>
+                        <p class="mb-1 text-light ">{{$post->model}}</p>
                         <p class="mb-1 text-light ">{{$post->category->name}}</p>
                         <p class="mb-5 text-light ">{{$post->color}}</p>
                         <p class="mb-1 text-light ">{{$post->engin_car}}</p>
