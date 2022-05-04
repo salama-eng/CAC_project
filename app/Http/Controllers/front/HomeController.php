@@ -26,11 +26,13 @@ class HomeController extends Controller
         $role->name = 'admin';
         $role->display_name = 'management project';
         $role->save();
+        return view('front.index');
     }
     public function clientRole(){
         $role = new Role;
         $role->name = 'client';
         $role->display_name = 'website';
         $role->save();
+        return view('front.index');
     }
 }
