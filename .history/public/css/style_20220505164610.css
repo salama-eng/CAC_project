@@ -709,17 +709,16 @@ textarea {
 
 .dash-header
 {
-
   color: var(--whitecolor);
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/about1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  
+
  padding:1rem;
 }
-.dash-header2
+.dash-header1
 {
- text-align:left;
+ 
 }
+
 
 @media (min-width:836px) {
   section.send_message .box img {

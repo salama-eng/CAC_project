@@ -706,21 +706,15 @@ textarea {
   transition: 0.4s;
 }
 /********* dash by salama*/
-
 .dash-header
 {
-
-  color: var(--whitecolor);
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/about1.jpg');
+  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../images/car2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
- padding:1rem;
+  height: 80vh;
+  width: 100vw;
+ background-attachment: fixed;
 }
-.dash-header2
-{
- text-align:left;
-}
-
 @media (min-width:836px) {
   section.send_message .box img {
     left: -7.6vw;

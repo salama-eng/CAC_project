@@ -706,19 +706,15 @@ textarea {
   transition: 0.4s;
 }
 /********* dash by salama*/
-
 .dash-header
 {
-
   color: var(--whitecolor);
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/about1.jpg');
+  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/dash.png');
   background-repeat: no-repeat;
   background-size: cover;
+height:10rem;
+
  padding:1rem;
-}
-.dash-header2
-{
- text-align:left;
 }
 
 @media (min-width:836px) {
