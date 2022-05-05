@@ -828,3 +828,10 @@ textarea {
     display: none !important;
   }
 }
+
+@media(max-width:768px){
+  .avatar-img{
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -25,18 +25,18 @@ class UserProfileController extends Controller
         else
         $bank="";
         return view('client.profile', [
-            'user'          => $user,
-            'bank'          => $bank,
-            'user_payment'  => $user_payment
+            'user'              => $user,
+            'bank'              => $bank,
+            'user_payment'      => $user_payment,
         ]);
-
     }
 
     function showedit(){
  
       $id=Auth::id();
       $user=User::with(['profile'])->find($id);
-     $user_payment=User::with('userPayment')->find($id);
+      
+      $user_payment=User::with('userPayment')->find($id);
       $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
       $acount=$user_payment->userPayment->account_number;
         return view('client.editprofile', [
@@ -44,14 +44,21 @@ class UserProfileController extends Controller
             'acount'  => $acount,          
             'do'      => $do
         ]);
+       
   }
 
 
 
   public function complate_regester()
   {
-    $payments = Payment::get();
-    return view('client.complate_regester', ['payments' => $payments]);
+    $id = Auth::id();
+    $user = User::find($id);
+    if($user->is_active == 1){
+      $payments = Payment::get();
+      return view('client.complate_regester', ['payments' => $payments]);
+    }else{
+      return redirect('errorsProfile');
+    }
   }
     public function save_profile(Request $request){
         Validator::validate($request->all(),[
@@ -130,7 +137,7 @@ class UserProfileController extends Controller
         ]);
         if($userSave && $profileSave && $payment){
           return redirect('profile')
-          ->with(['success'=>'تم اضافة بياناتك بنجاح']);
+          ->with(['success'=>'تم تعديل بياناتك بنجاح']);
         }else{
           return back()->with(['error'=>'خطاء لانستطيع تحديث بياناتك']);
         }
@@ -148,7 +155,7 @@ class UserProfileController extends Controller
       $imageSave = UserProfile::where('user_id', Auth::id())->update(['avatar' => $image]);
       if($imageSave){
         return redirect('profile')
-        ->with(['success'=>'تم اضافة بياناتك بنجاح']);
+        ->with(['success'=>'تم تعديل الصورة بنجاح']);
       }else{
         return back()->with(['error'=>'خطاء لانستطيع تحديث بياناتك']);
       }

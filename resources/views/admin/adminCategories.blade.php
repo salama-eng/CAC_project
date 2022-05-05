@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{$i++}}</td>
                     <td>{{$category->name}}</td>
-                    <td><img src="images/{{$category->image}}" width="80" alt="{{$category->image}}" ></td>
+                    <td><img src="{{ URL::asset('images/'.$category->image) }}" width="80" alt="{{$category->image}}" ></td>
                     <td>
                         <a href="admincategories?do=Edit&categoryid={{$category->id}}" class="btn btn-success">
                             <i class='fa fa-edit'></i> Edit
@@ -117,11 +117,11 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
             <div class="col-sm-8 col-md-9">
-                <input type="file" name="image" value="{{old('image')}}" class="form-control" autocomplete="off">
+                <input type="file" name="image" accept="{{old('image')}}" value="{{old('image')}}" class="form-control" autocomplete="off">
             </div>
         </div>
         <div class="form-check d-flex  justify-content-center mt-5 ">
-            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1" aria-label="...">
+            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"  {{ ( old('active') == '1') ? ' checked' : '' }} aria-label="...">
             <label class="col-6 mx-5 text-white" for="">تفعيل</label>    
         </div>
         <!-- End category -->
