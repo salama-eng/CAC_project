@@ -24,18 +24,22 @@
 
 <body class="fs-6 bg-darkgrey">
     <nav class="navbar navbar-expand-xl navbar-dark fixed-top">
-
+        <button class="bttn border-0  navbar-toggle" type="button">
+            <div class="menu my-1 px-3 bg-light"> </div>
+            <div class="menu bg-light"> </div>
+        </button>
         <div class="cornerstyle position-absolute"></div>
         <div class="container-fluid w-96 my-2">
 
-            <a class="navbar-brand border  logo-box d-flex align-items-center justify-content-center" href="#">CAC</a>
-            <button class="bttn border-0 px-4  me-5 pe-5 navbar-toggle" type="button">
-                <div class="menu my-1 px-3 bg-light"> </div>
-                <div class="menu bg-light"> </div>
-            </button>
+            <a class="navbar-brand border  logo-box d-flex align-items-center justify-content-center" href="home">CAC</a>
+      
             <div class="collapse navbar-collapse ">
-                <ul class="navbar-nav ml-auto mb-2 mb-lg-0 w-75 d-flex justify-content-between fs-7">
-                    <li class="nav-item ">
+                <ul class="navbar-nav me-auto  d-flex justify-content-between fs-7">
+                    <button class="bttn border-0  navbar-toggle toggle" type="button">
+                        <div class="menu my-1 px-3 bg-light"> </div>
+                        <div class="menu bg-light"> </div>
+                    </button>
+                    <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : 'text-light' }}"  href="{{ url('home' )}}">الصفحة الرئيسية</a>
                     </li>
                     <li class="nav-item">
@@ -52,82 +56,77 @@
                         <a class="nav-link   {{ Request::segment(1) === 'aboutUs' ? 'active' : 'text-light' }}" href="{{ url('aboutUs' )}}">من نحن
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::segment(1) === 'login' ? 'active' : 'text-light' }}" href="{{ url('login' )}}">تسجيل الدخول
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::segment(1) === 'register' ? 'active' : 'text-light' }}" href="{{ url('register' )}}">انشاء حساب
-                        </a>
-                    </li>
+                   
 
 
                 </ul>
-                <button class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 m-auto">
-                    <i class="fa fa-phone">&nbsp; 777 777 777</i>
-                </button>
+               
+                    <button class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 me-auto ms-5 ">
+                        <i class="fa fa-sign-in"></i>&nbsp;تسجيل الدخول
+                    </button>
+                
             </div>
 
 
         </div>
         <div class="fixed-top contact-parent vh-100">
-            <div class="contactnavbar d-flex  align-content-between me-4 p-4 flex-wrap ">
+            <div class="contactnavbar d-flex  align-content-between  p-4 flex-wrap ">
                 <div class="fa fa-facebook w-100 text-light"></div>
                 <div class="fa fa-instagram w-100 text-light"></div>
                 <div class="fa fa-whatsapp w-100 text-light"></div>
-                <div class="fa fa-facebook w-100 text-light"></div>
+                <div class="fa fa-twitter w-100 text-light"></div>
             </div>
 
 
         </div>
     </nav>
-
+<!-- nav end -->
 
 
     @yield('content')
 
-    <!-- nav end -->
-    <button class=" smooth-up position-fixed border-0 bottom-3 ">
+    
+    <button class=" smooth-up position-fixed border-0 bottom-3">
         <span class="fa fa-arrow-up"></span>
     </button>
 
-    <footer class="w-100">
+    <footer>
         <div class="container-fluid  d-flex mx-auto w-75 justify-content-between flex-wrap">
             <div class="cornerstyle d-flex align-items-center my-lg-auto ">
                 <a class="navbar-brand border   d-flex align-items-center justify-content-center text-light p-2"
-                    href="#">CAC</a>
+                    href="/home">CAC</a>
 
             </div>
-            <div class="py-5 px-4 col-12 col-lg-2 ">
-                <h6 class="active">عن الشركة</h6>
-                <p class="text-light mt-3">
+            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2 ">
+                <h6 class="active pt-3 pb-1">عن الشركة</h6>
+                <p class="text-light mt-3 ">
                     شركة كاك هي الطريقة الأسرع و الأسهل
                     و الأكثر أمانا لبيع سياراتك بغض النظر عن
                     الشروط</p>
 
             </div>
-            <div class="py-5 px-4 col-12 col-lg-2">
-                <h6 class="active">تصفح <i class="fa fa-arrow-left"></i></h6>
+            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2">
+                <h6 class="active pt-3 pb-1">تصفح <i class="fa fa-arrow-left"></i></h6>
                 <p class="text-light mt-3">
-                    <a href="" class="d-block text-light py-1">الرئيسية</a>
-                    <a href="" class="d-block text-light py-1">العروض</a>
-                    <a href="" class="d-block text-light py-1">المزادات</a>
-                    <a href="" class="d-block text-light py-1">عن الشركة</a>
-                    <a href="" class="d-block text-light py-1">خدماتنا</a>
+                    <a href="/home" class="d-block text-light py-1">الرئيسية</a>
+                    <a href="/offers" class="d-block text-light py-1">العروض</a>
+                    <a href="/auctions" class="d-block text-light py-1">المزادات</a>
+                    <a href="/aboutUs" class="d-block text-light py-1">عن الشركة</a>
+                    <a href="/contact_us" class="d-block text-light py-1">خدماتنا</a>
                     <a href="" class="d-block text-light py-1">كيفية الاستخدام</a>
                 </p>
 
             </div>
-            <div class="py-5 col-12 col-lg-2">
-                <h6 class="active ">تواصل معنا</h6>
-                <p class="text-light my-2 mt-3"><i class="fa  fa-globe ps-3 active"></i>www.cac.com</p>
+            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2">
+                <h6 class="active pt-3 pb-1">تواصل معنا</h6>
+                <p class="text-light mt-3 "><i class="fa  fa-globe ps-3 active"></i>www.cac.com</p>
                 <p class="text-light my-2"><i class="fa fa-envelope-o ps-3 active"></i>cac@gmail.com</p>
                 <p class="text-light my-2"><i class="fa fa-instagram ps-3 active"></i>@cacMazad</p>
                 <p class="text-light my-2"><i class="fa fa-phone ps-3 active"></i> 777 777 777</p>
 
             </div>
-            <form action="" class=" mt-5 contact-form col-12 col-lg-4  ">
-                <h6 class="active w-100">إرسال رسالة</h6>
+            <form action="" class=" mt-2 mt-lg-5  contact-form col-12 col-md-6 col-lg-4  ">
+                <h6 class="active w-100 pt-3 pb-1">إرسال رسالة</h6>
                 <div class="d-flex mt-3">
                     <div class="mx-1">
 
