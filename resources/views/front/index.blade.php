@@ -72,10 +72,10 @@
         <div class="offers d-flex flex-column align-items-center pt-5 ">
             <h1 class="d-flex flex-wrap   yellow fs-3">العروض الحالية </h1>
             <div class="w-75 more">
-                <a href="" class="px-4 text-light fs-6 d-block text-lg-start text-center  py-2">المزيد<i
+                <a href="/offers" class="px-4 text-light fs-6 d-block text-lg-start text-center  py-2">المزيد<i
                         class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
             </div>
-            <div class="d-flex flex-wrap  col-8 col-lg-9">
+            <div class="d-flex flex-wrap  col-8 col-lg-9 current-offers">
 
                 <div class="card text-light m-auto  py-0 mb-3" style="width: 18rem;">
                     <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
@@ -84,10 +84,10 @@
                         <p class="text-center fs-7 card-details">جديد</p>
 
                     </div>
-                    <div class="card-body d-flex justify-content-between py-0">
-                        <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">3000$</span>
+                    <div class="card-body d-flex justify-content-between py-0 w-100">
+                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span class="active">3000$</span>
                         </p>
-                        <a href="#" class="card-link active">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                        <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                     </div>
                 </div>
 
@@ -98,10 +98,10 @@
                         <p class="text-center fs-7 card-details">جديد</p>
 
                     </div>
-                    <div class="card-body d-flex justify-content-between py-0">
-                        <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">3000$</span>
+                    <div class="card-body d-flex justify-content-between py-0 w-100">
+                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span class="active">3000$</span>
                         </p>
-                        <a href="#" class="card-link active">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                        <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                     </div>
                 </div>
 
@@ -112,10 +112,10 @@
                         <p class="text-center fs-7 card-details">جديد</p>
 
                     </div>
-                    <div class="card-body d-flex justify-content-between py-0">
-                        <p href="#" class="card-link card-details">سعر المزايدة/<span class="active">3000$</span>
+                    <div class="card-body d-flex justify-content-between py-0 w-100">
+                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span class="active">3000$</span>
                         </p>
-                        <a href="#" class="card-link active">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                        <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                     </div>
                 </div>
             </div>
