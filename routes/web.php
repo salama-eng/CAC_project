@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
+
 Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
 Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('errorsProfile');
 Route::get('/adminRole', [HomeController::class, 'adminRole']);
@@ -61,7 +61,7 @@ Route::post('/new_password',[AuthController::class,'newPassword'])->name('new_pa
 
 
 Route::group(['middleware' => 'auth'], function () {
-   
+    Route::group(['middleware'=>'role:client'],function(){
         // client profile Manage
         Route::post('/save_profile', [UserProfileController::class, 'save_profile'])->name('save_profile');
 
@@ -101,8 +101,8 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('/AuctionCars', [UserAuctionController::class, 'showauctions'])->name('AuctionCars');
       Route::get('/UserUncomplateAuctions', [UserAuctionController::class, 'uncomplate'])->name('UserUncomplateAuctions');
       Route::get('/UserComplateAuctions', [UserAuctionController::class, 'complate'])->name('UserComplateAuctions');
-
-    // Route::group(['middleware' => 'role:admin'], function () {
+    });
+    Route::group(['middleware' => 'role:admin'], function () {
         //Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
         //Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
         //Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
@@ -146,9 +146,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
         
     
-    // });
+    });
 
-
+    Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

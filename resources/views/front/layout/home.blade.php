@@ -60,11 +60,16 @@
 
 
                 </ul>
-               
-                    <button class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 me-auto ms-5 ">
-                        <i class="fa fa-sign-in"></i>&nbsp;تسجيل الدخول
-                    </button>
-                
+                    @auth
+                        <a href="{{ url('logout' )}}" class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 me-auto ms-5 ">
+                            <i class="fa fa-sign-in"></i>&nbsp;تسجيل خروج
+                        </a>
+                    @endauth
+                    @guest
+                        <a href="{{ url('login' )}}" class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 me-auto ms-5 ">
+                            <i class="fa fa-sign-in"></i>&nbsp;تسجيل الدخول
+                        </a>
+                    @endguest
             </div>
 
 
