@@ -52,13 +52,6 @@ $(document).ready(function () {
     $('.img-responsive img').attr('style', 'border:none');
     $(this).attr('style', 'border:1px solid #e3911e');
   });
-  $('.btn-yellow').click(function () {
-    alert('hi');
-  });
-
- 
-
-
 
   $('.auction-form input').on('click', function () {
     event.preventDefault();

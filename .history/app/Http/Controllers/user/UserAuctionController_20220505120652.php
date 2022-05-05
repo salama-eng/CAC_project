@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Http\Controllers\user;
+use App\Models\Auction;
+use App\Models\Category;
+use App\Models\Models;
+use App\Models\order;
+use App\Models\User;
+use App\Models\Post;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class UserAuctionController extends Controller
+{
+
+    public function showauctions(){
+     
+        $id=Auth::id();
+        $auctions=Auction::with('auction_post')->where('aw_user_id', $id)->get();
+        // return $auctions;
+        return view('client.showauctions', [
+            'auctions'     => $auctions
+    
+        ]);
+ 
+}
+
+public function complate(){
+       
+    $id=Auth::id();
+
+    $order = order::With(['post.auctions','user'])->get();
+
+  $post=Post::with('auctions')->get();
+
+    return view('client.UserComplatePosts', [
+        'orders' => $order,
+        'post' => $post,
+    ]);
+}
+
+
+public function uncomplate(){
+$id=Auth::id();
+
+$auction=Auction::with(['auction_post'])->where('auctions.owner_user_id',$id)->get();
+//  return $auction[0]->auction_post->name;
+    $id=Auth::id();
+    return view('client.UserUncomplatePosts', [
+        'auctions'     => $auction
+    ]);
+
+}
+
+
+
+}
