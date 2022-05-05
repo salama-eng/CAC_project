@@ -21,10 +21,10 @@
 
 
             <div class="card text-light m-auto my-4" style="width: 18rem;">
-                <img src="{{ URL::asset('images/'.$auction->auction_post->image)}}" class="card-img-top p-3" height="220" alt="{{$auction->auction_post->image}}">
+                <img src="{{ URL::asset('images/'.$auction->auction_post->image)}}" class="card-img-top p-3" height="220" >
 <h5 class="card-title text-center">{{$auction->auction_post->name}}</h5>
              
-
+{{ URL::asset('images/'.$auction->auction_post->image) }}
                 <div class="card-body d-flex justify-content-between py-0">
                     <p href="#" class="card-link card-details fs-7">سعر المزايدة/<span class="active"> {{$auction->bid_total}}$</span>
                     </p>

@@ -44,7 +44,7 @@
                         <p class="mb-5 text-light ">{{$post->color}}</p>
                         <p class="mb-1 text-light ">{{$post->engin_car}}</p>
                         <p class="mb-1 text-light ">{{$post->damage}}</p>
-                        <p class="mb-1 text-light ">{{$post->status_car}}</p>
+                        <p class="mb-1 text-light ">{{$post->users->name}}</p>
                         <p class="mb-1 text-light ">{{$post->end_date}}</p>
                         <p class="mb-1 text-light "> {{$post->description}}</p>
                       
