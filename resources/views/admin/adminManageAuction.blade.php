@@ -36,7 +36,7 @@
                             <td>{{$auction->bid_amount}}</td>
                             <td>{{$auction->bid_total}}</td>
                             <td>
-                                <a href="" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                                <a href="{{route('auctiondetails',$auction->post_id)}}" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                             </td>
                             <td>
                                 <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
@@ -75,3 +75,4 @@
     </div>
 
 @endsection
+                

@@ -7,7 +7,7 @@
         <div class=" align-self-center col-lg-4 col-md-5 col-11 d-flex flex-column align-items-center">
 
             @if (isset($user->profile->avatar))
-                <img src="images/{{ $user->profile->avatar }}" class="rounded-circle img-fluid "
+                <img src="{{ URL::asset('images/'.$user->profile->avatar) }}" class="rounded-circle img-fluid avatar-img"
                     alt="{{ $user->profile->avatar }}">
             @else
                 <img src="assets/images/avatar.png" class="rounded-circle " alt="">
@@ -93,17 +93,17 @@
                             طريقة الدفع
                         </th>
                         <td>
-                             {{ $bank->name }}
+                            {{$bank->name}} 
                         </td>
                     </tr>
 
 
                     <tr>
                         <th>
-                            اسم البنك
+                            اسم البنك     
                         </th>
                         <td>
-                           {{ $bank->bank_name }}
+                            {{$bank->bank_name}}
                         </td>
                     </tr>
                     <tr>
@@ -111,7 +111,7 @@
                             رقم الحساب
                         </th>
                         <td>
-                            {{ $user_payment->userPayment->account_number }}
+                            {{$user_payment->userPayment->account_number}}
                         </td>
                     </tr>
                 </table>

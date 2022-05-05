@@ -7,6 +7,7 @@ use App\Mail\VerificationEmail;
 use App\Mail\VerificationPassword;
 use App\Models\ResetPassword;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -52,7 +53,7 @@ class AuthController extends Controller
             return redirect()->route('login')->with(['password'=>false, 'password' => 'اوبس! كلمة السر غير صحيحة']);
          }
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_active' => 1])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if (Auth::user()->hasRole('admin'))
                 return redirect()->route('admincategories');
             else
