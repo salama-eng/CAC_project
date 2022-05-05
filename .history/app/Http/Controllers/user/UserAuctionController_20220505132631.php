@@ -43,7 +43,7 @@ public function uncomplate(){
 $id=Auth::id();
 
 $auction=Auction::with(['auction_post'])->where('aw_user_id',$id)->where('is_active',1)->get();
-
+ return $auction;
     $id=Auth::id();
     return view('client.UserUncomplateAuctions', [
         'auctions'     => $auction

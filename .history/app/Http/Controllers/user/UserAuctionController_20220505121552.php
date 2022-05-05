@@ -31,8 +31,8 @@ public function complate(){
        
     $id=Auth::id();
     $order = order::With(['post.auctions'])->where('user_id', $id)->get();
-
-    return view('client.UserComplateAuctions', [
+  return  $order;
+    return view('client.UserComplatePosts', [
         'orders' => $order,
         
     ]);
@@ -42,10 +42,10 @@ public function complate(){
 public function uncomplate(){
 $id=Auth::id();
 
-$auction=Auction::with(['auction_post'])->where('aw_user_id',$id)->where('is_active',1)->get();
-
+$auction=Auction::with(['auction_post'])->where('auctions.owner_user_id',$id)->get();
+//  return $auction[0]->auction_post->name;
     $id=Auth::id();
-    return view('client.UserUncomplateAuctions', [
+    return view('client.UserUncomplatePosts', [
         'auctions'     => $auction
     ]);
 

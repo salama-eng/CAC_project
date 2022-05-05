@@ -52,10 +52,6 @@
 
                 <ul class="list-unstyled components fs-6 mt-4 ">
                     <li>
-                        <a href="{{route('profile')}}"><h5  class="text-center p-3 text-light ">الرئيسية</h5></a> 
- 
-                     </li>
-                    <li>
                        <a href="{{route('profile')}}"><h5  class="text-center p-3 text-light ">المعلومات الشخصية</h5></a> 
 
                     </li>

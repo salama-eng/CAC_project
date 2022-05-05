@@ -4,7 +4,7 @@
 
 
 
-<h3 class="text-warning  mt-5 mb-5 text-center">عمليات البيع المكتملة  </h3>
+<h3 class="text-warning  mt-5 mb-5 text-center">عمليات الشراء المكتملة  </h3>
 
 
 <section class="card-container  d-flex flex-wrap justify-content-between ">
@@ -12,10 +12,10 @@
     $i=0;
 @endphp
 
-@foreach ($post as $post )
+@foreach ($orders as $order)
     
 @if (!isset($post->auctions[0]->is_active))
-@if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date <= date('Y-m-d') && $post->user_id == Auth::id())
+@if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date <= date('Y-m-d') && $post->id == Auth::id())
 
 
 <div class="card text-light m-auto my-4" style="width: 18rem;">
