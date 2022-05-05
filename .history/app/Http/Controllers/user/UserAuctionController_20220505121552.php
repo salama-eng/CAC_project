@@ -31,8 +31,8 @@ public function complate(){
        
     $id=Auth::id();
     $order = order::With(['post.auctions'])->where('user_id', $id)->get();
-   
-    return view('client.UserComplateAuctions', [
+  return  $order;
+    return view('client.UserComplatePosts', [
         'orders' => $order,
         
     ]);

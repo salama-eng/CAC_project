@@ -30,11 +30,14 @@ class UserAuctionController extends Controller
 public function complate(){
        
     $id=Auth::id();
-    $order = order::With(['post.auctions'])->where('user_id', $id)->get();
-   
-    return view('client.UserComplateAuctions', [
+
+    $order = order::With(['post.auctions','user'])->get();
+
+  $post=Post::with('auctions')->get();
+
+    return view('client.UserComplatePosts', [
         'orders' => $order,
-        
+        'post' => $post,
     ]);
 }
 
