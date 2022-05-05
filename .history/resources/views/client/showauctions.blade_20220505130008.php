@@ -37,7 +37,7 @@
 @endif
 @endforeach
 
-@if ($i <= 0)
+@if ($i >0)
 <div class="d-flex flex-wrap col-12 justify-content-center align-items-center text-center">
 
     <h6 class="col-10 ">  قد تكون المزادات منتهية التاريخ او غير مفعلة </h6>

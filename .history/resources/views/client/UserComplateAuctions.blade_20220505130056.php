@@ -42,7 +42,7 @@ $i++;
 
 
 
-    @if ($i <= 0)
+    @if ($i >= 0)
     <div class="d-flex flex-wrap col-12 justify-content-center align-items-center text-center">
     
         <h6 class="col-12 "> عذرا لايوجد بيانات؟؟ </h6>

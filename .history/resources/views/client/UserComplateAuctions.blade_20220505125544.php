@@ -27,8 +27,9 @@
     </div>
 
     <div class="card-body d-flex justify-content-between py-0">
+        
        
-    
+       
          </div>
   
 </div>
@@ -48,7 +49,7 @@ $i++;
         <h6 class="col-12 "> عذرا لايوجد بيانات؟؟ </h6>
         
         <img class=" image-fluid m-auto col-8 col-lg-3  my-3" src="assets/images/nodata.png"  height=""alt="">
-        <a href="/" class="card-link active text-center mt-5 mb-2 col-12">  العودة للرئيسية  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+        <a href="{{route('addAuction')}}" class="card-link active text-center mt-5 mb-2 col-12">   اضافة مزاد  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
         
         
         </div> 

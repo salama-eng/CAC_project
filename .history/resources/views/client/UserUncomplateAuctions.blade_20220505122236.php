@@ -3,7 +3,7 @@
 
 
 
-<h3 class="text-warning  mt-5 mb-5 text-center">  عمليات الشراء الغير مكتملة </h3>
+<h3 class="text-warning  mt-5 mb-5 text-center">  عمليات البيع الغير مكتملة </h3>
 
 <section class="card-container  d-flex flex-wrap justify-content-between ">
 
