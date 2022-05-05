@@ -2,10 +2,10 @@
 @section('content')
 
 
-<h3 class="text-warning  mt-5 mb-5 text-center">السيارات المضافة في المزاد</h3>
+
 
 <section class="card-container  d-flex flex-wrap justify-content-between text-center ">
-
+<h3 class="text-warning  mt-5 mb-5 text-center">السيارات المضافة في المزاد</h3>
 @php
     $i=0;
 @endphp
@@ -20,7 +20,7 @@
 
 
 <div class="card text-light m-auto my-4" style="width: 18rem;">
-    <img src="/images/{{$post->image}}" class="card-img-top p-3" height="220" alt="{{$post->image}}">
+    <img src="{{ URL::asset('images/'.$post->image) }}" class="card-img-top p-3" height="220" alt="{{$post->image}}">
     <div class="card-body py-0">
         <h5 class="card-title text-center">{{$post->name}}</h5>
         <p class="text-center fs-7 card-details"> تنتهي في  <em> {{$post->end_date}} </em></p>
