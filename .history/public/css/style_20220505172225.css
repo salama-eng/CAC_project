@@ -170,8 +170,8 @@ body {
   position: absolute;
   top: 2.5rem;
   left: 3rem;
-  width: 4rem;
-  height: 4rem;
+  width: 3.6rem;
+  height: 3.6rem;
 }
 
 .logo-box h2 {
@@ -368,50 +368,53 @@ body {
 }
 
 /*-------------------------- home --------------------------------------*/
-.landscape-image
-{
-  
-  position:absolute;
+.landscape-image {
+
+  position: absolute;
   z-index: -1;
-  left:0;
+  left: 0;
 }
 
-.landscape-text
-{
-  position:relative;
-  margin:1rem;
-  top:5rem;
-  
+.landscape-text {
+  position: relative;
+  margin: 1rem;
+  top: 5rem;
+
 }
-.landscape-text h1
-{
- font-size:5rem;
+
+.landscape-text h1 {
+  font-size: 5rem;
   font-weight: bolder;
 }
-.landscape
-{
-  
-  position:relative;
-  top:4rem;
+
+.landscape {
+
+  position: relative;
+  top: 4rem;
   z-index: 4;
-  left:0;
+  left: 0;
 }
-.btn-yellow
-{
+
+.btn-yellow {
   border: 1px solid var(--yellow) !important;
-padding: 0.8rem 1.3rem  0.8rem 1.3rem ;
+  padding: 0.8rem 1.3rem 0.8rem 1.3rem;
 }
 
-.bg-yellow{ background-color: var(--yellow); }
-.offers{
-  margin-top: 26%;
-
+.bg-yellow {
+  background-color: var(--yellow);
 }
-.card{
+
+.offers {
+  margin-top: 400px;
+  width: 100vw !important;
+}
+
+.card {
   background-color: #1e1e1e !important;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
-.img-3-sec{
+
+.img-3-sec {
   background-image: url('../images/car1.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -419,20 +422,23 @@ padding: 0.8rem 1.3rem  0.8rem 1.3rem ;
   height: 300px;
 
 }
-.img-3-sec div{
+
+.img-3-sec div {
   height: 120px;
   width: 50px;
-background-color: var(--yellow);
-position: absolute;
-left: 40%;
+  background-color: var(--yellow);
+  position: absolute;
+  left: 40%;
 }
-.img-3-sec p{
+
+.img-3-sec p {
   width: 16%;
   position: absolute;
-left: 26%;
-line-height: 30px;
+  left: 26%;
+  line-height: 30px;
 }
-.img-3-sec2{
+
+.img-3-sec2 {
   background-image: url('../images/car2.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -442,65 +448,81 @@ line-height: 30px;
   position: relative;
   top: -15px;
 }
-.section-text{
+
+.section-text {
   line-height: 30px;
 }
-.auctions-bg{
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../images/bg-main.webp');
+
+.auctions-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .7)), url('../images/bg-main.webp');
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;
   width: 100vw;
- background-attachment: fixed;
+  background-attachment: fixed;
 }
-.offers-bg{
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../images/car2.jpg');
+
+.offers-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .7)), url('../images/car2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;
-  width: 100vw;
- background-attachment: fixed;
+  width: 100%;
+  background-attachment: fixed;
 }
-.auctions-bg-child{
-  padding-top:200px !important;
+
+.auctions-bg-child {
+  padding-top: 200px !important;
 }
-.auctions-bg-child div h1{
+
+.auctions-bg-child div h1 {
   color: var(--yellow);
 }
-.auctions-bg-child form select{
+
+.auctions-bg-child form select {
   background-color: transparent;
   width: 10rem;
 }
-.auctions-bg-child form select option{
-  background-color: var(--darkgrey) ;
+
+.auctions-bg-child form select option {
+  background-color: var(--darkgrey);
 }
-footer{
- background-color: #1e1e1e !important;
+
+footer {
+  background-color: #1e1e1e !important;
+  padding-bottom: 20px;
 }
-footer .cornerstyle{
+
+footer .cornerstyle {
   height: 100px;
 }
-footer .cornerstyle a{
- position: relative;
- left: -22px;
+
+footer .cornerstyle a {
+  position: relative;
+  left: -22px;
 }
+
 footer .contact-form input,
 footer .contact-form textarea,
-footer .contact-form button{
+footer .contact-form button {
   background-color: transparent;
   border: 1px solid #fff;
 }
-footer .contact-form button{
+
+footer .contact-form button {
   border: 1px solid var(--yellow);
   width: 158px;
 }
-footer .contact-form textarea{
+
+footer .contact-form textarea {
   height: 88px;
   width: 158px;
 }
-footer .contact-form button:hover{
+
+footer .contact-form button:hover {
   background-color: var(--yellow);
 }
+
 @media (min-width: 576px) {
 
   .modal-dialog {
@@ -683,15 +705,13 @@ textarea {
   background-color: var(--yellow);
   transition: 0.4s;
 }
+/********* dash by salama*/
 
-<<<<<<< Updated upstream
-
-=======
 .dash-header
 {
 
   color: var(--whitecolor);
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/d.jpg');
+  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/about1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
  padding:1rem;
@@ -704,7 +724,6 @@ textarea {
 {
   font-family: Evogria;
 }
->>>>>>> Stashed changes
 @media (min-width:836px) {
   section.send_message .box img {
     left: -7.6vw;
@@ -725,10 +744,25 @@ textarea {
 
 }
 
-@media (max-width: 1199px){
+@media (max-width: 1199px) {
 
-  .landscape-div{display: none;}
-  .landscape-image{position:  relative !important;
+  .landscape-div {
+    display: none;
+  }
+
+  .landscape-image {
+    position: relative !important;
+  }
+  .offers {
+    margin-top: 150px;
+  }
+  .current-offers .card:not(:first-child){
+    display: none;
+  }
+  footer ,.contact-form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   }
 }
 
