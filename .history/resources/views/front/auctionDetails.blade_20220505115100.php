@@ -43,19 +43,13 @@
                         <p class="mb-1 text-light ">{{$post->category->name}}</p>
                         <p class="mb-5 text-light ">{{$post->color}}</p>
                         <p class="mb-1 text-light ">{{$post->engin_car}}</p>
-                        @if ($post->damage == 1)
-                        <p class="mb-1 text-light ">لايوجد ضرر</p>
-                            @elseif ($post->damage ==2 )
-                            <p class="mb-1 text-light ">ضرر سطحي</p>
-                            @else
-                            <p class="mb-1 text-light ">ضرر ثانوي</p>
-                        @endif
+                        <p class="mb-1 text-light ">{{$post->damage}}</p>
                        @if ($post->status_car == 1)
                        <p class="mb-1 text-light ">جديد</p>
                            @else
                            <p class="mb-1 text-light ">مستخدم</p>
                        @endif
-                        
+                        <p class="mb-1 text-light ">{{$post->status_car}}</p>
                         <p class="mb-1 text-light ">{{$post->end_date}}</p>
                         <p class="mb-1 text-light "> {{$post->description}}</p>
                       

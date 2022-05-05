@@ -73,7 +73,7 @@
                         aria-expanded="false">إدارة
                         طلبات المزايدة</a>
                         <ul class="collapse list-unstyled fs-6" id="manage2">
-                            <li><a href="{{route('AuctionCars')}}" class="text-light text-center p-3"> السيارات التي تمت المزايدة عليها</a></li>
+                            <li><a href="#" class="text-light text-center p-3"> السيارات التي تمت المزايدة عليها</a></li>
                             <li><a href="#" class="text-light text-center p-3"> المزادات الغير مكتملة</a></li>
                             <li><a href="#" class="text-light text-center p-3"> المزادات المكتملة</a></li>
 

@@ -50,6 +50,8 @@
                             @else
                             <p class="mb-1 text-light ">ضرر ثانوي</p>
                         @endif
+
+                        <p class="mb-1 text-light ">{{$post->damage}}</p>
                        @if ($post->status_car == 1)
                        <p class="mb-1 text-light ">جديد</p>
                            @else
