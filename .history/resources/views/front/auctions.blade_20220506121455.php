@@ -1,14 +1,14 @@
 @extends('front.layout.home')
 @section('content')
     <section>
-        <div class="auctions-bg offers-bg w-100 mt-5">
+        <div class="auctions-bg w-100 mt-5">
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
-                <h1 class="fw-bold w-100 text-center active">
+                <h1 class="fw-bold w-100 text-center active mb-2">
                     مستكشف المركبات
                 </h1>
-                <p class="w-100 text-center text-light">
+                <p class="w-100 text-center text-lighter m-2 mb-5">
                     هل تبحث عن سيارات بحالة معينة؟
                     <br>
                     تبسيط البحث عن طريق تحديد فئة لتضييق تطاق نتائجك
@@ -63,42 +63,35 @@
     <section class="offers offers-page d-flex flex-column align-items-center pt-5 my-5 ">
         <h1 class="d-flex flex-wrap   yellow fs-3">المزادات الحالية </h1>
 
-<div class="d-flex flex-wrap  col-8 col-lg-9 gap-1">
-
-@foreach ($Posts as $post )
-@if (!isset($post->auctions[0]->is_active))
-        
-@if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date >= date('Y-m-d')))
+        <div class="d-flex flex-wrap  col-8 col-lg-9">
 
 
-  <div class="card text-light m-auto  py-0 mb-4 mt-4" style="width: 18rem;">
-        <a href="{{route('auctiondetails',$post->id)}}"><img src="/images/{{$post->image}}" class="card-img-top p-3" height="220" alt="...">  </a>
-        <div class="card-body py-0">
-            <h5 class="card-title text-center"><span class="cate">{{$post->name}}</span>/<span class="mod">{{$post->model}}</span></h5>
-            <p class="text-center fs-7 card-details type">جديد</p>
-        </div>
-        <div class="card-body d-flex justify-content-between py-0">
-            <p href="#" class="card-link card-details">سعر المزايدة/<span class="active price">{{$post->starting_price}}</span><i class="active">$</i>
-            </p>
-            <a href="" class="card-link active">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-        </div>
-    </div>
-    @endif
-    @endif
+            @foreach($auctions as $auction )
+
+@if($auction->auction_post->is_active == 1 && $auction->auction_post->end_date >= date('Y-m-d'))
+
+
+
+            <div class="card text-light m-auto  py-0 mb-3" style="width: 18rem;">
+                <img src="/images/{{$auctions->auction_post->image}}" class="card-img-top p-3" height="220" alt="...">
+                <div class="card-body py-0">
+                    <h5 class="card-title text-center"><span class="cate">{{$auctions->auction_post->name}}</span>/<span class="mod">2000</span></h5>
+                    <p class="text-center fs-7 card-details type">جديد</p>
+
+                </div>
+                <div class="card-body d-flex justify-content-between py-0">
+                    <p href="#" class="card-link card-details">سعر المزايدة/<span class="active price"></span><i class="active">$</i>
+                    </p>
+                    <a href="#" class="card-link active">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                </div>
+            </div>
+@endif
 @endforeach
 
-      
 
-         
-           
-            
-
-       
+   
           
-           
-            
         </div>
 
     </section>
-
 @endsection

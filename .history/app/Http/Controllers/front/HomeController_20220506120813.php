@@ -38,12 +38,12 @@ class HomeController extends Controller
     public function show_auctions(){
 
         $auctions =Auction::with(['auction_post'])->get();
-      
-        return view('front.auctions', [
-            'auctions' => $auctions,
+        return $auctions;
+        return view('front.offers', [
+            'Posts' => $posts,
         ]);
 
-
+    }
     }
     public function show_offers(){
    $posts=Post::with(['auctions'])->where('is_active',1)->get();

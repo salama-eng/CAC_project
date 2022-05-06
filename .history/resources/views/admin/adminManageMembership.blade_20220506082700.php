@@ -33,7 +33,7 @@
                     <td class="text-warning"> {{$membership->name}}</td>
                     <td class="text-warning"> {{$membership->email}}</td>
                     <td class="text-warning"> {{$membership->phone}}</td>
-                    <td><img src="{{ URL::asset('images/'.$membership->image) }}" width="80" alt="{{$membership->image}}" ></td>
+                    <td><img src="{{ URL::asset('images/'.$membership->image) }}" width="200" alt="{{$membership->image}}" ></td>
                     <td class="text-warning"> {{$membership->address}}</td>
                     <td class="text-warning"> {{$membership->description}}</td>
                     

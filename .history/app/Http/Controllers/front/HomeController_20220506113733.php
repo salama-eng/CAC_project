@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Auction;
 use App\Models\membership;
 use App\Models\Post;
 use App\Models\slider_image;
@@ -37,19 +36,15 @@ class HomeController extends Controller
     }
     public function show_auctions(){
 
-        $auctions =Auction::with(['auction_post'])->get();
-      
-        return view('front.auctions', [
-            'auctions' => $auctions,
-        ]);
-
 
     }
     public function show_offers(){
-   $posts=Post::with(['auctions'])->where('is_active',1)->get();
-
-        return view('front.offers', [
+   $posts=Post::with(['auctions'])->where('auctions.id',null)->get();
+   return $posts;
+        return view('front.index', [
+         
             'Posts' => $posts,
+            
         ]);
 
     }

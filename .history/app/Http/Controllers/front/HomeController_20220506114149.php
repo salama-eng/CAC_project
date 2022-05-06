@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Auction;
 use App\Models\membership;
 use App\Models\Post;
 use App\Models\slider_image;
@@ -36,12 +35,6 @@ class HomeController extends Controller
         ]);
     }
     public function show_auctions(){
-
-        $auctions =Auction::with(['auction_post'])->get();
-      
-        return view('front.auctions', [
-            'auctions' => $auctions,
-        ]);
 
 
     }

@@ -191,8 +191,9 @@ Route::get('/email', function () {
     return view('mail.email_verify');
 });
 
-
-Route::get('/auctions',[HomeController::class,'show_auctions'])->name('auctions');
+Route::get('/auctions', function () {
+    return view('front.auctions');
+})->name('auctions');
 
 
 Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');

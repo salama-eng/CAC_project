@@ -645,7 +645,7 @@ section.send_message .box img {
  background-attachment: fixed;
 }
 .offers-bg{
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/aboutus.jpg');
+  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/about1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 80vh;

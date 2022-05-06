@@ -76,6 +76,7 @@
         <div class="card-body py-0">
             <h5 class="card-title text-center"><span class="cate">{{$post->name}}</span>/<span class="mod">{{$post->model}}</span></h5>
             <p class="text-center fs-7 card-details type">جديد</p>
+
         </div>
         <div class="card-body d-flex justify-content-between py-0">
             <p href="#" class="card-link card-details">سعر المزايدة/<span class="active price">{{$post->starting_price}}</span><i class="active">$</i>
@@ -86,6 +87,7 @@
     @endif
     @endif
 @endforeach
+
 
       
 
