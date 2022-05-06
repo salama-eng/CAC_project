@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
 
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
@@ -69,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
         // client profile Manage
 
         Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+        Route::get('/build', [LessonController::class, 'build'])->name('build');
         Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
         Route::post('/save_editprofile', [UserProfileController::class, 'save_edit_profile'])->name('save_editprofile');
         Route::post('/edit_image_profile', [UserProfileController::class, 'editImageProfile'])->name('edit_image_profile');

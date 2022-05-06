@@ -4,6 +4,10 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Auction;
+use App\Models\User;
+use App\Models\Lesson;
+use App\Http\Controllers\LessonController;
+use App\Events\NewNotification;
 class notify extends Command
 {
     /**
@@ -11,7 +15,7 @@ class notify extends Command
      *
      * @var string
      */
-    protected $signature = 'notify:endAuctions';
+    protected $signature = 'notify:endauctions';
 
     /**
      * The console command description.
@@ -27,9 +31,21 @@ class notify extends Command
      */
     public function handle()
     {
-        $auction = Auction::with(['auction_post', 'userOwner', 'userAw'])
-                            ->where('auction_post.end_date', '<', date('Y-m-d'))
-                            ->get();
-        return 0;
+        $data = [
+            'title'                 => 'مرحبا عزيزي المستخدم', 
+            'body'                  => 'تمت عملية البيع والشراء',
+        ];
+        // $lesson = new Lesson;
+        // $lesson->owner_user_id = 1;
+        // $lesson->aw_user_id = 2;
+        // $lesson->title = $this->details['title'];
+        // $lesson->body = $this->details['body'];
+        // $lesson->save();
+        $users = User::all();
+
+            
+        
+        event(new NewNotification($data));
+        // Notification::send(new NewNotification(Lesson::latest('id')->first()));
     }
 }
