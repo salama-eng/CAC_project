@@ -33,7 +33,6 @@ class HomeController extends Controller
             'members' => $member,
 
         ]);
-    }
     public function show_auctions(){
 
     }
