@@ -76,8 +76,8 @@
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">مقدار المزايدة. <span class="yellow fs-6"> لا يقل عن 100000 الف
-                    الف</span></label>
+            <label for="" class="form-label text-white">مقدار المزايدة. <span class="yellow fs-6"> 
+                    </span></label>
             <div class="input-group">
                 <input type="text" name="auction_price" value="{{ old('auction_price') }}"
                     class="form-control" id="basic-url" aria-describedby="basic-addon3">
@@ -139,12 +139,8 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">معلومات اخرى حول السيارة</label>
             <div class="input-group">
-<<<<<<< Updated upstream
-                <textarea name="description" class="form-control" 
-=======
 
                 <textarea name="description" class="form-control"  type="editor"
->>>>>>> Stashed changes
                     aria-label="With textarea">{{old('description')}}</textarea>
             </div>
             @error('description')
@@ -154,7 +150,7 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="img" class="form-label text-light">الصورة الرئيسية للسيارة</label>
             <div class="input-group ">
-                <input type="file" name="image" id="img" class="form-control" id="inputGroupFile01">
+                <input type="file" name="image" id="img" class="form-control" id="inputGroupFile01" accept="image/jpeg ,image/png , image/gif">
             </div>
             @error('image')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -164,7 +160,7 @@
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="img" class="form-label text-light">صور أخرى</label>
             <div class="input-group">
-                <input type="file" name="images[]" class="form-control text-light" id="inputGroupFile01"
+                <input type="file" name="images[]" class="form-control text-light" id="inputGroupFile01" accept="image/jpeg ,image/png , image/gif"
                     aria-describedby="inputGroupFileAddon01" multiple>
             </div>
             @error('images')
@@ -210,8 +206,8 @@
 
 
 </div>
+
 @endif
 
-
-
+   
 @stop
