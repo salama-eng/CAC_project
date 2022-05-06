@@ -140,11 +140,7 @@
             <label for="" class="form-label text-white">معلومات اخرى حول السيارة</label>
             <div class="input-group">
 
-            
                 <textarea name="description" class="form-control"  type="editor"
-
-                <textarea name="description" class="form-control"  type="editor"
-
                     aria-label="With textarea">{{old('description')}}</textarea>
             </div>
             @error('description')

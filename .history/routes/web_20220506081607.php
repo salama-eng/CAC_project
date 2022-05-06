@@ -10,11 +10,8 @@ use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
 use App\Http\Controllers\admin\AdminHomeController;
-use App\Http\Controllers\admin\membershipController;
-use App\Http\Controllers\admin\sliderController;
 use App\Http\Controllers\front\ContactUsController;
 use App\Http\Controllers\front\HomeController;
-use App\Http\Controllers\front\siteHomeController;
 use App\Mail\VerificationEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -144,23 +141,6 @@ Route::group(['middleware' => 'auth'], function () {
         // Admin Manage Ended Auction
         Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
         
-        // Admin Manage slider Images
-        Route::get('/slider_image', [sliderController::class, 'showSliderPage'])->name('slider_image');
-        Route::post('/add_slider_image', [sliderController::class, 'addSliderImage']);
-        Route::post('/edit_slider_image/{id}', [sliderController::class, 'editSliderImage'])->name('edit_slider_image');
-        Route::post('/active_slider_image/{id}', [sliderController::class, 'activeSliderImage'])->name('active_slider_image');
-        
-        // Admin Manage membership 
-        Route::get('/membership', [membershipController::class, 'showMembership'])->name('membership');
-        Route::post('/add_membership', [membershipController::class, 'addMembership']);
-        Route::post('/edit_membership/{id}', [membershipController::class, 'editMembership'])->name('edit_membership');
-        Route::post('/active_membership/{id}', [membershipController::class, 'activeMembership'])->name('active_membership');
-        
-
-        // Admin Manage Pages
-        Route::get('/home_site', [siteHomeController::class, 'showsiteHome'])->name('home_site');
-        
-    
     
     // });
 
@@ -168,12 +148,9 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-
-Route::get('/home', [HomeController::class, 'showHomePage'])->name('home');
-
-// Route::get('/home', function () {
-//     return view('front.index');
-// })->name('home');
+Route::get('/home', function () {
+    return view('front.index');
+})->name('home');
 Route::get('/', function () {
     return view('front.index');
 });
