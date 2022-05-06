@@ -627,9 +627,7 @@ section.send_message .box img {
   width: 100%;
   opacity: .5;
 }
-.auctions-bg-child div{
-  height: 60%;
-}
+
 .auctions-bg-child div h1{
   color: var(--yellow);
 }
@@ -739,9 +737,14 @@ textarea {
   .offers {
     margin-top: 150px;
   }
+
+  .auctions-bg-child{
+    padding-top: 100px !important;
+  }
   .current-offers .card:not(:first-child){
     display: none;
   }
+
   footer ,.contact-form{
   display: flex;
   flex-wrap: wrap;

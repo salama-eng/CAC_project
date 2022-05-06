@@ -5,10 +5,10 @@
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
-                <h1 class="fw-bold w-100 text-center active mb-2">
+                <h1 class="fw-bold w-100 text-center active">
                     مستكشف المركبات
                 </h1>
-                <p class="w-100 text-center text-lighter m-2 mb-5">
+                <p class="w-100 text-center text-light">
                     هل تبحث عن سيارات بحالة معينة؟
                     <br>
                     تبسيط البحث عن طريق تحديد فئة لتضييق تطاق نتائجك
@@ -45,7 +45,7 @@
                                 
                                 <option value="price-low">اقل من 2000$</option>
                                 <option value="price-mid">$2000 - $4000</option>
-                                <option class="price-hight">$5000 - $7000</option>
+                                <option class="price-hight">$4000 - $7000</option>
                                 <option value="price-x-hight">اكثر من 7000$</option>
                             </select>
                         </div>
@@ -63,11 +63,11 @@
     <section class="offers offers-page d-flex flex-column align-items-center pt-5 my-5 ">
         <h1 class="d-flex flex-wrap   yellow fs-3">المزادات الحالية </h1>
 
-        <div class="d-flex flex-wrap  col-8 col-lg-9">
+        <div class="d-flex flex-wrap  col-12 col-lg-9">
 
             <div class="card text-light m-auto  py-0 mb-3" style="width: 18rem;">
                 <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
-                <div class="card-body py-0">
+                <div class="card-body py-0 mx-0">
                     <h5 class="card-title text-center"><span class="cate">Toyota</span>/<span class="mod">2000</span></h5>
                     <p class="text-center fs-7 card-details type">جديد</p>
 

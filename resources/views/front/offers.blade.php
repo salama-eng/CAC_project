@@ -45,7 +45,7 @@
                                 
                                 <option value="price-low">اقل من 2000$</option>
                                 <option value="price-mid">$2000 - $4000</option>
-                                <option class="price-hight">$5000 - $7000</option>
+                                <option class="price-hight">$4000 - $7000</option>
                                 <option value="price-x-hight">اكثر من 7000$</option>
                             </select>
                         </div>
@@ -63,7 +63,7 @@
     <section class="offers offers-page d-flex flex-column align-items-center pt-5 my-5 ">
         <h1 class="d-flex flex-wrap   yellow fs-3">المزادات الحالية </h1>
 
-        <div class="d-flex flex-wrap  col-8 col-lg-9">
+        <div class="d-flex flex-wrap  col-12 col-lg-9">
 
             <div class="card text-light m-auto  py-0 mb-3" style="width: 18rem;">
                 <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
@@ -192,5 +192,5 @@
         </div>
 
     </section>
-
+   
 @endsection

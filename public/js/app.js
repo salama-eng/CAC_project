@@ -1,8 +1,8 @@
 $(document).ready(function () {
- 
+
   window.addEventListener('scroll', () => {
 
-  
+
     var scroll_postion = window.scrollY;
     if (scroll_postion > 300) {
       $('.smooth-up').show();
@@ -59,25 +59,22 @@ $(document).ready(function () {
     var cate = $('#cate').find(":selected").text();
     var type = $('#type').find(":selected").text();
     var price = $('#price').find(":selected").text();
-
-
-    function hasStr(main_string, sup_string) {
-      if (main_string.includes(sup_string)) {
-        return true;
-      }
-    }
-
-     $('.offers-page .card').hide();
-    // if ($('.offers-page .card:contains("'+model+'"):contains("'+cate+'"):contains("'+type+'")')) {
-    //   $('.offers-page .card:contains("'+model+'"):contains("'+cate+'"):contains("'+type+'")').show();
-
-    // }
    
-    $(".offers-page .card").filter(function () {
-      if(price == 'اقل من 2000$'){
-        $('.offers-page .card:contains("'+model+'")');
-      }
-        $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 );
-    });
+   
+    if (price == 'اقل من 2000$' && $(".offers-page .card .price") <= 2000) {
+
+      ($(".offers-page .card").show());
+    }
+    else if (price == '$2000 - $4000' && $(".offers-page .card .price").text() > 2000 && $(".offers-page .card .price").text() <= 4000) {
+      $(".offers-page .card").show();
+      // $(".offers-page .card").hide();
+    }
+  else{
+      $(".offers-page .card").hide();
+  }
+    // $(".offers-page .card").hide().filter(function () {
+    //   $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1);
+    // });
   });
+
 });
