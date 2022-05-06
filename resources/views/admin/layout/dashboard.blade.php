@@ -81,6 +81,17 @@
                         <a href="{{ route('adminPayments') }}" class="text-center p-3 text-light">إدارة طرق الدفع</a>
 
                     </li>
+                    <li class="">
+                        <a class="dropdown-toggle text-center text-light pb-2 " data-bs-target="#pages" data-toggle="collapse"
+                            aria-expanded="false">إدارة
+                            الموقع</a>
+                        <ul class=" list-unstyled fs-6" id="pages">
+                            <li><a href="{{route('home_site')}}" class="text-light text-light text-center p-3">إدارد الصفحة الرئيسية</a></li>
+                            <li><a href="{{route('slider_image')}}" class="text-light text-center p-3">  صور السلايدر</a></li>
+                            <li><a href="{{route('membership')}}" class="text-light text-center p-3">إدارة شركائنا </a></li>
+
+                        </ul>
+                    </li>
 
 
                 </ul>

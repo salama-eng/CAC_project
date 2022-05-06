@@ -46,7 +46,7 @@ class AuthController extends Controller
             'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'email.exists' => 'اوبس! البريد الالكتروني غير موجود',
             'password.required' => ' حقل كلمة السر مطلوب ',
-            'password.exists' => ' اوبس! كلمة المرور غير صحيحة',
+            // 'password.exists' => ' اوبس! كلمة المرور غير صحيحة',
         ]);
         $user = User::where('email', '=', $request->email)->first();
         if (!Hash::check($request->password, $user->password)) {
