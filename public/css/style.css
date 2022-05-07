@@ -111,7 +111,12 @@ body {
   border-top: 6px solid var(--yellow) !important;
  
 }
-
+.input-model
+{
+  border:0.3px solid var(--whitecolor1) !important;
+  background:transparent !important;
+  border-radius: none;
+}
 .modal-title {
   color: var(--yellow2);
   

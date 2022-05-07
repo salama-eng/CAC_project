@@ -41,8 +41,8 @@
                             </select>
                         </div>
                         <div class="my-2 mx-auto">
-                            <select  id="price" class="text-center py-1 d-flex">
-                                
+                            <select id="price" class="text-center py-1 d-flex">
+
                                 <option value="اقل من 2000$">اقل من 2000$</option>
                                 <option value="$2000 - $4000">$2000 - $4000</option>
                                 <option class="$4000 - $7000">$4000 - $7000</option>
@@ -63,8 +63,7 @@
     <section class="offers offers-page d-flex flex-column align-items-center pt-5 my-5 ">
         <h1 class="d-flex flex-wrap   yellow fs-3">العروض الحالية </h1>
 
-        <div class="d-flex flex-wrap  col-12 col-lg-9">
-            
+        <div class="d-flex flex-wrap  col-12 col-lg-9 gap-1">
 
             @foreach ($Posts as $post)
                 @if (!isset($post->auctions[0]->is_active))
@@ -72,7 +71,7 @@
                         )
 
 
-                        <div class="card text-light m-auto  py-0 mb-4 mt-4" style="width: 18rem;">
+                        <div class="card text-light m-auto  py-0 mb-4 mt-4" style="width: 20rem;">
                             <a href="{{ route('auctiondetails', $post->id) }}"><img src="/images/{{ $post->image }}"
                                     class="card-img-top p-3" height="220" alt="..."> </a>
                             <div class="card-body py-0">
@@ -86,25 +85,46 @@
                                         class="active price">{{ $post->starting_price }}</span><i
                                         class="active">$</i>
                                 </p>
-                                <a href="" class="card-link active">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1">
-                                    </i></a>
+                                <a href="#" class='card-link active ' data-bs-toggle="modal"
+                                    data-bs-target="#auction{{ $post->id }}">مزايدة<i
+                                        class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                            </div>
+                        </div>
+
+
+                        <!--  the model   -->
+
+                        <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content  ">
+                                    <form action="{{ route('bid_auction', $post->id) }}" method="post">
+                                        @csrf
+                                        <div class="modal-header bg-darkgrey">
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body bg-darkgrey ">
+                                            @php
+                                                $total = $post->starting_price + $post->auction_ceiling;
+                                            @endphp
+                                            <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
+                                                <em class="yellow">{{ $total }}$</em></h2>
+                                        </div>
+                                        <div class="modal-footer bg-darkergrey">
+                                            <button type="button" class=" bg-lighter text-white fs-5"
+                                                data-bs-dismiss="modal">تراجع</button>
+                                            <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     @endif
                 @endif
             @endforeach
-
-
-
-
-
-
-
-
-
-
-
-        </div>
+ </div>
 
     </section>
 @endsection
