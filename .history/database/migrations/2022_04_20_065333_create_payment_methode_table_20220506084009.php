@@ -13,25 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('order', function (Blueprint $table) {
+        Schema::create('payment_methode', function (Blueprint $table) {
             $table->id();
-            $table->float('price');
-            
+            $table->string('account_number');
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->constrained()
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedBigInteger('post_id');
-            $table->foreign('post_id')->constrained()
-                    ->references('id')->on('posts')
+            $table->unsignedBigInteger('payment_id');
+            $table->foreign('payment_id')->constrained()
+                    ->references('id')->on('payments')
                     ->onUpdate('cascade')->onDelete('cascade');
-
-
-
+                    
             $table->boolean('is_active')->default(0);
             $table->timestamps();
         });
+       
     }
 
     /**
@@ -41,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('payment_methodes');
     }
 };

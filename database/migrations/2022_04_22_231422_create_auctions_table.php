@@ -19,22 +19,22 @@ return new class extends Migration
             $table->string('bid_amount');
             $table->string('bid_total');
             
-            $table->unsignedBigInteger('owner_user_id')->unique();
+            $table->unsignedBigInteger('owner_user_id');
             $table->foreign('owner_user_id')->constrained()
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedBigInteger('aw_user_id')->unique();
+            $table->unsignedBigInteger('aw_user_id');
             $table->foreign('aw_user_id')->constrained()
                     ->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->unsignedBigInteger('payment_methode_id')->unique();
+            $table->unsignedBigInteger('payment_methode_id');
             $table->foreign('payment_methode_id')->constrained()
                     ->references('id')->on('payment_methodes')
                     ->onUpdate('cascade')->onDelete('cascade');
 
-                    $table->unsignedBigInteger('post_id')->unique();
+                    $table->unsignedBigInteger('post_id');
                     $table->foreign('post_id')->constrained()
                             ->references('id')->on('posts')
                             ->onUpdate('cascade')->onDelete('cascade');
