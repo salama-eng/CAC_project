@@ -22,7 +22,6 @@ class NewNotification extends Notification
 
   public function __construct($lesson)
   {
-        
         $this->lesson = $lesson;
   }
   public function via($notifiable)

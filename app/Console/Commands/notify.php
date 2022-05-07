@@ -6,9 +6,11 @@ use Illuminate\Console\Command;
 use App\Models\Auction;
 use App\Models\User;
 use App\Models\Lesson;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LessonController;
 use App\Events\NewNotification;
-class notify extends Command
+use Illuminate\Notifications\Notification;
+class Notify extends Command
 {
     /**
      * The name and signature of the console command.
@@ -31,21 +33,26 @@ class notify extends Command
      */
     public function handle()
     {
+        $lesson = new Lesson;
+        $lesson->owner_user_id = 1;
+        $lesson->aw_user_id = 2;
+        $lesson->title = 'jkijlkijloi';
+        $lesson->body = 'hliolhuh';
+        $lesson->save();
         $data = [
-            'title'                 => 'مرحبا عزيزي المستخدم', 
-            'body'                  => 'تمت عملية البيع والشراء',
+            'owner_user_id' => 1,
+            'aw_user_id'    => 2,
+            'title'         => 'ojo;pjpo;j',
+            'body'          => 'hjilkholih',
         ];
-        // $lesson = new Lesson;
-        // $lesson->owner_user_id = 1;
-        // $lesson->aw_user_id = 2;
-        // $lesson->title = $this->details['title'];
-        // $lesson->body = $this->details['body'];
-        // $lesson->save();
-        $users = User::all();
-
-            
         
-        event(new NewNotification($data));
-        // Notification::send(new NewNotification(Lesson::latest('id')->first()));
+        $users = User::where('id', Auth::user()->id)->get();
+        
+            foreach($users as $user){
+                $user->notify(new NewNotification($data));
+                \Notification::send($user ,new NewNotification(Lesson::latest('id')->first()));
+            }
+        
+        
     }
 }
