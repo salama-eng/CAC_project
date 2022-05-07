@@ -58,8 +58,8 @@
                                     <h2 >هل انت متاكد</h2>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">تراجع</button>
-                                    <input type="submit" class="btn btn-primary" value="حذف" />
+                                    <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
+                                    <input type="submit" class=" bg-yellow text-white fs-5" value=" حذف   " />
                                 </div>
                             </form>
                         </div>
@@ -79,8 +79,8 @@
                                     <h2>هل انت متاكد</h2>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">تراجع</button>
-                                    <input type="submit" class="btn btn-primary" value="تعديل الحالة" />
+                                    <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
+                                    <input type="submit" class=" bg-yellow text-white fs-5" value=" تعديل  الحالة " />
                                 </div>
                             </form>
                         </div>
