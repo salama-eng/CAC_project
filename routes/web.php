@@ -172,13 +172,14 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/home', [HomeController::class, 'showHomePage'])->name('home');
+Route::get('/', [HomeController::class, 'showHomePage'])->name('home');
 
 // Route::get('/home', function () {
 //     return view('front.index');
 // })->name('home');
-Route::get('/', function () {
-    return view('front.index');
-});
+// Route::get('/', function () {
+//     return view('front.index');
+// });
 Route::get('/auctions', function () {
     return view('front.auctions');
 })->name('auctions');
