@@ -18,10 +18,9 @@ class Post extends Model
     public function model(){
         return $this->belongsTo(Models::class,'model_id');
     }
-
+    
     public function auctions()
     {
         return $this->hasMany(Auction::class ,'post_id');
     }
- 
 }

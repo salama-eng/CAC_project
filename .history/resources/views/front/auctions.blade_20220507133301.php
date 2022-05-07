@@ -67,28 +67,23 @@
         <div class="d-flex flex-wrap  col-8 col-lg-9">
 
 
-            @foreach($posts as $post )
-            @if (isset($post->auctions[0]->is_active))
-@if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
+            @foreach($auctions as $auction )
+
+@if($auction->auction_post->is_active == 1 && $auction->auction_post->end_date >= date('Y-m-d'))
 
 
 
             <div class="card text-light m-auto  py-0 mb-3" style="width: 18rem;">
-             <a href="{{route('auctiondetails',$post->id)}}"> <img src="/images/{{$post->image}}" class="card-img-top p-3" height="220" alt="..."></a>
+             <a href="{{route('auctiondetails',$auction->auction_post->id)}}"> <img src="/images/{{$auction->auction_post->image}}" class="card-img-top p-3" height="220" alt="..."></a>
                 <div class="card-body py-0">
-                    <h5 class="card-title text-center"><span class="cate"></span>{{$post->name}} / <span class="mod">{{$post->model}}</span></h5>
+                    <h5 class="card-title text-center"><span class="cate"></span>{{$auction->auction_post->name}} / <span class="mod">{{$auction->auction_post->model}}</span></h5>
                     <p class="text-center fs-7 card-details type">جديد</p>
 
                 </div>
                 <div class="card-body d-flex justify-content-between py-0">
-                    <p href="#" class="card-link card-details">سعر المزايدة/<span class="active price"> 
-                      
-                          
-                          {{$post->auctions->max('bid_total');}}
-                     
-                    </span><i class="active">$</i>
+                    <p href="#" class="card-link card-details">سعر المزايدة/<span class="active price">{{$auction->bid_total}}</span><i class="active">$</i>
                     </p>
-                    <a href="#" class='card-link active ' data-bs-toggle="modal" data-bs-target="#auction{{$post->id}}">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                    <a href="#" class='card-link active ' data-bs-toggle="modal" data-bs-target="#auction{{$auction->auction_post->id}}">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                    
                 </div>
             </div>
@@ -96,12 +91,12 @@
 
             <!--  the model   -->
 
-            <div class="modal fade user" id="auction{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade user" id="auction{{$auction->auction_post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 @if (Auth::id())
                 
                 <div class="modal-dialog">
                     <div class="modal-content ">
-                        <form action="{{ route('bid_auction',$post->id) }}" method="post">
+                        <form action="{{ route('bid_auction',$auction->auction_post->id) }}" method="post">
                             @csrf
                             <div class="modal-header bg-darkgrey">
                         
@@ -117,15 +112,15 @@
                                     </ul>
                                 </div>
                             @endif
-                                <h2 class="text-white fs-6 pb-3 "> هل انت متاكد تريد المزايدة على هذة السيارة ودفع مبلغ مضاف الى قيمتها الحالية التي تقدر ب   <em class="yellow">{{$post->auction_ceiling}}$</em></h2>
+                                <h2 class="text-white fs-6 pb-3 "> هل انت متاكد تريد المزايدة على هذة السيارة ودفع مبلغ مضاف الى قيمتها الحالية التي تقدر ب   <em class="yellow"> {{$auction->bid_total }}$</em></h2>
                                 <div class="d-flex  align-items-center gap-3 ">
                                 <h3 class="text-white fs-6"> مقدار الزيادة: </h3>
-                                <input type="number" class="input-model text-white" min="{{$post->auction_ceiling}}" step="{{$post->auction_ceiling}}" value="{{$post->auction_ceiling}}"  name="amount">
+                                <input type="number" class="input-model text-white" min="{{$auction->auction_post->auction_ceiling}}" step="{{$auction->auction_post->auction_ceiling}}" value="{{$auction->auction_post->auction_ceiling}}"  name="amount">
                             </div>
                             @php
-                                $discount=0.20*$post->starting_price;
+                                $discount=0.20*$auction->auction_post->starting_price;
                             @endphp
-                            <h3 class="yellow fs-7 mt-2">*يجب ان تكون مقدار الزيادة من مضاعفات {{$post->auction_ceiling }}$</h3>
+                            <h3 class="yellow fs-7 mt-2">*يجب ان تكون مقدار الزيادة من مضاعفات {{$auction->auction_post->auction_ceiling }}$</h3>
                             <h3 class="yellow fs-7 mt-2">*سيتم خصم من حسابك مبلغ وقدرة   {{$discount}}$ حتى انتهاء العملية </h3>
                             <input type="hidden" name="discount" value="{{$discount}}">
                         </div>
@@ -154,7 +149,7 @@
                     </div>
                 </div>
 
-                @endif            @endif
+                @endif
             </div>
 
 @endif

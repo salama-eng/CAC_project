@@ -37,12 +37,13 @@ class HomeController extends Controller
     }
     public function show_auctions(){
 
-        $posts=Post::with(['auctions'])->where('is_active',1)->get();
-     
+        $posts=Post::with(["auctions::all()->max('bid_total')"])->where('is_active',1)->get();
+        $auctions=Auction::all()->max('bid_total');
+        return $posts;
         // Auction::where('is_active',1)->max('bid_total');
         return view('front.auctions', [
             'posts' => $posts,
-           
+            'auctions' => $auctions,
         ]);
 
 

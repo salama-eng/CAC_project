@@ -23,5 +23,8 @@ class Post extends Model
     {
         return $this->hasMany(Auction::class ,'post_id');
     }
- 
+    public function auction()
+    {
+        return $this->hasOne(Auction::where('is_active',1)->max('bid_total'),'post_id');
+    }
 }

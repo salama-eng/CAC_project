@@ -82,10 +82,11 @@
                 </div>
                 <div class="card-body d-flex justify-content-between py-0">
                     <p href="#" class="card-link card-details">سعر المزايدة/<span class="active price"> 
-                      
-                          
-                          {{$post->auctions->max('bid_total');}}
-                     
+                        @php
+                          echo $post::max('id');
+                          echo $post->auctions::max('id');
+                        @endphp
+                    
                     </span><i class="active">$</i>
                     </p>
                     <a href="#" class='card-link active ' data-bs-toggle="modal" data-bs-target="#auction{{$post->id}}">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>

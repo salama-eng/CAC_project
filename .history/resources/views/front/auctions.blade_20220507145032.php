@@ -86,6 +86,7 @@
                           
                           {{$post->auctions->max('bid_total');}}
                      
+                    
                     </span><i class="active">$</i>
                     </p>
                     <a href="#" class='card-link active ' data-bs-toggle="modal" data-bs-target="#auction{{$post->id}}">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
