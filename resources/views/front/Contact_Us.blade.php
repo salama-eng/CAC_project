@@ -11,42 +11,55 @@
     </div> 
 </main>
 
+
     <section class="social text-center my-5">
         <h3 class="yellow">تواصل معنا عبر</h3>
         <div class="container my-5 d-flex  col-12 ">
             <div class="box  col-3   col-md-4">
                 <i class="fa fa-location-arrow yellow my-4 fs-1  "></i>
                 <h5 class="my-3">العنوان</h5>
-                <span>العاصمة صنعاء</span>
+                @foreach($Information as $information)
+                @if($information->name ==  "العنوان")
+                <span> {{$information->link}}</span>
+                @endif
+                @endforeach
             </div>
 
             <div class="box  col-6  col-md-4">
                 <i class="fa fa-envelope yellow my-4 fs-1"></i>
                 <h5 class="my-3">بريد الكتروني</h5>
-                <span> cac.cars.auction@gmail.com</span>
+                @foreach($Information as $information)
+                @if($information->name == "بريد الكتروني")
+                <span> {{$information->link}}</span>
+                @endif
+                @endforeach
             </div>
             <div class="box col-3   col-md-4">
                 <i class="fa fa-mobile yellow my-4 fs-1"></i>
                 <h5 class="my-3">تلفون</h5>
-                <span> 777 777 777</span>
+                @foreach($Information as $information)
+                @if($information->name ==  "تلفون")
+                <span> {{$information->link}}</span>
+                @endif
+                @endforeach
             </div>
         </div>
     </section>
 
-    <section class="send_message  position-relative mb-5 ">
+    <section class="send_message  position-relative mb-5 pb-2">
         <div class="boxes d-flex container flex-wrap my-5 align-items-center">
             <div class="box col-12 col-md-7 order-2 order-md-1 col-lg-6">
                 <h5 class="yellow my-3 p-3 fs-3 ">ارسال رسالة</h5>
                 <form action="" class="d-flex flex-wrap m-2">
                     <div class="group col-11 col-md-6  ">
-                        <input type="text" name="" placeholder="الاسم" id="" class=" my-1 col-11">
-                        <input type="text" name="" id="" placeholder="عنوان البريد الالكتروني" class=" my-1 col-11">
-                        <input type="text" name="" id="" placeholder="رقم التلفون" class=" my-1 col-11 ">
+                        <input type="text" name="" placeholder="الاسم" id="" class=" my-1 col-12 col-md-11">
+                        <input type="text" name="" id="" placeholder="عنوان البريد الالكتروني" class=" my-1 col-12 col-md-11">
+                        <input type="text" name="" id="" placeholder="رقم التلفون" class=" my-1 col-12 col-md-11 ">
 
                     </div>
                     <div class="group col-11 col-md-6 ">
-                        <textarea name="" id="" cols="30" rows="3" placeholder="نص الرسالة" class="col-11 my-3 my-md-1 "></textarea>
-                        <button type="submit" name="" class="col-11">ارسال </button>
+                        <textarea name="" id="" rows="3" placeholder="نص الرسالة" class="col-12 col-md-11 my-3 mx-1 mx-md-0 my-md-1 "></textarea>
+                        <button type="submit" name="" class="col-12 col-md-11 mx-md-0">ارسال </button>
                     </div>
                 </form>
             </div>
@@ -58,7 +71,7 @@
             </div>
 
         </div>
-        <div class="yellow_box d-none d-md-block top-0  bg-yellow z-8 mb-5"></div>
+        <div class="yellow_box d-none d-md-block top-0 h-110 z-0 bg-yellow z-8 mb-5"></div>
 
 
     </section>

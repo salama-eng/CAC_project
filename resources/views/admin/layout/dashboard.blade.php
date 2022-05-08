@@ -97,11 +97,12 @@
                         <a class="dropdown-toggle text-center text-light p-3" data-toggle="collapse"
                             aria-expanded="false">إدارة
                             محتويات الموقع</a>
-                    </li>
+                      
+                      
                     <ul class="collapse list-unstyled fs-6" id="manage2">
                         <li class="d-flex align-items-center justify-content-center">
-                            <p class="{{ Request::segment(1) === 'home_site' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
-                                href="{{ route('home_site') }}" class="{{ Request::segment(1) === 'home_site' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
+                            <p class="{{ Request::segment(1) === 'manage_home' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('manage_home') }}" class="{{ Request::segment(1) === 'home_site' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
                                 الصفحة
                                 الرئيسية </a>
                         </li>
@@ -117,7 +118,8 @@
                                 شركائنا</a>
                         </li>
 
-
+                        <li><a href="{{route('manage_contact_us')}}" class="text-light text-center p-3">  ادارة صفحة تواصل معنا  </a></li>
+                        <li><a href="{{route('manage_about_us')}}" class="text-light text-center p-3">  ادارة صفحة من نحن  </a></li
                     </ul>
 
                 </ul>

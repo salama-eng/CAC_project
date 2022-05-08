@@ -15,12 +15,9 @@ return new class extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('paragraph');
-            $table->string('page_images');
-            $table->string('pargraph_one');
-            $table->string('pargraph_two');
-            $table->boolean('is_active')->default(0);
+            $table->text('description');
+            $table->string('paragraph_one');
+            $table->string('paragraph_two');
             $table->timestamps();
         });
     }

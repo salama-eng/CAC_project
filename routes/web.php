@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AboutUsController;
 use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
 
@@ -11,6 +12,7 @@ use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
 use App\Http\Controllers\admin\AdminHomeController;
+use App\Http\Controllers\admin\contactUsInfoController;
 use App\Http\Controllers\admin\membershipController;
 use App\Http\Controllers\admin\sliderController;
 use App\Http\Controllers\front\ContactUsController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\user\UserAuctionController;
 use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\user\UserHomeController;
 
+use App\Models\about_us;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
@@ -169,8 +172,21 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/active_membership/{id}', [membershipController::class, 'activeMembership'])->name('active_membership');
         
 
-        // Admin Manage Pages
-        Route::get('/home_site', [siteHomeController::class, 'showsiteHome'])->name('home_site');
+        // Admin Manage Home Page
+        Route::get('/manage_home', [AdminHomeController::class, 'manageHome'])->name('manage_home');
+        Route::post('/add_content', [AdminHomeController::class, 'addContent'])->name('add_content');
+        Route::post('/edit_content/{id}', [AdminHomeController::class, 'editContent'])->name('edit_content');
+        
+        // Admin Manage membership 
+        Route::get('/manage_contact_us', [contactUsInfoController::class, 'showAdminCategories'])->name('manage_contact_us');
+        Route::post('/add_contact_us', [contactUsInfoController::class, 'addContactUs']);
+        Route::post('/edit_contact_us/{id}', [contactUsInfoController::class, 'editContactUs'])->name('edit_contact_us');
+        Route::post('/active_contact_us/{id}', [contactUsInfoController::class, 'activeContactUs'])->name('active_contact_us');
+
+        // Admin Manage About Us Page
+        Route::get('/manage_about_us', [AboutUsController::class, 'manageAboutUs'])->name('manage_about_us');
+        Route::post('/add_about_us_content', [AboutUsController::class, 'addAboutUsContent'])->name('add_about_us_content');
+        Route::post('/edit_content/{id}', [AboutUsController::class, 'editContent'])->name('edit_content');
         
     
     
@@ -209,10 +225,5 @@ Route::get('/auctions',[HomeController::class,'show_auctions'])->name('auctions'
 Route::post('/bid_auction/{id}',[UserAuctionController::class,'bid_auction'])->name('bid_auction');
 Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 
-Route::get('/contact_us', function () {
-    return view('front.Contact_Us');
-})->name('contact_us');
-
-Route::get('/aboutUs', function () {
-    return view('front.aboutUs');
-})->name('aboutUs');
+Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');
+Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');

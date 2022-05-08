@@ -3,33 +3,36 @@
 
 @if($do == 'Manage')
 
-<h1 class="text-center fs-3 text-white mb-5">ادارة الصفحة الرئيسية  </h1>
+<h1 class="text-center fs-3 text-white mb-5">ادارة صفحة من نحن  </h1>
     <div class="container ">
         @if(session()->has('success'))
             <div class="alert alert-success message">
                 {{ session()->get('success') }}
             </div>
         @endif
+        @if(!isset($Content[0]))
 
-            <p class="my-4">{{$content->main_paragraph}}</p>
-            <a href="manage_home?do=Edit&contentid={{$content->id}}&column=main_paragraph&name=النص الرئيسي" class="btn btn-success">
-                <i class='fa fa-edit'></i> تعديل
-            </a>
-        </div>
+        <a href="manage_about_us?do=Add" class="btn btn-sm bg-yellow">
+            <i class="fa fa-plus"></i>  النص الافتراضي
+        </a>
+        @endif
+
+        @foreach($Content as $content)
         
         <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
-            <h2 class="yellow ">الوصف</h2>
+            <h2 class="yellow ">نبذه عامة</h2>
             <hr>
             <p class="my-4">{{$content->description}}</p>
-            <a href="manage_home?do=Edit&contentid={{$content->id}}&column=description&name=الوصف" class="btn btn-success">
+            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=description&name=الوصف" class="btn btn-success">
                 <i class='fa fa-edit'></i> تعديل
             </a>
         </div>
 
         <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
+            <h2 class="yellow "> النص الاول</h2>
             <hr>
             <p>{{$content->paragraph_one}}</p>
-            <a href="manage_home?do=Edit&contentid={{$content->id}}&column=paragraph_one&name=النص الاول" class="btn btn-success">
+            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=paragraph_one&name=النص الاول" class="btn btn-success">
                 <i class='fa fa-edit'></i> تعديل
             </a>
         </div>
@@ -38,20 +41,21 @@
             <h2 class="yellow "> النص الثاني</h2>
             <hr>
             <p>{{$content->paragraph_two}}</p>
-            <a href="manage_home?do=Edit&contentid={{$content->id}}&column=paragraph_two&name=النص الثاني" class="btn btn-success">
+            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=paragraph_two&name=النص الثاني" class="btn btn-success">
                 <i class='fa fa-edit'></i> تعديل
             </a>
         </div>
 
 
 
-    @endforeach
+        @endforeach
        
        
     </div>
-@elseif($do == 'Add')
+
+    @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center">Add New Content</h1>
+<h1 class="text-center">Add New membership</h1>
 <div class="container">
     @if ($errors->any())
         <div class="alert message">
@@ -62,40 +66,28 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('add_content') }}"  method="POST" enctype="multipart/form-data">
+    <form action="{{ route('add_about_us_content') }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- Start content -->
                 <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white">  النص الرئيسي </label>
+                    <label class="col-sm-2 col-form-label text-white">  نبذة عامة </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="main_paragraph" cols="30" class="form-control"  rows="5">
-                        لجميع السيارات والشاحنات المستعملة والجديدة
-                        </textarea>
-                        @if (session()->has('password'))
-                        <p class="text-end yellow">{{ session()->get('main_paragraph') }}</p>
-                        @endif
+                        <textarea name="description" cols="30" class="form-control"  rows="7">
+                    الاس، تكساس، تعد كوبارت الشركة الرائدة على مستوى العالم في مزادات السيارات على الإنترنت، ووجهة رئيسية لإعادة بيع وإعادة تسويق السيارات. تقنية كوبارت المبتكرة ومنصة المزادات على الإنترنت تربط بين البائعين و لمشترين حول العالم. كوبارت تقوم بتشغيل أكثر من 200 موقع في 11 بلد، وأكثر من 150,000 سيارة للمزاد كل يوم.                        </textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white"> الوصف</label>
-                    <div class="col-sm-8 col-md-9">
-                        <textarea name="description" cols="30" class="form-control"  rows="5">
-                        تجعل من السهل على الاعضاء العثور والمزايدة على جميع السيارات
-                        </textarea>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white"> النص الاول</label>
-                    <div class="col-sm-8 col-md-9">
-                        <textarea name="paragraph_one" cols="30" class="form-control"  rows="5">
+                    <label class="col-sm-2 col-form-label text-white">  النص الاول </label>
+                    <div class="col-sm-8 col-md-9">   
+                    <textarea name="paragraph_one" cols="30" class="form-control"  rows="7">
                         تقنية المزاد على كاك مزاد المنصة المحركة لمزادات السيارات عبر الانترنت
                         </textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white"> النص الثاني</label>
+                    <label class="col-sm-2 col-form-label text-white">  النص الثاني </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="paragraph_two" cols="30" class="form-control"  rows="5">
+                        <textarea name="paragraph_two" cols="30" class="form-control"  rows="7">
                         مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
                         </textarea>
                     </div>
@@ -137,10 +129,7 @@
                     <label class="col-sm-2 col-form-label text-white">  {{$name}}  </label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="{{$column}}" cols="30" class="form-control"  rows="7">
-                        @foreach($Content as $content)
-                        {{$content->$column}}
-                        @endforeach
-
+                        {{$Content[0]->$column}}
                         </textarea>
                     </div>
                 </div>
