@@ -82,9 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
             return view('front.layout.clientdashboard');
         });
 
-        Route::get('/admin_dash', function () {
-            return view('admin.layout.dashboard');
-        });
+      
         // Route::get('/home', function () {
         //     return view('front.home');
         // });
@@ -216,3 +214,6 @@ Route::get('/contact_us', function () {
 Route::get('/aboutUs', function () {
     return view('front.aboutUs');
 })->name('aboutUs');
+Route::get('/admin_dash', function () {
+    return view('admin.layout.dashboard');
+});

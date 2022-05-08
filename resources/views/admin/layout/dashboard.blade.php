@@ -62,7 +62,7 @@
                             aria-expanded="false">إدارة
                             المزادات</a>
                     </li>
-                    <ul class="collapse list-unstyled fs-6" id="manage">
+                    <ul class="collapse list-unstyled fs-6 mt-0" id="manage">
                           <li class="d-flex align-items-center justify-content-center"><p class="{{ Request::segment(1) === 'admin_posts' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a 
                             href="{{ route('admin_posts') }}" class="{{ Request::segment(1) === 'admin_posts' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">إدارة
                                 طلبات تقديم المزاد</a></li>
@@ -98,7 +98,7 @@
                             aria-expanded="false">إدارة
                             محتويات الموقع</a>
                     </li>
-                    <ul class="collapse list-unstyled fs-6" id="manage2">
+                    <ul class="collapse list-unstyled fs-6 mt-0" id="manage2">
                         <li class="d-flex align-items-center justify-content-center">
                             <p class="{{ Request::segment(1) === 'home_site' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
                                 href="{{ route('home_site') }}" class="{{ Request::segment(1) === 'home_site' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
