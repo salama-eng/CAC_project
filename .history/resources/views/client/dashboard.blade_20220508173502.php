@@ -63,7 +63,7 @@
                         <em class="fs-3">{{$posts_now}}</em>
                     </div>
                     <div>
-                        <p class="fs-7 p-dash grey">عدد العروض  في الموقع</p>
+                        <p class="fs-7 p-dash grey">عدد العروض في الموقع</p>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         <em class="fs-3">{{$posts}}</em>
                     </div>
                     <div>
-                        <p class="fs-7 p-dash grey"> عدد السيارات المضافة  </p>
+                        <p class="fs-7 p-dash grey">عدد السيارات  في الموقع</p>
                     </div>
                 </div>
             </div>
@@ -99,12 +99,12 @@
                     <em class="fs-3 ">{{$posts_uncomplate}}</em>
                 </div>
                 <div>
-                    <p class="fs-7 p-dash  grey"> عمليات البيع الغير مكتملة </p>
+                    <p class="fs-7 p-dash  grey"> عمليات الشراء الغير مكتملة </p>
                 </div>
             </div>
         </div>
  
-  
+     
         </div>
   <div class="col-lg-6 col-6 mt-5 m-auto">
 

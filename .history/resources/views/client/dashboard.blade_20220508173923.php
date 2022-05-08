@@ -99,7 +99,7 @@
                     <em class="fs-3 ">{{$posts_uncomplate}}</em>
                 </div>
                 <div>
-                    <p class="fs-7 p-dash  grey"> عمليات البيع الغير مكتملة </p>
+                    <p class="fs-7 p-dash  grey"> عمليات الشراء الغير مكتملة </p>
                 </div>
             </div>
         </div>
