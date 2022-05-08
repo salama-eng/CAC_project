@@ -67,50 +67,62 @@
 <h1 class="text-center">Add New Content</h1>
 <div class="container">
     @if ($errors->any())
-        <div class="alert message">
+        <!-- <div class="alert message">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
-        </div>
+        </div> -->
     @endif
     <form action="{{ route('add_content') }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- Start content -->
                 <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white">  النص الرئيسي </label>
+                    <label class="col-sm-2 col-form-label text-white mt-4">  النص الرئيسي </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="main_paragraph" cols="30" class="form-control"  rows="5">
+                        <textarea name="main_paragraph" cols="30" class="form-control mt-4 mb-0"  rows="5">
                         لجميع السيارات والشاحنات المستعملة والجديدة
                         </textarea>
                         @if (session()->has('password'))
                         <p class="text-end yellow">{{ session()->get('main_paragraph') }}</p>
                         @endif
+                        @error('main_paragraph')
+                        <span class="text-end yellow">* {{ $error }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white"> الوصف</label>
+                    <label class="col-sm-2 col-form-label text-white mt-4"> الوصف</label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="description" cols="30" class="form-control"  rows="5">
+                        <textarea name="description" cols="30" class="form-control mt-4 mb-0"  rows="5">
                         تجعل من السهل على الاعضاء العثور والمزايدة على جميع السيارات
                         </textarea>
+                        @error('description')
+                        <span class="text-end yellow">* {{ $error }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white"> النص الاول</label>
+                    <label class="col-sm-2 col-form-label text-white mt-4"> النص الاول</label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="paragraph_one" cols="30" class="form-control"  rows="5">
+                        <textarea name="paragraph_one" cols="30" class="form-control mt-4 mb-0"  rows="5">
                         تقنية المزاد على كاك مزاد المنصة المحركة لمزادات السيارات عبر الانترنت
                         </textarea>
+                        @error('paragraph_one')
+                        <span class="text-end yellow">* {{ $error }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white"> النص الثاني</label>
+                    <label class="col-sm-2 col-form-label text-white mt-4"> النص الثاني</label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="paragraph_two" cols="30" class="form-control"  rows="5">
+                        <textarea name="paragraph_two" cols="30" class="form-control mt-4 mb-0"  rows="5">
                         مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
                         </textarea>
+                        @error('paragraph_two')
+                        <span class="text-end yellow">* {{ $error }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <!-- End edit content -->
@@ -141,7 +153,7 @@
             </ul>
         </div>
     @endif
-            <form action="{{ route('edit_content',$contentid) }}"  method="POST" enctype="multipart/form-data">
+            <form action="{{ route('edit_home_content',$contentid) }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="contentid" value="{{$contentid}}">
                 <input type="hidden" name="column" value="{{$column}}">
@@ -150,11 +162,10 @@
                     <label class="col-sm-2 col-form-label text-white">  {{$name}}  </label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="{{$column}}" cols="30" class="form-control"  rows="7">
-                        @foreach($Content as $content)
-                        {{$content->$column}}
-                        @endforeach
+                        {{$Content[0]->$column}}
 
                         </textarea>
+
                     </div>
                 </div>
                 <!-- End edit content -->
