@@ -9,7 +9,11 @@
   --whitecolor1: rgba(255, 242, 235, 0.4);
 
 }
+.border-yellow
+{
 
+  border: 2px solid var(--yellow);
+}
 * {
   margin: 0;
   padding: 0;
@@ -42,6 +46,9 @@ body {
   color: var(--yellow);
 }
 
+.white {
+  color: var(--whitecolor);
+}
 .bg-yellow {
   background-color: var(--yellow);
   border:none !important;
