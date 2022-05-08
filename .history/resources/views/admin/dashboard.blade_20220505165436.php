@@ -10,7 +10,6 @@
  
 <div class="dash-header1">
 <p class="fs-4 p-3">مرحبا!! {{Auth::user()->name}} </p>
-
 </div>
  </div>
 

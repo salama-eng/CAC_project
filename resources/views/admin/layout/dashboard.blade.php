@@ -18,17 +18,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <title>Cars Auction</title>
 </head>
 
-<body >
+<body>
 
     <div class="d-flex">
         <div class="navbar-header2 my-5 justify-content-between d-none ">
             <button type="button" id="sidebarCollapse" class="bttn border-0 px-4">
-                <div class=" my-1 px-3 bg-light sidemenu"> </div>
-                <div class=" bg-light sidemenu"> </div>
+                <div class=" my-1 bg-light sidemenu"> </div>
+                <div class="my-1 bg-light px-3  sidemenu"> </div>
             </button>
         </div>
         <div class="holder aside">
@@ -52,61 +52,83 @@
                 </div>
 
                 <ul class="list-unstyled components fs-6 mt-4 ">
-            
-                     <li>
-                        <a href="{{route('AdminDash')}}" class="text-center p-3 text-light"> الرئيسية</a>
+
+                    <li>
+                        <a href="{{ route('AdminDash') }}" class="{{ Request::segment(1) === 'AdminDash' ? 'active' : 'text-light' }} text-center p-3"> الرئيسية</a>
 
                     </li>
-                    <li class="active dropdown">
-                        <a class="dropdown-toggle text-center text-light pb-2 " data-toggle="collapse"
+                    <li class=" dropdown">
+                        <a class="dropdown-toggle text-center text-light p-3 " data-toggle="collapse"
                             aria-expanded="false">إدارة
                             المزادات</a>
-                        <ul class="collapse list-unstyled fs-6" id="manage">
-                            <li><a href="{{route('admin_posts')}}" class="text-light text-light text-center p-3">إدارة طلبات تقديم المزاد</a></li>
-                            <li><a href="{{route('Start_auction')}}" class="text-light text-center p-3">إدارة العروض</a></li>
-                            <li><a href="{{route('admin_acution')}}" class="text-light text-center p-3">إدارة المزادات الحالية</a></li>
-                            <li><a href="{{route('endede_acution')}}" class="text-light text-center p-3">إدارة المزادات المنتهية</a></li>
+                    </li>
+                    <ul class="collapse list-unstyled fs-6" id="manage">
+                          <li class="d-flex align-items-center justify-content-center"><p class="{{ Request::segment(1) === 'admin_posts' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a 
+                            href="{{ route('admin_posts') }}" class="{{ Request::segment(1) === 'admin_posts' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">إدارة
+                                طلبات تقديم المزاد</a></li>
+                        <li class="d-flex align-items-center justify-content-center"><p class="{{ Request::segment(1) === 'Start_auction' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a 
+                            href="{{ route('Start_auction') }}" class="{{ Request::segment(1) === 'Start_auction' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">إدارة
+                                العروض</a></li>
+                        <li class="d-flex align-items-center justify-content-center"><p class="{{ Request::segment(1) === 'admin_acution' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a 
+                            href="{{ route('admin_acution') }}" class="{{ Request::segment(1) === 'admin_acution' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">إدارة المزادات
+                                الحالية</a></li>
+                        <li class="d-flex align-items-center justify-content-center"><p class="{{ Request::segment(1) === 'endede_acution' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a 
+                            href="{{ route('endede_acution') }}" class="{{ Request::segment(1) === 'endede_acution' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">إدارة
+                                المزادات المنتهية</a></li>
 
-                        </ul>
+                    </ul>
+                    <li>
+                        <a href="{{ route('showAllUsers') }}" class="text-center p-3 {{ Request::segment(1) === 'showAllUsers' ? 'active' : 'text-light' }}">إدارة المستخدمين</a>
+
                     </li>
                     <li>
-                        <a href="showAllUsers" class="text-center p-3 text-light">إدارة المستخدمين</a>
-
-                    </li>
-                    <li>
-                        <a href="{{ route('admincategories') }}" class="text-center p-3 text-light">إدارة تصنيفات
+                        <a href="{{ route('admincategories') }}" class="text-center p-3 {{ Request::segment(1) === 'admincategories' ? 'active' : 'text-light' }}">إدارة تصنيفات
                             السيارات</a>
 
                     </li>
                     <li>
-                        <a href="{{ route('adminPayments') }}" class="text-center p-3 text-light">إدارة طرق الدفع</a>
+                        <a href="{{ route('adminPayments') }}" class="text-center p-3 {{ Request::segment(1) === 'adminPayments' ? 'active' : 'text-light' }}">إدارة طرق الدفع</a>
 
                     </li>
 
 
 
                     <li class="active dropdown2">
-                        <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
-                        aria-expanded="false">إدارة
-                         محتويات الموقع</a>
-                        <ul class="collapse list-unstyled fs-6" id="manage2">
-                            <li><a href="{{route('home_site')}}" class="text-light text-center p-3">  ادارة الصفحة الرئيسية  </a></li>
-                            <li><a href="{{route('slider_image')}}" class="text-light text-center p-3">  صور السلايدر </a></li>
-                            <li><a href="{{route('membership')}}" class="text-light text-center p-3"> ادارة شركائنا</a></li>
-
-
-                        </ul>
+                        <a class="dropdown-toggle text-center text-light p-3" data-toggle="collapse"
+                            aria-expanded="false">إدارة
+                            محتويات الموقع</a>
                     </li>
+                    <ul class="collapse list-unstyled fs-6" id="manage2">
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'home_site' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('home_site') }}" class="{{ Request::segment(1) === 'home_site' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
+                                الصفحة
+                                الرئيسية </a>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'slider_image' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('slider_image') }}" class="{{ Request::segment(1) === 'slider_image' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> صور
+                                السلايدر
+                            </a>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'membership' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('membership') }}" class="{{ Request::segment(1) === 'membership' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
+                                شركائنا</a>
+                        </li>
+
+
+                    </ul>
 
                 </ul>
 
                 <ul class="list-unstyled  fs-6 py-4">
                     <div class="d-flex flex-wrap justify-content-around w-50 m-auto">
-                        <div class="fa fa-facebook  text-light"></div>
-                        <div class="fa fa-instagram  text-light"></div>
-                        <div class="fa fa-whatsapp  text-light"></div>
-                        <div class="fa fa-facebook text-light"></div>
-                        <div class="fa  fa-envelope-o text-light"></div>
+
+                        <div class="fa fa-instagram  text-light fs-5"></div>
+                        <div class="fa fa-whatsapp  text-light fs-5"></div>
+                        <div class="fa fa-facebook text-light fs-5"></div>
+                        <div class="fa  fa-envelope-o text-light fs-5"></div>
                     </div>
                     <li class="w-100"><a
                             class="nav-item text-center contact text-light fs-5 py-2  mt-3 mx-5 d-block px-3">
@@ -128,13 +150,20 @@
 
 
 
-        <div class="w-100" style="background-color: #1C1C1C" >
+        <div class="w-100" style="background-color: #1C1C1C">
 
-            <div class="text-light dirction me-auto mt-4 fixed-top">
-                <div class="d-flex justify-content-end pt-3">
-                    <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
-                    <p class="fa fa-wechat px-2"></p>
-                    <p class="fa fa-user px-2"></p>
+            <div class="text-light  me-auto mt-4 fixed-top">
+                <div class="d-flex justify-content-end ms-5 pt-3 ps-2">
+                    <div id=bell>
+                        <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
+
+                    </div>
+                    <div id="wechat">
+                        <p class="fa fa-wechat px-2"></p>
+                    </div>
+                    <div id="user">
+                        <p class="fa fa-user px-2"></p>
+                    </div>
                 </div>
                 <ul class="dropdown-menu notification bg-dark">
                     <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
@@ -153,22 +182,23 @@
                 </ul>
                 <ul class="dropdown-menu bg-dark userinfo">
                     <li>
-                        <h6 class="dropdown-item text-light" href="#">{{Auth::user()->name}}
+                        <h6 class="dropdown-item text-light" href="#">
+                            {{-- {{Auth::user()->name}} --}}
                         </h6>
 
                     </li>
 
 
-                    <li><a class="dropdown-item text-light fs-7" href="{{route('logout')}}">تسجيل الخروج</a>
+                    <li><a class="dropdown-item text-light fs-7" href="{{ route('logout') }}">تسجيل الخروج</a>
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>
             </div>
- <div class="dropdown-divider mb-5"></div>
+            <div class="dropdown-divider mb-5"></div>
             <div class="w-100  vh-100 mb-5">
 
-<hr class="mb-3">
-        
+                <hr class="mb-3">
+
                 @yield('content')
             </div>
         </div>

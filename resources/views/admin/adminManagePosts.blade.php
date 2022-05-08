@@ -10,7 +10,7 @@
             </div>
         @endif
 
-        <div class="table-responsive text-white">
+        <div class="table-responsive text-white ms-5">
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr >
                     <td>#ID</td>
