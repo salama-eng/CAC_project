@@ -20,8 +20,9 @@ class CategoriesAdminController extends Controller
     function addAdminCategory(Request $request){
       
         Validator::validate($request->all(),[
-            'image'=>['required'],
+            
             'name'=>['required','string', 'between: 5, 20', 'unique:categories,name'],
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
         ],[
             'image.required'=>'حقل الصورة مطلوب',
             'name.required'=>' حقل الاسم مطلوب ',
@@ -47,12 +48,11 @@ class CategoriesAdminController extends Controller
     
     function editAdminCategory(Request $request,$id){
         Validator::validate($request->all(),[
-            'name'=>['required', 'string', 'between: 5, 20', 'unique:categories,name'],
+            'name'=>['required', 'string', 'between: 5, 20'],
         ],[
             'name.required'=>' حقل الاسم مطلوب ',
             'name.string'=>' يحب ان يكون حقل الاسم نص  ',
             'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
-            'name.unique'=>'اوبس! هناك خطأ في عملية التعديل او ان هذا الاسم موجود مسبقا',
         ]);
         $category=category::find($id);
         $category->name=$request->name;
