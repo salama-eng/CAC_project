@@ -170,9 +170,7 @@
         </div>
 
 
-        @foreach($Content as $content)
-      
-
+  
         <div class="about mt-5 mb-5 pt-3">
             <div class="d-flex  col-12 about1">
 
@@ -185,14 +183,14 @@
                     <a href="" class="text-light p-2 px-4 d-none">من نحن
                         <i class="fa fa-arrow-left"></i>
                     </a>
-                    <p class="text-light ">تقنية المزاد على <span class="active"> كاك مزاد </span>{{$content->pargraph_one}}   </p>
+                    <p class="text-light ">تقنية المزاد على <span class="active"> كاك مزاد </span>المنصة المحركة لمزادات السيارات عبر الانترنت</p>
                 </div>
 
             </div>
 
             <div class="d-flex col-12 about2">
                 <div class=" d-flex align-items-center justify-content-end">
-                    <p class="col-4 p-5 text-light m-auto section-text">{{$content->pargraph_two}}</p>
+                    <p class="col-4 p-5 text-light m-auto section-text">مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد</p>
                     <div class="img-3-sec2 col-6"><img src=""></div>
                 </div>
             </div>
@@ -203,7 +201,7 @@
 
 
 
-        @endforeach
+
 
     </section>
     

@@ -192,7 +192,7 @@
 
             <div class="d-flex col-12 about2">
                 <div class=" d-flex align-items-center justify-content-end">
-                    <p class="col-4 p-5 text-light m-auto section-text">{{$content->pargraph_two}}</p>
+                    <p class="col-4 p-5 text-light m-auto section-text"> {{$content->pargraph_one}}  </p>
                     <div class="img-3-sec2 col-6"><img src=""></div>
                 </div>
             </div>

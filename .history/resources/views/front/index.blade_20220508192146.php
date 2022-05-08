@@ -192,7 +192,7 @@
 
             <div class="d-flex col-12 about2">
                 <div class=" d-flex align-items-center justify-content-end">
-                    <p class="col-4 p-5 text-light m-auto section-text">{{$content->pargraph_two}}</p>
+                    <p class="col-4 p-5 text-light m-auto section-text">مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد</p>
                     <div class="img-3-sec2 col-6"><img src=""></div>
                 </div>
             </div>
