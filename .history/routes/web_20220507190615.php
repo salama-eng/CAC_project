@@ -3,7 +3,6 @@
 use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
 
-use App\Http\Controllers\CrudController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
@@ -211,8 +210,9 @@ Route::get('/aboutUs', function () {
 
 
 /****  chat **** */
-
-
+<?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CrudController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

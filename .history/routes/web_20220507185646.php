@@ -3,7 +3,6 @@
 use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
 
-use App\Http\Controllers\CrudController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
@@ -211,17 +210,5 @@ Route::get('/aboutUs', function () {
 
 
 /****  chat **** */
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-Route::get('hhome', [CrudController::class, 'index']);
+Route::get('/', [CrudController::class, 'index']);
 Route::resource('todo', CrudController::class);
