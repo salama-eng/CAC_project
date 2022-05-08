@@ -11,10 +11,35 @@
             </div>
         @endif
 
+<<<<<<< HEAD
+        <div class="table-responsive text-white ms-5">
+            <table class="main-table manage-members text-center table table-bordered  text-white">
+                <tr >
+                    <td>#ID</td>
+                    <td>الوصف </td>
+                    <td>  النص الاول </td>
+                    <td>  النص الثاني </td>
+                    <td> تعديل  </td>
+                </tr>
+            </table>
+=======
+        @if(!isset($Content[0]))
+
+        <a href="manage_home?do=Add" class="btn btn-sm bg-yellow">
+            <i class="fa fa-plus"></i>  النص الافتراضي
+        </a>
+        @endif
+
+        @foreach($Content as $content)
+
+        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
+            <h2 class="yellow ">النص الرئيسي</h2>
+            <hr>
             <p class="my-4">{{$content->main_paragraph}}</p>
             <a href="manage_home?do=Edit&contentid={{$content->id}}&column=main_paragraph&name=النص الرئيسي" class="btn btn-success">
                 <i class='fa fa-edit'></i> تعديل
             </a>
+>>>>>>> pr/46
         </div>
         
         <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
@@ -27,6 +52,7 @@
         </div>
 
         <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
+            <h2 class="yellow "> النص الاول</h2>
             <hr>
             <p>{{$content->paragraph_one}}</p>
             <a href="manage_home?do=Edit&contentid={{$content->id}}&column=paragraph_one&name=النص الاول" class="btn btn-success">
@@ -45,7 +71,7 @@
 
 
 
-
+    @endforeach
        
        
     </div>

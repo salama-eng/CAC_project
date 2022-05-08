@@ -37,7 +37,7 @@ class AdminHomeController extends Controller
     function manageHome(){
         $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
         $content = siteHome::select()->get();
-
+        return  $content;
         return view('admin.adminManageHomeSite', [
             'Content' => $content,
             'do'     => $do
