@@ -48,7 +48,7 @@
                   <div class="card-admin text-light p-3" style="width:12rem">
                       <div class="d-flex justify-content-between align-items-center">
                         <i class="yellow fs-1 bi bi-graph-up"></i>
-                          <em class="fs-3">{{$Auctions}}</em>
+                          <em class="fs-3">852</em>
                       </div>
                       <div>
                           <p class="fs-7 p-dash grey">عدد المزايدات في الموقع</p>
@@ -60,7 +60,7 @@
                 <div class="card-admin text-light p-3" style="width:12rem">
                     <div class="d-flex justify-content-between align-items-center">
                       <i class="yellow fs-1 bi bi-graph-up-arrow"></i>
-                        <em class="fs-3">{{$posts_now}}</em>
+                        <em class="fs-3">852</em>
                     </div>
                     <div>
                         <p class="fs-7 p-dash grey">عدد العروض في الموقع</p>
@@ -72,7 +72,7 @@
                 <div class="card-admin text-light p-3" style="width:12rem">
                     <div class="d-flex justify-content-between align-items-center">
                       <i class=" yellow fs-1 bi bi-clipboard-data-fill"></i>
-                        <em class="fs-3">{{$posts}}</em>
+                        <em class="fs-3">852</em>
                     </div>
                     <div>
                         <p class="fs-7 p-dash grey">عدد السيارات  في الموقع</p>
@@ -84,7 +84,7 @@
               <div class="card-admin text-light p-3" style="width:12rem">
                   <div class="d-flex justify-content-between align-items-center">
                       <i class="yellow fs-1 bi bi-cart3"></i>
-                      <em class="fs-3 ">{{$orders}}</em>
+                      <em class="fs-3 ">852</em>
                   </div>
                   <div>
                       <p class="fs-7 p-dash  grey"> عمليات الشراء في الموقع</p>
@@ -96,7 +96,7 @@
             <div class="card-admin text-light p-3" style="width:12rem">
                 <div class="d-flex justify-content-between align-items-center">
                     <i class="yellow fs-1 bi bi-cart-x-fill"></i>
-                    <em class="fs-3 ">{{$posts_uncomplate}}</em>
+                    <em class="fs-3 ">852</em>
                 </div>
                 <div>
                     <p class="fs-7 p-dash  grey"> عمليات الشراء الغير مكتملة </p>
@@ -111,7 +111,7 @@
       <div class="main-container m-auto">
         <div class="year-stats">
           <div class="month-group">
-            <div class="bar h-{{$users*5}}"></div>
+            <div class="bar h-100"></div>
             <p class="month">Jan</p>
           </div>
           <div class="month-group">

@@ -99,7 +99,7 @@
 
                         <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            @if (Auth::id())
+                            @if (!Auth::id())
                                 <div class="modal-dialog">
                                     <div class="modal-content ">
                                         <form action="{{ route('bid_auction', $post->id) }}" method="post">

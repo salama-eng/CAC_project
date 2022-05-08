@@ -111,7 +111,7 @@
       <div class="main-container m-auto">
         <div class="year-stats">
           <div class="month-group">
-            <div class="bar h-{{$users*5}}"></div>
+            <div class="bar h-{{$users}}"></div>
             <p class="month">Jan</p>
           </div>
           <div class="month-group">

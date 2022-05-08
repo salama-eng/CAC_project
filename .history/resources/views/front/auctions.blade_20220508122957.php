@@ -99,7 +99,7 @@
 
                         <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            @if (Auth::id())
+                            @if (!Auth::id())
                                 <div class="modal-dialog">
                                     <div class="modal-content ">
                                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
@@ -121,7 +121,7 @@
                                                 @endif
                                                 <h2 class="text-white fs-6 pb-3 "> هل انت متاكد تريد المزايدة على هذة
                                                     السيارة ودفع مبلغ مضاف الى قيمتها الحالية التي تقدر ب <em
-                                                        class="yellow">{{$post->auctions->max('bid_total');}}$</em></h2>
+                                                        class="yellow">{{ $post->auction_ceiling }}$</em></h2>
                                                 <div class="d-flex  align-items-center gap-3 ">
                                                     <h3 class="text-white fs-6"> مقدار الزيادة: </h3>
                                                     <input type="number" class="input-model text-white"

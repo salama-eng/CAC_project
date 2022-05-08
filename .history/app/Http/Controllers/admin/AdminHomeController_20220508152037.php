@@ -18,18 +18,11 @@ class AdminHomeController extends Controller
         $Auctions=Auction::get()->Count();
         $orders=Order::get()->Count();
         $posts_now=Post::where('end_date','>',now())->get()->Count();
-        $posts_uncomplate=Post::where('end_date','<',now())->where('status_auction','!=',1)->get()->Count();
+        $posts_uncomplate=Post::where('end_date','>',now())->where('status_auction','!=',1)->get()->Count();
 
 
-        // return $posts_uncomplate;
+        return $posts_uncomplate;
      return view('admin.dashboard', [
-         'posts' => $posts,
-         'users' =>$users,
-         'Auctions' =>$Auctions,
-         'orders' =>$orders,
-         'posts_uncomplate' =>$posts_uncomplate,
-         'posts_now' =>$posts_now,
-         
       
 
      ]);
