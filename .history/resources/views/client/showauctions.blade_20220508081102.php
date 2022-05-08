@@ -12,7 +12,7 @@
 
 @foreach($posts as $post )
 @foreach($post->auctions as $auction)
-@if ($auction->aw_user_id == Auth::id())
+
 
 @if($post->is_active == 1 && $post->end_date >= date('Y-m-d') )
 @php
@@ -28,7 +28,7 @@
     </div>
 
     <div class="card-body d-flex justify-content-between py-0">
-        <p href="#" class="card-link card-details fs-7">سعر المزايدة/<span class="active">{{$post->auctions->max('bid_total');}} $</span>
+        <p href="#" class="card-link card-details fs-7">سعر المزايدة/<span class="active"> $</span>
         </p>
         <a href="{{route('auctiondetails',$post->id)}}" class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
     </div>
@@ -36,7 +36,7 @@
 
 @endif
 
-@endif
+
 @endforeach  
 @endforeach
 

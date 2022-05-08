@@ -16,8 +16,9 @@
                     <a href="" class="d-flex card-details fs-6"><span class="fa fa-long-arrow-right pt-2 px-2"></span>رجوع</a>
                     <h3 class="text-light fw-bold mt-2">{{$post->name}}</h3>
                     <h3 class="active my-3">
-                        {{$post->starting_price}}$
                         <span class="card-details fs-6"> /السعر الاولي</span></h3>
+                        {{$post->starting_price}}$
+                        
                         @if (isset($post->auctions[0]->bid_total))
                         <h5 class="active my-1">
                             {{$post->auctions->max('bid_total');}}$

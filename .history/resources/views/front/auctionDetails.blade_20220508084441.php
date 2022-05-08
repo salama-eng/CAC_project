@@ -4,8 +4,7 @@
 <style>
     p{
         border-bottom: 0.5px solid rgb(49, 49, 49);
-        width:70%;
-        padding:2px;
+        width:70%
     }
 </style>
     </div>

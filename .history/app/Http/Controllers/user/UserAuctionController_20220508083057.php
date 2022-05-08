@@ -75,7 +75,9 @@ public function complate(){
 
 public function uncomplate(){
 
+
 $posts=Post::with(['auctions'])->get();
+
 
     return view('client.UserUncomplateAuctions', [
         'posts'     => $posts

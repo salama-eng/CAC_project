@@ -1,26 +1,20 @@
 
 @extends('front.layout.home')
 @section('content')
-<style>
-    p{
-        border-bottom: 0.5px solid rgb(49, 49, 49);
-        width:70%;
-        padding:2px;
-    }
-</style>
+
     </div>
     <section class="d-flex container mt-5 flex-wrap col-lg-9">
         <section class="col-12  col-lg-6 mt-5">
             <div class="mt-5">
                 <div class="col-12">
-                    <a href="" class="d-flex card-details fs-6"><span class="fa fa-long-arrow-right pt-2 px-2"></span>رجوع</a>
+                    <a href="" class="d-flex card-details fs-6"><p class="fa fa-long-arrow-right pt-2 px-2"></p>رجوع</a>
                     <h3 class="text-light fw-bold mt-2">{{$post->name}}</h3>
                     <h3 class="active my-3">
                         {{$post->starting_price}}$
                         <span class="card-details fs-6"> /السعر الاولي</span></h3>
                         @if (isset($post->auctions[0]->bid_total))
                         <h5 class="active my-1">
-                            {{$post->auctions->max('bid_total');}}$
+                            {{$post->auctions[0]->bid_total}}$
                             <span class="card-details fs-6"> /السعر الحالي</span></h5>
                             @else
                             <h3 class="active my-3 fs-5">
@@ -65,12 +59,9 @@
                         <p class="mb-1 text-light "> {{$post->description}}</p>
                       
                     </div>
-                  @if ($post->end_date >= now())
-                  <button class=" contact text-light btn rounded-0 col-6 mt-4 ">
-                    مزايدة
-                </button>
-                  @endif
-                  
+                    <button class=" contact text-light btn rounded-0 col-6 mt-4 ">
+                        مزايدة
+                    </button>
                 </div>
             </div>
         </section>

@@ -53,7 +53,7 @@ class UserAuctionController extends Controller
      
         $id=Auth::id();
         $posts=Post::with(['auctions'])->get();
-       
+        $auctions=Auction::with('auction_post')->where('aw_user_id', $id)->get();
     //    return $posts;
         return view('client.showauctions', [
             'posts'     => $posts
@@ -74,11 +74,13 @@ public function complate(){
 
 
 public function uncomplate(){
+$id=Auth::id();
 
-$posts=Post::with(['auctions'])->get();
+$auction=Auction::with(['auction_post'])->where('aw_user_id',$id)->where('is_active',1)->get();
 
+    $id=Auth::id();
     return view('client.UserUncomplateAuctions', [
-        'posts'     => $posts
+        'auctions'     => $auction
     ]);
 
 }
