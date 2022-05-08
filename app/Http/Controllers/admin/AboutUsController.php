@@ -20,6 +20,36 @@ class AboutUsController extends Controller
      ]);
     }
 
+
+        function addAboutUsContent(Request $request){
+
+        Validator::validate($request->all(),[
+            "description"=>['required', 'string', 'min: 30'],
+            "paragraph_one"=>['required', 'string', 'between: 5, 255'],
+            "paragraph_two"=>['required', 'string', 'between: 5, 255'],
+        ],[
+            "paragraph_two.required"=>' هذا الحقل مطلوب ',
+            "description.required"=>' هذا الحقل مطلوب ',
+            "paragraph_one.required"=>' هذا الحقل مطلوب ',
+            "description.string"=>' يحب ان يكون هذا الحقل نص  ',
+            "paragraph_one.string"=>' يحب ان يكون هذا الحقل نص  ',
+            "paragraph_two.string"=>' يحب ان يكون هذا الحقل نص  ',
+            "description.between"=>' يحب ان يكون الحقل  اكبر من 30',
+            "paragraph_one.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
+            "paragraph_two.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
+        ]);
+
+        $home=new about_us;
+        $home->description = $request->description;
+        $home->paragraph_one = $request->paragraph_one;
+        $home->paragraph_two = $request->paragraph_two;
+
+        if($home->save())
+        return redirect('manage_about_us')
+        ->with(['success'=>'تم الاضافه  بنجاح']);
+        return back()->with(['error'=>'خطاء لانستطيع الاضفافه ']);
+    }
+
     function editContent(Request $request,$id){
         // return $request;
         $column =  $request->column;

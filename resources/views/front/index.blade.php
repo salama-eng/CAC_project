@@ -1,5 +1,6 @@
 @extends('front.layout.home')
 @section('content')
+
     <section class="">
 
         <div class="landscape  d-flex align-items-start col-12 ">
@@ -9,12 +10,14 @@
                 <div class="landscape-text d-flex flex-wrap  
                  p-5 me-5 w-50">
 
+                 @foreach($Content as $content)
                     <h1 class="  text-white ">  شركة 
                          <h1 class="yellow"> كاك </h1>
                            <h1 class="text-white"> مزاد </h1>
                     <p class="text-light white mt-lg-4 fs-5 fw-light">
-                        {{$Content[0]->main_paragraph}} <br>{{$Content[0]->description}}
+                        {{$content->main_paragraph}} <br>{{$content->description}}
                     </p>
+                @endforeach
 
 
                     <button class=" fs-6 mt-lg-4  d-flex align-items-center btn-yellow btn text-light rounded-0"><a href=""
@@ -168,6 +171,7 @@
 
 
         <div class="about mt-5 mb-5 pt-3">
+            @foreach($Content as $content)
             <div class="d-flex  col-12 about1">
 
                 <div class="col-12 col-lg-7 img-3-sec d-flex align-items-center justify-content-end">
@@ -179,18 +183,19 @@
                     <a href="" class="text-light p-2 px-4 d-none">من نحن
                         <i class="fa fa-arrow-left"></i>
                     </a>
-                    <p class="text-light ">{{$Content[0]->paragraph_one}}</p>
+                    <p class="text-light ">{{$content->paragraph_one}}</p>
                 </div>
 
             </div>
 
             <div class="d-flex col-12 about2">
                 <div class=" d-flex align-items-center justify-content-end">
-                    <p class="col-4 p-5 text-light m-auto section-text">{{$Content[0]->paragraph_two}}</p>
+                    <p class="col-4 p-5 text-light m-auto section-text">{{$content->paragraph_two}}</p>
                     <div class="img-3-sec2 col-6"><img src=""></div>
                 </div>
             </div>
 
+            @endforeach
         </div>
 
 
@@ -198,4 +203,5 @@
 
 
     </section>
+    
 @endsection

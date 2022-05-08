@@ -1,12 +1,13 @@
 @extends('front.layout.home')
 @section('content')
 
+@foreach($Content as $content)
 
 <main class=" main-contact d-flex justify-content-center align-items-center mt-5 ">
     <div class="overlay"></div>
     <div class="text container aboutheader ">
         <h1 class="  yellow mb-5 fw-bold "> شركة مزاد كاك</h1>
-        <p class=" col-lg-9 col-11 mb-5">{{$Content[0]->description}}</p>
+        <p class=" col-lg-9 col-11 mb-5">{{$content->description}}</p>
         <a href="{{route('contact_us')}}" class=" border1 text-center mb-2 px-3 py-2 mt-5"> تواصل معنا  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
     </div>
 </main>
@@ -45,20 +46,20 @@
             <a href="" class="text-light p-2 px-4 d-none">من نحن
                 <i class="fa fa-arrow-left"></i>
             </a>
-            <p class="text-light ">{{$Content[0]->paragraph_one}}</p>
+            <p class="text-light ">{{$content->paragraph_one}}</p>
         </div>
 
     </div>
 
     <div class="d-flex col-12 about2">
         <div class=" d-flex align-items-center justify-content-end">
-            <p class="col-4 p-5 text-light m-auto section-text"> {{$Content[0]->paragraph_two}}</p>
+            <p class="col-4 p-5 text-light m-auto section-text"> {{$content->paragraph_two}}</p>
             <div class="img-4-sec2 col-6"><img src=""></div>
         </div>
     </div>
 
 </div>
 
-
+@endforeach
 
 @endsection

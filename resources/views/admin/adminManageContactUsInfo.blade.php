@@ -178,14 +178,14 @@
             <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">الاسم    </label>
             <div class="col-sm-3 col-md-4">
-                <input type="text" name="name"  class="form-control" autocomplete="off" placeholder=" اضف  اسم طريقة التواصل">
+                <input type="text" name="name" value="{{$information->name}}" class="form-control" autocomplete="off" placeholder=" اضف  اسم طريقة التواصل">
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   الرابط </label>
             <div class="col-sm-3 col-md-4">
-                <input type="text" name="link"  class="form-control" autocomplete="off" placeholder=" اضف  الرابط">
+                <input type="text" name="link" value="{{$information->link}}" class="form-control" autocomplete="off" placeholder=" اضف  الرابط">
             </div>
             
         </div>
@@ -193,7 +193,7 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">الايقونة   </label>
             <div class="col-sm-3 col-md-4">
-                <select name="icon" class="fa p-2 bg-dark fs-5 text-white  border border-white w-100 h-10" style="direction:ltr ; " id="">
+                <select name="icon" value="{{$information->icon}}" class="fa p-2 bg-dark fs-5 text-white  border border-white w-100 h-10" style="direction:ltr ; " id="">
                     <option value="fa fa-location-arrow" class="fa">&#xf124 (location)</option>
                     <option value="fa fa-globe" class="fa">&#xf0ac  (site)</option>
                     <option value="fa fa-envelope" class="fa">&#xf0e0  (email)</option>

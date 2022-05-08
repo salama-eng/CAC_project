@@ -10,6 +10,12 @@
                 {{ session()->get('success') }}
             </div>
         @endif
+        @if(!isset($Content[0]))
+
+        <a href="manage_about_us?do=Add" class="btn btn-sm bg-yellow">
+            <i class="fa fa-plus"></i>  النص الافتراضي
+        </a>
+        @endif
 
         @foreach($Content as $content)
         
@@ -42,10 +48,62 @@
 
 
 
-                @endforeach
+        @endforeach
        
        
     </div>
+
+    @elseif($do == 'Add')
+<!-- start add model -->
+<h1 class="text-center">Add New membership</h1>
+<div class="container">
+    @if ($errors->any())
+        <div class="alert message">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="{{ route('add_about_us_content') }}"  method="POST" enctype="multipart/form-data">
+                @csrf
+                <!-- Start content -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">  نبذة عامة </label>
+                    <div class="col-sm-8 col-md-9">
+                        <textarea name="description" cols="30" class="form-control"  rows="7">
+                    الاس، تكساس، تعد كوبارت الشركة الرائدة على مستوى العالم في مزادات السيارات على الإنترنت، ووجهة رئيسية لإعادة بيع وإعادة تسويق السيارات. تقنية كوبارت المبتكرة ومنصة المزادات على الإنترنت تربط بين البائعين و لمشترين حول العالم. كوبارت تقوم بتشغيل أكثر من 200 موقع في 11 بلد، وأكثر من 150,000 سيارة للمزاد كل يوم.                        </textarea>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">  النص الاول </label>
+                    <div class="col-sm-8 col-md-9">   
+                    <textarea name="paragraph_one" cols="30" class="form-control"  rows="7">
+                        تقنية المزاد على كاك مزاد المنصة المحركة لمزادات السيارات عبر الانترنت
+                        </textarea>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">  النص الثاني </label>
+                    <div class="col-sm-8 col-md-9">
+                        <textarea name="paragraph_two" cols="30" class="form-control"  rows="7">
+                        مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
+                        </textarea>
+                    </div>
+                </div>
+                <!-- End edit content -->
+                <!-- Start Submit -->
+                <div class="mb-2 row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <input type="submit" value="  النص الافتراضي" class=" btn bg-yellow ">
+                    </div>
+                </div>
+                <!-- End Submit -->
+                
+            </form>
+</div>
+
 @elseif($do == 'Edit')
 <!-- start Edit content -->
 {{$contentid = isset($_GET['contentid']) && is_numeric($_GET['contentid']) ? intval($_GET['contentid']) : 0;}}

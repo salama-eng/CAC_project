@@ -26,6 +26,40 @@ class AdminHomeController extends Controller
      ]);
     }
 
+    function addContent(Request $request){
+
+        Validator::validate($request->all(),[
+            "main_paragraph"=>['required', 'string', 'between: 5, 255'],
+            "description"=>['required', 'string', 'between: 5, 255'],
+            "paragraph_one"=>['required', 'string', 'between: 5, 255'],
+            "paragraph_two"=>['required', 'string', 'between: 5, 255'],
+        ],[
+            "main_paragraph.required"=>' هذا الحقل مطلوب ',
+            "paragraph_two.required"=>' هذا الحقل مطلوب ',
+            "description.required"=>' هذا الحقل مطلوب ',
+            "paragraph_one.required"=>' هذا الحقل مطلوب ',
+            "main_paragraph.string"=>' يحب ان يكون هذا الحقل نص  ',
+            "description.string"=>' يحب ان يكون هذا الحقل نص  ',
+            "paragraph_one.string"=>' يحب ان يكون هذا الحقل نص  ',
+            "paragraph_two.string"=>' يحب ان يكون هذا الحقل نص  ',
+            "main_paragraph.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
+            "description.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
+            "paragraph_one.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
+            "paragraph_two.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
+            
+        ]);
+        $home=new siteHome;
+        $home->main_paragraph = $request->main_paragraph;
+        $home->description = $request->description;
+        $home->paragraph_one = $request->paragraph_one;
+        $home->paragraph_two = $request->paragraph_two;
+
+        if($home->save())
+        return redirect('manage_home')
+        ->with(['success'=>'تم الاضافه  بنجاح']);
+        return back()->with(['error'=>'خطاء لانستطيع الاضفافه ']);
+    }
+
     function editContent(Request $request,$id){
         // return $request;
         $column =  $request->column;
