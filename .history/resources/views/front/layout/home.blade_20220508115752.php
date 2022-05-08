@@ -82,7 +82,7 @@
 
    
 
-    <ul class="dropdown-menu bg-dark  fs-7 yellow " aria-labelledby="dropdownMenu2" style="width:12rem;">
+    <ul class="dropdown-menu bg-dark  fs-7 yellow  w-100" aria-labelledby="dropdownMenu2">
 
 
         <li>

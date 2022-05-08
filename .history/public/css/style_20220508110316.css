@@ -46,9 +46,6 @@ body {
   color: var(--yellow);
 }
 
-.white {
-  color: var(--whitecolor);
-}
 .bg-yellow {
   background-color: var(--yellow);
   border:none !important;

@@ -72,7 +72,7 @@
 <div class="dropdown">
 
     @if (isset(Auth::user()->profile->avatar))
-    <img src="/images/{{Auth::user()->profile->avatar}}" class="rounded-circle dropdown-toggle nav-item  border-yellow   contact me-auto " id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" width="50" height="">
+    <img src="/images/{{Auth::user()->profile->avatar}}" class="rounded-circle dropdown-toggle nav-item  border-yellow   contact me-auto mx-5" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" width="50" height="">
 @else
 
 <img src="/assets/images/avatar.png" class="rounded-circle dropdown-toggle nav-item  border-yellow   contact me-auto mx-5" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" width="50" height="">
@@ -82,25 +82,18 @@
 
    
 
-    <ul class="dropdown-menu bg-dark  fs-7 yellow " aria-labelledby="dropdownMenu2" style="width:12rem;">
+    <ul class="dropdown-menu bg-dark  fs-7 yellow " aria-labelledby="dropdownMenu2">
+        <div class="d-flex flex-column justify-center">
+            <div class="bg-yellow p-2  mb-2 ">
 
-
-        <li>
-            
-                <div class="bg-yellow p-2  mb-2 m-auto d-flex justify-content-center">
-
-                 @if (isset(Auth::user()->profile->avatar))
-                 <img src="/images/{{Auth::user()->profile->avatar}}" width="80" class="rounded-circle m-auto"alt="{{Auth::user()->profile->avatar}}">
-             @else
-     
-                 <img src="/assets/images/avatar.png" class="rounded-circle m-auto" width="80" alt="avatar.png">
-     
-     
-         @endif
-                </div>
-           
-         </li>
-
+             @if (isset(Auth::user()->profile->avatar))
+             <img src="/images/{{Auth::user()->profile->avatar}}" width="80" class="rounded-circle "alt="{{Auth::user()->profile->avatar}}">
+         @else
+ 
+             <img src="/assets/images/avatar.png" class="rounded-circle" width="80" alt="avatar.png">
+ 
+ 
+     @endif
       <li><button class="dropdown-item text-white text-end text-light fs-7" type="button"> {{Auth::user()->name}}
         
 

@@ -12,7 +12,7 @@
 .border-yellow
 {
 
-  border: 2px solid var(--yellow);
+  border: 1px solid var(--yellow);
 }
 * {
   margin: 0;
@@ -46,9 +46,6 @@ body {
   color: var(--yellow);
 }
 
-.white {
-  color: var(--whitecolor);
-}
 .bg-yellow {
   background-color: var(--yellow);
   border:none !important;
