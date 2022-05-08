@@ -166,7 +166,7 @@ tinymce.init({
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="img" class="form-label text-light">الصورة الرئيسية للسيارة</label>
             <div class="input-group ">
-                <input type="file" name="image" id="img" class="form-control" id="inputGroupFile01" accept="image/jpeg ,image/png , image/gif">
+                <input type="file" name="image" id="img" class="form-control" id="inputGroupFile01" accept = 'image/jpeg , image/jpg, image/gif, image/png'>
             </div>
             @error('image')
                 <span class="text-end yellow">* {{ $message }} </span>

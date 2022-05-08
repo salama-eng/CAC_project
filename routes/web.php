@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
 
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
@@ -40,6 +41,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
 Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('errorsProfile');
+Route::get('/adminRole', [HomeController::class, 'adminRole']);
+Route::get('/clientRole', [HomeController::class, 'clientRole']);
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
@@ -69,6 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/save_profile', [UserProfileController::class, 'save_profile'])->name('save_profile');
         // client profile Manage
         Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+        Route::get('/build', [LessonController::class, 'build'])->name('build');
         Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
         Route::post('/save_editprofile', [UserProfileController::class, 'save_edit_profile'])->name('save_editprofile');
         Route::post('/edit_image_profile', [UserProfileController::class, 'editImageProfile'])->name('edit_image_profile');
@@ -101,8 +105,8 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('/AuctionCars', [UserAuctionController::class, 'showauctions'])->name('AuctionCars');
       Route::get('/UserUncomplateAuctions', [UserAuctionController::class, 'uncomplate'])->name('UserUncomplateAuctions');
       Route::get('/UserComplateAuctions', [UserAuctionController::class, 'complate'])->name('UserComplateAuctions');
-
-    // Route::group(['middleware' => 'role:admin'], function () {
+    });
+   
         //Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
         //Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
         //Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
@@ -170,12 +174,11 @@ Route::group(['middleware' => 'auth'], function () {
         
     
     
-    // });
 
-
+    Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-});
+
 
 Route::get('/home', [HomeController::class, 'showHomePage'])->name('home');
 
