@@ -54,6 +54,7 @@
                                     <div class="modal-body">
                                         <h2>هل انت متاكد</h2>
                                         <input type="hidden" name="postid" value="{{$post->id}}">
+                                        <input type="hidden" name="userid" value="{{$post->users->id}}">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>

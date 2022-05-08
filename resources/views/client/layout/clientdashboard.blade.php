@@ -120,24 +120,18 @@
 
             <div class="text-light dirction me-auto mt-4 dropdown-notifications">
               <div class="d-flex justify-content-end" >
-                <p data-count="1" class="fa fa-bell px-2 position-relative notif-count "><i class="notiy  position-absolute"></i>1</p>
+                <p data-count="{{auth()->user()->unreadNotifications()->count()}}" class="fa fa-bell px-2 position-relative notif-count "><i class="notiy  position-absolute"></i>{{auth()->user()->unreadNotifications()->count()}}</p>
                 <p class="fa fa-wechat px-2"></p>
                 <p class="fa fa-user px-2"></p>
 </div>
                 <ul class="dropdown-menu notification bg-dark">
-                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
+                    @foreach(auth()->user()->unreadNotifications as $notification)
+                    <li><a class="dropdown-item text-light fs-7" href="{{$notification->data['lesson']['link']}}">{{$notification->data['lesson']['title']}} {{auth()->user()->name}}
+                            <i class="semiOrange fs-8 "><br></i>{{$notification->data['lesson']['body']}}</a>
                         <p class="dropdown-divider mx-2"></p>
                     </li>
-
-                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
-                        <p class="dropdown-divider mx-2"></p>
-                    </li>
-                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
-                        <p class="dropdown-divider mx-2"></p>
-                    </li>
+                    @endforeach
+                    
                 </ul>
                 <ul class="dropdown-menu bg-dark userinfo text-center p-0">
                     <li>
@@ -210,7 +204,7 @@
      var notificationsWrapper   = $('.dropdown-notifications');
       var notificationsCountElem = notificationsWrapper.find('p[data-count]');
       var notificationsCount     = parseInt(notificationsCountElem.data('count'));
-
+      var notifications          = notificationsWrapper.find('ul.dropdown-menu');
       if (notificationsCount <= 0) {
         notificationsWrapper.hide();
       }
@@ -219,10 +213,18 @@
       // Pusher.logToConsole = true;
 
       
-
+      
       var channel = pusher.subscribe('new-notifiction');
       channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
-        
+        var existingNotifications = notifications.html();
+        var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
+        var newNotificationHtml = `
+        <li><a class="dropdown-item text-light fs-7" href="`+data.lesson.link+`"> `+data.lesson.title+` <?php echo auth()->user()->name; ?>
+                <i class="semiOrange fs-8 "><br>`+data.lesson.body+`</i></a>
+            <p class="dropdown-divider mx-2"></p>
+        </li>
+        `;
+        notifications.html(newNotificationHtml + existingNotifications);
 
         notificationsCount += 1;
         notificationsCountElem.attr('data-count', notificationsCount);

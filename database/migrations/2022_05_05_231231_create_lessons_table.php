@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->integer('owner_user_id');
-            $table->integer('aw_user_id');
+            $table->integer('user_id');
+            $table->text('link');
             $table->string('title');
             $table->string('body');
             $table->timestamps();
