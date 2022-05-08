@@ -140,6 +140,7 @@
                         @foreach($Content as $content)
                         {{$content->$column}}
                         @endforeach
+
                         </textarea>
                     </div>
                 </div>

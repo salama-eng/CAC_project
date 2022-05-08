@@ -28,7 +28,7 @@
 
         <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
             <hr>
-            <p>{{$content->paragraph_one}}</p>
+            <p>{{$content->pargraph_one}}</p>
             <a href="manage_home?do=Edit&contentid={{$content->id}}&column=paragraph_one&name=النص الاول" class="btn btn-success">
                 <i class='fa fa-edit'></i> تعديل
             </a>
@@ -37,7 +37,7 @@
         <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
             <h2 class="yellow "> النص الثاني</h2>
             <hr>
-            <p>{{$content->paragraph_two}}</p>
+            <p>{{$content->pargraph_two}}</p>
             <a href="manage_home?do=Edit&contentid={{$content->id}}&column=paragraph_two&name=النص الثاني" class="btn btn-success">
                 <i class='fa fa-edit'></i> تعديل
             </a>
@@ -140,6 +140,7 @@
                         @foreach($Content as $content)
                         {{$content->$column}}
                         @endforeach
+
                         </textarea>
                     </div>
                 </div>
