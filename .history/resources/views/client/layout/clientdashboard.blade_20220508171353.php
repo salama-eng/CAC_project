@@ -53,17 +53,17 @@
                 </div>
                 <ul class="list-unstyled components fs-6 mt-4 ">
                     <li>
-                        <a href="{{route('UserDash')}}"></a><h5 class="text-center p-3 text-light"> الرئيسية</h5></a>
+                        <a href="{{route('UserDash')}}"></a><h6 class="text-center p-3 text-light"> الرئيسية</h6></a>
 
                     </li>
                     <li>
-                       <a href="{{route('profile')}}"class="text-center p-3 text-light "><h5 >المعلومات الشخصية</h5></a> 
+                       <a href="{{route('profile')}}"class="text-center p-3 text-light "><h6 >المعلومات الشخصية</h6></a> 
 
                     </li>
                     <li class="active dropdown">
-                     <h5>   <a class="dropdown-toggle text-warning text-center text-light pb-2" data-toggle="collapse"
+                     <h6>   <a class="dropdown-toggle text-warning text-center text-light pb-2" data-toggle="collapse"
                             aria-expanded="false">إدارة
-                            طلبات إضافة مزاد</a></h5>
+                            طلبات إضافة مزاد</a></h6>
                         <ul class="collapse list-unstyled fs-6" id="manage">
                             <li><a href="{{route('addAuction')}}" class="text-light text-center p-3">إضافة مزاد</a></li>
                             <li><a href="{{route('postedcars')}}" class="text-light text-center p-3"> السيارات المضافة في المزاد</a></li>

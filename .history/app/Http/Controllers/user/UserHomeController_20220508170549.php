@@ -18,9 +18,9 @@ class UserHomeController extends Controller
     
       $posts=Post::get()->where('user_id',$id)->Count();
       /*** عدد مرات المزايدة */
-      $Auctions=Auction::get()->where('aw_user_id',$id)->Count();
-      $orders=Order::get()->where('user_id',$id)->Count();
-      $posts_now=Post::where('end_date','>',now())->where('user_id',$id)->get()->Count();
+      $Auctions=Auction::get()->Count();
+      $orders=Order::get()->Count();
+      $posts_now=Post::where('end_date','>',now())->get()->Count();
       $posts_uncomplate=Post::where('end_date','<',now())->where('status_auction','!=',1)->get()->Count();
     
       // return $posts_uncomplate;

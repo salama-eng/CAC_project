@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
-
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,14 +18,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <title>Cars Auction</title>
-
 </head>
 
 <body>
+
     <div class="d-flex">
         <div class="navbar-header2  my-5 justify-content-between d-none ">
             <button type="button" id="sidebarCollapse" class="bttn border-0 px-4">
@@ -36,6 +33,7 @@
         </div>
         <div class="holder aside">
             <!-- Sidebar Holder -->
+
             <aside id="sidebar">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo">
@@ -50,20 +48,22 @@
                             <div class="menu bg-light"> </div>
                         </button>
                     </div>
+
                 </div>
+
                 <ul class="list-unstyled components fs-6 mt-4 ">
                     <li>
                         <a href="{{route('UserDash')}}"></a><h5 class="text-center p-3 text-light"> الرئيسية</h5></a>
 
                     </li>
                     <li>
-                       <a href="{{route('profile')}}"class="text-center p-3 text-light "><h5 >المعلومات الشخصية</h5></a> 
+                       <a href="{{route('profile')}}"><h5  class="text-center p-3 text-light ">المعلومات الشخصية</h5></a> 
 
                     </li>
                     <li class="active dropdown">
-                     <h5>   <a class="dropdown-toggle text-warning text-center text-light pb-2" data-toggle="collapse"
+                        <a class="dropdown-toggle text-warning text-center text-light pb-2" data-toggle="collapse"
                             aria-expanded="false">إدارة
-                            طلبات إضافة مزاد</a></h5>
+                            طلبات إضافة مزاد</a>
                         <ul class="collapse list-unstyled fs-6" id="manage">
                             <li><a href="{{route('addAuction')}}" class="text-light text-center p-3">إضافة مزاد</a></li>
                             <li><a href="{{route('postedcars')}}" class="text-light text-center p-3"> السيارات المضافة في المزاد</a></li>
@@ -74,9 +74,9 @@
                     </li>
                    
                     <li class="active dropdown2">
-                        <h5> <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
+                        <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
                         aria-expanded="false">إدارة
-                        طلبات المزايدة</a></h5>
+                        طلبات المزايدة</a>
                         <ul class="collapse list-unstyled fs-6" id="manage2">
                             <li><a href="{{route('AuctionCars')}}" class="text-light text-center p-3"> السيارات التي تمت المزايدة عليها</a></li>
                             <li><a href="{{route('UserUncomplateAuctions')}}" class="text-light text-center p-3"> المزادات الغير مكتملة</a></li>

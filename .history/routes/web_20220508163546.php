@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\user\UserPostsController;
 use App\Http\Controllers\user\UserAuctionController;
 use App\Http\Controllers\user\UserProfileController;
-use App\Http\Controllers\user\UserHomeController;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
@@ -118,7 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
 
  // User reports page 
  
- Route::get('/UserDash', [UserHomeController::class,'show'])->name('UserDash');
+ Route::get('/UserDash', [AdminHomeController::class,'show'])->name('UserDash');
 
 
         // Admin Manage User

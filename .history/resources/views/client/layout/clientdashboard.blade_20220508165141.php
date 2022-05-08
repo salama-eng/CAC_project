@@ -27,6 +27,7 @@
 </head>
 
 <body>
+
     <div class="d-flex">
         <div class="navbar-header2  my-5 justify-content-between d-none ">
             <button type="button" id="sidebarCollapse" class="bttn border-0 px-4">
@@ -36,6 +37,7 @@
         </div>
         <div class="holder aside">
             <!-- Sidebar Holder -->
+
             <aside id="sidebar">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo">
@@ -50,7 +52,9 @@
                             <div class="menu bg-light"> </div>
                         </button>
                     </div>
+
                 </div>
+
                 <ul class="list-unstyled components fs-6 mt-4 ">
                     <li>
                         <a href="{{route('UserDash')}}"></a><h5 class="text-center p-3 text-light"> الرئيسية</h5></a>

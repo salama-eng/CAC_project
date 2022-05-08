@@ -19,7 +19,8 @@ class AdminHomeController extends Controller
         $orders=Order::get()->Count();
         $posts_now=Post::where('end_date','>',now())->get()->Count();
         $posts_uncomplate=Post::where('end_date','<',now())->where('status_auction','!=',1)->get()->Count();
-      
+        Articles::whereYear('created_at', '=', Carbon::parse($date)->format('Y'))->get();
+
         // return $posts_uncomplate;
      return view('admin.dashboard', [
          'posts' => $posts,
