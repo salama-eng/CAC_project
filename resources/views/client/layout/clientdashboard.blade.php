@@ -117,9 +117,9 @@
 
         <div class="w-100 bg-grey"  style="">
 
-            <div class="text-light dirction me-auto mt-4">
+            <div class="text-light dirction me-auto mt-4 dropdown-notifications">
               <div class="d-flex justify-content-end" >
-                <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
+                <p data-count="1" class="fa fa-bell px-2 position-relative notif-count "><i class="notiy  position-absolute"></i>1</p>
                 <p class="fa fa-wechat px-2"></p>
                 <p class="fa fa-user px-2"></p>
 </div>
@@ -194,5 +194,36 @@
     <script src="{{ URL::asset('js/main.js') }}"></script>
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 </footer>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script>
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('9ecc8e897a93aeee0ca1', {
+        encrypted: true
+    });
+    
+     var notificationsWrapper   = $('.dropdown-notifications');
+      var notificationsCountElem = notificationsWrapper.find('p[data-count]');
+      var notificationsCount     = parseInt(notificationsCountElem.data('count'));
 
+      if (notificationsCount <= 0) {
+        notificationsWrapper.hide();
+      }
+
+      // Enable pusher logging - don't include this in production
+      // Pusher.logToConsole = true;
+
+      
+
+      var channel = pusher.subscribe('new-notifiction');
+      channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
+        
+
+        notificationsCount += 1;
+        notificationsCountElem.attr('data-count', notificationsCount);
+        notificationsWrapper.find('.notif-count').text(notificationsCount);
+        notificationsWrapper.show();
+      });
+</script>
 </html>
