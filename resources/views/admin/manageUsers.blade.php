@@ -11,7 +11,7 @@
             </div>
         @endif
 
-        <div class="table-responsive text-white">
+        <div class="table-responsive text-white ms-5">
             <table class="main-table manage-members text-center  table table-bordered  text-white">
                 <tr class="text-warning " >
                     <td  class="text-warning">#ID</td>
@@ -41,13 +41,17 @@
                     <td>
                         
                         @if($user->is_active == 1)
-                            <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeuser{{$user->id}}">
-                                <i class='fa fa-check'></i> Active
-                            </a>
+                         
+                            <label class="switch" data-bs-toggle="modal" data-bs-target="#activeuser{{$user->id}}">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                              </label>
                         @else
-                            <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activeuser{{$user->id}}">
-                                <i class='fa fa-close'></i> noActive
-                            </a>
+                           
+                            <label class="switch" data-bs-toggle="modal" data-bs-target="#activeuser{{$user->id}}">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                              </label>
                         @endif
                         
                     </td>

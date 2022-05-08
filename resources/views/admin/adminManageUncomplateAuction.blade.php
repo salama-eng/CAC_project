@@ -3,7 +3,7 @@
 
 <h1 class="text-center fs-3 text-white mb-5">  االمزادات المعلقة </h1>
     <div class="container">
-        <div class="table-responsive text-white">
+        <div class="table-responsive text-white ms-5">
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr >
                     <td>#ID</td>
@@ -43,7 +43,7 @@
                                 </td>
                                 <td>
                                     <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
-                                        <i class='fa fa-check'></i> Active
+                                        <i class='fa fa-check'></i> تفعيل
                                     </a>
                                 </td>
                             </tr>

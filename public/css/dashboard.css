@@ -120,7 +120,7 @@ a:focus {
 
 
 .aside{
-    width: 30%;
+    width: 24em;
 }
 
 #sidebar ul li a {
@@ -128,12 +128,19 @@ a:focus {
     display: block;
 }
 
-#sidebar ul li a:hover {
+#sidebar ul li a:hover{
 
     color: var(--semiOrange) !important;
 
 }
-
+#manage2 li:hover,
+#manage li:hover{
+    color: var(--semiOrange) !important;
+}
+#manage2 li:hover .branch,
+#manage li:hover .branch{
+    background-color: var(--semiOrange) !important;
+}
 .active{
     color: var(--semiOrange) !important;
 }
@@ -155,6 +162,7 @@ a:focus {
      width: 20px;
     transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
     transition-delay: 0.2s;
+   
 }
 #sidebarCollapse:hover .menu, #sidebarCollapse:focus .menu{
     background-color: var(--semiOrange) !important;
@@ -164,8 +172,25 @@ a:focus {
 #sidebarCollapse .menu:first-of-type {
     transform: rotate(45deg) translate(2px, 2px) !important;
     
+    
 }
-
+.navbar-header #sidebarCollapse{
+    transition: .2s;
+}
+.navbar-header #sidebarCollapse:hover {
+    transform: rotate(-180deg) translate(1px, -1px) !important;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
+}
+.navbar-header2:hover .sidemenu:first-child{
+width: 35px !important;
+transition: .2s;
+}
+.navbar-header2:hover .sidemenu:last-child{
+    width: 15px !important;
+    padding: 0 !important;
+    transition: .2s;  
+}
 #sidebarCollapse .menu:last-of-type {
     transform: rotate(-45deg) translate(1px, -1px) !important;
 }
@@ -200,16 +225,18 @@ background-color:  var(--lightgrey);
 .sidemenu{
     height: 2px;
     width: 10px;
+    transition: .2s;
 }
-.navbar-header2{
-    height: 20px;
-}
-.navbar-header2 ,.sidemenu{
+
+
+.navbar-header2 {
+    height: 50px !important;
     position: fixed;
-    top: 45px;
-    right: 10px;
+    top: -8px;
+    right: 2.8%;
     z-index: 4444;
 }
+
 .navbar-header2:hover .sidemenu,.navbar-header2:focus .sidemenu{
     background-color: var(--semiOrange) !important;
 }
@@ -234,7 +261,6 @@ a{
 .input-group input:focus, .form-select option:focus ,.form-control:focus{
     background-color: var(--darkgrey);
     color: var(--whitecolor) !important;
-    border-color: var(--semiOrange);
     box-shadow: none;
     box-shadow: none;
 }
@@ -273,8 +299,18 @@ a{
 .more:hover a{
 color: var(--semiOrange) !important;
 }
+/* adminCategories styles */
+.edit{
+    background-color: transparent;
+border: 1px solid var(--semiOrange);
+transition: .4s;
 
+}
+.edit:hover{
+    background-color: var(--semiOrange);
+  transition: .4s;
 
+}
 @media (max-width: 768px) {
  #sidebarCollapse .menu:first-of-type,
     #sidebarCollapse .menu:last-of-type {
@@ -290,10 +326,6 @@ color: var(--semiOrange) !important;
     #sidebarCollapse.active .menu:first-of-type {
         transform: rotate(45deg) translate(2px, 2px);
     }
-
-    /* .w-lg-100{
-        width: 100% !important;
-    } */
   
 
 }
@@ -311,6 +343,7 @@ color: var(--semiOrange) !important;
          top: 20px;  
         }
     .navbar-toggle{
+        background-color:transparent;
         direction: ltr;
         position: fixed;
        left: 25px;
@@ -336,6 +369,7 @@ color: var(--semiOrange) !important;
       
     }
     #sidebar {
+        width: 24em;
         position: absolute;
         z-index: 9999;
         background-color: var(--lightgrey);

@@ -13,7 +13,7 @@
         <a href="membership?do=Add" class="btn btn-sm bg-yellow">
             <i class="fa fa-plus"></i> اضافة صورة
         </a>
-        <div class="table-responsive text-white">
+        <div class="table-responsive text-white ms-5">
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr >
                     <td class="text-warning">#ID</td>
@@ -37,18 +37,21 @@
                     <td class="text-warning"> {{$membership->address}}</td>
                     <td class="text-warning"> {{$membership->description}}</td>
                     
-                    <td>
-                        <a href="membership?do=Edit&membershipid={{$membership->id}}" class="btn btn-success">
-                            <i class='fa fa-edit'></i> Edit
+                    <td class="d-flex justify-content-center align-items-center">
+                        <a href="membership?do=Edit&membershipid={{$membership->id}}" class="edit p-1 mx-2">
+                            <i class='fa fa-edit'></i>
+                            تعديل 
                         </a>
                         @if($membership->is_active == 1)
-                            <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activemembership{{$membership->id}}">
-                                <i class='fa fa-check'></i> Active
-                            </a>
+                            <label class="switch" data-bs-toggle="modal" data-bs-target="#activemembership{{$membership->id}}">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                              </label>
                         @else
-                            <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activemembership{{$membership->id}}">
-                                <i class='fa fa-close'></i> noActive
-                            </a>
+                         <label class="switch" data-bs-toggle="modal" data-bs-target="#activemembership{{$membership->id}}">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                              </label>
                         @endif
                         
                     </td>
