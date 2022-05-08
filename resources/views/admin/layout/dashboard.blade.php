@@ -90,7 +90,9 @@
                         aria-expanded="false">إدارة
                          محتويات الموقع</a>
                         <ul class="collapse list-unstyled fs-6" id="manage2">
-                            <li><a href="{{route('home_site')}}" class="text-light text-center p-3">  ادارة الصفحة الرئيسية  </a></li>
+                            <li><a href="{{route('manage_home')}}" class="text-light text-center p-3">  ادارة الصفحة الرئيسية  </a></li>
+                            <li><a href="{{route('manage_contact_us')}}" class="text-light text-center p-3">  ادارة صفحة تواصل معنا  </a></li>
+                            <li><a href="{{route('manage_about_us')}}" class="text-light text-center p-3">  ادارة صفحة من نحن  </a></li>
                             <li><a href="{{route('slider_image')}}" class="text-light text-center p-3">  صور السلايدر </a></li>
                             <li><a href="{{route('membership')}}" class="text-light text-center p-3"> ادارة شركائنا</a></li>
 

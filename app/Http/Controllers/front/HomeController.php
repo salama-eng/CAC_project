@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\about_us;
 use App\Models\Auction;
+use App\Models\contact_us_info;
 use App\Models\membership;
 use App\Models\Post;
+use App\Models\siteHome;
 use App\Models\slider_image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,14 +28,15 @@ class HomeController extends Controller
     }
 
     public function showHomePage(){
-        $postsAll=Post::with(['users'])->get();
-        $slider = slider_image::select()->get();
-        $member = membership::select()->get();
+        $postsAll=Post::with(['users'])->where('is_active',1)->get();
+        $slider = slider_image::select()->where('is_active',1)->get();
+        $content = siteHome::select()->get();
+        $member = membership::select()->where('is_active',1)->get();
         return view('front.index', [
             'Slider' => $slider,
             'Posts' => $postsAll,
             'members' => $member,
-
+            'Content' => $content,
         ]);
     }
     public function show_auctions(){
@@ -53,6 +57,21 @@ class HomeController extends Controller
         return view('front.offers', [
             'Posts' => $posts,
         ]);
+    }
 
+    public function showContactUs(){
+        $Information = contact_us_info::select()->where('is_active',1)->get();
+        return view('front.Contact_Us', [
+            'Information' => $Information,
+       ]);
+    }
+
+    public function showAboutUs(){
+        $content = about_us::select()->get();
+        $member = membership::select()->where('is_active',1)->get();
+        return view('front.aboutUs', [
+            'members' => $member,
+            'Content' => $content,
+        ]);
     }
 }

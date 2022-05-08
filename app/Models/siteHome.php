@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class siteHome extends Model
 {
+    protected $table ="site_home";
+    protected $fillable = ['.$column.'];
+
+
     use HasFactory;
 }
