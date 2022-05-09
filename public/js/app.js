@@ -118,7 +118,7 @@ $('.modal-footer input').on('click',()=>{
 })
 
 function reveal() {
-  var reveals = document.querySelectorAll(".card");
+  var reveals = document.querySelectorAll(".animate");
 
   for (var i = 0; i < reveals.length; i++) {
     var windowHeight = window.innerHeight;
