@@ -85,9 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
             return view('front.layout.clientdashboard');
         });
 
-        Route::get('/admin_dash', function () {
-            return view('admin.layout.dashboard');
-        });
+      
         // Route::get('/home', function () {
         //     return view('front.home');
         // });
@@ -227,3 +225,8 @@ Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 
 Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');
 Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
+
+
+Route::get('/admin_dash', function () {
+    return view('admin.layout.dashboard');
+});
