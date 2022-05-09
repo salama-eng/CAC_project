@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+    
 
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
         <script src="https://momentjs.com/downloads/moment.js"></script>
 
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -194,8 +195,8 @@
     <script src="{{ URL::asset('js/app.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
- 
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
