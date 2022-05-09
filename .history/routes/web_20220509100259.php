@@ -26,9 +26,8 @@ use App\Http\Controllers\user\UserPostsController;
 use App\Http\Controllers\user\UserAuctionController;
 use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\user\UserHomeController;
-use App\Http\Controllers\user\ChatController;
 
-
+use App\Models\about_us;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
@@ -228,10 +227,7 @@ Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contac
 Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
 
 /******  Chat    ******* */
-
-
-Route::get('/chat', [ChatController::class, 'index']);
-Route::resource('chat', ChatController::class);
+Route::get('/chat',[ChatController::class,'showChat'])->name('chat');
 
 Route::get('/admin_dash', function () {
     return view('admin.layout.dashboard');

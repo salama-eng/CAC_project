@@ -231,7 +231,7 @@ Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
 
 
 Route::get('/chat', [ChatController::class, 'index']);
-Route::resource('chat', ChatController::class);
+Route::resource('chat', CrudController::class);
 
 Route::get('/admin_dash', function () {
     return view('admin.layout.dashboard');
