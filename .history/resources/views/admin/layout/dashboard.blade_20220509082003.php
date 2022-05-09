@@ -182,13 +182,13 @@
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>
-                <ul class="dropdown-menu bg-dark userinfo text-center">
+                <ul class="dropdown-menu bg-dark userinfo">
                     <li>
-                        <div class="d-flex justify-content-center flex-wrap">
-                            <div class="bg-yellow p-2  mb-2 col-8  w-100 m-auto">
+                        <div class="d-flex flex-column justify-center">
+                            <div class="bg-yellow p-2  mb-2 ">
  
                              @if (isset(Auth::user()->profile->avatar))
-                             <img src="/images/{{Auth::user()->profile->avatar}}" width="80" class="m-auto rounded-circle "alt="{{Auth::user()->profile->avatar}}">
+                             <img src="/images/{{Auth::user()->profile->avatar}}" width="80" class="rounded-circle "alt="{{Auth::user()->profile->avatar}}">
                          @else
                  
                              <img src="/assets/images/avatar.png" class="rounded-circle" width="80" alt="avatar.png">
@@ -199,12 +199,14 @@
                          <h6 class="dropdown-item text-light mt-1  fs-7 " href="#"> 
                              {{Auth::user()->name}}
                          </h6>
-                        
+                         <h6 class="dropdown-item text-light mt-1 mb-0 fs-7">
+                             <a href="{{route('profile')}}">بروفايل المستخدم </a>
+                         </h6>
                      </div>
                      </li>
- <p class="dropdown-divider mx-2"></p>
+
                     <li><a class="dropdown-item text-light fs-7" href="{{ route('logout') }}">تسجيل الخروج</a>
-                       
+                        <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>
             </div>

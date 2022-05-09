@@ -182,10 +182,10 @@
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>
-                <ul class="dropdown-menu bg-dark userinfo text-center">
+                <ul class="dropdown-menu bg-dark userinfo">
                     <li>
                         <div class="d-flex justify-content-center flex-wrap">
-                            <div class="bg-yellow p-2  mb-2 col-8  w-100 m-auto">
+                            <div class="bg-yellow p-2  mb-2 col-12  w-75 m-auto">
  
                              @if (isset(Auth::user()->profile->avatar))
                              <img src="/images/{{Auth::user()->profile->avatar}}" width="80" class="m-auto rounded-circle "alt="{{Auth::user()->profile->avatar}}">

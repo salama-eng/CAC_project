@@ -93,6 +93,7 @@ class AdminHomeController extends Controller
             "$request->column.string"=>' يحب ان يكون هذا الحقل نص  ',
             "$request->column.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',]);
 
+     
 
         $home=siteHome::find($id);
 

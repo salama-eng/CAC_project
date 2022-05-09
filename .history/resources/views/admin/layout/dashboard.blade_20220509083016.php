@@ -182,7 +182,7 @@
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                 </ul>
-                <ul class="dropdown-menu bg-dark userinfo text-center">
+                <ul class="dropdown-menu bg-dark userinfo">
                     <li>
                         <div class="d-flex justify-content-center flex-wrap">
                             <div class="bg-yellow p-2  mb-2 col-8  w-100 m-auto">
