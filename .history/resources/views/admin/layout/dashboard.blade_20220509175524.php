@@ -204,7 +204,7 @@
                         
                      </div>
                      </li>
-                         <p class="dropdown-divider mx-2"></p>
+ <p class="dropdown-divider mx-2"></p>
                     <li><a class="dropdown-item text-light fs-7" href="{{ route('logout') }}">تسجيل الخروج</a>
                        
                     </li>
