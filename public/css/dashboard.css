@@ -32,6 +32,7 @@ nav{
     z-index: 1;
 
 }
+ 
 .w-96 {
     width: 96%;
 }
@@ -86,6 +87,7 @@ nav{
 .nav-item:hover a{
     color: var(--semiOrange) !important;
 }
+
 .bttn:hover .menu,
 .bttn:focus .menu {
     background-color: var(--semiOrange) !important;
