@@ -85,7 +85,7 @@ class AdminHomeController extends Controller
 
     function editContent(Request $request,$id){
         return $request;
-        $column =  $request->column;
+        $column1 =  $request->column;
         Validator::validate($request->all(),[
             "$request->column"=>['required', 'string', 'between: 5, 255'],
         ],[
@@ -97,7 +97,7 @@ class AdminHomeController extends Controller
 
         $home=siteHome::find($id);
 
-        $home->$column  = $request->$column;
+        $home->$column1  = $request->$column;
         if($home->save())
 
         

@@ -50,7 +50,7 @@ class AdminHomeController extends Controller
     }
 
     function addContent(Request $request){
-
+return $request;
         Validator::validate($request->all(),[
             "main_paragraph"=>['required', 'string', 'between: 5, 255'],
             "description"=>['required', 'string', 'between: 5, 255'],
@@ -84,7 +84,7 @@ class AdminHomeController extends Controller
     }
 
     function editContent(Request $request,$id){
-        return $request;
+        // return $request;
         $column =  $request->column;
         Validator::validate($request->all(),[
             "$request->column"=>['required', 'string', 'between: 5, 255'],
@@ -93,7 +93,7 @@ class AdminHomeController extends Controller
             "$request->column.string"=>' يحب ان يكون هذا الحقل نص  ',
             "$request->column.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',]);
 
-     
+        print_r($request->$column) ;
 
         $home=siteHome::find($id);
 
