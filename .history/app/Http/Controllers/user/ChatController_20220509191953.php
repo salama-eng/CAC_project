@@ -21,7 +21,17 @@ class ChatController extends Controller
     {
 
         $auction = Auction::find($id);
+        if ($auction->owner_user_id == Auth::id()) {
+            $other_user = User::with('profile')->find($auction->aw_user_id);
 
+            $chat = Chat::select()->where('aw_user_id', $auction->aw_user_id)
+            ->where('owner_user_id', $auction->owner_user_id)->get();
+
+        } else {
+            $other_user = User::with('profile')->find($auction->owner_user_id);
+             $chat = Chat::select()->where('aw_user_id', $auction->aw_user_id)
+            ->where('owner_user_id', $auction->owner_user_id)->get();
+        }
 
         $chat = Chat::select()->where('aw_user_id', $auction->aw_user_id)
             ->where('owner_user_id', $auction->owner_user_id)->get();
