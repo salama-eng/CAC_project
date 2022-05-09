@@ -446,7 +446,8 @@ body {
 }
 
 .about {
-
+  background-color: #1e1e1e !important;
+ 
   position: relative;
   transform: translateY(150px);
   opacity: 0;

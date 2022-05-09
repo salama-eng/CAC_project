@@ -249,6 +249,9 @@ Route::resource('chat', ChatController::class);
 Route::get('/admin_dash', function () {
     return view('admin.layout.dashboard');
 });
+Route::get('/aboutUs', function () {
+    return view('front.aboutUs');
+})->name('aboutUs');
 
 
 

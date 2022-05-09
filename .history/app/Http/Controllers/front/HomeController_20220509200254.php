@@ -68,7 +68,7 @@ class HomeController extends Controller
 
     public function showAboutUs(){
         $content = about_us::select()->get();
-        
+        return $content;
         $member = membership::select()->where('is_active',1)->get();
         return view('front.aboutUs', [
             'members' => $member,

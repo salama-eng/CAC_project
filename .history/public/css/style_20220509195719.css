@@ -444,14 +444,6 @@ body {
   opacity: 0;
   transition: 1s all ease;
 }
-
-.about {
-
-  position: relative;
-  transform: translateY(150px);
-  opacity: 0;
-  transition: 1s all ease;
-}
 .card.active,.about.active{
   transform: translateY(0);
   opacity: 1;
