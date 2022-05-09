@@ -154,6 +154,7 @@ Route::group(['middleware' => 'auth'], function () {
         
         // Admin Manage Auction
         Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
+        Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
         
         // Admin Manage Ended Auction
         Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
@@ -201,13 +202,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/home', [HomeController::class, 'showHomePage'])->name('home');
+Route::get('/', [HomeController::class, 'showHomePage'])->name('home');
 
 // Route::get('/home', function () {
 //     return view('front.index');
 // })->name('home');
-Route::get('/', function () {
-    return view('front.index');
-});
+// Route::get('/', function () {
+//     return view('front.index');
+// });
 Route::get('/auctions', function () {
     return view('front.auctions');
 })->name('auctions');
