@@ -7,9 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css') }}">
-   
+ 
+
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +17,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        
     <title>Cars Auction</title>
 </head>
-  
 
 <body>
 
@@ -230,34 +230,18 @@
 
 
 <footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
     <script src="{{ URL::asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/js.js') }}"></script>
     <script src="{{ URL::asset('js/app.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
+
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-<script>
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('9ecc8e897a93aeee0ca1', {
-        encrypted: true
-    });
-    
-     var notificationsWrapper   = $('.dropdown-notifications');
-      var notificationsCountElem = notificationsWrapper.find('p[data-count]');
-      var notificationsCount     = parseInt(notificationsCountElem.data('count'));
-      var notifications          = notificationsWrapper.find('ul.dropdown-menu');
-      if (notificationsCount <= 0) {
-        notificationsWrapper.hide();
-      }
-
-
 <script>
     Pusher.logToConsole = true;
     var pusher = new Pusher('9ecc8e897a93aeee0ca1', {
@@ -297,3 +281,4 @@
       });
 </script>
 
+</html>

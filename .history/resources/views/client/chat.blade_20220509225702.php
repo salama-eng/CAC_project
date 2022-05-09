@@ -6,21 +6,31 @@
             <header class="d-flex justify-content-end align-items-center gap-5 text-end">
               <p class="align-self-end mr-auto"><a href="{{ route('profile') }}" class="card-link active text-warning mt-3 mb-2"> العودة
                 للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
-                <div class="col-lg-3 col-6">
-                    <h2> mmmm </h2>
-                    <h3 class="d-lg-block d-none">already 1902 messags</h3>
-                    <p class="align-self-end mr-auto d-block d-lg-none " style="font-size:12px"><a href="{{ route('profile') }}" class="card-link active text-warning mt-3 mb-2"> العودة
-                      للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
+                <div class="col-3 ">
+                    <h2> {{ $other_user->name }} </h2>
+                    <h3>already 1902 messags</h3>
                 </div>
-                <img src="/assets/images/avatar.png" width="80" class=" rounded-circle "
+                <img src="/images/{{$other_user->profile->avatar }}" width="80" class=" rounded-circle "
                     alt="{{ Auth::user()->profile->avatar }}">
                     
             </header>
             <ul id="chat" class="" style="height:70vh">
-              
 
-    
+                <li class="you">
+                    <div class="entete">
+                        <span class="status green"></span>
+                        <h2>Vincent</h2>
+                        <h3>10:12AM, Today</h3>
+                    </div>
+                    <div class="triangle"></div>
+                    <div class="messag">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    </div>
+                </li>
 
+
+
+                
                 <li class="me">
                     <div class="entete">
                         <h3>10:12AM, Today</h3>
@@ -32,22 +42,28 @@
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                     </div>
                 </li>
-
-
-               
-                <li class="you">
-                  <div class="entete">
-                      <span class="status green"></span>
-                      <h2>Vincent</h2>
-                      <h3>10:12AM, Today</h3>
-                  </div>
-                  <div class="triangle"></div>
-                  <div class="messag">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                  </div>
+                <li class="me">
+                    <div class="entete">
+                        <h3>10:12AM, Today</h3>
+                        <h2>Vincent</h2>
+                        <span class="status blue"></span>
+                    </div>
+                    <div class="triangle"></div>
+                    <div class="messag">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    </div>
                 </li>
-        
-              
+                <li class="me">
+                    <div class="entete">
+                        <h3>10:12AM, Today</h3>
+                        <h2>Vincent</h2>
+                        <span class="status blue"></span>
+                    </div>
+                    <div class="triangle"></div>
+                    <div class="messag">
+                        OK
+                    </div>
+                </li>
                 <li class="you">
                     <div class="entete">
                         <span class="status green"></span>
@@ -174,7 +190,7 @@
 
         main {
 
-            height: 78vh;
+            height: 75vh;
             display: inline-block;
             font-size: 15px;
             vertical-align: top;

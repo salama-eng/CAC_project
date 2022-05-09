@@ -12,7 +12,7 @@
                     <p class="align-self-end mr-auto d-block d-lg-none " style="font-size:12px"><a href="{{ route('profile') }}" class="card-link active text-warning mt-3 mb-2"> العودة
                       للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 </div>
-                <img src="/assets/images/avatar.png" width="80" class=" rounded-circle "
+                <img src="/images/{{$other_user->profile->avatar }}" width="80" class=" rounded-circle "
                     alt="{{ Auth::user()->profile->avatar }}">
                     
             </header>
