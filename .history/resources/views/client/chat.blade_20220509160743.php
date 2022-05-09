@@ -129,8 +129,6 @@
 
 
     <style>
-
-
         form input[type="text"] {
             border: none;
             background-color: #ffffff;
@@ -154,10 +152,6 @@
         body {
             background-color: #191919 !important;
             font-family: Arial;
-                
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)) ,url('../assets/images/back.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 
         }
 
@@ -175,10 +169,6 @@
             margin: 0 auto;
             color: #FFFFFF;
             font-size: 0;
-            
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/d.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
             border-radius: 5px;
             overflow: hidden;
         }

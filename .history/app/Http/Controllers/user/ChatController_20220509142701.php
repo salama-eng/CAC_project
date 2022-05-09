@@ -26,11 +26,11 @@ class ChatController extends Controller
         // return Response::json($chat);
 
         $data = $request->validate([
-            'message' => '',
-            'aw_user_id' => '',
-            'owner_user_id' => '',
-            'post_id' => '', 
-             'admin_id' => '',
+            'message' => 'required|max:255',
+            'aw_user_id' => 'required',
+            'owner_user_id' => 'required',
+            'post_id' => 'required', 
+             'admin_id' => 'required',
         ]);
         
         $chat = Chat::create($data);

@@ -4,7 +4,8 @@
 
         <main class="">
             <header class="d-flex justify-content-end align-items-center gap-5 text-end">
-              <p class="align-self-end mr-auto"><a href="{{ route('profile') }}" class="card-link active text-warning mt-3 mb-2"> العودة
+              <p class="text-warning"><a href="{{ route('profile') }}" class="card-link active text-warning"><a href="{{ route('profile') }}" class="card-link active text-center mt-3 mb-2"> العودة
+                للرئيسية <i class="f mt-3 mb-2"> العودة
                 للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 <div class="col-3 ">
                     <h2> {{ Auth::user()->name }} </h2>
@@ -129,8 +130,6 @@
 
 
     <style>
-
-
         form input[type="text"] {
             border: none;
             background-color: #ffffff;
@@ -154,10 +153,6 @@
         body {
             background-color: #191919 !important;
             font-family: Arial;
-                
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)) ,url('../assets/images/back.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 
         }
 
@@ -175,10 +170,6 @@
             margin: 0 auto;
             color: #FFFFFF;
             font-size: 0;
-            
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/d.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
             border-radius: 5px;
             overflow: hidden;
         }

@@ -129,6 +129,15 @@
 
 
     <style>
+.container {
+	background: var(--darkgrey);
+	color: #abafc6;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	border-radius: 5px;
+	padding: 20px;
+	width: 400px;
+	height: 350px;
+}
 
 
         form input[type="text"] {
@@ -154,10 +163,6 @@
         body {
             background-color: #191919 !important;
             font-family: Arial;
-                
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)) ,url('../assets/images/back.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 
         }
 
@@ -175,10 +180,6 @@
             margin: 0 auto;
             color: #FFFFFF;
             font-size: 0;
-            
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/d.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
             border-radius: 5px;
             overflow: hidden;
         }

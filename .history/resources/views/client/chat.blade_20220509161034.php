@@ -154,10 +154,6 @@
         body {
             background-color: #191919 !important;
             font-family: Arial;
-                
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)) ,url('../assets/images/back.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 
         }
 

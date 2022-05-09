@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
         });
         e.preventDefault();
         var formData = {
-          message: jQuery('#message').val(),
+          message	: jQuery('#message').val(),
             post_id: jQuery('#post_id').val(),
             aw_user_id: jQuery('#aw_user_id').val(),
             owner_user_id: jQuery('#owner_user_id').val(),
@@ -40,6 +40,3 @@ jQuery(document).ready(function($){
         });
     });
   });
-  
-  
-      

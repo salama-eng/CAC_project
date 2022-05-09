@@ -242,6 +242,8 @@ Route::get('/aboutUs', function () {
 })->name('aboutUs');
 
 
+Route::get('hhome', [CrudController::class, 'index']);
+Route::resource('todo', ChatController::class);
 
 
 /****  chat **** */

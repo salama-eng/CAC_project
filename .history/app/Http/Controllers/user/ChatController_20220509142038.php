@@ -18,25 +18,11 @@ class ChatController extends Controller
 
     public function store(Request $request)
     {
-        // $data = $request->validate([
-        //     'title' => 'required|max:255',
-        //     'description' => 'required'
-        // ]);
-        // $chat = Todo::create($data);
-        // return Response::json($chat);
-
         $data = $request->validate([
-            'message' => '',
-            'aw_user_id' => '',
-            'owner_user_id' => '',
-            'post_id' => '', 
-             'admin_id' => '',
+            'title' => 'required|max:255',
+            'description' => 'required'
         ]);
-        
-        $chat = Chat::create($data);
+        $chat = Todo::create($data);
         return Response::json($chat);
-    
-
     }
-
 }
