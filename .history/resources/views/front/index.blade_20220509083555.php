@@ -94,17 +94,15 @@
                 <a href="/offers" class="px-4 text-light fs-6 d-block text-lg-start ms-lg-3 ms-0 text-center  py-2">المزيد<i
                         class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
             </div>
-            <div class="d-flex flex-wrap gap-5 col-11 col-lg-8 current-offers">
+            <div class="d-flex flex-wrap gap-5 col-11 col-lg-9 current-offers">
 
             @foreach ($Posts as $post)
-
                 <div class="card text-light m-auto  py-0 mb-5" style="width: 18rem;">
-                    <a href="{{ route('auctiondetails', $post->id) }}">  <img src="{{ URL::asset('images/'.$post->image) }}" class="card-img-top p-3" height="220" alt="...">
-                    </a>   <div class="card-body py-0">
+                    <img src="{{ URL::asset('images/'.$post->image) }}" class="card-img-top p-3" height="220" alt="...">
+                    <div class="card-body py-0">
                         <h5 class="card-title text-center">{{$post->name}}</h5>
                         <p class="text-center fs-7 card-details">
-                            @if($post->status_car ==1) 
-                             جديد
+                            @if($post->status_car)  جديد
                              @else 
                              مستخدم
                              @endif

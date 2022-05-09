@@ -5,10 +5,10 @@
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
-                <h1 class="fw-bolder  w-100 text-center active mb-5">
+                <h1 class="fw-bold w-100 text-center active mb-5">
                     مستكشف المركبات
                 </h1>
-                <p class="w-100 text-center text-light mb-5">
+                <p class="w-100 text-center text-light mb-3">
                     هل تبحث عن سيارات بحالة معينة؟
                     <br>
                     تبسيط البحث عن طريق تحديد فئة لتضييق تطاق نتائجك

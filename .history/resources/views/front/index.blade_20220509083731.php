@@ -97,14 +97,12 @@
             <div class="d-flex flex-wrap gap-5 col-11 col-lg-8 current-offers">
 
             @foreach ($Posts as $post)
-
                 <div class="card text-light m-auto  py-0 mb-5" style="width: 18rem;">
                     <a href="{{ route('auctiondetails', $post->id) }}">  <img src="{{ URL::asset('images/'.$post->image) }}" class="card-img-top p-3" height="220" alt="...">
                     </a>   <div class="card-body py-0">
                         <h5 class="card-title text-center">{{$post->name}}</h5>
                         <p class="text-center fs-7 card-details">
-                            @if($post->status_car ==1) 
-                             جديد
+                            @if($post->status_car)  جديد
                              @else 
                              مستخدم
                              @endif
