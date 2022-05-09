@@ -1,19 +1,15 @@
 <?php
 
-use App\Http\Controllers\admin\AboutUsController;
 use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
 
-use App\Http\Controllers\CrudController;
 use App\Http\Controllers\admin\AuthController;
-use App\Http\Controllers\LessonController;
 use App\Http\Controllers\admin\CategoriesAdminController;
 use App\Http\Controllers\admin\PaymentsAdminController;
 use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
 use App\Http\Controllers\admin\AdminHomeController;
-use App\Http\Controllers\admin\contactUsInfoController;
 use App\Http\Controllers\admin\membershipController;
 use App\Http\Controllers\admin\sliderController;
 use App\Http\Controllers\front\ContactUsController;
@@ -26,9 +22,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\user\UserPostsController;
 use App\Http\Controllers\user\UserAuctionController;
 use App\Http\Controllers\user\UserProfileController;
-use App\Http\Controllers\user\UserHomeController;
-use App\Http\Controllers\user\ChatController;
-
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
@@ -46,8 +39,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
 Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('errorsProfile');
-Route::get('/adminRole', [HomeController::class, 'adminRole']);
-Route::get('/clientRole', [HomeController::class, 'clientRole']);
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
@@ -77,7 +68,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/save_profile', [UserProfileController::class, 'save_profile'])->name('save_profile');
         // client profile Manage
         Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
-        Route::get('/build', [LessonController::class, 'build'])->name('build');
         Route::get('/editprofile', [UserProfileController::class, 'showedit'])->name('editprofile');
         Route::post('/save_editprofile', [UserProfileController::class, 'save_edit_profile'])->name('save_editprofile');
         Route::post('/edit_image_profile', [UserProfileController::class, 'editImageProfile'])->name('edit_image_profile');
@@ -87,7 +77,9 @@ Route::group(['middleware' => 'auth'], function () {
             return view('front.layout.clientdashboard');
         });
 
-      
+        Route::get('/admin_dash', function () {
+            return view('admin.layout.dashboard');
+        });
         // Route::get('/home', function () {
         //     return view('front.home');
         // });
@@ -108,8 +100,8 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('/AuctionCars', [UserAuctionController::class, 'showauctions'])->name('AuctionCars');
       Route::get('/UserUncomplateAuctions', [UserAuctionController::class, 'uncomplate'])->name('UserUncomplateAuctions');
       Route::get('/UserComplateAuctions', [UserAuctionController::class, 'complate'])->name('UserComplateAuctions');
-    });
-   
+
+    // Route::group(['middleware' => 'role:admin'], function () {
         //Route::get('/adminModels', [ModelsAdminController::class, 'showAdminModels'])->name('adminModels');
         //Route::post('/add_admin_model', [ModelsAdminController::class, 'addAdminModel']);
         //Route::post('/edit_admin_model', [ModelsAdminController::class, 'editAdminModel']);
@@ -120,13 +112,6 @@ Route::group(['middleware' => 'auth'], function () {
  // Admin reports page 
  
        Route::get('/AdminDash', [AdminHomeController::class,'show'])->name('AdminDash');
-
-
-
- // User reports page 
- 
- Route::get('/UserDash', [UserHomeController::class,'show'])->name('UserDash');
-
 
         // Admin Manage User
         Route::get('/showAllUsers', [UserAdminController::class,'showAllUsers'])->name('showAllUsers');
@@ -172,29 +157,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/active_membership/{id}', [membershipController::class, 'activeMembership'])->name('active_membership');
         
 
-        // Admin Manage Home Page
-        Route::get('/manage_home', [AdminHomeController::class, 'manageHome'])->name('manage_home');
-        Route::post('/add_content', [AdminHomeController::class, 'addContent'])->name('add_content');
-        Route::post('/edit_home_content/{id}', [AdminHomeController::class, 'editContent'])->name('edit_home_content');
-        
-        // Admin Manage membership 
-        Route::get('/manage_contact_us', [contactUsInfoController::class, 'showAdminCategories'])->name('manage_contact_us');
-        Route::post('/add_contact_us', [contactUsInfoController::class, 'addContactUs']);
-        Route::post('/edit_contact_us/{id}', [contactUsInfoController::class, 'editContactUs'])->name('edit_contact_us');
-        Route::post('/active_contact_us/{id}', [contactUsInfoController::class, 'activeContactUs'])->name('active_contact_us');
-
-        // Admin Manage About Us Page
-        Route::get('/manage_about_us', [AboutUsController::class, 'manageAboutUs'])->name('manage_about_us');
-        Route::post('/add_about_us_content', [AboutUsController::class, 'addAboutUsContent'])->name('add_about_us_content');
-        Route::post('/edit_content/{id}', [AboutUsController::class, 'editContent'])->name('edit_content');
+        // Admin Manage Pages
+        Route::get('/home_site', [siteHomeController::class, 'showsiteHome'])->name('home_site');
         
     
     
+    // });
 
-    Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
+
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
+});
 
 Route::get('/home', [HomeController::class, 'showHomePage'])->name('home');
 
@@ -225,18 +198,10 @@ Route::get('/auctions',[HomeController::class,'show_auctions'])->name('auctions'
 Route::post('/bid_auction/{id}',[UserAuctionController::class,'bid_auction'])->name('bid_auction');
 Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 
-Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');
-Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
+Route::get('/contact_us', function () {
+    return view('front.Contact_Us');
+})->name('contact_us');
 
-/******  Chat    ******* */
-
-
-Route::get('/chat', [ChatController::class, 'index']);
-Route::resource('chat', ChatController::class);
-
-Route::get('/admin_dash', function () {
-    return view('admin.layout.dashboard');
-});
 Route::get('/aboutUs', function () {
     return view('front.aboutUs');
 })->name('aboutUs');
@@ -245,17 +210,3 @@ Route::get('/aboutUs', function () {
 
 
 /****  chat **** */
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-Route::get('hhome', [CrudController::class, 'index']);
-Route::resource('todo', CrudController::class);
