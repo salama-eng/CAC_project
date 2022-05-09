@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AboutUsController;
 use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
 
+use App\Http\Controllers\CrudController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\admin\CategoriesAdminController;
@@ -27,8 +28,9 @@ use App\Http\Controllers\user\UserPostsController;
 use App\Http\Controllers\user\UserAuctionController;
 use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\user\UserHomeController;
+use App\Http\Controllers\user\ChatController;
 
-use App\Models\about_us;
+
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
@@ -235,7 +237,24 @@ Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contac
 Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
 
 Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message');
+/******  Chat    ******* */
+
+
+Route::post('/chat', [ChatController::class,'index'])->name('chat');
+
+Route::post('/chat/{id}', [ChatController::class,'show'])->name('chat');
+
+Route::resource('chat', ChatController::class);
 
 Route::get('/admin_dash', function () {
     return view('admin.layout.dashboard');
 });
+Route::get('/aboutUs', function () {
+    return view('front.aboutUs');
+})->name('aboutUs');
+
+
+
+
+/****  chat **** */
+
