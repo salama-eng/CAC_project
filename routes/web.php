@@ -175,7 +175,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Admin Manage Home Page
         Route::get('/manage_home', [AdminHomeController::class, 'manageHome'])->name('manage_home');
         Route::post('/add_content', [AdminHomeController::class, 'addContent'])->name('add_content');
-        Route::post('/edit_content/{id}', [AdminHomeController::class, 'editContent'])->name('edit_content');
+        Route::post('/edit_home_content/{id}', [AdminHomeController::class, 'editContent'])->name('edit_home_content');
         
         // Admin Manage membership 
         Route::get('/manage_contact_us', [contactUsInfoController::class, 'showAdminCategories'])->name('manage_contact_us');
