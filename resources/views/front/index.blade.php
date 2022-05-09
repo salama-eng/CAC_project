@@ -19,69 +19,70 @@
                     </p>
                 @endforeach
 
-                    <button class=" fs-6 mt-lg-4  d-flex align-items-center btn-yellow btn text-light rounded-0"><a href=""
-                            class=" d-block text-light">
-                            ابدا التصفح </a>
-                        <i class="fa fa-long-arrow-left m-2"> </i>
-                    </button>
+                        <button class=" fs-6 mt-lg-4  d-flex align-items-center btn-yellow btn text-light rounded-0"><a
+                                href="" class=" d-block text-light">
+                                ابدا التصفح </a>
+                            <i class="fa fa-long-arrow-left m-2"> </i>
+                        </button>
 
                 </div>
             </div>
 
 
             <div class="landscape-image col-12 col-xl-8">
-                
+
                 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         @php $i = 1 @endphp
-                        @foreach($Slider as $slider)
-                        @if($i == 1)
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{$i - 1}}"
-                            class="active" aria-current="true" aria-label="Slide.{{$i}}"></button>
-                        @else
-                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{$i - 1}}"
-                            aria-label="Slide.{{$i}}"></button>
-                        <!-- <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button> -->
-                        @endif
-                        <?php $i++ ?>
+                        @foreach ($Slider as $slider)
+                            @if ($i == 1)
+                                <button type="button" data-bs-target="#carouselExampleDark"
+                                    data-bs-slide-to="{{ $i - 1 }}" class="active" aria-current="true"
+                                    aria-label="Slide.{{ $i }}"></button>
+                            @else
+                                <button type="button" data-bs-target="#carouselExampleDark"
+                                    data-bs-slide-to="{{ $i - 1 }}" aria-label="Slide.{{ $i }}"></button>
+                                <!-- <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button> -->
+                            @endif
+                            <?php $i++; ?>
                         @endforeach
                     </div>
-                    <div class="carousel-inner"  >
-                        <?php $i = 1 ?>
+                    <div class="carousel-inner">
+                        <?php $i = 1; ?>
 
-                        @foreach($Slider as $slider)
+                        @foreach ($Slider as $slider)
+                            @if ($i == 1)
+                                <div class="carousel-item active" data-bs-interval="{{ $i * 1000 }}">
+                                    <img src="{{ URL::asset('images/' . $slider->image) }}" alt="{{ $slider->image }}"
+                                        data-bs-interval="1000" class="img-fluid w-100 " alt="...">
 
-                        @if($i == 1)
+                                </div>
+                            @else
+                                <div class="carousel-item" data-bs-interval="{{ $i * 5000 }}">
+                                    <img src="{{ URL::asset('images/' . $slider->image) }}" class="img-fluid w-100"
+                                        alt="...">
 
-                        <div class="carousel-item active" data-bs-interval="{{$i * 1000}}">
-                            <img src="{{ URL::asset('images/'.$slider->image) }}" alt="{{$slider->image}}" data-bs-interval="1000" class="img-fluid w-100 " alt="...">
-
-                        </div>
-                        @else
-                          <div class="carousel-item" data-bs-interval="{{$i * 5000}}">
-                            <img src="{{ URL::asset('images/'.$slider->image) }}" class="img-fluid w-100" alt="...">
-
-                        </div> 
-                        @endif
-                        <?php $i++ ?>
+                                </div>
+                            @endif
+                            <?php $i++; ?>
                         @endforeach
 
-                        </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+
+        </div>
 
 
         </div>
@@ -110,16 +111,18 @@
                              @endif
                         </p>
 
+                        </div>
+                        <div class="card-body d-flex justify-content-between py-0 w-100">
+                            <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span
+                                    class="active">{{ $post->starting_price }}$</span>
+                            </p>
+                            <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1">
+                                </i></a>
+                        </div>
                     </div>
-                    <div class="card-body d-flex justify-content-between py-0 w-100">
-                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span class="active">{{$post->starting_price}}$</span>
-                        </p>
-                        <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
 
-                <!-- <div class="card text-light m-auto mb-3" style="width: 18rem;">
+                {{-- <div class="card text-light m-auto mb-3" style="width: 18rem;">
                     <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
                     <div class="card-body py-0">
                         <h5 class="card-title text-center">Mercedes-Benz</h5>
@@ -127,7 +130,8 @@
 
                     </div>
                     <div class="card-body d-flex justify-content-between py-0 w-100">
-                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span class="active">3000$</span>
+                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span
+                                class="active">3000$</span>
                         </p>
                         <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                     </div>
@@ -141,11 +145,26 @@
 
                     </div>
                     <div class="card-body d-flex justify-content-between py-0 w-100">
-                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span class="active">3000$</span>
+                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span
+                                class="active">3000$</span>
                         </p>
                         <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                     </div>
-                </div> -->
+                </div>
+                <div class="card text-light m-auto mb-3" style="width: 18rem;">
+                    <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
+                    <div class="card-body py-0">
+                        <h5 class="card-title text-center">Mercedes-Benz</h5>
+                        <p class="text-center fs-7 card-details">جديد</p>
+
+                    </div>
+                    <div class="card-body d-flex justify-content-between py-0 w-100">
+                        <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span
+                                class="active">3000$</span>
+                        </p>
+                        <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                    </div>
+                </div> --}}
             </div>
 
         </div>
@@ -153,16 +172,15 @@
         <div class="mt-5 col-7 col-lg-8 m-auto py-5">
             <h1 class=" yellow mt-4 text-center m-5 active fs-3">البراندات</h1>
             <div class="brands d-flex justify-content-around flex-wrap">
-                @foreach($members as $member)
-
-                <img class="img-fluid" src="{{ URL::asset('images/'.$member->image) }}" width="100" height="" alt="">
-
+                @foreach ($members as $member)
+                    <img class="img-fluid" src="{{ URL::asset('images/' . $member->image) }}" width="100" height=""
+                        alt="">
                 @endforeach
                 <!-- <img class="img-fluid" src="brand/5.png" width="100" height="" alt="">
-                <img class="img-fluid" src="brand/3.png" width="100" height="" alt="">
-                <img class="img-fluid" src="brand/4.png" width="100" height="" alt="">
-                <img class="img-fluid" src="brand/1.png" width="100" height="" alt="">
-                <img class="img-fluid" src="brand/5.png" width="100" height="" alt=""> -->
+                    <img class="img-fluid" src="brand/3.png" width="100" height="" alt="">
+                    <img class="img-fluid" src="brand/4.png" width="100" height="" alt="">
+                    <img class="img-fluid" src="brand/1.png" width="100" height="" alt="">
+                    <img class="img-fluid" src="brand/5.png" width="100" height="" alt=""> -->
 
 
 
@@ -179,10 +197,10 @@
 
                 <div class="col-12 col-lg-7 img-3-sec d-flex align-items-center justify-content-end">
                     <div class="">
-                   
+
                     </div>
-                         
-                   
+
+
                     <a href="" class="text-light p-2 px-4 d-none">من نحن
                         <i class="fa fa-arrow-left"></i>
                     </a>

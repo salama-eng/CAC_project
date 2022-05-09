@@ -41,20 +41,20 @@
                         <div class="menu bg-light"> </div>
                     </button>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : 'text-light' }}"  href="{{ url('home' )}}">الصفحة الرئيسية</a>
+                        <a alt="الصفحة الرئيسية" class="nav-link {{ Request::segment(1) === 'home' ? 'active' : 'text-light' }}"  href="{{ url('home' )}}">الصفحة الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link   {{ Request::segment(1) === 'offers' ? 'active' : 'text-light' }}" href="{{ url('offers' )}}">العروض</a>
+                        <a alt="العروض" class="nav-link   {{ Request::segment(1) === 'offers' ? 'active' : 'text-light' }}" href="{{ url('offers' )}}">العروض</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link   {{ Request::segment(1) === 'auctions' ? 'active' : 'text-light' }}" href="{{ url('auctions' )}}">المزادات</a>
+                        <a alt="المزادات" class="nav-link   {{ Request::segment(1) === 'auctions' ? 'active' : 'text-light' }}" href="{{ url('auctions' )}}">المزادات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link   {{ Request::segment(1) === 'contact_us' ? 'active' : 'text-light' }}" href="{{ url('contact_us' )}}">تواصل معنا
+                        <a alt="تواصل معنا" class="nav-link   {{ Request::segment(1) === 'contact_us' ? 'active' : 'text-light' }}" href="{{ url('contact_us' )}}">تواصل معنا
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link   {{ Request::segment(1) === 'aboutUs' ? 'active' : 'text-light' }}" href="{{ url('aboutUs' )}}">من نحن
+                        <a alt="من نحن" class="nav-link   {{ Request::segment(1) === 'aboutUs' ? 'active' : 'text-light' }}" href="{{ url('aboutUs' )}}">من نحن
                         </a>
                     </li>
                    
