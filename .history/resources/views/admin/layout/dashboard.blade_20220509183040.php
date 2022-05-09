@@ -197,6 +197,7 @@
                  
                              <img src="/assets/images/avatar.png" class="rounded-circle" width="80" alt="avatar.png">
                  
+                 
                      @endif
                             </div>
                          <h6 class="dropdown-item text-light mt-1  fs-7 " href="#"> 
@@ -205,7 +206,7 @@
                         
                      </div>
                      </li>
-                         <p class="dropdown-divider mx-2"></p>
+ <p class="dropdown-divider mx-2"></p>
                     <li><a class="dropdown-item text-light fs-7" href="{{ route('logout') }}">تسجيل الخروج</a>
                        
                     </li>
@@ -225,7 +226,8 @@
 
     <img class="back-dash" src="assets/back.jpg" alt=""> --}}
     </div>
-</body>
+
+
 
 
 <footer>

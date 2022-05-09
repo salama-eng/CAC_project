@@ -197,6 +197,7 @@
                  
                              <img src="/assets/images/avatar.png" class="rounded-circle" width="80" alt="avatar.png">
                  
+                 
                      @endif
                             </div>
                          <h6 class="dropdown-item text-light mt-1  fs-7 " href="#"> 
