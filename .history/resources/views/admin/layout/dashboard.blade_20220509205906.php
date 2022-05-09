@@ -7,9 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css') }}">
-   
+ 
+
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +17,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css') }}">
     <title>Cars Auction</title>
 </head>
-  
 
 <body>
 
@@ -122,7 +123,21 @@
                         <li><a href="{{route('manage_about_us')}}" class="text-light text-center p-3">  ادارة صفحة من نحن  </a></li
                     </ul>
 
+                    
+
                 </ul>
+
+                <li class="active dropdown3">
+                        <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
+                        aria-expanded="false">إدارة
+                         رسائل الصفحة</a>
+                        <ul class=" list-unstyled fs-6" id="manage3">
+                            <li><a href="{{route('manage_message')}}" class="text-light text-center p-3">    الرسائل التي لم يرد عليها  </a></li>
+                            <li><a href="{{route('complet_message')}}" class="text-light text-center p-3">    الرسائل التي تم الرد عليها  </a></li>
+    
+
+                        </ul>
+                    </li>
 
                 <ul class="list-unstyled  fs-6 py-4">
                     <div class="d-flex flex-wrap justify-content-around w-50 m-auto">
@@ -154,34 +169,25 @@
 
         <div class="w-100" style="background-color: #1C1C1C">
 
-            <div class="text-light  me-auto mt-4 fixed-top">
-                <div class="d-flex justify-content-end ms-5 pt-3 ps-2">
-                    <div id=bell>
-                        <p class="fa fa-bell px-2 position-relative "><i class="notiy  position-absolute"></i></p>
-
-                    </div>
-                    <div id="wechat">
-                        <p class="fa fa-wechat px-2"></p>
-                    </div>
-                    <div id="user">
-                        <p class="fa fa-user px-2"></p>
-                    </div>
+            <div class="text-light dirction me-auto mt-4 fixed-top dropdown-notifications">
+                <div class="d-flex justify-content-end pt-3">
+                    <p data-count="{{auth()->user()->unreadNotifications()->count()}}" class="fa fa-bell px-2 position-relative notif-count "><i class="notiy  position-absolute"></i>{{auth()->user()->unreadNotifications()->count()}}</p>
+                    <p class="fa fa-wechat px-2"></p>
+                    <p class="fa fa-user px-2"></p>
                 </div>
                 <ul class="dropdown-menu notification bg-dark">
-                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
+                    @foreach(auth()->user()->unreadNotifications as $notification)
+                    <li>
+                        
+                        <a class="dropdown-item text-light fs-7" href="{{$notification->data['lesson']['link']}}">{{$notification->data['lesson']['title']}} {{auth()->user()->name}}
+                            <i class="semiOrange fs-8 "><br></i>{{$notification->data['lesson']['body']}} {{$notification->data['lesson']['username']}}</a>
                         <p class="dropdown-divider mx-2"></p>
                     </li>
-
-                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
-                        <p class="dropdown-divider mx-2"></p>
-                    </li>
-                    <li><a class="dropdown-item text-light fs-7" href="#">تمت المزايدة على سيارة هويوندا
-                            <i class="semiOrange fs-8 "><br>المشتري : احساس</i></a>
-                        <p class="dropdown-divider mx-2"></p>
-                    </li>
+                    @endforeach
+                    
                 </ul>
+
+                
                 <ul class="dropdown-menu bg-dark userinfo text-center">
                     <li>
                         <div class="d-flex justify-content-center flex-wrap">
@@ -193,7 +199,6 @@
                  
                              <img src="/assets/images/avatar.png" class="rounded-circle" width="80" alt="avatar.png">
                  
-                 
                      @endif
                             </div>
                          <h6 class="dropdown-item text-light mt-1  fs-7 " href="#"> 
@@ -202,7 +207,7 @@
                         
                      </div>
                      </li>
- <p class="dropdown-divider mx-2"></p>
+                         <p class="dropdown-divider mx-2"></p>
                     <li><a class="dropdown-item text-light fs-7" href="{{ route('logout') }}">تسجيل الخروج</a>
                        
                     </li>
@@ -226,19 +231,18 @@
 
 
 <footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
     <script src="{{ URL::asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/js.js') }}"></script>
     <script src="{{ URL::asset('js/app.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
-</footer>
 
-<<<<<<< Updated upstream
-=======
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 <script>
     Pusher.logToConsole = true;
     var pusher = new Pusher('9ecc8e897a93aeee0ca1', {
@@ -277,6 +281,5 @@
         notificationsCount -=1;
       });
 </script>
->>>>>>> Stashed changes
 
 </html>
