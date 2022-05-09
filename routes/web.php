@@ -152,6 +152,7 @@ Route::group(['middleware' => 'auth'], function () {
         
         // Admin Manage Auction
         Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
+        Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
         
         // Admin Manage Ended Auction
         Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');

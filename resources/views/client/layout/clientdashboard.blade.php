@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
@@ -20,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <script src="https://momentjs.com/downloads/moment.js"></script>
 
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <title>Cars Auction</title>
@@ -125,12 +127,16 @@
                 <p class="fa fa-user px-2"></p>
 </div>
                 <ul class="dropdown-menu notification bg-dark">
+                    @if(isset(auth()->user()->unreadNotifications))
                     @foreach(auth()->user()->unreadNotifications as $notification)
-                    <li><a class="dropdown-item text-light fs-7" href="{{$notification->data['lesson']['link']}}">{{$notification->data['lesson']['title']}} {{auth()->user()->name}}
+                    <li>
+                        
+                        <a class="dropdown-item text-light fs-7" href="{{$notification->data['lesson']['link']}}">{{$notification->data['lesson']['title']}} {{auth()->user()->name}}
                             <i class="semiOrange fs-8 "><br></i>{{$notification->data['lesson']['body']}}</a>
                         <p class="dropdown-divider mx-2"></p>
                     </li>
                     @endforeach
+                    @endif
                     
                 </ul>
                 <ul class="dropdown-menu bg-dark userinfo text-center p-0">
@@ -215,7 +221,7 @@
       
       
       var channel = pusher.subscribe('new-notifiction');
-      channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
+      channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated',function(data) {
         var existingNotifications = notifications.html();
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
         var newNotificationHtml = `
@@ -224,12 +230,14 @@
             <p class="dropdown-divider mx-2"></p>
         </li>
         `;
-        notifications.html(newNotificationHtml + existingNotifications);
+        notifications.html(newNotificationHtml +existingNotifications);
 
         notificationsCount += 1;
         notificationsCountElem.attr('data-count', notificationsCount);
         notificationsWrapper.find('.notif-count').text(notificationsCount);
         notificationsWrapper.show();
+        notificationsCount -= 1;
+        notifications = 0;
       });
 </script>
 </html>

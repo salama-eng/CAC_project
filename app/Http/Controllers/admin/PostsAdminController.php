@@ -45,7 +45,7 @@ class PostsAdminController extends Controller
             $lesson->body = 'تم اضافة مزاد جديد. يمكنك الاطلاع';
             $lesson->link = 'auctiondetails/'. $id;
             $lesson->save();
-            $user = User::where('id', '!=', $userid)->first();
+            $user = User::where('id', '!=', $userid)->get();
             if(\Notification::send(
                 $user ,new NewNotification(
                     Lesson::latest('id')->first())

@@ -4,12 +4,17 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Auction;
+use App\Events\AdminNotification;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Models;
 use App\Models\order;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\RoleUser;
+use App\Models\Role;
+use App\Models\Lesson;
+use DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 class UserPostsController extends Controller
@@ -20,6 +25,7 @@ class UserPostsController extends Controller
             $damage = ['لا يوجد', 'سطحي', 'ثانوي'];
             $categories = Category::select()->get();
             $models = Models::select()->orderBy('name', 'ASC')->get();
+            
             return view('client.addAuction',[ 
                 'categories'    => $categories, 
                 'models'        => $models,
@@ -97,6 +103,21 @@ class UserPostsController extends Controller
         }
         $post->multiple_image = json_encode($data);
         if($post->save()){
+            $lesson = new Lesson;
+            $lesson->user_id = Auth::id();
+            $lesson->title = 'مرحبا';
+            $lesson->body = 'تم اضافة مزاد جديد. من قبل';
+            $lesson->username = auth()->user()->name;
+            $lesson->link = 'admin_posts';
+            $lesson->save();
+            $role = Role::where('name', 'admin')->first();
+            $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
+            $user = User::where('id', $roleUser->user_id)->get();
+            if(\Notification::send(
+                $user ,new AdminNotification(Lesson::latest('id')->first())
+            )){
+                return back();
+            }
             return redirect('postedcars')
             ->with(['success'=>'تم اضافة بياناتك بنجاح']);
         }else{
