@@ -83,7 +83,7 @@
                             <form action="{{ route('active_membership',$membership->id) }}" method="post">
                                 @csrf
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">حالة طريقه الدفع</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">حالة  الشركة</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -109,7 +109,7 @@
 <h1 class="text-center">Add New membership</h1>
 <div class="container">
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger message">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -182,10 +182,10 @@
 @elseif($do == 'Edit')
 <!-- start Edit model -->
 {{$membershipid = isset($_GET['membershipid']) && is_numeric($_GET['membershipid']) ? intval($_GET['membershipid']) : 0;}}
-<h1 class="text-center">Edit Modal</h1>
+<h1 class="text-center">Edit Membership</h1>
 <div class="container col-lg-8 col-11">
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger message">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -209,28 +209,28 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">  رقم الهاتف </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="phone" value="{{$membership->phone}}" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="text" name="phone" value="{{$membership->phone}}" class="form-control" autocomplete="off" placeholder=" اضف رقم الهاتف">
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   الايميل </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="email" value="{{$membership->email}}" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="text" name="email" value="{{$membership->email}}" class="form-control" autocomplete="off" placeholder=" اضف ايميل الشركة">
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   العنوان </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="address" value="{{$membership->address}}" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="text" name="address" value="{{$membership->address}}" class="form-control" autocomplete="off" placeholder=" اضف عنزان الشركة">
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">صورة   </label>
             <div class="col-sm-8 col-md-9">
-                <input type="file" name="image" id="image" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="file" name="image" id="image" class="form-control" autocomplete="off" placeholder=" اضف صورة الشركة">
                 <div class="col-sm-8 col-md-9">
                   <img id="preview-image-before-upload" src="preview image"
                     alt="preview image" style="max-height: 250px;">
@@ -240,7 +240,7 @@
             <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">  الوصف  </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="description" value="{{$membership->description}}" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="text" name="description" value="{{$membership->description}}" class="form-control" autocomplete="off" placeholder=" اضف وصف الشركة">
             </div>
             
         </div>

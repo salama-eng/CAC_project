@@ -62,9 +62,9 @@
 
                 </ul>
                @if (Auth::user()==null)
-                    <button class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 me-auto ms-5 ">
+                  <a href="login">  <button class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 me-auto ms-5 ">
                         <i class="fa fa-sign-in"></i>&nbsp;تسجيل الدخول
-                    </button>
+                    </button></a>
                     @else
 
 <!-- Example single danger button -->
@@ -145,7 +145,7 @@
         <span class="fa fa-arrow-up"></span>
     </button>
 
-    <footer>
+    <footer class="position-relative z-10">
         <div class="container-fluid  d-flex mx-auto w-75 justify-content-between flex-wrap">
             <div class="cornerstyle d-flex align-items-center my-lg-auto ">
                 <a class="navbar-brand border   d-flex align-items-center justify-content-center text-light p-2"

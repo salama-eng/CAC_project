@@ -26,12 +26,16 @@ class membershipController extends Controller
             'name'=>'required',
             'email' => ['required', 'email', 'unique:users,email'],
             'image'=>['required'],
+            'address'=>'required',
+            'phone'=>'required',
         ],[
             'name.required'=>'حقل الاسم مطلوب',
             'email.unique' => 'هذا الايميل غير متاح',
             'email.required' => 'هذا الحقل مطلوب ',
             'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-            'image.required'=>'حقل الصورة مطلوب'
+            'image.required'=>'حقل الصورة مطلوب',
+            'address.required'=>'حقل العنوان مطلوب',
+            'phone.required'=>'حقل الهاتف مطلوب'
         ]);
 
         $member = new membership();

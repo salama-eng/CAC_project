@@ -1,5 +1,6 @@
 @extends('front.layout.home')
 @section('content')
+
     <section class="">
 
         <div class="landscape  d-flex align-items-start col-12 ">
@@ -9,15 +10,14 @@
                 <div class="landscape-text d-flex flex-wrap  
                  p-5 me-5 w-50">
 
-                    <h1 class="  text-white "> شركة
-                        <h1 class="yellow"> كاك </h1>
-                        <h1 class="text-white"> مزاد </h1>
-                        <p class="text-light white mt-lg-4 fs-5 fw-light">
-                            لجميع السيارات والشاحنات المستعملة والجديدة <br>تجعل من السهل على الاعضاء العثور والمزايدة على
-                            جميع
-                            السيارات
-                        </p>
-
+                 @foreach($Content as $content)
+                    <h1 class="  text-white ">  شركة 
+                         <h1 class="yellow"> كاك </h1>
+                           <h1 class="text-white"> مزاد </h1>
+                    <p class="text-light white mt-lg-4 fs-5 fw-light">
+                        {{$content->main_paragraph}} <br>{{$content->description}}
+                    </p>
+                @endforeach
 
                         <button class=" fs-6 mt-lg-4  d-flex align-items-center btn-yellow btn text-light rounded-0"><a
                                 href="" class=" d-block text-light">
@@ -95,21 +95,21 @@
                 <a href="/offers" class="px-4 text-light fs-6 d-block text-lg-start ms-lg-3 ms-0 text-center  py-2">المزيد<i
                         class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
             </div>
-            <div class="d-flex flex-wrap  col-12 col-lg-9 current-offers">
+            <div class="d-flex flex-wrap gap-5 col-11 col-lg-8 current-offers">
 
-                @foreach ($Posts as $post)
-                    <div class="card text-light m-auto  py-0 mb-3" style="width: 18rem;">
-                        <img src="{{ URL::asset('images/' . $post->image) }}" class="card-img-top p-3" height="220"
-                            alt="...">
-                        <div class="card-body py-0">
-                            <h5 class="card-title text-center">{{ $post->name }}</h5>
-                            <p class="text-center fs-7 card-details">
-                                @if ($post->status_car)
-                                    جديد
-                                @else
-                                    مستخدم
-                                @endif
-                            </p>
+            @foreach ($Posts as $post)
+
+                <div class="card text-light m-auto  py-0 mb-5" style="width: 18rem;">
+                    <a href="{{ route('auctiondetails', $post->id) }}">  <img src="{{ URL::asset('images/'.$post->image) }}" class="card-img-top p-3" height="220" alt="...">
+                    </a>   <div class="card-body py-0">
+                        <h5 class="card-title text-center">{{$post->name}}</h5>
+                        <p class="text-center fs-7 card-details">
+                            @if($post->status_car ==1) 
+                             جديد
+                             @else 
+                             مستخدم
+                             @endif
+                        </p>
 
                         </div>
                         <div class="card-body d-flex justify-content-between py-0 w-100">
@@ -189,6 +189,9 @@
         </div>
 
 
+        @foreach($Content as $content)
+      
+
         <div class="about mt-5 mb-5 pt-3">
             <div class="d-flex  col-12 about1">
 
@@ -201,18 +204,14 @@
                     <a href="" class="text-light p-2 px-4 d-none">من نحن
                         <i class="fa fa-arrow-left"></i>
                     </a>
-                    <p class="text-light ">تقنية المزاد على <span class="active"> كاك مزاد </span>المنصة المحركة
-                        لمزادات السيارات عبر الانترنت</p>
+                    <p class="text-light ">تقنية المزاد على <span class="active"> كاك مزاد </span>{{$content->paragraph_one}}   </p>
                 </div>
 
             </div>
 
             <div class="d-flex col-12 about2">
                 <div class=" d-flex align-items-center justify-content-end">
-                    <p class="col-4 p-5 text-light m-auto section-text">مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك
-                        مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة
-                        الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
-                    </p>
+                    <p class="col-4 p-5 text-light m-auto section-text">{{$content->paragraph_two}}</p>
                     <div class="img-3-sec2 col-6"><img src=""></div>
                 </div>
             </div>
@@ -223,5 +222,8 @@
 
 
 
+        @endforeach
+
     </section>
+    
 @endsection

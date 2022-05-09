@@ -53,11 +53,13 @@
                                 @php $total += $bid_total->bid_amount @endphp
                             @endif
                             @endforeach
+                            @foreach($auctions as $auction)
+                            @if($auction->userAw->id == $post->auctions[0]->aw_user_id)
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$post->name}}</td>
                                 <td>{{$post->users->name}}</td>
-                                <td>{{$auctions->userAw->name}}</td>
+                                <td>{{$auction->userAw->name}}</td>
                                 <td>{{$post->starting_price}}</td>
                                 <td>
                                     {{$total + $post->starting_price}}
@@ -67,11 +69,35 @@
                                     <a href="{{route('auctiondetails',$post->id)}}" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                                 </td>
                                 <td>
-                                    <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">
-                                        <i class='fa fa-check'></i> Active
+                                    <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#active{{$post->id}}">
+                                        <i class='fa fa-check'></i> ارسال اشعار
                                     </a>
                                 </td>
                             </tr>
+                            <div class="modal fade user" id="active{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-dark">
+                                        <form action="sendnotification" method="post">
+                                            @csrf
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">قبول المزاد</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h2>هل انت متاكد</h2>
+                                                <input type="hidden" name="useraw" value="{{$auction->userAw->id}}">
+                                                <input type="hidden" name="userid" value="{{$post->users->id}}">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
+                                                <input type="submit" class=" bg-yellow text-white fs-5" value=" قبول   " />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                            @endforeach
                         @endif
                     @endif
                     @php $total = 0 @endphp
