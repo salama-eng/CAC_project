@@ -53,7 +53,7 @@
                 <ul class="list-unstyled components fs-6 mt-4 ">
                     <li>
                         <a href="{{ route('UserDash') }}"></a>
-                        <h6 class="text-center p-3"> الرئيسية</h6></a>
+                        <h4 class="text-center p-3"> الرئيسية</h4></a>
 
                     </li>
                     <li>
@@ -64,7 +64,7 @@
 
                     </li>
                     <li class="active dropdown3">
-                        <h6> <a class="dropdown-toggle text-warning text-center text-light pb-2" data-toggle="collapse"
+                        <h4> <a class="dropdown-toggle text-warning text-center text-light pb-2" data-toggle="collapse"
                                 aria-expanded="false">إدارة
                                 طلبات إضافة مزاد</a></h4>
                     </li>
@@ -104,9 +104,9 @@
                     </ul>
 
                     <li class="active dropdown4">
-                        <h6> <a class="dropdown-toggle text-center text-light pb-2 mt-2" data-toggle="collapse"
+                        <h4> <a class="dropdown-toggle text-center text-light pb-2 mt-2" data-toggle="collapse"
                                 aria-expanded="false">إدارة
-                                طلبات المزايدة</a></h6>
+                                طلبات المزايدة</a></h4>
                     </li>
                     <ul class="collapse list-unstyled fs-6 mt-0" id="manage4">
                         <li class="d-flex align-items-center justify-content-center">

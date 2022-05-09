@@ -10,14 +10,11 @@
                     <h2> {{ $other_user->name }} </h2>
                     <h3>already 1902 messags</h3>
                 </div>
-                <img src="/images/{{$other_user->profile->avatar }}" width="80" class=" rounded-circle "
+                <img src="/images/{{ Auth::user()->profile->avatar }}" width="80" class=" rounded-circle "
                     alt="{{ Auth::user()->profile->avatar }}">
                     
             </header>
             <ul id="chat" class="" style="height:70vh">
-@if (Auth::user()->id !=$other_user->id)
-    
-@endif
                 <li class="you">
                     <div class="entete">
                         <span class="status green"></span>
@@ -29,10 +26,6 @@
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                     </div>
                 </li>
-
-
-
-
                 <li class="me">
                     <div class="entete">
                         <h3>10:12AM, Today</h3>

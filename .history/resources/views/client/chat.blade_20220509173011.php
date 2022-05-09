@@ -15,7 +15,7 @@
                     
             </header>
             <ul id="chat" class="" style="height:70vh">
-@if (Auth::user()->id !=$other_user->id)
+@if (Auth::user() !=$other_user->id)
     
 @endif
                 <li class="you">

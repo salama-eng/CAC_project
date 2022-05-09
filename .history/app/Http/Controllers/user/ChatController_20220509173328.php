@@ -29,18 +29,17 @@ class ChatController extends Controller
         if(Auth::id()==$auction->aw_user_id)
         {
             $other_user=User::with('profile')->find($auction->owner_user_id);
-            $user=User::with('profile')->find($auction->aw_user_id);
+           
             return view('client.chat', [
                 'chat' => $chat,
-                'other_user' => $other_user,
-                'user'
+                'other_user' => $other_user
                 
             ]);
         }
         elseif(Auth::id()==$auction->owner_user_id)
         {
             $other_user=User::with('profile')->find($auction->owner_user_id);
-            $user=User::with('profile')->find($auction->aw_user_id);
+            
             return view('client.chat', [
                 'chat' => $chat,
                 'other_user' => $other_user

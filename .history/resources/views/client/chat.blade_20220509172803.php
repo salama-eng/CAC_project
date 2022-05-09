@@ -15,9 +15,6 @@
                     
             </header>
             <ul id="chat" class="" style="height:70vh">
-@if (Auth::user()->id !=$other_user->id)
-    
-@endif
                 <li class="you">
                     <div class="entete">
                         <span class="status green"></span>
@@ -29,10 +26,6 @@
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                     </div>
                 </li>
-
-
-
-
                 <li class="me">
                     <div class="entete">
                         <h3>10:12AM, Today</h3>

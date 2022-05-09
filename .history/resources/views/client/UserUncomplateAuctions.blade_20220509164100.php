@@ -14,6 +14,7 @@
    
 @foreach($posts as $post )
 @foreach($post->auctions as $auction)
+@if ($auction->aw_user_id == Auth::id())
 @if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date <= date('Y-m-d'))
 @php
     $i++;
@@ -34,7 +35,7 @@
     </div>
     <div class="card-body d-flex justify-content-between py-0">
                     
-        <a href="{{route('auctiondetails',$post->id)}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-white  fs-7"> الدردشة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+        <a href="{{route('chat',$auction->aw_user_id,$auction->owner_user_id,$post->id)}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-white  fs-7"> الدردشة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
   
         <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white">تاكيد الاستلام </a>
          </div>
@@ -45,7 +46,7 @@
 
 @endif
 
-
+@endif
 @endforeach  
 @endforeach
 

@@ -231,10 +231,8 @@ Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
 /******  Chat    ******* */
 
 
-Route::post('/chat', [ChatController::class,'index'])->name('chat');
-
+Route::post('/chat/{id}', [ChatController::class,'index'])->name('chat');
 Route::post('/chat/{id}', [ChatController::class,'show'])->name('chat');
-
 Route::resource('chat', ChatController::class);
 
 Route::get('/admin_dash', function () {
