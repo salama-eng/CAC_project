@@ -121,7 +121,21 @@
                         <li><a href="{{route('manage_about_us')}}" class="text-light text-center p-3">  ادارة صفحة من نحن  </a></li
                     </ul>
 
+                    
+
                 </ul>
+
+                <li class="active dropdown3">
+                        <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
+                        aria-expanded="false">إدارة
+                         رسائل الصفحة</a>
+                        <ul class=" list-unstyled fs-6" id="manage3">
+                            <li><a href="{{route('manage_message')}}" class="text-light text-center p-3">    الرسائل التي لم يرد عليها  </a></li>
+                            <li><a href="{{route('complet_message')}}" class="text-light text-center p-3">    الرسائل التي تم الرد عليها  </a></li>
+    
+
+                        </ul>
+                    </li>
 
                 <ul class="list-unstyled  fs-6 py-4">
                     <div class="d-flex flex-wrap justify-content-around w-50 m-auto">

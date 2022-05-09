@@ -3,7 +3,7 @@
 
     @if ($do == 'Manage')
 
-        <h1 class="text-center fs-3 text-white">ادارة طرق الدفع</h1>
+        <h1 class="text-center fs-3 text-white">ادارة صور السلايدر</h1>
         <div class="container">
             @if (session()->has('success'))
                 <div class="alert alert-success message">
@@ -79,7 +79,7 @@
                                     <form action="{{ route('active_slider_image', $slider->id) }}" method="post">
                                         @csrf
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">حالة طريقه الدفع</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">حالة  الصورة</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -91,7 +91,7 @@
                                             <button type="button" class=" bg-lighter text-white fs-5"
                                                 data-bs-dismiss="modal">تراجع</button>
                                             <input type="submit" class=" bg-yellow text-white fs-5"
-                                                value=" تعديل الصورة  " />
+                                                value=" تعديل حالة الصورة  " />
                                         </div>
                                     </form>
                                 </div>
@@ -108,7 +108,7 @@
         <h1 class="text-center">Add New slider</h1>
         <div class="container">
             @if ($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert-danger message">
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -123,7 +123,7 @@
                     <label class="col-sm-2 col-form-label text-white">صورة جديدة </label>
                     <div class="col-sm-8 col-md-9">
                         <input type="file" name="image" id="image" class="form-control" autocomplete="off"
-                            placeholder=" اضف طريقة دفع">
+                            placeholder="   اضف صورة جدبدة">
                         <div class="col-sm-8 col-md-9">
                             <img id="preview-image-before-upload" src="preview image" alt="preview image"
                                 style="max-height: 250px;">
@@ -145,10 +145,10 @@
     @elseif($do == 'Edit')
         <!-- start Edit model -->
         {{ $sliderid = isset($_GET['sliderid']) && is_numeric($_GET['sliderid']) ? intval($_GET['sliderid']) : 0 }}
-        <h1 class="text-center">Edit Modal</h1>
+        <h1 class="text-center">Edit Slider Image</h1>
         <div class="container col-lg-8 col-11">
             @if ($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert-danger message">
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -164,7 +164,7 @@
                         <input type="hidden" name="sliderid" value="{{ $sliderid }}">
                         <!-- Start slider -->
                         <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label text-white">صورة جديدة </label>
+                            <label class="col-sm-2 col-form-label text-white">تعديل الصورة </label>
                             <div class="col-sm-8 col-md-9">
                                 <input type="file" name="image" id="image" class="form-control" autocomplete="off"
                                     placeholder=" اضف طريقة دفع">
