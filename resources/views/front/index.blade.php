@@ -99,7 +99,7 @@
 
             @foreach ($Posts as $post)
 
-                <div class="card text-light m-auto  py-0 mb-5" style="width: 18rem;">
+                <div class="card animate text-light m-auto  py-0 mb-5" style="width: 18rem;">
                     <a href="{{ route('auctiondetails', $post->id) }}">  <img src="{{ URL::asset('images/'.$post->image) }}" class="card-img-top p-3" height="220" alt="...">
                     </a>   <div class="card-body py-0">
                         <h5 class="card-title text-center">{{$post->name}}</h5>
@@ -122,7 +122,7 @@
                     </div>
                 @endforeach
 
-                {{-- <div class="card text-light m-auto mb-3" style="width: 18rem;">
+                 {{-- <div class="card animate text-light m-auto mb-3" style="width: 18rem;">
                     <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
                     <div class="card-body py-0">
                         <h5 class="card-title text-center">Mercedes-Benz</h5>
@@ -137,7 +137,7 @@
                     </div>
                 </div>
 
-                <div class="card text-light m-auto mb-3" style="width: 18rem;">
+                <div class="card animate text-light m-auto mb-3" style="width: 18rem;">
                     <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
                     <div class="card-body py-0">
                         <h5 class="card-title text-center">Mercedes-Benz</h5>
@@ -151,7 +151,7 @@
                         <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                     </div>
                 </div>
-                <div class="card text-light m-auto mb-3" style="width: 18rem;">
+                <div class="card animate text-light m-auto mb-3" style="width: 18rem;">
                     <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
                     <div class="card-body py-0">
                         <h5 class="card-title text-center">Mercedes-Benz</h5>
@@ -164,7 +164,7 @@
                         </p>
                         <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                     </div>
-                </div> --}}
+                </div>  --}}
             </div>
 
         </div>
