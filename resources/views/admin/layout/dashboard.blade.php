@@ -86,6 +86,12 @@
                                 الحالية</a>
                         </li>
                         <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'un_complate' ? 'contact' : 'bg-light' }} my-auto branch"
+                                style="height: 8px;width: 8px"></p><a href="{{ route('un_complate') }}"
+                                class="{{ Request::segment(1) === 'un_complate' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">إدارة
+                                المزادات المعلقة</a>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-center">
                             <p class="{{ Request::segment(1) === 'endede_acution' ? 'contact' : 'bg-light' }} my-auto branch"
                                 style="height: 8px;width: 8px"></p><a href="{{ route('endede_acution') }}"
                                 class="{{ Request::segment(1) === 'endede_acution' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">إدارة
