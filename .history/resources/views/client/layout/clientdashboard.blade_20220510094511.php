@@ -30,7 +30,7 @@
 
 <body>
     <div class="d-flex">
-        <div class="navbar-header2  my-5 justify-content-between ">
+        <div class="navbar-header2  my-5 justify-content-between d-none ">
             <button type="button" id="sidebarCollapse" class="bttn border-0 px-4">
                 <div class=" my-1 px-3 bg-light sidemenu"> </div>
                 <div class=" bg-light sidemenu"> </div>
@@ -174,7 +174,7 @@
 
         <div class="w-100 bg-grey" style="">
 
-            <div class="text-light dirction me-auto mt-4 dropdown-notifications d-block ms-5">
+            <div class="text-light dirction me-auto mt-4 dropdown-notifications">
                 <div class="d-flex justify-content-end">
                   <div id="bell">
                     <p data-count="{{ auth()->user()->unreadNotifications()->count() }}"

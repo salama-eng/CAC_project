@@ -174,7 +174,7 @@
 
         <div class="w-100 bg-grey" style="">
 
-            <div class="text-light dirction me-auto mt-4 dropdown-notifications d-block ms-5">
+            <div class="text-light dirction me-auto mt-4 dropdown-notifications">
                 <div class="d-flex justify-content-end">
                   <div id="bell">
                     <p data-count="{{ auth()->user()->unreadNotifications()->count() }}"
