@@ -211,12 +211,14 @@
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
 integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 <script>
     Pusher.logToConsole = true;
@@ -257,11 +259,15 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
         notifications = 0;
     });
 </script>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
- 
     tinymce.init({
-  selector: '#textarea#default'
+        selector: '#mytext2',
+        width: 600,
+        height: 300
+    });
+    
+    tinymce.init({
+  selector: 'textarea#default'
 });
 
     </script>

@@ -141,7 +141,7 @@
             <div class="input-group">
 
             
-                <textarea name="description mytext" id="textarea#default"  class="form-control"  
+                <textarea name="description mytext" id="mytext2"  class="form-control"  
 
                     aria-label="With textarea">{{old('description')}}</textarea>
             </div>
