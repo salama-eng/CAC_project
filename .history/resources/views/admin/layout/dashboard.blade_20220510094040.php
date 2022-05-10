@@ -174,14 +174,9 @@
     <p data-count="{{auth()->user()->unreadNotifications()->count()}}" class="fa fa-bell px-2 position-relative notif-count "><i class="notiy  position-absolute"></i>{{auth()->user()->unreadNotifications()->count()}}</p>
     
 </div>
-<div id="wechat">
-    <p class="fa fa-wechat px-2"></p>
-
-</div>
-<div id="user">
-    <p class="fa fa-user px-2"></p>
-    
-</div>                </div>
+                    <p class="fa fa-wechat px-2"></p>
+                    <p class="fa fa-user px-2"></p>
+                </div>
                 <ul class="dropdown-menu notification bg-dark">
                     @foreach(auth()->user()->unreadNotifications as $notification)
                     <li>

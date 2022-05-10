@@ -7,7 +7,6 @@ use App\Models\Chat;
 use App\Models\Auction;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
