@@ -71,7 +71,7 @@
                         )
 
 
-                        <div class="card text-light m-auto  py-0 mb-4 mt-4" style="width: 20rem;">
+                        <div class="card animate text-light m-auto  py-0 mb-4 mt-4" style="width: 20rem;">
                             <a href="{{ route('auctiondetails', $post->id) }}"><img src="/images/{{ $post->image }}"
                                     class="card-img-top p-3" height="220" alt="..."> </a>
                             <div class="card-body py-0">

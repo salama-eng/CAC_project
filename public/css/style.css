@@ -432,13 +432,15 @@ body {
   margin-top: 400px;
   width: 100vw !important;
 }
-.card:hover{
+.animate:hover{
   transform: scale(1.1) !important;
   transition: all 1s 0.1s ease;
 }
-.card {
+.animate,.card{
   background-color: #1e1e1e !important;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.animate {
   position: relative;
   transform: translateY(150px);
   opacity: 0;
@@ -452,7 +454,7 @@ body {
   opacity: 0;
   transition: 1s all ease;
 }
-.card.active,.about.active{
+.animate.active,.about.active{
   transform: translateY(0);
   opacity: 1;
 }
