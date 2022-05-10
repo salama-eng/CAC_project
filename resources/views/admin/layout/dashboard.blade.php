@@ -122,15 +122,10 @@
                     </li>
                     <ul class="collapse list-unstyled fs-6 mt-0" id="manage2">
                         <li class="d-flex align-items-center justify-content-center">
-<<<<<<< HEAD
-                            <p class="{{ Request::segment(1) === 'manage_home' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
-                                href="{{ route('manage_home') }}" class="{{ Request::segment(1) === 'manage_home' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
-=======
                             <p class="{{ Request::segment(1) === 'manage_home' ? 'contact' : 'bg-light' }} my-auto branch"
                                 style="height: 8px;width: 8px"></p><a href="{{ route('manage_home') }}"
                                 class="{{ Request::segment(1) === 'home_site' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
                                 ادارة
->>>>>>> main
                                 الصفحة
                                 الرئيسية </a>
                         </li>
@@ -191,19 +186,6 @@
                     <ul class="list-unstyled  fs-6 py-4">
                         <div class="d-flex flex-wrap justify-content-around w-50 m-auto">
 
-<<<<<<< HEAD
-                        <div class="fa fa-instagram  text-light fs-5"></div>
-                        <div class="fa fa-whatsapp  text-light fs-5"></div>
-                        <div class="fa fa-facebook text-light fs-5"></div>
-                        <div class="fa  fa-envelope-o text-light fs-5"></div>
-                    </div>
-                    <li class="w-100"><a
-                            class="nav-item text-center contact text-light fs-5 py-2  mt-3 mx-5 d-block px-3">
-                            777 777 777<i class="fa fa-phone px-2 fs-4"></i></a>
-                    </li>
-                </ul>
-            </ul>
-=======
                             <div class="fa fa-instagram  text-light fs-5"></div>
                             <div class="fa fa-whatsapp  text-light fs-5"></div>
                             <div class="fa fa-facebook text-light fs-5"></div>
@@ -214,7 +196,6 @@
                                 777 777 777<i class="fa fa-phone px-2 fs-4"></i></a>
                         </li>
                     </ul>
->>>>>>> main
             </aside>
 
 
