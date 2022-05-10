@@ -7,12 +7,12 @@
               <p class="align-self-end mr-auto"><a href="{{ route('profile') }}" class="card-link active text-warning mt-3 mb-2"> العودة
                 للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 <div class="col-lg-3 col-6">
-                    <h2> mmmm </h2>
+                    <h2> {{ $other_user->name }} </h2>
                     <h3 class="d-lg-block d-none">already 1902 messags</h3>
                     <p class="align-self-end mr-auto d-block d-lg-none " style="font-size:12px"><a href="{{ route('profile') }}" class="card-link active text-warning mt-3 mb-2"> العودة
                       للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 </div>
-                <img src="/assets/images/avatar.png" width="80" class=" rounded-circle "
+                <img src="/images/{{$other_user->profile->avatar }}" width="80" class=" rounded-circle "
                     alt="{{ Auth::user()->profile->avatar }}">
                     
             </header>
@@ -89,6 +89,7 @@
  <input type="hidden" id="post_id" name="post_id" value="1">
                     <input type="hidden" id="aw_user_id" name="aw_user_id" value="1">
                     <input type="hidden" id="owner_user_id" name="owner_user_id" value="1">
+                    <input type="hidden" id="admin_is" name="admin_id" value="1">
         <div class="modal-body d-flex justify-content-around col-12 mt-5">
           
      
@@ -105,7 +106,8 @@
                 </button>
                 <input type="hidden" id="todo_id" name="todo_id" value="0">
             </div>
-        </form>
+        </div>
+    </form>
 
 
 

@@ -3,6 +3,7 @@ jQuery(document).ready(function($){
     jQuery('#btn-add').click(function () {
         jQuery('#btn-save').val("add");
         jQuery('#myForm').trigger("reset");
+       
     });
     // CREATE
     $("#btn-save").click(function (e) {

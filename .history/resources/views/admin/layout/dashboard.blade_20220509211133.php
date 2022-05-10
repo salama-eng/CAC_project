@@ -168,20 +168,12 @@
 
         <div class="w-100" style="background-color: #1C1C1C">
 
-            <div class="text-light dirction me-auto mt-4 fixed-top dropdown-notifications ms-5">
+            <div class="text-light dirction me-auto mt-4 fixed-top dropdown-notifications">
                 <div class="d-flex justify-content-end pt-3">
-<div id="bell">
-    <p data-count="{{auth()->user()->unreadNotifications()->count()}}" class="fa fa-bell px-2 position-relative notif-count "><i class="notiy  position-absolute"></i>{{auth()->user()->unreadNotifications()->count()}}</p>
-    
-</div>
-<div id="wechat">
-    <p class="fa fa-wechat px-2"></p>
-
-</div>
-<div id="user">
-    <p class="fa fa-user px-2"></p>
-    
-</div>                </div>
+                    <p data-count="{{auth()->user()->unreadNotifications()->count()}}" class="fa fa-bell px-2 position-relative notif-count "><i class="notiy  position-absolute"></i>{{auth()->user()->unreadNotifications()->count()}}</p>
+                    <p class="fa fa-wechat px-2"></p>
+                    <p class="fa fa-user px-2"></p>
+                </div>
                 <ul class="dropdown-menu notification bg-dark">
                     @foreach(auth()->user()->unreadNotifications as $notification)
                     <li>
@@ -248,60 +240,7 @@
     <script src="{{ URL::asset('js/app.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
 </footer>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-<script>
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('9ecc8e897a93aeee0ca1', {
-        encrypted: true
-    });
-    
-     var notificationsWrapper   = $('.dropdown-notifications');
-      var notificationsCountElem = notificationsWrapper.find('p[data-count]');
-      var notificationsCount     = parseInt(notificationsCountElem.data('count'));
-      var notifications          = notificationsWrapper.find('ul.dropdown-menu');
-      if (notificationsCount <= 0) {
-        notificationsWrapper.hide();
-      }
 
 
-<script>
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('9ecc8e897a93aeee0ca1', {
-        encrypted: true
-    });
-    
-     var notificationsWrapper   = $('.dropdown-notifications');
-      var notificationsCountElem = notificationsWrapper.find('p[data-count]');
-      var notificationsCount     = parseInt(notificationsCountElem.data('count'));
-      var notifications          = notificationsWrapper.find('ul.dropdown-menu');
-      if (notificationsCount <= 0) {
-        notificationsWrapper.hide();
-      }
 
-      // Enable pusher logging - don't include this in production
-      // Pusher.logToConsole = true;
-
-      
-      
-      var channel = pusher.subscribe('admin-notifiction');
-      channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated',function(data) {
-        var existingNotifications = notifications.html();
-        var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
-        var newNotificationHtml = `
-        <li><a class="dropdown-item text-light fs-7" href="#"> `+data.admin.title+` <?php echo auth()->user()->name; ?>
-                <i class="semiOrange fs-8 "><br>`+data.admin.body+`</i>`+data.admin.username+`</a>
-            <p class="dropdown-divider mx-2"></p>
-        </li>
-        `;
-        notifications.html(newNotificationHtml + existingNotifications);
-
-        notificationsCount += 1;
-        notificationsCountElem.attr('data-count', notificationsCount);
-        notificationsWrapper.find('.notif-count').text(notificationsCount);
-        notificationsWrapper.show();
-        notificationsCount -=1;
-      });
-</script>
-
+</html>
