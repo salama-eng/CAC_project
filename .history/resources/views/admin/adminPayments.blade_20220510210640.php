@@ -10,7 +10,7 @@
                 {{ session()->get('success') }}
             </div>
         @endif
-        <a href="adminPayments?do=Add" class="btn btn-sm bg-yellow p-2">
+        <a href="adminPayments?do=Add" class="btn btn-sm bg-yellow p-4">
             <i class="fa fa-plus"></i> اضافة طريقة الدفع
         </a>
         <div class="table-responsive text-white ms-5">
