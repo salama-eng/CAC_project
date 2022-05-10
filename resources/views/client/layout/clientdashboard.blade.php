@@ -20,15 +20,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
-<<<<<<< HEAD
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
-        <script src="https://momentjs.com/downloads/moment.js"></script>
-=======
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <script src="https://momentjs.com/downloads/moment.js"></script>
->>>>>>> 82f2a3bbda67d9853a2d8f86dc8f5434debcf28f
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+        <script src="https://momentjs.com/downloads/moment.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+
 
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <title>Cars Auction</title>
@@ -211,11 +215,10 @@
     <script src="{{ URL::asset('js/js.js') }}"></script>
     <script src="{{ URL::asset('js/app.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
-<<<<<<< HEAD
+
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     
-=======
->>>>>>> 82f2a3bbda67d9853a2d8f86dc8f5434debcf28f
+
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </footer>
@@ -265,8 +268,6 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
         notifications = 0;
     });
 </script>
-<<<<<<< HEAD
-=======
 <script>
     tinymce.init({
         selector: '#mytext2',
@@ -279,5 +280,5 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
 });
 
     </script>
->>>>>>> 82f2a3bbda67d9853a2d8f86dc8f5434debcf28f
+
 </html>
