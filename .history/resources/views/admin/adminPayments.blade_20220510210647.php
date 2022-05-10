@@ -132,7 +132,7 @@
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
-                <input type="submit" value="اضافة طريقة دفع'" class=" btn p-2 contact ">
+                <input type="submit" value="اضافة طريقة دفع'" class=" btn btn-primary ">
             </div>
         </div>
         <!-- End Submit -->
@@ -142,7 +142,7 @@
 @elseif($do == 'Edit')
 <!-- start Edit model -->
 {{$Paymentid = isset($_GET['Paymentid']) && is_numeric($_GET['Paymentid']) ? intval($_GET['Paymentid']) : 0;}}
-<h1 class="text-center">Edit Payment Methode</h1>
+<h1 class="text-center">Edit Modal</h1>
 <div class="container col-lg-8 col-11">
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -175,7 +175,7 @@
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="تعديل طريقة الدفع" class=" btn p-2 contact ">
+                        <input type="submit" value="تعديل طريقة الدفع" class=" btn bg-yellow ">
                     </div>
                 </div>
                 <!-- End Submit -->

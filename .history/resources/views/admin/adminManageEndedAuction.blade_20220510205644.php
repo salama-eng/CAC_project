@@ -19,21 +19,21 @@
                     <td>المبلغ</td>
                     <td>تاريخ الانتهاء</td>
                     <td>تفاصيل المزايدة </td>
-                    
+                    <td>التحكم </td>
                 </tr>
                 
-                @foreach ($posts as $post )
+                @foreach ($post as $post )
     
 @if (!isset($post->auctions[0]->is_active))
 @if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date <= date('Y-m-d') )
 <tr >
     <td>#ID</td>
-    <td>{{$post->name}} </td>
-    <td> {{$post->users->name}} </td>
-    <td>{{$post->starting_price}} </td>
-    <td> {{$post->end_date}}</td>
-    <td> <a href="{{route('auctiondetails',$post->id)}}" class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>  </td>
- 
+    <td>السيارة </td>
+    <td>اسم البائع </td>
+    <td>المبلغ</td>
+    <td>تاريخ الانتهاء</td>
+    <td>تفاصيل المزايدة </td>
+    <td>التحكم </td>
 </tr>
 
 @endif
