@@ -92,7 +92,7 @@
                         </ul>
                     </li>
 
-<li>  <a href="{{route('home')}}" class="card-link active text-center mt-5 mb-2"> العودة للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
+<li>  <a href="{{route('profile')}}" class="card-link active text-center mt-5 mb-2"> العودة للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
                 </ul>
               
                 <ul class="list-unstyled  fs-6 py-4">

@@ -993,7 +993,7 @@ input:checked + .slider:before {
 color:white}
 /* end toggle button */
 
-table td {
+tr {
 
   vertical-align: center !important;
 }

@@ -13,7 +13,7 @@ class ContactUsController extends Controller
     function saveMessage(Request $request){
         Validator::validate($request->all(),[
             'name'=>['required','string', 'between: 5, 20'],
-            'email'=>['required','email'],
+            'email'=>['required', 'unique:contact_us,email'],
             'message'=>['required', 'min:10',],
 
         ],[

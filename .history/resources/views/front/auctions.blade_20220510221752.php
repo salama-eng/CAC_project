@@ -173,14 +173,17 @@
                                         <a href="{{ route('login') }}" class="card-link active text-center mt-5 mb-5">
                                             تسجيل الدخول <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                                     </div>
-                           
+                                </div>
                             @endif
-                   
-                </div>
-                @endif
-            @endif
+                    @endif
+        </div>
+        @endif
         @endforeach
-    </div>
 
-</section>
+
+
+
+        </div>
+
+    </section>
 @endsection

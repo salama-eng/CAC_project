@@ -42,8 +42,8 @@
                         </div>
 
                         <div class="my-2 mx-auto">
-                            <select id="price" class="text-center py-1 d-flex">
-
+                            <select  id="price" class="text-center py-1 d-flex">
+                                
                                 <option value="اقل من 2000$">اقل من 2000$</option>
                                 <option value="$2000 - $4000">$2000 - $4000</option>
                                 <option class="$4000 - $7000">$4000 - $7000</option>
@@ -74,15 +74,12 @@
                                     class="card-img-top p-3" height="220" alt="..."></a>
                             <div class="card-body py-0">
                                 <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }} /
-                                    <span class="mod">{{ $post->model }}</span>
-                                </h5>
-                                <p class="text-center fs-7 card-details type">
-                                    @if ($post->status_car == 1)
-                                        جديد
-                                    @else
-                                        مستخدم
-                                    @endif
-                                </p>
+                                    <span class="mod">{{ $post->model }}</span></h5>
+                                <p class="text-center fs-7 card-details type"> @if($post->status_car ==1) 
+                                    جديد
+                                    @else 
+                                    مستخدم
+                                    @endif</p>
 
                             </div>
                             <div class="card-body d-flex justify-content-between py-0">
@@ -127,8 +124,7 @@
                                                 @endif
                                                 <h2 class="text-white fs-6 pb-3 "> هل انت متاكد تريد المزايدة على هذة
                                                     السيارة ودفع مبلغ مضاف الى قيمتها الحالية التي تقدر ب <em
-                                                        class="yellow">{{ $post->auctions->max('bid_total') }}$</em>
-                                                </h2>
+                                                        class="yellow">{{$post->auctions->max('bid_total');}}$</em></h2>
                                                 <div class="d-flex  align-items-center gap-3 ">
                                                     <h3 class="text-white fs-6"> مقدار الزيادة: </h3>
                                                     <input type="number" class="input-model text-white"
@@ -173,14 +169,17 @@
                                         <a href="{{ route('login') }}" class="card-link active text-center mt-5 mb-5">
                                             تسجيل الدخول <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                                     </div>
-                           
+                                </div>
                             @endif
-                   
-                </div>
-                @endif
-            @endif
+                    @endif
+        </div>
+        @endif
         @endforeach
-    </div>
 
-</section>
+
+
+
+        </div>
+
+    </section>
 @endsection

@@ -19,17 +19,12 @@
         <style>
             body
             {
-               
+                background-color:#131313;
             }
 .container
 {
-    text-align: center;
     font-family: tajawal;
    color: #111;
-   display:flex;
-   justify-content:space-around;
-   flex-wrap: wrap;
-   align-items:center;
 }
 em
 {
@@ -48,12 +43,8 @@ em
 </head>
 <body>
 
-    <div class="container d-flex flex-wrap">
-        
-        <div class="col-4">
-        <img src="assets/images/email.png" width ="400" height=""alt=""></div>
+    <div class="container"><img src="assets/images/email.png" width ="300" height=""alt="">
         <h1>اهلا {{$data['name']}} </h1>
-        <div  class="col-4">
         <h1>مرحبا بك في موقع
             <em>كاك</em>
             مزاد
@@ -62,6 +53,6 @@ em
         <p > نحن نرسل لك هذا الايميل ردا على رسالتك</p>
         <p>" {{$data['message']}} "</p>
         <p>{{$data['sendMessage']}}</p>
-    </div></div>
+    </div>
 </body>
 </html>

@@ -52,7 +52,7 @@ em
         
         <div class="col-4">
         <img src="assets/images/email.png" width ="400" height=""alt=""></div>
-        <h1>اهلا {{$data['name']}} </h1>
+        {{-- <h1>اهلا {{$data['name']}} </h1> --}}
         <div  class="col-4">
         <h1>مرحبا بك في موقع
             <em>كاك</em>
@@ -60,8 +60,8 @@ em
         </h1>
         <p >CAC هو موقع للمزايدة على سيارات نتمنى ان نقد لكم الخدمة المطلوبه </p>
         <p > نحن نرسل لك هذا الايميل ردا على رسالتك</p>
-        <p>" {{$data['message']}} "</p>
-        <p>{{$data['sendMessage']}}</p>
+        {{-- <p>" {{$data['message']}} "</p> --}}
+        {{-- <p>{{$data['sendMessage']}}</p> --}}
     </div></div>
 </body>
 </html>

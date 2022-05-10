@@ -175,12 +175,15 @@
                                     </div>
                            
                             @endif
-                   
-                </div>
-                @endif
-            @endif
+                    @endif
+        </div>
+        @endif
         @endforeach
-    </div>
 
-</section>
+
+
+
+        </div>
+
+    </section>
 @endsection

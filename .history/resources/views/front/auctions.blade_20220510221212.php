@@ -1,14 +1,14 @@
 @extends('front.layout.home')
 @section('content')
     <section>
-        <div class="auctions-bg offers-bg w-100 mt-5">
+        <div class="auctions-bg w-100 mt-5">
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
-                <h1 class="fw-bolder  w-100 text-center active mb-5">
+                <h1 class="fw-bold w-100 text-center active mb-5">
                     مستكشف المركبات
                 </h1>
-                <p class="w-100 text-center text-light mb-5">
+                <p class="w-100 text-center text-lighter m-2 mb-5">
                     هل تبحث عن سيارات بحالة معينة؟
                     <br>
                     تبسيط البحث عن طريق تحديد فئة لتضييق تطاق نتائجك
@@ -40,9 +40,10 @@
                                 <option value="جديد">جديد</option>
                             </select>
                         </div>
-                        <div class="my-2 mx-auto">
-                            <select id="price" class="text-center py-1 d-flex">
 
+                        <div class="my-2 mx-auto">
+                            <select  id="price" class="text-center py-1 d-flex">
+                                
                                 <option value="اقل من 2000$">اقل من 2000$</option>
                                 <option value="$2000 - $4000">$2000 - $4000</option>
                                 <option class="$4000 - $7000">$4000 - $7000</option>
@@ -68,7 +69,7 @@
             @foreach ($Posts as $post)
                 @if (!isset($post->auctions[0]->is_active))
                     @if ($post->is_active == 1 && $post->status_auction == 0 && $post->end_date >= date('Y-m-d'))
-                        )
+                   
 
 
                         <div class="card animate text-light m-auto  py-0 mb-4 mt-4 " style="width: 20rem;">
@@ -78,13 +79,11 @@
                                 <h5 class="card-title text-center"><span
                                         class="cate">{{ $post->name }}</span>/<span
                                         class="mod">{{ $post->model }}</span></h5>
-                                <p class="text-center fs-7 card-details type">
-                                    @if ($post->status_car == 1)
-                                        جديد
-                                    @else
-                                        مستخدم
-                                    @endif
-                                </p>
+                                <p class="text-center fs-7 card-details type"> @if($post->status_car ==1) 
+                                    جديد
+                                    @else 
+                                    مستخدم
+                                    @endif</p>
                             </div>
                             <div class="card-body d-flex justify-content-between py-0">
                                 <p href="#" class="card-link card-details">سعر المزايدة/<span
@@ -116,8 +115,7 @@
                                                 $total = $post->starting_price + $post->auction_ceiling;
                                             @endphp
                                             <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
-                                                <em class="yellow">{{ $total }}$</em>
-                                            </h2>
+                                                <em class="yellow">{{ $total }}$</em></h2>
                                         </div>
                                         <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"
@@ -131,7 +129,7 @@
                     @endif
                 @endif
             @endforeach
-        </div>
+ </div>
 
     </section>
 @endsection

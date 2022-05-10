@@ -993,14 +993,11 @@ input:checked + .slider:before {
 color:white}
 /* end toggle button */
 
-table td {
+tr {
 
   vertical-align: center !important;
 }
-table th {
 
-  vertical-align: center !important;
-}
 /* start chat by amat */
 
 /* end chat by amat */

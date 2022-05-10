@@ -23,13 +23,9 @@
             }
 .container
 {
-    text-align: center;
     font-family: tajawal;
    color: #111;
    display:flex;
-   justify-content:space-around;
-   flex-wrap: wrap;
-   align-items:center;
 }
 em
 {
@@ -51,8 +47,8 @@ em
     <div class="container d-flex flex-wrap">
         
         <div class="col-4">
-        <img src="assets/images/email.png" width ="400" height=""alt=""></div>
-        <h1>اهلا {{$data['name']}} </h1>
+        <img src="assets/images/email.png" width ="300" height=""alt=""></div>
+        {{-- <h1>اهلا {{$data['name']}} </h1> --}}
         <div  class="col-4">
         <h1>مرحبا بك في موقع
             <em>كاك</em>
@@ -60,8 +56,8 @@ em
         </h1>
         <p >CAC هو موقع للمزايدة على سيارات نتمنى ان نقد لكم الخدمة المطلوبه </p>
         <p > نحن نرسل لك هذا الايميل ردا على رسالتك</p>
-        <p>" {{$data['message']}} "</p>
-        <p>{{$data['sendMessage']}}</p>
+        {{-- <p>" {{$data['message']}} "</p> --}}
+        {{-- <p>{{$data['sendMessage']}}</p> --}}
     </div></div>
 </body>
 </html>

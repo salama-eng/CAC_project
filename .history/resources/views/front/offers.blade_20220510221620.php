@@ -1,14 +1,14 @@
 @extends('front.layout.home')
 @section('content')
     <section>
-        <div class="auctions-bg w-100 mt-5">
+        <div class="auctions-bg offers-bg w-100 mt-5">
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
-                <h1 class="fw-bold w-100 text-center active mb-5">
+                <h1 class="fw-bolder  w-100 text-center active mb-5">
                     مستكشف المركبات
                 </h1>
-                <p class="w-100 text-center text-lighter m-2 mb-5">
+                <p class="w-100 text-center text-light mb-5">
                     هل تبحث عن سيارات بحالة معينة؟
                     <br>
                     تبسيط البحث عن طريق تحديد فئة لتضييق تطاق نتائجك
@@ -40,7 +40,6 @@
                                 <option value="جديد">جديد</option>
                             </select>
                         </div>
-
                         <div class="my-2 mx-auto">
                             <select id="price" class="text-center py-1 d-flex">
 
@@ -62,41 +61,37 @@
         </div>
     </section>
     <section class="offers offers-page d-flex flex-column align-items-center pt-5 my-5 ">
-        <h1 class="d-flex flex-wrap   yellow fs-3">المزادات الحالية </h1>
+        <h1 class="d-flex flex-wrap   yellow fs-3">العروض الحالية </h1>
 
         <div class="d-flex flex-wrap  col-12 col-lg-9 gap-1">
 
-            @foreach ($posts as $post)
-                @if (isset($post->auctions[0]->is_active))
-                    @if ($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
-                        <div class="card animate text-light m-auto  py-0 mb-3" style="width: 20rem;">
-                            <a href="{{ route('auctiondetails', $post->id) }}"> <img src="/images/{{ $post->image }}"
-                                    class="card-img-top p-3" height="220" alt="..."></a>
-                            <div class="card-body py-0">
-                                <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }} /
-                                    <span class="mod">{{ $post->model }}</span>
-                                </h5>
-                                <p class="text-center fs-7 card-details type">
-                                    @if ($post->status_car == 1)
-                                        جديد
-                                    @else
-                                        مستخدم
-                                    @endif
-                                </p>
+            @foreach ($Posts as $post)
+                @if (!isset($post->auctions[0]->is_active))
+                    @if ($post->is_active == 1 && $post->status_auction == 0 && $post->end_date >= date('Y-m-d'))
+                        )
 
+
+                        <div class="card animate text-light m-auto  py-0 mb-4 mt-4 " style="width: 20rem;">
+                            <a href="{{ route('auctiondetails', $post->id) }}"><img src="/images/{{ $post->image }}"
+                                    class="card-img-top p-3" height="220" alt="..."> </a>
+                            <div class="card-body py-0">
+                                <h5 class="card-title text-center"><span
+                                        class="cate">{{ $post->name }}</span>/<span
+                                        class="mod">{{ $post->model }}</span></h5>
+                                <p class="text-center fs-7 card-details type"> @if($post->status_car ==1) 
+                                    جديد
+                                    @else 
+                                    مستخدم
+                                    @endif</p>
                             </div>
                             <div class="card-body d-flex justify-content-between py-0">
-                                <p href="#" class="card-link card-details ">سعر المزايدة/<span class="active price">
-
-
-                                        {{ $post->auctions->max('bid_total') }}
-
-                                    </span><i class="active">$</i>
+                                <p href="#" class="card-link card-details">سعر المزايدة/<span
+                                        class="active price">{{ $post->starting_price }}</span><i
+                                        class="active">$</i>
                                 </p>
                                 <a href="#" class='card-link active ' data-bs-toggle="modal"
                                     data-bs-target="#auction{{ $post->id }}">مزايدة<i
                                         class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-
                             </div>
                         </div>
 
@@ -127,8 +122,7 @@
                                                 @endif
                                                 <h2 class="text-white fs-6 pb-3 "> هل انت متاكد تريد المزايدة على هذة
                                                     السيارة ودفع مبلغ مضاف الى قيمتها الحالية التي تقدر ب <em
-                                                        class="yellow">{{ $post->auctions->max('bid_total') }}$</em>
-                                                </h2>
+                                                        class="yellow">{{$post->auctions->max('bid_total');}}$</em></h2>
                                                 <div class="d-flex  align-items-center gap-3 ">
                                                     <h3 class="text-white fs-6"> مقدار الزيادة: </h3>
                                                     <input type="number" class="input-model text-white"
@@ -173,14 +167,17 @@
                                         <a href="{{ route('login') }}" class="card-link active text-center mt-5 mb-5">
                                             تسجيل الدخول <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                                     </div>
-                           
+                                </div>
                             @endif
-                   
-                </div>
-                @endif
-            @endif
+                    @endif
+        </div>
+        @endif
         @endforeach
-    </div>
 
-</section>
+
+
+
+        </div>
+
+    </section>
 @endsection

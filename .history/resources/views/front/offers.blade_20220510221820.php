@@ -99,33 +99,24 @@
 
 
                         <!--  the model   -->
+@else
+                        <div class="modal-dialog">
 
-                        <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content  ">
-                                    <form action="{{ route('bid_auction', $post->id) }}" method="post">
-                                        @csrf
-                                        <div class="modal-header bg-darkgrey">
 
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body bg-darkgrey ">
-                                            @php
-                                                $total = $post->starting_price + $post->auction_ceiling;
-                                            @endphp
-                                            <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
-                                                <em class="yellow">{{ $total }}$</em>
-                                            </h2>
-                                        </div>
-                                        <div class="modal-footer bg-darkergrey">
-                                            <button type="button" class=" bg-lighter text-white fs-5"
-                                                data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
-                                        </div>
-                                    </form>
+
+
+                            <div class="modal-content m-auto ">
+                                <div class="modal-header bg-darkgrey">
+
+                                    <button type="button" class="btn-close yellow" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
+
+                                <h6 class="text-center yellow mt-5 mb-5 ">عذرا يرجى تسجيل الدخول اولا حتى تتمكن من
+                                    المزايدة!!</h6>
+                                <img class="m-auto" src="/assets/images/login_error.png" width="300" alt="">
+                                <a href="{{ route('login') }}" class="card-link active text-center mt-5 mb-5">
+                                    تسجيل الدخول <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                             </div>
                         </div>
                     @endif
