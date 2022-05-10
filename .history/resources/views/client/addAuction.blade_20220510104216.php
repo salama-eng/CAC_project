@@ -140,10 +140,18 @@
             <label for="" class="form-label text-white">معلومات اخرى حول السيارة</label>
             <div class="input-group">
 
-            
-                <textarea name="description mytext" id="mytext2"  class="form-control"  
+                <textarea id="mytextarea">Hello, World!</textarea>
 
-                    aria-label="With textarea">{{old('description')}}</textarea>
+
+                       
+                    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+                    <script>
+                        tinymce.init({
+                          selector: '#mytextarea'
+                        });
+                      </script>
+
             </div>
             @error('description')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -208,7 +216,6 @@
 
 
 </div>
-
 
 @endif
 

@@ -141,9 +141,23 @@
             <div class="input-group">
 
             
-                <textarea name="description mytext" id="mytext2"  class="form-control"  
+                <textarea name="description" id=""  class="form-control"  
 
                     aria-label="With textarea">{{old('description')}}</textarea>
+
+                       
+<script src="{{ URL::asset('tinymce/tinymce.min.js') }}"></script>
+
+<script>
+tinymce.init({
+    selector: '#mytext',
+    width: 600,
+    height: 300
+});
+
+
+</script>
+
             </div>
             @error('description')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -208,7 +222,6 @@
 
 
 </div>
-
 
 @endif
 

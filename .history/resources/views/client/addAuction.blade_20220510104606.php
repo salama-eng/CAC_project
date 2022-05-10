@@ -144,6 +144,12 @@
                 <textarea name="description mytext" id="mytext2"  class="form-control"  
 
                     aria-label="With textarea">{{old('description')}}</textarea>
+
+                    <textarea id="default">Hello, World!</textarea>
+   
+
+
+
             </div>
             @error('description')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -208,7 +214,6 @@
 
 
 </div>
-
 
 @endif
 
