@@ -13,7 +13,6 @@ use App\Http\Controllers\admin\PostsAdminController;
 use App\Http\Controllers\admin\settingsController;
 use App\Http\Controllers\admin\UserAdminController;
 use App\Http\Controllers\admin\AdminHomeController;
-use App\Http\Controllers\admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\admin\contactUsInfoController;
 use App\Http\Controllers\admin\membershipController;
 use App\Http\Controllers\admin\sliderController;
@@ -156,7 +155,6 @@ Route::group(['middleware' => 'auth'], function () {
         
         // Admin Manage Auction
         Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
-        Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
         
         // Admin Manage Ended Auction
         Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
@@ -190,11 +188,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/add_about_us_content', [AboutUsController::class, 'addAboutUsContent'])->name('add_about_us_content');
         Route::post('/edit_content/{id}', [AboutUsController::class, 'editContent'])->name('edit_content');
         
-        // Admin Manage Contact Us Message 
-        Route::get('/manage_message', [AdminContactUsController::class, 'showMessage'])->name('manage_message');
-        Route::post('/send_message/{id}', [AdminContactUsController::class, 'sendMessage'])->name('send_message');
-        Route::get('/complet_message', [AdminContactUsController::class, 'showCompleteMessage'])->name('complet_message');
-       
     
     
 
@@ -204,14 +197,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/home', [HomeController::class, 'showHomePage'])->name('home');
-Route::get('/', [HomeController::class, 'showHomePage'])->name('home');
 
 // Route::get('/home', function () {
 //     return view('front.index');
 // })->name('home');
-// Route::get('/', function () {
-//     return view('front.index');
-// });
+Route::get('/', function () {
+    return view('front.index');
+});
 Route::get('/auctions', function () {
     return view('front.auctions');
 })->name('auctions');
@@ -236,7 +228,6 @@ Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');
 Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
 
-Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message');
 /******  Chat    ******* */
 
 
@@ -249,6 +240,9 @@ Route::resource('chat', ChatController::class);
 Route::get('/admin_dash', function () {
     return view('admin.layout.dashboard');
 });
+Route::get('/aboutUs', function () {
+    return view('front.aboutUs');
+})->name('aboutUs');
 
 
 
