@@ -102,7 +102,7 @@
                     <ul class="collapse list-unstyled fs-6 mt-0" id="manage2">
                         <li class="d-flex align-items-center justify-content-center">
                             <p class="{{ Request::segment(1) === 'manage_home' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
-                                href="{{ route('manage_home') }}" class="{{ Request::segment(1) === 'home_site' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
+                                href="{{ route('manage_home') }}" class="{{ Request::segment(1) === 'manage_home' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
                                 الصفحة
                                 الرئيسية </a>
                         </li>
@@ -117,23 +117,41 @@
                                 href="{{ route('membership') }}" class="{{ Request::segment(1) === 'membership' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> ادارة
                                 شركائنا</a>
                         </li>
-
-                        <li><a href="{{route('manage_contact_us')}}" class="text-light text-center p-3">  ادارة صفحة تواصل معنا  </a></li>
-                        <li><a href="{{route('manage_about_us')}}" class="text-light text-center p-3">  ادارة صفحة من نحن  </a></li
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'manage_contact_us' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('manage_contact_us') }}" class="{{ Request::segment(1) === 'manage_contact_us' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> 
+                               ادارة صفحة تواصل معنا
+                            </a>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'manage_about_us' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('manage_about_us') }}" class="{{ Request::segment(1) === 'manage_about_us' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
+                                 ادارة صفحة من نحن
+                                </a>
+                        </li>
                     </ul>
 
                     
 
-                </ul>
+                
 
                 <li class="active dropdown3">
-                        <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
+                        <a class="dropdown-toggle text-center text-light p-3" data-toggle="collapse"
                         aria-expanded="false">إدارة
                          رسائل الصفحة</a>
-                        <ul class=" list-unstyled fs-6" id="manage3">
-                            <li><a href="{{route('manage_message')}}" class="text-light text-center p-3">    الرسائل التي لم يرد عليها  </a></li>
-                            <li><a href="{{route('complet_message')}}" class="text-light text-center p-3">    الرسائل التي تم الرد عليها  </a></li>
-    
+                        <ul class=" collapse list-unstyled fs-6 mt-0" id="manage3">
+                            <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'manage_message' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('manage_message') }}" class="{{ Request::segment(1) === 'manage_message' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
+                                 الرسائل التي لم يرد عليها
+                                </a>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'complet_message' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('complet_message') }}" class="{{ Request::segment(1) === 'complet_message' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
+                                 الرسائل التي تم الرد عليها
+                                </a>
+                        </li>
 
                         </ul>
                     </li>
@@ -151,6 +169,7 @@
                             777 777 777<i class="fa fa-phone px-2 fs-4"></i></a>
                     </li>
                 </ul>
+            </ul>
             </aside>
 
 

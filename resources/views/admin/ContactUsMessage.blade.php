@@ -25,7 +25,7 @@
             <hr>
             <p class="my-4">{{$message->message}}</p>
             <hr>
-            <a href="manage_message?do=Edit&messageid={{$message->id}}" class="btn btn-success">
+            <a href="manage_message?do=Edit&messageid={{$message->id}}" class="btn p-2 contact">
                 <i class='fa fa-envelope'></i> ارسال رد
             </a>
         </div>
@@ -76,7 +76,7 @@
                 <!-- Start Submit -->
                 <div class="mb-2 col-12 col-md-2 ">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="   ارسال الرد" class=" btn bg-yellow ">
+                        <input type="submit" value="   ارسال الرد" class=" btn p-2 contact ">
                     </div>
                 </div>
                 <!-- End Submit -->

@@ -10,7 +10,7 @@
                 {{ session()->get('success') }}
             </div>
         @endif
-        <a href="manage_contact_us?do=Add" class="btn btn-sm bg-yellow">
+        <a href="manage_contact_us?do=Add" class="btn p-2 contact">
             <i class="fa fa-plus"></i> اضافة طريقة تواصل
         </a>
         <div class="table-responsive text-white">
@@ -30,18 +30,22 @@
                     <td class="text-warning"> {{$information->name}}</td>
                     <td class="text-warning"> {{$information->link}}</td>
                     <td class="text-warning"> <i class="{{$information->icon}}"></i></td>
-                    <td>
-                        <a href="manage_contact_us?do=Edit&informationid={{$information->id}}" class="btn btn-success">
-                            <i class='fa fa-edit'></i> Edit
+                    <td class="d-flex justify-content-center align-items-center">
+                        <a href="manage_contact_us?do=Edit&informationid={{$information->id}}" class="edit p-1 mx-2">
+                            <i class='fa fa-edit'></i>
+                            تعديل 
                         </a>
-                        @if($information->is_active == 1)
-                            <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeinformation{{$information->id}}">
-                                <i class='fa fa-check'></i> Active
-                            </a>
+  
+                         @if($information->is_active == 1)
+                            <label class="switch" data-bs-toggle="modal" data-bs-target="#activeinformation{{$information->id}}">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                              </label>
                         @else
-                            <a href="" class='btn btn-danger activate' data-bs-toggle="modal" data-bs-target="#activeinformation{{$information->id}}">
-                                <i class='fa fa-close'></i> noActive
-                            </a>
+                         <label class="switch" data-bs-toggle="modal" data-bs-target="#activeinformation{{$information->id}}">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                              </label>
                         @endif
                         
                     </td>
@@ -148,7 +152,7 @@
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
-                <input type="submit" value="اضافة معلومة تواصل جديدة'" class=" btn btn-primary ">
+                <input type="submit" value="اضافة معلومة تواصل جديدة'" class=" btn p-2 contact">
             </div>
         </div>
         <!-- End Submit -->
@@ -213,7 +217,7 @@
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="تعديل  طريقة التواصل" class=" btn bg-yellow ">
+                        <input type="submit" value="تعديل  طريقة التواصل" class=" btn p-2 contact ">
                     </div>
                 </div>
                 <!-- End Submit -->

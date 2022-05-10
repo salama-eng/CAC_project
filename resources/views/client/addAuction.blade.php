@@ -141,7 +141,7 @@
             <div class="input-group">
 
             
-                <textarea name="description" id="mytext"  class="form-control"  
+                <textarea name="description" id="mytext" style="visibility: visible;" class="form-control d-block"  
 
                     aria-label="With textarea">{{old('description')}}</textarea>
 
@@ -166,22 +166,29 @@ tinymce.init({
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="img" class="form-label text-light">الصورة الرئيسية للسيارة</label>
             <div class="input-group ">
-                <input type="file" name="image" id="img" class="form-control" id="inputGroupFile01" accept = 'image/jpeg , image/jpg, image/gif, image/png'>
+                <input type="file" name="image" id="img" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" class="form-control"  accept = 'image/jpeg , image/jpg, image/gif, image/png'>
             </div>
             @error('image')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
+
+            <div class="col-md-12 mb-2 my-2 m-auto">
+                  <img id="previewImage" 
+                     style="max-height: 100px;">
+              </div>
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="img" class="form-label text-light">صور أخرى</label>
             <div class="input-group">
-                <input type="file" name="images[]" class="form-control text-light" id="inputGroupFile01" accept="image/jpeg ,image/png , image/gif"
-                    aria-describedby="inputGroupFileAddon01" multiple>
+                <input type="file" name="images[]"
+                class="form-control text-light "  id="inputGroupFile01" accept="image/jpeg ,image/png , image/gif"
+                     multiple>
             </div>
-            @error('images')
+              @error('images')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
+            <div class="col-md-12 mb-2 my-2 m-auto preview"></div>
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="basic-url" class="form-label text-light"> حالة السيارة</label>

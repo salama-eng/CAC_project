@@ -12,37 +12,40 @@
         @endif
         @if(!isset($Content[0]))
 
-        <a href="manage_about_us?do=Add" class="btn btn-sm bg-yellow">
+        <a href="manage_about_us?do=Add" class="btn p-2 contact">
             <i class="fa fa-plus"></i>  النص الافتراضي
         </a>
         @endif
 
         @foreach($Content as $content)
         
-        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow ">نبذه عامة</h2>
             <hr>
             <p class="my-4">{{$content->description}}</p>
-            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=description&name=الوصف" class="btn btn-success">
-                <i class='fa fa-edit'></i> تعديل
+            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=description&name=الوصف" class="edit p-1 mx-2">
+                <i class='fa fa-edit'></i>
+                تعديل 
             </a>
         </div>
 
-        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow "> النص الاول</h2>
             <hr>
             <p>{{$content->paragraph_one}}</p>
-            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=paragraph_one&name=النص الاول" class="btn btn-success">
-                <i class='fa fa-edit'></i> تعديل
+            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=paragraph_one&name=النص الاول" class="edit p-1 mx-2">
+                <i class='fa fa-edit'></i>
+                تعديل 
             </a>
         </div>
 
-        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-0" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow "> النص الثاني</h2>
             <hr>
             <p>{{$content->paragraph_two}}</p>
-            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=paragraph_two&name=النص الثاني" class="btn btn-success">
-                <i class='fa fa-edit'></i> تعديل
+            <a href="manage_about_us?do=Edit&contentid={{$content->id}}&column=paragraph_two&name=النص الثاني" class="edit p-1 mx-2">
+                <i class='fa fa-edit'></i>
+                تعديل 
             </a>
         </div>
 
@@ -96,7 +99,7 @@
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="  النص الافتراضي" class=" btn bg-yellow ">
+                        <input type="submit" value="  النص الافتراضي" class=" btn p-2 contact">
                     </div>
                 </div>
                 <!-- End Submit -->
@@ -137,7 +140,7 @@
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="تعديل  النص" class=" btn bg-yellow ">
+                        <input type="submit" value="تعديل  النص" class=" btn p-2 contact">
                     </div>
                 </div>
                 <!-- End Submit -->
