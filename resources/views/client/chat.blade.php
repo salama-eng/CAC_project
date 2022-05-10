@@ -105,8 +105,7 @@
                 </button>
                 <input type="hidden" id="todo_id" name="todo_id" value="0">
             </div>
-        </div>
-    </form>
+        </form>
 
 
 
