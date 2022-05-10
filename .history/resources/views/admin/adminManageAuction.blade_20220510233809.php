@@ -18,8 +18,8 @@
                     <td> اسم البايع</td>
                     <td> اسم المزايد</td>
                     <td>انتهاء وقت المزايدة</td>
-                    <td>السعر الابتدائي  </td>
-                    <td>المبلغ الذي وصل اليه </td>
+                    <td> الزيادة المدفوعة  </td>
+                    <td> اجمالي المدفوع </td>
                     <td>تفاصيل المزايدة </td>
                     <td>التحكم </td>
 
@@ -37,6 +37,11 @@
                             <td>{{$auction->bid_total}}</td>
                             <td>
                                 <a href="{{route('auctiondetails',$auction->post_id)}}" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                            </td>
+                            <td>   
+                                <a href="" class='btn activate accept' data-bs-toggle="modal" style="" data-bs-target="#active{{$auction->post_id}}">
+                                    <i class='fa fa-check'></i> قبول
+                                </a> 
                             </td>
                             <td>
                                 <a href="" class='btn btn-info activate' data-bs-toggle="modal" data-bs-target="#activeCategory">

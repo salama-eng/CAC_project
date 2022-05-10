@@ -31,7 +31,7 @@
                             <td>{{$i++}}</td>
                             <td>{{$auction->auction_post->name}}</td>
                             <td>{{$auction->userOwner->name}}</td>
-                            <td>{{$auction->userAw->name}}</td>
+                            <td>{{$auction->userAw->nam}}</td>
                             <td>{{$auction->auction_post->end_date}}</td>
                             <td>{{$auction->bid_amount}}</td>
                             <td>{{$auction->bid_total}}</td>

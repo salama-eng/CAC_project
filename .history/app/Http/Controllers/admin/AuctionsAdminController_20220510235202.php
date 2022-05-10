@@ -22,7 +22,7 @@ class AuctionsAdminController extends Controller
         $route = Route::current()->getName();
         if($route == 'admin_acution'){
             return view('admin.adminManageAuction', [
-                'auctions'   => $auctions,
+                'posts'   => $posts,
             ]);
         }elseif($route == 'endede_acution'){
             $posts=Post::with(['auctions', 'users'])->get();

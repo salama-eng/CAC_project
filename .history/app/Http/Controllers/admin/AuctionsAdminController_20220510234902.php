@@ -18,11 +18,11 @@ class AuctionsAdminController extends Controller
     public function showAdminAuction(){
       
         $auctions = Auction::with(['auction_post','userOwner','userAw'])->get();
-        $posts=Post::with(['auctions.userOwner','auctions.userAw','auctions'])->get();
+        $posts=Post::with(['auctions.userOwner','auctions.userAw',])->get();
         $route = Route::current()->getName();
         if($route == 'admin_acution'){
             return view('admin.adminManageAuction', [
-                'auctions'   => $auctions,
+                'posts'   => $posts,
             ]);
         }elseif($route == 'endede_acution'){
             $posts=Post::with(['auctions', 'users'])->get();

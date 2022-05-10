@@ -18,6 +18,8 @@ class Auction extends Model
     public function userAw(){
         return $this->belongsTo(User::class,'aw_user_id');
     }
-   
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
     
 }
