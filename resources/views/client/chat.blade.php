@@ -7,12 +7,12 @@
               <p class="align-self-end mr-auto"><a href="{{ route('profile') }}" class="card-link active text-warning mt-3 mb-2"> العودة
                 للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 <div class="col-lg-3 col-6">
-                    <h2> {{ $other_user->name }} </h2>
+                    <h2> {{ Auth::user()->id }} </h2>
                     <h3 class="d-lg-block d-none">already 1902 messags</h3>
                     <p class="align-self-end mr-auto d-block d-lg-none " style="font-size:12px"><a href="{{ route('profile') }}" class="card-link active text-warning mt-3 mb-2"> العودة
                       للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 </div>
-                <img src="/images/{{$other_user->profile->avatar }}" width="80" class=" rounded-circle "
+                <img src="{{ URL::asset('images/'.Auth::user()->profile->avatar) }}" width="80" class=" rounded-circle "
                     alt="{{ Auth::user()->profile->avatar }}">
                     
             </header>
@@ -85,28 +85,19 @@
 
             </ul>
 
-        </main>       <form id="myForm" name="myForm" class="form-horizontal" novalidate="" >
- <input type="hidden" id="post_id" name="post_id" value="1">
-                    <input type="hidden" id="aw_user_id" name="aw_user_id" value="$other_user->id">
-                    <input type="hidden" id="owner_user_id" name="owner_user_id" value="Auth::user()->id">
-        <div class="modal-body d-flex justify-content-around col-12 mt-5">
-          
-     
-                
-            
-                    <input type="text" class="form-control col-10 text-end" id="message" name="message" placeholder="ادخل نص الرسالة "
-                        value="">
-                   
-      
-        
-            <div class="col-2">
-                <button type="button" class="btn btn-primary" id="btn-save" value="add" style="background-color:#E39100;color:#FFFFFF;
-                border:#E39100"> ارسال
-                </button>
-                <input type="hidden" id="todo_id" name="todo_id" value="0">
+        </main>       
+        <form id="myForm" name="myForm" class="form-horizontal" novalidate="" >
+            <input type="hidden" id="post_id" name="post_id" value="{{$auction->post_id}}">
+            <input type="hidden" id="aw_user_id" name="aw_user_id" value="{{$auction->aw_user_id}}">
+            <input type="hidden" id="owner_user_id" name="owner_user_id" value="{{$auction->owner_user_id}}">
+            <div class="modal-body d-flex justify-content-around col-12 mt-5">
+                <input type="text" class="form-control col-10 text-end" id="message" name="message" placeholder="ادخل نص الرسالة " value="">
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary" id="btn-save" value="add" style="background-color:#E39100;color:#FFFFFF; border:#E39100"> ارسال</button>
+                    <input type="hidden" id="todo_id" name="todo_id" value="0">
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
 
 
 

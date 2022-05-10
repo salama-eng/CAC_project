@@ -242,7 +242,7 @@ Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('
 
 Route::post('/chat', [ChatController::class,'index'])->name('chat');
 
-Route::post('/chat/{id}', [ChatController::class,'show'])->name('chat');
+Route::get('/chat/{id}', [ChatController::class,'show'])->name('chat');
 
 Route::resource('chat', ChatController::class);
 

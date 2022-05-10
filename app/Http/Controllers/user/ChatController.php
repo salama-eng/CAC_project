@@ -7,6 +7,7 @@ use App\Models\Chat;
 use App\Models\Auction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Events\ChatNotification;
 use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
@@ -21,36 +22,13 @@ class ChatController extends Controller
     {
 
         $auction = Auction::find($id);
+        return view('client.chat', [
+            'auction' => $auction,
 
-
-        $chat = Chat::select()->where('aw_user_id', $auction->aw_user_id)
-            ->where('owner_user_id', $auction->owner_user_id)->get();
-
-        if (Auth::id() == $auction->aw_user_id) {
-            $other_user = User::with('profile')->find($auction->owner_user_id);
-
-            return view('client.chat', [
-                'chat' => $chat,
-                'other_user' => $other_user,
-
-            ]);
-        } elseif (Auth::id() == $auction->owner_user_id) {
-            $other_user = User::with('profile')->find($auction->owner_user_id);
-            $user = User::with('profile')->find($auction->aw_user_id);
-            return view('client.chat', [
-                'chat' => $chat,
-                'other_user' => $other_user
-
-            ]);
-        }
+        ]);
     }
-
-
-
     public function store(Request $request)
     {
-
-
         $data = $request->validate([
             'message' => '',
             'aw_user_id' => '',
@@ -60,6 +38,13 @@ class ChatController extends Controller
         ]);
 
         $chat = Chat::create($data);
+        $user = User::where('id', Auth::user()->id)->get();
+        if(\Notification::send(
+            $user ,new ChatNotification(
+                Chat::latest('id')->first())
+        )){
+            return back();
+        }
         return Response::json($chat);
     }
 }
