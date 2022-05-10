@@ -80,8 +80,8 @@ class PostsAdminController extends Controller
             )){
                 return back();
             }
-            return redirect('Start_auction')
-            ->with(['success'=>' تمت العملية بنجاح  ']);
+            return redirect('admin_posts')
+            ->with(['success'=>'تم الموافقة بنجاح']);
         }else{
             return back()->with(['error'=>'خطاء هناك مشكلة في عملية الموافقة على المزاد']);
         }

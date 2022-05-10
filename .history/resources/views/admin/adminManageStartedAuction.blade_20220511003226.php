@@ -24,7 +24,7 @@
                 </tr>
                 @php $i = 1 @endphp
                 @foreach($postsAll as $post)
-                    @if($post->end_date >= date('Y-m-d'))
+                    @if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$post->name}}</td>
@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class=" bg-yellow text-white fs-5" value=" تاكيد   " />
+                                            <input type="submit" class=" bg-yellow text-white fs-5" value=" قبول   " />
                                         </div>
                                     </form>
                                 </div>

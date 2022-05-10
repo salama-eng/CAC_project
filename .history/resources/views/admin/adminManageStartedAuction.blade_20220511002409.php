@@ -24,7 +24,7 @@
                 </tr>
                 @php $i = 1 @endphp
                 @foreach($postsAll as $post)
-                    @if($post->end_date >= date('Y-m-d'))
+                    @if($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$post->name}}</td>
@@ -42,13 +42,13 @@
                                 </a> --}}
                                 @if($post->is_active == 1)
                                    
-                                    <label class="switch" data-bs-toggle="modal" data-bs-target="#active{{$post->id}}">
+                                    <label class="switch" data-bs-toggle="modal" data-bs-target="#activePayment{{$post->id}}">
                                         <input type="checkbox" checked>
                                         <span class="slider"></span>
                                       </label>
                                 @else
                                 
-                                    <label class="switch" data-bs-toggle="modal" data-bs-target="#active{{$post->id}}">
+                                    <label class="switch" data-bs-toggle="modal" data-bs-target="#activePayment{{$post->id}}">
                                         <input type="checkbox">
                                         <span class="slider"></span>
                                       </label>
@@ -56,33 +56,29 @@
                                 
                             </td>
                         </tr>
-                        <div class="modal fade user" id="active{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content bg-dark">
-                                    <form action="unactive" method="post">
-                                        @csrf
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"> تعديل حالة المزاد</h5>
-                                            <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="color: white !important;"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h2>هل انت متاكد</h2>
-                                            <input type="hidden" name="postid" value="{{$post->id}}">
-                                            <input type="hidden" name="userid" value="{{$post->users->id}}">
-                                            <input type="hidden" name="is_active" value="{{$post->is_active}}">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class=" bg-yellow text-white fs-5" value=" تاكيد   " />
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     @endif
-
                 @endforeach
-               
+                <div class="modal fade user" id="activePayment{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-grey">
+                            <form action="active_admin_Payment" method="post">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">حالة طريقه الدفع</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                                    <h2>هل انت متاكد</h2>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
+                                <input type="submit" class=" bg-yellow text-white fs-5" value=" تعديل   " />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </table>
         </div>
        
