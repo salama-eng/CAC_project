@@ -1,0 +1,389 @@
+:root {
+    --semiOrange: #d69418;
+    --darkgrey: #191919;
+    --lightgrey: #1C1C1C;
+    --whitecolor: #f6f6f6;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal';
+}
+
+
+body {
+    direction: rtl;
+    background-color: var(--darkgrey) !important;
+    font-family: 'Tajawal';
+}
+.bg-dark-nav{
+    background-color: var(--darkgrey) !important;
+}
+/* navbar */
+nav{
+    background-color: var(--darkgrey);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.navbar{
+    z-index: 1;
+
+}
+ 
+.w-96 {
+    width: 96%;
+}
+.contact-parent{
+    width: 10%;
+    z-index: 2;
+    
+
+}
+
+.logo-box1
+{
+    font-family: Comic Sans MS;
+    position: absolute;
+    z-index: 3;
+    top:1.1rem;
+   right: 2.8rem; 
+}
+.cornerstyle {
+
+    top: 0;
+    right:0;
+    background-color: var(--semiOrange);
+    height:8em;
+    width: 4.5em;
+}
+.contactnavbar {
+    height: 60%;
+    position: fixed;
+    bottom: 50px;
+    margin-right: 2rem;
+  
+}
+
+.navbar-collapse ul{
+    width: 60%;
+}
+.contact {
+    background-color: var(--semiOrange) !important;
+    
+}
+.bg-yellow
+{
+    background-color: var(--semiOrange) !important;
+    padding:0;
+}
+.bttn {
+   
+    background-color: inherit;
+
+}
+.nav-item:hover a{
+    color: var(--semiOrange) !important;
+}
+
+.bttn:hover .menu,
+.bttn:focus .menu {
+    background-color: var(--semiOrange) !important;
+}
+
+.menu {
+    height: 2px;
+    width: 10px;
+}
+
+
+
+.fs-7 {
+    font-size: 15px;
+}
+.fs-8{
+    font-size: .6rem;
+}
+.wrapper {
+
+   
+    perspective: 1500px;
+}
+
+a,
+a:hover,
+a:focus {
+    color: var(--whitecolor);
+    text-decoration: none !important;
+    transition: all 0.3s;
+}
+
+
+.aside{
+    width: 24em;
+}
+
+#sidebar ul li a {
+
+    display: block;
+}
+
+#sidebar ul li a:hover{
+
+    color: var(--semiOrange) !important;
+
+}
+#manage2 li:hover,
+#manage li:hover{
+    color: var(--semiOrange) !important;
+}
+#manage2 li:hover .branch,
+#manage li:hover .branch{
+    background-color: var(--semiOrange) !important;
+}
+.active{
+    color: var(--semiOrange) !important;
+}
+
+#content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#sidebarCollapse{
+    position: relative;
+    z-index: 3333;
+}
+
+#sidebarCollapse .menu {
+ 
+    height: 2px;
+     width: 20px;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
+   
+}
+#sidebarCollapse:hover .menu, #sidebarCollapse:focus .menu{
+    background-color: var(--semiOrange) !important;
+
+ }
+
+#sidebarCollapse .menu:first-of-type {
+    transform: rotate(45deg) translate(2px, 2px) !important;
+    
+    
+}
+.navbar-header #sidebarCollapse{
+    transition: .2s;
+}
+.navbar-header #sidebarCollapse:hover {
+    -ms-transform-origin-x: rotate(-180deg) translate(-1px, -1px) !important;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
+}
+.navbar-header2:hover .sidemenu:first-child{
+width: 35px !important;
+transition: .2s;
+}
+.navbar-header2:hover .sidemenu:last-child{
+    width: 15px !important;
+    padding: 0 !important;
+    transition: .2s;  
+}
+#sidebarCollapse .menu:last-of-type {
+    transform: rotate(-45deg) translate(1px, -1px) !important;
+}
+
+.logo-box{
+    font-family: Comic Sans MS;
+    position: absolute;
+    z-index: 3;
+    top:1.1rem;
+   right: 2.1rem;
+}
+.fa-bell{
+    transform: rotate(-30deg);
+}
+.notiy{
+  left: 22px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: red;
+}
+.dropdown-menu{
+    left: 25px;
+    text-align: right;
+}
+.dropdown-menu .dropdown-item:hover {
+background-color:  var(--lightgrey);
+}
+.semiOrange{
+    color: var(--semiOrange);
+}
+.sidemenu{
+    height: 2px;
+    width: 10px;
+    transition: .2s;
+}
+
+
+.navbar-header2 {
+    height: 50px !important;
+    position: fixed;
+    top: -8px;
+    right: 2.8%;
+    z-index: 4444;
+}
+
+.navbar-header2:hover .sidemenu,.navbar-header2:focus .sidemenu{
+    background-color: var(--semiOrange) !important;
+}
+a{
+    cursor: pointer;
+}
+.bg-main{
+    background: url('../assets/back.jpg') no-repeat center center fixed;
+        background-size: cover;
+     
+}
+.input-group input,.form-select,.form-control {
+    background-color: var(--darkgrey);
+    color: gray !important;
+ border-radius: 0;
+}
+.form-select option{
+    background-color: var(--darkgrey);
+    color: gray !important;
+
+}
+.input-group input:focus, .form-select option:focus ,.form-control:focus{
+    background-color: var(--darkgrey);
+    color: var(--whitecolor) !important;
+    box-shadow: none;
+    box-shadow: none;
+}
+.save-btn button:hover,.save-btn button:focus{
+    background-color: var(--semiOrange);
+    border-radius: 0;
+    border-color: var(--semiOrange);
+    box-shadow: none;
+}
+
+.card-details{
+    color: #535252;
+}
+.img-responsive{
+    width: 7.7rem;
+    height: 5.5rem;
+    
+}
+.img-responsive img{
+    height: 100%;
+    width: 100%;
+}
+.list-group li{
+    background-color: inherit !important;
+    color: gray;
+}
+.smooth-up{
+   
+    color: var(--semiOrange);
+    background-color: transparent;
+    bottom: 10px;
+    left: 35px;
+    padding: 10px;
+    display: none;
+}
+.more:hover a{
+color: var(--semiOrange) !important;
+}
+/* adminCategories styles */
+.edit{
+    background-color: transparent;
+border: 1px solid var(--semiOrange);
+transition: .4s;
+
+}
+.edit:hover{
+    background-color: var(--semiOrange);
+  transition: .4s;
+
+}
+@media (max-width: 768px) {
+ #sidebarCollapse .menu:first-of-type,
+    #sidebarCollapse .menu:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
+
+    #sidebarCollapse.active .menu {
+        margin: 0 auto;
+    }
+
+    #sidebarCollapse.active .menu:first-of-type {
+        transform: rotate(45deg) translate(2px, 2px);
+    }
+  
+
+}
+
+@media (max-width: 1199px) {
+    nav{
+        height: 85px;
+    }
+    .contactnavbar{
+        display: none !important;
+    }
+      .logo-box{
+        width: 60px;
+        height: 60px;
+         top: 20px;  
+        }
+    .navbar-toggle{
+        background-color:transparent;
+        direction: ltr;
+        position: fixed;
+       left: 25px;
+       top: 40px;
+   }
+   .toggle{
+       display: none !important;
+   }
+   .cornerstyle{
+       top: 0;
+       right: 0;
+       height: 6rem;
+   }
+    .contact-parent{
+        display: none;
+    }
+    .navbar-collapse .navbar-nav,.navbar-nav .nav-item{
+      margin: auto !important;
+    }
+    .navbar-collapse button{
+        display: flex;
+        margin: auto !important;
+      
+    }
+    #sidebar {
+        width: 24em;
+        position: absolute;
+        z-index: 9999;
+        background-color: var(--lightgrey);
+    }
+    .collapse{
+        background-color: var(--lightgrey);
+        margin-top: 70px;
+        padding: 25px;
+        width: 100%;
+     
+        }
+        
+      
+
+}

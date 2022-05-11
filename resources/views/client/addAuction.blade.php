@@ -143,7 +143,7 @@
 
              
 
-                <textarea name="description mytext" id="textarea#default"  class="form-control"  
+                <textarea name="description" id="textarea#default"  class="form-control"  
 
 
                     aria-label="With textarea">{{old('description')}}</textarea>
