@@ -118,7 +118,7 @@ $('.modal-footer input').on('click',()=>{
 })
 
 function reveal() {
-  var reveals = document.querySelectorAll(".card");
+  var reveals = document.querySelectorAll(".animate");
 
   for (var i = 0; i < reveals.length; i++) {
     var windowHeight = window.innerHeight;
@@ -149,6 +149,29 @@ function reveal2() {
 }
 window.addEventListener("scroll", reveal);
 window.addEventListener("scroll", reveal2);
+
+    // Multiple images preview in browser
+    var imagesPreview = function (input, placeToInsertImagePreview) {
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function (event) {
+                    $($.parseHTML("<img height='100' class=' m-1' >"))
+                        .attr("src", event.target.result)
+                        .appendTo(placeToInsertImagePreview);
+                };
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+    };
+
+    $("#inputGroupFile01").on("change", function () {
+        imagesPreview(this, "div.preview");
+    });
 
 });
 

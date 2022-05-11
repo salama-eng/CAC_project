@@ -48,8 +48,7 @@
               
 
               <div class="col-md-12 mb-2">
-                  <img id="preview-image-before-upload" src="preview image"
-                    alt="preview image" style="max-height: 250px;">
+                  <img id="preview-image-before-upload" style="max-height: 250px;">
               </div>
               <select name="pank" id="" class="mt-4 mb-0 form-select bg-transparent text-light">
                     @foreach ($payments as $payment)

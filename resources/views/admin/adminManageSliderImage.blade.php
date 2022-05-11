@@ -10,7 +10,7 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
-            <a href="slider_image?do=Add" class="btn btn-sm bg-yellow">
+            <a href="slider_image?do=Add" class="btn p-2 contact">
                 <i class="fa fa-plus"></i> اضافة صورة
             </a>
             <div class="table-responsive text-white ms-5">
@@ -90,7 +90,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class=" bg-lighter text-white fs-5"
                                                 data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class=" bg-yellow text-white fs-5"
+                                            <input type="submit" class=" btn p-2 contact"
                                                 value=" تعديل حالة الصورة  " />
                                         </div>
                                     </form>
@@ -106,7 +106,7 @@
     @elseif($do == 'Add')
         <!-- start add model -->
         <h1 class="text-center">Add New slider</h1>
-        <div class="container">
+        <div class="container ">
             @if ($errors->any())
                 <div class="alert alert-danger message">
                     <ul>
@@ -122,11 +122,11 @@
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white">صورة جديدة </label>
                     <div class="col-sm-8 col-md-9">
-                        <input type="file" name="image" id="image" class="form-control" autocomplete="off"
-                            placeholder="   اضف صورة جدبدة">
-                        <div class="col-sm-8 col-md-9">
-                            <img id="preview-image-before-upload" src="preview image" alt="preview image"
-                                style="max-height: 250px;">
+                        <input type="file" name="image" id="image" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" class="form-control"  class="form-control" autocomplete="off"
+                            placeholder="اضف صورة جدبدة">
+                        <div class="col-md-12 mb-2 my-2 m-auto">
+                            <img id="previewImage" 
+                                style="max-height: 100px;">
                         </div>
                     </div>
 
@@ -136,7 +136,7 @@
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="اضافة صورة جديدة'" class=" btn btn-primary ">
+                        <input type="submit" value="اضافة صورة جديدة'" class=" btn p-2 contact ">
                     </div>
                 </div>
                 <!-- End Submit -->
@@ -166,11 +166,11 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label text-white">تعديل الصورة </label>
                             <div class="col-sm-8 col-md-9">
-                                <input type="file" name="image" id="image" class="form-control" autocomplete="off"
+                                <input type="file" name="image" id="image" oninput="imageTwo.src=window.URL.createObjectURL(this.files[0])"class="form-control" autocomplete="off"
                                     placeholder=" اضف طريقة دفع">
-                                <div class="col-sm-8 col-md-9">
-                                    <img id="preview-image-before-upload" src="preview image" alt="preview image"
-                                        style="max-height: 250px;">
+                                <div class="col-md-12 mb-2 my-2 m-auto">
+                                    <img id="imageTwo" 
+                                        style="max-height: 100px;">
                                 </div>
                             </div>
 
@@ -179,7 +179,7 @@
                         <!-- Start Submit -->
                         <div class="mb-2 row">
                             <div class="offset-sm-2 col-sm-10">
-                                <input type="submit" value="تعديل  الصورة" class=" btn bg-yellow ">
+                                <input type="submit" value="تعديل  الصورة" class=" btn p-2 contact">
                             </div>
                         </div>
                         <!-- End Submit -->

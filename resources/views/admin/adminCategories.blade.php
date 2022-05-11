@@ -10,7 +10,7 @@
                 {{ session()->get('success') }}
             </div>
         @endif
-        <a href="admincategories?do=Add" class="btn btn-sm bg-yellow">
+        <a href="admincategories?do=Add" class="btn p-2 contact">
             <i class="fa fa-plus"></i> اضافة  تصنيف
         </a>
         <div class="table-responsive text-white ms-5">
@@ -121,8 +121,13 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
             <div class="col-sm-8 col-md-9">
-                <input type="file" name="image" class="form-control" id="inputGroupFile01">
-            </div>
+                <input type="file" name="image" class="form-control" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" >
+            <div class="col-md-12 mb-2 my-2 m-auto">
+                  <img id="previewImage" 
+                     style="max-height: 100px;">
+              </div>
+        </div>
+
         </div>
         <div class="form-check d-flex  justify-content-center mt-5 ">
             <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"  {{ ( old('active') == '1') ? ' checked' : '' }} aria-label="...">
@@ -132,63 +137,17 @@
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
-                <input type="submit" value="اضافة تصنيف '" class=" btn bg-yellow ">
+                <input type="submit" value="اضافة تصنيف '" class=" btn p-2 contact ">
             </div>
         </div>
         <!-- End Submit -->
     </form>
 </div>
 
-        </div>
-    @elseif($do == 'Add')
-        <!-- start add model -->
-        <h1 class="text-center fs-3 m-4"> اضافة صنف جديد </h1>
-        <div class="container col-lg-9 col-11">
-            @if ($errors->any())
-                <div class="alert alert-danger error">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <form action="add_admin_category" method="POST" enctype="multipart/form-data">
-                @csrf
-                <!-- Start Payment -->
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white"> إضافة صنف </label>
-                    <div class="col-sm-8 col-md-9">
-                        <input type="text" name="name" class="form-control" value="{{ old('name') }}"
-                            autocomplete="off" placeholder=" اضف تصنيف  ">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
-                    <div class="col-sm-8 col-md-9">
-                        <input type="file" name="image" accept="{{ old('image') }}" value="{{ old('image') }}"
-                            class="form-control" autocomplete="off">
-                    </div>
-                </div>
-                <div class="form-check d-flex  justify-content-center mt-5 ">
-                    <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"
-                        {{ old('active') == '1' ? ' checked' : '' }} aria-label="...">
-                    <label class="col-6 mx-5 text-white" for="">تفعيل</label>
-                </div>
-                <!-- End category -->
-                <!-- Start Submit -->
-                <div class="mb-2 row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="اضافة تصنيف '" class=" btn bg-yellow ">
-                    </div>
-                </div>
-                <!-- End Submit -->
-            </form>
-        </div>
     @elseif($do == 'Edit')
         <!-- start Edit model -->
         {{ $categoryid = isset($_GET['categoryid']) && is_numeric($_GET['categoryid']) ? intval($_GET['categoryid']) : 0 }}
-        <h1 class="text-center">Edit Modal</h1>
+        <h1 class="text-center">Edit Category</h1>
         <div class="container">
             @if ($errors->any())
                 <div class="alert alert-danger error">
@@ -218,10 +177,17 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label text-white"> صورة الصنف </label>
                             <div class="col-sm-8 col-md-9">
-                                <input type="file" name="image" value="{{ $cat->image }}" class="form-control"
+                                <input type="file" name="image" value="{{ $cat->image }}" oninput="imageTwo.src=window.URL.createObjectURL(this.files[0])" class="form-control"  class="form-control"
                                     autocomplete="off" placeholder="ادخل اسم البنك">
-                                <input type="hidden" name="image_old" value="{{ $cat->image }}" class="form-control"
+                                    <div class="col-md-12 mb-2 my-2 m-auto">
+                                    <img id="imageTwo" 
+                                        style="max-height: 100px;">
+                                </div>
+                                <input type="hidden" name="image_old" value="{{ $cat->image }}"  class="form-control"
                                     autocomplete="off" placeholder="ادخل اسم البنك">
+                                    
+                                
+
                             </div>
                         </div>
                         <!-- End Image -->
@@ -235,7 +201,7 @@
                         <!-- Start Submit -->
                         <div class="mb-2 row">
                             <div class="offset-sm-2 col-sm-10">
-                                <input type="submit" value="تعديل التصنيف  " class=" edit text-light p-1 px-3 ">
+                                <input type="submit" value="تعديل التصنيف  " class=" btn p-2 contact ">
                             </div>
                         </div>
                         <!-- End Submit -->
