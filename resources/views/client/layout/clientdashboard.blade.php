@@ -140,16 +140,18 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu notification bg-dark">
-                    @if (isset(auth()->user()->unreadNotifications))
+                @if (isset(auth()->user()->unreadNotifications))
                         @foreach (auth()->user()->unreadNotifications as $notification)
-                            <li>
+                            @if($notification->type == 'App\Events\NewNotification')
+                                <li>
 
-                                <a class="dropdown-item text-light fs-7"
-                                    href="{{ $notification->data['lesson']['link'] }}">{{ $notification->data['lesson']['title'] }}
-                                    {{ auth()->user()->name }}
-                                    <i class="semiOrange fs-8 "><br></i>{{ $notification->data['lesson']['body'] }}</a>
-                                <p class="dropdown-divider mx-2"></p>
-                            </li>
+                                    <a class="dropdown-item text-light fs-7"
+                                        href="{{ $notification->data['lesson']['link'] }}">{{ $notification->data['lesson']['title'] }}
+                                        {{ auth()->user()->name }}
+                                        <i class="semiOrange fs-8 "><br></i>{{ $notification->data['lesson']['body'] }}</a>
+                                    <p class="dropdown-divider mx-2"></p>
+                                </li>
+                            @endif
                         @endforeach
                     @endif
 
@@ -241,6 +243,7 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
     channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
         var existingNotifications = notifications.html();
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
+        if({{auth()->user()->unreadNotifications()->count()}} ){
         var newNotificationHtml = `
         <li><a class="dropdown-item text-light fs-7" href="` + data.lesson.link + `"> ` + data.lesson.title + ` <?php echo auth()->user()->name; ?>
                 <i class="semiOrange fs-8 "><br>` + data.lesson.body + `</i></a>
@@ -255,6 +258,7 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
         notificationsWrapper.show();
         notificationsCount -= 1;
         notifications = 0;
+        }
     });
 </script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>

@@ -239,24 +239,18 @@
                 </div>
                 <ul class="dropdown-menu notification bg-dark">
                     @if(isset(auth()->user()->unreadNotifications))
-                    @foreach (auth()->user()->unreadNotifications as $notification)
-                    @foreach ($notification->data as $data)
-                        @if (isset($data['lesson']))
-                            
-                    
-                        <li>
-
-                            <a class="dropdown-item text-light fs-7"
-                                href="{{ $data['lesson']['link'] }}">{{ $data['title'] }}
-                                {{ auth()->user()->name }}
-                                <i class="semiOrange fs-8 "><br></i>{{ $data['body'] }}
-                                {{ $data['username'] }}</a>
-                            <p class="dropdown-divider mx-2"></p>
-                        </li>
-                        @endif
-
-                    @endforeach
-                    @endforeach
+                        @foreach (auth()->user()->unreadNotifications as $notification)
+                            @if ($notification->type == 'App\Events\AdminNotification')
+                                <li>
+                                    <a class="dropdown-item text-light fs-7"
+                                        href="{{ $notification->data['admin']['link'] }}">{{ $notification->data['admin']['title'] }}
+                                        {{ auth()->user()->name }}
+                                        <i class="semiOrange fs-8 "><br></i>{{ $notification->data['admin']['body'] }}
+                                        {{ $notification->data['admin']['username'] }}</a>
+                                    <p class="dropdown-divider mx-2"></p>
+                                </li>
+                            @endif
+                        @endforeach
                     @endif
 
                 </ul>
