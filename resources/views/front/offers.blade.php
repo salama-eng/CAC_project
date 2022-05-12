@@ -81,18 +81,20 @@
                         <div class="card animate text-light m-auto  py-0 mb-4 mt-4 " style="width: 20rem;">
                             <a href="{{ route('auctiondetails', $post->id) }}"><img src="/images/{{ $post->image }}"
                                     class="card-img-top p-3" height="220" alt="..."> </a>
-                            <div class="card-body py-0">
-                                <h5 class="card-title text-center"><span
-                                        class="cate">{{ $post->name }}</span>/<span
-                                        class="mod">{{ $post->model }}</span></h5>
-                                <p class="text-center fs-7 card-details type">
-                                    @if ($post->status_car == 1)
-                                        جديد
-                                    @else
-                                        مستخدم
-                                    @endif
-                                </p>
-                            </div>
+                                    <div class="card-body py-0">
+                                
+                                        <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }} /
+                                            <span class="mod">{{ $post->model }}</span>
+                                        </h5>
+                                        <p class="text-center fs-7 card-details type">
+                                            @if ($post->status_car == 1)
+                                                جديد /  {{ $post->category->name }}
+                                            @else
+                                                مستخدم / {{ $post->category->name }}
+                                            @endif
+                                        </p>
+        
+                                    </div>
                             <div class="card-body d-flex justify-content-between py-0">
                                 <p href="#" class="card-link card-details">سعر المزايدة/<span
                                         class="active price">{{ $post->starting_price }}</span><i
