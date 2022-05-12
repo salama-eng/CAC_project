@@ -69,7 +69,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="d-flex justify-content-around align-items-center mt-3">
+                                <div class="d-flex justify-content-around align-items-center mt-5">
                                     @if (isset($post->auctions->bid_total))
                                         <div>
                                             <h2 class="text-white fs-6 ">
@@ -98,7 +98,7 @@
                                 @php
                                     $discount = 0.2 * $post->starting_price;
                                 @endphp
-                                <h3 class="text-white fs-7 mt-2 ">*يجب ان تكون مقدار الزيادة من مضاعفات
+                                <h3 class="text-white fs-7 mt-2">*يجب ان تكون مقدار الزيادة من مضاعفات
                                    <span class="yellow"> {{ $post->auction_ceiling }}$</h3></span>
                                 <h3 class="text-white  fs-7 mt-2">*سيتم خصم من حسابك مبلغ وقدرة
                                    <span class="yellow"> {{ $discount }}$ </span>حتى انتهاء العملية </h3>
@@ -107,7 +107,7 @@
 
                             @if ($post->end_date >= now() && Auth::id() != 3 && $post->users->id != Auth::id())
                         
-                                <a href="#" class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center justify-content-center'data-bs-toggle="modal"
+                                <a href="#" class='bg-yellow text-light fs-6 py-3 px-5  'data-bs-toggle="modal"
                                 data-bs-target="#auction{{ $post->id }}">مزايدة<i
                                     class="fa fa-long-arrow-left"> </i></a>
                             @endif

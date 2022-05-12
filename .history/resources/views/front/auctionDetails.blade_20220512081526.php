@@ -107,7 +107,7 @@
 
                             @if ($post->end_date >= now() && Auth::id() != 3 && $post->users->id != Auth::id())
                         
-                                <a href="#" class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center justify-content-center'data-bs-toggle="modal"
+                                <a href="#" class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center text-center'data-bs-toggle="modal"
                                 data-bs-target="#auction{{ $post->id }}">مزايدة<i
                                     class="fa fa-long-arrow-left"> </i></a>
                             @endif
