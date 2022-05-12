@@ -12,7 +12,7 @@ use Bavix\Wallet\Interfaces\Wallet;
 
 use Laratrust\Traits\LaratrustUserTrait;
 
-class User extends Authenticatable implements MustVerifyEmail ,Wallet
+class User extends Authenticatable implements Wallet 
 {
      use HasWallet;
     use LaratrustUserTrait;

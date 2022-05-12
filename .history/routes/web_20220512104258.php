@@ -258,7 +258,7 @@ Route::get('/admin_dash', function () {
     return view('admin.layout.dashboard');
 });
 Route::get('/wallet', function () {
-    return view('client.wallet');
+    return view('client.wallet')->name('wallet');
 });
 
 

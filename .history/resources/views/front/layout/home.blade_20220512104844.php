@@ -102,7 +102,7 @@
          </li>
 
       <li><p class="dropdown-item text-white text-end text-light fs-7" type=""> {{Auth::user()->name}}
-   
+        
 
      </p>
       <li><p class="dropdown-item  text-end text-light fs-7 " type="">  {{Auth::user()->email}}</p></li>

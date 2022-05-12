@@ -1092,11 +1092,9 @@ table th {
   section.social span {
     font-size: 3vw;
   }
-  .f-size
+  .yellow
   {
-    font-size:0.8rem;
-    margin:0;
-    padding:0;
+    font-size:0.5rem;
   }
   .contactheader {
     font-size: 1rem;

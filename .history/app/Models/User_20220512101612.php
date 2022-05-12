@@ -7,16 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Bavix\Wallet\Traits\HasWallet;
-use Bavix\Wallet\Interfaces\Wallet;
-
 use Laratrust\Traits\LaratrustUserTrait;
 
-class User extends Authenticatable implements MustVerifyEmail ,Wallet
+class User extends Authenticatable implements MustVerifyEmail ,
 {
-     use HasWallet;
     use LaratrustUserTrait;
-   
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

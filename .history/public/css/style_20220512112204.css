@@ -1027,7 +1027,10 @@ table th {
     left: -7.6vw;
     top: 40px;
   }
-
+.yellow
+{
+  font-size: 0.5rem;
+}
   section.send_message .box img {
     width: 34vw;
   }
@@ -1092,12 +1095,7 @@ table th {
   section.social span {
     font-size: 3vw;
   }
-  .f-size
-  {
-    font-size:0.8rem;
-    margin:0;
-    padding:0;
-  }
+
   .contactheader {
     font-size: 1rem;
     font-weight: lighter;

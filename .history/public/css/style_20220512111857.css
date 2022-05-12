@@ -766,7 +766,7 @@ textarea {
 
 .card-wallet
 {
-  width:98%;
+  width:100%;
   background-color: var(--darkgrey) !important;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   margin-top: 1rem;
@@ -1092,12 +1092,7 @@ table th {
   section.social span {
     font-size: 3vw;
   }
-  .f-size
-  {
-    font-size:0.8rem;
-    margin:0;
-    padding:0;
-  }
+
   .contactheader {
     font-size: 1rem;
     font-weight: lighter;

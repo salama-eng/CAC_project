@@ -30,8 +30,7 @@ class HomeController extends Controller
     }
 
     public function showHomePage(){
-        $postsAll=Post::with(['users'])->where('is_active',1)->where('end_date','>',now())->where('status_auction','==',0)
-        ->orderBy('end_date', 'desc')->take(6)->get();
+        $postsAll=Post::with(['users'])->where('is_active',1)->where('end_date','>',now())->where('status_auction','==',0)->orderBy('end_date', 'desc')->get();
         $slider = slider_image::select()->where('is_active',1)->get();
         $content = siteHome::select()->get();
         $member = membership::select()->where('is_active',1)->get();

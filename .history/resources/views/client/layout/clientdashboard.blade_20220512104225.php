@@ -63,7 +63,7 @@
 
                     </li>
                     <li>
-                        <a href="wallet" class="text-center p-3 text-light"><h6 >معلومات المحفضة</h6></a>
+                        <a href="{{route('wallet')}}" class="text-center p-3 text-light"><h6 >معلومات المحفضة</h6></a>
 
                     </li>
                     <li>

@@ -30,8 +30,7 @@ class HomeController extends Controller
     }
 
     public function showHomePage(){
-        $postsAll=Post::with(['users'])->where('is_active',1)->where('end_date','>',now())->where('status_auction','==',0)
-        ->orderBy('end_date', 'desc')->take(6)->get();
+        $postsAll=Post::with(['users'])->where('is_active',1)->where('end_date','>',now())->where('status_auction','==',0)->get();
         $slider = slider_image::select()->where('is_active',1)->get();
         $content = siteHome::select()->get();
         $member = membership::select()->where('is_active',1)->get();
@@ -44,19 +43,24 @@ class HomeController extends Controller
         ]);
     }
     public function show_auctions(){
+
         $posts=Post::with(['auctions'])->where('is_active',1)->get();
         $category = Category::get();
         $model = post::get();
         $status = post::get();
+
         $category = $category->unique('name');
         $model = $model->unique('model');
         $status = $status->unique('status_car');
+        
         // Auction::where('is_active',1)->max('bid_total');
         return view('front.auctions', [
             'posts' => $posts,
             'category' => $category,
             'model' => $model,
             'status' => $status,
+            
+           
         ]);
 
 
