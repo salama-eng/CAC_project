@@ -794,7 +794,8 @@ textarea {
 
   color: var(--whitecolor);
   background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/wallet.jpg');
- 
+  background-repeat: no-repeat;
+  background-size: cover;
  padding:1rem;
 }
 

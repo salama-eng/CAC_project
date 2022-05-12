@@ -101,7 +101,7 @@
            
          </li>
 
-      <li><p class="text-white text-end text-light fs-7 mx-2 px-2" type=""> {{Auth::user()->name}}
+      <li><p class="text-white text-end text-light fs-7 mx-2" type=""> {{Auth::user()->name}}
    
 
      </p></li>

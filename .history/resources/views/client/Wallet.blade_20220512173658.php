@@ -3,7 +3,7 @@
     <section class="col-11 m-auto">
         <div class="dash-header3 col-lg-12  col-11 m-auto mt-5 d-flex justify-content-center align-items-center">
 
-            <div class="dash-header1 col-8">
+            <div class="dash-header col-8">
                 <h5 class=" p-3"><span class="yellow f-size"> اسم المستخدم : </span> {{ Auth::user()->name }}
                 </h5>
                 <h6 class=" p-3 active"><span class="text-white f-size"> رقم المحفضة : </span> 54{{ Auth::user()->id }}
@@ -29,7 +29,7 @@
 
             </div>
         </div>
-        <div class=" d-flex justify-content-between mt-2">
+        <div class=" d-flex justify-content-between">
             <button class="bg-yellow text-white py-2 px-3 m-2 p-dash fs-6">اجمالي المبلغ في المحفضة : 455</button>
             <button class="bg-yellow text-white py-2 px-3 m-2 p-dash  fs-6">طلب المبلغ</button>
         </div>

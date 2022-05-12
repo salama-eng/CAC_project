@@ -789,15 +789,6 @@ textarea {
   background-size: cover;
  padding:1rem;
 }
-.dash-header3
-{
-
-  color: var(--whitecolor);
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/wallet.jpg');
- 
- padding:1rem;
-}
-
 .dash-header2
 {
  text-align:left;
@@ -1081,12 +1072,7 @@ table th {
 }
 
 .green{
-  color:rgb(21, 122, 127) !important;
-  font-weight: bold !important;
-}
-.red{
-  color:rgb(220, 71, 30) !important;
-  font-weight: bold !important;
+  color:rgb(8, 207, 217) !important;
 }
 @media (max-width:750px) {
   section.social h5 {
@@ -1095,10 +1081,6 @@ table th {
   .green{
     font-size:1rem !important;
   }
-  .red{
-    font-size:1rem !important;
-  }
-  
   .p-dash
 {
   

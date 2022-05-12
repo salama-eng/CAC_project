@@ -101,10 +101,11 @@
            
          </li>
 
-      <li><p class="text-white text-end text-light fs-7 mx-2 px-2" type=""> {{Auth::user()->name}}
+      <li><p class="text-white text-end text-light fs-7" type=""> {{Auth::user()->name}}
    
 
-     </p></li>
+     </p>
+      <li><p class=" text-end text-light fs-7 " type="">  {{Auth::user()->email}}</p></li>
      
 
       <li><button class="dropdown-item  text-end fs-7 mt-2" type="button">  <a href="{{route('profile')}}" class=" card-link active">البروفايل <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></button></li>

@@ -29,7 +29,7 @@
 
             </div>
         </div>
-        <div class=" d-flex justify-content-between mt-2">
+        <div class=" d-flex justify-content-between mt-3">
             <button class="bg-yellow text-white py-2 px-3 m-2 p-dash fs-6">اجمالي المبلغ في المحفضة : 455</button>
             <button class="bg-yellow text-white py-2 px-3 m-2 p-dash  fs-6">طلب المبلغ</button>
         </div>

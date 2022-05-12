@@ -789,15 +789,6 @@ textarea {
   background-size: cover;
  padding:1rem;
 }
-.dash-header3
-{
-
-  color: var(--whitecolor);
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/wallet.jpg');
- 
- padding:1rem;
-}
-
 .dash-header2
 {
  text-align:left;
