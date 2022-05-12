@@ -162,11 +162,12 @@
             <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2">
                 <h6 class="active pt-3 pb-1">تصفح <i class="fa fa-arrow-left"></i></h6>
                 <p class="text-light mt-3">
-                    <a href="/home" class="d-block text-light py-1">الرئيسية</a>
-                    <a href="/offers" class="d-block text-light py-1">العروض</a>
-                    <a href="/auctions" class="d-block text-light py-1">المزادات</a>
-                    <a href="/aboutUs" class="d-block text-light py-1">عن الشركة</a>
-                    <a href="/contact_us" class="d-block text-light py-1">خدماتنا</a>
+                    <a href="{{ url('home' )}}" class="d-block text-light py-1">الرئيسية</a>
+                    <a href="{{ url('offers' )}}" class="d-block text-light py-1">العروض</a>
+                    <a href="{{ url('auctions' )}}" class="d-block text-light py-1">المزادات</a>
+                    <a href="{{ url('aboutUs' )}}" class="d-block text-light py-1">عن الشركة</a>
+                    <a href="{{ url('contact_us' )}}" class="d-block text-light py-1">خدماتنا</a>
+                    <a href="{{ url('privacyPolicy' )}}" class="d-block text-light py-1">سياسة الخصوصية</a>
                     <a href="" class="d-block text-light py-1">كيفية الاستخدام</a>
                 </p>
 
