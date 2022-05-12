@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
 class testController extends Controller
 {
     //
@@ -20,7 +20,7 @@ class testController extends Controller
               )
             ], "currency" => "YER",
             "total_amount" => 1500,
-            "success_url" => "successPayment",
+            "success_url" => "http://localhost:8000/successPayment",
             "cancel_url" => "https://company.com/cancel",
             "metadata" => [
               "Customer name" => "somename",
@@ -56,19 +56,17 @@ class testController extends Controller
           ));
       
           $response = curl_exec($curl);
-          $err = curl_error($curl);
-      
-          curl_close($curl);
-      
-          if ($err) {
-            echo " Error #:" . $err;
-          } else {
-            echo $response;
-            //print_r(json_decode($response,true));
-            //  $result= json_decode($response,true);
-            //  echo $result['message'];
-      
-          }
+           $err = curl_error($curl);
+       
+           curl_close($curl);
+       
+           if ($err) {
+             echo " Error #:" . $err;
+           } else {
+             echo $response;
+         
+       
+           }
       
     }
     function success(Request $request){
@@ -76,4 +74,49 @@ class testController extends Controller
       // $curl = curl_exec($url);
       return json_decode($request);
     }
+
+    public function showTest(){
+      $info = Route::current()->parameter('http://waslpayment.com/api/test/Payment_confirmation');
+     
+       // $data=json_decode($info);
+       $data= $arrayFormat=json_decode($info,true);
+   
+        $card_types =0;
+         for($i=0;$i<$data;$i++){
+             $status=array_column($arrayFormat,'status');
+             $paid_amount=array_column($arrayFormat,'paid_amount');
+             $card_holder=array_column($arrayFormat,'card_holder');
+             $card_type= array_column($arrayFormat,'card_type');
+             $created_at=array_column($arrayFormat,'created_at');
+             $updated_at=array_column($arrayFormat,'updated_at');
+   
+   
+         }
+         $card_type=str_replace('+',' ',$card_types[0]);
+         $card_holder=str_replace('+',' ',$card_holder[0]);
+   
+         
+   return $status;
+   }
+   
+   /**
+      * This function is used to show the cancel page with
+      * @param cancel 
+      */
+   public function testCancel(){
+   
+     $cancel = Route::current()->parameter('cancel');
+   
+     // return $cancel;
+     return view('paymentViews.cancel_payment',compact('cancel'));
+   
+   }
+   
+   public function viewCancel(){
+   
+    
+     return view('paymentViews.cancel_payment');
+   
+   }
+   
 }
