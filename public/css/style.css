@@ -439,7 +439,7 @@ a .bg-yellow:hover {
   width: 100vw !important;
 }
 .animate:hover{
-  transform: scale(1.1) !important;
+  transform: scale(1.03) !important;
   transition: all 1s 0.1s ease;
 }
 .animate,.card{
@@ -1029,6 +1029,21 @@ table th {
 /* end chat by amat */
 
 
+/* pagination by ehsas */
+.pagination{
+  direction: ltr;
+}
+.pagination .active{
+  background-color: var(--yellow) !important;
+  border: none !important;
+}
+.pagination .enabled,.pagination .enabled:hover{
+  color: var(--yellow);
+}
+.page-link{
+  background-color: transparent !important;
+}
+/* end pagination */
 
 
 @media (min-width:836px) {
