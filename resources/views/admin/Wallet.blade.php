@@ -1,4 +1,4 @@
-@extends('client.layout.clientdashboard')
+@extends('admin.layout.dashboard')
 @section('content')
     <section class="col-11 m-auto">
         <div class="dash-header3 col-lg-12  col-11 m-auto mt-5 d-flex justify-content-center align-items-center">
