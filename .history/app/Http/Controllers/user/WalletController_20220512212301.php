@@ -11,12 +11,10 @@ class WalletController extends Controller
    public function showwallet($user_id)
     {
        $user= User::find($user_id);
-      $balance=$user->balance;
-      $id=$user->uuid;
+      $balance=$user->balanceFloat;
       return view('client.wallet', [
         'balance' => $balance,
-       'user'=> $user,
-       'id'=> $id
+       'user'=> $user
         
     ]);
     }

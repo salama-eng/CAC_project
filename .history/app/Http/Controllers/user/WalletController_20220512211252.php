@@ -12,12 +12,10 @@ class WalletController extends Controller
     {
        $user= User::find($user_id);
       $balance=$user->balance;
-      $id=$user->uuid;
-      return view('client.wallet', [
-        'balance' => $balance,
-       'user'=> $user,
-       'id'=> $id
-        
+      return view('client.profile', [
+        'balance'              => $balance,
+        'bank'              => $bank,
+        'user_payment'      => $user_payment,
     ]);
     }
 }

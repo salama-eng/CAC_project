@@ -26,7 +26,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\user\UserPostsController;
-use App\Http\Controllers\user\WalletController;
 use App\Http\Controllers\user\UserAuctionController;
 use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\user\UserHomeController;

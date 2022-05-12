@@ -9,10 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Bavix\Wallet\Traits\HasWallet;
 use Bavix\Wallet\Interfaces\Wallet;
-use Bavix\Wallet\Interfaces\WalletFloat;
+
 use Laratrust\Traits\LaratrustUserTrait;
 
-class User extends Authenticatable implements MustVerifyEmail ,Wallet
+class User extends Authenticatable implements MustVerifyEmail ,Wallet, WalletFloat
 {
      use HasWallet;
     use LaratrustUserTrait;
@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail ,Wallet
     {
         return $this->hasMany(Post::class, 'user_id');
     }
-    
+
     public function auctions()
     {
         return $this->hasMany(Auction::class ,'owner_user_id');
