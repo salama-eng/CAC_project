@@ -44,12 +44,8 @@ class HomeController extends Controller
         ]);
     }
     public function show_auctions(){
-<<<<<<< HEAD
 
         $posts=Post::with(['auctions'])->where('is_active',1)->paginate(9);
-=======
-        $posts=Post::with(['auctions','category'])->where('is_active',1)->get();
->>>>>>> 53ccc3367249f294ce5ae5778b9c014eefa167cd
         $category = Category::get();
         $model = post::get();
         $status = post::get();
@@ -67,11 +63,7 @@ class HomeController extends Controller
 
     }
     public function show_offers(){
-<<<<<<< HEAD
-   $posts=Post::with(['auctions'])->where('is_active',1)->paginate(1);
-=======
-   $posts=Post::with(['auctions','category'])->where('is_active',1)->get();
->>>>>>> 53ccc3367249f294ce5ae5778b9c014eefa167cd
+   $posts=Post::with(['auctions'])->where('is_active',1)->paginate(9);
    $category = Category::get();
    $model = post::get();
    $status = post::get();
