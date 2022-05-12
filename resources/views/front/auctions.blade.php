@@ -187,4 +187,6 @@
     </div>
 
 </section>
+{{ $Posts->links('front.layout.paginate') }}
+
 @endsection

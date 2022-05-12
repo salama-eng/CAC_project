@@ -101,9 +101,10 @@
                                 <a href="{{route('auctiondetails',$post->id)}}" class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
 
                             </div>
+                           
                         </div>
 
-
+                        
                         <!--  the model   -->
 
                         <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
@@ -133,11 +134,17 @@
                                     </form>
                                 </div>
                             </div>
+                            
                         </div>
                     @endif
                 @endif
             @endforeach
+           
         </div>
-
+       
+       
     </section>
+  <section>
+  </section>
+  {{ $Posts->links('front.layout.paginate') }}
 @endsection
