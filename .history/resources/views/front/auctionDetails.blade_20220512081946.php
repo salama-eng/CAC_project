@@ -55,11 +55,11 @@
 
                     </div>
 
-                    <div class=" border-n mt-4 ">
+                    <div class=" border-n">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
 
-                            <div class="modal-body bg-darkgrey  ">
+                            <div class="modal-body bg-darkgrey mt-4  ">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul style="list-style: none">

@@ -241,9 +241,9 @@
                     @if(isset(auth()->user()->unreadNotifications))
                         @foreach (auth()->user()->unreadNotifications as $notification)
                             @if ($notification->type == 'App\Events\AdminNotification')
-                                <li>@if(isset($notification->data['admin']['title']))
+                                <li>
                                     <a class="dropdown-item text-light fs-7"
-                                        href="{{ $notification->data['admin']['link'] }}">
+                                        href="{{ $notification->data['admin']['link'] }}">@if (isset($notification->data['admin']['title']))
                                             {{ $notification->data['admin']['title'] }}
                                        
                                         {{ auth()->user()->name }}

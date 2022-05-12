@@ -431,7 +431,7 @@ body {
 .bg-yellow {
   background-color: var(--yellow);
 }
-a .bg-yellow:hover {
+.bg-yellow:hover {
   background-color: var(--yellow1);
 }
 .offers {
