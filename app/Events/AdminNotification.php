@@ -18,11 +18,11 @@ class AdminNotification extends Notification
     use Dispatchable, InteractsWithSockets, SerializesModels, Queueable;
 
     
-    protected $lesson;
+    protected $admin;
 
-  public function __construct($lesson)
+  public function __construct($admin)
   {
-        $this->lesson = $lesson;
+        $this->admin = $admin;
   }
   public function via($notifiable)
     {
@@ -41,13 +41,13 @@ class AdminNotification extends Notification
   public function toDatabase($notifiable)
     {
         return [
-            'lesson'    => $this->lesson,
+            'admin'    => $this->admin,
         ];
     }
     public function toBroadcast($notifiable)
     {
         return [
-            'lesson'    => $this->lesson,
+            'admin'    => $this->admin,
         ];
     }
 }

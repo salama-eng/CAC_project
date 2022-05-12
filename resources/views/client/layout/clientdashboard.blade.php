@@ -59,17 +59,17 @@
                 </div>
                 <ul class="list-unstyled components fs-6 mt-4 ">
                     <li>
-                        <a href="{{route('UserDash')}}"></a><h5 class="text-center p-3 text-light"> الرئيسية</h5></a>
+                        <a href="{{route('UserDash')}}" class="text-center p-3 text-light"><h6 > الرئيسية</h6></a>
 
                     </li>
                     <li>
-                       <a href="{{route('profile')}}"class="text-center p-3 text-light "><h5 >المعلومات الشخصية</h5></a> 
+                       <a href="{{route('profile')}}"class="text-center p-3 text-light "><h6 >المعلومات الشخصية</h6></a> 
 
                     </li>
                     <li class="active dropdown">
-                     <h5>   <a class="dropdown-toggle text-warning text-center text-light pb-2" data-toggle="collapse"
+                     <h6>   <a class="dropdown-toggle text-warning text-center text-light pb-2" data-toggle="collapse"
                             aria-expanded="false">إدارة
-                            طلبات إضافة مزاد</a></h5>
+                            طلبات إضافة مزاد</a></h6>
                         <ul class="collapse list-unstyled fs-6" id="manage">
                             <li><a href="{{route('addAuction')}}" class="text-light text-center p-3">إضافة مزاد</a></li>
                             <li><a href="{{route('postedcars')}}" class="text-light text-center p-3"> السيارات المضافة في المزاد</a></li>
@@ -80,9 +80,9 @@
                     </li>
                    
                     <li class="active dropdown2">
-                        <h5> <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
+                        <h6> <a class="dropdown-toggle text-center text-light pb-2" data-toggle="collapse"
                         aria-expanded="false">إدارة
-                        طلبات المزايدة</a></h5>
+                        طلبات المزايدة</a></h6>
                         <ul class="collapse list-unstyled fs-6" id="manage2">
                             <li><a href="{{route('AuctionCars')}}" class="text-light text-center p-3"> السيارات التي تمت المزايدة عليها</a></li>
                             <li><a href="{{route('UserUncomplateAuctions')}}" class="text-light text-center p-3"> المزادات الغير مكتملة</a></li>
@@ -140,16 +140,18 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu notification bg-dark">
-                    @if (isset(auth()->user()->unreadNotifications))
+                @if (isset(auth()->user()->unreadNotifications))
                         @foreach (auth()->user()->unreadNotifications as $notification)
-                            <li>
+                            @if($notification->type == 'App\Events\NewNotification')
+                                <li>
 
-                                <a class="dropdown-item text-light fs-7"
-                                    href="{{ $notification->data['lesson']['link'] }}">{{ $notification->data['lesson']['title'] }}
-                                    {{ auth()->user()->name }}
-                                    <i class="semiOrange fs-8 "><br></i>{{ $notification->data['lesson']['body'] }}</a>
-                                <p class="dropdown-divider mx-2"></p>
-                            </li>
+                                    <a class="dropdown-item text-light fs-7"
+                                        href="{{ $notification->data['lesson']['link'] }}">{{ $notification->data['lesson']['title'] }}
+                                        {{ auth()->user()->name }}
+                                        <i class="semiOrange fs-8 "><br></i>{{ $notification->data['lesson']['body'] }}</a>
+                                    <p class="dropdown-divider mx-2"></p>
+                                </li>
+                            @endif
                         @endforeach
                     @endif
 
@@ -241,6 +243,7 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
     channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
         var existingNotifications = notifications.html();
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
+        if({{auth()->user()->unreadNotifications()->count()}} ){
         var newNotificationHtml = `
         <li><a class="dropdown-item text-light fs-7" href="` + data.lesson.link + `"> ` + data.lesson.title + ` <?php echo auth()->user()->name; ?>
                 <i class="semiOrange fs-8 "><br>` + data.lesson.body + `</i></a>
@@ -255,6 +258,7 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
         notificationsWrapper.show();
         notificationsCount -= 1;
         notifications = 0;
+        }
     });
 </script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>

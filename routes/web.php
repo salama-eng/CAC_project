@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AboutUsController;
 use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
 
+use App\Http\Controllers\testController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\LessonController;
@@ -72,7 +73,8 @@ Route::post('/new_password',[AuthController::class,'newPassword'])->name('new_pa
 
 
 Route::group(['middleware' => 'auth'], function () {
-   
+    Route::get('test', [testController::class, 'index'])->name('test');
+    Route::get('successPayment', [testController::class, 'success'])->name('successPayment');
     Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
         // client profile Manage
         Route::post('/save_profile', [UserProfileController::class, 'save_profile'])->name('save_profile');
