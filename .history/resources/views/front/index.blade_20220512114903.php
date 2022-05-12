@@ -84,7 +84,10 @@
 
         </div>
 
+
         </div>
+
+
 
         <div class="offers d-flex flex-column align-items-center pt-5 ">
             <h1 class="d-flex flex-wrap   yellow fs-3"> العروض قريبة الانتهاء </h1>

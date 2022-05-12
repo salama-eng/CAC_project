@@ -85,9 +85,9 @@
                                 </h5>
                                 <p class="text-center fs-7 card-details type">
                                     @if ($post->status_car == 1)
-                                        جديد /  {{ $post->category->name }}
+                                        جديد
                                     @else
-                                        مستخدم / {{ $post->category->name }}
+                                        مستخدم
                                     @endif
                                 </p>
 

@@ -80,14 +80,14 @@
                                     class="card-img-top p-3" height="220" alt="..."></a>
                             <div class="card-body py-0">
                                 
-                                <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }} /
+                                <h5 class="card-title text-center"><span class="cate"></span>{{ $post->category->name }} /
                                     <span class="mod">{{ $post->model }}</span>
                                 </h5>
                                 <p class="text-center fs-7 card-details type">
                                     @if ($post->status_car == 1)
-                                        جديد /  {{ $post->category->name }}
+                                        جديد {{ $post->name }} /
                                     @else
-                                        مستخدم / {{ $post->category->name }}
+                                        مستخدم {{ $post->name }} /
                                     @endif
                                 </p>
 

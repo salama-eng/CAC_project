@@ -28,7 +28,7 @@
                             <select id="cate" class="text-center  py-1">
 @foreach ($category as $cat )
 
-                                <option value="{{$cat->name}}">{{$cat->name}}</option>
+                                <option value="{{$cat->id}}">{{$cat->name}}</option>
                                
                                 @endforeach
                             </select>
@@ -79,15 +79,15 @@
                             <a href="{{ route('auctiondetails', $post->id) }}"> <img src="/images/{{ $post->image }}"
                                     class="card-img-top p-3" height="220" alt="..."></a>
                             <div class="card-body py-0">
-                                
-                                <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }} /
+                                <input type="hidden" value="{{$post->category_id}}" class="cate>
+                                <h5 class="card-title text-center"><span "></span>{{ $post->name }} /
                                     <span class="mod">{{ $post->model }}</span>
                                 </h5>
                                 <p class="text-center fs-7 card-details type">
                                     @if ($post->status_car == 1)
-                                        جديد /  {{ $post->category->name }}
+                                        جديد
                                     @else
-                                        مستخدم / {{ $post->category->name }}
+                                        مستخدم
                                     @endif
                                 </p>
 

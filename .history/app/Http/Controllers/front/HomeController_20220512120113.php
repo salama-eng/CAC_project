@@ -62,7 +62,7 @@ class HomeController extends Controller
 
     }
     public function show_offers(){
-   $posts=Post::with(['auctions','category'])->where('is_active',1)->get();
+   $posts=Post::with(['auctions'])->where('is_active',1)->get();
    $category = Category::get();
    $model = post::get();
    $status = post::get();
