@@ -47,18 +47,15 @@ class HomeController extends Controller
         $posts=Post::with(['auctions'])->where('is_active',1)->get();
         $category = Category::get();
         $model = post::get();
-        $status = post::get();
 
         $category = $category->unique('name');
         $model = $model->unique('model');
-        $status = $status->unique('status_car');
-        
+        return $model;
         // Auction::where('is_active',1)->max('bid_total');
         return view('front.auctions', [
             'posts' => $posts,
             'category' => $category,
             'model' => $model,
-            'status' => $status,
             
            
         ]);
@@ -67,21 +64,9 @@ class HomeController extends Controller
     }
     public function show_offers(){
    $posts=Post::with(['auctions'])->where('is_active',1)->get();
-   $category = Category::get();
-   $model = post::get();
-   $status = post::get();
 
-   $category = $category->unique('name');
-   $model = $model->unique('model');
-   $status = $status->unique('status_car');
-   
         return view('front.offers', [
             'Posts' => $posts,
-            'category' => $category,
-            'model' => $model,
-            'status' => $status,
-            
-
         ]);
     }
 

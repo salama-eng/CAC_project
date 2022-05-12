@@ -18,8 +18,8 @@
 
                         <div class="my-2 mx-auto">
                             <select id="mod" class="text-center py-1">
-                                @foreach ($model as $mod )
-                                <option value="{{$mod->model}}">{{$mod->model}}</option>
+                                @foreach ($posts as $post )
+                                <option value="{{$post->model}}">{{$post->model}}</option>
                               
                                 @endforeach
                             </select>
@@ -35,15 +35,9 @@
                         </div>
                         <div class="my-2 mx-auto">
                             <select id="type" class="text-center  py-1">
-                                @foreach ($status as $status )
-                                @if ($status->status_car == 1)
+
                                 <option value="مستخدم">مستخدم</option>
-                                @elseif ($status->status_car != 1)
                                 <option value="جديد">جديد</option>
-                                @endif
-                             
-                               
-                                @endforeach
                             </select>
                         </div>
 

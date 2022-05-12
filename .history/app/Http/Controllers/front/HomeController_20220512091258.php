@@ -76,12 +76,9 @@ class HomeController extends Controller
    $status = $status->unique('status_car');
    
         return view('front.offers', [
-            'Posts' => $posts,
             'category' => $category,
             'model' => $model,
             'status' => $status,
-            
-
         ]);
     }
 

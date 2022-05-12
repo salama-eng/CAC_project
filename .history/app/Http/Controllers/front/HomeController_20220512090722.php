@@ -67,21 +67,9 @@ class HomeController extends Controller
     }
     public function show_offers(){
    $posts=Post::with(['auctions'])->where('is_active',1)->get();
-   $category = Category::get();
-   $model = post::get();
-   $status = post::get();
 
-   $category = $category->unique('name');
-   $model = $model->unique('model');
-   $status = $status->unique('status_car');
-   
         return view('front.offers', [
             'Posts' => $posts,
-            'category' => $category,
-            'model' => $model,
-            'status' => $status,
-            
-
         ]);
     }
 

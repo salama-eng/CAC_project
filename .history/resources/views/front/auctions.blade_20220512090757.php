@@ -42,7 +42,7 @@
                                 <option value="جديد">جديد</option>
                                 @endif
                              
-                               
+                                <option value="جديد">جديد</option>
                                 @endforeach
                             </select>
                         </div>

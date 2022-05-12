@@ -18,32 +18,27 @@
 
                         <div class="my-2 mx-auto">
                             <select id="mod" class="text-center py-1">
-                                @foreach ($model as $mod )
-                                <option value="{{$mod->model}}">{{$mod->model}}</option>
-                              
-                                @endforeach
+
+                                <option value="2000">2000</option>
+                                <option value="2004">2004</option>
+                                <option value="2010">2010</option>
+                                <option value="2020">2020</option>
                             </select>
                         </div>
                         <div class="my-2 mx-auto">
                             <select id="cate" class="text-center  py-1">
 @foreach ($category as $cat )
 
-                                <option value="{{$cat->name}}">{{$cat->name}}</option>
+                                <option value="Toyota">{{$cat->name}}</option>
                                
                                 @endforeach
                             </select>
                         </div>
                         <div class="my-2 mx-auto">
                             <select id="type" class="text-center  py-1">
-                                @foreach ($status as $status )
-                                @if ($status->status_car == 1)
+
                                 <option value="مستخدم">مستخدم</option>
-                                @elseif ($status->status_car != 1)
                                 <option value="جديد">جديد</option>
-                                @endif
-                             
-                               
-                                @endforeach
                             </select>
                         </div>
 
