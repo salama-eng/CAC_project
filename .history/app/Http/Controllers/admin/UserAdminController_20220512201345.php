@@ -11,7 +11,8 @@ class UserAdminController extends Controller
 {
     //
         function showAllUsers(){
-
+$user= User::find(5);
+            return $user->balance();
         $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
         // $users = User::leftJoin('user_profiles','users.id','user_profiles.user_id')->get();
         $users = User::with('profile')->get();

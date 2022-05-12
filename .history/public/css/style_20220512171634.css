@@ -439,7 +439,7 @@ a .bg-yellow:hover {
   width: 100vw !important;
 }
 .animate:hover{
-  transform: scale(1.03) !important;
+  transform: scale(1.1) !important;
   transition: all 1s 0.1s ease;
 }
 .animate,.card{
@@ -789,15 +789,6 @@ textarea {
   background-size: cover;
  padding:1rem;
 }
-.dash-header3
-{
-
-  color: var(--whitecolor);
-  background-image: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.7)) ,url('../assets/images/wallet.jpg');
- 
- padding:1rem;
-}
-
 .dash-header2
 {
  text-align:left;
@@ -1029,27 +1020,8 @@ table th {
 /* end chat by amat */
 
 
-/* pagination by ehsas */
-.pagination{
-  direction: ltr;
-}
-.pagination .active{
-  background-color: var(--yellow) !important;
-  border: none !important;
-}
-.pagination .enabled,.pagination .enabled:hover{
-  color: var(--yellow);
-}
-.page-link{
-  background-color: transparent !important;
-}
-/* end pagination */
 
-/* privacy policy style by ehsas */
-.privacy-text{
-  line-height: 2rem;
-}
-/* end privacy policy style */
+
 @media (min-width:836px) {
   section.send_message .box img {
     left: -7.6vw;
@@ -1100,29 +1072,15 @@ table th {
 }
 
 .green{
-  color:rgb(21, 122, 127) !important;
-  font-weight: bold !important;
-}
-.red{
-  color:rgb(220, 71, 30) !important;
-  font-weight: bold !important;
+  color:rgb(8, 207, 217) !important;
 }
 @media (max-width:750px) {
   section.social h5 {
     font-size: 4vw;
   }
   .green{
-    font-size:1rem !important;
+    font-size:1.1rem !important;
   }
-  .red{
-    font-size:1rem !important;
-  }
-  
-  .p-dash
-{
-  
-  font-size: 0.8rem !important;
-}
   .hour
   {
     font-family: Evogria;

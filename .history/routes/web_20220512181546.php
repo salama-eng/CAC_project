@@ -90,6 +90,13 @@ Route::group(['middleware' => 'auth'], function () {
             return view('front.layout.clientdashboard');
         });
 
+      
+        // Route::get('/home', function () {
+        //     return view('front.home');
+        // });
+
+
+
         //     client postes mangment  ----------------------------------------------------------------
         Route::get('/addAuction', [UserPostsController::class, 'addPost'])->name('addAuction');
         Route::post('/save_post', [UserPostsController::class, 'save_post'])->name('save_post');
@@ -236,10 +243,6 @@ Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 
 Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');
 Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
-Route::get('/privacyPolicy', function(){
-    return view('front.privacyPolicy');
-
-})->name('privacyPolicy');
 
 Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message');
 /******  Chat    ******* */

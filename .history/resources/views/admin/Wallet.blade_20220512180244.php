@@ -42,7 +42,7 @@
                 <div class="d-flex justify-content-between align-items-center">
 
                     <div>
-                        <p class="fs-6 p-dash ">تم ايداع مبلغ من رقم حساب <span class="active">(5536)</span> المستخدم <span
+                        <p class="fs-6 p-dash "> من رقم حساب <span class="active">(5536)</span> المستخدم <span
                                 class="active">خليفة القاضي</span></p>
                         <p class="fs-7 p-dash grey ">@php
                             echo now();
@@ -57,7 +57,7 @@
               <div class="d-flex justify-content-between align-items-center">
 
                   <div>
-                      <p class="fs-6 p-dash ">تم سحب مبلغ الى رقم حساب <span class="active">(5536)</span> المستخدم <span
+                      <p class="fs-6 p-dash "> الى رقم حساب <span class="active">(5536)</span> المستخدم <span
                               class="active">خليفة القاضي</span></p>
                       <p class="fs-7 p-dash grey ">@php
                           echo now();

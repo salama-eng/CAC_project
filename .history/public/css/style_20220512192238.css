@@ -1,17 +1,18 @@
 :root {
+  /* --yellow: #E39100; */
   --yellow: #E39100;
   --yellow2: rgb(255, 183, 49);
   --yellow1: rgba(227, 145, 0, 0.8);
-  --darkgrey: #191919;
-  --lightgrey: #1C1C1C;
-  --lightgrey1: rgb(28, 28, 28, 0.8);
+  --darkgrey: #ffffff;
+  /* --darkgrey: #191919; */
+  --lightgrey: #b1b1b1;
+  --lightgrey1: rgba(121, 110, 110, 0.8);
   --whitecolor: #fff2eb;
   --whitecolor1: rgba(255, 242, 235, 0.4);
 
 }
 .border-yellow
 {
-
   border: 2px solid var(--yellow);
 }
 * {
@@ -1045,11 +1046,7 @@ table th {
 }
 /* end pagination */
 
-/* privacy policy style by ehsas */
-.privacy-text{
-  line-height: 2rem;
-}
-/* end privacy policy style */
+
 @media (min-width:836px) {
   section.send_message .box img {
     left: -7.6vw;

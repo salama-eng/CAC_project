@@ -82,7 +82,7 @@
 
    
 
-    <ul class="dropdown-menu bg-dark  fs-7 yellow " aria-labelledby="dropdownMenu2" style="width:12rem;">
+    <ul class="dropdown-menu bg-dark  fs-7 yellow " aria-labelledby="dropdownMenu2" style="width:14rem;">
 
 
         <li>
@@ -101,7 +101,7 @@
            
          </li>
 
-      <li><p class="text-white text-end text-light fs-7 mx-2 px-2" type=""> {{Auth::user()->name}}
+      <li><p class="text-white text-end text-light fs-7" type=""> {{Auth::user()->name}}
    
 
      </p></li>

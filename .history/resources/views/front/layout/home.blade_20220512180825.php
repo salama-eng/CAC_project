@@ -82,39 +82,35 @@
 
    
 
-    <ul class="dropdown-menu bg-dark  fs-7 yellow " aria-labelledby="dropdownMenu2" style="width:12rem;">
+<ul class="dropdown-menu bg-dark userinfo text-center p-0">
+    <li>
+       <div class="d-flex flex-column justify-center">
+           <div class="bg-yellow p-2  mb-2 ">
+
+            @if (isset(Auth::user()->profile->avatar))
+            <img src="/images/{{Auth::user()->profile->avatar}}" width="80" class="rounded-circle "alt="{{Auth::user()->profile->avatar}}">
+        @else
+
+            <img src="/assets/images/avatar.png" class="rounded-circle" width="80" alt="avatar.png">
 
 
-        <li>
-            
-                <div class="bg-yellow p-2  mb-2 m-auto d-flex justify-content-center">
-
-                 @if (isset(Auth::user()->profile->avatar))
-                 <img src="/images/{{Auth::user()->profile->avatar}}" width="80" class="rounded-circle m-auto"alt="{{Auth::user()->profile->avatar}}">
-             @else
-     
-                 <img src="/assets/images/avatar.png" class="rounded-circle m-auto" width="80" alt="avatar.png">
-     
-     
-         @endif
-                </div>
-           
-         </li>
-
-      <li><p class="text-white text-end text-light fs-7 mx-2 px-2" type=""> {{Auth::user()->name}}
-   
-
-     </p></li>
-     
-
-      <li><button class="dropdown-item  text-end fs-7 mt-2" type="button">  <a href="{{route('profile')}}" class=" card-link active">البروفايل <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></button></li>
-      <li><hr class="text-white mb-2 ">
+    @endif
+           </div>
+        <h6 class="dropdown-item text-light mt-1  fs-7 " href="#"> 
+            {{Auth::user()->name}}
+        </h6>
+        <h6 class="dropdown-item text-light mt-1 mb-0 fs-7">
+            <a href="{{route('profile')}}">بروفايل المستخدم </a>
+        </h6>
+    </div>
+    </li>
+    <li><hr class="text-white mb-2 ">
         <div  class="d-flex justify-content-center align-items-center p-2">
         <a class="  text-light  fs-7 " href="{{route('logout')}}">تسجيل الخروج</a> 
-        <img src="/assets/icons/logout.png" class=" m-1 " width="20" height="20" alt="" > 
+        <img src="assets/icons/logout.png" class=" m-1 " width="20" height="20" alt="" > 
        </div>
     </li>
-    </ul>
+</ul>
   </div>
                     @endif
                         

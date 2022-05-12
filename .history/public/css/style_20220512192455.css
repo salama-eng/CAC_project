@@ -1045,11 +1045,7 @@ table th {
 }
 /* end pagination */
 
-/* privacy policy style by ehsas */
-.privacy-text{
-  line-height: 2rem;
-}
-/* end privacy policy style */
+
 @media (min-width:836px) {
   section.send_message .box img {
     left: -7.6vw;
