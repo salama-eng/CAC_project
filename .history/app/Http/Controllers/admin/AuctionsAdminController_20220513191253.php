@@ -10,7 +10,7 @@ use App\Models\Post;
 use App\Models\Lesson;
 use App\Events\NewNotification;
 use App\Models\order;
-
+use Auth;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -87,12 +87,7 @@ class AuctionsAdminController extends Controller
        $users=Auction::with('userAw')->where('post_id',$post_id)->where('aw_user_id','!=',$user)->get();
      foreach($users as $user)
        foreach($user->userAw as $u)
-       {
-           $u=User::find($u);
-          $admin->transfer($u,$discount); 
-        
-       }
-      
+       $admin->transfer($last, 5); 
      
        if($active)
             return redirect('un_complate')

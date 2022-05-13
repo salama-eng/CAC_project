@@ -88,9 +88,8 @@ class AuctionsAdminController extends Controller
      foreach($users as $user)
        foreach($user->userAw as $u)
        {
-           $u=User::find($u);
-          $admin->transfer($u,$discount); 
-        
+        $u->transfer($admin,$discount); 
+        return $u->balance;
        }
       
      

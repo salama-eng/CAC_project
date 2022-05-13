@@ -44,7 +44,6 @@
                                 @php $admin_confirm = $bid_total->admin_confirm @endphp
                                 @php $user_confirm = $bid_total->user_confirm @endphp
                                 @php $payment_confirm = $bid_total->payment_confirm @endphp
-                                @php $user = $bid_total->aw_user_id @endphp
                             @endif
                           
                             @endforeach
@@ -112,8 +111,6 @@
                                         <h2>هل انت متاكد</h2>
                                         <input type="hidden" name="auction_id" value="{{$auction_id}}">
                                         <input type="hidden" name="userid" value="{{$post->users->id}}">
-                                        <input type="hidden" name="user" value="{{$user}}">
-
                                         <input type="hidden" name="admin_confirm" value="{{$admin_confirm}}">
                                         <input type="hidden" name="post_id" value="{{$post->id}}">
                                     </div>

@@ -90,7 +90,7 @@ class AuctionsAdminController extends Controller
        {
            $u=User::find($u);
           $admin->transfer($u,$discount); 
-        
+          return $u->balance;
        }
       
      
