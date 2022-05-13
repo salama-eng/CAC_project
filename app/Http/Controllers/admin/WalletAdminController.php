@@ -17,9 +17,7 @@ class WalletAdminController extends Controller
         $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
         $id = $roleUser->user_id;
         $user= User::find($id);
-        // $user->deposit(200000, ['invoice_id' => 200, 'details' => "payment for auction"]);
         $balance=$user->balance;
-        // $id=$user->uuid;
         $users =  User::with('transactions')->where('id',$id)->get();
         return view('admin.wallet', [
             'balance' => $balance,

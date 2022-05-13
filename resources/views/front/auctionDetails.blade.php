@@ -134,7 +134,8 @@
                                             <input type="hidden" name="post_name" value="{{$post->name}}">
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
                                             <input type="hidden" name="bid_amount" value="100000">
-                                            <input type="text" name="total" value="{{$total}}">
+                                            <input type="hidden" name="discount" value="{{$discount}}">
+                                            <input type="hidden" name="total" value="{{$total}}">
                                             <button type="submit" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
