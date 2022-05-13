@@ -35,12 +35,12 @@
                 @else
                 <td class="text-warning">لم يتم ادخال بيانات البروفايل</td>
                 <td class="text-warning">لم يتم ادخال بيانات البروفايل</td>
-                
+                <td>
+                    <a href="{{route('wallet',$user->id)}}" class="card-link active text-center mt-5 mb-2"> تفاصيل المزاد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                </td>
                 @endif
 
-                <td>
-                    <a href="{{route('wallet',$user->id)}}" class="card-link active text-center mt-5 mb-2"> المحفضة <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-                </td>
+
                     
                     <td>
                         
