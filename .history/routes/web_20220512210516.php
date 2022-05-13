@@ -26,7 +26,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\user\UserPostsController;
-use App\Http\Controllers\user\WalletController;
 use App\Http\Controllers\user\UserAuctionController;
 use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\user\UserHomeController;
@@ -74,10 +73,7 @@ Route::post('/new_password',[AuthController::class,'newPassword'])->name('new_pa
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::any('test', [testController::class, 'index'])->name('test');
-    Route::get('test/response/{info}', [testController::class, 'showTest'])->name('test/response');
-Route::get('test/cancel/{cancel}', [testController::class, 'testCancel'])->name('testCancel');
-Route::get('test/cancel', [testController::class, 'viewCancel'])->name('viewCancel');
+    Route::get('test', [testController::class, 'index'])->name('test');
     Route::get('successPayment', [testController::class, 'success'])->name('successPayment');
     Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
         // client profile Manage
@@ -93,6 +89,13 @@ Route::get('test/cancel', [testController::class, 'viewCancel'])->name('viewCanc
         Route::get('/client', function () {
             return view('front.layout.clientdashboard');
         });
+
+      
+        // Route::get('/home', function () {
+        //     return view('front.home');
+        // });
+
+
 
         //     client postes mangment  ----------------------------------------------------------------
         Route::get('/addAuction', [UserPostsController::class, 'addPost'])->name('addAuction');
@@ -240,10 +243,6 @@ Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 
 Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');
 Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
-Route::get('/privacyPolicy', function(){
-    return view('front.privacyPolicy');
-
-})->name('privacyPolicy');
 
 Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message');
 /******  Chat    ******* */

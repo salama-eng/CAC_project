@@ -1,12 +1,12 @@
-@extends('admin.layout.dashboard')
+@extends('client.layout.clientdashboard')
 @section('content')
     <section class="col-11 m-auto">
         <div class="dash-header3 col-lg-12  col-11 m-auto mt-5 d-flex justify-content-center align-items-center">
 
             <div class="dash-header1 col-8">
-                <h5 class=" p-3"><span class="yellow f-size"> اسم المستخدم : </span> {{$user->name }}
+                <h5 class=" p-3"><span class="yellow f-size"> اسم المستخدم : </span> {{ $user->name }}
                 </h5>
-                <h6 class=" p-3 active"><span class="text-white f-size"> رقم المحفضة : </span> 54{{$balance}}
+                <h6 class=" p-3 active"><span class="text-white f-size"> رقم المحفضة : </span> 54{{ Auth::user()->id }}
                 </h6>
             </div>
 

@@ -18,12 +18,20 @@
                 </tr>
                 @php $i = 1 @endphp
                 @php $total= 0 @endphp
+                @php $user_id= '' @endphp
+                @php $user_name= '' @endphp
+                @php $bid_amount= '' @endphp
                 
                 @foreach ($posts as $post)
                     
                     @if (isset($post->auctions[0]->post_id))
-                        @if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date < date('Y-m-d'))
+                        @if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date < date('Y-m-d') && $post->auctions->max('bid_amount'))
                         @foreach($post->auctions as $bid_total)
+                            @if($bid_total->post_id == $post->id && $bid_total->bid_amount == $post->auctions->max('bid_amount'))
+                                @php $user_id = $bid_total->userAw->id @endphp
+                                @php $user_name = $bid_total->userAw->name @endphp
+                                @php $bid_amount = $bid_total->bid_amount @endphp
+                            @endif
                             @if($bid_total->post_id == $post->id)
                                 @php $total += $bid_total->bid_amount @endphp
                             @endif
@@ -32,8 +40,9 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$post->name}}</td>                         
                                 <td>{{$post->users->name}}</td>
-                                <td> {{$auctions->userAw->name}}</td>
-                                <td>{{$post->starting_price}}</td>
+                                <td>{{$user_name}}</td>
+
+                                <td>{{$bid_amount}}</td>
                                 <td>
                                     {{$total + $post->starting_price}}
                                 </td>

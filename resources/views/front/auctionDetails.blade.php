@@ -69,7 +69,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="d-flex justify-content-around align-items-center mt-3">
+                                <div class="d-flex justify-content-around  flex-column align-items-center mt-3">
                                     @if (isset($post->auctions->bid_total))
                                         <div>
                                             <h2 class="text-white fs-6 ">
@@ -78,17 +78,22 @@
                                             </h2>
                                         </div>
                                     @else
-                                        <div>
-                                            <h2 class="text-white fs-6">
-                                                مبلغ المزايدة سيكون اكثر من <em
-                                                    class="yellow">{{ $post->starting_price + $post->auction_ceiling }}$</em>
-                                            </h2>
-                                        </div>
+                                        @php $total = $post->starting_price @endphp
+                                        @foreach($auctions as $auction)
+                                            <div class="">
+                                                <h2 class="text-white fs-6">
+                                                     {{$auction->userAw->name}} زايد بمبلغ
+                                                    <em class="yellow">{{ $auction->bid_amount }}$</em>
+                                                    اصبح اجمالي المزايدة 
+                                                    <em class="yellow">{{ $total += $auction->bid_amount }}$</em>
+                                                </h2>
+                                            </div>
+                                        @endforeach
                                     @endif
                                     <div class="d-flex  align-items-center gap-3 ">
                                         <h3 class="text-white fs-6"> </h3>
                                         <input type="number" class="input-model text-white p-2"
-                                            min="{{ $post->auction_ceiling }}" {{-- step="{{ $post->auction_ceiling }}" --}} value=""
+                                            min="{{ $post->auctions->max('bid_amount') }}" {{-- step="{{ $post->auctions->max('bid_amount') }}" --}} value=""
                                             name="amount" placeholder="مقدار الزيادة" />
 
 
@@ -122,11 +127,15 @@
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content  ">
-                                    <form action="{{ route('bid_auction', $post->id) }}" method="post">
+                                    <form action="{{ route('test') }}" method="get">
                                         @csrf
                                         <div class="modal-header bg-darkgrey">
-
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            <input type="hidden" name="post_name" value="{{$post->name}}">
+                                            <input type="hidden" name="user_id" value="{{$post->users->id}}">
+                                            <input type="hidden" name="bid_amount" value="100000">
+                                            <input type="hidden" name="starting_price" value="2000000">
+                                            <button type="submit" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body bg-darkgrey ">

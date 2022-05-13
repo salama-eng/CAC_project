@@ -2,7 +2,9 @@
 @section('content')
 
     <section class="">
-
+        @if (session()->has('success'))
+            <p class="alert alert-success message">{{ session()->get('success') }}</p>
+        @endif
         <div class="landscape  d-flex align-items-start col-12 ">
 
 

@@ -6,7 +6,7 @@
             <div class="dash-header1 col-8">
                 <h5 class=" p-3"><span class="yellow f-size"> اسم المستخدم : </span> {{$user->name }}
                 </h5>
-                <h6 class=" p-3 active"><span class="text-white f-size"> رقم المحفضة : </span> 54{{$balance}}
+                <h6 class=" p-3 active"><span class="text-white f-size"> رقم المحفضة : </span> 54{{ Auth::user()->id }}
                 </h6>
             </div>
 

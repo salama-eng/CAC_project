@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail ,Wallet
     {
         return $this->hasMany(Post::class, 'user_id');
     }
-    
+
     public function auctions()
     {
         return $this->hasMany(Auction::class ,'owner_user_id');

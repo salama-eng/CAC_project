@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Auction extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        
+        'is_active',
+    ];
     public function auction_post(){
         return $this->belongsTo(post::class,'post_id');
     }

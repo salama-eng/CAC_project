@@ -18,9 +18,11 @@ class HomeController extends Controller
     public function showauctionDetails(Request $request,$id){
 
         $posts=Post::with(['auctions','users','category'])->find($id);
+        $auctions = Auction::with(['userAw'])->where('post_id', $id)->orderBy('bid_amount', 'ASC')->get();
 
         return view('front.auctionDetails', [
             'post' => $posts,
+            'auctions' => $auctions,
 
         ]);
     }
