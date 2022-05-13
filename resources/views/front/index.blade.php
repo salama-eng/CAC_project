@@ -2,7 +2,9 @@
 @section('content')
 
     <section class="">
-
+        @if (session()->has('success'))
+            <p class="alert alert-success message">{{ session()->get('success') }}</p>
+        @endif
         <div class="landscape  d-flex align-items-start col-12 ">
 
 
@@ -20,7 +22,7 @@
                 @endforeach
 
                         <button class=" fs-6 mt-lg-4  d-flex align-items-center btn-yellow btn text-light rounded-0"><a
-                                href="" class=" d-block text-light">
+                                href="offers" class=" d-block text-light">
                                 ابدا التصفح </a>
                             <i class="fa fa-long-arrow-left m-2"> </i>
                         </button>
@@ -84,13 +86,10 @@
 
         </div>
 
-
         </div>
 
-
-
         <div class="offers d-flex flex-column align-items-center pt-5 ">
-            <h1 class="d-flex flex-wrap   yellow fs-3">العروض الحالية </h1>
+            <h1 class="d-flex flex-wrap   yellow fs-3"> العروض قريبة الانتهاء </h1>
             <div class="w-75 more">
                 <a href="/offers" class="px-4 text-light fs-6 d-block text-lg-start ms-lg-3 ms-0 text-center  py-2">المزيد<i
                         class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
@@ -116,8 +115,8 @@
                             <p href="#" class="card-link card-details ms-0">سعر المزايدة/<span
                                     class="active">{{ $post->starting_price }}$</span>
                             </p>
-                            <a href="#" class="card-link active ms-0">مزايدة<i class="fa fa-long-arrow-left p-2 pt-1">
-                                </i></a>
+                            <a href="{{ route('auctiondetails', $post->id) }}" class="card-link active  fs-7">تفاصيل<i
+                                class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                         </div>
                     </div>
                 @endforeach

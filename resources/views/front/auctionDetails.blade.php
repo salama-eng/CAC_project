@@ -55,11 +55,11 @@
 
                     </div>
 
-                    <div class=" ">
+                    <div class=" border-n mt-4 ">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
 
-                            <div class="modal-body bg-darkgrey  p-3  ">
+                            <div class="modal-body bg-darkgrey  ">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul style="list-style: none">
@@ -69,7 +69,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="d-flex justify-content-around align-items-center mt-5">
+                                <div class="d-flex justify-content-around  flex-column align-items-center mt-3">
                                     @if (isset($post->auctions->bid_total))
                                         <div>
                                             <h2 class="text-white fs-6 ">
@@ -78,123 +78,130 @@
                                             </h2>
                                         </div>
                                     @else
-                                        <div>
-                                            <h2 class="text-white fs-6">
-                                                مبلغ المزايدة سيكون اكثر من <em
-                                                    class="yellow">{{ $post->starting_price + $post->auction_ceiling }}$</em>
-                                            </h2>
-                                        </div>
+                                        @php $total = $post->starting_price @endphp
+                                        @foreach($auctions as $auction)
+                                            <div class="">
+                                                <h2 class="text-white fs-6">
+                                                     {{$auction->userAw->name}} زايد بمبلغ
+                                                    <em class="yellow">{{ $auction->bid_amount }}$</em>
+                                                    اصبح اجمالي المزايدة 
+                                                    <em class="yellow">{{ $total += $auction->bid_amount }}$</em>
+                                                </h2>
+                                            </div>
+                                        @endforeach
                                     @endif
                                     <div class="d-flex  align-items-center gap-3 ">
                                         <h3 class="text-white fs-6"> </h3>
                                         <input type="number" class="input-model text-white p-2"
-                                            min="{{ $post->auction_ceiling }}" {{-- step="{{ $post->auction_ceiling }}" --}} value=""
+                                            min="{{ $post->auctions->max('bid_amount') }}" {{-- step="{{ $post->auctions->max('bid_amount') }}" --}} value=""
                                             name="amount" placeholder="مقدار الزيادة" />
 
-                                   
+
                                     </div>
                                 </div>
 
                                 @php
                                     $discount = 0.2 * $post->starting_price;
                                 @endphp
-                                <h3 class="text-white fs-7 mt-2">*يجب ان تكون مقدار الزيادة من مضاعفات
-                                   <span class="yellow"> {{ $post->auction_ceiling }}$</h3></span>
+                                <h3 class="text-white fs-7 mt-2 ">*يجب ان تكون مقدار الزيادة من مضاعفات
+                                    <span class="yellow"> {{ $post->auction_ceiling }}$
+                                </h3></span>
                                 <h3 class="text-white  fs-7 mt-2">*سيتم خصم من حسابك مبلغ وقدرة
-                                   <span class="yellow"> {{ $discount }}$ </span>حتى انتهاء العملية </h3>
+                                    <span class="yellow"> {{ $discount }}$ </span>حتى انتهاء العملية
+                                </h3>
                                 <input type="hidden" name="discount" value="{{ $discount }}">
                             </div>
 
                             @if ($post->end_date >= now() && Auth::id() != 3 && $post->users->id != Auth::id())
-                        
-                                <a href="#" class='bg-yellow text-light fs-6 py-3 px-5  'data-bs-toggle="modal"
-                                data-bs-target="#auction{{ $post->id }}">مزايدة<i
-                                    class="fa fa-long-arrow-left"> </i></a>
+                                <a href="#"
+                                    class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center justify-content-center'
+                                    data-bs-toggle="modal" data-bs-target="#auction{{ $post->id }}">مزايدة<i
+                                        class="fa fa-long-arrow-left"> </i></a>
                             @endif
                         </form>
 
                     </div>
 
-@if (Auth::user())
-    
+                    @if (Auth::user())
+                        <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content  ">
+                                    <form action="{{ route('test') }}" method="get">
+                                        @csrf
+                                        <div class="modal-header bg-darkgrey">
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            <input type="hidden" name="post_name" value="{{$post->name}}">
+                                            <input type="hidden" name="user_id" value="{{$post->users->id}}">
+                                            <input type="hidden" name="bid_amount" value="100000">
+                                            <input type="hidden" name="starting_price" value="2000000">
+                                            <button type="submit" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body bg-darkgrey ">
 
-                    <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content  ">
-                                <form action="{{route('bid_auction', $post->id) }}" method="post">
-                                    @csrf
-                                    <div class="modal-header bg-darkgrey">
-
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body bg-darkgrey ">
-                                      
-                                        <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
-                                            <em class="yellow">******$</em>
-                                        </h2>
-                                    </div>
-                                    <div class="modal-footer bg-darkergrey">
-                                        <button type="button" class=" bg-lighter text-white fs-5"
-                                            data-bs-dismiss="modal">تراجع</button>
-                                        <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
-                                    </div>
-                                </form>
+                                            <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
+                                                <em class="yellow">******$</em>
+                                            </h2>
+                                        </div>
+                                        <div class="modal-footer bg-darkergrey">
+                                            <button type="button" class=" bg-lighter text-white fs-5"
+                                                data-bs-dismiss="modal">تراجع</button>
+                                            <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-   @else 
-   <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content m-auto ">
-            <div class="modal-header bg-darkgrey">
-    
-                <button type="button" class="btn-close yellow" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-            </div>
-    
-            <h6 class="text-center yellow mt-5 mb-5 ">عذرا يرجى تسجيل الدخول اولا حتى تتمكن من
-                المزايدة!!</h6>
-            <img class="m-auto" src="/assets/images/login_error.png" width="300" alt="">
-            <a href="{{ route('login') }}" class="card-link active text-center mt-5 mb-5">
-                تسجيل الدخول <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-        </div>
-    
-    </div>
-</div>
- 
+                    @else
+                        <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content m-auto ">
+                                    <div class="modal-header bg-darkgrey">
 
+                                        <button type="button" class="btn-close yellow" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
 
+                                    <h6 class="text-center yellow mt-5 mb-5 ">عذرا يرجى تسجيل الدخول اولا حتى تتمكن من
+                                        المزايدة!!</h6>
+                                    <img class="m-auto" src="/assets/images/login_error.png" width="300" alt="">
+                                    <a href="{{ route('login') }}" class="card-link active text-center mt-5 mb-5">
+                                        تسجيل الدخول <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                                </div>
 
- 
-@endif
+                            </div>
+                        </div>
+                    @endif
 
                 </div>
             </div>
-         
 
 
-    
+
+
         </section>
         <section class="col-lg-6 col-sm-12 mt-5">
             <div class="col-12 d-flex justify-content-between align-items-center mt-4">
-                <h3 class="text-light fw-bold card-details">{{ $post->name }}/ <span class="active" >{{ $post->model }}</span></h3>
+                <h3 class="text-light fw-bold card-details">{{ $post->name }}/ <span
+                        class="active">{{ $post->model }}</span></h3>
 
                 <div>
 
                     @if (isset($post->auctions[0]->bid_total))
-                        <h3 class="active text-light fw-bold card-details "> <span class="card-details fs-6"> السعر الحالي/ </span>
+                        <h3 class="active fs-4"> <span class="card-details text-light fw-bold card-details fs-5"> السعر
+                                الحالي/ </span>
                             {{ $post->auctions->max('bid_total') }}$
                         </h3>
                     @else
-                        <h3  class="active fs-4"> <span class="card-details text-light fw-bold card-details fs-5"> السعر الحالي/ </span>
+                        <h3 class="active fs-4"> <span class="card-details text-light fw-bold card-details fs-5"> السعر
+                                الحالي/ </span>
                             {{ $post->starting_price }}$
                         </h3>
                     @endif
                 </div>
-               
+
 
             </div>
 
@@ -220,7 +227,8 @@
 
                     @foreach ($images as $image)
                         <div class="img-responsive">
-                            <img src="{{ URL::to('/images/' . $image) }}" class="img-fluid" alt="{{ $image }}">
+                            <img src="{{ URL::to('/images/' . $image) }}" class="img-fluid"
+                                alt="{{ $image }}">
                         </div>
                     @endforeach
                     <div class="img-responsive">

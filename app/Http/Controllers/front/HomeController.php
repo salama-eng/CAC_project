@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\about_us;
 use App\Models\Auction;
+use App\Models\Category;
 use App\Models\contact_us_info;
 use App\Models\membership;
 use App\Models\Post;
@@ -17,8 +18,11 @@ class HomeController extends Controller
     public function showauctionDetails(Request $request,$id){
 
         $posts=Post::with(['auctions','users','category'])->find($id);
+        $auctions = Auction::with(['userAw'])->where('post_id', $id)->orderBy('bid_amount', 'ASC')->get();
+
         return view('front.auctionDetails', [
             'post' => $posts,
+            'auctions' => $auctions,
 
         ]);
     }
@@ -28,7 +32,8 @@ class HomeController extends Controller
     }
 
     public function showHomePage(){
-        $postsAll=Post::with(['users'])->where('is_active',1)->where('end_date','>',now())->get();
+        $postsAll=Post::with(['users'])->where('is_active',1)->where('end_date','>',now())->where('status_auction','==',0)
+        ->orderBy('end_date', 'desc')->take(6)->get();
         $slider = slider_image::select()->where('is_active',1)->get();
         $content = siteHome::select()->get();
         $member = membership::select()->where('is_active',1)->get();
@@ -37,25 +42,45 @@ class HomeController extends Controller
             'Posts' => $postsAll,
             'members' => $member,
             'Content' => $content,
+          
         ]);
     }
     public function show_auctions(){
 
-        $posts=Post::with(['auctions'])->where('is_active',1)->get();
-     
+        $posts=Post::with(['auctions'])->where('is_active',1)->paginate(9);
+        $category = Category::get();
+        $model = post::get();
+        $status = post::get();
+        $category = $category->unique('name');
+        $model = $model->unique('model');
+        $status = $status->unique('status_car');
         // Auction::where('is_active',1)->max('bid_total');
         return view('front.auctions', [
             'posts' => $posts,
-           
+            'category' => $category,
+            'model' => $model,
+            'status' => $status,
         ]);
 
 
     }
     public function show_offers(){
-   $posts=Post::with(['auctions'])->where('is_active',1)->get();
+   $posts=Post::with(['auctions'])->where('is_active',1)->paginate(1);
+   $category = Category::get();
+   $model = post::get();
+   $status = post::get();
 
+   $category = $category->unique('name');
+   $model = $model->unique('model');
+   $status = $status->unique('status_car');
+   
         return view('front.offers', [
             'Posts' => $posts,
+            'category' => $category,
+            'model' => $model,
+            'status' => $status,
+            
+
         ]);
     }
 
