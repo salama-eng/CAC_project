@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Auction;
+use App\Models\User;
+use App\Models\Role;
+use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +29,18 @@ class testController extends Controller
        }
      }
 
-     return redirect('/')
-            ->with(['success'=>'تم عملية الحجز بنجاح']);
+     
+    $role = Role::where('name', 'admin')->first();
+    $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
+    $id = $roleUser->user_id;
+    $user= User::find($id);
+    $user->deposit($in->customer_account_info->paid_amount, [
+      'invoice_id' => 200, 
+      'details' => "تم ايداع مبلغ من حساب",
+      'username'=> Auth::user()->name,
+    ]);
+    return redirect('/')
+    ->with(['success'=>'تم عملية الحجز بنجاح']);
      
  }
  
@@ -39,13 +52,18 @@ class testController extends Controller
  
     $info=base64_decode($data);
      $in = json_decode($info);
-   // return $cancel;
+   return $in;
     $auctions = Auction::where('is_active', 0)->get();
-    foreach($auctions as $auction){
-      $auction->delete(['is_active' => 0]);
-    }
-    return redirect('/')
-    ->with(['success'=>'تم عملية الحجز بنجاح']);
+    // foreach($auctions as $auction){
+    //   $auction->delete(['is_active' => 0]);
+    // }
+    // return redirect('/')
+    // ->with(['success'=>'تم عملية الحجز بنجاح']);
+    // $role = Role::where('name', 'admin')->first();
+    // $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
+    // $id = $roleUser->user_id;
+    // // $user= User::find($id);
+    // $user->deposit(200000, ['invoice_id' => 200, 'details' => "payment for auction"]);
  
  }
  
@@ -82,10 +100,9 @@ class testController extends Controller
               $auction = new Auction;
               $auction->date = now();
               $auction->bid_amount = $request->bid_amount;
-              $auction->bid_total = $request->starting_price;
+              $auction->bid_total = $request->total + $request->bid_amount;
               $auction->owner_user_id = $request->user_id;
               $auction->aw_user_id = Auth::id();
-              $auction->payment_methode_id = 7;
               $auction->post_id = $request->post_id;
               $auction->save();
             $data = [

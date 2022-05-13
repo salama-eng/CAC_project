@@ -54,7 +54,7 @@
                         <p class="mb-1 text-light "> {{ $post->description }}</p>
 
                     </div>
-
+                    @php $total = $post->starting_price @endphp
                     <div class=" border-n mt-4 ">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
@@ -78,7 +78,7 @@
                                             </h2>
                                         </div>
                                     @else
-                                        @php $total = $post->starting_price @endphp
+                                        
                                         @foreach($auctions as $auction)
                                             <div class="">
                                                 <h2 class="text-white fs-6">
@@ -134,7 +134,7 @@
                                             <input type="hidden" name="post_name" value="{{$post->name}}">
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
                                             <input type="hidden" name="bid_amount" value="100000">
-                                            <input type="hidden" name="starting_price" value="2000000">
+                                            <input type="text" name="total" value="{{$total}}">
                                             <button type="submit" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>

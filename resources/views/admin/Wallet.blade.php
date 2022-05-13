@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class=" d-flex justify-content-between mt-2">
-            <button class="bg-yellow text-white py-2 px-3 m-2 p-dash fs-6">اجمالي المبلغ في المحفضة : 455</button>
+            <button class="bg-yellow text-white py-2 px-3 m-2 p-dash fs-6">اجمالي المبلغ في المحفضة : {{$balance}}</button>
             <button class="bg-yellow text-white py-2 px-3 m-2 p-dash  fs-6">طلب المبلغ</button>
         </div>
 
@@ -40,16 +40,18 @@
 
             <div class="card-wallet text-light p-3">
                 <div class="d-flex justify-content-between align-items-center">
-
-                    <div>
-                        <p class="fs-6 p-dash ">تم ايداع مبلغ من رقم حساب <span class="active">(5536)</span> المستخدم <span
-                                class="active">خليفة القاضي</span></p>
-                        <p class="fs-7 p-dash grey ">@php
-                            echo now();
-                        @endphp</p>
-                    </div>
-                    <p class="fs-3 green p-dash">+ 1000 $</p>
-
+                    @foreach ($users as $user)
+                        @foreach ($user->transactions as $item)
+                            <div>
+                                <p class="fs-6 p-dash ">{{$item->meta['details']}} <span class="active">({{$item->meta['username']}})</span> المستخدم <span
+                                        class="active">{{$user->name}}</span></p>
+                                <p class="fs-7 p-dash grey ">@php
+                                    echo now();
+                                @endphp</p>
+                            </div>
+                            <p class="fs-3 green p-dash">+ {{$item->amount}} $</p>
+                        @endforeach
+                    @endforeach
 
                 </div>
             </div>
