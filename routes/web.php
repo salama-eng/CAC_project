@@ -240,6 +240,10 @@ Route::get('/privacyPolicy', function(){
     return view('front.privacyPolicy');
 
 })->name('privacyPolicy');
+Route::get('/faq', function(){
+    return view('front.FAQ');
+
+})->name('faq');
 
 Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message');
 /******  Chat    ******* */

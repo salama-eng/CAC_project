@@ -1050,6 +1050,14 @@ table th {
   line-height: 2rem;
 }
 /* end privacy policy style */
+
+/* FAQ style by ehsas */
+.accordion ,.accordion-item, .accordion-button{
+
+  background-color: transparent !important;
+}
+
+/* end FAQstyle */
 @media (min-width:836px) {
   section.send_message .box img {
     left: -7.6vw;

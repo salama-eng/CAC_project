@@ -168,7 +168,7 @@
                     <a href="{{ url('aboutUs' )}}" class="d-block text-light py-1">عن الشركة</a>
                     <a href="{{ url('contact_us' )}}" class="d-block text-light py-1">خدماتنا</a>
                     <a href="{{ url('privacyPolicy' )}}" class="d-block text-light py-1">سياسة الخصوصية</a>
-                    <a href="" class="d-block text-light py-1">كيفية الاستخدام</a>
+                    <a href="{{ url('faq' )}}" class="d-block text-light py-1">كيفية الاستخدام</a>
                 </p>
 
             </div>

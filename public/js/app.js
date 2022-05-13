@@ -88,21 +88,22 @@ $(document).ready(function () {
     var model = $('#mod').find(":selected").text();
     var cate = $('#cate').find(":selected").text();
     var type = $('#type').find(":selected").text();
+    var coun = $('#coun').find(":selected").text();
     var price = $('#price').find(":selected").text();
 
 
     $(".offers-page .card").hide().filter(function () {
 
       if (price == 'اقل من 2000$' && jQuery(".price", this).text() < 2000 && $(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1) {
-        { $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && jQuery(".price", this).text() < 2000) }
+        { $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && $(this).text().indexOf(coun) > -1 && jQuery(".price", this).text() < 2000) }
       }
       else if (price == '$2000 - $4000' && jQuery(".price", this).text() >= 2000 && jQuery(".price", this).text() < 4000 && $(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1) {
-        { $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && jQuery(".price", this).text() >= 2000 && jQuery(".price", this).text() < 4000) }
+        { $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && $(this).text().indexOf(coun) && jQuery(".price", this).text() >= 2000 && jQuery(".price", this).text() < 4000) }
       }
       else if (price == '$4000 - $7000' && jQuery(".price", this).text() >= 4000 && jQuery(".price", this).text() < 7000 && $(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1) {
-        { $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && jQuery(".price", this).text() >= 4000 && jQuery(".price", this).text() < 7000) }
+        { $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && $(this).text().indexOf(coun) && jQuery(".price", this).text() >= 4000 && jQuery(".price", this).text() < 7000) }
       }
-      else if (price == 'اكثر من 7000$' && $(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && jQuery(".price", this).text() >= 7000) {
+      else if (price == 'اكثر من 7000$' && $(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && $(this).text().indexOf(coun) && jQuery(".price", this).text() >= 7000) {
         { $(this).toggle($(this).text().indexOf(model) > -1 && $(this).text().indexOf(cate) > -1 && $(this).text().indexOf(type) > -1 && jQuery(".price", this).text() >= 7000) }
       }
     });
