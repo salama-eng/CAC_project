@@ -247,7 +247,7 @@
                         <li>
 
                             <a class="dropdown-item text-light fs-7"
-                                href="{{ $data['lesson']['link'] }}">{{ $data['title'] }}
+                                href="{{ $notification->$data['admin']['link'] }}">{{ $data['title'] }}
                                 {{ auth()->user()->name }}
                                 <i class="semiOrange fs-8 "><br></i>{{ $data['body'] }}
                                 {{ $data['username'] }}</a>
