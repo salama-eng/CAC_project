@@ -36,7 +36,7 @@ class AuctionsAdminController extends Controller
             $posts=Post::with(['auctions', 'users'])->get();
             return view('admin.adminManageUncomplateAuction', [
                 'posts'   => $posts,
-                'auctions'   => $auctions->first(),
+                'auctions'   => $auctions,
             ]);
         }
     }
