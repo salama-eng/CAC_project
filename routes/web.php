@@ -26,6 +26,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\user\UserPostsController;
+use App\Http\Controllers\user\WalletController;
 use App\Http\Controllers\user\UserAuctionController;
 use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\user\UserHomeController;
@@ -73,7 +74,10 @@ Route::post('/new_password',[AuthController::class,'newPassword'])->name('new_pa
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('test', [testController::class, 'index'])->name('test');
+    Route::any('test', [testController::class, 'index'])->name('test');
+    Route::get('test/response/{info}', [testController::class, 'showTest'])->name('test/response');
+Route::get('test/cancel/{cancel}', [testController::class, 'testCancel'])->name('testCancel');
+Route::get('test/cancel', [testController::class, 'viewCancel'])->name('viewCancel');
     Route::get('successPayment', [testController::class, 'success'])->name('successPayment');
     Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
         // client profile Manage
@@ -98,9 +102,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/UserComplatePosts', [UserPostsController::class, 'complate'])->name('UserComplatePosts');
 
 
+
+
         
       //     client Auctions mangment  ----------------------------------------------------------------
-
+      Route::post('/user_confirm', [UserAuctionController::class, 'user_confirm'])->name('user_confirm');
       Route::get('/AuctionCars', [UserAuctionController::class, 'showauctions'])->name('AuctionCars');
       Route::get('/UserUncomplateAuctions', [UserAuctionController::class, 'uncomplate'])->name('UserUncomplateAuctions');
       Route::get('/UserComplateAuctions', [UserAuctionController::class, 'complate'])->name('UserComplateAuctions');
@@ -151,7 +157,7 @@ Route::group(['middleware' => 'auth'], function () {
         
         // Admin Manage Auction
         Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
-        
+        Route::post('/accept', [AuctionsAdminController::class, 'editActive'])->name('accept');
         Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
         Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
         
@@ -258,9 +264,8 @@ Route::resource('chat', ChatController::class);
 Route::get('/admin_dash', function () {
     return view('admin.layout.dashboard');
 });
-Route::get('/wallet', function () {
-    return view('client.wallet');
-});
+Route::get('/wallet/{id}', [WalletController::class,'showwallet'])->name('wallet');
+
 
 Route::get('/admin_wallet', function () {
     return view('admin.wallet');

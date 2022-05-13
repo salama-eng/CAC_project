@@ -7,7 +7,8 @@
   --lightgrey1: rgb(28, 28, 28, 0.8);
   --whitecolor: #fff2eb;
   --whitecolor1: rgba(255, 242, 235, 0.4);
-
+--red:rgb(220, 71, 30) !important;
+--green:rgb(21, 122, 127) !important;;
 }
 .border-yellow
 {
@@ -1012,8 +1013,31 @@ input:checked + .slider:before {
 .accept{
   border:1px solid green ;
 }
+.text-red
+{
+  color:var(--red);
+}
+.text-green
+{
+  color:var(--green);
+}
+.bg-red
+{
+  background-color:var(--red);
+}
+.bg-green
+{
+  background-color:var(--green);
+}
+.notaccept{
+  border:1px solid rgb(104, 45, 40) ;
+}
 .accept:hover{background-color:green;
 color:white}
+.accept1:hover{background-color:rgb(255, 174, 0);
+  color:white}
+  .notaccept:hover{background-color:rgb(253, 0, 0);
+    color:white}
 /* end toggle button */
 
 table td {
