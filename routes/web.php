@@ -73,7 +73,7 @@ Route::post('/new_password',[AuthController::class,'newPassword'])->name('new_pa
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('test', [testController::class, 'index'])->name('test');
+    Route::any('test', [testController::class, 'index'])->name('test');
     Route::get('test/response/{info}', [testController::class, 'showTest'])->name('test/response');
 Route::get('test/cancel/{cancel}', [testController::class, 'testCancel'])->name('testCancel');
 Route::get('test/cancel', [testController::class, 'viewCancel'])->name('viewCancel');
