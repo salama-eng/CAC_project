@@ -9,11 +9,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Events\ChatNotification;
 use Illuminate\Support\Facades\Auth;
-
+use App\Events\ChatNotification;
 class ChatController extends Controller
 {
     public function index()
     {
+
 
         return view('client.chat');
     }

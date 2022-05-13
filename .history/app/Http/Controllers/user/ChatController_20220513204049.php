@@ -15,6 +15,7 @@ class ChatController extends Controller
     public function index()
     {
 
+
         return view('client.chat');
     }
     public function show(Request $request, $id)
@@ -34,8 +35,6 @@ class ChatController extends Controller
             'owner_user_id' => '',
             'post_id' => '',
             'admin_id' => '',
-            'user_id' => '',
-            'username' => '',
         ]);
 
         $chat = Chat::create($data);

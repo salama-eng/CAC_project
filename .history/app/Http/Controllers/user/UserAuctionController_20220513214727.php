@@ -82,10 +82,10 @@ $posts=Post::with(['auctions'])->get();
 
 }
 public function user_confirm(Request $request){
-
+ 
     $auction_id = $request->auction_id;
     $user_confirm = Auction::where('id',$auction_id)->update(['user_confirm'=> 1]);
-   
+ 
    if($user_confirm){
    return redirect('UserUncomplateAuctions')
     ->with(['success'=>'تم  تاكيد الاستلام']);

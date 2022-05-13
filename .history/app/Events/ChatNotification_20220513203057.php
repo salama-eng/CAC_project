@@ -17,6 +17,7 @@ class ChatNotification implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels, Queueable;
 
+    
     public $message;
     public $user_id;
     public $owner_user_id;

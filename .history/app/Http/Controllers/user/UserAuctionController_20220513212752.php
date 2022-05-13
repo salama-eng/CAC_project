@@ -82,17 +82,33 @@ $posts=Post::with(['auctions'])->get();
 
 }
 public function user_confirm(Request $request){
-
-    $auction_id = $request->auction_id;
-    $user_confirm = Auction::where('id',$auction_id)->update(['user_confirm'=> 1]);
-   
-   if($user_confirm){
-   return redirect('UserUncomplateAuctions')
-    ->with(['success'=>'تم  تاكيد الاستلام']);
+    $user=$request->user;
+      return $request;
+    // $auction_id = $request->auction_id;
+    // $active = Auction::where('id', $auction_id)->update(['admin_confirm' => 1]);
+    // $post_id= $request->post_id;
+    // $post_price=Post::find($post_id);
+    // $post_price=$post_price->starting_price;
+    // $discount=$post_price*20/100;
+    //  $admin=User::find(Auth::id());
+   $users=Auction::with('userAw')->where('post_id',$post_id)->where('aw_user_id','!=',$user)->get();
+ foreach($users as $user)
+   foreach($user->userAw as $u)
+   {
+       $u=User::find($u);
+      if($admin->transfer($u,$discount))
+      return redirect('un_complate')
+      ->with(['success'=>'تم الموافقة بنجاح']);
    }
+  
+ 
+   if($active)
+        return redirect('un_complate')
+        ->with(['success'=>'تم الموافقة بنجاح']);
+    else{
+        
 
-        else{
-            return back()->with(['error'=>'خطاء هناك مشكلة']);
-        }
-    }
-} 
+}
+
+
+}}

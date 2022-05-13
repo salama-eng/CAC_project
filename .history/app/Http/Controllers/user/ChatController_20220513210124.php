@@ -15,6 +15,7 @@ class ChatController extends Controller
     public function index()
     {
 
+
         return view('client.chat');
     }
     public function show(Request $request, $id)

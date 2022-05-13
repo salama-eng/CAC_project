@@ -45,7 +45,7 @@
 @if ($auction->user_confirm==0)
 <a href="#" data-bs-toggle="modal" data-bs-target="#active{{$post->id}} "class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white">تاكيد الاستلام </a>
 @else
-<p class="card-link card-details fs-7 p-1 px-3 m-1 card-btn text-white bg-green "><i class="fa fa-check"></i> تم الاستلام</p>
+<p class="bg-green">تم الاستلام</p>
 @endif
         
         <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white"> ارسال المبلغ </a>

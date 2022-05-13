@@ -6,11 +6,6 @@
 <h3 class="text-warning  mt-5 mb-5 text-center">  عمليات الشراء الغير مكتملة </h3>
 
 <section class="card-container  d-flex flex-wrap justify-content-between ">
-    @if(session()->has('success'))
-    <div class="alert alert-success message">
-        {{ session()->get('success') }}
-    </div>
-@endif
  {{-- c --}}
     @php
     $i=0;
@@ -42,12 +37,8 @@
     <div class="card-body d-flex justify-content-between py-0">
                     
       
-@if ($auction->user_confirm==0)
-<a href="#" data-bs-toggle="modal" data-bs-target="#active{{$post->id}} "class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white">تاكيد الاستلام </a>
-@else
-<p class="card-link card-details fs-7 p-1 px-3 m-1 card-btn text-white bg-green "><i class="fa fa-check"></i> تم الاستلام</p>
-@endif
-        
+        {{-- href="" class='btn activate accept' data-bs-toggle="modal" data-bs-target="#active{{$post->id}}" --}}
+        <a href="#" data-bs-toggle="modal" data-bs-target="#active{{$post->id}} "class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white">تاكيد الاستلام </a>
         <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white"> ارسال المبلغ </a>
          </div>
          <a href="{{route('chat',$auction->id)}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-center w-75 m-auto my-2 fs-7"> الذهاب للدردشة  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
@@ -61,14 +52,13 @@
             <form action="user_confirm" method="post">
                 @csrf
                 <div class="modal-header">
-                    
                     <h5 class="modal-title" id="exampleModalLabel"> تاكيد الاستلام </h5>
                     <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="color: white !important;"></button>
                 </div>
                 <div class="modal-body">
                     <h2 class="text-white fs-5">هل انت متاكد انك استلمت سيارة {{$post->name}}/ {{$post->model}}</h2>
-                   <input type="hidden" name="auction_id" value="{{$auction->id}}">
-                   
+                   <input type="hidden" name="auction_id" value="$auction->id">
+                   <input type="hidden" name="post_id" value="$auction->post_id">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
