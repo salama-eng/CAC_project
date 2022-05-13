@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class=" d-flex justify-content-between mt-2">
-            <button class="bg-yellow text-white py-2 px-3 m-2 p-dash fs-6">اجمالي المبلغ في المحفضة : 455</button>
+            <button class="bg-yellow text-white py-2 px-3 m-2 p-dash fs-6">اجمالي المبلغ في المحفضة : {{$balance}}</button>
             <button class="bg-yellow text-white py-2 px-3 m-2 p-dash  fs-6">طلب المبلغ</button>
         </div>
 
@@ -42,7 +42,11 @@
                 <div class="d-flex justify-content-between align-items-center">
                     @foreach ($users as $user)
                         @foreach ($user->transactions as $item)
+<<<<<<< HEAD
                             <div> 
+=======
+                            <div>
+>>>>>>> payment_v2
                                 <p class="fs-6 p-dash ">{{$item->meta['details']}} <span class="active">({{$item->meta['username']}})</span> المستخدم <span
                                         class="active">{{$user->name}}</span></p>
                                 <p class="fs-7 p-dash grey ">@php
