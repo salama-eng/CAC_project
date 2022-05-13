@@ -103,9 +103,11 @@ Route::get('test/cancel', [testController::class, 'viewCancel'])->name('viewCanc
         Route::get('/UserComplatePosts', [UserPostsController::class, 'complate'])->name('UserComplatePosts');
 
 
+
+
         
       //     client Auctions mangment  ----------------------------------------------------------------
-
+      Route::post('/user_confirm', [UserAuctionController::class, 'user_confirm'])->name('user_confirm');
       Route::get('/AuctionCars', [UserAuctionController::class, 'showauctions'])->name('AuctionCars');
       Route::get('/UserUncomplateAuctions', [UserAuctionController::class, 'uncomplate'])->name('UserUncomplateAuctions');
       Route::get('/UserComplateAuctions', [UserAuctionController::class, 'complate'])->name('UserComplateAuctions');
@@ -156,7 +158,7 @@ Route::get('test/cancel', [testController::class, 'viewCancel'])->name('viewCanc
         
         // Admin Manage Auction
         Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
-        
+        Route::post('/accept', [AuctionsAdminController::class, 'editActive'])->name('accept');
         Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
         Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
         

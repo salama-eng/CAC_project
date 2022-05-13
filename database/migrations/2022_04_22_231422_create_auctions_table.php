@@ -36,6 +36,9 @@ return new class extends Migration
 
 
             $table->boolean('is_active')->default(0);
+            $table->boolean('admin_confirm')->default(0);
+            $table->boolean('user_confirm')->default(0);
+            $table->boolean('money_confirm')->default(0);
             $table->timestamps();
         });
     }
