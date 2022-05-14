@@ -245,7 +245,7 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
     channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
         var existingNotifications = notifications.html();
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
-        if({{auth()->user()->unreadNotifications()->count()}} ){
+        if(data.lesson.user_id ==  {{auth()->user()->id}} ){
         var newNotificationHtml = `
         <li><a class="dropdown-item text-light fs-7" href="` + data.lesson.link + `"> ` + data.lesson.title + ` <?php echo auth()->user()->name; ?>
                 <i class="semiOrange fs-8 "><br>` + data.lesson.body + `</i></a>

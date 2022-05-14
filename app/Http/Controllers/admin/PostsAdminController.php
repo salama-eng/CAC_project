@@ -39,18 +39,21 @@ class PostsAdminController extends Controller
         $userid = $request->userid;
         $active = Post::where('id', $id)->update(['is_active' => 1]);
         if($active){
-            $lesson = new Lesson;
-            $lesson->user_id = Auth::id();
-            $lesson->title = 'مرحبا';
-            $lesson->body = 'تم اضافة مزاد جديد. يمكنك الاطلاع';
-            $lesson->link = 'auctiondetails/'. $id;
-            $lesson->save();
-            $user = User::where('id', '!=', $userid)->get();
-            if(\Notification::send(
-                $user ,new NewNotification(
-                    Lesson::latest('id')->first())
-            )){
-                return back();
+            $users = User::whereNotIn('id', [$userid, Auth::id()])->get();
+            foreach($users as $user){
+                $lesson = new Lesson;
+                $lesson->user_id = $user->id;
+                $lesson->title = 'مرحبا';
+                $lesson->body = 'تم اضافة مزاد جديد. يمكنك الاطلاع';
+                $lesson->link = 'auctiondetails/'. $id;
+                $lesson->save();
+                
+                if(\Notification::send(
+                    $user ,new NewNotification(
+                        Lesson::latest('id')->first())
+                )){
+                    return back();
+                }
             }
             return redirect('admin_posts')
             ->with(['success'=>'تم الموافقة بنجاح']);
@@ -67,13 +70,14 @@ class PostsAdminController extends Controller
         else
         $active = Post::where('id', $id)->update(['is_active' => 1]);
         if($active){
+            $user = User::find($userid);
             $lesson = new Lesson;
-            $lesson->user_id = Auth::id();
+            $lesson->user_id = $user->id;
             $lesson->title = 'مرحبا';
-            $lesson->body = 'تمم تفعيل ';
+            $lesson->body = 'تم الغاء المزاد الخابك! يمكنك الاطلاع على الاسباب ';
             $lesson->link = 'auctiondetails/'. $id;
             $lesson->save();
-            $user = User::where('id', '!=', $userid)->get();
+            
             if(\Notification::send(
                 $user ,new NewNotification(
                     Lesson::latest('id')->first())
