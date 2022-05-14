@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AboutUsController;
 use App\Http\Controllers\admin\AuctionsAdminController;
 use App\Http\Controllers\admin\ModelsAdminController;
+use App\Http\Controllers\admin\WalletAdminController;
 
 use App\Http\Controllers\testController;
 use App\Http\Controllers\CrudController;
@@ -261,11 +262,8 @@ Route::get('/admin_dash', function () {
     return view('admin.layout.dashboard');
 });
 Route::get('/wallet/{id}', [WalletController::class,'showwallet'])->name('wallet');
+Route::get('/admin_wallet', [WalletAdminController::class,'adminWallet'])->name('admin_wallet');
 
-
-Route::get('/admin_wallet', function () {
-    return view('admin.wallet');
-});
 
 
 
