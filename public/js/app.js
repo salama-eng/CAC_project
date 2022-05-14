@@ -173,6 +173,8 @@ window.addEventListener("scroll", reveal2);
     $("#inputGroupFile01").on("change", function () {
         imagesPreview(this, "div.preview");
     });
-
+$('.accordion-button').click(function(){
+  $(this).parent().parent().find('.accordion-collapse').toggle()
+})
 });
 
