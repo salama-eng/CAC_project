@@ -32,7 +32,7 @@ class HomeController extends Controller
     }
 
     public function showHomePage(){
-        $postsAll=Post::with(['users'])->where('is_active',1)->where('end_date','>',now())->where('status_auction','==',0)
+        $postsAll=Post::with(['users','auctions'])->where('is_active',1)->where('end_date','>',now())->where('status_auction','==',0)
         ->orderBy('end_date', 'desc')->take(6)->get();
         $slider = slider_image::select()->where('is_active',1)->get();
         $content = siteHome::select()->get();
@@ -65,11 +65,7 @@ class HomeController extends Controller
 
     }
     public function show_offers(){
-<<<<<<< Updated upstream
-   $posts=Post::with(['auctions'])->where('is_active',1)->paginate(1);
-=======
    $posts=Post::with(['auctions'])->where('is_active',1)->paginate(15);
->>>>>>> Stashed changes
    $category = Category::get();
    $model = post::get();
    $status = post::get();
