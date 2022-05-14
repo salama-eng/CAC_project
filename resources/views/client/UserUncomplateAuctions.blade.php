@@ -48,7 +48,7 @@
 <p class="card-link card-details fs-7 p-1 px-3 m-1 card-btn text-white bg-green "><i class="fa fa-check"></i> تم الاستلام</p>
 @endif
         
-        <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white"> ارسال المبلغ </a>
+        <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white" data-bs-toggle="modal" data-bs-target="#payment{{ $post->id }}"> ارسال المبلغ </a>
          </div>
          <a href="{{route('chat',$auction->id)}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-center w-75 m-auto my-2 fs-7"> الذهاب للدردشة  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
 </div>
@@ -68,6 +68,33 @@
                 <div class="modal-body">
                     <h2 class="text-white fs-5">هل انت متاكد انك استلمت سيارة {{$post->name}}/ {{$post->model}}</h2>
                    <input type="hidden" name="auction_id" value="{{$auction->id}}">
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
+                    <input type="submit" class=" bg-yellow text-white fs-5" value=" نعم  " />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade user" id="payment{{ $post->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <form action="{{route('testPayment')}}" method="get">
+                @csrf
+                <div class="modal-header">
+                    
+                    <h5 class="modal-title" id="exampleModalLabel"> ارسال المبلغ </h5>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="color: white !important;"></button>
+                </div>
+                <div class="modal-body">
+                    <h2 class="text-white fs-5">
+                        سيتم خصم من حسابك  {{$post->auctions->max('bid_total');}} $ هل انت موافق؟
+                    </h2>
+                   <input type="hidden" name="post_id" value="{{$post->id}}">
+                   <input type="hidden" name="price" value="{{$post->auctions->max('bid_total')}}">
+                   <input type="hidden" name="user_id" value="{{$auction->aw_user_id}}">
                    
                 </div>
                 <div class="modal-footer">
