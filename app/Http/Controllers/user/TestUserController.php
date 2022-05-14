@@ -88,17 +88,16 @@ class TestUserController extends Controller
                 $auc = Auction::where('id', $auction->id)->update(['payment_confirm' => 1]);
             }
             $id = Auth::id();
-            $user = User::find($id);
-            if($user->balance >= $request->price){
-                $discount = $user->withdraw($request->price);
+              $userId = User::find($id);
+              if($userId->balance >= $request->price){
                 $role = Role::where('name', 'admin')->first();
                 $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
                 $idA = $roleUser->user_id;
                 $user= User::find($idA);
-                $user->deposit($discount, [
+                $userId->transfer($user, $request->price, [
                     'invoice_id' => 200, 
                     'details' => "تم ايداع مبلغ من حساب",
-                    'username'=> Auth::user()->name,
+                    'username'=> $userId->name,
                 ]);
                 $actives = Order::where('is_active', 0)
                                 ->where('user_id', $request->user_id)

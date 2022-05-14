@@ -81,15 +81,17 @@ class AuctionsAdminController extends Controller
         $post_price=Post::find($post_id);
         $post_price=$post_price->starting_price;
         $discount=$post_price*20/100;
-         $admin=User::find(Auth::id());
-       $users=Auction::with('userAw')->where('post_id',$post_id)->where('aw_user_id','!=',$user)->get();
+        $admin=User::find(Auth::id());
+        $users=Auction::with('userAw')->where('post_id',$post_id)->where('aw_user_id','!=',$user)->get();
      foreach($users as $user)
        foreach($user->userAw as $u)
        {
-           $u=User::find($u);
-          if($admin->transfer($u,$discount))
-          return redirect('un_complate')
-          ->with(['success'=>'تم الموافقة بنجاح']);
+            $u=User::find($user->userAw->id);
+            $admin->transfer($u, $discount, [
+                'invoice_id' => 200, 
+                'details' => "تم سحب مبلغ من حساب",
+                'username'=> $user->userAw->name,
+            ]);
        }
       
      

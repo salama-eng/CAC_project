@@ -90,10 +90,17 @@
                 </div>
                 <div class="modal-body">
                     <h2 class="text-white fs-5">
-                        سيتم خصم من حسابك  {{$post->auctions->max('bid_total');}} $ هل انت موافق؟
+                        @php $discount = 0.2 * $post->starting_price @endphp
+                        @php $dis =  $post->auctions->max('bid_total') - $discount @endphp
+                        مرحبا <span class="yellow">{{auth()->user()->name}}</span>
+                        المبلغ الذي وصلت له السيارة هو <span class="yellow">{{$post->auctions->max('bid_total');}} $</span>
+
+                        وسيتم خصم من حسابك <span class="yellow">{{$dis}} $</span> 
+                        علما بانه قد تم سحب من حسابك مبلغ <span class="yellow">{{$discount}} $</span>
+                         
                     </h2>
                    <input type="hidden" name="post_id" value="{{$post->id}}">
-                   <input type="hidden" name="price" value="{{$post->auctions->max('bid_total')}}">
+                   <input type="text" name="price" value="{{$dis}}">
                    <input type="hidden" name="user_id" value="{{$auction->aw_user_id}}">
                    
                 </div>
