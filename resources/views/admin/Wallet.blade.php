@@ -39,14 +39,14 @@
 
 
             <div class="card-wallet text-light p-3">
-                <div class="d-flex justify-content-between align-items-center">
+                
                     @foreach ($users as $user)
                         @foreach ($user->transactions as $item)
-<<<<<<< HEAD
+                        @if ($item->type == 'deposit')
+                            
+                        
+                        <div class="d-flex justify-content-between align-items-center">
                             <div> 
-=======
-                            <div>
->>>>>>> payment_v2
                                 <p class="fs-6 p-dash ">{{$item->meta['details']}} <span class="active">({{$item->meta['username']}})</span> المستخدم <span
                                         class="active">{{$user->name}}</span></p>
                                 <p class="fs-7 p-dash grey ">@php
@@ -54,25 +54,33 @@
                                 @endphp</p>
                             </div>
                             <p class="fs-3 green p-dash">+ {{$item->amount}} $</p>
+                        </div>
+                        @endif
                         @endforeach
                     @endforeach
 
-                </div>
+                
             </div>
             <div class="card-wallet text-light p-3">
-              <div class="d-flex justify-content-between align-items-center">
+                @foreach ($users as $user)
+                    @foreach ($user->transactions as $item)
+                        @if ($item->type == 'withdraw')
+                            <div class="d-flex justify-content-between align-items-center">
 
-                  <div>
-                      <p class="fs-6 p-dash ">تم سحب مبلغ الى رقم حساب <span class="active">(5536)</span> المستخدم <span
-                              class="active">خليفة القاضي</span></p>
-                      <p class="fs-7 p-dash grey ">@php
-                          echo now();
-                      @endphp</p>
-                  </div>
-                  <p class="fs-3 red p-dash">- 1000 $</p>
+                                <div>
+                                    <p class="fs-6 p-dash ">{{$item->meta['details']}} <span class="active">({{$user->name}})</span> الى حساب <span
+                                            class="active">{{$item->meta['username']}}</span></p>
+                                    <p class="fs-7 p-dash grey ">@php
+                                        echo now();
+                                    @endphp</p>
+                                </div>
+                                <p class="fs-3 red p-dash">{{$item->amount}} $</p>
 
 
-              </div>
+                            </div>
+                        @endif
+                    @endforeach
+                @endforeach
           </div>
 
       

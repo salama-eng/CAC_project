@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
 use DB;
-
+use Illuminate\Support\Facades\Auth;
 class WalletAdminController extends Controller
 {
     //
@@ -18,6 +18,24 @@ class WalletAdminController extends Controller
         $id = $roleUser->user_id;
         $user= User::find($id);
         $balance=$user->balance;
+        // $d = $user->withdraw('100000', [
+        //     'invoice_id' => 200, 
+        //     'details' => "تم سحب مبلغ من حساب",
+        //     'username'=> Auth::user()->name,
+        // ]);
+        
+        // echo $d->amount; exit();
+        // if($d){
+        //     $u= User::find('15');
+        // //     $amount = trim($d->amount ,'-');
+        //     $des = $user->transfer($u, '100000', [
+        //         'invoice_id' => 200, 
+        //         'details' => "تم سحب مبلغ من حساب",
+        //         'username'=> $u->name,
+        //     ]);
+        //     echo $des; exit();
+        // }
+        
         $users =  User::with('transactions')->where('id',$id)->get();
         return view('admin.wallet', [
             'balance' => $balance,
