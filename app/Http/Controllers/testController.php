@@ -40,7 +40,7 @@ class testController extends Controller
       'username'=> Auth::user()->name,
     ]);
     return redirect('/')
-    ->with(['success'=>'تم عملية الحجز بنجاح']);
+    ->with(['success'=>'تم عملية المزايدة بنجاح']);
      
  }
  
@@ -58,7 +58,7 @@ class testController extends Controller
       $auction->delete(['is_active' => 0]);
     }
     return redirect('/')
-    ->with(['success'=>'تم عملية الحجز بنجاح']);
+    ->with(['success'=>'فشل في عملية المزايدة ']);
  
  }
  
@@ -69,7 +69,7 @@ class testController extends Controller
       $auction->delete(['is_active' => 0]);
     }
     return redirect('/')
-    ->with(['success'=>'تم عملية الحجز بنجاح']);
+    ->with(['success'=>'فشل في عملية المزايدة ']);
   
  }
  
@@ -103,24 +103,23 @@ class testController extends Controller
               $auction->save();
 
               $id = Auth::id();
-              $user = User::find($id);
-              if($user->balance <= $request->discount){
-                $discount = $user->withdraw($request->discount);
+              $userId = User::find($id);
+              if($userId->balance >= $request->discount){
                 $role = Role::where('name', 'admin')->first();
                 $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
                 $idA = $roleUser->user_id;
                 $user= User::find($idA);
-                $user->deposit($discount, [
-                  'invoice_id' => 200, 
-                  'details' => "تم ايداع مبلغ من حساب",
-                  'username'=> Auth::user()->name,
+                $userId->transfer($user, $request->discount, [
+                    'invoice_id' => 200, 
+                    'details' => "تم ايداع مبلغ من حساب",
+                    'username'=> $userId->name,
                 ]);
                 $auctions = Auction::where('is_active', 0)->get();
                 foreach($auctions as $auction){
                   $auction->update(['is_active' => 1]);
                 }
                 return redirect('/')
-                ->with(['success'=>'تم عملية الحجز بنجاح']);
+                ->with(['success'=>'تم عملية الدفع بنجاح']);
               }else{
                   $data = [
                     "order_reference" => "123412",
