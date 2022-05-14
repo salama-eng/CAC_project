@@ -47,7 +47,7 @@ class HomeController extends Controller
     }
     public function show_auctions(){
 
-        $posts=Post::with(['auctions'])->where('is_active',1)->paginate(9);
+        $posts=Post::with(['auctions'])->where('is_active',1)->paginate(2);
         $category = Category::get();
         $model = post::get();
         $status = post::get();
@@ -65,7 +65,7 @@ class HomeController extends Controller
 
     }
     public function show_offers(){
-   $posts=Post::with(['auctions'])->where('is_active',1)->paginate(9);
+   $posts=Post::with(['auctions'])->where('is_active',1)->paginate(1);
    $category = Category::get();
    $model = post::get();
    $status = post::get();
