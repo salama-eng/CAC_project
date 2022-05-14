@@ -80,7 +80,8 @@ class AuthController extends Controller
             'name' => ['required', 'min:3', 'max:20'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'min:5'],
-            'confirm_pass' => ['same:password']
+            'confirm_pass' => ['same:password'],
+            'privacyPolicy'=>['required']
 
         ], [
             'name.required' => 'هذا الحقل مطلوب ',
@@ -91,6 +92,7 @@ class AuthController extends Controller
             'password.required' => 'هذا الحقل مطلوب ',
             'password.min' => 'كلمة المرور يجب ان تكون اكثر من 3 احرف',
             'confirm_pass.same' => 'كلمة المرور غير مطابقة',
+            'privacyPolicy.required'=>'يجب ان توافق على سياسة الخصوصية  الخاصة بلموقع'
         ]);
 
 

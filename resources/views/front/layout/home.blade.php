@@ -125,10 +125,19 @@
         </div>
         <div class="fixed-top contact-parent vh-100">
             <div class="contactnavbar d-flex  align-content-between  p-4 flex-wrap ">
-                <div class="fa fa-facebook w-100 text-light"></div>
-                <div class="fa fa-instagram w-100 text-light"></div>
+                {{$count=0;}}
+                @foreach($Information as $information)
+                @if($count !== 4) break;
+                
+                
+                <a href="#" class="text-light w-100"><div class="{{$information->icon}} w-100 text-light"></div></a>
+                
+                <!-- <div class="fa fa-instagram w-100 text-light"></div>
                 <div class="fa fa-whatsapp w-100 text-light"></div>
-                <div class="fa fa-twitter w-100 text-light"></div>
+                <div class="fa fa-twitter w-100 text-light"></div> -->
+                @endif
+                {{$count++;}}
+                @endforeach
             </div>
 
 
@@ -174,24 +183,39 @@
             </div>
             <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2">
                 <h6 class="active pt-3 pb-1">تواصل معنا</h6>
-                <p class="text-light mt-3 "><i class="fa  fa-globe ps-3 active"></i>www.cac.com</p>
-                <p class="text-light my-2"><i class="fa fa-envelope-o ps-3 active"></i>cac@gmail.com</p>
-                <p class="text-light my-2"><i class="fa fa-instagram ps-3 active"></i>@cacMazad</p>
-                <p class="text-light my-2"><i class="fa fa-phone ps-3 active"></i> 777 777 777</p>
+                @foreach($Information as $information)
 
+                <p class="text-light mt-3 "><i class="{{$information->icon}} ps-3 active"></i>{{$information->link}}</p>
+                <!-- <p class="text-light my-2"><i class="fa fa-envelope-o ps-3 active"></i>cac@gmail.com</p>
+                <p class="text-light my-2"><i class="fa fa-instagram ps-3 active"></i>@cacMazad</p>
+                <p class="text-light my-2"><i class="fa fa-phone ps-3 active"></i> 777 777 777</p> -->
+                @endforeach
             </div>
-            <form action="" class=" mt-2 mt-lg-5  contact-form col-12 col-md-6 col-lg-4  ">
+            <form action=" {{route('message')}}" method="POST" enctype="multipart/form-data" class=" mt-2 mt-lg-5  contact-form col-12 col-md-6 col-lg-4  ">
+                @csrf
                 <h6 class="active w-100 pt-3 pb-1">إرسال رسالة</h6>
                 <div class="d-flex mt-3">
                     <div class="mx-1">
 
-                        <input type="text" placeholder="الاسم" class="d-block my-1 py-2 text-light">
-                        <input type="text" placeholder="الايميل" class="d-block my-1 py-2 text-light">
-                        <input type="text" placeholder="رقم الهاتف" class="d-block my-1 py-2 text-light">
+                        <input type="text" placeholder="الاسم" name="name" class="d-block my-1 py-2 text-light">
+                        @error('name')
+                        <span class="text-end yellow"> {{ $message }}  </span>
+                        @enderror
+                        <input type="text" placeholder="الايميل" name="email" class="d-block my-1 py-2 text-light">
+                        @error('email')
+                        <span class="text-end yellow"> {{ $message }}  </span>
+                        @enderror
+                        <input type="text" placeholder="رقم الهاتف" name="phone" class="d-block my-1 py-2 text-light">
+                        @error('phone')
+                        <span class="text-end yellow"> {{ $message }}  </span>
+                        @enderror
                     </div>
                     <div class="mx-1">
-                        <textarea name="" id=""  placeholder="نص الرسالة"
+                        <textarea  id="" name="message" placeholder="نص الرسالة"
                             class=" py-2 text-light d-block px-sm-2 my-1"></textarea>
+                        @error('message')
+                        <span class="text-end yellow"> {{ $message }}  </span>
+                        @enderror
                         <button class=" text-light rounded-0 py-2">
                             ارسال
                         </button>

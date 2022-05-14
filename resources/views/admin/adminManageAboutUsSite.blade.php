@@ -58,7 +58,7 @@
 
     @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center">Add New membership</h1>
+<h1 class="text-center">اضافة النص الافتراضي</h1>
 <div class="container">
     @if ($errors->any())
         <div class="alert message">
@@ -112,7 +112,7 @@
 {{$contentid = isset($_GET['contentid']) && is_numeric($_GET['contentid']) ? intval($_GET['contentid']) : 0;}}
 {{$column = $_GET['column'];}}
 {{$name = $_GET['name'];}}
-<h1 class="text-center">Edit Content</h1>
+<h1 class="text-center">تعديل المحتوى</h1>
 <div class="container col-lg-8 col-11">
     @if ($errors->any())
         <div class="alert message">

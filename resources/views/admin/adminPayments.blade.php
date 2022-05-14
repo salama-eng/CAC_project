@@ -102,7 +102,7 @@
     </div>
 @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center">Add New Payment</h1>
+<h1 class="text-center">اضافة طرق الدفع</h1>
 <div class="container">
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -142,7 +142,7 @@
 @elseif($do == 'Edit')
 <!-- start Edit model -->
 {{$Paymentid = isset($_GET['Paymentid']) && is_numeric($_GET['Paymentid']) ? intval($_GET['Paymentid']) : 0;}}
-<h1 class="text-center">Edit Payment Methode</h1>
+<h1 class="text-center">تعديل طريقة الدفع</h1>
 <div class="container col-lg-8 col-11">
     @if ($errors->any())
         <div class="alert alert-danger">

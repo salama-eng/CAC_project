@@ -105,7 +105,7 @@
         </div>
     @elseif($do == 'Add')
         <!-- start add model -->
-        <h1 class="text-center">Add New slider</h1>
+        <h1 class="text-center">اضافة صورة للسلايدر</h1>
         <div class="container ">
             @if ($errors->any())
                 <div class="alert alert-danger message">
@@ -145,7 +145,7 @@
     @elseif($do == 'Edit')
         <!-- start Edit model -->
         {{ $sliderid = isset($_GET['sliderid']) && is_numeric($_GET['sliderid']) ? intval($_GET['sliderid']) : 0 }}
-        <h1 class="text-center">Edit Slider Image</h1>
+        <h1 class="text-center">تغيير الصورة</h1>
         <div class="container col-lg-8 col-11">
             @if ($errors->any())
                 <div class="alert alert-danger message">
@@ -179,7 +179,7 @@
                         <!-- Start Submit -->
                         <div class="mb-2 row">
                             <div class="offset-sm-2 col-sm-10">
-                                <input type="submit" value="تعديل  الصورة" class=" btn p-2 contact">
+                                <input type="submit" value="تغيير  الصورة" class=" btn p-2 contact">
                             </div>
                         </div>
                         <!-- End Submit -->

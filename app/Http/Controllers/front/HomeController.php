@@ -19,6 +19,7 @@ class HomeController extends Controller
 
         $posts=Post::with(['auctions','users','category'])->find($id);
         $auctions = Auction::with(['userAw'])->where('post_id', $id)->orderBy('bid_amount', 'ASC')->get();
+        $Information = contact_us_info::select()->where('is_active',1)->get();
 
         return view('front.auctionDetails', [
             'post' => $posts,
@@ -37,11 +38,14 @@ class HomeController extends Controller
         $slider = slider_image::select()->where('is_active',1)->get();
         $content = siteHome::select()->get();
         $member = membership::select()->where('is_active',1)->get();
+        $Information = contact_us_info::select()->where('is_active',1)->get();
+
         return view('front.index', [
             'Slider' => $slider,
             'Posts' => $postsAll,
             'members' => $member,
             'Content' => $content,
+            'Information' => $Information,
           
         ]);
     }
@@ -55,11 +59,14 @@ class HomeController extends Controller
         $model = $model->unique('model');
         $status = $status->unique('status_car');
         // Auction::where('is_active',1)->max('bid_total');
+        $Information = contact_us_info::select()->where('is_active',1)->get();
+
         return view('front.auctions', [
             'posts' => $posts,
             'category' => $category,
             'model' => $model,
             'status' => $status,
+            'Information' => $Information,
         ]);
 
 
@@ -73,12 +80,14 @@ class HomeController extends Controller
    $category = $category->unique('name');
    $model = $model->unique('model');
    $status = $status->unique('status_car');
+    $Information = contact_us_info::select()->where('is_active',1)->get();
    
         return view('front.offers', [
             'Posts' => $posts,
             'category' => $category,
             'model' => $model,
             'status' => $status,
+            'Information' => $Information,
             
 
         ]);
@@ -93,11 +102,19 @@ class HomeController extends Controller
 
     public function showAboutUs(){
         $content = about_us::select()->get();
-        
         $member = membership::select()->where('is_active',1)->get();
+        $Information = contact_us_info::select()->where('is_active',1)->get();
         return view('front.aboutUs', [
             'members' => $member,
             'Content' => $content,
+            'Information' => $Information,
         ]);
+    }
+
+    public function showPrivacyPolicy(){
+        $Information = contact_us_info::select()->where('is_active',1)->get();
+        return view('front.privacyPolicy', [
+            'Information' => $Information,
+       ]);
     }
 }

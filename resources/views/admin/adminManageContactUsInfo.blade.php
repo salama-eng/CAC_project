@@ -3,7 +3,7 @@
 
 @if($do == 'Manage')
 
-<h1 class="text-center fs-3 text-white">ادارة وسائل التواصل</h1>
+<h1 class="text-center fs-3 text-white">ادارة طرق التواصل</h1>
     <div class="container">
         @if(session()->has('success'))
             <div class="alert alert-success message">
@@ -100,7 +100,7 @@
     </div>
 @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center">Add New information</h1>
+<h1 class="text-center">اضافة طريقة تواصل جدبدة</h1>
 <div class="container">
     @if ($errors->any())
         <div class="alert message">
@@ -152,7 +152,7 @@
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
-                <input type="submit" value="اضافة معلومة تواصل جديدة'" class=" btn p-2 contact">
+                <input type="submit" value="اضافة طريقة التواصل '" class=" btn p-2 contact">
             </div>
         </div>
         <!-- End Submit -->
@@ -162,7 +162,7 @@
 @elseif($do == 'Edit')
 <!-- start Edit model -->
 {{$informationid = isset($_GET['informationid']) && is_numeric($_GET['informationid']) ? intval($_GET['informationid']) : 0;}}
-<h1 class="text-center">Edit Information</h1>
+<h1 class="text-center">تعديل طريقة التواصل </h1>
 <div class="container ">
     @if ($errors->any())
         <div class="alert message">

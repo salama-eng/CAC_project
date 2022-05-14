@@ -37,7 +37,7 @@
 @elseif($do == 'Edit')
 <!-- start Edit model -->
 {{$messageid = isset($_GET['messageid']) && is_numeric($_GET['messageid']) ? intval($_GET['messageid']) : 0;}}
-<h1 class="text-center">Send Message</h1>
+<h1 class="text-center">ارسال رد للرسالة</h1>
 <div class="container col-12 col-md-8">
     @if ($errors->any())
         <div class="alert message">

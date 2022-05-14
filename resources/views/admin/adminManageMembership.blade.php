@@ -106,7 +106,7 @@
     </div>
 @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center">Add New membership</h1>
+<h1 class="text-center">اضافة شركة جدبدة</h1>
 <div class="container col-lg-8 col-11 m-auto">
     @if ($errors->any())
         <div class="alert alert-danger message">
@@ -181,7 +181,7 @@
 @elseif($do == 'Edit')
 <!-- start Edit model -->
 {{$membershipid = isset($_GET['membershipid']) && is_numeric($_GET['membershipid']) ? intval($_GET['membershipid']) : 0;}}
-<h1 class="text-center">Edit Membership</h1>
+<h1 class="text-center">تعديل معلومات الشركة</h1>
 <div class="container col-lg-8 col-11 m-auto">
     @if ($errors->any())
         <div class="alert alert-danger message">
@@ -248,7 +248,7 @@
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="تعديل  الصورة" class=" btn p-2 contact ">
+                        <input type="submit" value="تعديل  معلومة الشركة" class=" btn p-2 contact ">
                     </div>
                 </div>
                 <!-- End Submit -->

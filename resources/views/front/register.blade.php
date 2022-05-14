@@ -69,7 +69,16 @@
                 @error('confirm_pass')
                   <span class="text-end yellow">* {{ $message }}  </span>
                 @enderror
-            
+                <div>
+                  <input type="checkbox" name="privacyPolicy" style="accent-color: #e39100;" class="mt-4 mb-0" id="policy"><span class="geekmark"></span>
+                  <label for="policy" style="color:#aaa">
+                  بضغطك على المربع فأنك توافق على سياسة الخصوصية الخاصه بالموقع .
+                  <a href="{{route('privacyPolicy')}}" class="link-warning text-decoration-none">سياسة الخصوصية .</a></label>
+                </div>
+                @error('privacyPolicy')
+                  <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
+
                 <button type="submit" class="mt-4 " name="">انشاء حساب</button>
 
                 <div class=" text-center ">

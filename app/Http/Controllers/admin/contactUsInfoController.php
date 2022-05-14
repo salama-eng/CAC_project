@@ -19,13 +19,13 @@ class contactUsInfoController extends Controller
     function addContactUs(Request $request){
       
         Validator::validate($request->all(),[
-            'name'=>['required','string', 'between: 5, 20'],
+            'name'=>['required','string', 'between: 3, 20'],
             'link'=>['required','string'],
             'icon'=>['required']
         ],[
             'name.required'=>' حقل الاسم مطلوب ',
             'name.string'=>' يحب ان يكون حقل الاسم نص  ',
-            'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
+            'name.between'=>' يحب ان يكون حقل الاسم من 3 الى 20 حرف',
             'link.unique'=>'اوبس! هذا الرابط موجود مسبقا',
             'link.string'=>' يحب ان يكون حقل الرابط نص  ',
             'icon.required'=>'حقل الايقونة مطلوب',
@@ -46,13 +46,13 @@ class contactUsInfoController extends Controller
     
     function editContactUs(Request $request,$id){
         Validator::validate($request->all(),[
-            'name'=>['required','string', 'between: 5, 20'],
+            'name'=>['required','string', 'between: 3, 20'],
             'link'=>['required','string'],
             'icon'=>['required']
         ],[
             'name.required'=>' حقل الاسم مطلوب ',
             'name.string'=>' يحب ان يكون حقل الاسم نص  ',
-            'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
+            'name.between'=>' يحب ان يكون حقل الاسم من 3 الى 20 حرف',
             'link.unique'=>'اوبس! هذا الرابط موجود مسبقا',
             'link.string'=>' يحب ان يكون حقل الرابط نص  ',
             'link.required'=>'حقل الرابط مطلوب',

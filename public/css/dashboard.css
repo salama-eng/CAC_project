@@ -255,6 +255,9 @@ a{
     color: gray !important;
  border-radius: 0;
 }
+textarea.form-control {
+    color: white !important;
+}
 .form-select option{
     background-color: var(--darkgrey);
     color: gray !important;

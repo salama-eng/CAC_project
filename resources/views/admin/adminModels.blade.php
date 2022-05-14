@@ -136,7 +136,7 @@
 </div>
 @elseif($do == 'Edit')
 {{$modelid = isset($_GET['modelid']) && is_numeric($_GET['modelid']) ? intval($_GET['modelid']) : 0;}}
-<h1 class="text-center">Edit Modal</h1>
+<h1 class="text-center">تعديل الموديل</h1>
 <div class="container col-lg-9 col-11">
     @if ($errors->any())
         <div class="alert alert-danger message">

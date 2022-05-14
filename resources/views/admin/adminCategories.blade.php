@@ -147,7 +147,7 @@
     @elseif($do == 'Edit')
         <!-- start Edit model -->
         {{ $categoryid = isset($_GET['categoryid']) && is_numeric($_GET['categoryid']) ? intval($_GET['categoryid']) : 0 }}
-        <h1 class="text-center">Edit Category</h1>
+        <h1 class="text-center">تعديل التصنيف</h1>
         <div class="container">
             @if ($errors->any())
                 <div class="alert alert-danger error">

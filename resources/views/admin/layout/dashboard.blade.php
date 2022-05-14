@@ -206,9 +206,11 @@
                             <div class="fa fa-facebook text-light fs-5"></div>
                             <div class="fa  fa-envelope-o text-light fs-5"></div>
                         </div>
-                        <li class="w-100"><a
-                                class="nav-item text-center contact text-light fs-5 py-2  mt-3 mx-5 d-block px-3">
-                                777 777 777<i class="fa fa-phone px-2 fs-4"></i></a>
+                        <li class="w-100">
+                            <a href="{{route('home')}}"
+                                class="nav-item text-center contact text-light fs-5 py-2  mt-3 mx-5 d-block px-3"
+                                style="color: white !important;">
+                                الصفحة الرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                         </li>
                     </ul>
             </aside>
