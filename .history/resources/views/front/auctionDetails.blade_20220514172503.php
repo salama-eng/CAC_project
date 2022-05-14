@@ -103,7 +103,7 @@
                                 <h3 class="text-white  fs-7 mt-2">*سيتم خصم من حسابك مبلغ وقدرة
                                     <span class="yellow"> {{ $discount }}$ </span>حتى انتهاء العملية
                                 </h3>
-                                @if (isset($post->auctions[0]->bid_total))
+                                @if (isset($post->auctions->bid_total))
                                 <div>
                                     <h2 class="text-white fs-6 ">
                                         مبلغ المزايدة سيكون اكثر من <em

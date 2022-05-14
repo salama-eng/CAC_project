@@ -97,7 +97,7 @@
             <div class="d-flex flex-wrap gap-5 col-11 col-lg-8 current-offers">
 
             @foreach ($Posts as $post)
-@if (!isset($post->auctions[0]->is_active))
+@if (isset($Posts->auctions[0]->is_active))
     
 
                 <div class="card animate text-light m-auto  py-0 mb-5" style="width: 18rem;">
