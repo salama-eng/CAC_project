@@ -86,7 +86,7 @@
                            
                                     <div class="d-flex  align-items-center gap-3 ">
                                         <h3 class="text-white fs-6"> </h3>
-                                        <input type="number" class="input-model text-white p-2"
+                                        <input type="number" class="input-model text-white p-2 auction-input"
                                             min="{{ $post->auctions->max('bid_amount') }}" {{-- step="{{ $post->auctions->max('bid_amount') }}" --}} value=""
                                             name="amount" placeholder="مقدار الزيادة" />
 
@@ -116,7 +116,7 @@
 
                             @if ($post->end_date >= now() && Auth::id() != 3 && $post->users->id != Auth::id())
                                 <a href="#"
-                                    class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center justify-content-center'
+                                    class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center justify-content-center make-auction'
                                     data-bs-toggle="modal" data-bs-target="#auction{{ $post->id }}">مزايدة<i
                                         class="fa fa-long-arrow-left"> </i></a>
                             @endif
@@ -144,7 +144,7 @@
                                         <div class="modal-body bg-darkgrey ">
 
                                             <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
-                                                <em class="yellow">******$</em>
+                                                <em class="yellow"><span class="text-price"></span>$</em>
                                             </h2>
                                         </div>
                                         <div class="modal-footer bg-darkergrey">
@@ -228,12 +228,12 @@
                     @endphp
 
 
-                    @foreach ($images as $image)
+                    {{-- @foreach ($images as $image)
                         <div class="img-responsive">
                             <img src="{{ URL::to('/images/' . $image) }}" class="img-fluid"
                                 alt="{{ $image }}">
                         </div>
-                    @endforeach
+                    @endforeach --}}
                     <div class="img-responsive">
                         <img src="{{ URL::to('/images/' . $post->image) }}" class="img-fluid" alt="...">
                     </div>

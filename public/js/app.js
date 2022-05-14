@@ -174,7 +174,12 @@ window.addEventListener("scroll", reveal2);
         imagesPreview(this, "div.preview");
     });
 $('.accordion-button').click(function(){
-  $(this).parent().parent().find('.accordion-collapse').toggle()
+  $(this).parent().parent().find('.accordion-collapse').slideToggle();
+})
+$('.make-auction').click(function(e){
+ e.preventDefault();
+ var priceAuction=$('.auction-input').val();
+ $('.text-price').text(priceAuction)
 })
 });
 
