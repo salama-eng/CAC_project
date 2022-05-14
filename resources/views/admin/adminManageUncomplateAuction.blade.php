@@ -30,6 +30,9 @@
                 @php $user_id= '' @endphp
                 @php $user_name= '' @endphp
                 @php $bid_amount= '' @endphp
+                @php $auction_id= '' @endphp
+                @php $user= '' @endphp
+                @php $admin_confirm= '' @endphp
                 
                 @foreach ($posts as $post)
                     

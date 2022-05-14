@@ -109,7 +109,28 @@
   <div class="col-lg-6 col-6 mt-5 m-auto">
 
       <div class="main-container m-auto">
-        <div class="year-stats">
+              <div class=" d-flex flex-row-reverse year-stats">
+      @foreach($years as $year)
+      <p>{{$year['year']}}</p>
+          <div class=" h-100 " style="direction: ltr;">
+          
+          @foreach($year['content'] as $content)
+            <div class="month-group ">
+            <canvas class="bar" style="height:100%;width:0.01px;background-color:transparent"  ></canvas>
+
+            @if($content['count'])
+            <canvas class="bar " style="height:{{(($content['count'] / $year['yearCount']) * 100)}}%"  ></canvas>
+            @else
+            <canvas class="bar" style="height:0.5%"  ></canvas>
+            @endif
+
+            <p class="month">{{$content['month']}}</p>
+            </div>
+          @endforeach
+          </div>
+        @endforeach
+        </div>
+        <!-- <div class="year-stats">
           <div class="month-group">
             <div class="bar h-100"></div>
             <p class="month">Jan</p>
@@ -158,39 +179,33 @@
             <div class="bar h-100"></div>
             <p class="month">Dez</p>
           </div>
-        </div>
-    
+        </div> -->
+
+        
+
         <div class="stats-info">
-          <div class="graph-container">
-            <div class="percent">
-              <svg viewBox="0 0 36 36" class="circular-chart">
-                <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="circle" stroke-dasharray="85, 100" d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="circle" stroke-dasharray="60, 100" d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831" />
-              </svg>
-            </div>
-            <p>Total: $2075</p>
+        <div class="pie mb-4 position-relative" style=" width: 130px;
+            height: 130px;
+            background-image:conic-gradient(#5397d6 {{($posts_complatePre)}}%,
+            #4cc790 {{($posts_complatePre)}}% {{($posts_complatePre + $ordersPre)}}%,
+            #915db1 {{($posts_complatePre + $ordersPre)}}% {{($posts_complatePre + $ordersPre + $posts_uncomplatePre)}}%,
+            #e59f3c {{($posts_complatePre + $ordersPre + $posts_uncomplatePre)}}% );
+            border-radius: 50%">
+          <div class=" rounded-circle  w-75 h-75 text-white mb-3 d-flex position-absolute justify-content-center align-items-center" style="left: 13%;
+            top: 13%; background-color:#191919;">
+            Total : {{$posts}}
           </div>
-    
-          <div class="info">
-            <p>Most expensive category <br /><span>Restaurants & Dining</span></p>
-            <p>Updated categories <span>2</span></p>
-            <p>Bonus payments <span>$92</span></p>
+        </div>
+
+          <div class="info my-3">
+            <p><i class="fa fa-square mx-2" style="color:#5397d6;" aria-hidden="true"></i>عدد السيارات التي بعتها  </p>
+            <p><i class="fa fa-square mx-2" style="color:#4cc790;" aria-hidden="true"></i>عروض المزايده التي ربحتها  </p>
+            <p><i class="fa fa-square mx-2" style="color:#915db1;" aria-hidden="true"></i> العروض الغير مكتملة </p>
+            <p><i class="fa fa-square mx-2" style="color:#e59f3c;" aria-hidden="true"></i> المزادات الغير مكتملة </p>
           </div>
+        </div>
         </div>
       </div>
-  
-
-
   </div> 
 
 
