@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Order;
 use App\Models\Auction;
-use App\Models\Post;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,7 +82,6 @@ class TestUserController extends Controller
             $order->user_id = $request->user_id;
             $order->post_id = $request->post_id;
             $order->save();
-            $status = Post::where('id',$request->post_id)->update(['status_auction' => 1]);
             $auction = Auction::where('post_id', $request->post_id)
                                 ->where('bid_total', $request->price)->first();
             if($auction){
