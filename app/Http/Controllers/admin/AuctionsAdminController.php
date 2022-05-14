@@ -95,10 +95,26 @@ class AuctionsAdminController extends Controller
        }
       
      
-       if($active)
+       if($active){
+            $users = User::whereIn('id', [$request->userid, $request->user])->get();
+            foreach($users as $user){
+                $lesson = new Lesson;
+                $lesson->user_id = $user->id;
+                $lesson->title = 'مرحبا';
+                $lesson->body = 'تم عملية البيع والشراء . يمكنك الاطلاع';
+                $lesson->link = 'chat/'. $post_id;
+                $lesson->save();
+                
+                if(\Notification::send(
+                    $user ,new NewNotification(
+                        Lesson::latest('id')->first())
+                )){
+                    return back();
+                }
+            }
             return redirect('un_complate')
             ->with(['success'=>'تم الموافقة بنجاح']);
-        else{
+        }else{
             return back()->with(['error'=>'خطاء هناك مشكلة في عملية الموافقة على المزاد']);
         }
     }

@@ -227,7 +227,7 @@
 
 
 
-
+        @auth
         <div class="w-100" style="background-color: #1C1C1C">
 
             <div class="text-light dirction me-auto mt-4 fixed-top dropdown-notifications ms-5">
@@ -306,6 +306,7 @@
 
 
     <img class="back-dash" src="assets/back.jpg" alt=""> --}}
+    @endauth
     </div>
 </body>
 
