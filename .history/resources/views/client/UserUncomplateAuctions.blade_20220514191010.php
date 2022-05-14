@@ -22,8 +22,8 @@
         @foreach ($posts as $post)
             @foreach ($post->auctions as $auction)
                 @if ($auction->aw_user_id == Auth::id())
-                    @if ($post->is_active == 1 && $post->status_auction == 0 && $auction->admin_confirm == 1 && $post->end_date <= date('Y-m-d'))
-                  
+                    {{-- @if ($post->is_active == 1 && $post->status_auction == 0 && $auction->admin_confirm == 1 && $post->end_date <= date('Y-m-d')) --}}
+                    @if ($post->is_active == 1)
                         @php
                             $i++;
                         @endphp
