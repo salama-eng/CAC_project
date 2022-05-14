@@ -125,11 +125,11 @@
         </div>
         <div class="fixed-top contact-parent vh-100">
             <div class="contactnavbar d-flex  align-content-between  p-4 flex-wrap ">
-               
+                {{$count=0;}}
                 @if(isset($Information))
                 @foreach($Information as $information)
 
-               
+                @if($count !== 4)
                 
                 
                 <a href="#" class="text-light w-100"><div class="{{$information->icon}} w-100 text-light"></div></a>
@@ -137,8 +137,8 @@
                 <!-- <div class="fa fa-instagram w-100 text-light"></div>
                 <div class="fa fa-whatsapp w-100 text-light"></div>
                 <div class="fa fa-twitter w-100 text-light"></div> -->
-               
-               
+                @endif
+                {{$count++;}}
                 @endforeach
                 @endif
             </div>
