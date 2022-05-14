@@ -18,31 +18,33 @@
 
                         <div class="my-2 mx-auto">
                             <select id="mod" class="text-center py-1">
-                                @foreach ($model as $mod )
-                                <option value="{{$mod->model}}">{{$mod->model}}</option>
-                              
+                                @foreach ($model as $mod)
+                                    <option value="{{ $mod->model }}">{{ $mod->model }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="my-2 mx-auto">
                             <select id="cate" class="text-center  py-1">
-@foreach ($category as $cat )
-
-                                <option value="{{$cat->name}}">{{$cat->name}}</option>
-                               
+                                @foreach ($category as $cat)
+                                    <option value="{{ $cat->name }}">{{ $cat->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="my-2 mx-auto">
+                            <select id="coun" class="text-center  py-1">
+                                <option value="Yemen">Yemen</option>
+                                <option value="Amwrica">Amwrica</option>
+                                <option value="Tokish">Tokish</option>
+                            </select>
+                        </div>
+                        <div class="my-2 mx-auto">
                             <select id="type" class="text-center  py-1">
-                                @foreach ($status as $status )
-                                @if ($status->status_car == 1)
-                                <option value="مستخدم">مستخدم</option>
-                                @elseif ($status->status_car != 1)
-                                <option value="جديد">جديد</option>
-                                @endif
-                             
-                               
+                                @foreach ($status as $status)
+                                    @if ($status->status_car == 1)
+                                        <option value="مستخدم">مستخدم</option>
+                                    @elseif ($status->status_car != 1)
+                                        <option value="جديد">جديد</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -79,13 +81,13 @@
                             <a href="{{ route('auctiondetails', $post->id) }}"> <img src="/images/{{ $post->image }}"
                                     class="card-img-top p-3" height="220" alt="..."></a>
                             <div class="card-body py-0">
-                                
+
                                 <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }} /
                                     <span class="mod">{{ $post->model }}</span>
                                 </h5>
                                 <p class="text-center fs-7 card-details type">
                                     @if ($post->status_car == 1)
-                                        جديد /  {{ $post->category->name }}
+                                        جديد / {{ $post->category->name }}
                                     @else
                                         مستخدم / {{ $post->category->name }}
                                     @endif
@@ -100,7 +102,8 @@
 
                                     </span><i class="active">$</i>
                                 </p>
-                                <a href="{{route('auctiondetails',$post->id)}}" class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                                <a href="{{ route('auctiondetails', $post->id) }}" class="card-link active  fs-7">تفاصيل<i
+                                        class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
 
                             </div>
                         </div>
@@ -178,16 +181,15 @@
                                         <a href="{{ route('login') }}" class="card-link active text-center mt-5 mb-5">
                                             تسجيل الدخول <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                                     </div>
-                           
                             @endif
-                   
-                </div>
-                @endif
-            @endif
-        @endforeach
-    </div>
 
-</section>
-{{ $posts->links('front.layout.paginate') }}
+                        </div>
+                    @endif
+                @endif
+            @endforeach
+        </div>
+
+    </section>
+    {{ $posts->links('front.layout.paginate') }}
 
 @endsection

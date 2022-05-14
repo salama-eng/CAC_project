@@ -961,9 +961,10 @@ textarea {
 /* toggle button */
 .switch {
   position: relative;
-  display: inline-block;
+  display: block;
   width: 60px;
-  height: 34px;
+  height: 32px;
+  border-radius: 50% !important;
 }
 
 .switch input { 
@@ -988,8 +989,8 @@ textarea {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 24px;
+  width: 24px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -1009,6 +1010,13 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+}
+.slider {
+  border-radius: 34px;
+}
+
+.slider:before {
+  border-radius: 50%;
 }
 .accept{
   border:1px solid green ;
@@ -1074,6 +1082,35 @@ table th {
   line-height: 2rem;
 }
 /* end privacy policy style */
+
+/* FAQ style by ehsas */ 
+.accordion{
+  color: #ccc;
+}
+.accordion-collapse{
+  line-height: 30px;
+}
+.accordion ,.accordion-item, .accordion-button{
+
+  background-color: transparent !important;
+}
+.accordion-button{
+  text-align: center;
+}
+.accordion-button:focus{
+box-shadow: none !important;
+}
+
+.accordion-button::after {
+background: none !important;
+   content: "+" !important;
+   font-size:1.5em !important;
+ 
+  position: absolute;
+  left: 25px;
+   transition: transform 0.3s ease-in-out;
+}
+/* end FAQstyle */
 @media (min-width:836px) {
   section.send_message .box img {
     left: -7.6vw;
@@ -1121,6 +1158,20 @@ table th {
   flex-wrap: wrap;
   justify-content: center;
   }
+ 
+  .accordion-button{
+   display: flex;
+   justify-content: left;
+   text-align: center !important;
+  }
+  .accordion-button::after {
+ 
+
+      position: absolute;
+      right: 12px;
+      top: 14px;
+       transition: transform 0.3s ease-in-out;
+    }
 }
 
 .green{

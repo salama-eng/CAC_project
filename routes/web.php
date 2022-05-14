@@ -249,6 +249,15 @@ Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');
 Route::get('/aboutUs', [HomeController::class,'showAboutUs'])->name('aboutUs');
 Route::get('/privacyPolicy',[HomeController::class,'showPrivacyPolicy'])->name('privacyPolicy');
+Route::get('/privacyPolicy', function(){
+    return view('front.privacyPolicy');
+
+})->name('privacyPolicy');
+Route::get('/faq', function(){
+    return view('front.FAQ');
+
+})->name('faq');
+
 Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message');
 /******  Chat    ******* */
 
