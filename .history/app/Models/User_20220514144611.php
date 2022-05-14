@@ -77,10 +77,9 @@ class User extends Authenticatable implements MustVerifyEmail ,Wallet
     {
         return $this->hasOne(Post::class, 'user_id');
     }
-    
-    public function transaction()
+    public function wallet()
     {
-        return $this->hasMany(Transaction::class,'payable_id');
+        return $this->hasOne(Wallet::class,'holder_id');
     }
   
 }

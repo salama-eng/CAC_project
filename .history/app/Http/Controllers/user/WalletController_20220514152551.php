@@ -5,7 +5,6 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\User;
-use App\Models\Wallet;
 use Illuminate\Http\Request;
 
 class WalletController extends Controller
@@ -14,17 +13,14 @@ class WalletController extends Controller
     {
       
        $user= User::find($user_id);
-      $transaction=Transaction::with('wallet.user')->where('payable_id',$user_id)->orderBy('created_at', 'DESC')->get();
-      
-
+      $transaction=Transaction::with('wallet.user')->get();
+return $transaction;
        $balance=$user->balance;
-       $wallet=Wallet::where('holder_id',$user_id)->get();
- 
+       $id=$user->uuid;
        return view('client.wallet', [
         'balance' => $balance,
        'user'=> $user,
-       'transaction'=> $transaction,
-       'wallet'=> $wallet
+       'id'=> $id
         
     ]);
     }

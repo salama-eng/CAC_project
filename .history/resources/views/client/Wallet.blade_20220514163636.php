@@ -49,7 +49,9 @@
 
                         <p class="fs-6 p-dash ">تم ايداع مبلغ    <span class="active">({{$transaction->amount}})</span> من حساب مدير الموقع  <span
                             class="active"></span></p>
-                    <p class="fs-7 p-dash grey ">{{$transaction->created_at}}</p>
+                    <p class="fs-7 p-dash grey ">@php
+                        echo now();
+                    @endphp</p>
                 </div>
                 <p class="fs-3 green p-dash">+ {{$transaction->amount}} $</p>
                       

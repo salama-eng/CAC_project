@@ -42,30 +42,13 @@
   @if ($transaction->type === 'deposit')
             <div class="card-wallet text-light p-3">
                
-                 
-                <div class="d-flex justify-content-between align-items-center">
-
-                    <div>
-
-                        <p class="fs-6 p-dash ">تم ايداع مبلغ    <span class="active">({{$transaction->amount}})</span> من حساب مدير الموقع  <span
-                            class="active"></span></p>
-                    <p class="fs-7 p-dash grey ">{{$transaction->created_at}}</p>
-                </div>
-                <p class="fs-3 green p-dash">+ {{$transaction->amount}} $</p>
-                      
-                      
-
-
-                </div> 
-            </div>
-
-
                     
-{{--                
+               
                 <div class="d-flex justify-content-between align-items-center">
 
                     <div>
 
+                      
                         <p class="fs-6 p-dash ">تم ايداع مبلغ من   <span class="active">(5536)</span> المستخدم <span
                             class="active">خليفة القاضي</span></p>
                     <p class="fs-7 p-dash grey ">@php
@@ -78,27 +61,26 @@
 
 
                 </div> 
-            </div> --}}
-
-            @else
-            <div class="card-wallet text-light p-3">
-                <div class="d-flex justify-content-between align-items-center">
-  
-                    <div>
-                        <p class="fs-6 p-dash ">تم سحب مبلغ    <span class="active">({{$transaction->amount}})</span> الى حساب مدير الموقع <span
-                                class="active"> </span></p>
-                        <p class="fs-7 p-dash grey ">{{$transaction->created_at}}</p>
-                    </div>
-                    <p class="fs-3 red p-dash"> {{$transaction->amount}} $</p>
-  
-  
-                </div>
             </div>
-  
  @endif
 
              @endforeach
-        
+            <div class="card-wallet text-light p-3">
+              <div class="d-flex justify-content-between align-items-center">
+
+                  <div>
+                      <p class="fs-6 p-dash ">تم سحب مبلغ الى رقم حساب <span class="active">(5536)</span> المستخدم <span
+                              class="active">خليفة القاضي</span></p>
+                      <p class="fs-7 p-dash grey ">@php
+                          echo now();
+                      @endphp</p>
+                  </div>
+                  <p class="fs-3 red p-dash">- 1000 $</p>
+
+
+              </div>
+          </div>
+
       
         
         </div>

@@ -14,7 +14,7 @@ class WalletController extends Controller
     {
       
        $user= User::find($user_id);
-      $transaction=Transaction::with('wallet.user')->where('payable_id',$user_id)->orderBy('created_at', 'DESC')->get();
+      $transaction=Transaction::with('wallet.user')->where()->get();
       
 
        $balance=$user->balance;
