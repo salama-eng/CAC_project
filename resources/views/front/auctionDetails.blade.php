@@ -228,12 +228,12 @@
                     @endphp
 
 
-                    {{-- @foreach ($images as $image)
+                    @foreach ($images as $image)
                         <div class="img-responsive">
                             <img src="{{ URL::to('/images/' . $image) }}" class="img-fluid"
                                 alt="{{ $image }}">
                         </div>
-                    @endforeach --}}
+                    @endforeach
                     <div class="img-responsive">
                         <img src="{{ URL::to('/images/' . $post->image) }}" class="img-fluid" alt="...">
                     </div>
