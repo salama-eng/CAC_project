@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Order;
 use App\Models\Auction;
-use App\Models\Post;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,23 +82,23 @@ class TestUserController extends Controller
             $order->user_id = $request->user_id;
             $order->post_id = $request->post_id;
             $order->save();
-            $status = Post::where('id',$request->post_id)->update(['status_auction' => 1]);
             $auction = Auction::where('post_id', $request->post_id)
                                 ->where('bid_total', $request->price)->first();
             if($auction){
                 $auc = Auction::where('id', $auction->id)->update(['payment_confirm' => 1]);
             }
             $id = Auth::id();
-              $userId = User::find($id);
-              if($userId->balance >= $request->price){
+            $user = User::find($id);
+            if($user->balance >= $request->price){
+                $discount = $user->withdraw($request->price);
                 $role = Role::where('name', 'admin')->first();
                 $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
                 $idA = $roleUser->user_id;
                 $user= User::find($idA);
-                $userId->transfer($user, $request->price, [
+                $user->deposit($discount, [
                     'invoice_id' => 200, 
                     'details' => "تم ايداع مبلغ من حساب",
-                    'username'=> $userId->name,
+                    'username'=> Auth::user()->name,
                 ]);
                 $actives = Order::where('is_active', 0)
                                 ->where('user_id', $request->user_id)

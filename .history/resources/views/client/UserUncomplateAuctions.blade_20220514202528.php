@@ -8,7 +8,7 @@
 @endif
 
 
-<section class="card-container  d-flex flex-wrap justify-content-between gap-5">
+<section class="card-container  d-flex flex-wrap justify-content-between g-4">
     @if(session()->has('success'))
     <div class="alert alert-success message">
         {{ session()->get('success') }}
@@ -23,9 +23,9 @@
 @foreach($posts as $post )
 @foreach($post->auctions as $auction)
 @if ($auction->aw_user_id == Auth::id())
+@if($post->is_active == 1  )
 
-
-@if($post->is_active == 1 && $post->status_auction == 0  && $auction->admin_confirm == 1 && $post->end_date <= date('Y-m-d'))
+{{-- @if($post->is_active == 1 && $post->status_auction == 0  && $auction->admin_confirm == 1 && $post->end_date <= date('Y-m-d')) --}}
 @php
     $i++;
 @endphp

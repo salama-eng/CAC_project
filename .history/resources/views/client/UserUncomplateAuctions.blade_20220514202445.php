@@ -8,7 +8,7 @@
 @endif
 
 
-<section class="card-container  d-flex flex-wrap justify-content-between gap-5">
+<section class="card-container  d-flex flex-wrap justify-content-between ">
     @if(session()->has('success'))
     <div class="alert alert-success message">
         {{ session()->get('success') }}
@@ -23,9 +23,9 @@
 @foreach($posts as $post )
 @foreach($post->auctions as $auction)
 @if ($auction->aw_user_id == Auth::id())
+@if($post->is_active == 1  && $auction->admin_confirm == 1 && $post->end_date <= date('Y-m-d'))
 
-
-@if($post->is_active == 1 && $post->status_auction == 0  && $auction->admin_confirm == 1 && $post->end_date <= date('Y-m-d'))
+{{-- @if($post->is_active == 1 && $post->status_auction == 0  && $auction->admin_confirm == 1 && $post->end_date <= date('Y-m-d')) --}}
 @php
     $i++;
 @endphp
@@ -58,6 +58,7 @@
          <a href="{{route('chat',$auction->id)}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-center w-75 m-auto my-2 fs-7"> الذهاب للدردشة  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
 </div>
 
+</div> 
 
 <div class="modal fade user" id="active{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

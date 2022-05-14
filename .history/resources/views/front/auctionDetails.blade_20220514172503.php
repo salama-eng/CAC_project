@@ -55,7 +55,6 @@
 
                     </div>
                     @php $total = $post->starting_price @endphp
-                    @php $userId = '' @endphp
                     <div class=" border-n mt-4 ">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
@@ -75,7 +74,6 @@
                                    
                                         
                                         @foreach($auctions as $auction)
-                                            @php $userId = $auction->userAw->id @endphp
                                             <div class="">
                                                 <h2 class="text-white fs-6">
                                                      {{$auction->userAw->name}} زايد بمبلغ
@@ -105,7 +103,7 @@
                                 <h3 class="text-white  fs-7 mt-2">*سيتم خصم من حسابك مبلغ وقدرة
                                     <span class="yellow"> {{ $discount }}$ </span>حتى انتهاء العملية
                                 </h3>
-                                @if (isset($post->auctions[0]->bid_total))
+                                @if (isset($post->auctions->bid_total))
                                 <div>
                                     <h2 class="text-white fs-6 ">
                                         مبلغ المزايدة سيكون اكثر من <em
@@ -137,7 +135,7 @@
                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                             <input type="hidden" name="post_name" value="{{$post->name}}">
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                            <input type="hidden" name="bid_amount" value="200">
+                                            <input type="hidden" name="bid_amount" value="100000">
                                             <input type="hidden" name="discount" value="{{$discount}}">
                                             <input type="hidden" name="total" value="{{$total}}">
                                             <button type="submit" class="btn-close" data-bs-dismiss="modal"
@@ -148,16 +146,6 @@
                                             <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
                                                 <em class="yellow">******$</em>
                                             </h2>
-                                            @if($userId != null && $userId == auth()->user()->id)
-                                                <h1></h1>
-                                            @else
-                                                <h2 class="text-white fs-4 p-3"> ملاحظة :
-                                                    <span class="fs-6">سيتم سحب من حساب {{$discount}}$</span>
-                                                    <em class="yellow fs-6">
-                                                        <a href="{{route('home')}}" class="card-link active text-center mt-5 mb-2"> معرفة المزيد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
-                                                    </em>
-                                                </h2>
-                                            @endif
                                         </div>
                                         <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"

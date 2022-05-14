@@ -99,6 +99,6 @@ public function user_confirm(Request $request){
          }
      }
      else{
-        return back()->with(['message'=>' عذرا يجب عليك تاكيد الدفع اولا  ']);
+        return back()->with(['error'=>'خطاء هناك مشكلة']);
     }
 } }
