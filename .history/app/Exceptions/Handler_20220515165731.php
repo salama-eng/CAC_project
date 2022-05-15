@@ -4,11 +4,15 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class Handler extends ExceptionHandler
 {
 
-    
+    public function render($request, Exception $exception)
+    {
+    return parent::render($request, $exception);
+    }
     /**
      * A list of the exception types that are not reported.
      *
