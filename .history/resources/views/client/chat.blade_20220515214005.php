@@ -23,7 +23,7 @@
 
 
 
-                {{-- <li class="me">
+                <li class="me">
                     <div class="entete">
                         <h3>10:12AM, Today</h3>
                         <h2>Vincent</h2>
@@ -82,17 +82,17 @@
                     <div class="messag">
                         OK
                     </div>
-                </li> --}}
+                </li>
 
 
             </ul>
 
         </main>
         <form id="myForm" name="myForm" class="form-horizontal" novalidate="">
-            <input type="hidden" id="post_id" name="post_id" value="{{$auction->post_id}}">
-            <input type="hidden" id="aw_user_id" name="aw_user_id" value="{{$auction->aw_user_id}}">
+            <input type="hidden" id="post_id" name="post_id" value="{{Auth::id()}}">
+            <input type="hidden" id="aw_user_id" name="aw_user_id" value="{{Auth::id()}}">
             <input type="hidden" id="user_id" name="user_id" value="{{Auth::id()}}">
-            <input type="hidden" id="owner_user_id" name="owner_user_id" value="{{$auction->owner_user_id}}">
+            <input type="hidden" id="owner_user_id" name="owner_user_id" value="1">
             <input type="hidden" id="username" name="username" value="{{ auth()->user()->name}}">
             <div class="modal-body d-flex justify-content-around col-12 mt-5">
                 <input type="text" class="form-control col-10 text-end" id="message" name="message"

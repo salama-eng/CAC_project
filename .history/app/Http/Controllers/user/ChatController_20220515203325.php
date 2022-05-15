@@ -21,7 +21,6 @@ class ChatController extends Controller
  
     public function store(Request $request)
     {
-       
         $data = $request->validate([
             'message' => '',
             'aw_user_id' => '',
@@ -31,15 +30,11 @@ class ChatController extends Controller
             'user_id' => '',
             'username' => '',
         ]);
-$auction=Auction::find($request->auction);
+
         $chat = Chat::create($data);
-      
         event(new ChatNotification($chat));
         $user = User::where('id', Auth::user()->id)->get();
-        return view('client.chat', [
-            'auction'              => $auction,
-           
-        ]);
+        return view('client.chat');
         // return Response::json($chat);
     }
 }

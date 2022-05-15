@@ -23,6 +23,24 @@
 
 
 
+              
+
+
+
+               
+
+{{-- 
+                <li class="you">
+                    <div class="entete">
+                        <span class="status green"></span>
+                        <h2>Vincent</h2>
+                        <h3>10:12AM, Today</h3>
+                    </div>
+                    <div class="triangle"></div>
+                    <div class="messag">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    </div>
+                </li> --}}
                 {{-- <li class="me">
                     <div class="entete">
                         <h3>10:12AM, Today</h3>
@@ -33,61 +51,15 @@
                     <div class="messag">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                     </div>
-                </li>
-
-
-
-                <li class="you">
-                    <div class="entete">
-                        <span class="status green"></span>
-                        <h2>Vincent</h2>
-                        <h3>10:12AM, Today</h3>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    </div>
-                </li>
-
-
-                <li class="you">
-                    <div class="entete">
-                        <span class="status green"></span>
-                        <h2>Vincent</h2>
-                        <h3>10:12AM, Today</h3>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    </div>
-                </li>
-                <li class="me">
-                    <div class="entete">
-                        <h3>10:12AM, Today</h3>
-                        <h2>Vincent</h2>
-                        <span class="status blue"></span>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    </div>
-                </li>
-                <li class="me">
-                    <div class="entete">
-                        <h3>10:12AM, Today</h3>
-                        <h2>Vincent</h2>
-                        <span class="status blue"></span>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        OK
-                    </div>
                 </li> --}}
-
+               
 
             </ul>
 
         </main>
+        @foreach ($auction as $auction)
+            
+     
         <form id="myForm" name="myForm" class="form-horizontal" novalidate="">
             <input type="hidden" id="post_id" name="post_id" value="{{$auction->post_id}}">
             <input type="hidden" id="aw_user_id" name="aw_user_id" value="{{$auction->aw_user_id}}">
@@ -104,7 +76,7 @@
                     <input type="hidden" id="todo_id" name="todo_id" value="0">
                 </div>
         </form>
-
+        @endforeach
     </div>
 @stop
 @push('javascript')

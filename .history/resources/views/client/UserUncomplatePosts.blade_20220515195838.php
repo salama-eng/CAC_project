@@ -34,7 +34,6 @@
     </div>
     <div class="card-body d-flex justify-content-between py-0">
             <form action="chat" method="post"> 
-                @csrf
                 <input type="hidden" value="{{$auction->id}} " name="auction">     
         <input type="submit"  value="الذهاب للدردشة " class="card-link active bg-darkgrey p-1 card-btn px-2 m-1 text-center w-75 m-auto my-2 fs-7"> <i class="fa fa-long-arrow-left p-2 pt-1"> </i></input>
   
