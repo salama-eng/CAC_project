@@ -10,6 +10,8 @@ use App\Models\Order;
 use App\Models\Auction;
 use App\Models\Post;
 use DB;
+use App\Models\Lesson;
+use App\Events\AdminNotification;
 use Illuminate\Support\Facades\Auth;
 
 class TestUserController extends Controller
@@ -27,15 +29,20 @@ class TestUserController extends Controller
         }
     
          
-        $role = Role::where('name', 'admin')->first();
-        $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
-        $id = $roleUser->user_id;
-        $user= User::find($id);
-        $user->deposit($in->customer_account_info->paid_amount, [
-          'invoice_id' => 200, 
-          'details' => "تم ايداع مبلغ من حساب",
-          'username'=> Auth::user()->name,
-        ]);
+        $userAdmin = $this->roleUsers();
+        $wallet = $this->walletDeposit($userAdmin, $in->customer_account_info->paid_amount, Auth::user()->name);
+        $lesson = new Lesson;
+        $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', Auth::user()->name, 'admin_wallet');
+        
+        if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
+            return back();
+        }
+        $user = User::find(Auth::id());
+        $lesson = new Lesson;
+        $lesson = $this->lessonNotification(ِAuth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+        if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
+            return back();
+        }
         return redirect('/')
         ->with(['success'=>'تم عملية الحجز بنجاح']);
          
@@ -92,15 +99,19 @@ class TestUserController extends Controller
             $id = Auth::id();
               $userId = User::find($id);
               if($userId->balance >= $request->price){
-                $role = Role::where('name', 'admin')->first();
-                $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
-                $idA = $roleUser->user_id;
-                $user= User::find($idA);
-                $userId->transfer($user, $request->price, [
-                    'invoice_id' => 200, 
-                    'details' => "تم ايداع مبلغ من حساب",
-                    'username'=> $userId->name,
-                ]);
+                $userAdmin = $this->roleUsers();
+                $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->discount, 'تم ايداع مبلغ من حساب');
+                $lesson = new Lesson;
+                $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
+                if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
+                    return back();
+                }
+                $user = User::find(Auth::id());
+                $lesson = new Lesson;
+                $lesson = $this->lessonNotification(ِAuth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+                if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
+                    return back();
+                }
                 $actives = Order::where('is_active', 0)
                                 ->where('user_id', $request->user_id)
                                 ->where('post_id', $request->post_id)->first();

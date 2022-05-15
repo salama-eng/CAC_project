@@ -270,7 +270,6 @@ Route::get('/privacyPolicy', function(){
 Route::get('/faq', function(){
     return view('front.FAQ');
 
-    
 })->name('faq');
 
 Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message');

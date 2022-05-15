@@ -33,7 +33,7 @@ class ChatController extends Controller
         ]);
 $auction=Auction::find($request->auction);
         $chat = Chat::create($data);
-      
+        return $auction;
         event(new ChatNotification($chat));
         $user = User::where('id', Auth::user()->id)->get();
         return view('client.chat', [

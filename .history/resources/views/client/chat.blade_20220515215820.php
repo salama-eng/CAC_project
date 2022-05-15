@@ -23,7 +23,7 @@
 
 
 
-                {{-- <li class="me">
+                <li class="me">
                     <div class="entete">
                         <h3>10:12AM, Today</h3>
                         <h2>Vincent</h2>
@@ -82,7 +82,7 @@
                     <div class="messag">
                         OK
                     </div>
-                </li> --}}
+                </li>
 
 
             </ul>

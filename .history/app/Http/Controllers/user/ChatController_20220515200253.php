@@ -7,21 +7,19 @@ use App\Models\Chat;
 use App\Models\Auction;
 use App\Models\User;
 use Illuminate\Http\Request;
-
 use App\Events\ChatNotification;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
     public function index(Request $request)
     {
+      return $request;
         return view('client.chat');
     }
  
     public function store(Request $request)
     {
-       
         $data = $request->validate([
             'message' => '',
             'aw_user_id' => '',
@@ -31,15 +29,16 @@ class ChatController extends Controller
             'user_id' => '',
             'username' => '',
         ]);
-$auction=Auction::find($request->auction);
+
         $chat = Chat::create($data);
-      
         event(new ChatNotification($chat));
         $user = User::where('id', Auth::user()->id)->get();
-        return view('client.chat', [
-            'auction'              => $auction,
-           
-        ]);
-        // return Response::json($chat);
+        if(\Notification::send(
+            $user ,new ChatNotification(
+                Chat::latest('id')->first())
+        )){
+            return back();
+        }
+        return Response::json($chat);
     }
 }

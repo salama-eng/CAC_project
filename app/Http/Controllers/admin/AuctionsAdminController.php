@@ -52,26 +52,6 @@ class AuctionsAdminController extends Controller
     public function showAdminEndedAuction(){
         return view('admin.adminManageEndedAuction');
     }
-
-    public function sendnotification(Request $request){
-        
-        $lesson = new Lesson;
-            $lesson->user_id = Auth::id();
-            $lesson->title = 'مرحبا';
-            $lesson->body = 'تم عملية البيع والشراء . يمكنك الاطلاع';
-            $lesson->link = 'chat/';
-            $lesson->save();
-            $user = User::find($request->useraw);
-            if(\Notification::send(
-                $user ,new NewNotification(
-                    Lesson::latest('id')->first())
-            )){
-                return back();
-            }
-            return redirect('endede_acution')
-            ->with(['success'=>'تم الموافقة بنجاح']);
-        
-    }
     public function editActive(Request $request){
        $user=$request->user;
       
@@ -81,36 +61,34 @@ class AuctionsAdminController extends Controller
         $post_price=Post::find($post_id);
         $post_price=$post_price->starting_price;
         $discount=$post_price*20/100;
-        $admin=User::find(Auth::id());
+        $userAdmin = $this->roleUsers();
         $users=Auction::with('userAw')->where('post_id',$post_id)->where('aw_user_id','!=',$user)->get();
      foreach($users as $user)
-       foreach($user->userAw as $u)
-       {
-            $u=User::find($user->userAw->id);
-            $admin->transfer($u, $discount, [
-                'invoice_id' => 200, 
-                'details' => "تم سحب مبلغ من حساب",
-                'username'=> $user->userAw->name,
-            ]);
+    //    foreach($user->userAw as $u)
+       {    
+            $us=User::find($user->userAw->id);
+            // dd($us->name); exit();
+            $wallet = $this->walletTransfer($userAdmin, $us, $us->name, $discount, 'تم سحب مبلغ من حساب');
+            $lesson = new Lesson;
+            $lesson = $this->lessonNotification($us->id, 'لقد تمت عملية ايداع الى حسابك ', '', 'wallet/"'.Auth::id().'"');
+            if(\Notification::send($us ,new NewNotification(Lesson::latest('id')->first()))){
+                return back();
+            }
        }
       
      
        if($active){
-            $users = User::whereIn('id', [$request->userid, $request->user])->get();
-            foreach($users as $user){
-                $lesson = new Lesson;
-                $lesson->user_id = $user->id;
-                $lesson->title = 'مرحبا';
-                $lesson->body = 'تم عملية البيع والشراء . يمكنك الاطلاع';
-                $lesson->link = 'chat/'. $post_id;
-                $lesson->save();
-                
-                if(\Notification::send(
-                    $user ,new NewNotification(
-                        Lesson::latest('id')->first())
-                )){
-                    return back();
-                }
+            $user = User::find($request->userid);
+            $lesson = new Lesson;
+            $lesson = $this->lessonNotification($user->id, 'تم بيع سيارتك يمكنك التواصل مع المشتري', '', 'chat/ "'.$post_id.'"'); 
+            if(\Notification::send($user ,new NewNotification(Lesson::latest('id')->first()))){
+                return back();
+            }
+            $user = User::find($request->user);
+            $lesson = new Lesson;
+            $lesson = $this->lessonNotification($user->id, 'لقد ربحت في المزاد يمكنك الان التواصل مع البائع', '', 'chat/ "'.$post_id.'"'); 
+            if(\Notification::send($user ,new NewNotification(Lesson::latest('id')->first()))){
+                return back();
             }
             return redirect('un_complate')
             ->with(['success'=>'تم الموافقة بنجاح']);
