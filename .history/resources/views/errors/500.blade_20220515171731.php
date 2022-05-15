@@ -8,4 +8,3 @@
 <img src="{{ URL::asset('assets/images/404.png') }}" alt="" style="width:60%" class=" m-auto my-5" ></div>
 
 @endsection
-

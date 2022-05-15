@@ -5,7 +5,6 @@
 <h4 class="m-auto active text-center" style="margin-top:100rem"> عذرا الصفحة غير موجودة  !!!</h4>
 <div class="col-12 d-flex justify-content-center ">
 
-<img src="{{ URL::asset('assets/images/404.png') }}" alt="" style="width:60%" class=" m-auto my-5" ></div>
+<img src="{{ URL::asset('assets/images/500.png') }}" alt="" style="width:40%" class=" m-auto my-5" ></div>
 
 @endsection
-
