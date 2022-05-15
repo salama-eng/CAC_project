@@ -1111,6 +1111,20 @@ background: none !important;
    transition: transform 0.3s ease-in-out;
 }
 /* end FAQstyle */
+
+/* search input */
+
+.fa-search{
+  position: relative;
+top: 32px;
+right: 15px;
+}
+.search-input{
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid var(--whitecolor);
+}
+/* end search input */
 @media (min-width:836px) {
   section.send_message .box img {
     left: -7.6vw;

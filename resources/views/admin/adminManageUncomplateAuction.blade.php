@@ -1,7 +1,11 @@
 @extends('admin.layout.dashboard')
 @section('content')
 
-<h1 class="text-center fs-3 text-white mb-5">  االمزادات المعلقة </h1>
+<h1 class="text-center fs-3  text-white mt-4">  االمزادات المعلقة </h1>
+<div class="col-lg-4 col-8 mx-auto mb-5 mt-0">
+    <span class="fa fa-search text-light"></span>
+    <input type="text" placeholder="ابحث عن السيارة" class="search-input w-100 px-5 text-light">
+</div>
     <div class="container">
          @if(session()->has('success'))
             <div class="alert alert-success message">
@@ -13,7 +17,7 @@
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr >
                     <td>#ID</td>
-                    <td>السيارة </td>
+                    <td class="u-name">السيارة </td>
                     <td>اسم البائع </td>
                     <td>اسم المشتري </td>
                   

@@ -208,9 +208,9 @@
                         </div>
                         <li class="w-100">
                             <a href="{{route('home')}}"
-                                class="nav-item text-center contact text-light fs-5 py-2  mt-3 mx-5 d-block px-3"
+                                class="nav-item text-center contact text-light fs-5 py-2  mt-4 mx-5 d-block px-3"
                                 style="color: white !important;">
-                                الصفحة الرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                                 الرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
                         </li>
                     </ul>
             </aside>
@@ -234,8 +234,11 @@
                 <div class="d-flex justify-content-end pt-3">
                     <div id="bell">
                         <p data-count="{{ auth()->user()->unreadNotifications()->count() }}"
-                            class="fa fa-bell px-2 position-relative notif-count "><i
-                                class="notiy  position-absolute"></i>{{ auth()->user()->unreadNotifications()->count() }}
+                            class="fa fa-bell px-2 position-relative notif-count"><i
+                                class="notiy  position-absolute"></i>
+                                <span class="notify-text">
+                                    {{ auth()->user()->unreadNotifications()->count() }}
+                                </span>
                         </p>
 
                     </div>
