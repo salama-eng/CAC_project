@@ -41,19 +41,18 @@ class PostsAdminController extends Controller
         if($active){
             $users = User::whereNotIn('id', [$userid, Auth::id()])->get();
             foreach($users as $user){
+
                 $lesson = new Lesson;
-                $lesson->user_id = $user->id;
-                $lesson->title = 'مرحبا';
-                $lesson->body = 'تم اضافة مزاد جديد. يمكنك الاطلاع';
-                $lesson->link = 'auctiondetails/'. $id;
-                $lesson->save();
-                
-                if(\Notification::send(
-                    $user ,new NewNotification(
-                        Lesson::latest('id')->first())
-                )){
+                $lesson = $this->lessonNotification($user->id, 'تم اضافة مزاد جديد. يمكنك الاطلاع', '', 'auctiondetails/ "'.$id.'"'); 
+                if(\Notification::send($user ,new NewNotification(Lesson::latest('id')->first()))){
                     return back();
                 }
+            }
+            $user = User::find($userid);
+            $lesson = new Lesson;
+            $lesson = $this->lessonNotification($user->id, 'تم الموافقة على المزاد', '', 'auctiondetails/ "'.$id.'"'); 
+            if(\Notification::send($user ,new NewNotification(Lesson::latest('id')->first()))){
+                return back();
             }
             return redirect('admin_posts')
             ->with(['success'=>'تم الموافقة بنجاح']);
