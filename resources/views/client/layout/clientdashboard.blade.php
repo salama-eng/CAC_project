@@ -142,8 +142,11 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu notification bg-dark">
+                    @php $i = 10 @endphp
                 @if (isset(auth()->user()->unreadNotifications))
                         @foreach (auth()->user()->unreadNotifications as $notification)
+                        @php $i-- @endphp
+                        @if($i > 0)
                             @if($notification->type == 'App\Events\NewNotification')
                                 <li>
 
@@ -153,7 +156,9 @@
                                         <i class="semiOrange fs-8 "><br></i>{{ $notification->data['lesson']['body'] }}</a>
                                     <p class="dropdown-divider mx-2"></p>
                                 </li>
+                                
                             @endif
+                        @endif
                         @endforeach
                     @endif
 

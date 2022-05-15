@@ -76,12 +76,13 @@
                                         
                                         @foreach($auctions as $auction)
                                             @php $userId = $auction->userAw->id @endphp
+                                            @php $total = $auction->max('bid_total') @endphp
                                             <div class="">
                                                 <h2 class="text-white fs-6">
                                                      {{$auction->userAw->name}} زايد بمبلغ
                                                     <em class="yellow">{{ $auction->bid_amount }}$</em>
                                                     اصبح اجمالي المزايدة 
-                                                    <em class="yellow">{{ $total += $auction->bid_amount }}$</em>
+                                                    <em class="yellow">{{ $auction->bid_total }}$</em>
                                                 </h2>
                                             </div>
                                         @endforeach
@@ -139,7 +140,7 @@
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
                                             <input type="hidden" name="bid_amount" value="200">
                                             <input type="hidden" name="discount" value="{{$discount}}">
-                                            <input type="hidden" name="total" value="{{$total}}">
+                                            <input type="text" name="total" value="{{$total}}">
                                             <button type="submit" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
