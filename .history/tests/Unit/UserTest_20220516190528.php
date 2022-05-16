@@ -3,9 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\User;
-use Database\Factories\UserFactory;
 use Illuminate\Contracts\Cookie\Factory;
-use Illuminate\Support\Facades\Auth;
 use tests\TestCase;
 
 class UserTest extends TestCase
@@ -72,10 +70,20 @@ class UserTest extends TestCase
     
 // }
 
+ public function test_login()
+
+ {
+     $user = Factory(App\User::class)->create();
+    $this->actingAs($this->user)
+    ->withSession(['foo' => 'bar'])
+    ->visit('/')
+    ->see('Hello, '.$user->name);
+}
+ 
+
 
 public function test_it_stor_auction(){
-   
-    Auth::check();
+  
     $response = $this->post('/save_post', [
     'name' => 'مرسيدس',
     'category_id' => '1',
@@ -98,12 +106,12 @@ public function test_it_stor_auction(){
 
     ]);
    
-    
+
     // $response = $this->actingAs(User::find(1))
     // ->withSession(['banned' => false])
     // ->get('postedcars');
     
-    $response->assertRedirect('/');
+    $response->assertRedirect('/login');
 }
 }
 

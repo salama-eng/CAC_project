@@ -76,7 +76,7 @@ class AuctionsAdminController extends Controller
         $post_id= $request->post_id;
         $post=Post::with('auctions')->where('id', $post_id)->get();
         foreach($post->auction as $auction)
-        if($auction->post_id == $post_id && )
+        if($auction->post_id == $post_id )
 
        if($active)
             return redirect('un_complate')

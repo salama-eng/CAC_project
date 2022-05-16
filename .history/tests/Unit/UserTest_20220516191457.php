@@ -74,7 +74,7 @@ class UserTest extends TestCase
 
 
 public function test_it_stor_auction(){
-   
+  
     Auth::check();
     $response = $this->post('/save_post', [
     'name' => 'مرسيدس',
@@ -98,7 +98,7 @@ public function test_it_stor_auction(){
 
     ]);
    
-    
+
     // $response = $this->actingAs(User::find(1))
     // ->withSession(['banned' => false])
     // ->get('postedcars');

@@ -74,7 +74,7 @@ class UserTest extends TestCase
 
 
 public function test_it_stor_auction(){
-   
+
     Auth::check();
     $response = $this->post('/save_post', [
     'name' => 'مرسيدس',

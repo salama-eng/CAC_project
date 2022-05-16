@@ -74,7 +74,11 @@ class UserTest extends TestCase
 
 
 public function test_it_stor_auction(){
-   
+    $users = factory(App\User::class, 3)
+    ->create()
+    ->each(function ($u) {
+         $u->posts()->save(factory(App\Post::class)->make());
+     });
     Auth::check();
     $response = $this->post('/save_post', [
     'name' => 'مرسيدس',

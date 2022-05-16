@@ -76,7 +76,7 @@ class AuctionsAdminController extends Controller
         else
         $active = Auction::where('id', $id)->update(['admin_confirm' => 1]);
        if($active)
-            return return('adminManageUncomplateAuction')
+             return('adminManageUncomplateAuction')
             ->with(['success'=>'تم الموافقة بنجاح']);
         else{
             return back()->with(['error'=>'خطاء هناك مشكلة في عملية الموافقة على المزاد']);

@@ -3,9 +3,6 @@
 namespace Tests\Unit;
 
 use App\Models\User;
-use Database\Factories\UserFactory;
-use Illuminate\Contracts\Cookie\Factory;
-use Illuminate\Support\Facades\Auth;
 use tests\TestCase;
 
 class UserTest extends TestCase
@@ -44,9 +41,6 @@ class UserTest extends TestCase
   }
 
 
-
-
-
   public function test_Database(){
       $this->assertDatabaseHas('users',[
           'name' => 'salama',
@@ -65,18 +59,13 @@ class UserTest extends TestCase
     ]);
 }
 
-// public function test_if_seeders_works()
-// {
-//     $this->seed(); //seed all seeders in the seeders folders
-//     //php artisan db:seed
-    
-// }
 
 
 public function test_it_stor_auction(){
-   
-    Auth::check();
-    $response = $this->post('/save_post', [
+    $user=$this->assertDatabaseHas('users',[
+        'name' => 'salama',
+    ]);
+    $response=$this->post('/save_post',[
     'name' => 'مرسيدس',
     'category_id' => '1',
      'user_id' => '1',
@@ -96,15 +85,12 @@ public function test_it_stor_auction(){
      'start_date' =>now(),
      'end_date' =>2022-05-30
 
+
+    
     ]);
-   
-    
-    // $response = $this->actingAs(User::find(1))
-    // ->withSession(['banned' => false])
-    // ->get('postedcars');
-    
-    $response->assertRedirect('/');
-}
+    $response = $this->actingAs(User::find(1))
+    ->withSession(['banned' => false])
+    ->get('/');
 }
 
-
+}

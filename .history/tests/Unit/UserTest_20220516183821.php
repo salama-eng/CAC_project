@@ -3,9 +3,6 @@
 namespace Tests\Unit;
 
 use App\Models\User;
-use Database\Factories\UserFactory;
-use Illuminate\Contracts\Cookie\Factory;
-use Illuminate\Support\Facades\Auth;
 use tests\TestCase;
 
 class UserTest extends TestCase
@@ -44,9 +41,6 @@ class UserTest extends TestCase
   }
 
 
-
-
-
   public function test_Database(){
       $this->assertDatabaseHas('users',[
           'name' => 'salama',
@@ -71,12 +65,23 @@ class UserTest extends TestCase
 //     //php artisan db:seed
     
 // }
+public $base_url;
+public function set_up() 
 
+{
+    parent::setUp();
+    $this->base_url = config('app.url');
+
+    $response = $this->post($this->base_url . '/auth/login', [
+            'email' => 'client@gmail.com',
+            'password' => '123456',
+        ]);
+
+    // how to get the login session cookie?
+}
 
 public function test_it_stor_auction(){
-   
-    Auth::check();
-    $response = $this->post('/save_post', [
+    $response = $this->post($this->base_url . '/save_post', [
     'name' => 'مرسيدس',
     'category_id' => '1',
      'user_id' => '1',
@@ -98,7 +103,7 @@ public function test_it_stor_auction(){
 
     ]);
    
-    
+
     // $response = $this->actingAs(User::find(1))
     // ->withSession(['banned' => false])
     // ->get('postedcars');
