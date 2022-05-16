@@ -49,6 +49,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/ddemail', [HomeController::class, 'email'])->name('ddemail');
+
 Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
 Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('errorsProfile');
 Route::get('/adminRole', [HomeController::class, 'adminRole']);
@@ -203,6 +205,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/manage_message', [AdminContactUsController::class, 'showMessage'])->name('manage_message');
         Route::post('/send_message/{id}', [AdminContactUsController::class, 'sendMessage'])->name('send_message');
         Route::get('/complet_message', [AdminContactUsController::class, 'showCompleteMessage'])->name('complet_message');
+        Route::post('/replayMessage/{id}', [AdminContactUsController::class, 'replayMessage'])->name('replayMessage');
+        Route::post('/statusMessage', [AdminContactUsController::class, 'statusMessage'])->name('statusMessage');
        
     
     

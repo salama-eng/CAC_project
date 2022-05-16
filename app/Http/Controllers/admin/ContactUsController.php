@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
+use Webklex\IMAP\Facades\Client;
 
 class ContactUsController extends Controller
 {
@@ -38,16 +39,77 @@ class ContactUsController extends Controller
     function showMessage(){
         $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
         $messages = contact_us::select()->where('status',0)->orderBy('id', 'DESC')->get();
+
+        $allMessage = contact_us::select()->get();
+        $replays=[];
+
+        $client = Client::account('default');
+        //Connect to the IMAP Server
+        $client->connect();
+
+        //Get all Mailboxes
+        $folders = $client->getFolders();
+        
+        foreach($allMessage as $message){
+        
+        //Loop through every Mailbox
+        foreach($folders as $folder){
+            //Get all Messages of the current Mailbox $folder
+        $n= $folder->messages()->from("$message->email")->unseen()->count();
+        if ($n)
+        {  
+            $replays = $folder->messages()->from("$message->email")->all()->get();
+            $status = contact_us::find( $message->id);
+            if($status){
+            $status->status=0;
+            $status->save();
+            }
+
+        }
+        }
+    }
+        // end loop
         return view('admin.ContactUsMessage', [
             'Messages' => $messages,
-            'do'     => $do
+            'do'     => $do,
+            'replays'=> $replays
         ]);
     }
 
     function showCompleteMessage(){
         $messages = contact_us::select()->where('status',1)->orderBy('id', 'DESC')->get();
+
+        $replays=[];
+
+        $client = Client::account('default');
+        //Connect to the IMAP Server
+        $client->connect();
+
+        //Get all Mailboxes
+        $folders = $client->getFolders();
+        
+        foreach($messages as $message){
+        
+        //Loop through every Mailbox
+        foreach($folders as $folder){
+            //Get all Messages of the current Mailbox $folder
+            $n= $folder->messages()->from("$message->email")->unseen()->count();
+        if ($n)
+        {  
+            $status = contact_us::where('email', $message->email)->update(['status' => 0]);
+
+        }
+           else
+            $replays = $folder->messages()->from("$message->email")->all()->get();
+
+        }
+     
+        }
+    
         return view('admin.CompletingMessage', [
             'Messages' => $messages,
+            'replays'=> $replays
+
         ]);
     }
     function sendMessage(Request $request,$id){
@@ -77,5 +139,18 @@ class ContactUsController extends Controller
         return back()->with(['error'=>'خطاء لانستطيع ارسال الرساله']);
 
     }   
+
+    function statusMessage(Request $request){
+
+        $message=contact_us::find($request->Messageid);
+    
+        $message->status=1;
+
+        if($message->save())
+        return back()
+        ->with(['success'=>'تم نقل الرسالة للرسائل التي تم الرد عليها']);
+        return back()->with(['error'=>'حدث خطا الانستطيع نقل الرساله']);
+        
+    }
 
 }

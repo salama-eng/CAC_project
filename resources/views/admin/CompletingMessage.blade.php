@@ -18,7 +18,10 @@
 
         <div class=" text-white mb-4 col-12 col-md-8  shadow p-4 pb-0 mx-auto"  style="border:1px solid gray ;">
             <div class="d-flex justify-content-between ">
-                <p class="yellow fs-5 my-0">{{$message->name}}</p>
+                <div>
+                    <p class="yellow fs-5 my-0"><span>{{$message->email}}</span>> {{$message->name}}> </p>
+                    <span class="yellow fs-5 my-0">الهاتف: {{$message->phone}}</span>
+                </div>
                 <p class="yellow fs-5 my-0">Time: {{$message->created_at}}</p>
             </div>
             <hr>
