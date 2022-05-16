@@ -13,7 +13,7 @@ class ContactUsController extends Controller
 {
     function saveMessage(Request $request){
         Validator::validate($request->all(),[
-            'name'=>['required','string', 'between: 5, 20'],
+            'name'=>['required','string', 'between: 3, 20'],
             'email'=>['required','email'],
             'message'=>['required', 'min:10',],
 
@@ -22,7 +22,7 @@ class ContactUsController extends Controller
             'message.required'=>'نص الرسالة مطلوب',
             'email.required'=>' حقل الايميل مطلوب ',
             'name.string'=>' يحب ان يكون حقل الاسم نص  ',
-            'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
+            'name.between'=>' يحب ان يكون حقل الاسم من 3 الى 20 حرف',
             'message.min'=>' يحب ان يكون  النص اكبر من 10 ',
             'email.unique'=>'اوبس! هذا الايميل موجود مسبقا',
         ]);
@@ -115,10 +115,10 @@ class ContactUsController extends Controller
     function sendMessage(Request $request,$id){
 
          Validator::validate($request->all(),[
-            'send_message'=>['required', 'min: 20'],
+            'send_message'=>['required', 'min: 10'],
         ],[
             'send_message.required'=>' حقل الرسالة مطلوب ',
-            'send_message.between'=>' يحب ان يكون حقل الاسم اكبر من 20 حرف',
+            'send_message.between'=>' يحب ان تكون الرسالة اكبر من 10 حرف',
         ]);
 
         $sendMessage=$request->send_message;

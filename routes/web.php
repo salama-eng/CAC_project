@@ -78,6 +78,92 @@ Route::post('/new_password',[AuthController::class,'newPassword'])->name('new_pa
 
 
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::get('/admin_dash', function () {
+            return view('admin.layout.dashboard');}) ;
+
+            Route::get('/AdminDash', [AdminHomeController::class,'show'])->name('AdminDash');
+
+            Route::get('/showAllUsers', [UserAdminController::class,'showAllUsers'])->name('showAllUsers');
+            Route::post('/active_admin_user', [UserAdminController::class, 'activeUser'])->name('active_admin_user');
+        
+            // Admin Payments Manage
+            Route::get('/adminPayments', [PaymentsAdminController::class, 'showAdminPayments'])->name('adminPayments');
+            Route::post('/add_admin_Payment', [PaymentsAdminController::class, 'addAdminPayment']);
+            Route::post('/edit_admin_Payment', [PaymentsAdminController::class, 'editAdminPayment']);
+            Route::post('/active_admin_Payment', [PaymentsAdminController::class, 'activePayment']);
+            Route::post('/delete_admin_Payment', [PaymentsAdminController::class, 'deletePayment']);
+        
+            // Admin categries Manage
+            Route::get('/admincategories', [CategoriesAdminController::class, 'showAdminCategories'])->name('admincategories');
+            Route::post('/add_admin_category', [CategoriesAdminController::class, 'addAdminCategory']);
+            Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
+            Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
+            Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
+            
+            // Admin Manage Posts
+            Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
+            Route::post('/active', [PostsAdminController::class, 'editActive'])->name('activeAuction');
+            Route::post('/unactive', [PostsAdminController::class, 'uneditActive'])->name('unactive');
+            // Admin Manage Started Auction
+            
+            
+            // Admin Manage Auction
+            Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
+            Route::post('/accept', [AuctionsAdminController::class, 'editActive'])->name('accept');
+            Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
+            Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
+            
+            // Admin Manage Ended Auction
+            Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
+            
+            // Admin Manage slider Images
+            Route::get('/slider_image', [sliderController::class, 'showSliderPage'])->name('slider_image');
+            Route::post('/add_slider_image', [sliderController::class, 'addSliderImage']);
+            Route::post('/edit_slider_image/{id}', [sliderController::class, 'editSliderImage'])->name('edit_slider_image');
+            Route::post('/active_slider_image/{id}', [sliderController::class, 'activeSliderImage'])->name('active_slider_image');
+            
+            // Admin Manage membership 
+            Route::get('/membership', [membershipController::class, 'showMembership'])->name('membership');
+            Route::post('/add_membership', [membershipController::class, 'addMembership']);
+            Route::post('/edit_membership/{id}', [membershipController::class, 'editMembership'])->name('edit_membership');
+            Route::post('/active_membership/{id}', [membershipController::class, 'activeMembership'])->name('active_membership');
+            
+    
+            // Admin Manage Home Page
+            Route::get('/manage_home', [AdminHomeController::class, 'manageHome'])->name('manage_home');
+            Route::post('/add_content', [AdminHomeController::class, 'addContent'])->name('add_content');
+            Route::post('/edit_home_content/{id}', [AdminHomeController::class, 'editContent'])->name('edit_home_content');
+            
+            // Admin Manage membership 
+            Route::get('/manage_contact_us', [contactUsInfoController::class, 'showAdminCategories'])->name('manage_contact_us');
+            Route::post('/add_contact_us', [contactUsInfoController::class, 'addContactUs']);
+            Route::post('/edit_contact_us/{id}', [contactUsInfoController::class, 'editContactUs'])->name('edit_contact_us');
+            Route::post('/active_contact_us/{id}', [contactUsInfoController::class, 'activeContactUs'])->name('active_contact_us');
+    
+            // Admin Manage About Us Page
+            Route::get('/manage_about_us', [AboutUsController::class, 'manageAboutUs'])->name('manage_about_us');
+            Route::post('/add_about_us_content', [AboutUsController::class, 'addAboutUsContent'])->name('add_about_us_content');
+            Route::post('/edit_content/{id}', [AboutUsController::class, 'editContent'])->name('edit_content');
+            
+            // Admin Manage Contact Us Message 
+            Route::get('/manage_message', [AdminContactUsController::class, 'showMessage'])->name('manage_message');
+            Route::post('/send_message/{id}', [AdminContactUsController::class, 'sendMessage'])->name('send_message');
+            Route::get('/complet_message', [AdminContactUsController::class, 'showCompleteMessage'])->name('complet_message');
+            Route::post('/replayMessage/{id}', [AdminContactUsController::class, 'replayMessage'])->name('replayMessage');
+            Route::post('/statusMessage', [AdminContactUsController::class, 'statusMessage'])->name('statusMessage');
+       
+        
+        
+        Route::get('/admin_wallet', [WalletAdminController::class,'adminWallet'])->name('admin_wallet');
+    
+        Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
+
+
+
+       });
+        
     Route::any('test', [testController::class, 'index'])->name('test');
     Route::any('testPayment', [TestUserController::class, 'index'])->name('testPayment');
     Route::get('test/response/{info}', [testController::class, 'showTest'])->name('test/response');
@@ -109,6 +195,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/UserUncomplatePosts', [UserPostsController::class, 'uncomplate'])->name('UserUncomplatePosts');
         Route::get('/UserComplatePosts', [UserPostsController::class, 'complate'])->name('UserComplatePosts');
 
+      
 
 
 
@@ -129,7 +216,6 @@ Route::group(['middleware' => 'auth'], function () {
 
  // Admin reports page 
  
-       Route::get('/AdminDash', [AdminHomeController::class,'show'])->name('AdminDash');
 
 
 
@@ -139,79 +225,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         // Admin Manage User
-        Route::get('/showAllUsers', [UserAdminController::class,'showAllUsers'])->name('showAllUsers');
-        Route::post('/active_admin_user', [UserAdminController::class, 'activeUser'])->name('active_admin_user');
-    
-        // Admin Payments Manage
-        Route::get('/adminPayments', [PaymentsAdminController::class, 'showAdminPayments'])->name('adminPayments');
-        Route::post('/add_admin_Payment', [PaymentsAdminController::class, 'addAdminPayment']);
-        Route::post('/edit_admin_Payment', [PaymentsAdminController::class, 'editAdminPayment']);
-        Route::post('/active_admin_Payment', [PaymentsAdminController::class, 'activePayment']);
-        Route::post('/delete_admin_Payment', [PaymentsAdminController::class, 'deletePayment']);
-    
-        // Admin categries Manage
-        Route::get('/admincategories', [CategoriesAdminController::class, 'showAdminCategories'])->name('admincategories');
-        Route::post('/add_admin_category', [CategoriesAdminController::class, 'addAdminCategory']);
-        Route::post('/edit_admin_category/{id}', [CategoriesAdminController::class, 'editAdminCategory'])->name('edit_admin_category');
-        Route::post('/active_admin_category/{id}', [CategoriesAdminController::class, 'activeCategory'])->name('active_admin_category');
-        Route::post('/delete_admin_category', [CategoriesAdminController::class, 'deleteCategory']);
-        
-        // Admin Manage Posts
-        Route::get('/admin_posts', [PostsAdminController::class, 'showAdminPosts'])->name('admin_posts');
-        Route::post('/active', [PostsAdminController::class, 'editActive'])->name('activeAuction');
-        Route::post('/unactive', [PostsAdminController::class, 'uneditActive'])->name('unactive');
-        // Admin Manage Started Auction
-        
-        
-        // Admin Manage Auction
-        Route::get('/admin_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('admin_acution');
-        Route::post('/accept', [AuctionsAdminController::class, 'editActive'])->name('accept');
-        Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
-        Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
-        
-        // Admin Manage Ended Auction
-        Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
-        
-        // Admin Manage slider Images
-        Route::get('/slider_image', [sliderController::class, 'showSliderPage'])->name('slider_image');
-        Route::post('/add_slider_image', [sliderController::class, 'addSliderImage']);
-        Route::post('/edit_slider_image/{id}', [sliderController::class, 'editSliderImage'])->name('edit_slider_image');
-        Route::post('/active_slider_image/{id}', [sliderController::class, 'activeSliderImage'])->name('active_slider_image');
-        
-        // Admin Manage membership 
-        Route::get('/membership', [membershipController::class, 'showMembership'])->name('membership');
-        Route::post('/add_membership', [membershipController::class, 'addMembership']);
-        Route::post('/edit_membership/{id}', [membershipController::class, 'editMembership'])->name('edit_membership');
-        Route::post('/active_membership/{id}', [membershipController::class, 'activeMembership'])->name('active_membership');
-        
-
-        // Admin Manage Home Page
-        Route::get('/manage_home', [AdminHomeController::class, 'manageHome'])->name('manage_home');
-        Route::post('/add_content', [AdminHomeController::class, 'addContent'])->name('add_content');
-        Route::post('/edit_home_content/{id}', [AdminHomeController::class, 'editContent'])->name('edit_home_content');
-        
-        // Admin Manage membership 
-        Route::get('/manage_contact_us', [contactUsInfoController::class, 'showAdminCategories'])->name('manage_contact_us');
-        Route::post('/add_contact_us', [contactUsInfoController::class, 'addContactUs']);
-        Route::post('/edit_contact_us/{id}', [contactUsInfoController::class, 'editContactUs'])->name('edit_contact_us');
-        Route::post('/active_contact_us/{id}', [contactUsInfoController::class, 'activeContactUs'])->name('active_contact_us');
-
-        // Admin Manage About Us Page
-        Route::get('/manage_about_us', [AboutUsController::class, 'manageAboutUs'])->name('manage_about_us');
-        Route::post('/add_about_us_content', [AboutUsController::class, 'addAboutUsContent'])->name('add_about_us_content');
-        Route::post('/edit_content/{id}', [AboutUsController::class, 'editContent'])->name('edit_content');
-        
-        // Admin Manage Contact Us Message 
-        Route::get('/manage_message', [AdminContactUsController::class, 'showMessage'])->name('manage_message');
-        Route::post('/send_message/{id}', [AdminContactUsController::class, 'sendMessage'])->name('send_message');
-        Route::get('/complet_message', [AdminContactUsController::class, 'showCompleteMessage'])->name('complet_message');
-        Route::post('/replayMessage/{id}', [AdminContactUsController::class, 'replayMessage'])->name('replayMessage');
-        Route::post('/statusMessage', [AdminContactUsController::class, 'statusMessage'])->name('statusMessage');
-       
-    
-    
-
-    Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
+     
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -260,6 +274,7 @@ Route::get('/privacyPolicy', function(){
 Route::get('/faq', function(){
     return view('front.FAQ');
 
+    
 })->name('faq');
 
 Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message');
@@ -268,15 +283,11 @@ Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('
 
 Route::post('/chat', [ChatController::class,'index'])->name('chat');
 
-Route::get('/chat/{id}', [ChatController::class,'show'])->name('chat');
 
 Route::resource('chat', ChatController::class);
 
-Route::get('/admin_dash', function () {
-    return view('admin.layout.dashboard');
-});
+
 Route::get('/wallet/{id}', [WalletController::class,'showwallet'])->name('wallet');
-Route::get('/admin_wallet', [WalletAdminController::class,'adminWallet'])->name('admin_wallet');
 
 
 

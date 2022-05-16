@@ -7,6 +7,8 @@ use App\Models\Auction;
 use App\Models\User;
 use App\Models\Role;
 use DB;
+use App\Models\Lesson;
+use App\Events\AdminNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,15 +32,20 @@ class testController extends Controller
      }
 
      
-    $role = Role::where('name', 'admin')->first();
-    $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
-    $id = $roleUser->user_id;
-    $user= User::find($id);
-    $user->deposit($in->customer_account_info->paid_amount, [
-      'invoice_id' => 200, 
-      'details' => "تم ايداع مبلغ من حساب",
-      'username'=> Auth::user()->name,
-    ]);
+    $userAdmin = $this->roleUsers();
+    $wallet = $this->walletDeposit($userAdmin, $in->customer_account_info->paid_amount, Auth::user()->name);
+    $lesson = new Lesson;
+    $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', Auth::user()->name, 'admin_wallet');
+    
+    if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
+        return back();
+    }
+    $user = User::find(Auth::id());
+    $lesson = new Lesson;
+    $lesson = $this->lessonNotification(ِAuth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+    if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
+        return back();
+    }
     return redirect('/')
     ->with(['success'=>'تم عملية المزايدة بنجاح']);
      
@@ -48,30 +55,16 @@ class testController extends Controller
     * This function is used to show the cancel page with
     * @param cancel 
     */
- public function testCancel($data){
- 
-    $info=base64_decode($data);
-     $in = json_decode($info);
-   return $in;
-    $auctions = Auction::where('is_active', 0)->get();
-    foreach($auctions as $auction){
-      $auction->delete(['is_active' => 0]);
+    public function testCancel($data){
+    
+        $info=base64_decode($data);
+        $in = json_decode($info);
+        $active = $this->activeAuctionsPayment();
     }
-    return redirect('/')
-    ->with(['success'=>'فشل في عملية المزايدة ']);
  
- }
- 
- public function viewCancel(){
- 
-    $auctions = Auction::where('is_active', 0)->get();
-    foreach($auctions as $auction){
-      $auction->delete(['is_active' => 0]);
+    public function viewCancel(){
+      $active = $this->activeAuctionsPayment();
     }
-    return redirect('/')
-    ->with(['success'=>'فشل في عملية المزايدة ']);
-  
- }
  
  
  /**
@@ -105,18 +98,23 @@ class testController extends Controller
               $id = Auth::id();
               $userId = User::find($id);
               if($userId->balance >= $request->discount){
-                $role = Role::where('name', 'admin')->first();
-                $roleUser = DB::table('role_user')->where('role_id', $role->id)->first();
-                $idA = $roleUser->user_id;
-                $user= User::find($idA);
-                $userId->transfer($user, $request->discount, [
-                    'invoice_id' => 200, 
-                    'details' => "تم ايداع مبلغ من حساب",
-                    'username'=> $userId->name,
-                ]);
+                
+                $userAdmin = $this->roleUsers();
+                $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->discount, 'تم ايداع مبلغ من حساب');
+                $lesson = new Lesson;
+                $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
+                if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
+                    return back();
+                }
+                $user = User::find(Auth::id());
+                $lesson = new Lesson;
+                $lesson = $this->lessonNotification(ِAuth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+                if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
+                    return back();
+                }
                 $auctions = Auction::where('is_active', 0)->get();
                 foreach($auctions as $auction){
-                  $auction->update(['is_active' => 1]);
+                    $auction->update(['is_active' => 1]);
                 }
                 return redirect('/')
                 ->with(['success'=>'تم عملية الدفع بنجاح']);
