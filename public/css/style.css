@@ -1348,3 +1348,19 @@ right: 15px;
     height: 200px;
   }
 }
+/* email style */
+.email > div.gmail_quote{
+  direction: rtl;
+  border: 1px solid #999;
+  padding: 10px;
+  margin: 10px;
+  line-height: 2;
+}
+
+.gmail_attr,.gmail_attr a{
+color: #d8a953;
+}
+
+blockquote.gmail_quote{
+  border: none !important;
+}
