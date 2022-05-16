@@ -21,9 +21,8 @@
             <ul id="chat" class="chat-notify" style="height:70vh">
 
 
-
-
-                {{-- <li class="me">
+            {{--
+                 <li class="me">
                     <div class="entete">
                         <h3>10:12AM, Today</h3>
                         <h2>Vincent</h2>
@@ -36,7 +35,7 @@
                 </li>
 
 
-
+                
                 <li class="you">
                     <div class="entete">
                         <span class="status green"></span>
