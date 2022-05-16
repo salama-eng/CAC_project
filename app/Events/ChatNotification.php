@@ -21,6 +21,7 @@ class ChatNotification implements ShouldBroadcast
     public $user_id;
     public $owner_user_id;
     public $aw_user_id;
+    public $post_id;
     public $username;
 
   public function __construct($chat=[])
@@ -29,6 +30,7 @@ class ChatNotification implements ShouldBroadcast
         $this->user_id = $chat['user_id'];
         $this->owner_user_id = $chat['owner_user_id'];
         $this->aw_user_id = $chat['aw_user_id'];
+        $this->post_id = $chat['post_id'];
         $this->username = $chat['username'];
   }
 
@@ -49,6 +51,7 @@ class ChatNotification implements ShouldBroadcast
             'user_id' => $this->user_id,
             'owner_user_id' => $this->owner_user_id,
             'aw_user_id' => $this->aw_user_id,
+            'post_id' => $this->post_id,
             'username' => $this->username,
         ];
     }

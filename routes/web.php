@@ -277,7 +277,8 @@ Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('
 /******  Chat    ******* */
 
 
-Route::post('/chat', [ChatController::class,'index'])->name('chat');
+// Route::get('/chat', [ChatController::class,'store'])->name('chat');
+// Route::get('/chat/{id}', [ChatController::class,'index']);
 
 
 Route::resource('chat', ChatController::class);

@@ -55,7 +55,13 @@
         
         <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white" data-bs-toggle="modal" data-bs-target="#payment{{ $post->id }}"> ارسال المبلغ </a>
          </div>
-         <a href="{{route('chat',$auction->id)}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-center w-75 m-auto my-2 fs-7"> الذهاب للدردشة  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+         {{-- <a href="chat/{{$auction->id}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-center w-75 m-auto my-2 fs-7"> الذهاب للدردشة  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a> --}}
+         <form action="chat" method="post"> 
+                @csrf
+                <input type="hidden" value="{{$auction->id}} " name="auction">     
+        <input type="submit"  value="الذهاب للدردشة " class="card-link active bg-darkgrey p-1 card-btn px-2 m-1 text-center w-75 m-auto my-2 fs-7"> <i class="fa fa-long-arrow-left p-2 pt-1"> </i>
+  
+      </form>
 </div>
 
 

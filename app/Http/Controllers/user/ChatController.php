@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    public function index(Request $request)
+    // public function __construct(){
+        
+    // }
+    public function index()
     {
-        return view('client.chat');
+        // $auction = '';
+        // dd($auction); exit;
+        
     }
  
     public function store(Request $request)
@@ -31,15 +36,28 @@ class ChatController extends Controller
             'user_id' => '',
             'username' => '',
         ]);
-$auction=Auction::find($request->auction);
-        $chat = Chat::create($data);
+        
+        $auction=Auction::find($request->auction);
+        
+        if($data == null){
+            $chats = Chat::where('post_id', $auction->post_id)->orderBy('id', 'ASC')->get();
+            return view('client.chat', [
+                'auction'              => $auction,
+                'chats'              => $chats,
+               
+            ]);
+        }else{
+            $chat = Chat::create($data);
+            event(new ChatNotification($chat));
+            $chats = Chat::where('post_id', $auction->post_id)->orderBy('id', 'ASC')->get();
+            return view('client.chat', [
+                'auction'              => $auction,
+                'chats'              => $chats,
+            
+            ]);
+        }
+        // return $this->auction = $auction;
       
-        event(new ChatNotification($chat));
-        $user = User::where('id', Auth::user()->id)->get();
-        return view('client.chat', [
-            'auction'              => $auction,
-           
-        ]);
         // return Response::json($chat);
     }
 }
