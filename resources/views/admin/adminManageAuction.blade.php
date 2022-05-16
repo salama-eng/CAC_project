@@ -2,7 +2,11 @@
 @section('content')
 
 
-<h1 class="text-center fs-3 text-white mb-5">  المزايدات الحالية </h1>
+<h1 class="text-center fs-3  text-white mt-4">  المزايدات الحالية </h1>
+<div class="col-lg-4 col-8 mx-auto mb-5 mt-0">
+    <span class="fa fa-search text-light"></span>
+    <input type="text" placeholder="ابحث عن السياره" class="search-input w-100 px-5 text-light">
+</div>
     <div class="container">
         @if(session()->has('success'))
             <div class="alert alert-success message">
@@ -14,7 +18,7 @@
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr >
                     <td>#ID</td>
-                    <td>السيارة </td>
+                    <td class="u-name">السيارة </td>
                     <td> اسم البايع</td>
                     <td> اسم المزايد</td>
                     <td>انتهاء وقت المزايدة</td>
@@ -29,7 +33,7 @@
                     @if($auction->auction_post->is_active == 1 && $auction->auction_post->end_date >= date('Y-m-d') && $auction->auction_post->status_auction == 0)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$auction->auction_post->name}}</td>
+                            <td class="u-name">{{$auction->auction_post->name}}</td>
                             <td>{{$auction->userOwner->name}}</td>
                             <td>{{$auction->userAw->name}}</td>
                             <td>{{$auction->auction_post->end_date}}</td>

@@ -181,5 +181,12 @@ $('.make-auction').click(function(e){
  var priceAuction=$('.auction-input').val();
  $('.text-price').text(priceAuction)
 })
+$(".search-input").on("keyup", function() {
+  var value = $(this).val().toLowerCase();
+  $(".u-name").filter(function() {
+    $(this).parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  });
+});
+
 });
 
