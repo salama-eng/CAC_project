@@ -48,13 +48,12 @@ class CategoriesAdminController extends Controller
     
     function editAdminCategory(Request $request,$id){
         Validator::validate($request->all(),[
-            'name'=>['required', 'string', 'between: 5, 20','unique:categories,name'],
+            'name'=>['required', 'string', 'between: 5, 20'],
             'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
         ],[
             'required'=>MessageEnum::REQUIRED,
             'name.string'=>MessageEnum::MESSAGE_STRING,
             'name.between'=>$this->messageBetween(5, 20),
-            'name.unique'=>'اوبس! هذا الاسم موجود مسبقا'
         ]);
         $category=category::find($id);
         $category->name=$request->name;

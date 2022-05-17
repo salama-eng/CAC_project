@@ -55,13 +55,12 @@ class membershipController extends Controller
     function editMembership(Request $request,$id){
             Validator::validate($request->all(),[
             'name'=>'required',
-            'email' => ['required', 'email', 'unique:users,email'],
+            'email' => ['required', 'email'],
             'image'=>['required'],
             'address'=>'required',
             'phone'=>'required',
         ],[
             'required'=>MessageEnum::REQUIRED,
-            'email.unique' => 'هذا الايميل غير متاح',
             'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
         ]);
 
