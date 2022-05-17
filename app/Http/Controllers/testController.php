@@ -71,6 +71,7 @@ class testController extends Controller
   * The index function which is used for posting the data to the api
   */
      public function index(Request $request){
+      //  return $request;
           $auctionUser = Auction::where('aw_user_id', Auth::id())
                                   ->where('post_id', $request->post_id)->first();
           if($auctionUser){

@@ -138,9 +138,9 @@
                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                             <input type="hidden" name="post_name" value="{{$post->name}}">
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                            <input type="hidden" name="bid_amount" value="200">
+                                            <input type="hidden" name="bid_amount" value="">
                                             <input type="hidden" name="discount" value="{{$discount}}">
-                                            <input type="text" name="total" value="{{$total}}">
+                                            <input type="hidden" name="total" value="{{$total}}">
                                             <button type="submit" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -163,7 +163,7 @@
                                         <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"
                                                 data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
+                                            <input type="submit" class="btn bg-yellow text-white fs-5 submit" value=" تاكيد  " />
                                         </div>
                                     </form>
                                 </div>
@@ -241,12 +241,12 @@
                     @endphp
 
 
-                    @foreach ($images as $image)
+                    {{-- @foreach ($images as $image)
                         <div class="img-responsive">
                             <img src="{{ URL::to('/images/' . $image) }}" class="img-fluid"
                                 alt="{{ $image }}">
                         </div>
-                    @endforeach
+                    @endforeach --}}
                     <div class="img-responsive">
                         <img src="{{ URL::to('/images/' . $post->image) }}" class="img-fluid" alt="...">
                     </div>
