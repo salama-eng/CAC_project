@@ -73,6 +73,7 @@ class UserTest extends TestCase
 // }
 
 
+<<<<<<< HEAD
 public function test_it_stor_auction(){
    
     Auth::check();
@@ -107,6 +108,8 @@ public function test_it_stor_auction(){
     
     $response->assertRedirect('/');
 }
+=======
+>>>>>>> 235ab6e5c65e40ad6d4533a7ec39746f9f72c239
 }
 
 
