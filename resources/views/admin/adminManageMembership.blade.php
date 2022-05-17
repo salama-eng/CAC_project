@@ -106,7 +106,7 @@
     </div>
 @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center">اضافة شركة جدبدة</h1>
+<h1 class="text-center fs-3 mb-5">اضافة شركة جديدة</h1>
 <div class="container col-lg-8 col-11 m-auto">
     @if ($errors->any())
         <div class="alert alert-danger message">
@@ -123,35 +123,35 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">اسم الشركة   </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="name"  class="form-control" autocomplete="off" placeholder=" اضف  شركة">
+                <input type="text" name="name" value="{{old('name')}}" class="form-control" autocomplete="off" placeholder=" اضف  شركة">
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">  رقم الهاتف </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="phone"  class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="text" name="phone" value="{{old('phone')}}" class="form-control" autocomplete="off" placeholder=" اضف رقم هاتف الشركة">
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   الايميل </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="email"  class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="text" name="email" value="{{old('email')}}" class="form-control" autocomplete="off" placeholder=" اضف ايميل الشركة">
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   العنوان </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="address"  class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="text" name="address" value="{{old('address')}}" class="form-control" autocomplete="off" placeholder=" اضف عنوان الشركة">
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">صورة   </label>
             <div class="col-sm-8 col-md-9">
-                <input type="file" name="image" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" id="image" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="file" name="image" value="{{old('image')}}" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" id="image" class="form-control" autocomplete="off" placeholder=" اضف صورة الشركة">
                 <div class="col-sm-3 m-2  col-md-6">
                   <img id="previewImage" style="max-height: 100px;">
               </div>
@@ -160,18 +160,26 @@
             <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">  الوصف  </label>
             <div class="col-sm-8 col-md-9">
-                <textarea name="description" placeholder=" اضف  الوصف" class="form-control  " style="width:103%" id="" rows="5" ></textarea>
+                <textarea name="description"  placeholder=" اضف  الوصف" class="form-control  " style="width:103%" id="" rows="5" >{{old('description')}}</textarea>
             </div>
             
         </div>
             
         </div>
-
         <!-- End membership -->
+
+        <!-- Start Active -->
+        <div class="form-check d-flex  justify-content-center mb-5 ">
+            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"
+                aria-label="...">
+            <label class="col-6 mx-5 text-white" for="">تفعيل</label>
+        </div>
+        <!-- End Active -->
+
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
-                <input type="submit" value="اضافة صورة جديدة'" class=" btn p-2 contact">
+                <input type="submit" value="اضافة شركة جديدة'" class=" btn p-2 contact">
             </div>
         </div>
         <!-- End Submit -->
@@ -181,7 +189,7 @@
 @elseif($do == 'Edit')
 <!-- start Edit model -->
 {{$membershipid = isset($_GET['membershipid']) && is_numeric($_GET['membershipid']) ? intval($_GET['membershipid']) : 0;}}
-<h1 class="text-center">تعديل معلومات الشركة</h1>
+<h1 class="text-center fs-3 mb-5">تعديل معلومات الشركة</h1>
 <div class="container col-lg-8 col-11 m-auto">
     @if ($errors->any())
         <div class="alert alert-danger message">
@@ -244,7 +252,8 @@
         </div>
             
         </div>  
-                <!-- End membership -->
+        <!-- End membership -->
+
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">

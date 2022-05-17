@@ -102,8 +102,8 @@
     </div>
 @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center">اضافة طرق الدفع</h1>
-<div class="container">
+<h1 class="text-center fs-3 mb-5">اضافة طرق الدفع</h1>
+<div class="container col-lg-8 col-11">
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -119,16 +119,25 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">طريقة دفع جديدة </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="Payment" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                <input type="text" name="Payment" value="{{old('Payment')}}" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
             </div>
         </div>
                 <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">اسم البنك   </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="bank_name" class="form-control" autocomplete="off" placeholder="اسم البنك  ">
+                <input type="text" name="bank_name" value="{{old('bank_name')}}" class="form-control" autocomplete="off" placeholder="اسم البنك  ">
             </div>
         </div>
         <!-- End Payment -->
+
+        <!-- Start Active -->
+        <div class="form-check d-flex  justify-content-center my-5 ">
+            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"
+                aria-label="...">
+            <label class="col-6 mx-5 text-white" for="">تفعيل</label>
+        </div>
+        <!-- End Active -->
+
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
@@ -142,7 +151,7 @@
 @elseif($do == 'Edit')
 <!-- start Edit model -->
 {{$Paymentid = isset($_GET['Paymentid']) && is_numeric($_GET['Paymentid']) ? intval($_GET['Paymentid']) : 0;}}
-<h1 class="text-center">تعديل طريقة الدفع</h1>
+<h1 class="text-center fs-3 mb-5">تعديل طريقة الدفع</h1>
 <div class="container col-lg-8 col-11">
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -167,11 +176,12 @@
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white"> اسم البنك  </label>
-                    <div class="col-sm-8 col-md-9">
+                    <div class="col-sm-8 col-md-9 mb-5">
                         <input type="text" name="bank_name" value="{{$Payment->bank_name}}" class="form-control input " autocomplete="off" placeholder="ادخل اسم البنك">
                     </div>
                 </div>  
                 <!-- End Payment -->
+
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">

@@ -37,6 +37,18 @@ class ContactUsController extends Controller
         $message->phone = $request->phone;
         $message->message = $request->message;
         if($message->save())
+
+        // Email Data
+        $email_data = array(
+                'name' => $message->name, 'email' => $message->email,
+                'phone'=>$request->phone,'messages' => $message->message
+            );
+
+        // Sending Email
+         Mail::send('mail.contact_us_message',$email_data, function($message) use ($request){
+            $message->from($request->email);
+            $message->to('cac.cars.auction@gmail.com', 'Admin')->subject('رسالة تواصل جديدة');
+        });
         return back()->with(['success'=>'تم ارسال الرساله بنجاح ']);
         return back()->with(['error'=>'خطاء لم يتم ارسال الرساله ']);
     }

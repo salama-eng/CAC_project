@@ -98,8 +98,8 @@
     </div>
 @elseif($do == 'Add')
 
-<h1 class="text-center fs-3 m-4">اضافة موديل جديد</h1>
-<div class="container col-lg-9 col-11">
+<h1 class="text-center fs-3 mb-5">اضافة موديل جديد</h1>
+<div class="container col-lg-8 col-11">
     @if ($errors->any())
         <div class="alert alert-danger message">
             <ul>
@@ -119,12 +119,13 @@
             </div>
         </div>
         <!-- End Model -->
-        <!-- End Model -->
-        <div class="form-check d-flex  justify-content-center mt-5 ">
-            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1" aria-label="...">
-            <label class="col-6 mx-5 text-white" for="">تفعيل</label>    
+        <!-- Start Active -->
+        <div class="form-check d-flex  justify-content-center my-5 ">
+            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"
+                aria-label="...">
+            <label class="col-6 mx-5 text-white" for="">تفعيل</label>
         </div>
-        <!-- End Model -->
+        <!-- End Active -->
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
@@ -136,8 +137,8 @@
 </div>
 @elseif($do == 'Edit')
 {{$modelid = isset($_GET['modelid']) && is_numeric($_GET['modelid']) ? intval($_GET['modelid']) : 0;}}
-<h1 class="text-center">تعديل الموديل</h1>
-<div class="container col-lg-9 col-11">
+<h1 class="text-center fs-3 mb-5">تعديل الموديل</h1>
+<div class="container col-lg-8 col-11">
     @if ($errors->any())
         <div class="alert alert-danger message">
             <ul>
@@ -160,6 +161,7 @@
                     </div>
                 </div>
                 <!-- End Model -->
+                
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
