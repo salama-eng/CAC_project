@@ -56,7 +56,7 @@
                     </div>
                     @php $total = $post->starting_price @endphp
                     @php $userId = '' @endphp
-                    <div class=" border-n mt-4 col-10">
+                    <div class=" border-n mt-4 col-10 px-1">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
 
@@ -213,7 +213,7 @@
             <div id="carouselExampleControls" class="carousel slide col-12 mt-3" data-bs-ride="carousel">
                 <div class="carousel-inner main-img-div w-100">
                     <div class="carousel-item active w-100">
-                        <img src="/images/{{ $post->image }}" width="550" height="400" class="d-block  main-img"
+                        <img src="/images/{{ $post->image }}" class="d-block w-100 h-100 main-img"
                             alt="{{ $post->image }}">
 
                     </div>

@@ -104,9 +104,8 @@
                         <th>
                             اسم البنك     
                         </th>
-                        <td> @if(isset($bank->bank_name))
+                        <td>
                             {{$bank->bank_name}}
-                            @endif
                         </td>
                     </tr>
                     <tr>

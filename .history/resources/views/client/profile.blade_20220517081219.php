@@ -104,9 +104,8 @@
                         <th>
                             اسم البنك     
                         </th>
-                        <td> @if(isset($bank->bank_name))
+                        <td>
                             {{$bank->bank_name}}
-                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -114,9 +113,7 @@
                             رقم الحساب
                         </th>
                         <td>
-                            @if(isset($user_payment->userPayment->account_number))
                             {{$user_payment->userPayment->account_number}}
-                            @endif
                         </td>
                     </tr>
                 </table>

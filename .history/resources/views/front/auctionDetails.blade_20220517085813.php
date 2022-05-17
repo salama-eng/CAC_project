@@ -56,11 +56,11 @@
                     </div>
                     @php $total = $post->starting_price @endphp
                     @php $userId = '' @endphp
-                    <div class=" border-n mt-4 col-10">
+                    <div class=" border-n mt-4 ">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
 
-                            <div class="modal-body bg-darkgrey col-12 w-100">
+                            <div class="modal-body bg-darkgrey  ">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul style="list-style: none">
@@ -70,13 +70,13 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="d-flex justify-content-around  flex-column align-items-center mt-3 ">
+                                <div class="d-flex justify-content-around  flex-column align-items-center mt-3">
                                    
                                    
                                         
                                      
                            
-                                    <div class="d-flex  align-items-center gap-3 w-100 ">
+                                    <div class="d-flex  align-items-center gap-3 ">
                                         <h3 class="text-white fs-6"> </h3>
                                         <input type="number" class="input-model text-white p-2 auction-input"
                                             min="{{ $post->auctions->max('bid_amount') }}" {{-- step="{{ $post->auctions->max('bid_amount') }}" --}} value=""
@@ -213,7 +213,7 @@
             <div id="carouselExampleControls" class="carousel slide col-12 mt-3" data-bs-ride="carousel">
                 <div class="carousel-inner main-img-div w-100">
                     <div class="carousel-item active w-100">
-                        <img src="/images/{{ $post->image }}" width="550" height="400" class="d-block  main-img"
+                        <img src="/images/{{ $post->image }}" class="d-block w-100 h-100 main-img"
                             alt="{{ $post->image }}">
 
                     </div>
@@ -242,18 +242,8 @@
 
                 </div>
                 <hr class="active">
-                @php
-                    $i=0;
-                @endphp
-              
-               
+                <h4  class="grey"> عمليات المزايدة الحالية</h4>
                 @foreach($auctions as $auction)
-                @php
-                   $i++ 
-                @endphp
-                @if ($i==1)
-                <h4  class="grey my-3"> عمليات المزايدة الحالية</h4>
-                @endif
                 @php $userId = $auction->userAw->id @endphp
                 @php $total = $auction->max('bid_total') @endphp
                 <div class="">
