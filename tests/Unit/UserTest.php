@@ -33,11 +33,11 @@ class UserTest extends TestCase
   }
   public function test_it_stor_user(){
       $response=$this->post('/save_user',[
-      'name' => 'salama',
-      'email' => 'salama@gmail.com',
+      'name' => 'خليفة القياضي',
+      'email' => 'khalifa.alqiadi@gmail.com',
        'password' => 'password',
        'is_active' => '1',
-       'remember_token' =>'152hyuui'
+       'remember_token' =>'LFxvakMZNxkd8DsrpDy1jcmoZJ4uYEay2INuzJm6x27Ccbt9HwQrHrA5n0v0'
       
       ]);
       $response->assertRedirect('/');
@@ -49,10 +49,10 @@ class UserTest extends TestCase
 
   public function test_Database(){
       $this->assertDatabaseHas('users',[
-          'name' => 'salama',
+          'name' => 'khalifa alqiadi',
       ]);
       $this->assertDatabaseHas('posts',[
-        'name' => 'هونداي',
+        'name' => 'شبح',
     ]);
   }
   public function test_Missing_Database(){
@@ -76,6 +76,8 @@ class UserTest extends TestCase
 public function test_it_stor_auction(){
    
     Auth::check();
+    $user = User::factory()->create();
+    $this->ActingAs($user);
     $response = $this->post('/save_post', [
     'name' => 'مرسيدس',
     'category_id' => '1',
