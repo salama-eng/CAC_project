@@ -24,7 +24,7 @@
 
         <!-- النص الرئيسي -->
         <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
-            <h2 class="yellow ">النص الرئيسي</h2>
+            <h4 class="yellow ">النص الرئيسي</h4>
             <hr>
             <p class="my-4">{{$content->main_paragraph}}</p>
 
@@ -36,7 +36,7 @@
         
         <!-- الوصف  -->
         <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
-            <h2 class="yellow ">الوصف</h2>
+            <h4 class="yellow ">الوصف</h4>
             <hr>
             <p class="my-4">{{$content->description}}</p>
 
@@ -48,7 +48,7 @@
 
         <!-- النص الاول -->
         <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
-            <h2 class="yellow "> النص الاول</h2>
+            <h4 class="yellow "> النص الاول</h4>
             <hr>
             <p>{{$content->paragraph_one}}</p>
             <a href="manage_home?do=Edit&contentid={{$content->id}}&column=paragraph_one&name=النص الاول" class="edit p-1 mx-2">
@@ -59,7 +59,7 @@
 
         <!-- النص الثاني -->
         <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
-            <h2 class="yellow "> النص الثاني</h2>
+            <h4 class="yellow "> النص الثاني</h4>
             <hr>
             <p>{{$content->paragraph_two}}</p>
             <a href="manage_home?do=Edit&contentid={{$content->id}}&column=paragraph_two&name=النص الثاني" class="edit p-1 mx-2">
