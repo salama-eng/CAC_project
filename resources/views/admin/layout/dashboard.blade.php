@@ -190,7 +190,7 @@
                             <div class="fa  fa-envelope-o text-light fs-5"></div>
                         </div>
                         <li class="w-100">
-                            <a href="{{route('home')}}"
+                            <a href=""
                                 class="nav-item text-center contact text-light fs-5 py-2  mt-4 mx-5 d-block px-3"
                                 style="color: white !important;">
                                  777 777 777 <i class="fa fa-phone p-2 pt-1"> </i></a>
