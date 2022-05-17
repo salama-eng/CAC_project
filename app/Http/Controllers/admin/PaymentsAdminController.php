@@ -32,6 +32,9 @@ class PaymentsAdminController extends Controller
         $payment = new Payment;
         $payment->name = $request->Payment;
         $payment->bank_name = $request->bank_name;
+        if($request->active != null){
+            $payment->is_active=1;
+        }
         if($payment->save())
         return redirect('adminPayments')
         ->with(['success'=>'تم اضافة طريقة الدفع بنجاح']);

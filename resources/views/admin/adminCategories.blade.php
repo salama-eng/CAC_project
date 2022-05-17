@@ -98,7 +98,7 @@
     </div>
 @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center fs-3 m-4"> اضافة صنف جديد </h1>
+<h1 class="text-center fs-3 mb-5"> اضافة صنف جديد </h1>
 <div class="container col-lg-9 col-11">
     @if ($errors->any())
         <div class="alert alert-danger error">
@@ -122,14 +122,14 @@
             <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
             <div class="col-sm-8 col-md-9">
                 <input type="file" name="image" class="form-control" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" >
-            <div class="col-md-12 mb-2 my-2 m-auto">
-                  <img id="previewImage" 
-                     style="max-height: 100px;">
-              </div>
+                <div class="col-md-12 mb-2 my-2 m-auto">
+                    <img id="previewImage" 
+                        style="max-height: 100px;">
+                </div>
         </div>
 
         </div>
-        <div class="form-check d-flex  justify-content-center mt-5 ">
+        <div class="form-check d-flex  justify-content-center my-5 ">
             <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"  {{ ( old('active') == '1') ? ' checked' : '' }} aria-label="...">
             <label class="col-6 mx-5 text-white" for="">تفعيل</label>    
         </div>
@@ -147,8 +147,8 @@
     @elseif($do == 'Edit')
         <!-- start Edit model -->
         {{ $categoryid = isset($_GET['categoryid']) && is_numeric($_GET['categoryid']) ? intval($_GET['categoryid']) : 0 }}
-        <h1 class="text-center">تعديل التصنيف</h1>
-        <div class="container">
+        <h1 class="text-center fs-3 mb-5">تعديل التصنيف</h1>
+        <div class="container col-lg-8 col-11">
             @if ($errors->any())
                 <div class="alert alert-danger error">
                     <ul>
@@ -191,13 +191,7 @@
                             </div>
                         </div>
                         <!-- End Image -->
-                        <!-- Start Active -->
-                        <div class="form-check d-flex  justify-content-center mt-5 ">
-                            <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"
-                                aria-label="...">
-                            <label class="col-6 mx-5 text-white" for="">تفعيل</label>
-                        </div>
-                        <!-- End Active -->
+
                         <!-- Start Submit -->
                         <div class="mb-2 row">
                             <div class="offset-sm-2 col-sm-10">

@@ -105,8 +105,8 @@
         </div>
     @elseif($do == 'Add')
         <!-- start add model -->
-        <h1 class="text-center">اضافة صورة للسلايدر</h1>
-        <div class="container ">
+        <h1 class="text-center fs-3 mb-5">اضافة صورة للسلايدر</h1>
+        <div class="container col-lg-8 col-11 ">
             @if ($errors->any())
                 <div class="alert alert-danger message">
                     <ul>
@@ -131,8 +131,16 @@
                     </div>
 
                 </div>
-
                 <!-- End slider -->
+
+                <!-- Start Active -->
+                <div class="form-check d-flex  justify-content-center my-5 ">
+                    <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"
+                        aria-label="...">
+                    <label class="col-6 mx-5 text-white" for="">تفعيل</label>
+                </div>
+                <!-- End Active -->
+
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
@@ -145,7 +153,7 @@
     @elseif($do == 'Edit')
         <!-- start Edit model -->
         {{ $sliderid = isset($_GET['sliderid']) && is_numeric($_GET['sliderid']) ? intval($_GET['sliderid']) : 0 }}
-        <h1 class="text-center">تغيير الصورة</h1>
+        <h1 class="text-center fs-3 mb-5">تغيير الصورة</h1>
         <div class="container col-lg-8 col-11">
             @if ($errors->any())
                 <div class="alert alert-danger message">
@@ -165,17 +173,17 @@
                         <!-- Start slider -->
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label text-white">تعديل الصورة </label>
-                            <div class="col-sm-8 col-md-9">
+                            <div class="col-sm-8 col-md-9 mb-4">
                                 <input type="file" name="image" id="image" oninput="imageTwo.src=window.URL.createObjectURL(this.files[0])"class="form-control" autocomplete="off"
                                     placeholder=" اضف طريقة دفع">
-                                <div class="col-md-12 mb-2 my-2 m-auto">
-                                    <img id="imageTwo" 
-                                        style="max-height: 100px;">
-                                </div>
+                                    <div class="col-md-12 mb-2 my-2 m-auto">
+                                        <img id="imageTwo" style="max-height: 100px;">
+                                    </div>
                             </div>
 
                         </div>
                         <!-- End slider -->
+
                         <!-- Start Submit -->
                         <div class="mb-2 row">
                             <div class="offset-sm-2 col-sm-10">

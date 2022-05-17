@@ -19,28 +19,20 @@
         <style>
             body
             {
-               
+            direction: rtl;
             }
 .container
 {
     text-align: center;
     font-family: tajawal;
    color: #111;
-   display:flex;
-   justify-content:space-around;
-   flex-wrap: wrap;
-   align-items:center;
+   border: 2px solid #E39100;
+   width: fit-content;
+   padding: 20px;
+   margin: auto;
 }
-em
-{
-    color:#E39100;
-}
-.bg-yellow
-{
-    background-color:#E39100;
-    color: #111;
-    margin: 1rem;
-    padding:0.6rem;
+h2{
+    color: #E39100;
 }
 
         </style>
@@ -48,15 +40,19 @@ em
 </head>
 <body>
 
-    <div class="container d-flex flex-wrap">
-        
-        <div class="col-4">
-        <img src="assets/images/email.png" width ="400" height=""alt=""></div>
-        <h3>اهلا {{$data['name']}} </h3>
-        <div  class="col-4">
-        <p > نحن نرسل لك هذا الايميل ردا على رسالتك</p>
-        <p>" {{$data['message']}} "</p>
-        <p>{{$data['sendMessage']}}</p>
-    </div></div>
+   <h2>مرحبا لديك رسالة جديدة من {{$name}}</h2>
+<div>
+    <h3>تفاصيل المرسل</h3>
+    <p>
+    الاسم :  {{ $name }}<br>
+    الايميل:  {{ $email }}<br>
+    الهاتف :  {{ $phone }}<br>
+    </p>
+</div>
+<div>
+    <h3>نص الرسالة : </h3>
+    <p> {{$messages}}</p>
+</div>
+
 </body>
 </html>

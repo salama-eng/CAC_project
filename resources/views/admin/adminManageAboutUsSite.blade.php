@@ -4,7 +4,7 @@
 @if($do == 'Manage')
 
 <h1 class="text-center fs-3 text-white mb-5">ادارة صفحة من نحن  </h1>
-    <div class="container ">
+    <div class="container col-md-10 col-11">
         @if(session()->has('success'))
             <div class="alert alert-success message">
                 {{ session()->get('success') }}
@@ -19,7 +19,7 @@
 
         @foreach($Content as $content)
         
-        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-4" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow ">نبذه عامة</h2>
             <hr>
             <p class="my-4">{{$content->description}}</p>
@@ -29,7 +29,7 @@
             </a>
         </div>
 
-        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-4" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow "> النص الاول</h2>
             <hr>
             <p>{{$content->paragraph_one}}</p>
@@ -39,7 +39,7 @@
             </a>
         </div>
 
-        <div class=" text-white mb-4 col-12 col-md-10 shadow p-4 pb-4" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow "> النص الثاني</h2>
             <hr>
             <p>{{$content->paragraph_two}}</p>
@@ -58,8 +58,8 @@
 
     @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center">اضافة النص الافتراضي</h1>
-<div class="container">
+<h1 class="text-center fs-3 mb-5">اضافة النص الافتراضي</h1>
+<div class="container col-lg-9 col-11">
     @if ($errors->any())
         <div class="alert message">
             <ul>
@@ -112,7 +112,7 @@
 {{$contentid = isset($_GET['contentid']) && is_numeric($_GET['contentid']) ? intval($_GET['contentid']) : 0;}}
 {{$column = $_GET['column'];}}
 {{$name = $_GET['name'];}}
-<h1 class="text-center">تعديل المحتوى</h1>
+<h1 class="text-center fs-3 mb-5">تعديل المحتوى</h1>
 <div class="container col-lg-8 col-11">
     @if ($errors->any())
         <div class="alert message">
