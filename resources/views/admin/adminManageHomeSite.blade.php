@@ -72,14 +72,10 @@
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5">اضافة المحتوى الافتراضي</h1>
 <div class="container">
-    @if ($errors->any())
-        <!-- <div class="alert message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div> -->
+    @if(session()->has('error'))
+        <div class="alert message">
+            {{ session()->get('error') }}
+        </div>
     @endif
     <form action="{{ route('add_content') }}"  method="POST" enctype="multipart/form-data">
                 @csrf
@@ -90,11 +86,8 @@
                         <textarea name="main_paragraph" cols="30" class="form-control mt-4 mb-0"  rows="5">
                         لجميع السيارات والشاحنات المستعملة والجديدة
                         </textarea>
-                        @if (session()->has('password'))
-                        <p class="text-end yellow">{{ session()->get('main_paragraph') }}</p>
-                        @endif
-                        @error('main_paragraph')
-                        <span class="text-end yellow">* {{ $error }}  </span>
+                        @error('icon')
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                     </div>
                 </div>
@@ -105,8 +98,8 @@
                         تجعل من السهل على الاعضاء العثور والمزايدة على جميع السيارات
                         </textarea>
                         @error('description')
-                        <span class="text-end yellow">* {{ $error }}  </span>
-                        @enderror
+                        <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderrorr
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -116,7 +109,7 @@
                         تقنية المزاد على كاك مزاد المنصة المحركة لمزادات السيارات عبر الانترنت
                         </textarea>
                         @error('paragraph_one')
-                        <span class="text-end yellow">* {{ $error }}  </span>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                     </div>
                 </div>
@@ -127,7 +120,7 @@
                         مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
                         </textarea>
                         @error('paragraph_two')
-                        <span class="text-end yellow">* {{ $error }}  </span>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                     </div>
                 </div>
@@ -150,13 +143,9 @@
 {{$name = $_GET['name'];}}
 <h1 class="text-center fs-3 mb-5">تعديل المحتوى</h1>
 <div class="container col-lg-8 col-11">
-    @if ($errors->any())
+    @if(session()->has('error'))
         <div class="alert message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li >{{ $error }}</li>
-                @endforeach
-            </ul>
+            {{ session()->get('error') }}
         </div>
     @endif
             <form action="{{ route('edit_home_content',$contentid) }}"  method="POST" enctype="multipart/form-data">
@@ -171,6 +160,9 @@
                         {{$Content[0]->$column}}
 
                         </textarea>
+                        @error('{{$column}}')
+                        <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
 
                     </div>
                 </div>

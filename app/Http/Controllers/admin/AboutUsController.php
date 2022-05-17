@@ -60,9 +60,9 @@ class AboutUsController extends Controller
         print_r($request->$column) ;
         $home=about_us::find($id);
         $home->$column  = $request->$column;
-        if($home->save())
-        return redirect('manage_about_us')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+        // if($home->save())
+        // return redirect('manage_about_us')
+        // ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        // return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 }

@@ -102,13 +102,9 @@
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5">اضافة طريقة تواصل جدبدة</h1>
 <div class="container col-lg-8 col-11">
-    @if ($errors->any())
+    @if(session()->has('error'))
         <div class="alert message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            {{ session()->get('error') }}
         </div>
     @endif
     <form action="add_contact_us" method="POST" enctype="multipart/form-data">
@@ -118,6 +114,9 @@
             <label class="col-sm-2 col-form-label text-white">الاسم    </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="name" value="{{old('name')}}" class="form-control" autocomplete="off" placeholder=" اضف  اسم طريقة التواصل">
+                @error('name')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
             
         </div>
@@ -125,6 +124,9 @@
             <label class="col-sm-2 col-form-label text-white">   الرابط </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="link" value="{{old('link')}}" class="form-control" autocomplete="off" placeholder=" اضف  الرابط">
+                @error('link')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
             
         </div>
@@ -144,9 +146,13 @@
                     <option value="fa fa-facebook" class="fa">&#xf082  (facebook)</option>
                     
                 </select>
+                @error('icon')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
             
         </div>
+        <!-- End information -->
 
         <!-- Start Active -->
         <div class="form-check d-flex  justify-content-center my-5 ">
@@ -156,7 +162,6 @@
         </div>
         <!-- End Active -->
 
-        <!-- End information -->
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
@@ -172,13 +177,9 @@
 {{$informationid = isset($_GET['informationid']) && is_numeric($_GET['informationid']) ? intval($_GET['informationid']) : 0;}}
 <h1 class="text-center fs-3 mb-5">تعديل طريقة التواصل </h1>
 <div class="container col-lg-8 col-11">
-    @if ($errors->any())
+    @if(session()->has('error'))
         <div class="alert message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            {{ session()->get('error') }}
         </div>
     @endif
     @foreach($Information as $information)
@@ -190,14 +191,22 @@
             <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">الاسم    </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="name" value="{{$information->name}}" class="form-control" autocomplete="off" placeholder=" اضف  اسم طريقة التواصل">
+                <input type="text" name="name" value="{{$information->name}}"
+                 class="form-control" autocomplete="off" placeholder=" اضف  اسم طريقة التواصل">
+                 @error('name')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
             
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   الرابط </label>
             <div class="col-sm-8 col-md-9">
-                <input type="text" name="link" value="{{$information->link}}" class="form-control" autocomplete="off" placeholder=" اضف  الرابط">
+                <input type="text" name="link" value="{{$information->link}}" class="form-control"
+                 autocomplete="off" placeholder=" اضف  الرابط">
+                @error('link')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
             
         </div>
@@ -217,6 +226,9 @@
                     <option value="fa fa-facebook" class="fa">&#xf082  (facebook)</option>
                     
                 </select>
+                @error('icon')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
             
         </div>

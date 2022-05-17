@@ -60,13 +60,9 @@
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5">اضافة النص الافتراضي</h1>
 <div class="container col-lg-9 col-11">
-    @if ($errors->any())
+    @if(session()->has('error'))
         <div class="alert message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            {{ session()->get('error') }}
         </div>
     @endif
     <form action="{{ route('add_about_us_content') }}"  method="POST" enctype="multipart/form-data">
@@ -76,7 +72,10 @@
                     <label class="col-sm-2 col-form-label text-white">  نبذة عامة </label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="description" cols="30" class="form-control"  rows="7">
-                    الاس، تكساس، تعد كوبارت الشركة الرائدة على مستوى العالم في مزادات السيارات على الإنترنت، ووجهة رئيسية لإعادة بيع وإعادة تسويق السيارات. تقنية كوبارت المبتكرة ومنصة المزادات على الإنترنت تربط بين البائعين و لمشترين حول العالم. كوبارت تقوم بتشغيل أكثر من 200 موقع في 11 بلد، وأكثر من 150,000 سيارة للمزاد كل يوم.                        </textarea>
+                           الاس، تكساس، تعد كوبارت الشركة الرائدة على مستوى العالم في مزادات السيارات على الإنترنت، ووجهة رئيسية لإعادة بيع وإعادة تسويق السيارات. تقنية كوبارت المبتكرة ومنصة المزادات على الإنترنت تربط بين البائعين و لمشترين حول العالم. كوبارت تقوم بتشغيل أكثر من 200 موقع في 11 بلد، وأكثر من 150,000 سيارة للمزاد كل يوم.                        </textarea>
+                        @error('description')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -85,6 +84,9 @@
                     <textarea name="paragraph_one" cols="30" class="form-control"  rows="7">
                         تقنية المزاد على كاك مزاد المنصة المحركة لمزادات السيارات عبر الانترنت
                         </textarea>
+                        @error('paragraph_one')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -93,6 +95,9 @@
                         <textarea name="paragraph_two" cols="30" class="form-control"  rows="7">
                         مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
                         </textarea>
+                        @error('paragraph_two')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <!-- End edit content -->
@@ -114,13 +119,9 @@
 {{$name = $_GET['name'];}}
 <h1 class="text-center fs-3 mb-5">تعديل المحتوى</h1>
 <div class="container col-lg-8 col-11">
-    @if ($errors->any())
-        <div class="alert message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li >{{ $error }}</li>
-                @endforeach
-            </ul>
+    @if(session()->has('error'))
+        <div class="alert alert-success message">
+            {{ session()->get('error') }}
         </div>
     @endif
             <form action="{{ route('edit_content',$contentid) }}"  method="POST" enctype="multipart/form-data">
@@ -134,6 +135,9 @@
                         <textarea name="{{$column}}" cols="30" class="form-control"  rows="7">
                         {{$Content[0]->$column}}
                         </textarea>
+                        @error('{{$column}}')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <!-- End edit content -->

@@ -100,14 +100,10 @@
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5"> اضافة صنف جديد </h1>
 <div class="container col-lg-9 col-11">
-    @if ($errors->any())
-        <div class="alert alert-danger error">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    @if(session()->has('error'))
+            <div class="alert alert-success message">
+                {{ session()->get('error') }}
+            </div>
     @endif
     <form action="add_admin_category" method="POST"  enctype="multipart/form-data">
     @csrf
@@ -116,12 +112,18 @@
             <label class="col-sm-2 col-form-label text-white"> إضافة صنف   </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="name" class="form-control" value="{{old('name')}}" autocomplete="off" placeholder=" اضف تصنيف  ">
+                @error('name')
+                <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
             <div class="col-sm-8 col-md-9">
                 <input type="file" name="image" class="form-control" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" >
+                @error('image')
+                <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
                 <div class="col-md-12 mb-2 my-2 m-auto">
                     <img id="previewImage" 
                         style="max-height: 100px;">
@@ -149,14 +151,10 @@
         {{ $categoryid = isset($_GET['categoryid']) && is_numeric($_GET['categoryid']) ? intval($_GET['categoryid']) : 0 }}
         <h1 class="text-center fs-3 mb-5">تعديل التصنيف</h1>
         <div class="container col-lg-8 col-11">
-            @if ($errors->any())
-                <div class="alert alert-danger error">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+            @if(session()->has('error'))
+            <div class="alert alert-success message">
+                {{ session()->get('error') }}
+            </div>
             @endif
             @foreach ($category as $cat)
                 @if ($cat->id == $categoryid)
@@ -170,6 +168,9 @@
                             <div class="col-sm-8 col-md-9">
                                 <input type="text" name="name" value="{{ $cat->name }}" class="form-control"
                                     autocomplete="off" placeholder="ادخل طريقة الدفع ">
+                                    @error('name')
+                                    <span class="text-end yellow">* {{ $message }}  </span>
+                                    @enderror
                             </div>
                         </div>
                         <!-- End Name -->
@@ -179,6 +180,9 @@
                             <div class="col-sm-8 col-md-9">
                                 <input type="file" name="image" value="{{ $cat->image }}" oninput="imageTwo.src=window.URL.createObjectURL(this.files[0])" class="form-control"  class="form-control"
                                     autocomplete="off" placeholder="ادخل اسم البنك">
+                                    @error('image')
+                                    <span class="text-end yellow">* {{ $message }}  </span>
+                                    @enderror
                                     <div class="col-md-12 mb-2 my-2 m-auto">
                                     <img id="imageTwo" 
                                         style="max-height: 100px;">
