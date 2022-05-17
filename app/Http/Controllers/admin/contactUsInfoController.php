@@ -26,7 +26,7 @@ class contactUsInfoController extends Controller
             'name.required'=>' حقل الاسم مطلوب ',
             'name.string'=>' يحب ان يكون حقل الاسم نص  ',
             'name.between'=>' يحب ان يكون حقل الاسم من 3 الى 20 حرف',
-            'link.unique'=>'اوبس! هذا الرابط موجود مسبقا',
+            'link.required'=>'حقل الرابط مطلوب',
             'link.string'=>' يحب ان يكون حقل الرابط نص  ',
             'icon.required'=>'حقل الايقونة مطلوب',
 

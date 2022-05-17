@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\siteHome;
+use App\Http\Controllers\Enum\MessageEnum;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Auction;
@@ -122,18 +123,9 @@ class AdminHomeController extends Controller
             "paragraph_one"=>['required', 'string', 'between: 5, 255'],
             "paragraph_two"=>['required', 'string', 'between: 5, 255'],
         ],[
-            "main_paragraph.required"=>' هذا الحقل مطلوب ',
-            "paragraph_two.required"=>' هذا الحقل مطلوب ',
-            "description.required"=>' هذا الحقل مطلوب ',
-            "paragraph_one.required"=>' هذا الحقل مطلوب ',
-            "main_paragraph.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "description.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "paragraph_one.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "paragraph_two.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "main_paragraph.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
-            "description.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
-            "paragraph_one.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
-            "paragraph_two.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
+            "required"=>MessageEnum::REQUIRED,
+            "string"=>MessageEnum::MESSAGE_STRING,
+            "between"=>$this->messageBetween(5, 255),
             
         ]);
         $home=new siteHome();
@@ -144,8 +136,8 @@ class AdminHomeController extends Controller
 
         if($home->save())
         return redirect('manage_home')
-        ->with(['success'=>'تم الاضافه  بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع الاضفافه ']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
 
     function editContent(Request $request,$id){
@@ -154,9 +146,9 @@ class AdminHomeController extends Controller
         Validator::validate($request->all(),[
             "$request->column"=>['required', 'string', 'between: 5, 255'],
         ],[
-            "$request->column.required"=>' هذا الحقل مطلوب ',
-            "$request->column.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "$request->column.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',]);
+            "$request->column.required"=>MessageEnum::REQUIRED,
+            "$request->column.string"=>MessageEnum::MESSAGE_STRING,
+            "$request->column.between"=>$this->messageBetween(5, 255),]);
 
 
         $home=siteHome::find($id);
@@ -166,7 +158,7 @@ class AdminHomeController extends Controller
 
         
         return redirect('manage_home')
-        ->with(['success'=>'تم التعديل  بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع التعديل ']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 }

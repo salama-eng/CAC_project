@@ -24,10 +24,9 @@ class CategoriesAdminController extends Controller
             'name'=>['required','string', 'between: 5, 20', 'unique:categories,name'],
             'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
         ],[
-            'image.required'=>'حقل الصورة مطلوب',
-            'name.required'=>' حقل الاسم مطلوب ',
-            'name.string'=>' يحب ان يكون حقل الاسم نص  ',
-            'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
+            'required'=>MessageEnum::REQUIRED,
+            'name.string'=>MessageEnum::MESSAGE_STRING,
+            'name.between'=>$this->messageBetween(5, 20),
             'name.unique'=>'اوبس! هذا الاسم موجود مسبقا',
         ]);
 
@@ -41,8 +40,8 @@ class CategoriesAdminController extends Controller
         }
         if($category->save())
         return redirect('admincategories')
-        ->with(['success'=>'تم اضافة التصنيف بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
 
     
@@ -50,9 +49,9 @@ class CategoriesAdminController extends Controller
         Validator::validate($request->all(),[
             'name'=>['required', 'string', 'between: 5, 20'],
         ],[
-            'name.required'=>' حقل الاسم مطلوب ',
-            'name.string'=>' يحب ان يكون حقل الاسم نص  ',
-            'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
+            'required'=>MessageEnum::REQUIRED,
+            'name.string'=>MessageEnum::MESSAGE_STRING,
+            'name.between'=>$this->messageBetween(5, 20),
         ]);
         $category=category::find($id);
         $category->name=$request->name;
@@ -71,8 +70,8 @@ class CategoriesAdminController extends Controller
 
         
         return redirect('admincategories')
-        ->with(['success'=>'تم تعديل التصنيف بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 
 

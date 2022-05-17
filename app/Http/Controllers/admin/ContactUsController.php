@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\SendingEmail;
 use App\Models\contact_us;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Enum\MessageEnum;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
@@ -17,13 +18,10 @@ class ContactUsController extends Controller
             'message'=>['required', 'min:10',],
 
         ],[
-            'name.required'=>'حقل الاسم مطلوب',
-            'message.required'=>'نص الرسالة مطلوب',
-            'email.required'=>' حقل الايميل مطلوب ',
-            'name.string'=>' يحب ان يكون حقل الاسم نص  ',
-            'name.between'=>' يحب ان يكون حقل الاسم من 5 الى 20 حرف',
-            'message.min'=>' يحب ان يكون  النص اكبر من 10 ',
-            'email.unique'=>'اوبس! هذا الايميل موجود مسبقا',
+            'required'=>MessageEnum::REQUIRED,
+            'name.string'=>MessageEnum::MESSAGE_STRING,
+            'name.between'=>$this->messageBetween(5, 20),
+            'message.min'=>$this->messageMin(10),
         ]);
         $message = new contact_us;
         $message->name = $request->name;
@@ -55,8 +53,8 @@ class ContactUsController extends Controller
          Validator::validate($request->all(),[
             'send_message'=>['required', 'min: 20'],
         ],[
-            'send_message.required'=>' حقل الرسالة مطلوب ',
-            'send_message.between'=>' يحب ان يكون حقل الاسم اكبر من 20 حرف',
+            'send_message.required'=>MessageEnum::REQUIRED,
+            'send_message.between'=>$this->messageMin(20),
         ]);
 
         $sendMessage=$request->send_message;

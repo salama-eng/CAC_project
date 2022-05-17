@@ -21,9 +21,7 @@ class PostsAdminController extends Controller
             if($route == 'admin_posts'){
                 return view('admin.adminManagePosts', [
                     'postsAll' => $postsAll,
-                ]);
-
-                
+                ]); 
             }elseif($route == 'Start_auction'){
                 return view('admin.adminManageStartedAuction', [
                     'postsAll' => $postsAll,
@@ -41,19 +39,12 @@ class PostsAdminController extends Controller
         if($active){
             $users = User::whereNotIn('id', [$userid, Auth::id()])->get();
             foreach($users as $user){
-
-                $lesson = new Lesson;
                 $lesson = $this->lessonNotification($user->id, 'تم اضافة مزاد جديد. يمكنك الاطلاع', '', 'auctiondetails/ "'.$id.'"'); 
-                if(\Notification::send($user ,new NewNotification(Lesson::latest('id')->first()))){
-                    return back();
-                }
+                $notify = $this->pusherNotifications($user);
             }
             $user = User::find($userid);
-            $lesson = new Lesson;
             $lesson = $this->lessonNotification($user->id, 'تم الموافقة على المزاد', '', 'auctiondetails/ "'.$id.'"'); 
-            if(\Notification::send($user ,new NewNotification(Lesson::latest('id')->first()))){
-                return back();
-            }
+            $notify = $this->pusherNotifications($user);
             return redirect('admin_posts')
             ->with(['success'=>'تم الموافقة بنجاح']);
         }else{
@@ -69,20 +60,10 @@ class PostsAdminController extends Controller
         else
         $active = Post::where('id', $id)->update(['is_active' => 1]);
         if($active){
+
             $user = User::find($userid);
-            $lesson = new Lesson;
-            $lesson->user_id = $user->id;
-            $lesson->title = 'مرحبا';
-            $lesson->body = 'تم الغاء المزاد الخابك! يمكنك الاطلاع على الاسباب ';
-            $lesson->link = 'auctiondetails/'. $id;
-            $lesson->save();
-            
-            if(\Notification::send(
-                $user ,new NewNotification(
-                    Lesson::latest('id')->first())
-            )){
-                return back();
-            }
+            $lesson = $this->lessonNotification($user->id, 'تم الغاء المزاد الخابك! يمكنك الاطلاع على الاسباب', '', 'auctiondetails/ "'.$id.'"'); 
+            $notify = $this->pusherNotifications($user);
             return redirect('Start_auction')
             ->with(['success'=>' تمت العملية بنجاح  ']);
         }else{
