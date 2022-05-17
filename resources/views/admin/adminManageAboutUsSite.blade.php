@@ -1,17 +1,20 @@
 @extends('admin.layout.dashboard')
 @section('content')
 
+<!-- start Page Content -->
 @if($do == 'Manage')
 
 <h1 class="text-center fs-3 text-white mb-5">ادارة صفحة من نحن  </h1>
     <div class="container col-md-10 col-11">
+    <!-- start Message Content -->
         @if(session()->has('success'))
             <div class="alert alert-success message">
                 {{ session()->get('success') }}
             </div>
         @endif
-        @if(!isset($Content[0]))
+    <!-- Ens Message Content -->
 
+        @if(!isset($Content[0]))
         <a href="manage_about_us?do=Add" class="btn p-2 contact">
             <i class="fa fa-plus"></i>  النص الافتراضي
         </a>
@@ -48,18 +51,14 @@
                 تعديل 
             </a>
         </div>
-
-
-
         @endforeach
-       
-       
     </div>
+<!-- End page Content -->
 
     @elseif($do == 'Add')
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5">اضافة النص الافتراضي</h1>
-<div class="container col-lg-9 col-11">
+<div class="container col-lg-8 col-11">
     @if(session()->has('error'))
         <div class="alert message">
             {{ session()->get('error') }}
@@ -71,7 +70,7 @@
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white">  نبذة عامة </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="description" cols="30" class="form-control"  rows="7">
+                        <textarea name="description" cols="30" class="form-control mt-4 mb-0"  rows="7">
                            الاس، تكساس، تعد كوبارت الشركة الرائدة على مستوى العالم في مزادات السيارات على الإنترنت، ووجهة رئيسية لإعادة بيع وإعادة تسويق السيارات. تقنية كوبارت المبتكرة ومنصة المزادات على الإنترنت تربط بين البائعين و لمشترين حول العالم. كوبارت تقوم بتشغيل أكثر من 200 موقع في 11 بلد، وأكثر من 150,000 سيارة للمزاد كل يوم.                        </textarea>
                         @error('description')
                             <span class="text-end yellow">* {{ $message }}  </span>
@@ -81,7 +80,7 @@
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white">  النص الاول </label>
                     <div class="col-sm-8 col-md-9">   
-                    <textarea name="paragraph_one" cols="30" class="form-control"  rows="7">
+                    <textarea name="paragraph_one" cols="30" class="form-control mt-4 mb-0"  rows="7">
                         تقنية المزاد على كاك مزاد المنصة المحركة لمزادات السيارات عبر الانترنت
                         </textarea>
                         @error('paragraph_one')
@@ -92,7 +91,7 @@
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white">  النص الثاني </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="paragraph_two" cols="30" class="form-control"  rows="7">
+                        <textarea name="paragraph_two" cols="30" class="form-control mt-4 mb-0"  rows="7">
                         مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
                         </textarea>
                         @error('paragraph_two')
@@ -101,6 +100,7 @@
                     </div>
                 </div>
                 <!-- End edit content -->
+
                 <!-- Start Submit -->
                 <div class="mb-2 row">
                     <div class="offset-sm-2 col-sm-10">
@@ -111,6 +111,7 @@
                 
             </form>
 </div>
+<!-- End Add Content -->
 
 @elseif($do == 'Edit')
 <!-- start Edit content -->
@@ -132,12 +133,16 @@
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white">  {{$name}}  </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="{{$column}}" cols="30" class="form-control"  rows="7">
+                        <textarea name="{{$column}}" cols="30" class="form-control  mb-0"  rows="7">
                         {{$Content[0]->$column}}
                         </textarea>
-                        @error('{{$column}}')
-                            <span class="text-end yellow">* {{ $message }}  </span>
-                        @enderror
+                        <div class="text-end yellow">
+                        <ul class="list-unstyled">
+                            @foreach ($errors->all() as $error)
+                                <li >* {{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                     </div>
                 </div>
                 <!-- End edit content -->

@@ -2,7 +2,7 @@
 @section('content')
 
 @if($do == 'Manage')
-
+<!-- Start Page Content -->
 <h1 class="text-center fs-3 text-white">ادارة طرق التواصل</h1>
     <div class="container">
         @if(session()->has('success'))
@@ -50,6 +50,8 @@
                         
                     </td>
                 </tr>
+
+                <!-- Start Delete Model -->  
                 <div class="modal fade user" id="deleteinformation{{$information->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark">
@@ -71,6 +73,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Delete Model -->  
+
+                <!-- Start Active Model -->  
                 <div class="modal fade user" id="activeinformation{{$information->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-grey">
@@ -93,11 +98,12 @@
                     </div>
                 </div>
                 @endforeach
+                <!-- End Active Model -->  
             </table>
         </div>
-       
-      
     </div>
+<!-- End Page Content -->
+
 @elseif($do == 'Add')
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5">اضافة طريقة تواصل جدبدة</h1>
@@ -110,6 +116,8 @@
     <form action="add_contact_us" method="POST" enctype="multipart/form-data">
     @csrf
         <!-- Start information -->
+
+        <!-- start name input -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">الاسم    </label>
             <div class="col-sm-8 col-md-9">
@@ -118,8 +126,10 @@
                     <span class="text-end yellow">* {{ $message }}  </span>
                 @enderror
             </div>
-            
         </div>
+        <!-- End name input -->
+
+        <!-- start link input -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   الرابط </label>
             <div class="col-sm-8 col-md-9">
@@ -128,9 +138,10 @@
                     <span class="text-end yellow">* {{ $message }}  </span>
                 @enderror
             </div>
-            
         </div>
+        <!-- End link input -->
 
+        <!-- start icon input -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">الايقونة   </label>
             <div class="col-sm-8 col-md-9">
@@ -149,9 +160,9 @@
                 @error('icon')
                     <span class="text-end yellow">* {{ $message }}  </span>
                 @enderror
-            </div>
-            
+            </div> 
         </div>
+        <!-- End icon input -->
         <!-- End information -->
 
         <!-- Start Active -->
@@ -188,51 +199,55 @@
                 @csrf
                 <input type="hidden" name="informationid" value="{{$informationid}}">
                 <!-- Start information -->
-            <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">الاسم    </label>
-            <div class="col-sm-8 col-md-9">
-                <input type="text" name="name" value="{{$information->name}}"
-                 class="form-control" autocomplete="off" placeholder=" اضف  اسم طريقة التواصل">
-                 @error('name')
-                    <span class="text-end yellow">* {{ $message }}  </span>
-                @enderror
-            </div>
-            
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">   الرابط </label>
-            <div class="col-sm-8 col-md-9">
-                <input type="text" name="link" value="{{$information->link}}" class="form-control"
-                 autocomplete="off" placeholder=" اضف  الرابط">
-                @error('link')
-                    <span class="text-end yellow">* {{ $message }}  </span>
-                @enderror
-            </div>
-            
-        </div>
+                <!-- Start name input -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">الاسم    </label>
+                    <div class="col-sm-8 col-md-9">
+                        <input type="text" name="name" value="{{$information->name}}"
+                        class="form-control" autocomplete="off" placeholder=" اضف  اسم طريقة التواصل">
+                        @error('name')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End name input -->
 
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">الايقونة   </label>
-            <div class="col-sm-8 col-md-9 mb-5">
-                <select name="icon" value="{{$information->icon}}" class="fa p-2 bg-dark fs-5 text-white  border border-white w-100 h-10" style="direction:ltr ; " id="">
-                    <option value="fa fa-location-arrow" class="fa">&#xf124 (location)</option>
-                    <option value="fa fa-globe" class="fa">&#xf0ac  (site)</option>
-                    <option value="fa fa-envelope" class="fa">&#xf0e0  (email)</option>
-                    <option value="fa fa-mobile" class="fa">&#xf10b  (mobile)</option>
-                    <option value="fa fa-phone" class="fa">&#xf095  (phone)</option>
-                    <option value="fa fa-instagram" class="fa">&#xf16d  (instagram)</option>
-                    <option value="fa fa-whatsapp" class="fa">&#xf232  (whatsapp)</option>
-                    <option value="fa fa-twitter" class="fa">&#xf099  (twitter)</option>
-                    <option value="fa fa-facebook" class="fa">&#xf082  (facebook)</option>
-                    
-                </select>
-                @error('icon')
-                    <span class="text-end yellow">* {{ $message }}  </span>
-                @enderror
-            </div>
-            
-        </div>
-        <!-- End information -->
+                <!-- Start link input -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">   الرابط </label>
+                    <div class="col-sm-8 col-md-9">
+                        <input type="text" name="link" value="{{$information->link}}" class="form-control"
+                        autocomplete="off" placeholder=" اضف  الرابط">
+                        @error('link')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End link input -->
+
+                <!-- Start icon input -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">الايقونة   </label>
+                    <div class="col-sm-8 col-md-9 mb-5">
+                        <select name="icon" value="{{$information->icon}}" class="fa p-2 bg-dark fs-5 text-white  border border-white w-100 h-10" style="direction:ltr ; " id="">
+                            <option value="fa fa-location-arrow" class="fa">&#xf124 (location)</option>
+                            <option value="fa fa-globe" class="fa">&#xf0ac  (site)</option>
+                            <option value="fa fa-envelope" class="fa">&#xf0e0  (email)</option>
+                            <option value="fa fa-mobile" class="fa">&#xf10b  (mobile)</option>
+                            <option value="fa fa-phone" class="fa">&#xf095  (phone)</option>
+                            <option value="fa fa-instagram" class="fa">&#xf16d  (instagram)</option>
+                            <option value="fa fa-whatsapp" class="fa">&#xf232  (whatsapp)</option>
+                            <option value="fa fa-twitter" class="fa">&#xf099  (twitter)</option>
+                            <option value="fa fa-facebook" class="fa">&#xf082  (facebook)</option>
+                            
+                        </select>
+                        @error('icon')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End icon input -->
+                <!-- End information -->
             
                 <!-- Start Submit -->
                 <div class="mb-2 row">

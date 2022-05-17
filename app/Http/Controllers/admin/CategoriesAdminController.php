@@ -19,7 +19,7 @@ class CategoriesAdminController extends Controller
     }
 
     function addAdminCategory(Request $request){
-      
+
         Validator::validate($request->all(),[
             
             'name'=>['required','string', 'between: 5, 20', 'unique:categories,name'],
@@ -48,11 +48,13 @@ class CategoriesAdminController extends Controller
     
     function editAdminCategory(Request $request,$id){
         Validator::validate($request->all(),[
-            'name'=>['required', 'string', 'between: 5, 20'],
+            'name'=>['required', 'string', 'between: 5, 20','unique:categories,name'],
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
         ],[
             'required'=>MessageEnum::REQUIRED,
             'name.string'=>MessageEnum::MESSAGE_STRING,
             'name.between'=>$this->messageBetween(5, 20),
+            'name.unique'=>'اوبس! هذا الاسم موجود مسبقا'
         ]);
         $category=category::find($id);
         $category->name=$request->name;
@@ -100,8 +102,8 @@ class CategoriesAdminController extends Controller
         $category->is_active=0;
         if($category->save())
         return redirect('admincategories')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
         
     }
 }

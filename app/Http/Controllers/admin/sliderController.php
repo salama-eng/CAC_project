@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Enum\MessageEnum;
 use App\Models\slider_image;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class sliderController extends Controller
         Validator::validate($request->all(),[
             'image'=>['required'],
         ],[
-            'image.required'=>'حقل الصورة مطلوب'
+            'required'=>MessageEnum::REQUIRED,
         ]);
 
         $image = new slider_image;
@@ -36,15 +37,15 @@ class sliderController extends Controller
         }
         if($image->save())
         return redirect('slider_image')
-        ->with(['success'=>'تم اضافة الصورة بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة الصورة']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
 
     function editSliderImage(Request $request,$id){
         Validator::validate($request->all(),[
             'image'=>['required'],
         ],[
-            'image.required'=>'حقل الصورة مطلوب'
+            'required'=>MessageEnum::REQUIRED,
         ]);
 
         $image=slider_image::find($id);
@@ -63,8 +64,8 @@ class sliderController extends Controller
 
         
         return redirect('slider_image')
-        ->with(['success'=>'تم تعديل الصزوة بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع تعديل الصورة']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 
     public function uploadFile($files)
@@ -88,8 +89,8 @@ class sliderController extends Controller
         $image->is_active=0;
         if($image->save())
         return redirect('slider_image')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
         
     }
 }

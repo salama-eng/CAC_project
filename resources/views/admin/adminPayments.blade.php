@@ -104,15 +104,6 @@
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5">اضافة طرق الدفع</h1>
 <div class="container col-lg-8 col-11">
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <form action="add_admin_Payment" method="POST">
     @csrf
         <!-- Start Payment -->
@@ -120,12 +111,18 @@
             <label class="col-sm-2 col-form-label text-white">طريقة دفع جديدة </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="Payment" value="{{old('Payment')}}" class="form-control" autocomplete="off" placeholder=" اضف طريقة دفع">
+                @error('Payment')
+                <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
         </div>
                 <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">اسم البنك   </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="bank_name" value="{{old('bank_name')}}" class="form-control" autocomplete="off" placeholder="اسم البنك  ">
+                @error('bank_name')
+                <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
         </div>
         <!-- End Payment -->
@@ -153,15 +150,6 @@
 {{$Paymentid = isset($_GET['Paymentid']) && is_numeric($_GET['Paymentid']) ? intval($_GET['Paymentid']) : 0;}}
 <h1 class="text-center fs-3 mb-5">تعديل طريقة الدفع</h1>
 <div class="container col-lg-8 col-11">
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     @foreach($Payments as $Payment)
         @if($Payment->id == $Paymentid)
             <form action="edit_admin_Payment" method="POST">
@@ -172,12 +160,18 @@
                     <label class="col-sm-2 col-form-label text-white">طريقة الدفع  </label>
                     <div class="col-sm-8 col-md-9">
                         <input type="text" name="Payment" value="{{$Payment->name}}" class="form-control input" autocomplete="off" placeholder="ادخل طريقة الدفع ">
+                        @error('Payment')
+                        <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white"> اسم البنك  </label>
                     <div class="col-sm-8 col-md-9 mb-5">
                         <input type="text" name="bank_name" value="{{$Payment->bank_name}}" class="form-control input " autocomplete="off" placeholder="ادخل اسم البنك">
+                        @error('bank_name')
+                        <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
                     </div>
                 </div>  
                 <!-- End Payment -->

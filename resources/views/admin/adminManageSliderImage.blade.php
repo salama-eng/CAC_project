@@ -2,7 +2,7 @@
 @section('content')
 
     @if ($do == 'Manage')
-
+<!-- start page Content -->
         <h1 class="text-center fs-3 text-white">ادارة صور السلايدر</h1>
         <div class="container">
             @if (session()->has('success'))
@@ -48,6 +48,8 @@
 
                             </td>
                         </tr>
+
+                        <!-- start Delete Model -->
                         <div class="modal fade user" id="deleteslider{{ $slider->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -72,6 +74,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- End Delete Model -->
+
+                        <!-- start Active Model -->
                         <div class="modal fade user" id="activeslider{{ $slider->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -97,40 +102,36 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- End Active Model -->
                     @endforeach
                 </table>
             </div>
-
-
         </div>
+    <!-- End Page Content -->
+
     @elseif($do == 'Add')
         <!-- start add model -->
         <h1 class="text-center fs-3 mb-5">اضافة صورة للسلايدر</h1>
         <div class="container col-lg-8 col-11 ">
-            @if ($errors->any())
-                <div class="alert alert-danger message">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <form action="add_slider_image" method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- Start slider -->
+                <!-- start Imge Input -->
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white">صورة جديدة </label>
                     <div class="col-sm-8 col-md-9">
                         <input type="file" name="image" id="image" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" class="form-control"  class="form-control" autocomplete="off"
                             placeholder="اضف صورة جدبدة">
+                            @error('image')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                            @enderror
                         <div class="col-md-12 mb-2 my-2 m-auto">
                             <img id="previewImage" 
                                 style="max-height: 100px;">
                         </div>
                     </div>
-
                 </div>
+                <!-- End Image Input -->
                 <!-- End slider -->
 
                 <!-- Start Active -->
@@ -155,15 +156,6 @@
         {{ $sliderid = isset($_GET['sliderid']) && is_numeric($_GET['sliderid']) ? intval($_GET['sliderid']) : 0 }}
         <h1 class="text-center fs-3 mb-5">تغيير الصورة</h1>
         <div class="container col-lg-8 col-11">
-            @if ($errors->any())
-                <div class="alert alert-danger message">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             @foreach ($Slider as $slider)
                 @if ($slider->id == $sliderid)
                     <form action="{{ route('edit_slider_image', $sliderid) }}" method="POST"
@@ -171,17 +163,21 @@
                         @csrf
                         <input type="hidden" name="sliderid" value="{{ $sliderid }}">
                         <!-- Start slider -->
+                        <!-- Start Image Input -->
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label text-white">تعديل الصورة </label>
                             <div class="col-sm-8 col-md-9 mb-4">
                                 <input type="file" name="image" id="image" oninput="imageTwo.src=window.URL.createObjectURL(this.files[0])"class="form-control" autocomplete="off"
                                     placeholder=" اضف طريقة دفع">
+                                    @error('image')
+                                    <span class="text-end yellow">* {{ $message }}  </span>
+                                    @enderror
                                     <div class="col-md-12 mb-2 my-2 m-auto">
                                         <img id="imageTwo" style="max-height: 100px;">
                                     </div>
                             </div>
-
                         </div>
+                        <!-- End Image Input -->
                         <!-- End slider -->
 
                         <!-- Start Submit -->

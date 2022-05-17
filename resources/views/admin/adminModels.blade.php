@@ -2,7 +2,7 @@
 @section('content')
 
 @if($do == 'Manage')
-
+<!-- start Page Content -->
 <h1 class="text-center fs-3  text-white">ادارة الموديلات</h1>
     <div class="container container-for-input">
         @if(session()->has('success'))
@@ -93,22 +93,13 @@
                 @endforeach
             </table>
         </div>
-       
-       
     </div>
-@elseif($do == 'Add')
+<!-- End Page Content -->
 
+@elseif($do == 'Add')
+<!-- start Add Page-->
 <h1 class="text-center fs-3 mb-5">اضافة موديل جديد</h1>
 <div class="container col-lg-8 col-11">
-    @if ($errors->any())
-        <div class="alert alert-danger message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <form action="add_admin_model" method="POST">
     @csrf
         <!-- Start Model -->
@@ -116,6 +107,9 @@
             <label class="col-sm-2 col-form-label text-white">موديل جديد</label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="model" value="{{old('model')}}" class="form-control" autocomplete="off" placeholder="اضف موديل جديد">
+                @error('model')
+                <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
         </div>
         <!-- End Model -->
@@ -135,7 +129,10 @@
         <!-- End Submit -->
     </form>
 </div>
+<!-- start Add Page-->
+
 @elseif($do == 'Edit')
+<!-- start Edit Page-->
 {{$modelid = isset($_GET['modelid']) && is_numeric($_GET['modelid']) ? intval($_GET['modelid']) : 0;}}
 <h1 class="text-center fs-3 mb-5">تعديل الموديل</h1>
 <div class="container col-lg-8 col-11">
@@ -158,6 +155,9 @@
                     <label class="col-sm-2 col-form-label text-white">موديل جديد</label>
                     <div class="col-sm-8 col-md-9">
                         <input type="text" name="model" value="{{$model->name}}" class="form-control text-white input" autocomplete="off" placeholder="ادخل اسم الموديل">
+                        @error('model')
+                        <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
                     </div>
                 </div>
                 <!-- End Model -->
@@ -174,6 +174,8 @@
         @endif
     @endforeach
 </div>
+<!-- End Edit Page-->
+
 @endif
 @endsection
                 

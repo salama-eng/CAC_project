@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Enum\MessageEnum;
 use App\Models\contact_us_info;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -23,13 +24,10 @@ class contactUsInfoController extends Controller
             'link'=>['required','string'],
             'icon'=>['required']
         ],[
-            'name.required'=>' حقل الاسم مطلوب ',
-            'name.string'=>' يحب ان يكون حقل الاسم نص  ',
-            'name.between'=>' يحب ان يكون حقل الاسم من 3 الى 20 حرف',
-            'link.required'=>'حقل الرابط مطلوب',
-            'link.string'=>' يحب ان يكون حقل الرابط نص  ',
-            'icon.required'=>'حقل الايقونة مطلوب',
-
+            'required'=>MessageEnum::REQUIRED,
+            'name.between'=>$this->messageBetween(3, 20),
+            'name.string'=>MessageEnum::MESSAGE_STRING,
+            'link.string'=>MessageEnum::MESSAGE_STRING,
         ]);
 
         $informartion = new contact_us_info;
@@ -39,8 +37,8 @@ class contactUsInfoController extends Controller
 
         if($informartion->save())
         return redirect('manage_contact_us')
-        ->with(['success'=>'تم اضافة التصنيف بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
 
     
@@ -50,14 +48,10 @@ class contactUsInfoController extends Controller
             'link'=>['required','string'],
             'icon'=>['required']
         ],[
-            'name.required'=>' حقل الاسم مطلوب ',
-            'name.string'=>' يحب ان يكون حقل الاسم نص  ',
-            'name.between'=>' يحب ان يكون حقل الاسم من 3 الى 20 حرف',
-            'link.unique'=>'اوبس! هذا الرابط موجود مسبقا',
-            'link.string'=>' يحب ان يكون حقل الرابط نص  ',
-            'link.required'=>'حقل الرابط مطلوب',
-            'icon.required'=>'حقل الايقونة مطلوب',
-
+            'required'=>MessageEnum::REQUIRED,
+            'name.between'=>$this->messageBetween(3, 20),
+            'name.string'=>MessageEnum::MESSAGE_STRING,
+            'link.string'=>MessageEnum::MESSAGE_STRING,
         ]);
 
         $informartion=contact_us_info::find($id);
@@ -74,8 +68,8 @@ class contactUsInfoController extends Controller
 
         
         return redirect('manage_contact_us')
-        ->with(['success'=>'تم تعديل التصنيف بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 
 
@@ -89,8 +83,8 @@ class contactUsInfoController extends Controller
         $informartion->is_active=0;
         if($informartion->save())
         return redirect('manage_contact_us')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
         
     }
 }

@@ -2,35 +2,39 @@
 @section('content')
 
 @if($do == 'Manage')
-
+<!-- Start page content -->
 <h1 class="text-center fs-3 text-white mb-5">ادارة الصفحة الرئيسية  </h1>
     <div class="container col-md-10 col-11">
+        <!-- start Message  -->
         @if(session()->has('success'))
             <div class="alert alert-success message">
                 {{ session()->get('success') }}
             </div>
         @endif
+        <!-- End Message  -->
 
         @if(!isset($Content[0]))
 
-        <a href="manage_home?do=Add" class="btn btn-sm bg-yellow">
+        <a href="manage_home?do=Add" class="btn p-2 bg-yellow">
             <i class="fa fa-plus"></i>  النص الافتراضي
         </a>
         @endif
 
         @foreach($Content as $content)
 
+        <!-- النص الرئيسي -->
         <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow ">النص الرئيسي</h2>
             <hr>
             <p class="my-4">{{$content->main_paragraph}}</p>
 
             <a href="manage_home?do=Edit&contentid={{$content->id}}&column=main_paragraph&name=النص الرئيسي" class="edit p-1 mx-2">
-                            <i class='fa fa-edit'></i>
-                            تعديل 
-                        </a>
+                <i class='fa fa-edit'></i>
+                تعديل 
+            </a>
         </div>
         
+        <!-- الوصف  -->
         <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow ">الوصف</h2>
             <hr>
@@ -42,6 +46,7 @@
             </a>
         </div>
 
+        <!-- النص الاول -->
         <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow "> النص الاول</h2>
             <hr>
@@ -52,6 +57,7 @@
             </a>
         </div>
 
+        <!-- النص الثاني -->
         <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4" style="border:1px solid gray ;">
             <h2 class="yellow "> النص الثاني</h2>
             <hr>
@@ -61,36 +67,31 @@
                 تعديل 
             </a>
         </div>
-
-
-
     @endforeach
-       
-       
     </div>
+    <!-- End Page content -->
+
 @elseif($do == 'Add')
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5">اضافة المحتوى الافتراضي</h1>
-<div class="container">
-    @if(session()->has('error'))
-        <div class="alert message">
-            {{ session()->get('error') }}
-        </div>
-    @endif
+<div class="container col-lg-8 col-11">
     <form action="{{ route('add_content') }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- Start content -->
+                <!--  النص الرئيسي -->
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white mt-4">  النص الرئيسي </label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="main_paragraph" cols="30" class="form-control mt-4 mb-0"  rows="5">
                         لجميع السيارات والشاحنات المستعملة والجديدة
                         </textarea>
-                        @error('icon')
-                        <span class="text-end yellow">* {{ $message }}  </span>
+                        @error('main_paragraph')
+                            <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                     </div>
                 </div>
+
+                <!-- الوصف -->
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white mt-4"> الوصف</label>
                     <div class="col-sm-8 col-md-9">
@@ -98,10 +99,12 @@
                         تجعل من السهل على الاعضاء العثور والمزايدة على جميع السيارات
                         </textarea>
                         @error('description')
-                        <span class="text-end yellow">* {{ $message }}  </span>
-                        @enderrorr
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
                     </div>
                 </div>
+
+                <!-- النص الاةل -->
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white mt-4"> النص الاول</label>
                     <div class="col-sm-8 col-md-9">
@@ -109,10 +112,12 @@
                         تقنية المزاد على كاك مزاد المنصة المحركة لمزادات السيارات عبر الانترنت
                         </textarea>
                         @error('paragraph_one')
-                        <span class="text-end yellow">* {{ $message }}  </span>
+                            <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                     </div>
                 </div>
+
+                <!-- النص الثاني -->
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white mt-4"> النص الثاني</label>
                     <div class="col-sm-8 col-md-9">
@@ -120,21 +125,23 @@
                         مع تطور تكنلوجيا مزتد السيارات على الانترنت , كاك مزاد تمكنك من البيع المباشر لسيلرتك او شراء اي سيارة بكل راحة ومن تامنزل او المكتب . على اجهزة الكمبيوتر او الأجهزةالمحمولة , انت تعرف بالفعل كيف التسجيل , تقديم ترخيص التجارة و تسجيل في المزاد
                         </textarea>
                         @error('paragraph_two')
-                        <span class="text-end yellow">* {{ $message }}  </span>
+                            <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                     </div>
                 </div>
-                <!-- End edit content -->
+                <!-- End Add content -->
+
                 <!-- Start Submit -->
                 <div class="mb-2 row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <input type="submit" value="  النص الافتراضي" class=" btn bg-yellow ">
+                    <div class="offset-sm-2  col-sm-10">
+                        <input type="submit" value="  النص الافتراضي" class=" btn p-2 bg-yellow ">
                     </div>
                 </div>
                 <!-- End Submit -->
                 
             </form>
 </div>
+<!-- end Add -->
 
 @elseif($do == 'Edit')
 <!-- start Edit content -->
@@ -143,11 +150,6 @@
 {{$name = $_GET['name'];}}
 <h1 class="text-center fs-3 mb-5">تعديل المحتوى</h1>
 <div class="container col-lg-8 col-11">
-    @if(session()->has('error'))
-        <div class="alert message">
-            {{ session()->get('error') }}
-        </div>
-    @endif
             <form action="{{ route('edit_home_content',$contentid) }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="contentid" value="{{$contentid}}">
@@ -156,13 +158,19 @@
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white">  {{$name}}  </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="{{$column}}" cols="30" class="form-control"  rows="7">
+                        <textarea name="{{$column}}" cols="30" class="form-control  mb-0"  rows="7">
                         {{$Content[0]->$column}}
-
                         </textarea>
-                        @error('{{$column}}')
-                        <span class="text-end yellow">* {{ $message }}  </span>
-                        @enderror
+
+                    <!-- erroe message -->
+                    <div class="text-end yellow">
+                        <ul class="list-unstyled">
+                            @foreach ($errors->all() as $error)
+                                <li >* {{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <!-- end error message -->
 
                     </div>
                 </div>

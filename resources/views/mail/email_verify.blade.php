@@ -23,21 +23,16 @@
             }
 .container
 {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    text-align: center;
     font-family: tajawal;
-   
-    
-    color: rgb(247, 247, 247);
-   
+   color: #500050;
 }
 em
 {
     color:#E39100;
+}
+a{
+    text-decoration: none;
+    color: white;
 }
 .bg-yellow
 {
@@ -60,9 +55,8 @@ em
     <p >CAC هو موقع للمزايدة على سيارات نتمنى ان نقد لكم الخدمة المطلوبه </p>
     <p > نحن نرسل لك هذا الايميل لتفعيل حسابك لتستفيد من خدمات الموقع</p>
     <p>لتفعيل حسابك يرجى الضغط على الزر في الاسفل</p>
-    <em >ملاحضة :</em>هذة الرسالة من البريد الالكتروني تم ارسالها تلقائيا من فضلك عدم الرد
-{{$data['activation_url']}}
-    <a href="" class="btn btn-sm bg-yellow">تفعيل الحساب</a>
+    <p><em >ملاحضة :</em>هذة الرسالة من البريد الالكتروني تم ارسالها تلقائيا من فضلك عدم الرد</p>
+    <a href="{{$data['activation_url']}}" class="btn btn-sm p-2 text-white bg-yellow">تفعيل الحساب</a>
 </div>
 </body>
 </html>

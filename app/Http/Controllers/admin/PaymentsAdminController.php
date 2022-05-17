@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Enum\MessageEnum;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -26,8 +27,7 @@ class PaymentsAdminController extends Controller
             'Payment'=>'required',
             'bank_name'=>'required'
         ],[
-            'Payment.required'=>'حقل الاسم مطلوب',
-            'bank_name.required'=>' حقل  البنك مطلوب',
+            'required'=>MessageEnum::REQUIRED,
         ]);
         $payment = new Payment;
         $payment->name = $request->Payment;
@@ -37,16 +37,15 @@ class PaymentsAdminController extends Controller
         }
         if($payment->save())
         return redirect('adminPayments')
-        ->with(['success'=>'تم اضافة طريقة الدفع بنجاح']);
-        return back()->with(['error'=>'can not create user']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
     function editAdminPayment(Request $request){
         Validator::validate($request->all(),[
          'Payment'=>'required',
          'bank_name'=>'required'
         ],[
-            'Payment.required'=>'حقل الاسم مطلوب',
-            'bank_name.required'=>' حقل  البنك مطلوب',
+            'required'=>MessageEnum::REQUIRED,
         ]);
         // $payment = new Payment;
         $id = $request->Paymentid;
@@ -55,8 +54,8 @@ class PaymentsAdminController extends Controller
         $Payment = Payment::where('id', $id)->update(['name' => $name,'bank_name' => $bank_name]);
         if($Payment)
         return redirect('adminPayments')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not create user']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
     function activePayment(Request $request){
         $Paymentid = $request->Paymentid;
@@ -67,7 +66,7 @@ class PaymentsAdminController extends Controller
             $active = Payment::where('id', $Payment->id)->update(['is_active' => 1]);
         }
         return redirect('adminPayments')
-            ->with(['success'=>'تم التعديل بنجاح']);
+            ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
     }
 
     function deletePayment(Request $request){

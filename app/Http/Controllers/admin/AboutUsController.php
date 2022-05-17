@@ -46,23 +46,30 @@ class AboutUsController extends Controller
         // return $request;
         $column =  $request->column;
         Validator::validate($request->all(),[
-            "$request->column"=>['required', 'string', 'between: 5, 255'],
+            "$request->column"=>['required', 'string'],
         ],[
             "$request->column.required"=>MessageEnum::REQUIRED,
             "$request->column.string"=>MessageEnum::MESSAGE_STRING,
-            "$request->column.between"=>$this->messageBetween(5, 255)]);
+            ]);
 
             if($request->column != 'description')
                 Validator::validate($request->all(),[
                         "$request->column"=>[ 'between: 5, 255'],
         ],[
         "$request->column.between"=>$this->messageBetween(5, 255)]);
+
+        if($request->column == 'description')
+                Validator::validate($request->all(),[
+                        "$request->column"=>[ 'min: 20'],
+        ],[
+        "$request->column.min"=>$this->messageMin(20)]);
+
         print_r($request->$column) ;
         $home=about_us::find($id);
         $home->$column  = $request->$column;
-        // if($home->save())
-        // return redirect('manage_about_us')
-        // ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        // return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+        if($home->save())
+        return redirect('manage_about_us')
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 }
