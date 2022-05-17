@@ -13,6 +13,7 @@ use App\Models\RoleUser;
 use App\Models\Role;
 use App\Models\Lesson;
 use App\Models\Auction;
+use App\Events\NewNotification;
 use DB;
 use Illuminate\Support\Facades\Auth;
 class Controller extends BaseController
@@ -65,5 +66,20 @@ class Controller extends BaseController
         }
         return redirect('/')
         ->with(['success'=>'فشل في عملية المزايدة ']);
+    }
+
+    public function pusherNotifications($users){
+        $lesson = new Lesson;
+        if(\Notification::send($users ,new NewNotification(Lesson::latest('id')->first()))){
+            return back();
+        }
+    }
+
+    public function messageBetween($min, $max){
+        return 'يحب ان يكون الحقل  اكبر من' . $min . ' حرف واصغر من ' . $max . 'حرف';
+    }
+
+    public function messageMin($min){
+        return 'يجب ان يكوا اكبر من ' . $min . 'احرف';
     }
 }

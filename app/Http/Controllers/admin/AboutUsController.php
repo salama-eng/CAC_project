@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Enum\MessageEnum;
 use App\Models\about_us;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -16,27 +17,18 @@ class AboutUsController extends Controller
         return view('admin.adminManageAboutUsSite', [
             'Content' => $content,
             'do'     => $do
-      
-     ]);
+        ]);
     }
-
-
-        function addAboutUsContent(Request $request){
+    function addAboutUsContent(Request $request){
 
         Validator::validate($request->all(),[
             "description"=>['required', 'string', 'min: 30'],
-            "paragraph_one"=>['required', 'string', 'between: 5, 255'],
-            "paragraph_two"=>['required', 'string', 'between: 5, 255'],
+            "paragraph_one"=>['required', 'string', 'between:5, 255'],
+            "paragraph_two"=>['required', 'string', 'between:5, 255'],
         ],[
-            "paragraph_two.required"=>' هذا الحقل مطلوب ',
-            "description.required"=>' هذا الحقل مطلوب ',
-            "paragraph_one.required"=>' هذا الحقل مطلوب ',
-            "description.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "paragraph_one.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "paragraph_two.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "description.between"=>' يحب ان يكون الحقل  اكبر من 30',
-            "paragraph_one.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
-            "paragraph_two.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',
+            "required"=>MessageEnum::REQUIRED,
+            "string"=>MessageEnum::MESSAGE_STRING,
+            "between"=>$this->messageBetween(5, 255),
         ]);
 
         $home=new about_us;
@@ -46,36 +38,31 @@ class AboutUsController extends Controller
 
         if($home->save())
         return redirect('manage_about_us')
-        ->with(['success'=>'تم الاضافه  بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع الاضفافه ']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
 
     function editContent(Request $request,$id){
         // return $request;
         $column =  $request->column;
         Validator::validate($request->all(),[
-            "$request->column"=>['required', 'string', 'min: 20'],
+            "$request->column"=>['required', 'string', 'between: 5, 255'],
         ],[
-            "$request->column.required"=>' هذا الحقل مطلوب ',
-            "$request->column.string"=>' يحب ان يكون هذا الحقل نص  ',
-            "$request->column.min"=>' يحب ان يكون الحقل  اكبر من 20 حرف  ',]);
+            "$request->column.required"=>MessageEnum::REQUIRED,
+            "$request->column.string"=>MessageEnum::MESSAGE_STRING,
+            "$request->column.between"=>$this->messageBetween(5, 255)]);
 
             if($request->column != 'description')
                 Validator::validate($request->all(),[
                         "$request->column"=>[ 'between: 5, 255'],
         ],[
-            "$request->column.between"=>' يحب ان يكون الحقل  اكبر من 20 حرف واصغر من 255 حرف',]);
-
+        "$request->column.between"=>$this->messageBetween(5, 255)]);
         print_r($request->$column) ;
-
         $home=about_us::find($id);
-
         $home->$column  = $request->$column;
         if($home->save())
-
-        
         return redirect('manage_about_us')
-        ->with(['success'=>'تم التعديل  بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع التعديل ']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 }

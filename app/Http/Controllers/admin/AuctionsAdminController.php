@@ -64,32 +64,21 @@ class AuctionsAdminController extends Controller
         $userAdmin = $this->roleUsers();
         $users=Auction::with('userAw')->where('post_id',$post_id)->where('aw_user_id','!=',$user)->get();
      foreach($users as $user)
-    //    foreach($user->userAw as $u)
        {    
             $us=User::find($user->userAw->id);
-            // dd($us->name); exit();
             $wallet = $this->walletTransfer($userAdmin, $us, $us->name, $discount, 'تم سحب مبلغ من حساب');
-            $lesson = new Lesson;
-            $lesson = $this->lessonNotification($us->id, 'لقد تمت عملية ايداع الى حسابك ', '', 'wallet/"'.Auth::id().'"');
-            if(\Notification::send($us ,new NewNotification(Lesson::latest('id')->first()))){
-                return back();
-            }
+            $lesson = $this->lessonNotification($us->id, 'لقد تمت عملية ايداع الى حسابك ', '', 'wallet/"'.$us->id.'"');
+            $notify = $this->pusherNotifications($us);
        }
       
      
        if($active){
             $user = User::find($request->userid);
-            $lesson = new Lesson;
             $lesson = $this->lessonNotification($user->id, 'تم بيع سيارتك يمكنك التواصل مع المشتري', '', 'chat/ "'.$post_id.'"'); 
-            if(\Notification::send($user ,new NewNotification(Lesson::latest('id')->first()))){
-                return back();
-            }
+            $notify = $this->pusherNotifications($user);
             $user = User::find($request->user);
-            $lesson = new Lesson;
             $lesson = $this->lessonNotification($user->id, 'لقد ربحت في المزاد يمكنك الان التواصل مع البائع', '', 'chat/ "'.$post_id.'"'); 
-            if(\Notification::send($user ,new NewNotification(Lesson::latest('id')->first()))){
-                return back();
-            }
+            $notify = $this->pusherNotifications($user);
             return redirect('un_complate')
             ->with(['success'=>'تم الموافقة بنجاح']);
         }else{

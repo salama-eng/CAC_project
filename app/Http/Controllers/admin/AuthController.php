@@ -8,6 +8,7 @@ use App\Mail\VerificationPassword;
 use App\Models\ResetPassword;
 use App\Models\User;
 use App\Models\Role;
+use App\Http\Controllers\Enum\MessageEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -37,16 +38,13 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        //   return request();
         Validator::validate($request->all(), [
             'email' => ['required', 'email', 'exists:users,email'],
             'password' => ['required'],
         ], [
-            'email.required' => ' حقل البريد الالكتروني مطلوب ',
+            'required' =>MessageEnum::REQUIRED,
             'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
             'email.exists' => 'اوبس! البريد الالكتروني غير موجود',
-            'password.required' => ' حقل كلمة السر مطلوب ',
-            // 'password.exists' => ' اوبس! كلمة المرور غير صحيحة',
         ]);
         $user = User::where('email', '=', $request->email)->first();
         if (!Hash::check($request->password, $user->password)) {
@@ -84,13 +82,11 @@ class AuthController extends Controller
             'privacyPolicy'=>['required']
 
         ], [
-            'name.required' => 'هذا الحقل مطلوب ',
-            'name.min' => 'يجب ان يكوا اكبر من 3 احرف',
+            'required' => MessageEnum::REQUIRED,
+            'name.min' => $this->messageMin(3),
             'email.unique' => 'هذا الايميل غير متاح',
-            'email.required' => 'هذا الحقل مطلوب ',
             'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-            'password.required' => 'هذا الحقل مطلوب ',
-            'password.min' => 'كلمة المرور يجب ان تكون اكثر من 3 احرف',
+            'password.min' => $this->messageMin(3),
             'confirm_pass.same' => 'كلمة المرور غير مطابقة',
             'privacyPolicy.required'=>'يجب ان توافق على سياسة الخصوصية  الخاصة بلموقع'
         ]);
@@ -104,25 +100,13 @@ class AuthController extends Controller
         $u->email = $request->email;
         $token = Str::uuid();
         $u->remember_token = $token;
-
-        // echo $u->name;
-
-
         if ($u->save()) {
             $u->attachRole('client');
-
-            // $email_data=array('id'=>$request->id,'name' =>$request->name ,
-            // 'activation_url'=>URL::to('/')."/verify_email");
-
             $email_data = array(
                 'name' => $request->name, 'email' => $request->email, 'password' => $v,
                 'activation_url' => URL::to('/') . "/verify_email/" . $token . "/".$v
             );
-
-            // print_r ($email_data);
             Mail::to($request->email)->send(new VerificationEmail($email_data));
-            // echo 'true';
-
             return view('mail.resend_email', [
                 'email_data' => $email_data,
             ]);
@@ -170,7 +154,7 @@ class AuthController extends Controller
          Validator::validate($request->all(),[
             'email'=>['required','email'],
         ],[
-            'email.required'=>'هذا الحقل مطلوب ',
+            'email.required'=>MessageEnum::REQUIRED,
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
         ]);
 
@@ -206,9 +190,8 @@ class AuthController extends Controller
             'confirm_pass'=>['same:password']
 
         ],[
-            'email.required'=>'هذا الحقل مطلوب ',
+            'required'=>MessageEnum::REQUIRED,
             'email.email'=>'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-            'password.required'=>'هذا الحقل مطلوب ',
             'password.min'=>'كلمة المرور يجب ان تكون اكثر من 5 احرف',
             'confirm_pass.same'=>'كلمة المرور غير مطابقة',
         ]);
@@ -218,8 +201,8 @@ class AuthController extends Controller
         $user = User::where('id', $id)->update(['password' => $password]);
         if($user)
         return redirect('login')
-        ->with(['message'=>'تم التعديل بنجاح']);
-        return redirect('login')->with(['message'=>'لم يتم التعديل']);
+        ->with(['message'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return redirect('login')->with(['message'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
 
     }
 

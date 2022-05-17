@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class about_us extends Model
 {
-    protected $table ="about_us";
-    protected $fillable = ['.$column.'];
+    
     use HasFactory;
+    protected $table ="about_us";
+
+    protected $fillable = [
+        'description',
+        'paragraph_one',
+        'paragraph_two',
+    ];
 }
