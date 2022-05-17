@@ -18,71 +18,37 @@
                     alt="{{ Auth::user()->profile->avatar }}">
 
             </header>
-            <ul id="chat" class="chat-notify" style="height:70vh">
+            <ul id="chat" class="chat-notify d-flex flex-column-reverse" style="height:70vh">
 
-
-
-
-                {{-- <li class="me">
-                    <div class="entete">
-                        <h3>10:12AM, Today</h3>
-                        <h2>Vincent</h2>
-                        <span class="status blue"></span>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    </div>
-                </li>
-
-
-
-                <li class="you">
-                    <div class="entete">
-                        <span class="status green"></span>
-                        <h2>Vincent</h2>
-                        <h3>10:12AM, Today</h3>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    </div>
-                </li>
-
-
-                <li class="you">
-                    <div class="entete">
-                        <span class="status green"></span>
-                        <h2>Vincent</h2>
-                        <h3>10:12AM, Today</h3>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    </div>
-                </li>
-                <li class="me">
-                    <div class="entete">
-                        <h3>10:12AM, Today</h3>
-                        <h2>Vincent</h2>
-                        <span class="status blue"></span>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                    </div>
-                </li>
-                <li class="me">
-                    <div class="entete">
-                        <h3>10:12AM, Today</h3>
-                        <h2>Vincent</h2>
-                        <span class="status blue"></span>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="messag">
-                        OK
-                    </div>
-                </li> --}}
+                @foreach($chats as $chat)
+                    @if ($chat->post_id == $auction->post_id)
+                        @if ($chat->username == auth()->user()->name)
+                            <li class="me">
+                                <div class="entete">
+                                    <h3>10:12AM, Today</h3>
+                                    <h2>{{$chat->username}}</h2>
+                                    <span class="status blue"></span>
+                                </div>
+                                <div class="triangle"></div>
+                                <div class="messag">
+                                    {{$chat->message}}
+                                </div>
+                            </li>
+                        @else
+                            <li class="you">
+                                <div class="entete">
+                                    <span class="status green"></span>
+                                    <h2>{{$chat->username}}</h2>
+                                    <h3>10:12AM, Today</h3>
+                                </div>
+                                <div class="triangle"></div>
+                                <div class="messag">
+                                    {{$chat->message}}
+                                </div>
+                            </li>
+                        @endif
+                    @endif
+                @endforeach
 
 
             </ul>
@@ -121,14 +87,13 @@
         // Pusher.logToConsole = true;
 
 
-
         var channel = pusher.subscribe('chat-notifiction');
         channel.bind('ChatNotification', function(data) {
             var existingNotifications = notificationsWrapper.html();
             var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
             // let i = 1;
             var newNotificationHtml;
-            // if( data.owner_user_id == `{{ auth()->id() }}` || data.owner_user_id == `{{ auth()->id() }}`){
+            // if( data.post_id == `{{ $auction->post_id }}`){
             if (data.user_id == `{{ auth()->id() }}`) {
                 newNotificationHtml = `
                 <li class="me">
