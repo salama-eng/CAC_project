@@ -103,7 +103,7 @@
                                     </p>
                                 @endif
                                 </td>
-                                <td>   @if ($payment_confirm==0)
+                                <td>   @if ($payment_confirm==1)
                                     <p class="text-red">
                                         <i class='fa fa-x-circle'></i> لم يتم الدفع  
                                     </p>

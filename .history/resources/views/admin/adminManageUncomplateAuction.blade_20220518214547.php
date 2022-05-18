@@ -47,7 +47,6 @@
                             @if($bid_total->post_id == $post->id && $bid_total->bid_amount == $post->auctions->max('bid_amount'))
                                 @php $user_id = $bid_total->userAw->id @endphp
                                 @php $user_name = $bid_total->userAw->name @endphp
-                                @php $buyer = $bid_total->userAw->id @endphp
                                 @php $bid_amount = $bid_total->bid_amount @endphp
                                 @php $auction_id = $bid_total->id @endphp
                                 @php $bid_tot = $bid_total->bid_total @endphp
@@ -103,7 +102,7 @@
                                     </p>
                                 @endif
                                 </td>
-                                <td>   @if ($payment_confirm==0)
+                                <td>   @if ($payment_confirm==1)
                                     <p class="text-red">
                                         <i class='fa fa-x-circle'></i> لم يتم الدفع  
                                     </p>
@@ -134,9 +133,8 @@
                                         <h4> هل انت متاكد!!  </h4>
                                         <p> سيتم تحويل مبلغ قدرة  <em class="active">{{$order_price}}$</em></p>
                                         <p>   وسيتم خصم نسبة الموقع والتي تقدر ب  <em class="active">{{$admin_ratio}}$</em> </p>
-                                        
+                                        <input type="hidden" name="auction_id" value="{{$auction_id}}">
                                         <input type="hidden" name="userid" value="{{$post->users->id}}">
-                                        <input type="hidden" name="buyer" value="{{$buyer}}">  
                                         
                                         <input type="hidden" name="admin_ratio" value="{{$admin_ratio}}">
                                         <input type="hidden" name="order_price" value="{{$order_price}}">

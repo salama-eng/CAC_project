@@ -46,25 +46,15 @@ class AuctionsAdminController extends Controller
     }
 
     public function admin_orders(Request $request){
-   
-        $admin = User::with(['roles' => function($q){
-            $q->where('name', 'admin');
-        }])->first();
-         $seller=User::find($request->userid);
-         $buyer=User::find($request->buyer);
-         $admin_ratio=$request->admin_ratio;
-         $order_price=$request->order_price;
-         $post_id=$request->post_id; 
-         $admin->forceTransfer($seller, $order_price);
-         $order= new Order();
-          $order->price=$order_price;
-          $order->user_id=$buyer->id;
-          $order->post_id= $post_id;
-          $order->admin_ratio=$admin_ratio;
-          $order->is_active= 1;
-          if($order->save())
-         $active = Post::where('id',$post_id)->update(['status_auction' => 1]);
-         return redirect('un_complate');
+        $admin = User::find(1);
+
+        $admin->deposit(10);
+        $admin->balance; // 10
+        
+    $admin_ratio=$request->admin_ratio;
+    $order_price=$request->order_price;
+    $post_id=$request->post_id;  
+
     }
 
     public function showAdminStartAuction(){

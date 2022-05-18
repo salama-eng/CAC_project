@@ -46,7 +46,7 @@ class AuctionsAdminController extends Controller
     }
 
     public function admin_orders(Request $request){
-   
+     
         $admin = User::with(['roles' => function($q){
             $q->where('name', 'admin');
         }])->first();
@@ -60,11 +60,10 @@ class AuctionsAdminController extends Controller
           $order->price=$order_price;
           $order->user_id=$buyer->id;
           $order->post_id= $post_id;
-          $order->admin_ratio=$admin_ratio;
           $order->is_active= 1;
           if($order->save())
          $active = Post::where('id',$post_id)->update(['status_auction' => 1]);
-         return redirect('un_complate');
+         return view('admin.adminManageEndedAuction');
     }
 
     public function showAdminStartAuction(){

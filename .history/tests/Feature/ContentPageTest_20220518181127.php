@@ -38,6 +38,7 @@ class ContentPageTest extends TestCase
              $response = $this->post('/add_slider_image', [
                  'image' => 'car.png',
                  'is_active' => '1',
+
                  ]);
                  $response->assertRedirect('slider_image');
 

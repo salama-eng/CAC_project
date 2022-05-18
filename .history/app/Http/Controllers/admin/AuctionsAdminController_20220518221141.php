@@ -60,11 +60,10 @@ class AuctionsAdminController extends Controller
           $order->price=$order_price;
           $order->user_id=$buyer->id;
           $order->post_id= $post_id;
-          $order->admin_ratio=$admin_ratio;
           $order->is_active= 1;
           if($order->save())
          $active = Post::where('id',$post_id)->update(['status_auction' => 1]);
-         return redirect('un_complate');
+         return redirect();
     }
 
     public function showAdminStartAuction(){

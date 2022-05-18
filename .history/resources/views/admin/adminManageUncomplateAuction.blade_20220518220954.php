@@ -103,7 +103,7 @@
                                     </p>
                                 @endif
                                 </td>
-                                <td>   @if ($payment_confirm==0)
+                                <td>   @if ($payment_confirm==1)
                                     <p class="text-red">
                                         <i class='fa fa-x-circle'></i> لم يتم الدفع  
                                     </p>
@@ -136,7 +136,7 @@
                                         <p>   وسيتم خصم نسبة الموقع والتي تقدر ب  <em class="active">{{$admin_ratio}}$</em> </p>
                                         
                                         <input type="hidden" name="userid" value="{{$post->users->id}}">
-                                        <input type="hidden" name="buyer" value="{{$buyer}}">  
+                                        <input type="hidden" name="buyer" value="{{$user_name}}">  
                                         
                                         <input type="hidden" name="admin_ratio" value="{{$admin_ratio}}">
                                         <input type="hidden" name="order_price" value="{{$order_price}}">

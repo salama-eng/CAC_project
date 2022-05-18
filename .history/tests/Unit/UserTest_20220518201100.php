@@ -40,17 +40,7 @@ class UserTest extends TestCase
      ]);
      $this->assertTrue($user1->email !=  $user2->email);
   }
-  public function test_it_stor_user(){
-      $response=$this->post('/save_user',[
-      'name' => 'خليفة الfقياضي',
-      'email' => 'khalfifa.alqiadi@gmail.com',
-       'password' => 'password',
-       'is_active' => '1',
-       'remember_token' =>'LFxvakMZNxkd8DsrpDy1jcmoZJ4uYEay2INuzJm6x27Ccbt9HwQrHrA5n0v0'
-      
-      ]);
-      $response->assertRedirect('/');
-  }
+
 
 
 
@@ -58,10 +48,10 @@ class UserTest extends TestCase
 
   public function test_Database(){
       $this->assertDatabaseHas('users',[
-          'name' => 'salama',
+          'name' => 'khalifa alqiadi',
       ]);
       $this->assertDatabaseHas('posts',[
-        'name' => 'هونداي',
+        'name' => 'شبح',
     ]);
   }
   public function test_Missing_Database(){

@@ -47,7 +47,6 @@
                             @if($bid_total->post_id == $post->id && $bid_total->bid_amount == $post->auctions->max('bid_amount'))
                                 @php $user_id = $bid_total->userAw->id @endphp
                                 @php $user_name = $bid_total->userAw->name @endphp
-                                @php $buyer = $bid_total->userAw->id @endphp
                                 @php $bid_amount = $bid_total->bid_amount @endphp
                                 @php $auction_id = $bid_total->id @endphp
                                 @php $bid_tot = $bid_total->bid_total @endphp
@@ -103,7 +102,7 @@
                                     </p>
                                 @endif
                                 </td>
-                                <td>   @if ($payment_confirm==0)
+                                <td>   @if ($payment_confirm==1)
                                     <p class="text-red">
                                         <i class='fa fa-x-circle'></i> لم يتم الدفع  
                                     </p>
@@ -114,8 +113,8 @@
                                 @endif
                                 </td>
                             </tr>
-                       
-                    
+                        @endif
+                    @endif
                     @php $total = 0 @endphp
                     <div class="modal fade user" id="send{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -127,19 +126,16 @@
                                         <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="color: white !important;"></button>
                                     </div>
                                    @php
-                                   $admin_ratio=$bid_tot *5/100;
-                                   $order_price=$bid_tot - $admin_ratio;
+                                   $admin_ratio=$bid_tot*5/100;
+                                   $discount=$post->starting_price*20/100;
+                                   $order_price=$bid_tot
                                    @endphp
                                     <div class="modal-body">
-                                        <h4> هل انت متاكد!!  </h4>
-                                        <p> سيتم تحويل مبلغ قدرة  <em class="active">{{$order_price}}$</em></p>
-                                        <p>   وسيتم خصم نسبة الموقع والتي تقدر ب  <em class="active">{{$admin_ratio}}$</em> </p>
-                                        
+                                        <h2> هل انت متاكد!!  </h2>
+                                        <h2> سيتم تحويل مبلغ قدرة   </h2>
+                                        <input type="hidden" name="auction_id" value="{{$auction_id}}">
                                         <input type="hidden" name="userid" value="{{$post->users->id}}">
-                                        <input type="hidden" name="buyer" value="{{$buyer}}">  
-                                        
-                                        <input type="hidden" name="admin_ratio" value="{{$admin_ratio}}">
-                                        <input type="hidden" name="order_price" value="{{$order_price}}">
+                                        <input type="hidden" name="user" value="{{$user}}">
 
                                         <input type="hidden" name="admin_confirm" value="{{$admin_confirm}}">
                                         <input type="hidden" name="post_id" value="{{$post->id}}">
@@ -152,8 +148,8 @@
                             </div>
                         </div>
                     </div>
-                    @endif
- @endif
+
+
                     <div class="modal fade user" id="active{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content bg-dark">

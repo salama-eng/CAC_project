@@ -58,10 +58,10 @@ class UserTest extends TestCase
 
   public function test_Database(){
       $this->assertDatabaseHas('users',[
-          'name' => 'salama',
+          'name' => 'khalifa alqiadi',
       ]);
       $this->assertDatabaseHas('posts',[
-        'name' => 'هونداي',
+        'name' => 'شبح',
     ]);
   }
   public function test_Missing_Database(){
