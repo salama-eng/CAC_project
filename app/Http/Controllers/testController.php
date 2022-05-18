@@ -25,6 +25,8 @@ class testController extends Controller
    
      $info=base64_decode($data);
      $in = json_decode($info);
+    //  dd($in); exit();
+    
      $auction = Auction::where('is_active', 0)->get();
      if($auction){
        foreach($auction as $auc){
@@ -41,12 +43,12 @@ class testController extends Controller
     if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
         return back();
     }
-    // $user = User::find(Auth::id());
-    // $lesson = new Lesson;
-    // $lesson = $this->lessonNotification(ِAuth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-    // if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
-    //     return back();
-    // }
+    $user = User::find(Auth::id());
+    $lesson = new Lesson;
+    $lesson = $this->lessonNotification($user->id, 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+    if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
+        return back();
+    }
     return redirect('/')
     ->with(['success'=>'تم عملية المزايدة بنجاح']);
      
@@ -105,17 +107,17 @@ class testController extends Controller
                 
                 $userAdmin = $this->roleUsers();
                 $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->discount, 'تم ايداع مبلغ من حساب');
-                // $lesson = new Lesson;
-                // $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
-                // if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
-                //     return back();
-                // }
-                // $user = User::find(Auth::id());
-                // $lesson = new Lesson;
-                // $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-                // if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
-                //     return back();
-                // }
+                $lesson = new Lesson;
+                $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
+                if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
+                    return back();
+                }
+                $user = User::find(Auth::id());
+                $lesson = new Lesson;
+                $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+                if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
+                    return back();
+                }
                 $auctions = Auction::where('is_active', 0)->get();
                 foreach($auctions as $auction){
                     $auction->update(['is_active' => 1]);
