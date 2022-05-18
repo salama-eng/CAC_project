@@ -94,7 +94,7 @@
 
 
 
-                <h5 class=" mt-5">معلومات الدفع </h5>
+                {{-- <h5 class=" mt-5">معلومات الدفع </h5>
 
                 <div>
                     <table class="table-profile table-editprofile">
@@ -108,7 +108,8 @@
                                     <span class="text-end yellow">* {{ $message }}  </span>
                                 @enderror
                             </td>
-                        </tr>
+                        </tr>--}}
+                        <table class="table-profile table-editprofile">
                         <tr>
                             <td></td>
                             <td>
@@ -119,15 +120,9 @@
                     </table>
 
 
-                </div>
-
-
+                </div> --}}
             </div>
-
             </form>
-
-
-
         </div>
     @elseif($do == 'Edit')
         <div class=" col-lg-5 col-11 m-auto edite-container p-2">

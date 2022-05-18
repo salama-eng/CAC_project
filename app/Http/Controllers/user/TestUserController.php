@@ -8,11 +8,12 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Order;
 use App\Models\Auction;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use DB;
 use App\Models\Lesson;
 use App\Events\AdminNotification;
-use Illuminate\Support\Facades\Auth;
+
 
 class TestUserController extends Controller
 {
@@ -26,6 +27,7 @@ class TestUserController extends Controller
                         ->where('user_id', Auth::id())->first();
         if($actives){
             $aor = Order::where('id', $actives->id)->update(['is_active' => 1]);
+            $auc = Auction::where('post_id', $actives->post_id)->update(['payment_confirm' => 1]);
         }
     
          
@@ -38,13 +40,10 @@ class TestUserController extends Controller
             return back();
         }
         $user = User::find(Auth::id());
-        $lesson = new Lesson;
-        $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-        if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
-            return back();
-        }
+        $lesson = $this->lessonNotification($user->id, 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+        $lesson = $this->pusherNotifications($user);
         return redirect('/')
-        ->with(['success'=>'تم عملية الحجز بنجاح']);
+        ->with(['success'=>'تم عملية الدفع بنجاح']);
          
      }
      
@@ -68,7 +67,6 @@ class TestUserController extends Controller
      }
      
      public function viewCancel(){
-     
         $actives = Order::where('is_active', 0)
                             ->where('user_id', Auth::id())->first();
         if($actives){
@@ -86,32 +84,26 @@ class TestUserController extends Controller
          public function index(Request $request){
                   
             $order = new Order;
-            $order->price = $request->price;
-            $order->user_id = $request->user_id;
-            $order->post_id = $request->post_id;
+            $order->price       = $request->bid_total;
+            $order->admin_ratio = $request->admin_ratio;
+            $order->user_id     = $request->user_id;
+            $order->post_id     = $request->post_id;
             $order->save();
-            $status = Post::where('id',$request->post_id)->update(['status_auction' => 1]);
-            $auction = Auction::where('post_id', $request->post_id)
-                                ->where('bid_total', $request->price)->first();
-            if($auction){
-                $auc = Auction::where('id', $auction->id)->update(['payment_confirm' => 1]);
-            }
-            $id = Auth::id();
+            // $status = Post::where('id',$request->post_id)->update(['status_auction' => 1]);
+            
+            $id = Auth::user()->id;
               $userId = User::find($id);
               if($userId->balance >= $request->price){
                 $userAdmin = $this->roleUsers();
-                $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->discount, 'تم ايداع مبلغ من حساب');
+                $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->price, 'تم ايداع مبلغ من حساب');
                 $lesson = new Lesson;
                 $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
                 if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
                     return back();
                 }
                 $user = User::find(Auth::id());
-                $lesson = new Lesson;
                 $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-                if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
-                    return back();
-                }
+                $lesson = $this->pusherNotifications($user);
                 $actives = Order::where('is_active', 0)
                                 ->where('user_id', $request->user_id)
                                 ->where('post_id', $request->post_id)->first();

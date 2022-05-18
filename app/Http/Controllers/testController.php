@@ -40,12 +40,10 @@ class testController extends Controller
     if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
         return back();
     }
-    $user = User::find(Auth::id());
-    $lesson = new Lesson;
-    $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-    if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
-        return back();
-    }
+    // $user = User::find(Auth::id());
+    // $lesson = new Lesson;
+    // $lesson = $this->lessonNotification(ِAuth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+    // $lesson = $this->pusherNotifications($user);
     return redirect('/')
     ->with(['success'=>'تم عملية المزايدة بنجاح']);
      
@@ -76,7 +74,7 @@ class testController extends Controller
                                   ->where('post_id', $request->post_id)->first();
           if($auctionUser){
               $bid_amount = $request->bid_amount + $auctionUser->bid_amount;
-              $total = $request->bid_amount + $auctionUser->max('bid_total');
+              $total = $request->total + $request->bid_amount;
               $auctionUser = Auction::where('aw_user_id', Auth::id())
                                       ->where('post_id', $request->post_id)
                                       ->update([
@@ -107,12 +105,9 @@ class testController extends Controller
                 if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
                     return back();
                 }
-                $user = User::find(Auth::id());
-                $lesson = new Lesson;
-                $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-                if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
-                    return back();
-                }
+                // $user = User::find(auth()->user()->id);
+                // $lesson = $this->lessonNotification($user->id, 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+                // $lesson = $this->pusherNotifications($user);
                 $auctions = Auction::where('is_active', 0)->get();
                 foreach($auctions as $auction){
                     $auction->update(['is_active' => 1]);

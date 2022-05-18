@@ -14,8 +14,9 @@ use App\Models\Role;
 use App\Models\Lesson;
 use App\Models\Auction;
 use App\Events\NewNotification;
+use App\Http\Controllers\Enum\MessageEnum;
 use DB;
-use Illuminate\Support\Facades\Auth;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -81,5 +82,22 @@ class Controller extends BaseController
 
     public function messageMin($min){
         return 'يجب ان يكوا اكبر من ' . $min . 'احرف';
+    }
+
+    public function messageRedirectAdd($success, $route){
+        if($success){
+            return redirect($route)
+            ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        }else{
+            return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
+        }
+    }
+    public function messageRedirectUpdate($success ,$route){
+        if($success){
+            return redirect($route)
+            ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        }else{
+            return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+        }
     }
 }

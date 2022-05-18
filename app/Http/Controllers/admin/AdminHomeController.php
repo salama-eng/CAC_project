@@ -134,10 +134,7 @@ class AdminHomeController extends Controller
         $home->paragraph_one = $request->paragraph_one;
         $home->paragraph_two = $request->paragraph_two;
 
-        if($home->save())
-        return redirect('manage_home')
-        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
+        return $this->messageRedirectAdd($home->save(), 'manage_home');
     }
 
     function editContent(Request $request,$id){
@@ -148,17 +145,10 @@ class AdminHomeController extends Controller
         ],[
             "$request->column.required"=>MessageEnum::REQUIRED,
             "$request->column.string"=>MessageEnum::MESSAGE_STRING,
-            "$request->column.between"=>$this->messageBetween(5, 255),]);
-
-
+            "$request->column.between"=>$this->messageBetween(5, 255),
+        ]);
         $home=siteHome::find($id);
-
         $home->$column  = $request->$column;
-        if($home->save())
-
-        
-        return redirect('manage_home')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+        return $this->messageRedirectUpdate($home->save(), 'manage_home');
     }
 }

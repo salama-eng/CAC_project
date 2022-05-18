@@ -102,6 +102,8 @@
                     <h2 class="text-white fs-5">
                         @php $discount = 0.2 * $post->starting_price @endphp
                         @php $dis =  $post->auctions->max('bid_total') - $discount @endphp
+                        @php $admin_ratio =  5/100* $post->auctions->max('bid_total') @endphp
+                        @php $total = $post->auctions->max('bid_total') - $admin_ratio @endphp
                         مرحبا <span class="yellow">{{auth()->user()->name}}</span>
                         المبلغ الذي وصلت له السيارة هو <span class="yellow">{{$post->auctions->max('bid_total');}} $</span>
 
@@ -110,7 +112,9 @@
                          
                     </h2>
                    <input type="hidden" name="post_id" value="{{$post->id}}">
-                   <input type="text" name="price" value="{{$dis}}">
+                   <input type="hidden" name="price" value="{{$dis}}">
+                   <input type="hidden" name="admin_ratio" value="{{$admin_ratio}}">
+                   <input type="hidden" name="bid_total" value="{{$total}}">
                    <input type="hidden" name="user_id" value="{{$auction->aw_user_id}}">
                    
                 </div>
