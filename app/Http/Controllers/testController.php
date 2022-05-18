@@ -43,12 +43,6 @@ class testController extends Controller
     if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
         return back();
     }
-    $user = User::find(Auth::id());
-    $lesson = new Lesson;
-    $lesson = $this->lessonNotification($user->id, 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-    if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
-        return back();
-    }
     return redirect('/')
     ->with(['success'=>'تم عملية المزايدة بنجاح']);
      
