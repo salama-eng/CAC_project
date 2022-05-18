@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Auction;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Post;
 use DB;
 use App\Models\Lesson;
 use App\Events\AdminNotification;
@@ -43,7 +44,9 @@ class testController extends Controller
     // $user = User::find(Auth::id());
     // $lesson = new Lesson;
     // $lesson = $this->lessonNotification(ِAuth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-    // $lesson = $this->pusherNotifications($user);
+    // if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
+    //     return back();
+    // }
     return redirect('/')
     ->with(['success'=>'تم عملية المزايدة بنجاح']);
      
@@ -69,12 +72,14 @@ class testController extends Controller
   * The index function which is used for posting the data to the api
   */
      public function index(Request $request){
-      
           $auctionUser = Auction::where('aw_user_id', Auth::id())
                                   ->where('post_id', $request->post_id)->first();
+          // $post = Post::find($auctionUser->post_id);
+          $count = Auction::where('post_id', $request->post_id)->sum('bid_amount');
+          $starting_price = $request->total + $count;
           if($auctionUser){
               $bid_amount = $request->bid_amount + $auctionUser->bid_amount;
-              $total = $request->total + $request->bid_amount;
+              $total = $request->bid_amount + $auctionUser->max('bid_total');
               $auctionUser = Auction::where('aw_user_id', Auth::id())
                                       ->where('post_id', $request->post_id)
                                       ->update([
@@ -88,7 +93,7 @@ class testController extends Controller
               $auction = new Auction;
               $auction->date = now();
               $auction->bid_amount = $request->bid_amount;
-              $auction->bid_total = $request->total + $request->bid_amount;
+              $auction->bid_total = $starting_price + $request->bid_amount;
               $auction->owner_user_id = $request->user_id;
               $auction->aw_user_id = Auth::id();
               $auction->post_id = $request->post_id;
@@ -100,14 +105,17 @@ class testController extends Controller
                 
                 $userAdmin = $this->roleUsers();
                 $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->discount, 'تم ايداع مبلغ من حساب');
-                $lesson = new Lesson;
-                $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
-                if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
-                    return back();
-                }
-                // $user = User::find(auth()->user()->id);
-                // $lesson = $this->lessonNotification($user->id, 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-                // $lesson = $this->pusherNotifications($user);
+                // $lesson = new Lesson;
+                // $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
+                // if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
+                //     return back();
+                // }
+                // $user = User::find(Auth::id());
+                // $lesson = new Lesson;
+                // $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+                // if(\Notification::send($user ,new AdminNotification(Lesson::latest('id')->first()))){
+                //     return back();
+                // }
                 $auctions = Auction::where('is_active', 0)->get();
                 foreach($auctions as $auction){
                     $auction->update(['is_active' => 1]);

@@ -9,9 +9,6 @@
 
     </style>
     </div>
-    @php
-        $totals = ''
-    @endphp
     <section class="d-flex container mt-5 flex-wrap col-lg-9">
         <section class="col-12  col-lg-6 mt-5">
             <a href="" class="d-flex card-details fs-6 mb-1"><span class="fa fa-long-arrow-right pt-2 px-2"></span>رجوع</a>
@@ -57,8 +54,8 @@
                         <p class="mb-1 text-light "> {{ $post->description }}</p>
 
                     </div>
-                    @php $total = $post->starting_price @endphp
-                    @php $userId = '' @endphp
+                @php $total = $post->starting_price @endphp
+                {{-- @php $userId = '' @endphp --}}
                     <div class=" border-n mt-4 col-10">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
@@ -74,7 +71,24 @@
                                     </div>
                                 @endif
                                 <div class="d-flex justify-content-around  flex-column align-items-center mt-3 ">
-                                   
+                                    {{-- @foreach($auctions as $auction)
+                                    @php $userId = $auction->userAw->id @endphp
+                                    @php
+                                        $bidTotal = $auction->max('bid_total')
+                                    @endphp
+                                    @if ($bidTotal != null)
+                                        @php $total =+ $bidTotal @endphp
+                                    
+                                    @endif
+                                    <div class="">
+                                        <h2 class="text-white fs-6">
+                                             {{$auction->userAw->name}} زايد بمبلغ
+                                            <em class="yellow">{{ $auction->bid_amount }}$</em>
+                                            اصبح اجمالي المزايدة 
+                                            <em class="yellow">{{ $auction->bid_total }}$</em>
+                                        </h2>
+                                    </div>
+                                @endforeach --}}
                                     <div class="d-flex  align-items-center gap-3 w-100 ">
                                         <h3 class="text-white fs-6"> </h3>
                                         <input type="number" class="input-model text-white p-2 auction-input"
@@ -95,7 +109,7 @@
                                     <span class="yellow"> {{ $discount }}$ </span>حتى انتهاء العملية
                                 </h3>
                                 @if (isset($post->auctions[0]->bid_total))
-                                @php $totals = $post->auctions->max('bid_total') @endphp
+                                
                                 <div>
                                     <h2 class="text-white fs-6 ">
                                         مبلغ المزايدة سيكون اكثر من <em
@@ -121,7 +135,7 @@
                     @foreach($post->$auctions as $auc)
                         @php $totals = $auc->max('bid_total') @endphp
                     @endforeach --}}
-
+                    
                     @if (Auth::user())
                         <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,7 +149,7 @@
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
                                             <input type="text" name="bid_amount" value="">
                                             <input type="hidden" name="discount" value="{{$discount}}">
-                                            <input type="text" name="total" value="{{$totals}}">
+                                            <input type="text" name="total" value="{{$total}}">
                                            
                                         </div>
                                         <div class="modal-body bg-darkgrey ">
@@ -144,7 +158,7 @@
                                                 <em class="yellow"><span class="text-price"></span>$</em>
                                             </h2>
                                             
-                                            @if($userId == null && $userId == auth()->user()->id)
+                                            {{-- @if($userId == null && $userId == auth()->user()->id)
                                                 <h1></h1>
                                             @else
                                                 <h2 class="text-white fs-4 p-3"> ملاحظة :
@@ -153,7 +167,7 @@
                                                         <a href="{{route('faq')}}" class="card-link active text-center mt-5 mb-2"> معرفة المزيد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
                                                     </em>
                                                 </h2>
-                                            @endif
+                                            @endif --}}
                                         </div>
                                         <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"
