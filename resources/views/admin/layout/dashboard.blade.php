@@ -326,27 +326,8 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
         notificationsWrapper.hide();
     }
 
-
-    <
-    script >
-        Pusher.logToConsole = true;
-    var pusher = new Pusher('9ecc8e897a93aeee0ca1', {
-        encrypted: true
-    });
-
-    var notificationsWrapper = $('.dropdown-notifications');
-    var notificationsCountElem = notificationsWrapper.find('p[data-count]');
-    var notificationsCount = parseInt(notificationsCountElem.data('count'));
-    var notifications = notificationsWrapper.find('ul.dropdown-menu');
-    if (notificationsCount <= 0) {
-        notificationsWrapper.hide();
-    }
-
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;
-
-
-
     var channel = pusher.subscribe('admin-notifiction');
     channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
         var existingNotifications = notifications.html();

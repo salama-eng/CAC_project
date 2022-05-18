@@ -77,9 +77,6 @@
             @foreach ($Posts as $post)
                 @if (!isset($post->auctions[0]->is_active))
                     @if ($post->is_active == 1 && $post->status_auction == 0 && $post->end_date >= date('Y-m-d'))
-                        )
-
-
                         <div class="card animate text-light m-auto  py-0 mb-4 mt-4 " style="width: 20rem;">
                             <a href="{{ route('auctiondetails', $post->id) }}"><img src="/images/{{ $post->image }}"
                                     class="card-img-top p-3" height="220" alt="..."> </a>
