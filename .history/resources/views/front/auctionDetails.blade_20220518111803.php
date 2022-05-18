@@ -57,11 +57,11 @@
                     @php $total = $post->starting_price @endphp
 
                     @php $userId = '' @endphp
-                    <div class=" border-n mt-4 col-10">
+                    <div class=" border-n mt-4 ">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
 
-                            <div class="modal-body bg-darkgrey col-12 w-100">
+                            <div class="modal-body bg-darkgrey  ">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul style="list-style: none">
@@ -71,9 +71,24 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="d-flex justify-content-around  flex-column align-items-center mt-3 ">
+                                <div class="d-flex justify-content-around  flex-column align-items-center mt-3">
                                    
-                                    <div class="d-flex  align-items-center gap-3 w-100 ">
+                                   
+                                        
+                                        @foreach($auctions as $auction)
+                                            @php $userId = $auction->userAw->id @endphp
+                                            @php $total = $auction->max('bid_total') @endphp
+                                            <div class="">
+                                                <h2 class="text-white fs-6">
+                                                     {{$auction->userAw->name}} زايد بمبلغ
+                                                    <em class="yellow">{{ $auction->bid_amount }}$</em>
+                                                    اصبح اجمالي المزايدة 
+                                                    <em class="yellow">{{ $auction->bid_total }}$</em>
+                                                </h2>
+                                            </div>
+                                        @endforeach
+                           
+                                    <div class="d-flex  align-items-center gap-3 ">
                                         <h3 class="text-white fs-6"> </h3>
                                         <input type="number" class="input-model text-white p-2 auction-input"
                                             min="{{ $post->auctions->max('bid_amount') }}" {{-- step="{{ $post->auctions->max('bid_amount') }}" --}} value=""
@@ -124,17 +139,17 @@
                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                             <input type="hidden" name="post_name" value="{{$post->name}}">
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                            <input type="hidden" name="bid_amount" value="">
+                                            <input type="hidden" name="bid_amount" value="200">
                                             <input type="hidden" name="discount" value="{{$discount}}">
-                                            <input type="hidden" name="total" value="{{$total}}">
-                                           
+                                            <input type="text" name="total" value="{{$total}}">
+                                            <button type="submit" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body bg-darkgrey ">
 
                                             <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
                                                 <em class="yellow"><span class="text-price"></span>$</em>
                                             </h2>
-                                            
                                             @if($userId != null && $userId == auth()->user()->id)
                                                 <h1></h1>
                                             @else
@@ -149,7 +164,7 @@
                                         <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"
                                                 data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class="btn bg-yellow text-white fs-5 submit" value=" تاكيد  " />
+                                            <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
                                         </div>
                                     </form>
                                 </div>
@@ -211,7 +226,7 @@
             <div id="carouselExampleControls" class="carousel slide col-12 mt-3" data-bs-ride="carousel">
                 <div class="carousel-inner main-img-div w-100">
                     <div class="carousel-item active w-100">
-                        <img src="/images/{{ $post->image }}" width="550" height="400" class="d-block  main-img"
+                        <img src="/images/{{ $post->image }}" class="d-block w-100 h-100 main-img"
                             alt="{{ $post->image }}">
 
                     </div>
@@ -239,30 +254,7 @@
 
 
                 </div>
-                <hr class="active">
-                @php
-                    $i=0;
-                @endphp
-              
-               
-                @foreach($auctions as $auction)
-                @php
-                   $i++ 
-                @endphp
-                @if ($i==1)
-                <h4  class="grey my-3"> عمليات المزايدة الحالية</h4>
-                @endif
-                @php $userId = $auction->userAw->id @endphp
-                @php $total = $auction->max('bid_total') @endphp
-                <div class="">
-                    <h2 class="text-white fs-6">
-                         {{$auction->userAw->name}} زايد بمبلغ
-                        <em class="yellow">{{ $auction->bid_amount }}$</em>
-                        اصبح اجمالي المزايدة 
-                        <em class="yellow">{{ $auction->bid_total }}$</em>
-                    </h2>
-                </div>
-            @endforeach
+
         </section>
 
     </section>

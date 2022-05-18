@@ -108,7 +108,12 @@
                         </li>
 
                     </ul>
-                  
+                    <li>
+                        <a href="{{ route('admin_orders') }}"
+                            class="text-center p-3 {{ Request::segment(1) === 'admin_orders' ? 'active' : 'text-light' }}">ادارة المبيعات
+                            </a>
+
+                    </li>
                     <li>
                         <a href="{{ route('showAllUsers') }}"
                             class="text-center p-3 {{ Request::segment(1) === 'showAllUsers' ? 'active' : 'text-light' }}">إدارة

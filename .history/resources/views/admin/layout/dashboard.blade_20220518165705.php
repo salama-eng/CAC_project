@@ -108,7 +108,12 @@
                         </li>
 
                     </ul>
-                  
+                    <li>
+                        <a href="{{ route('showAllUsers') }}"
+                            class="text-center p-3 {{ Request::segment(1) === 'showAllUsers' ? 'active' : 'text-light' }}">ادارة المبيعات
+                            المستخدمين</a>
+
+                    </li>
                     <li>
                         <a href="{{ route('showAllUsers') }}"
                             class="text-center p-3 {{ Request::segment(1) === 'showAllUsers' ? 'active' : 'text-light' }}">إدارة

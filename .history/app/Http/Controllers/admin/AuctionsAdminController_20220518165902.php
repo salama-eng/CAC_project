@@ -49,12 +49,27 @@ class AuctionsAdminController extends Controller
       
         $auctions = Auction::with(['auction_post','userOwner','userAw'])->get();
         $posts=Post::with(['auctions.userOwner','auctions.userAw','auctions'])->get();
-
-            return view('admin.manageOrders', [
+        $route = Route::current()->getName();
+        if($route == 'admin_acution'){
+            return view('admin.adminManageAuction', [
+                'auctions'   => $auctions,
+            ]);
+        }elseif($route == 'endede_acution'){
+            $posts=Post::with(['auctions', 'users'])->get();
+            $order = order::With(['post.auctions','post.users','user'])->get();
+           
+            return view('admin.adminManageEndedAuction', [
+                'posts'   => $posts,
+                'orders'   => $order,
+            ]);
+        }elseif($route == 'un_complate'){
+           
+            $posts=Post::with(['auctions', 'users'])->get();
+            return view('admin.adminManageUncomplateAuction', [
                 'posts'   => $posts,
                 'auctions'   => $auctions,
             ]);
-       
+        }
     }
 
     public function showAdminStartAuction(){

@@ -106,7 +106,7 @@
                                         <i class='fa fa-x-circle'></i> لم يتم الدفع  
                                     </p>
                                      @else
-                                     <a href="" class='btn activate accept' data-bs-toggle="modal" style="" data-bs-target="#send{{$post->id}}">
+                                     <a href="" class='btn activate accept' data-bs-toggle="modal" style="" data-bs-target="#active{{$post->id}}">
                                         <i class='fa fa-check'></i> تحويل المبلغ
                                     </a>
                                 @endif
@@ -115,32 +115,6 @@
                         @endif
                     @endif
                     @php $total = 0 @endphp
-                    <div class="modal fade user" id="send{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content bg-dark">
-                                <form action="admin_orders" method="post">
-                                    @csrf
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel"> ارسال المبلغ للبائع </h5>
-                                        <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="color: white !important;"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h2> هل انت متاكد!!  </h2>
-                                        <input type="hidden" name="auction_id" value="{{$auction_id}}">
-                                        <input type="hidden" name="userid" value="{{$post->users->id}}">
-                                        <input type="hidden" name="user" value="{{$user}}">
-
-                                        <input type="hidden" name="admin_confirm" value="{{$admin_confirm}}">
-                                        <input type="hidden" name="post_id" value="{{$post->id}}">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class=" bg-lighter text-white fs-5" data-bs-dismiss="modal">تراجع</button>
-                                        <input type="submit" class=" bg-yellow text-white fs-5" value=" موافقة   " />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
 
 
                     <div class="modal fade user" id="active{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

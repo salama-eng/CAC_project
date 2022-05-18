@@ -27,7 +27,7 @@ return new class extends Migration
                     ->references('id')->on('posts')
                     ->onUpdate('cascade')->onDelete('cascade');
 
-          $table->float('admin_ration')->default(0);
+
 
             $table->boolean('is_active')->default(0);
             $table->timestamps();

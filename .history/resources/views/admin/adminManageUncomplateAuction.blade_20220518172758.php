@@ -125,7 +125,7 @@
                                         <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="color: white !important;"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <h2> هل انت متاكد!!  </h2>
+                                        <h2>هل انت متاكد</h2>
                                         <input type="hidden" name="auction_id" value="{{$auction_id}}">
                                         <input type="hidden" name="userid" value="{{$post->users->id}}">
                                         <input type="hidden" name="user" value="{{$user}}">

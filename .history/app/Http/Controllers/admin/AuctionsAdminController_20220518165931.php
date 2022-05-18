@@ -50,7 +50,7 @@ class AuctionsAdminController extends Controller
         $auctions = Auction::with(['auction_post','userOwner','userAw'])->get();
         $posts=Post::with(['auctions.userOwner','auctions.userAw','auctions'])->get();
 
-            return view('admin.manageOrders', [
+            return view('admin.adminManageUncomplateAuction', [
                 'posts'   => $posts,
                 'auctions'   => $auctions,
             ]);
