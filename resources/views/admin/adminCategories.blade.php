@@ -1,15 +1,19 @@
 @extends('admin.layout.dashboard')
 @section('content')
-
+<!-- show Manage Page -->
     @if ($do == 'Manage')
 
 <h1 class="text-center fs-3 text-white">ادارة تصنيف السيارات</h1>
     <div class="container">
+
+        <!-- show message -->
         @if(session()->has('success'))
             <div class="alert alert-success message">
                 {{ session()->get('success') }}
             </div>
         @endif
+        <!-- End show message -->
+
         <a href="admincategories?do=Add" class="btn p-2 contact">
             <i class="fa fa-plus"></i> اضافة  تصنيف
         </a>
@@ -48,6 +52,8 @@
                         
                     </td>
                 </tr>
+
+                <!-- start Delete category -->
                 <div class="modal fade user" id="deleteCategory{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-grey">
@@ -69,6 +75,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Delete category -->
+
+                <!-- start Active category -->
                 <div class="modal fade user" id="activeCategory{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark">
@@ -90,50 +99,58 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Active category -->
+
                 @endforeach
             </table>
         </div>
-       
-       
     </div>
+    <!-- End Mange Page -->
+
 @elseif($do == 'Add')
-<!-- start add model -->
+<!-- start add category -->
 <h1 class="text-center fs-3 mb-5"> اضافة صنف جديد </h1>
 <div class="container col-lg-9 col-11">
-    @if ($errors->any())
-        <div class="alert alert-danger error">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    @if(session()->has('error'))
+            <div class="alert alert-success message">
+                {{ session()->get('error') }}
+            </div>
     @endif
     <form action="add_admin_category" method="POST"  enctype="multipart/form-data">
     @csrf
-        <!-- Start Payment -->
+        <!-- Start category -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> إضافة صنف   </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="name" class="form-control" value="{{old('name')}}" autocomplete="off" placeholder=" اضف تصنيف  ">
+                @error('name')
+                <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
         </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white"> أضف صورة </label>
             <div class="col-sm-8 col-md-9">
                 <input type="file" name="image" class="form-control" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" >
+                @error('image')
+                <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
                 <div class="col-md-12 mb-2 my-2 m-auto">
                     <img id="previewImage" 
                         style="max-height: 100px;">
                 </div>
+            </div>
         </div>
+        <!-- End category -->
 
-        </div>
+        <!-- Start Active category -->
         <div class="form-check d-flex  justify-content-center my-5 ">
             <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"  {{ ( old('active') == '1') ? ' checked' : '' }} aria-label="...">
             <label class="col-6 mx-5 text-white" for="">تفعيل</label>    
         </div>
-        <!-- End category -->
+        <!-- End Active category -->
+
+
         <!-- Start Submit -->
         <div class="mb-2 row">
             <div class="offset-sm-2 col-sm-10">
@@ -149,14 +166,10 @@
         {{ $categoryid = isset($_GET['categoryid']) && is_numeric($_GET['categoryid']) ? intval($_GET['categoryid']) : 0 }}
         <h1 class="text-center fs-3 mb-5">تعديل التصنيف</h1>
         <div class="container col-lg-8 col-11">
-            @if ($errors->any())
-                <div class="alert alert-danger error">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+            @if(session()->has('error'))
+            <div class="alert alert-success message">
+                {{ session()->get('error') }}
+            </div>
             @endif
             @foreach ($category as $cat)
                 @if ($cat->id == $categoryid)
@@ -170,6 +183,9 @@
                             <div class="col-sm-8 col-md-9">
                                 <input type="text" name="name" value="{{ $cat->name }}" class="form-control"
                                     autocomplete="off" placeholder="ادخل طريقة الدفع ">
+                                    @error('name')
+                                    <span class="text-end yellow">* {{ $message }}  </span>
+                                    @enderror
                             </div>
                         </div>
                         <!-- End Name -->
@@ -179,15 +195,14 @@
                             <div class="col-sm-8 col-md-9">
                                 <input type="file" name="image" value="{{ $cat->image }}" oninput="imageTwo.src=window.URL.createObjectURL(this.files[0])" class="form-control"  class="form-control"
                                     autocomplete="off" placeholder="ادخل اسم البنك">
+                                    @error('image')
+                                    <span class="text-end yellow">* {{ $message }}  </span>
+                                    @enderror
                                     <div class="col-md-12 mb-2 my-2 m-auto">
-                                    <img id="imageTwo" 
-                                        style="max-height: 100px;">
-                                </div>
+                                    <img id="imageTwo" style="max-height: 100px;">
+                                    </div>
                                 <input type="hidden" name="image_old" value="{{ $cat->image }}"  class="form-control"
                                     autocomplete="off" placeholder="ادخل اسم البنك">
-                                    
-                                
-
                             </div>
                         </div>
                         <!-- End Image -->

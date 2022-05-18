@@ -60,8 +60,8 @@ class AdminHomeController extends Controller
         // التاريخ الحالي
         $todayDate = Carbon::now();
 
-        $monthsResult = CarbonPeriod::create('2022-05-01', '1 month', $todayDate);
-        $yearsResult = CarbonPeriod::create('2022-05-01', '1 year', $todayDate);
+        $monthsResult = CarbonPeriod::create('2021-05-01', '1 month', $todayDate);
+        $yearsResult = CarbonPeriod::create('2021-05-01', '1 year', $todayDate);
         $years=[];
         $months=[];
 

@@ -2,14 +2,18 @@
 @section('content')
 
 @if($do == 'Manage')
-
+<!-- start page content -->
 <h1 class="text-center fs-3 text-white">ادارة شركائنا</h1>
     <div class="container">
+
+        <!-- start message -->
         @if(session()->has('success'))
             <div class="alert alert-success message">
                 {{ session()->get('success') }}
             </div>
         @endif
+        <!-- end message -->
+
         <a href="membership?do=Add" class="btn p-2 contact">
             <i class="fa fa-plus"></i> اضافة صورة
         </a>
@@ -56,6 +60,8 @@
                         
                     </th>
                 </tr>
+
+                <!-- start Delete model -->
                 <div class="modal fade user" id="deletemembership{{$membership->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark">
@@ -77,6 +83,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Delete model -->
+
+                <!-- start Active model -->
                 <div class="modal fade user" id="activemembership{{$membership->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-grey">
@@ -98,74 +107,96 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Active model -->
+
                 @endforeach
             </table>
         </div>
-       
-      
     </div>
+    <!-- End Page Content -->
+
 @elseif($do == 'Add')
 <!-- start add model -->
 <h1 class="text-center fs-3 mb-5">اضافة شركة جديدة</h1>
 <div class="container col-lg-8 col-11 m-auto">
-    @if ($errors->any())
-        <div class="alert alert-danger message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <form action="add_membership"  method="POST"  enctype="multipart/form-data">
     @csrf
         <!-- Start membership -->
+
+        <!-- Start Name input -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">اسم الشركة   </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="name" value="{{old('name')}}" class="form-control" autocomplete="off" placeholder=" اضف  شركة">
+                @error('name')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
-            
         </div>
+        <!-- End Name input -->
+
+        <!-- Start phone input -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">  رقم الهاتف </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="phone" value="{{old('phone')}}" class="form-control" autocomplete="off" placeholder=" اضف رقم هاتف الشركة">
+                @error('phone')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
-            
         </div>
+        <!-- End phone input -->
+
+        <!-- Start email input -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   الايميل </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="email" value="{{old('email')}}" class="form-control" autocomplete="off" placeholder=" اضف ايميل الشركة">
+                @error('email')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
-            
         </div>
+        <!-- End email input -->
+
+        <!-- Start address input -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">   العنوان </label>
             <div class="col-sm-8 col-md-9">
                 <input type="text" name="address" value="{{old('address')}}" class="form-control" autocomplete="off" placeholder=" اضف عنوان الشركة">
+                @error('address')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
-            
         </div>
+        <!-- End address input -->
+
+        <!-- Start image input -->
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">صورة   </label>
             <div class="col-sm-8 col-md-9">
                 <input type="file" name="image" value="{{old('image')}}" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" id="image" class="form-control" autocomplete="off" placeholder=" اضف صورة الشركة">
+                @error('image')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
                 <div class="col-sm-3 m-2  col-md-6">
                   <img id="previewImage" style="max-height: 100px;">
               </div>
             </div>
+        </div>
+        <!-- End image input -->
 
-            <div class="mb-3 row">
+        <!-- Start description input -->
+        <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">  الوصف  </label>
             <div class="col-sm-8 col-md-9">
                 <textarea name="description"  placeholder=" اضف  الوصف" class="form-control  " style="width:103%" id="" rows="5" >{{old('description')}}</textarea>
+                @error('description')
+                    <span class="text-end yellow">* {{ $message }}  </span>
+                @enderror
             </div>
-            
         </div>
-            
-        </div>
+        <!-- End description input -->
         <!-- End membership -->
 
         <!-- Start Active -->
@@ -191,68 +222,86 @@
 {{$membershipid = isset($_GET['membershipid']) && is_numeric($_GET['membershipid']) ? intval($_GET['membershipid']) : 0;}}
 <h1 class="text-center fs-3 mb-5">تعديل معلومات الشركة</h1>
 <div class="container col-lg-8 col-11 m-auto">
-    @if ($errors->any())
-        <div class="alert alert-danger message">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     @foreach($memberships as $membership)
         @if($membership->id == $membershipid)
             <form action="{{ route('edit_membership',$membershipid) }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="membershipid" value="{{$membershipid}}">
                 <!-- Start membership -->
+                <!-- Start Name Input -->
                 <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">اسم الشركة   </label>
-            <div class="col-sm-8 col-md-9">
-                <input type="text" name="name" value="{{$membership->name}}" class="form-control" autocomplete="off" placeholder=" اضف  شركة">
-            </div>
-            
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">  رقم الهاتف </label>
-            <div class="col-sm-8 col-md-9">
-                <input type="text" name="phone" value="{{$membership->phone}}" class="form-control" autocomplete="off" placeholder=" اضف رقم الهاتف">
-            </div>
-            
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">   الايميل </label>
-            <div class="col-sm-8 col-md-9">
-                <input type="text" name="email" value="{{$membership->email}}" class="form-control" autocomplete="off" placeholder=" اضف ايميل الشركة">
-            </div>
-            
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">   العنوان </label>
-            <div class="col-sm-8 col-md-9">
-                <input type="text" name="address" value="{{$membership->address}}" class="form-control" autocomplete="off" placeholder=" اضف عنزان الشركة">
-            </div>
-            
-        </div>
-        <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">صورة   </label>
-            <div class="col-sm-8 col-md-9">
-                <input type="file" name="image" oninput="imageTwo.src=window.URL.createObjectURL(this.files[0])" id="image" class="form-control" autocomplete="off" placeholder=" اضف صورة الشركة">
-                <div class="col-sm-4 m-2 col-md-6">
-                  <img id="imageTwo" style="max-height:100px">
-              </div>
-            </div>
+                    <label class="col-sm-2 col-form-label text-white">اسم الشركة   </label>
+                    <div class="col-sm-8 col-md-9">
+                        <input type="text" name="name" value="{{$membership->name}}" class="form-control" autocomplete="off" placeholder=" اضف  شركة">
+                        @error('name')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End Name Input -->
 
-            <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label text-white">  الوصف  </label>
-            <div class="col-sm-8 col-md-9">
-                <textarea name="description" placeholder=" اضف الوصف " class="form-control  " style="width:103%" id="" rows="5" ></textarea>
-            </div>
-            
-        </div>
-            
-        </div>  
-        <!-- End membership -->
+                <!-- Start phone Input -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">  رقم الهاتف </label>
+                    <div class="col-sm-8 col-md-9">
+                        <input type="text" name="phone" value="{{$membership->phone}}" class="form-control" autocomplete="off" placeholder=" اضف رقم الهاتف">
+                        @error('phone')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End phone Input -->
+
+                <!-- Start Email Input -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">   الايميل </label>
+                    <div class="col-sm-8 col-md-9">
+                        <input type="text" name="email" value="{{$membership->email}}" class="form-control" autocomplete="off" placeholder=" اضف ايميل الشركة">
+                        @error('email')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End Email Input -->
+
+                <!-- Start address Input -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">   العنوان </label>
+                    <div class="col-sm-8 col-md-9">
+                        <input type="text" name="address" value="{{$membership->address}}" class="form-control" autocomplete="off" placeholder=" اضف عنزان الشركة">
+                        @error('address')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End address Input -->
+
+                <!-- Start Image Input -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">صورة   </label>
+                    <div class="col-sm-8 col-md-9">
+                        <input type="file" name="image" oninput="imageTwo.src=window.URL.createObjectURL(this.files[0])" id="image" class="form-control" autocomplete="off" placeholder=" اضف صورة الشركة">
+                        @error('image')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                        <div class="col-sm-4 m-2 col-md-6">
+                        <img id="imageTwo" style="max-height:100px">
+                    </div>
+                </div>
+                <!-- End Image Input -->
+
+                <!-- Start description Input -->
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label text-white">  الوصف  </label>
+                    <div class="col-sm-8 col-md-9">
+                        <textarea name="description" placeholder=" اضف الوصف " class="form-control  " style="width:103%" id="" rows="5" ></textarea>
+                        @error('description')
+                            <span class="text-end yellow">* {{ $message }}  </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- End description Input -->
+                <!-- End membership -->
 
                 <!-- Start Submit -->
                 <div class="mb-2 row">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 use App\Models\Models;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Enum\MessageEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,7 +23,7 @@ class ModelsAdminController extends Controller
         Validator::validate($request->all(),[
             'model'=>'required|integer|between:1988, "'.$year.'"|unique:models,name',
         ],[
-            'model.required'=>'حقل الاسم مطلوب',
+            'required'=>MessageEnum::REQUIRED,
             'model.integer'=>'لا يمكنك ادخال نص يمكنك ادخال ابيانات كارقام',
             'model.between'=>'يمكنك ادخال الموديل من عام 1985 الى عام "'.$year.'"',
             'model.unique'=>'هذا الاسم موجد مسبقا',
@@ -34,8 +35,8 @@ class ModelsAdminController extends Controller
         }
         if($modal->save())
         return redirect('adminModels')
-        ->with(['success'=>'تم اضافة الموديل بنجاح']);
-        return back()->with(['error'=>'can not create user']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
 
     function editAdminModel(Request $request){
@@ -43,7 +44,7 @@ class ModelsAdminController extends Controller
         Validator::validate($request->all(),[
             'model'=>'required|integer|between:1988, "'.$year.'"|unique:models,name'
         ],[
-            'model.required'=>'حقل الاسم مطلوب',
+            'required'=>MessageEnum::REQUIRED,
             'model.integer'=>'لا يمكنك ادخال نص يمكنك ادخال ابيانات كارقام',
             'model.between'=>'يمكنك ادخال الموديل من عام 1985 الى عام "'.$year.'"',
             'model.unique'=>'خطأ في عملية التحديث او ان هذا الاسم موجود مسبقا',
@@ -54,8 +55,8 @@ class ModelsAdminController extends Controller
         $model = Models::where('id', $id)->update(['name' => $name]);
         if($model)
         return redirect('adminModels')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not create user']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 
     
@@ -68,6 +69,6 @@ class ModelsAdminController extends Controller
             $active = Models::where('id', $models->id)->update(['is_active' => 1]);
         }
         return redirect('adminModels')
-            ->with(['success'=>'تم التعديل بنجاح']);
+            ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
     }
 }

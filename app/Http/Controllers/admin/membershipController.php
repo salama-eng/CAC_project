@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Enum\MessageEnum;
 use App\Models\membership;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -29,13 +30,9 @@ class membershipController extends Controller
             'address'=>'required',
             'phone'=>'required',
         ],[
-            'name.required'=>'حقل الاسم مطلوب',
+            'required'=>MessageEnum::REQUIRED,
             'email.unique' => 'هذا الايميل غير متاح',
-            'email.required' => 'هذا الحقل مطلوب ',
             'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-            'image.required'=>'حقل الصورة مطلوب',
-            'address.required'=>'حقل العنوان مطلوب',
-            'phone.required'=>'حقل الهاتف مطلوب'
         ]);
 
         $member = new membership();
@@ -51,21 +48,20 @@ class membershipController extends Controller
         }
         if($member->save())
         return redirect('membership')
-        ->with(['success'=>'تم اضافة الصورة بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة الصورة']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
 
     function editMembership(Request $request,$id){
-        Validator::validate($request->all(),[
+            Validator::validate($request->all(),[
             'name'=>'required',
-            'email' => ['required', 'email', 'unique:users,email'],
+            'email' => ['required', 'email'],
             'image'=>['required'],
+            'address'=>'required',
+            'phone'=>'required',
         ],[
-            'name.required'=>'حقل الاسم مطلوب',
-            'email.unique' => 'هذا الايميل غير متاح',
-            'email.required' => 'هذا الحقل مطلوب ',
+            'required'=>MessageEnum::REQUIRED,
             'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-            'image.required'=>'حقل الصورة مطلوب'
         ]);
 
         $member=membership::find($id);
@@ -89,8 +85,8 @@ class membershipController extends Controller
 
         
         return redirect('membership')
-        ->with(['success'=>'تم تعديل الصزوة بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع تعديل الصورة']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 
     public function uploadFile($files)
@@ -114,8 +110,8 @@ class membershipController extends Controller
         $member->is_active=0;
         if($member->save())
         return redirect('membership')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
         
     }
 }
