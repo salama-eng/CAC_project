@@ -83,7 +83,7 @@
 
 
 
-            <h5 class=" mt-5 mb-5">معلومات الدفع </h5>
+            {{-- <h5 class=" mt-5 mb-5">معلومات الدفع </h5>
 
             <div>
                 <table class="table-profile">
@@ -122,7 +122,7 @@
                 </table>
 
 
-            </div>
+            </div> --}}
         @else
             <div class="alert alert-danger mt-5">
 

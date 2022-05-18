@@ -50,7 +50,7 @@
               <div class="col-md-12 mb-2">
                   <img id="preview-image-before-upload" style="max-height: 250px;">
               </div>
-              <select name="pank" id="" class="mt-4 mb-0 form-select bg-transparent text-light">
+              {{-- <select name="pank" id="" class="mt-4 mb-0 form-select bg-transparent text-light">
                     @foreach ($payments as $payment)
                         @if($payment->is_active == 1)
                             @if (old('pank') == $payment->id)
@@ -67,7 +67,7 @@
                 <input name="card" type="text" value="{{old('card')}}" class="mt-4 mb-0" placeholder=" رقم الحساب في باي بال">
                 @error('card')
               <span class="text-end yellow">* {{ $message }}  </span>
-              @enderror
+              @enderror --}}
                 <button type="submit" class="mt-4 mb-0" name=""> حفظ</button>
             </form>
         </div>

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->float('price');
-            
+            $table->float('admin_ratio');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->constrained()
                     ->references('id')->on('users')

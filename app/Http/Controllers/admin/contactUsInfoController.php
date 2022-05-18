@@ -3,6 +3,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\contact_us_info;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Enum\MessageEnum;
 use Illuminate\Support\Facades\Validator;
 
 class contactUsInfoController extends Controller
@@ -39,8 +40,8 @@ class contactUsInfoController extends Controller
 
         if($informartion->save())
         return redirect('manage_contact_us')
-        ->with(['success'=>'تم اضافة التصنيف بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
+        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
     }
 
     
@@ -74,8 +75,8 @@ class contactUsInfoController extends Controller
 
         
         return redirect('manage_contact_us')
-        ->with(['success'=>'تم تعديل التصنيف بنجاح']);
-        return back()->with(['error'=>'خطاء لانستطيع اضافة التصنيف']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
     }
 
 
@@ -89,8 +90,8 @@ class contactUsInfoController extends Controller
         $informartion->is_active=0;
         if($informartion->save())
         return redirect('manage_contact_us')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
+        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
         
     }
 }

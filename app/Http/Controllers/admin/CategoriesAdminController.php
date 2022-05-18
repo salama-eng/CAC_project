@@ -3,6 +3,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Models;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Http\Controllers\Enum\MessageEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,8 +13,8 @@ class CategoriesAdminController extends Controller
         $do = isset($_GET['do']) ? $do = $_GET['do'] : 'Manage';
         $categories = Category::select()->orderBy('id', 'DESC')->get();
         return view('admin.adminCategories', [
-            'category' => $categories,
-            'do'     => $do
+            'category'  => $categories,
+            'do'        => $do
         ]);
     }
 
@@ -38,20 +39,16 @@ class CategoriesAdminController extends Controller
         if($request->active != null){
             $category->is_active=1;
         }
-        if($category->save())
-        return redirect('admincategories')
-        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
+        return $this->messageRedirectAdd($category->save(), 'admincategories');
     }
 
-    
     function editAdminCategory(Request $request,$id){
         Validator::validate($request->all(),[
-            'name'=>['required', 'string', 'between: 5, 20'],
+            'name'=>['required', 'string', 'between: 3, 20'],
         ],[
             'required'=>MessageEnum::REQUIRED,
             'name.string'=>MessageEnum::MESSAGE_STRING,
-            'name.between'=>$this->messageBetween(5, 20),
+            'name.between'=>$this->messageBetween(3, 20),
         ]);
         $category=category::find($id);
         $category->name=$request->name;
@@ -59,48 +56,19 @@ class CategoriesAdminController extends Controller
 
         if($request->active != null)
             $category->is_active = 1;
-        // else 
-        // $category->is_active=1;
         
         if($request->hasFile('image'))
         $category->image=$this->uploadFile($request->file('image'));
         else
         $category->image=$old;
-        if($category->save())
-
-        
-        return redirect('admincategories')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+        return $this->messageRedirectUpdate($category->save() , 'admincategories');
     }
-
-
-    public function uploadFile($files)
-    {
-        
-            $file= $files;
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('Images'), $filename);
-            return $filename;
-      
-
-    }
-
-   
-
-
     function activeCategory($id){
-
         $category=category::find($id);
-    
         if($category->is_active==0)
         $category->is_active=1;
         else 
         $category->is_active=0;
-        if($category->save())
-        return redirect('admincategories')
-        ->with(['success'=>'تم التعديل بنجاح']);
-        return back()->with(['error'=>'can not update data']);
-        
+        return $this->messageRedirectUpdate($category->save(), 'admincategories');
     }
 }
