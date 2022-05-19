@@ -9,10 +9,9 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Lesson;
 use App\Events\NewNotification;
+use App\Http\Controllers\Enum\MessageEnum;
 use App\Models\order;
-
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Route;
 class AuctionsAdminController extends Controller
@@ -45,22 +44,32 @@ class AuctionsAdminController extends Controller
         }
     }
 
-
-
     public function uneditActive_auction(Request $request){
         $id = $request->auction_id;
-       return $request;
-        if($request->is_active==1)
-        $active = Auction::where('id', $id)->update(['is_active' => 0]);
-        else
-        $active = Auction::where('id', $id)->update(['is_active' => 1]);
-        if($active){
-
-            return redirect('admin_acution')
-            ->with(['success'=>' تمت العملية بنجاح  ']);
+        $userid = $request->userid;
+        $user = User::find($userid);
+        if($request->is_active==1){
+            $lesson = $this->lessonNotification($user->id, 'تم الغاء الموافقة على عملية المزايدة ', Auth::user()->name, 'admin_wallet');
+            try{
+                $pusher = $this->pusherNotifications($user);
+                $active = Auction::where('id', $id)->update(['is_active' => 0]);
+                return redirect('admin_acution')
+                ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+            }catch(\Exception $e){
+                return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+            }
         }else{
-            return back()->with(['error'=>'خطاء هناك مشكلة في عملية الموافقة على المزاد']);
-        }
+            
+            $lesson = $this->lessonNotification($user->id, 'تم الموافقة على عملية المزايدة ', Auth::user()->name, 'admin_wallet');
+            try{
+                $pusher = $this->pusherNotifications($user);
+                $active = Auction::where('id', $id)->update(['is_active' => 1]);
+                return redirect('admin_acution')
+                ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
+            }catch(\Exception $e){
+                return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+            }   
+         }
     }
 
     public function admin_orders(Request $request){

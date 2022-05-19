@@ -53,6 +53,7 @@ Route::get('/ddemail', [HomeController::class, 'email'])->name('ddemail');
 
 Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
 Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('errorsProfile');
+Route::get('/active_auction', [HomeController::class, 'errorsRedirect'])->name('active_auction');
 Route::get('/adminRole', [HomeController::class, 'adminRole']);
 Route::get('/clientRole', [HomeController::class, 'clientRole']);
 // generate role

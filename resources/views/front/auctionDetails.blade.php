@@ -56,7 +56,7 @@
                     </div>
                     @php $total = $post->starting_price @endphp
 
-                    @php $userId = '' @endphp
+                    @php $userId = [] @endphp
                     <div class=" border-n mt-4 col-10">
                         <form action="{{ route('bid_auction', $post->id) }}" method="post">
                             @csrf
@@ -73,7 +73,7 @@
                                 @endif
                                 <div class="d-flex justify-content-around  flex-column align-items-center mt-3 ">
                                     @foreach($auctions as $auction)
-                                        @php $userId = $auction->userAw->id @endphp
+                                        @php $userId [] = $auction->userAw->id @endphp
                                     @endforeach
                                     <div class="d-flex  align-items-center gap-3 w-100 ">
                                         <h3 class="text-white fs-6"> </h3>
@@ -95,13 +95,14 @@
                                     <span class="yellow"> {{ $discount }}$ </span>حتى انتهاء العملية
                                 </h3>
                                 @if (isset($post->auctions[0]->bid_total))
-                                
-                                <div>
-                                    <h2 class="text-white fs-6 ">
-                                        مبلغ المزايدة سيكون اكثر من <em
-                                            class="yellow">{{ $post->auctions->max('bid_total') + $post->auction_ceiling }}$</em>
-                                    </h2>
-                                </div>
+                                    @if($post->auctions[0]->is_active == 1)
+                                        <div>
+                                            <h2 class="text-white fs-6 ">
+                                                مبلغ المزايدة سيكون اكثر من <em
+                                                    class="yellow">{{ $post->auctions->sum('bid_amount')}}$</em>
+                                            </h2>
+                                        </div>
+                                    @endif
                                 @endif
                                 <input type="hidden" name="discount" value="{{ $discount }}">
                             </div>
@@ -182,16 +183,28 @@
                                             <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
                                                 <em class="yellow"><span class="text-price"></span>$</em>
                                             </h2>
+                                            @php
+                                                $mess = 0
+                                            @endphp
+                                            @if($userId != null)
+                                                @foreach($userId as $user)
+                                                    @if($user == Auth::id())
+                                                        <h1></h1>
+                                                        
+                                                    @elseif($user != Auth::id())
+                                                        @php $mess++ @endphp
+                                                        @if($mess == 1)
+                                                            <h2 class="text-white fs-4 p-3"> ملاحظة :
+                                                                <span class="fs-6">سيتم سحب من حساب {{$discount}}$</span>
+                                                                <em class="yellow fs-6">
+                                                                    <a href="{{route('faq')}}" class="card-link active text-center mt-5 mb-2"> معرفة المزيد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
+                                                                </em>
+                                                            </h2>
+                                                        @endif
+                                                    @endif
+                                                    
+                                                @endforeach
                                             
-                                            @if($userId != null && $userId == auth()->user()->id)
-                                                <h1></h1>
-                                            @else
-                                                <h2 class="text-white fs-4 p-3"> ملاحظة :
-                                                    <span class="fs-6">سيتم سحب من حساب {{$discount}}$</span>
-                                                    <em class="yellow fs-6">
-                                                        <a href="{{route('faq')}}" class="card-link active text-center mt-5 mb-2"> معرفة المزيد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
-                                                    </em>
-                                                </h2>
                                             @endif
                                         </div>
                                         <div class="modal-footer bg-darkergrey">
@@ -275,23 +288,21 @@
               
                
                 @foreach($auctions as $auction)
-                @php
-                   $i++ 
-                @endphp
-                @if ($i==1)
-                <h4  class="grey my-3"> عمليات المزايدة الحالية</h4>
-                @endif
-                @php $userId = $auction->userAw->id @endphp
-                @php $total = $auction->max('bid_total') @endphp
-                <div class="">
-                    <h2 class="text-white fs-6">
-                         {{$auction->userAw->name}} زايد بمبلغ
-                        <em class="yellow">{{ $auction->bid_amount }}$</em>
-                        اصبح اجمالي المزايدة 
-                        <em class="yellow">{{ $auction->bid_total }}$</em>
-                    </h2>
-                </div>
-            @endforeach
+                    @php $i++ @endphp
+                    @if ($i==1)
+                        <h4  class="grey my-3"> عمليات المزايدة الحالية</h4>
+                    @endif
+                    @if($auction->is_active == 1)
+                        <div class="">
+                            <h2 class="text-white fs-6">
+                                {{$auction->userAw->name}} زايد بمبلغ
+                                <em class="yellow">{{ $auction->bid_amount }}$</em>
+                                اصبح اجمالي المزايدة 
+                                <em class="yellow">{{ $auction->bid_total }}$</em>
+                            </h2>
+                        </div>
+                    @endif
+                @endforeach
         </section>
 
     </section>
