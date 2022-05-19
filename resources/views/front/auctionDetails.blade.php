@@ -72,28 +72,13 @@
                                     </div>
                                 @endif
                                 <div class="d-flex justify-content-around  flex-column align-items-center mt-3 ">
-                                    {{-- @foreach($auctions as $auction)
-                                    @php $userId = $auction->userAw->id @endphp
-                                    @php
-                                        $bidTotal = $auction->max('bid_total')
-                                    @endphp
-                                    @if ($bidTotal != null)
-                                        @php $total =+ $bidTotal @endphp
-                                    
-                                    @endif
-                                    <div class="">
-                                        <h2 class="text-white fs-6">
-                                             {{$auction->userAw->name}} زايد بمبلغ
-                                            <em class="yellow">{{ $auction->bid_amount }}$</em>
-                                            اصبح اجمالي المزايدة 
-                                            <em class="yellow">{{ $auction->bid_total }}$</em>
-                                        </h2>
-                                    </div>
-                                @endforeach --}}
+                                    @foreach($auctions as $auction)
+                                        @php $userId = $auction->userAw->id @endphp
+                                    @endforeach
                                     <div class="d-flex  align-items-center gap-3 w-100 ">
                                         <h3 class="text-white fs-6"> </h3>
-                                        <input type="number" class="input-model text-white p-2 auction-input"
-                                            min="{{ $post->auctions->max('bid_amount') }}" {{-- step="{{ $post->auctions->max('bid_amount') }}" --}} value=""
+                                        <input type="number" class="input-model text-white p-2 auction-input" required
+                                            min="{{ $post->auction_ceiling }}" step="{{ $post->auction_ceiling }}" value=""
                                             name="amount" placeholder="مقدار الزيادة" />
 
 
@@ -121,7 +106,7 @@
                                 <input type="hidden" name="discount" value="{{ $discount }}">
                             </div>
 
-                            @if ($post->end_date >= now() && Auth::id() != 3 && $post->users->id != Auth::id())
+                            @if ($post->end_date >= now() && Auth::id() != 6 && $post->users->id != Auth::id())
                                 <a href="#"
                                     class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center justify-content-center make-auction'
                                     data-bs-toggle="modal" data-bs-target="#auction{{ $post->id }}">مزايدة<i
@@ -137,49 +122,7 @@
                         @php $totals = $auc->max('bid_total') @endphp
                     @endforeach --}}
                     
-                    @if (Auth::user())
-                        <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content  ">
-                                    <form action="{{ route('test') }}" method="get">
-                                        @csrf
-                                        <div class="modal-header bg-darkgrey">
-                                            <input type="hidden" name="post_id" value="{{$post->id}}">
-                                            <input type="hidden" name="post_name" value="{{$post->name}}">
-                                            <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                            <input type="text" name="bid_amount" value="">
-                                            <input type="hidden" name="discount" value="{{$discount}}">
-                                            <input type="text" name="total" value="{{$total}}">
-                                           
-                                        </div>
-                                        <div class="modal-body bg-darkgrey ">
-
-                                            <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
-                                                <em class="yellow"><span class="text-price"></span>$</em>
-                                            </h2>
-                                            
-                                            {{-- @if($userId == null && $userId == auth()->user()->id)
-                                                <h1></h1>
-                                            @else
-                                                <h2 class="text-white fs-4 p-3"> ملاحظة :
-                                                    <span class="fs-6">سيتم سحب من حساب {{$discount}}$</span>
-                                                    <em class="yellow fs-6">
-                                                        <a href="{{route('faq')}}" class="card-link active text-center mt-5 mb-2"> معرفة المزيد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
-                                                    </em>
-                                                </h2>
-                                            @endif --}}
-                                        </div>
-                                        <div class="modal-footer bg-darkergrey">
-                                            <button type="button" class=" bg-lighter text-white fs-5"
-                                                data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class="btn bg-yellow text-white fs-5 submit" value=" تاكيد  " />
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    @else
+                    @if (Auth::user() == null)
                         <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -199,6 +142,68 @@
 
                             </div>
                         </div>
+                    @elseif(!isset(auth()->user()->profile->user_id))
+                        <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content m-auto ">
+                                    <div class="modal-header bg-darkgrey">
+
+                                        <button type="button" class="btn-close yellow" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <h6 class="text-center yellow mt-5 mb-5 ">يمكنك اكمال اعدادات حسابك اولا</h6>
+                                    <img class="m-auto" src="/assets/images/login_error.png" width="300" alt="">
+                                    <a href="{{ route('complate_regester') }}" class="card-link active text-center mt-5 mb-5">
+                                        اعدادات الحساب <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    @else
+                        <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content  ">
+                                    <form action="{{ route('test') }}" method="get">
+                                        @csrf
+                                        <div class="modal-header bg-darkgrey">
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            <input type="hidden" name="post_name" value="{{$post->name}}">
+                                            <input type="hidden" name="user_id" value="{{$post->users->id}}">
+                                            <input type="hidden" name="bid_amount" value="" required>
+                                            <input type="hidden" name="discount" value="{{$discount}}">
+                                            <input type="hidden" name="total" value="{{$total}}">
+                                        
+                                        </div>
+                                        <div class="modal-body bg-darkgrey ">
+
+                                            <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
+                                                <em class="yellow"><span class="text-price"></span>$</em>
+                                            </h2>
+                                            
+                                            @if($userId != null && $userId == auth()->user()->id)
+                                                <h1></h1>
+                                            @else
+                                                <h2 class="text-white fs-4 p-3"> ملاحظة :
+                                                    <span class="fs-6">سيتم سحب من حساب {{$discount}}$</span>
+                                                    <em class="yellow fs-6">
+                                                        <a href="{{route('faq')}}" class="card-link active text-center mt-5 mb-2"> معرفة المزيد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
+                                                    </em>
+                                                </h2>
+                                            @endif
+                                        </div>
+                                        <div class="modal-footer bg-darkergrey">
+                                            <button type="button" class=" bg-lighter text-white fs-5"
+                                                data-bs-dismiss="modal">تراجع</button>
+                                            <input type="submit" class="btn bg-yellow text-white fs-5 submit" value=" تاكيد  " />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
                     @endif
 
                 </div>
