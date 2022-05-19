@@ -14,7 +14,13 @@
         @endif
         <div class="table-responsive text-white ms-5">
 <style>
-
+    .td  {
+    border: none !important;
+    padding:1.2rem;
+    background-color:rgb(57, 56, 56) !important;
+    color: var(--yellow !important)
+   
+}
 </style>
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr class="active">

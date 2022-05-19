@@ -17,7 +17,7 @@
 
 </style>
             <table class="main-table manage-members text-center table table-bordered  text-white">
-                <tr class="active">
+                <tr class="active py-2">
                     <td class="td">#ID</td>
                     <td class="u-name td">السيارة </td>
                     <td class="td">اسم البائع </td>

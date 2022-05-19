@@ -56,7 +56,7 @@
                                       </label>
                                 @else
                                 
-                                    <label class="switch" data-bs-toggle="modal" data-bs-target="#active{{$auction->id}}">
+                                    <label class="switch" data-bs-toggle="modal" data-bs-target="#active{{$auction->auction_post->id}}">
                                         <input type="checkbox">
                                         <span class="slider"></span>
                                       </label>
@@ -65,7 +65,7 @@
                             </td>
                         </tr>
                         @endif
-                        <div class="modal fade user" id="active{{$auction->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade user" id="active{{$auction->auction_post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content bg-dark">
                                     <form action="unactive_auction" method="post">

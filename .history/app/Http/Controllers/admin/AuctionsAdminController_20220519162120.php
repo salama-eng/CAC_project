@@ -49,7 +49,7 @@ class AuctionsAdminController extends Controller
 
     public function uneditActive_auction(Request $request){
         $id = $request->auction_id;
-       return $request;
+       
         if($request->is_active==1)
         $active = Auction::where('id', $id)->update(['is_active' => 0]);
         else

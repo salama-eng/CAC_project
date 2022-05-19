@@ -13,23 +13,21 @@
             </div>
         @endif
         <div class="table-responsive text-white ms-5">
-<style>
 
-</style>
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr class="active">
-                    <td class="td">#ID</td>
-                    <td class="u-name td">السيارة </td>
-                    <td class="td">اسم البائع </td>
-                    <td class="td">اسم المشتري </td>
+                    <th>#ID</th>
+                    <th class="u-name">السيارة </th>
+                    <th>اسم البائع </th>
+                    <th>اسم المشتري </th>
                   
-                    <td class="td">المبلغ</td>
-                    <td class="td">تاريخ الانتهاء</td>
-                    <td class="td">تفاصيل المزايدة </td>
-                    <td class="td"> الحالة </td>
-                    <td class="td"> الدفع </td>
-                    <td class="td"> الاستلام </td>
-                    <td class="td"> ارسال المبلغ </td>
+                    <th>المبلغ</th>
+                    <th>تاريخ الانتهاء</th>
+                    <th>تفاصيل المزايدة </th>
+                    <td> الحالة </td>
+                    <td> الدفع </td>
+                    <td> الاستلام </td>
+                    <td> ارسال المبلغ </td>
                 
                 </tr>
                 @php $i = 1 @endphp

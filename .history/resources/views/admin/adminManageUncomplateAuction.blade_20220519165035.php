@@ -14,22 +14,27 @@
         @endif
         <div class="table-responsive text-white ms-5">
 <style>
-
+    .td  {
+    border: none !important;
+    padding:1.2rem;
+    background-color: rgb(57, 56, 56);
+   
+}
 </style>
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr class="active">
                     <td class="td">#ID</td>
-                    <td class="u-name td">السيارة </td>
-                    <td class="td">اسم البائع </td>
-                    <td class="td">اسم المشتري </td>
+                    <td class="u-name">السيارة </td>
+                    <td>اسم البائع </td>
+                    <td>اسم المشتري </td>
                   
-                    <td class="td">المبلغ</td>
-                    <td class="td">تاريخ الانتهاء</td>
-                    <td class="td">تفاصيل المزايدة </td>
-                    <td class="td"> الحالة </td>
-                    <td class="td"> الدفع </td>
-                    <td class="td"> الاستلام </td>
-                    <td class="td"> ارسال المبلغ </td>
+                    <td>المبلغ</td>
+                    <td>تاريخ الانتهاء</td>
+                    <td>تفاصيل المزايدة </td>
+                    <td> الحالة </td>
+                    <td> الدفع </td>
+                    <td> الاستلام </td>
+                    <td> ارسال المبلغ </td>
                 
                 </tr>
                 @php $i = 1 @endphp

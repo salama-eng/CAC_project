@@ -1218,10 +1218,8 @@ right: 15px;
   border: none !important;
   padding:1.2rem;
   background-color:rgb(57, 56, 56) !important;
-  color: var(--yellow) !important;
- font-weight: bold;
- padding-top: 1rem !important;
- padding-bottom: 1rem !important;
+  color: var(--yellow !important)
+ 
 }
 .green{
   color:rgb(21, 122, 127) !important;

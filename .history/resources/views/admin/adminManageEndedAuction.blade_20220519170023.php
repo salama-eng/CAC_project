@@ -47,7 +47,7 @@
         </div>
        
     </div>
-<h1 class="text-center fs-3 text-white my-5">  المزادات المكتملة </h1>
+<h1 class="text-center fs-3 text-white mb-5">  المزادات المكتملة </h1>
     <div class="container">
         <div class="table-responsive text-white ms-5">
             <table class="main-table manage-members text-center table   text-white">
