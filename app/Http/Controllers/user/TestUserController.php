@@ -29,8 +29,6 @@ class TestUserController extends Controller
             $aor = Order::where('id', $actives->id)->update(['is_active' => 1]);
             $auc = Auction::where('post_id', $actives->post_id)->update(['payment_confirm' => 1]);
         }
-    
-         
         $userAdmin = $this->roleUsers();
         $wallet = $this->walletDeposit($userAdmin, $in->customer_account_info->paid_amount, Auth::user()->name);
         $lesson = new Lesson;
@@ -85,9 +83,7 @@ class TestUserController extends Controller
             $order->admin_ratio = $request->admin_ratio;
             $order->user_id     = $request->user_id;
             $order->post_id     = $request->post_id;
-            $order->save();
-            // $status = Post::where('id',$request->post_id)->update(['status_auction' => 1]);
-            
+            $order->save();            
             $id = Auth::user()->id;
               $userId = User::find($id);
               if($userId->balance >= $request->price){
