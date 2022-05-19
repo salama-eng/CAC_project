@@ -366,9 +366,9 @@ body {
 .bg-noty
 {
  
- 
+  width: 22rem;
   list-style: none;
-  background: rgba(23, 23, 23, 0.6);
+  background: rgba(160, 156, 156, 0.1);
   border-radius: 10px;
   border: none;
   color: #ffb434;

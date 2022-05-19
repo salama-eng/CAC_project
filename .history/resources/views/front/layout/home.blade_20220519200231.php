@@ -92,7 +92,9 @@
       border-bottom: 6px solid #E39100;
     
     }
-   
+    ul li:hover{
+        background-color: #E39100;
+    }
       </style> 
 
     <ul class="dropdown-menu bg-noty fs-7 p-0 " aria-labelledby="dropdownMenu2" style="width:13rem;">

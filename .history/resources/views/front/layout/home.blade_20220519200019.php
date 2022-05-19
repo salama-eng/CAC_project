@@ -92,7 +92,6 @@
       border-bottom: 6px solid #E39100;
     
     }
-   
       </style> 
 
     <ul class="dropdown-menu bg-noty fs-7 p-0 " aria-labelledby="dropdownMenu2" style="width:13rem;">
@@ -120,7 +119,7 @@
      </p></li>
      
 
-      <li><button class="dropdown-item   fs-6 mt-2" type="button">  <a href="{{route('profile')}}" class=" card-link active">البروفايل <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></button></li>
+      <li><button class="dropdown-item  text-end fs-7 mt-2" type="button">  <a href="{{route('profile')}}" class=" card-link active">البروفايل <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></button></li>
       <li><hr class="text-white mb-2 ">
         <div  class="d-flex justify-content-center align-items-center p-2">
         <a class="  text-light  fs-7 " href="{{route('logout')}}">تسجيل الخروج</a> 

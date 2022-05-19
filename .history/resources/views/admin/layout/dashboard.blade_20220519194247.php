@@ -257,7 +257,7 @@
 
                 <ul class="dropdown-menu bg-noty p-0  w-19 userinfo text-center">
                     <li>
-                        <div class="d-flex m-0 p-0 justify-content-center flex-wrap">
+                        <div class="d-flex m-0 p-0 justify-content-center flex-wrap" style="border-top: none">
                             <div class="bg-yellow p-2 m-0 mb-2 col-8  w-100 m-auto">
 
                                 @if (isset(Auth::user()->profile->avatar))

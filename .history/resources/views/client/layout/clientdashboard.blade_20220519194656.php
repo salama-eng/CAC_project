@@ -163,7 +163,7 @@
                     @endif
 
                 </ul>
-                <ul class="dropdown-menu bg-noty userinfo text-center p-0" style="width:17rem">
+                <ul class="dropdown-menu bg-noty w-22 userinfo text-center p-0">
                     <li>
                        <div class="d-flex flex-column justify-center">
                            <div class="bg-yellow p-2  mb-2 ">
