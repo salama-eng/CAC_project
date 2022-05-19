@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
+            $table->integer('invoice_id')->default(0);
             $table->date('date');
             $table->string('bid_amount');
             $table->string('bid_total');
