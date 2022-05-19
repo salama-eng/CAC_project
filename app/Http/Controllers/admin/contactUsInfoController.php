@@ -4,7 +4,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Enum\MessageEnum;
 use App\Models\contact_us_info;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Enum\MessageEnum;
 use Illuminate\Support\Facades\Validator;
 
 class contactUsInfoController extends Controller

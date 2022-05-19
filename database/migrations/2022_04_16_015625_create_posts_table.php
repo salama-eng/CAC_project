@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('multiple_image');
             $table->string('address');
+            $table->string('city');
             $table->string('damage');
             $table->boolean('status_car');
             $table->boolean('status_auction')->default(0);

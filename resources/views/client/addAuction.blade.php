@@ -14,7 +14,7 @@
         <!--
     @endforeach
                 @endif -->
-        <h5 class="w-100 text-warning mx-2 my-4"><i class="fa fa-plus p-2 fs-6"></i>إضافة مزاد</h5>
+        <h5 class="w-100 text-warning mx-2 mb-4"><i class="fa fa-plus p-2 fs-6"></i>إضافة مزاد</h5>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">اسم السيارة</label>
             <div class="input-group">
@@ -120,6 +120,35 @@
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
+            <label for="" class="form-label text-white">المدينة</label>
+            <div class="input-group">
+                <select name="city" id="" class="form-select text-light">
+                    @foreach ($city as $key => $value)
+                        @if (old('city') == $key)
+                            <option value="{{ $value }}" selected>{{ $value }}</option>
+                        @else
+                            <option value="{{ $value }}">{{ $value }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            @error('city')
+                <span class="text-end yellow">* {{ $message }} </span>
+            @enderror
+        </div>
+
+        <div class="mb-3 w-50 px-2 w-lg-100">
+            <label for="" class="form-label text-white">معلومات اخرى حول السيارة</label>
+            <div class="input-group">
+                <textarea name="description" id="textarea#default"  class="form-control"  
+                    aria-label="With textarea">{{old('description')}}</textarea>
+            </div>
+            @error('description')
+                <span class="text-end yellow">* {{ $message }} </span>
+            @enderror
+        </div>
+
+        <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">نوع الضرر</label>
             <div class="input-group">
                 <select name="type_damage" id="" class="form-select text-light">
@@ -133,22 +162,6 @@
                 </select>
             </div>
             @error('type_damage')
-                <span class="text-end yellow">* {{ $message }} </span>
-            @enderror
-        </div>
-        <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">معلومات اخرى حول السيارة</label>
-            <div class="input-group">
-
-
-             
-
-                <textarea name="description" id="textarea#default"  class="form-control"  
-
-
-                    aria-label="With textarea">{{old('description')}}</textarea>
-            </div>
-            @error('description')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
         </div>

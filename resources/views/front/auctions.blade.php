@@ -32,9 +32,9 @@
                         </div>
                         <div class="my-2 mx-auto">
                             <select id="coun" class="text-center  py-1">
-                                <option value="Yemen">Yemen</option>
-                                <option value="Amwrica">Amwrica</option>
-                                <option value="Tokish">Tokish</option>
+                                @foreach ($cities as $cit)
+                                    <option value="{{ $cit->city }}">{{ $cit->city }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="my-2 mx-auto">

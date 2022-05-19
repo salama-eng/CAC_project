@@ -21,10 +21,13 @@ class UserPostsController extends Controller
 {
     public function addPost(){
         $damage = ['لا يوجد', 'سطحي', 'ثانوي'];
+        $city=['صنعاء','تعز','حضرموت','المكلا',
+        'عدن','ذمار','اب','البيضاء','مأرب','لحج','حجه','الحديدة','شبوة','المحويت'];
         $categories = Category::select()->get();
         return view('client.addAuction',[ 
             'categories'    => $categories, 
             'damage'        => $damage, 
+            'city'          => $city,
         ]); 
     }
     
@@ -51,6 +54,7 @@ class UserPostsController extends Controller
             'description'=>'required',
             'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
             'images'=>'required',
+            'city'=>'required',
       
         ],[
             'carname.between'           => $this->messageBetween(3, 20),
@@ -73,6 +77,7 @@ class UserPostsController extends Controller
         $post->color = $request->color;
         $post->start_date = now();
         $post->end_date = $request->end_date;
+        $post->city = $request->city;
         $post->damage = $request->type_damage;
         $post->description = $request->description;
         $post->end_date = $request->end_date;
