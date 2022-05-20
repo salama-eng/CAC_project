@@ -170,7 +170,7 @@
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content  ">
-                                    <form action="{{ route('test') }}" method="get">
+                                    <form action="{{ route('test') }}" method="post">
                                         @csrf
                                         <div class="modal-header bg-darkgrey">
                                             <input type="hidden" name="post_id" value="{{$post->id}}">
