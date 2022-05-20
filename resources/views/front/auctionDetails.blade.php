@@ -9,9 +9,7 @@
 
     </style>
     </div>
-    @if (session()->has('error'))
-        <p class="messag">{{ session()->get('error') }}</p>
-    @endif
+    
     <section class="d-flex container mt-5 flex-wrap col-lg-9">
         <section class="col-12  col-lg-6 mt-5">
             <a href="" class="d-flex card-details fs-6 mb-1"><span class="fa fa-long-arrow-right pt-2 px-2"></span>رجوع</a>
@@ -83,7 +81,9 @@
                                         <input type="number" class="input-model text-white p-2 auction-input" required
                                             min="{{ $post->auction_ceiling }}" step="{{ $post->auction_ceiling }}" value=""
                                             name="amount" placeholder="مقدار الزيادة" />
-
+                                            @if (session()->has('error'))
+                                            <p class="messag">{{ session()->get('error') }}</p>
+                                        @endif
 
                                     </div>
                                 </div>
