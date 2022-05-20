@@ -68,6 +68,7 @@
                         @if ($item->type == 'withdraw')
                             <div class="d-flex justify-content-between align-items-center">
 
+                                
                                 <div>@if (isset($item->meta['details']))
                                     <p class="fs-6 p-dash ">{{$item->meta['details']}} <span class="active">({{$user->name}})</span> الى حساب <span
                                             class="active">{{$item->meta['username']}}</span></p>
