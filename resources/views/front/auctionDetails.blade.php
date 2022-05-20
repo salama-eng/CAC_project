@@ -59,7 +59,7 @@
 
                     @php $userId = [] @endphp
                     <div class=" border-n mt-4 col-10">
-                        {{-- <form action="{{ route('test') }}" method="get"> --}}
+                        {{-- <form action="{{ route('bid_amount') }}" method="get"> --}}
                             {{-- @csrf --}}
 
                             <div class="modal-body bg-darkgrey col-12 w-100">
