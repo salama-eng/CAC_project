@@ -59,8 +59,8 @@
 
                     @php $userId = [] @endphp
                     <div class=" border-n mt-4 col-10">
-                        <form action="{{ route('test') }}" method="get">
-                            @csrf
+                        {{-- <form action="{{ route('test') }}" method="get"> --}}
+                            {{-- @csrf --}}
 
                             <div class="modal-body bg-darkgrey col-12 w-100">
                                 @if ($errors->any())
@@ -116,7 +116,7 @@
                                     data-bs-toggle="modal" data-bs-target="#auction{{ $post->id }}">مزايدة<i
                                         class="fa fa-long-arrow-left"> </i></a>
                             @endif
-                        </form>
+                        {{-- </form> --}}
 
                     </div>
                     {{-- @php
@@ -170,13 +170,13 @@
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content  ">
-                                    <form action="{{ route('test') }}" method="post">
+                                    <form action="{{ route('test') }}" method="get">
                                         @csrf
                                         <div class="modal-header bg-darkgrey">
                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                             <input type="hidden" name="post_name" value="{{$post->name}}">
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                            <input type="hidden" name="bid_amount" value="" required>
+                                            <input type="hidden" name="bid_amount" value="1000" required>
                                             <input type="hidden" name="discount" value="{{$discount}}">
                                             <input type="hidden" name="total" value="{{$total}}">
                                         
