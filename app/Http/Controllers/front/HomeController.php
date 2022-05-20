@@ -9,10 +9,14 @@ use App\Models\Category;
 use App\Models\contact_us_info;
 use App\Models\membership;
 use App\Models\Post;
+use App\Models\Role;
+use App\Models\User;
 use App\Models\siteHome;
 use App\Models\slider_image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function showauctionDetails(Request $request,$id){
@@ -126,5 +130,31 @@ Post::with(['auctions'])->where('is_active',1)->paginate(1);
         return view('front.privacyPolicy', [
             'Information' => $Information,
        ]);
+    }
+
+    public function adminRole(){
+        $role = new Role;
+        $role->name = 'admin';
+        $role->display_name = 'management project';
+        if($role->save())
+        return redirect('/');
+    }
+    public function clientRole(){
+        $role = new Role;
+        $role->name = 'client';
+        $role->display_name = 'website';
+        if($role->save())
+        return redirect('/');
+    }
+    public function adminUser(){
+        $admin = new User;
+        $admin->name = 'admin';
+        $admin->email = 'carsauctionwebsite@gmail.com';
+        $admin->password = Hash::make('cac123456789');
+        $admin->is_active = 1;
+        if($admin->save()){
+            $admin->attachRole('admin');
+            return redirect('/');
+        }
     }
 }

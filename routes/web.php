@@ -56,6 +56,7 @@ Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('e
 Route::get('/active_auction', [HomeController::class, 'errorsRedirect'])->name('active_auction');
 Route::get('/adminRole', [HomeController::class, 'adminRole']);
 Route::get('/clientRole', [HomeController::class, 'clientRole']);
+Route::get('/adminUser', [HomeController::class, 'adminUser']);
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
