@@ -98,11 +98,10 @@ class AuthController extends Controller
         $u->name = $request->name;
         $u->password = Hash::make($request->password);
         $u->email = $request->email;
-        $u->is_active = 1;
         $token = Str::uuid();
         $u->remember_token = $token;
         if ($u->save()) {
-            $u->attachRole('admin');
+            $u->attachRole('client');
             $email_data = array(
                 'name' => $request->name, 'email' => $request->email, 'password' => $v,
                 'activation_url' => URL::to('/') . "/verify_email/" . $token . "/".$v
