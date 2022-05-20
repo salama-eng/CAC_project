@@ -176,7 +176,7 @@
                                             <input type="text" name="post_id" value="{{$post->id}}">
                                             <input type="text" name="post_name" value="{{$post->name}}">
                                             <input type="text" name="user_id" value="{{$post->users->id}}">
-                                            <input type="text" name="bid_amount" value="1000" required>
+                                            <input type="text" name="bid_amount" value="" required>
                                             <input type="text" name="discount" value="{{$discount}}">
                                             <input type="text" name="total" value="{{$total}}">
                                         
