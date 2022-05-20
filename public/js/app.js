@@ -188,8 +188,8 @@ $(".search-input").on("keyup", function() {
     $(this).parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
   });
 });
-$('.submit').on('click',function(){
-  $('input[name="bid_amount"]').val($('.text-price').text())
-})
+// $('.submit').on('click',function(){
+//   $('input[name="bid_amount"]').val($('.text-price').text())
+// })
 });
 
