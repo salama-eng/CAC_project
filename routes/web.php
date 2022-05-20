@@ -213,7 +213,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
     });
     Route::post('/message', [AdminContactUsController::class,'saveMessage'])->name('message'); 
-    Route::post('test', [testController::class, 'index'])->name('test');
+    Route::any('test', [testController::class, 'index'])->name('test');
     // Route::any('testPayment', [TestUserController::class, 'index'])->name('testPayment');
     Route::get('test/response/{info}', [testController::class, 'showTest'])->name('test/response');
     Route::get('test/cancel/{cancel}', [testController::class, 'testCancel'])->name('testCancel');

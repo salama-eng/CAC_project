@@ -59,7 +59,7 @@
 
                     @php $userId = [] @endphp
                     <div class=" border-n mt-4 col-10">
-                        {{-- <form action="{{ route('bid_auction', $post->id) }}" method="post"> --}}
+                        <form action="{{ route('test') }}" method="get">
                             @csrf
 
                             <div class="modal-body bg-darkgrey col-12 w-100">
@@ -116,7 +116,7 @@
                                     data-bs-toggle="modal" data-bs-target="#auction{{ $post->id }}">مزايدة<i
                                         class="fa fa-long-arrow-left"> </i></a>
                             @endif
-                        {{-- </form> --}}
+                        </form>
 
                     </div>
                     {{-- @php
