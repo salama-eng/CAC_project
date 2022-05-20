@@ -173,12 +173,12 @@
                                     <form action="{{ route('test') }}" method="get">
                                         @csrf
                                         <div class="modal-header bg-darkgrey">
-                                            <input type="hidden" name="post_id" value="{{$post->id}}">
-                                            <input type="hidden" name="post_name" value="{{$post->name}}">
-                                            <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                            <input type="hidden" name="bid_amount" value="1000" required>
-                                            <input type="hidden" name="discount" value="{{$discount}}">
-                                            <input type="hidden" name="total" value="{{$total}}">
+                                            <input type="text" name="post_id" value="{{$post->id}}">
+                                            <input type="text" name="post_name" value="{{$post->name}}">
+                                            <input type="text" name="user_id" value="{{$post->users->id}}">
+                                            <input type="text" name="bid_amount" value="1000" required>
+                                            <input type="text" name="discount" value="{{$discount}}">
+                                            <input type="text" name="total" value="{{$total}}">
                                         
                                         </div>
                                         <div class="modal-body bg-darkgrey ">
