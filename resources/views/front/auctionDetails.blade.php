@@ -170,15 +170,15 @@
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content  ">
-                                    <form action="{{ route('test') }}" method="get">
+                                    <form action="{{ route('test') }}" method="post">
                                         @csrf
                                         <div class="modal-header bg-darkgrey">
-                                            <input type="text" name="post_id" value="{{$post->id}}">
-                                            <input type="text" name="post_name" value="{{$post->name}}">
-                                            <input type="text" name="user_id" value="{{$post->users->id}}">
-                                            <input type="text" name="bid_amount" value="">
-                                            <input type="text" name="discount" value="{{$discount}}">
-                                            <input type="text" name="total" value="{{$total}}">
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            <input type="hidden" name="post_name" value="{{$post->name}}">
+                                            <input type="hidden" name="user_id" value="{{$post->users->id}}">
+                                            <input type="hidden" name="bid_amount" value="" required>
+                                            <input type="hidden" name="discount" value="{{$discount}}">
+                                            <input type="hidden" name="total" value="{{$total}}">
                                         
                                         </div>
                                         <div class="modal-body bg-darkgrey ">
