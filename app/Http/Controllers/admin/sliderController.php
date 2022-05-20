@@ -20,32 +20,26 @@ class sliderController extends Controller
         ]);
     }
 
-
-        function addSliderImage(Request $request){
-      
+    function addSliderImage(Request $request){
         Validator::validate($request->all(),[
-            'image'=>['required'],
+            'image'     =>['required'],
         ],[
-            'required'=>MessageEnum::REQUIRED,
+            'required'  =>MessageEnum::REQUIRED,
         ]);
-
         $image = new slider_image;
         if($request->hasFile('image'))
             $image->image=$this->uploadFile($request->file('image'));
         if($request->active != null){
             $image->is_active=1;
         }
-        if($image->save())
-        return redirect('slider_image')
-        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
+        return $this->messageRedirectUpdate($image->save(), 'slider_image');
     }
 
     function editSliderImage(Request $request,$id){
         Validator::validate($request->all(),[
-            'image'=>['required'],
+            'image'     =>['required'],
         ],[
-            'required'=>MessageEnum::REQUIRED,
+            'required'  =>MessageEnum::REQUIRED,
         ]);
 
         $image=slider_image::find($id);
@@ -53,44 +47,21 @@ class sliderController extends Controller
 
         if($request->active != null)
             $image->is_active = 1;
-        // else 
-        // $image->is_active=1;
         
         if($request->hasFile('image'))
-        $image->image=$this->uploadFile($request->file('image'));
+            $image->image=$this->uploadFile($request->file('image'));
         else
-        $image->image=$old;
-        if($image->save())
-
-        
-        return redirect('slider_image')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
-    }
-
-    public function uploadFile($files)
-    {
-        
-            $file= $files;
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('Images'), $filename);
-            return $filename;
-      
-
+            $image->image=$old;
+        return $this->messageRedirectUpdate($image->save(), 'slider_image');
     }
 
     function activeSliderImage($id){
-
         $image=slider_image::find($id);
-    
         if($image->is_active==0)
-        $image->is_active=1;
+            $image->is_active=1;
         else 
-        $image->is_active=0;
-        if($image->save())
-        return redirect('slider_image')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+            $image->is_active=0;
+        return $this->messageRedirectUpdate($image->save(), 'slider_image');
         
     }
 }

@@ -14,24 +14,22 @@ class ContactUsController extends Controller
 {
     function saveMessage(Request $request){
         Validator::validate($request->all(),[
-            'name'=>['required','string', 'between: 3, 20'],
-            'email'=>['required','email'],
-            'message'=>['required', 'min:10',],
+            'name'          =>['required','string', 'between: 3, 20'],
+            'email'         =>['required','email'],
+            'message'       =>['required', 'min:10',],
 
         ],[
-            'required'=>MessageEnum::REQUIRED,
-            'name.string'=>MessageEnum::MESSAGE_STRING,
-            'name.between'=>$this->messageBetween(3, 20),
-            'message.min'=>$this->messageMin(10),
+            'required'      =>MessageEnum::REQUIRED,
+            'name.string'   =>MessageEnum::MESSAGE_STRING,
+            'name.between'  =>$this->messageBetween(3, 20),
+            'message.min'   =>$this->messageMin(10),
         ]);
         $message = new contact_us;
-        $message->name = $request->name;
-        $message->email = $request->email;
-        $message->phone = $request->phone;
-        $message->message = $request->message;
+        $message->name      = $request->name;
+        $message->email     = $request->email;
+        $message->phone     = $request->phone;
+        $message->message   = $request->message;
         if($message->save())
-
-        // Email Data
         $email_data = array(
                 'name' => $message->name, 'email' => $message->email,
                 'phone'=>$request->phone,'messages' => $message->message

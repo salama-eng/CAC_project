@@ -41,20 +41,20 @@ class UserPostsController extends Controller
 
     public function save_post(Request $request){
         Validator::validate($request->all(),[
-            'carname'=>'required|string|between:3,20',
-            'category_id'=>'required',
-            'model'=>'required',
-            'name_enige'=>'required',
-            'start_price' => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
-            'auction_price' => "required|integer|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
-            'address_car' => 'required|string|between:3,50',
-            'color'=>'required|string',
-            'end_date'=>'required|date|after:now',
-            'type_damage'=>'required',
-            'description'=>'required',
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
-            'images'=>'required',
-            'city'=>'required',
+            'carname'                   => 'required|string|between:3,20',
+            'category_id'               => 'required',
+            'model'                     => 'required',
+            'name_enige'                => 'required',
+            'start_price'               => "required|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
+            'auction_price'             => "required|integer|regex:/^\d+(\.\d{1,2})?$/|not_regex:/[a-z]/",
+            'address_car'               => 'required|string|between:3,50',
+            'color'                     => 'required|string',
+            'end_date'                  =>  'required|date|after:now',
+            'type_damage'               => 'required',
+            'description'               => 'required',
+            'image'                     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:6000',
+            'images'                    =>'required',
+            'city'                      =>'required',
       
         ],[
             'carname.between'           => $this->messageBetween(3, 20),
@@ -65,28 +65,27 @@ class UserPostsController extends Controller
             'required'                  => MessageEnum::REQUIRED,
             'mimes'                     => MessageEnum::MESSAGE_IMAGES,
         ]);
-        $post = new Post;
-        $post->name = $request->carname;
-        $post->category_id = $request->category_id;
-        $post->user_id = Auth::id();
-        $post->model = $request->model;
-        $post->engin_car = $request->name_enige;
-        $post->starting_price = $request->start_price;
-        $post->auction_ceiling = $request->auction_price;
-        $post->address = $request->address_car;
-        $post->color = $request->color;
-        $post->start_date = now();
-        $post->end_date = $request->end_date;
-        $post->city = $request->city;
-        $post->damage = $request->type_damage;
-        $post->description = $request->description;
-        $post->end_date = $request->end_date;
-        $post->status_car = $request->care_type;
+        $post                           = new Post;
+        $post->name                     = $request->carname;
+        $post->category_id              = $request->category_id;
+        $post->user_id                  = Auth::id();
+        $post->model                    = $request->model;
+        $post->engin_car                = $request->name_enige;
+        $post->starting_price           = $request->start_price;
+        $post->auction_ceiling          = $request->auction_price;
+        $post->address                  = $request->address_car;
+        $post->color                    = $request->color;
+        $post->start_date               = now();
+        $post->end_date                 = $request->end_date;
+        $post->city                     = $request->city;
+        $post->damage                   = $request->type_damage;
+        $post->description              = $request->description;
+        $post->end_date                 = $request->end_date;
+        $post->status_car               = $request->care_type;
         if($request->hasFile('image'))
           $post->image=$this->uploadFile($request->file('image'));
         if($request->hasfile('images'))
         {
-
             foreach($request->file('images') as $image)
             {
                 $name=$image->getClientOriginalName();

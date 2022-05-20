@@ -18,7 +18,6 @@ class testController extends Controller
     public function showTest($data){
         $info=base64_decode($data);
         $in = json_decode($info);
-        // dd($in->order_reference); exit();
         $userAdmin = $this->roleUsers();
         $wallet = $this->walletDeposit($userAdmin, $in->customer_account_info->paid_amount, Auth::user()->name);
         $lesson = new Lesson;
@@ -60,16 +59,16 @@ class testController extends Controller
             return redirect('/')
                   ->with(['success'=>MessageEnum::MESSAGE_PAYMENT_SUCCESS]);
         }else{
-            $invoice_id = Auction::max('invoice_id');
+            $invoice_id             = Auction::max('invoice_id');
             $invoice_id++;
-            $auction = new Auction;
-            $auction->invoice_id = $invoice_id;
-            $auction->date = now();
-            $auction->bid_amount = $request->bid_amount;
-            $auction->bid_total = $starting_price + $request->bid_amount;
+            $auction                = new Auction;
+            $auction->invoice_id    = $invoice_id;
+            $auction->date          = now();
+            $auction->bid_amount    = $request->bid_amount;
+            $auction->bid_total     = $starting_price + $request->bid_amount;
             $auction->owner_user_id = $request->user_id;
-            $auction->aw_user_id = Auth::id();
-            $auction->post_id = $request->post_id;
+            $auction->aw_user_id    = Auth::id();
+            $auction->post_id       = $request->post_id;
             $auction->save();
 
             $id = Auth::id();
@@ -80,16 +79,25 @@ class testController extends Controller
               $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->discount, 'تم ايداع مبلغ من حساب');
               $lesson = new Lesson;
               $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
-              if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
+              try{
+                if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
                   return back();
+                }
+              }catch(\Exception $e){
+                return back()->with(['error'=>MessageEnum::MESSAGE_PAYMENT_ERROR]);
               }
               $user = User::find(Auth::id());
-              $lesson = new Lesson;
               $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-              $pusher = $this->pusherNotifications($user);
-              $auctions = Auction::where('invoice_id', $invoice_id)->update(['is_active' => 1]);
-              return redirect('/')
-              ->with(['success'=>'تم عملية الدفع بنجاح']);
+              try{
+                $pusher = $this->pusherNotifications($user);
+                $auctions = Auction::where('invoice_id', $invoice_id)->update(['is_active' => 1]);
+                return redirect('/')
+                ->with(['success'=>MessageEnum::MESSAGE_PAYMENT_SUCCESS]);
+              }catch(\Exception $e){
+                return back()->with(['error'=>MessageEnum::MESSAGE_PAYMENT_ERROR]);
+              }
+              
+              
             }else{
                 $data = [
                     "order_reference"     => $invoice_id,

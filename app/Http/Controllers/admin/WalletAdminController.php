@@ -21,10 +21,9 @@ class WalletAdminController extends Controller
         
         $users =  User::with('transactions')->where('id',$id)->get();
         return view('admin.wallet', [
-            'balance' => $balance,
-            'user'=> $user,
-            'users'=> $users
-            
-            ]);
+            'balance'   => $balance,
+            'user'      => $user,
+            'users'     => $users 
+        ]);
     }
 }
