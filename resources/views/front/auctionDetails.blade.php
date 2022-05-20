@@ -107,7 +107,7 @@
                                 <input type="hidden" name="discount" value="{{ $discount }}">
                             </div>
 
-                            @if ($post->end_date >= now() && Auth::id() != 6 && $post->users->id != Auth::id())
+                            @if ($post->end_date >= date('Y-m-d') && Auth::id() != $userAdmin->id && $post->users->id != Auth::id())
                                 <a href="#"
                                     class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center justify-content-center make-auction'
                                     data-bs-toggle="modal" data-bs-target="#auction{{ $post->id }}">مزايدة<i
@@ -253,7 +253,7 @@
             <div id="carouselExampleControls" class="carousel slide col-12 mt-3" data-bs-ride="carousel">
                 <div class="carousel-inner main-img-div w-100">
                     <div class="carousel-item active w-100">
-                        <img src="/images/{{ $post->image }}" width="550" height="400" class="d-block  main-img"
+                        <img src="{{ URL::to('images/'.$post->image) }}" width="550" height="400" class="d-block  main-img"
                             alt="{{ $post->image }}">
 
                     </div>

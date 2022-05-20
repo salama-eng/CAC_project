@@ -9,12 +9,12 @@
                         للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 <div class="col-lg-3 col-6">
                     <h2>  </h2>
-                    <h3 class="d-lg-block d-none">already 1902 messags</h3>
+                    <h3 class="d-lg-block d-none chat-count"><p class="fs-4">{{Auth::user()->name}}</p> <small class="fs-6 text-white">يوجد <span data-count="{{ $chatCount }}" class="bg-danger rounded-circle mx-2 px-1 notif-chat"> {{$chatCount}} </span> رسالة</small></h3>
                     <p class="align-self-end mr-auto d-block d-lg-none " style="font-size:12px"><a
                             href="{{ route('UserDash') }}" class="card-link active text-warning mt-3 mb-2"> العودة
                             للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 </div>
-                <img src="/assets/images/avatar.png" width="80" class=" rounded-circle "
+                <img src="{{ URL::to('images/'.Auth::user()->profile->avatar)}}" width="80" class=" rounded-circle "
                     alt="{{ Auth::user()->profile->avatar }}">
 
             </header>
@@ -81,7 +81,10 @@
         });
 
         var notificationsWrapper = $('.chat-notify');
-
+        var chatCount = $('.chat-count');
+        var notificationsCountElem = chatCount.find('span[data-count]');
+        var notificationsCount = parseInt(notificationsCountElem.data('count'));
+        
 
         // Enable pusher logging - don't include this in production
         // Pusher.logToConsole = true;
@@ -92,8 +95,9 @@
             var existingNotifications = notificationsWrapper.html();
             var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
             // let i = 1;
+            var postid = `{{$auction->post_id}}`;
             var newNotificationHtml;
-            // if( data.post_id == `{{ $auction->post_id }}`){
+            if( typeof(data.post_id) != 'undefined' && data.post_id == postid){
             if (data.user_id == `{{ auth()->id() }}`) {
                 newNotificationHtml = `
                 <li class="me">
@@ -121,10 +125,15 @@
                     </div>
                 </li>`;
             }
-            // }
+            notificationsCount += 1;
+            notificationsCountElem.attr('data-count', notificationsCount);
+            chatCount.find('.notif-chat').text(notificationsCount);
+            }else{
+                newNotificationHtml = '';
+            }
             notificationsWrapper.html(newNotificationHtml + existingNotifications);
 
-
+            
 
         });
     </script>

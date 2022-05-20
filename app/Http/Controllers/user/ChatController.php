@@ -40,19 +40,23 @@ class ChatController extends Controller
         $auction=Auction::find($request->auction);
         
         if($data == null){
-            $chats = Chat::where('post_id', $auction->post_id)->orderBy('id', 'ASC')->get();
+            $chats = Chat::where('post_id', $auction->post_id)->orderBy('id', 'DESC')->get();
+            $chatCount = Chat::where('post_id', $auction->post_id)->count();
             return view('client.chat', [
-                'auction'              => $auction,
+                'auction'            => $auction,
                 'chats'              => $chats,
+                'chatCount'          => $chatCount,
                
             ]);
         }else{
             $chat = Chat::create($data);
             event(new ChatNotification($chat));
-            $chats = Chat::where('post_id', $auction->post_id)->orderBy('id', 'ASC')->get();
+            $chats = Chat::where('post_id', $auction->post_id)->orderBy('id', 'DESC')->get();
+            $chatCount = Chat::where('post_id', $auction->post_id)->count();
             return view('client.chat', [
-                'auction'              => $auction,
+                'auction'            => $auction,
                 'chats'              => $chats,
+                'chatCount'          => $chatCount,
             
             ]);
         }
