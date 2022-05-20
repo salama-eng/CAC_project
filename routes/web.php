@@ -270,7 +270,7 @@ Route::get('/emaill', function () {
 Route::get('/auctions',[HomeController::class,'show_auctions'])->name('auctions');
 
 /******** bid auction **************/
-Route::post('/bid_auction/{id}',[UserAuctionController::class,'bid_auction'])->name('bid_auction');
+// Route::post('/bid_auction/{id}',[UserAuctionController::class,'bid_auction'])->name('bid_auction');
 Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 
 Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');
