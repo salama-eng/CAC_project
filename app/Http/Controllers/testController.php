@@ -47,7 +47,7 @@ class testController extends Controller
                                 ->where('post_id', $request->post_id)->first();
         $count = Auction::where('post_id', $request->post_id)->sum('bid_amount');
         $starting_price = $request->total + $count;
-        if($auctionUser){
+        if(isset($auctionUser)){
             $bid_amount = $request->bid_amount + $auctionUser->bid_amount;
             $total = $request->bid_amount + $auctionUser->max('bid_total');
             $auctionUser = Auction::where('aw_user_id', Auth::id())
