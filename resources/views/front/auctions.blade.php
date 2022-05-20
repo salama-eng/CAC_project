@@ -116,8 +116,8 @@
                             @if (Auth::id())
                                 <div class="modal-dialog">
                                     <div class="modal-content ">
-                                        <form action="{{ route('bid_auction', $post->id) }}" method="post">
-                                            @csrf
+                                        {{-- <form action="{{ route('bid_auction', $post->id) }}" method="post">
+                                            @csrf --}}
                                             <div class="modal-header bg-darkgrey">
 
                                                 <button type="button" class="btn-close yellow" data-bs-dismiss="modal"
@@ -159,7 +159,7 @@
                                                 <input type="submit" class="btn bg-yellow text-white fs-5"
                                                     value=" تاكيد  " />
                                             </div>
-                                        </form>
+                                        {{-- </form> --}}
                                     </div>
                                 </div>
                             @else
