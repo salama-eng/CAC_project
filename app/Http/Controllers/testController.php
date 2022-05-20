@@ -43,78 +43,78 @@ class testController extends Controller
     }
  
     public function index(Request $request){
-        $auctionUser = Auction::where('aw_user_id', Auth::id())
-                                ->where('post_id', $request->post_id)->first();
-        $count = Auction::where('post_id', $request->post_id)->sum('bid_amount');
-        $starting_price = $request->total + $count;
-        if(isset($auctionUser)){
-            $bid_amount = $request->bid_amount + $auctionUser->bid_amount;
-            $total = $request->bid_amount + $auctionUser->max('bid_total');
-            $auctionUser = Auction::where('aw_user_id', Auth::id())
-                                    ->where('post_id', $request->post_id)
-                                    ->update([
-                                      'bid_amount' => $bid_amount,
-                                      'bid_total' => $total,
-                                    ]);
-            return redirect('/')
-                  ->with(['success'=>MessageEnum::MESSAGE_PAYMENT_SUCCESS]);
-        }else{
-            $invoice_id             = Auction::max('invoice_id');
-            $invoice_id++;
+        // $auctionUser = Auction::where('aw_user_id', Auth::id())
+        //                         ->where('post_id', $request->post_id)->first();
+        // $count = Auction::where('post_id', $request->post_id)->sum('bid_amount');
+        // $starting_price = $request->total + $count;
+        // if(isset($auctionUser)){
+        //     $bid_amount = $request->bid_amount + $auctionUser->bid_amount;
+        //     $total = $request->bid_amount + $auctionUser->max('bid_total');
+        //     $auctionUser = Auction::where('aw_user_id', Auth::id())
+        //                             ->where('post_id', $request->post_id)
+        //                             ->update([
+        //                               'bid_amount' => $bid_amount,
+        //                               'bid_total' => $total,
+        //                             ]);
+        //     return redirect('/')
+        //           ->with(['success'=>MessageEnum::MESSAGE_PAYMENT_SUCCESS]);
+        // }else{
+            // $invoice_id             = Auction::max('invoice_id');
+            // $invoice_id++;
             $auction                = new Auction;
-            $auction->invoice_id    = $invoice_id;
+            $auction->invoice_id    = 1;
             $auction->date          = now();
-            $auction->bid_amount    = $request->bid_amount;
-            $auction->bid_total     = $starting_price + $request->bid_amount;
-            $auction->owner_user_id = $request->user_id;
-            $auction->aw_user_id    = Auth::id();
-            $auction->post_id       = $request->post_id;
+            $auction->bid_amount    = 1000;
+            $auction->bid_total     = 11000;
+            $auction->owner_user_id = 3;
+            $auction->aw_user_id    = 2;
+            $auction->post_id       = 1;
             $auction->save();
 
-            $id = Auth::id();
-            $userId = User::find($id);
-            if($userId->balance >= $request->discount){
+            // $id = Auth::id();
+            // $userId = User::find($id);
+            // if($userId->balance >= $request->discount){
               
-              $userAdmin = $this->roleUsers();
-              $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->discount, 'تم ايداع مبلغ من حساب');
-              $lesson = new Lesson;
-              $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
-              try{
-                if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
-                  return back();
-                }
-              }catch(\Exception $e){
-                return back()->with(['error'=>MessageEnum::MESSAGE_PAYMENT_ERROR]);
-              }
-              $user = User::find(Auth::id());
-              $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
-              try{
-                $pusher = $this->pusherNotifications($user);
-                $auctions = Auction::where('invoice_id', $invoice_id)->update(['is_active' => 1]);
-                return redirect('/')
-                ->with(['success'=>MessageEnum::MESSAGE_PAYMENT_SUCCESS]);
-              }catch(\Exception $e){
-                return back()->with(['error'=>MessageEnum::MESSAGE_PAYMENT_ERROR]);
-              }
+            //   $userAdmin = $this->roleUsers();
+            //   $wallet = $this->walletTransfer($userId, $userAdmin, $userId->name, $request->discount, 'تم ايداع مبلغ من حساب');
+            //   $lesson = new Lesson;
+            //   $lesson = $this->lessonNotification($userAdmin->id, 'لقد تمت عملية دفع من قبل ', $userId->name, 'admin_wallet');
+            //   try{
+            //     if(\Notification::send($userAdmin ,new AdminNotification(Lesson::latest('id')->first()))){
+            //       return back();
+            //     }
+            //   }catch(\Exception $e){
+            //     return back()->with(['error'=>MessageEnum::MESSAGE_PAYMENT_ERROR]);
+            //   }
+            //   $user = User::find(Auth::id());
+            //   $lesson = $this->lessonNotification(Auth::id(), 'لقد تمت عملية سحب من حسابك ', '', 'wallet/"'.Auth::id().'"');
+            //   try{
+            //     $pusher = $this->pusherNotifications($user);
+            //     $auctions = Auction::where('invoice_id', $invoice_id)->update(['is_active' => 1]);
+            //     return redirect('/')
+            //     ->with(['success'=>MessageEnum::MESSAGE_PAYMENT_SUCCESS]);
+            //   }catch(\Exception $e){
+            //     return back()->with(['error'=>MessageEnum::MESSAGE_PAYMENT_ERROR]);
+            //   }
               
               
-            }else{
+            // }else{
                 $data = [
-                    "order_reference"     => $invoice_id,
+                    "order_reference"     => 1,
                     "products"            => [
                         array(
-                          "id" => $request->post_id,
-                          "product_name"    => $request->post_name,
+                          "id" => 1,
+                          "product_name"    => 'فروتنش',
                           "quantity"        => 1,
-                          "unit_amount"     => $request->discount
+                          "unit_amount"     => 2000
                         )],
                     "currency"            => "YER",
-                    "total_amount"        => $request->discount,
+                    "total_amount"        => 2000,
                     "success_url"         => "http://polar-garden-78668.herokuapp.com/test/response",
                     "cancel_url"          => "http://polar-garden-78668.herokuapp.com/test/cancel",
                     "metadata"            => [
                         "Customer name" => "somename",
-                        "order id" => $request->post_id
+                        "order id" => 1
                     ]];
                   $curl = curl_init();
                   curl_setopt_array($curl, array(
@@ -141,7 +141,7 @@ class testController extends Controller
                 } else {
                   echo $response;
                 }
-            }
-        }
+            // }
+        // }
     }
 }
