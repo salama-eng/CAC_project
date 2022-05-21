@@ -22,6 +22,8 @@ class HomeController extends Controller
     public function showauctionDetails(Request $request,$id){
         $userAdmin = $this->roleUsers();
         $posts=Post::with(['auctions','users','category'])->find($id);
+        $totalMax = Auction::where('post_id', $posts->id)
+                            ->where('is_active', 1)->max('bid_total');
         $auctions = Auction::with(['userAw'])->where('post_id', $id)
                             ->where('is_active', 1)->orderBy('bid_amount', 'ASC')->get();
         $Information = contact_us_info::select()->where('is_active',1)->get();
@@ -30,6 +32,7 @@ class HomeController extends Controller
             'post'          => $posts,
             'auctions'      => $auctions,
             'userAdmin'     => $userAdmin,
+            'totalMax'      => $totalMax,
 
         ]);
     }
