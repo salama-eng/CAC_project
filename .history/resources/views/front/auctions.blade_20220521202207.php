@@ -95,14 +95,7 @@
                                 </p>
 
                             </div>
-
-                            <p class="text-center fs-7 card-details coun">
-                               
-                                     {{$post->city}}
-                                
-                              
-                            </p>
-
+                        
                             <div class="card-body d-flex justify-content-between py-0">
                                 <p href="#" class="card-link card-details ">سعر المزايدة/<span class="active price">
 
