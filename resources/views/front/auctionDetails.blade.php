@@ -191,14 +191,13 @@
                                                     <em class="yellow"><span class="text-price"></span>$</em>
                                                 </h2>
                                                 @php $mess = 0 @endphp
-                                                @if($userId != null)
-                                                    @foreach($userId as $user)
-                                                        @if($user == Auth::id())
+                                                @if(isset($userAuction))
+                                                    @foreach($userAuction as $user)
+                                                        @if($user->aw_user_id == Auth::id())
                                                             <h1></h1>
-                                                            
-                                                        @elseif($user != Auth::id())
+                                                        @else
                                                             @php $mess++ @endphp
-                                                            @if($mess == 1)
+                                                            @if ($mess = 1)
                                                                 <h2 class="text-white fs-4 p-3"> ملاحظة :
                                                                     <span class="fs-6">سيتم سحب من حساب {{$discount}}$</span>
                                                                     <em class="yellow fs-6">
@@ -207,9 +206,7 @@
                                                                 </h2>
                                                             @endif
                                                         @endif
-                                                        
                                                     @endforeach
-                                                
                                                 @endif
                                             </div>
                                             <div class="w-100">

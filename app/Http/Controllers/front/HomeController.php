@@ -26,6 +26,8 @@ class HomeController extends Controller
                             ->where('is_active', 1)->max('bid_total');
         $auctions = Auction::with(['userAw'])->where('post_id', $id)
                             ->where('is_active', 1)->orderBy('bid_amount', 'ASC')->get();
+        $userAuction = Auction::where('post_id', $id)
+                                ->where('is_active', 1)->get();
         $Information = contact_us_info::select()->where('is_active',1)->get();
 
         return view('front.auctionDetails', [
