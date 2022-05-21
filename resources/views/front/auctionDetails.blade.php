@@ -181,35 +181,6 @@
                                             <input type="hidden" name="total" value="{{$total}}">
                                         
                                         </div>
-                                        <div class="modal-body bg-darkgrey ">
-
-                                            <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
-                                                <em class="yellow"><span class="text-price"></span>$</em>
-                                            </h2>
-                                            @php
-                                                $mess = 0
-                                            @endphp
-                                            @if($userId != null)
-                                                @foreach($userId as $user)
-                                                    @if($user == Auth::id())
-                                                        <h1></h1>
-                                                        
-                                                    @elseif($user != Auth::id())
-                                                        @php $mess++ @endphp
-                                                        @if($mess == 1)
-                                                            <h2 class="text-white fs-4 p-3"> ملاحظة :
-                                                                <span class="fs-6">سيتم سحب من حساب {{$discount}}$</span>
-                                                                <em class="yellow fs-6">
-                                                                    <a href="{{route('faq')}}" class="card-link active text-center mt-5 mb-2"> معرفة المزيد <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></li>
-                                                                </em>
-                                                            </h2>
-                                                        @endif
-                                                    @endif
-                                                    
-                                                @endforeach
-                                            
-                                            @endif
-                                        </div>
                                         <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"
                                                 data-bs-dismiss="modal">تراجع</button>
