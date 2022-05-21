@@ -86,7 +86,9 @@
                                         {{-- @endif --}}
 
                                     </div>
-                                    
+                                    @error('bid_amount')
+                                        <span class="text-end yellow">* {{ $message }} </span>
+                                    @enderror
                                 </div>
 
                                 @php
