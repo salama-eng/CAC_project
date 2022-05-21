@@ -11,6 +11,7 @@ use DB;
 use App\Models\Lesson;
 use App\Events\AdminNotification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Enum\MessageEnum;
 class testController extends Controller
@@ -43,6 +44,13 @@ class testController extends Controller
     }
  
     public function index(Request $request){
+        Validator::validate($request->all(),[
+          'auction_ceiling'   => 'required|min:"'.$request->auction_ceiling.'"|numeric',
+        ],[
+          'required'          => MessageEnum::REQUIRED,
+          'min'               => $this->messageMin($request->auction_ceiling),
+          'numeric'           => MessageEnum::MESSAGE_NUMBERS,
+        ]);
         $auctionUser = Auction::where('aw_user_id', Auth::id())
                                 ->where('post_id', $request->post_id)
                                 ->where('is_active', 1)->first();

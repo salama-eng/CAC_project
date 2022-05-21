@@ -179,9 +179,10 @@
                                                 <input type="hidden" name="post_id" value="{{$post->id}}">
                                                 <input type="hidden" name="post_name" value="{{$post->name}}">
                                                 <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                                <input type="text" name="bid_amount" value="">
+                                                <input type="hidden" name="bid_amount" value="">
                                                 <input type="hidden" name="discount" value="{{$discount}}">
                                                 <input type="hidden" name="total" value="{{$total}}">
+                                                <input type="hidden" name="auction_ceiling" value="{{ $post->auction_ceiling}}">
                                             </div>
                                             <div class="w-100">
                                                 <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
