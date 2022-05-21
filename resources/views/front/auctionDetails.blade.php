@@ -176,15 +176,15 @@
                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                             <input type="hidden" name="post_name" value="{{$post->name}}">
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                            <input type="text" name="bid_amount" value="" required>
+                                            <input type="text" name="bid_amount" value="">
                                             <input type="hidden" name="discount" value="{{$discount}}">
                                             <input type="hidden" name="total" value="{{$total}}">
-                                        
+                                            <input type="submit" class="bg-yellow text-white fs-5" value=" تاكيد  " />
                                         </div>
                                         <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"
                                                 data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
+                                            
                                         </div>
                                     </form>
                                 </div>
