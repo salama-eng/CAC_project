@@ -54,7 +54,7 @@
 
                 <h3 class="font-weight-light"> تسجيل الدخول </h3>
               
-                <input name="email" class="mt-4 mb-0" type="text" value="{{old('email')}}" placeholder="الإيميل">
+                <input name="email" class="mt-4 mb-0" type="text" value="{{old('email')}}" placeholder="ايميل المستخدم">
                  @error('email')
               <span class="text-end yellow">* {{ $message }}  </span>
                  @enderror

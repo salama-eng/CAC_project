@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('phone')->default('لا يوجد');
+            $table->string('phone');
             $table->text('message');
             $table->boolean('status')->default(0);
             $table->timestamps();

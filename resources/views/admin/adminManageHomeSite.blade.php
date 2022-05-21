@@ -1,16 +1,5 @@
 @extends('admin.layout.dashboard')
 @section('content')
-<style>
-
-    .site-manage
-    {
-        border: none !important;
-      background-color: #222121 !important;
-      box-shadow: rgba(1, 1, 1, 0.16) 0px 3px 6px 5px;
-      width:100%;
-    }
-    
-    </style>
 @if($do == 'Manage')
 <!-- Start page content -->
 <h1 class="text-center fs-3 text-white mb-5">ادارة الصفحة الرئيسية  </h1>
@@ -33,7 +22,7 @@
         @foreach($Content as $content)
 
         <!-- النص الرئيسي -->
-        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 site-manage" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 z" style="border:1px solid gray ;">
             <h4 class="yellow ">النص الرئيسي</h4>
             <hr>
             <p class="my-4">{{$content->main_paragraph}}</p>
@@ -45,7 +34,7 @@
         </div>
         
         <!-- الوصف  -->
-        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 site-manage"  style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 "  style="border:1px solid gray ;">
             <h4 class="yellow ">الوصف</h4>
             <hr>
             <p class="my-4">{{$content->description}}</p>
@@ -57,7 +46,7 @@
         </div>
 
         <!-- النص الاول -->
-        <div class=" text-white mb-4 text col-12 col-md-10 m-auto shadow p-4 pb-4 site-manage" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 text col-12 col-md-10 m-auto shadow p-4 pb-4 " style="border:1px solid gray ;">
             <h4 class="yellow "> النص الاول</h4>
             <hr>
             <p>{{$content->paragraph_one}}</p>
@@ -68,7 +57,7 @@
         </div>
 
         <!-- النص الثاني -->
-        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 site-manage" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 " style="border:1px solid gray ;">
             <h4 class="yellow "> النص الثاني</h4>
             <hr>
             <p>{{$content->paragraph_two}}</p>
@@ -89,7 +78,7 @@
                 @csrf
                 <!-- Start content -->
                 <!--  النص الرئيسي -->
-                <div class="mb-3 row site-manage">
+                <div class="mb-3 row ">
                     <label class="col-sm-2 col-form-label text-white mt-4">  النص الرئيسي </label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="main_paragraph" cols="30" class="form-control mt-4 mb-0"  rows="5">
@@ -102,7 +91,7 @@
                 </div>
 
                 <!-- الوصف -->
-                <div class="mb-3 row site-manage">
+                <div class="mb-3 row ">
                     <label class="col-sm-2 col-form-label text-white mt-4"> الوصف</label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="description" cols="30" class="form-control mt-4 mb-0"  rows="5">
@@ -115,7 +104,7 @@
                 </div>
 
                 <!-- النص الاةل -->
-                <div class="mb-3 row site-manage">
+                <div class="mb-3 row ">
                     <label class="col-sm-2 col-form-label text-white mt-4"> النص الاول</label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="paragraph_one" cols="30" class="form-control mt-4 mb-0"  rows="5">
@@ -128,7 +117,7 @@
                 </div>
 
                 <!-- النص الثاني -->
-                <div class="mb-3 row site-manage">
+                <div class="mb-3 row ">
                     <label class="col-sm-2 col-form-label text-white mt-4"> النص الثاني</label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="paragraph_two" cols="30" class="form-control mt-4 mb-0"  rows="5">
@@ -142,7 +131,7 @@
                 <!-- End Add content -->
 
                 <!-- Start Submit -->
-                <div class="mb-2 row site-manage">
+                <div class="mb-2 row ">
                     <div class="offset-sm-2  col-sm-10">
                         <input type="submit" value="  النص الافتراضي" class=" btn p-2 bg-yellow ">
                     </div>
@@ -167,7 +156,7 @@
                 <!-- Start content -->
                 <div class="mb-3 row ">
                     <label class="col-sm-2 col-form-label text-white py-4">  {{$name}}  </label>
-                    <div class="col-sm-8 col-md-9 site-manage">
+                    <div class="col-sm-8 col-md-9 ">
                         <textarea name="{{$column}}" cols="30" class="form-control  mb-0 p-4" style="border:none ;  background-color:transparent !important;   " rows="7">
                         {{$Content[0]->$column}}
                         </textarea>

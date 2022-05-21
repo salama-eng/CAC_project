@@ -34,6 +34,8 @@ class contactUsInfoController extends Controller
         $informartion->name = $request->name;
         $informartion->icon = $request->icon;
         $informartion->link = $request->link;
+        if($request->active != null)
+            $informartion->is_active = 1;
 
         if($informartion->save())
         return redirect('manage_contact_us')

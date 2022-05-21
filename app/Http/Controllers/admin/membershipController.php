@@ -29,6 +29,7 @@ class membershipController extends Controller
             'image'=>['required'],
             'address'=>'required',
             'phone'=>'required',
+            'description'=>'required',
         ],[
             'required'=>MessageEnum::REQUIRED,
             'email.unique' => 'هذا الايميل غير متاح',
@@ -59,6 +60,8 @@ class membershipController extends Controller
             'image'=>['required'],
             'address'=>'required',
             'phone'=>'required',
+            'description'=>'required',
+
         ],[
             'required'=>MessageEnum::REQUIRED,
             'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',

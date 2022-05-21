@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
             $table->string('image');
-            $table->text('description')->default('لا يوجد');
+            $table->text('description');
             
             $table->boolean('is_active')->default(0);
             $table->timestamps();
