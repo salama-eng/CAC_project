@@ -67,7 +67,8 @@ class HomeController extends Controller
         $model = post::get();
         $status = post::get();
         $category = $category->unique('name');
-        $cities = Post::select('city')->where('is_active',1)->get();
+        
+        $cities = $model->unique('city');
         $model = $model->unique('model');
         $status = $status->unique('status_car');
         // Auction::where('is_active',1)->max('bid_total');
@@ -90,12 +91,12 @@ class HomeController extends Controller
 Post::with(['auctions'])->where('is_active',1)->paginate(1);
 
    $posts=Post::with(['auctions'])->where('is_active',1)->paginate(15);
-   $cities = Post::select('city')->where('is_active',1)->get();
    $category = Category::get();
    $model = post::get();
    $status = post::get();
-
    $category = $category->unique('name');
+   
+   $cities = $model->unique('city');
    $model = $model->unique('model');
    $status = $status->unique('status_car');
     $Information = contact_us_info::select()->where('is_active',1)->get();

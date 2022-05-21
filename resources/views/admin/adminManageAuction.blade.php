@@ -2,11 +2,8 @@
 @section('content')
 
 
-<h1 class="text-center fs-3  text-white mt-4">  المزايدات الحالية </h1>
-<div class="col-lg-4 col-8 mx-auto mb-5 mt-0">
-    <span class="fa fa-search text-light"></span>
-    <input type="text" placeholder="ابحث عن السياره" class="search-input w-100 px-5 text-light">
-</div>
+<h1 class="text-center fs-3  text-white my-5">  المزايدات الحالية </h1>
+
     <div class="container">
         @if(session()->has('error'))
             <div class="alert alert-danger message">
@@ -18,7 +15,15 @@
                 {{ session()->get('success') }}
             </div>
         @endif
-
+        <div class="col-lg-4 col-8 mx-auto mb-5 mt-0  w-50 ">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend " style="border-radius: 0">
+                  <span class="input-group-text px-4" id="basic-addon1"  style="border-radius: 0"><i class="bi bi-search d-flex  active align-items-center "></i></span>
+                </div>
+                <input type="text" class="form-control search-input search py-4" placeholder="ابحث عن المستخدم" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+            
+        </div>
         <div class="table-responsive text-white ms-5">
             <table class="main-table manage-members text-center table  text-white">
                 <tr class="active">

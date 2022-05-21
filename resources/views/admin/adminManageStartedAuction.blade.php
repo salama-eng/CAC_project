@@ -15,7 +15,15 @@
                 {{ session()->get('success') }}
             </div>
         @endif
-
+        <div class="col-lg-4 col-8 mx-auto mb-5 mt-0  w-50 ">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend " style="border-radius: 0">
+                  <span class="input-group-text px-4" id="basic-addon1"  style="border-radius: 0"><i class="bi bi-search d-flex  active align-items-center "></i></span>
+                </div>
+                <input type="text" class="form-control search-input search py-4" placeholder="ابحث عن المستخدم" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+            
+        </div>
         <div class="table-responsive text-white">
             <table class="main-table manage-members text-center table table-bordered  text-white">
                 <tr class="active">
@@ -33,7 +41,7 @@
                     @if($post->end_date >= date('Y-m-d'))
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$post->name}}</td>
+                            <td class="u-name">{{$post->name}}</td>
                             <td>{{$post->users->name}}</td>
                             <td>{{$post->end_date}}</td>
                             <td>{{$post->starting_price}}</td>

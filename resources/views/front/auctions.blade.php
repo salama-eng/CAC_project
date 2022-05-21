@@ -33,7 +33,7 @@
                         <div class="my-2 mx-auto">
                             <select id="coun" class="text-center  py-1">
                                 @foreach ($cities as $cit)
-                                    <option value="{{ $cit->city }}">{{ $cit->city }}</option>
+                                    <option value="{{$cit->city}}">{{$cit->city}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -84,6 +84,7 @@
 
                                 <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }} /
                                     <span class="mod">{{ $post->model }}</span>
+                                    <span class="coun">{{ $post->city }}</span>
                                 </h5>
                                 <p class="text-center fs-7 card-details type">
                                     @if ($post->status_car == 1)
@@ -94,6 +95,14 @@
                                 </p>
 
                             </div>
+
+                            <p class="text-center fs-7 card-details coun">
+                               
+                                     {{$post->city}}
+                                
+                              
+                            </p>
+
                             <div class="card-body d-flex justify-content-between py-0">
                                 <p href="#" class="card-link card-details ">سعر المزايدة/<span class="active price">
 
@@ -111,6 +120,7 @@
 
                         <!--  the model   -->
 
+<<<<<<< HEAD
                         <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             @if (Auth::id())
@@ -184,6 +194,9 @@
                             @endif
 
                         </div>
+=======
+                   
+>>>>>>> 99e55eabca584f8fa9f016e843ef3b3dea54869f
                     @endif
                 @endif
             @endforeach
