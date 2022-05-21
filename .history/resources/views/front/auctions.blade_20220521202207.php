@@ -5,9 +5,6 @@
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
-                @if (session()->has('success'))
-                <p class="message fs-5">{{ session()->get('success') }}</p>
-                @endif
                 <h1 class="fw-bold w-100 text-center active mb-5">
                     مستكشف المركبات
                 </h1>
@@ -80,41 +77,38 @@
             @foreach ($posts as $post)
                 @if (isset($post->auctions[0]->is_active))
                     @if ($post->is_active == 1 && $post->end_date >= date('Y-m-d'))
-                    <div class="card animate text-light m-auto  py-0 mb-4 mt-4 " style="width: 20rem;">
-                        <a href="{{ route('auctiondetails', $post->id) }}"><img src="/images/{{ $post->image }}"
-                                class="card-img-top p-3" height="220" alt="...">
-                            <div style="position:absolute; left:20px;top:55%" class="bg-yellow p-1 px-2 text-light">
-                                <span class="mod">{{ $post->model }}</span>
-                                /{{ $post->category->name }}
-                                
+                        <div class="card animate text-light m-auto  py-0 mb-3" style="width: 20rem;">
+                            <a href="{{ route('auctiondetails', $post->id) }}"> <img src="/images/{{ $post->image }}"
+                                    class="card-img-top p-3" height="220" alt="..."></a>
+                            <div class="card-body py-0">
+
+                                <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }} /
+                                    <span class="mod">{{ $post->model }}</span>
+                                    <span class="coun">{{ $post->city }}</span>
+                                </h5>
+                                <p class="text-center fs-7 card-details type">
+                                    @if ($post->status_car == 1)
+                                        جديد / {{ $post->category->name }}
+                                    @else
+                                        مستخدم / {{ $post->category->name }}
+                                    @endif
+                                </p>
+
                             </div>
-                        </a>
-                        <div class="card-body py-0">
+                        
+                            <div class="card-body d-flex justify-content-between py-0">
+                                <p href="#" class="card-link card-details ">سعر المزايدة/<span class="active price">
 
-                            <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }}
-                                /
-                                @if ($post->status_car == 1)
-                                مستخدم 
-                            @else
-                                 جديد
-                            @endif
-                            </h5>
-                            <p class="text-center fs-7 card-details type">
-                               {{ $post->city }}
-                            </p>
 
+                                        {{ $post->auctions->max('bid_total') }}
+
+                                    </span><i class="active">$</i>
+                                </p>
+                                <a href="{{ route('auctiondetails', $post->id) }}" class="card-link active  fs-7">تفاصيل<i
+                                        class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
+
+                            </div>
                         </div>
-                        <div class="card-body d-flex justify-content-between py-0">
-                            <p href="#" class="card-link card-details">سعر المزايدة/<span
-                                    class="active price">{{ $post->starting_price }}</span><i
-                                    class="active">$</i>
-                            </p>
-                            <a href="{{ route('auctiondetails', $post->id) }}"
-                                class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
-
-                        </div>
-
-                    </div>
 
 
                         <!--  the model   -->

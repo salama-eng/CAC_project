@@ -5,9 +5,6 @@
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
-                @if (session()->has('success'))
-                <p class="message fs-5">{{ session()->get('success') }}</p>
-                @endif
                 <h1 class="fw-bolder  w-100 text-center active mb-5">
                     مستكشف المركبات
                 </h1>
@@ -102,7 +99,14 @@
                                 <p class="text-center fs-7 card-details type">
                                    {{ $post->city }}
                                 </p>
-
+                                <h5 class="card-title text-center"><span class="cate"></span>{{ $post->name }}
+                                    /
+                                    @if ($post->status_car == 1)
+                                    مستخدم 
+                                @else
+                                     جديد
+                                @endif
+                                </h5>
                             </div>
                             <div class="card-body d-flex justify-content-between py-0">
                                 <p href="#" class="card-link card-details">سعر المزايدة/<span
