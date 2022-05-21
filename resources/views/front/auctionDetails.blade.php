@@ -213,7 +213,7 @@
                                         <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"
                                                 data-bs-dismiss="modal">تراجع</button>
-                                            <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
+                                            <input type="submit" class="bg-yellow text-white fs-5" value=" تاكيد  " />
                                         </div>
                                     </form>
                                 </div>
