@@ -45,11 +45,11 @@ class testController extends Controller
  
     public function index(Request $request){
         $validate = Validator::validate($request->all(),[
-          'auction_ceiling'   => 'required|min:"'.$request->auction_ceiling.'"|numeric',
+          'auction_ceiling'   => 'required|min:"'.$request->auction_ceiling.'"|integer',
         ],[
           'required'          => MessageEnum::REQUIRED,
           'min'               => $this->messageMin($request->auction_ceiling),
-          'numeric'           => MessageEnum::MESSAGE_NUMBERS,
+          'integer'           => MessageEnum::MESSAGE_NUMBERS,
         ]);
         if(isset($validate)){
           return back()->with([
