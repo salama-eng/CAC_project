@@ -56,13 +56,11 @@
 
                     </div>
                     @php $total = $post->starting_price @endphp
-                    @php
-                                    $discount = 0.2 * $post->starting_price;
-                                @endphp
+
                     @php $userId = [] @endphp
                     <div class=" border-n mt-4 col-10">
-                        <form action="{{ route('test') }}" method="get">
-                             @csrf
+                        {{-- <form action="{{ route('bid_amount') }}" method="get"> --}}
+                            {{-- @csrf --}}
 
                             <div class="modal-body bg-darkgrey col-12 w-100">
                                 @if ($errors->any())
@@ -81,22 +79,18 @@
                                     <div class="d-flex  align-items-center gap-3 w-100 ">
                                         <h3 class="text-white fs-6"> </h3>
                                         <input type="number" class="input-model text-white p-2 auction-input" required
-                                            min="{{ $post->auction_ceiling }}" step="{{ $post->auction_ceiling }}" 
-                                            name="bid_amount" placeholder="مقدار الزيادة" />
+                                            min="{{ $post->auction_ceiling }}" step="{{ $post->auction_ceiling }}" value=""
+                                            name="amount" placeholder="مقدار الزيادة" />
                                             @if (session()->has('error'))
                                             <p class="messag">{{ session()->get('error') }}</p>
-                                            
                                         @endif
-                                        <input type="hidden" name="post_id" value="{{$post->id}}">
-                                        <input type="hidden" name="post_name" value="{{$post->name}}">
-                                        <input type="hidden" name="user_id" value="{{$post->users->id}}">
-                                        {{-- <input type="hidden" name="bid_amount" value="2000"> --}}
-                                        <input type="hidden" name="discount" value="{{$discount}}">
-                                        <input type="hidden" name="total" value="{{$total}}">
+
                                     </div>
                                 </div>
 
-                                
+                                @php
+                                    $discount = 0.2 * $post->starting_price;
+                                @endphp
                                 <h3 class="text-white fs-7 mt-2 ">*يجب ان تكون مقدار الزيادة من مضاعفات
                                     <span class="yellow"> {{ $post->auction_ceiling }}$
                                 </h3></span>
@@ -117,9 +111,12 @@
                             </div>
 
                             @if ($post->end_date >= date('Y-m-d') && Auth::id() != $userAdmin->id && $post->users->id != Auth::id())
-                            <input type="submit" class="btn bg-yellow text-white fs-5 submit" value=" تاكيد  " />
+                                <a href="#"
+                                    class='bg-yellow text-light fs-6 py-3 px-5 d-flex  align-items-center justify-content-center make-auction'
+                                    data-bs-toggle="modal" data-bs-target="#auction{{ $post->id }}">مزايدة<i
+                                        class="fa fa-long-arrow-left"> </i></a>
                             @endif
-                        </form>
+                        {{-- </form> --}}
 
                     </div>
                     {{-- @php
