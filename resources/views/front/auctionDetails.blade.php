@@ -11,7 +11,7 @@
     </div>
     @if (session()->has('message'))
             {
-            <p class="messag">{{ session()->get('message') }}</p>
+            <p class="message">{{ session()->get('message') }}</p>
             }
             @endif
     <section class="d-flex container mt-5 flex-wrap col-lg-9">
