@@ -244,7 +244,9 @@
                     @if (isset($post->auctions[0]->bid_total))
                         <h3 class="active fs-4"> <span class="card-details text-light fw-bold card-details fs-5"> السعر
                                 الحالي/ </span>
-                            {{ $post->auctions->max('bid_total') }}$
+                            @if ($post->auctions[0]->is_active = 1)
+                                {{ $post->auctions->max('bid_total') }}$
+                            @endif
                         </h3>
                     @else
                         <h3 class="active fs-4"> <span class="card-details text-light fw-bold card-details fs-5"> السعر
