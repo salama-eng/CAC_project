@@ -120,7 +120,6 @@
 
                         <!--  the model   -->
 
-<<<<<<< HEAD
                         <div class="modal fade user" id="auction{{ $post->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             @if (Auth::id())
@@ -194,9 +193,6 @@
                             @endif
 
                         </div>
-=======
-                   
->>>>>>> 99e55eabca584f8fa9f016e843ef3b3dea54869f
                     @endif
                 @endif
             @endforeach
