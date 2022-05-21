@@ -180,7 +180,7 @@ $('.make-auction').click(function(e){
  e.preventDefault();
  var priceAuction=$('.auction-input').val();
  $('.text-price').text(priceAuction)
- 
+ $('input[name="bid_amount"]').val(priceAuction)
 })
 $(".search-input").on("keyup", function() {
   var value = $(this).val().toLowerCase();
