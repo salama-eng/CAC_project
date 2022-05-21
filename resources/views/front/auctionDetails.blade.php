@@ -180,9 +180,6 @@
                                             <input type="hidden" name="discount" value="{{$discount}}">
                                             <input type="hidden" name="total" value="{{$total}}">
                                         
-                                        </div>
-                                        <div class="modal-body bg-darkgrey ">
-
                                             <h2 class="text-white fs-4 p-3"> هل انت متاكد تريد المزايدة على السيارة بمبلغ
                                                 <em class="yellow"><span class="text-price"></span>$</em>
                                             </h2>
@@ -209,11 +206,15 @@
                                                 @endforeach
                                             
                                             @endif
-                                        </div>
-                                        <div class="modal-footer bg-darkergrey">
                                             <button type="button" class=" bg-lighter text-white fs-5"
                                                 data-bs-dismiss="modal">تراجع</button>
                                             <input type="submit" class="bg-yellow text-white fs-5" value=" تاكيد  " />
+                                        </div>
+                                        <div class="modal-body bg-darkgrey ">
+
+                                        </div>
+                                        <div class="modal-footer bg-darkergrey">
+                                            
                                         </div>
                                     </form>
                                 </div>
