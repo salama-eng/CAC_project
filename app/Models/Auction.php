@@ -13,7 +13,7 @@ class Auction extends Model
         'is_active',
     ];
     public function auction_post(){
-        return $this->belongsTo(post::class,'post_id');
+        return $this->belongsTo(Post::class,'post_id');
     }
     public function userOwner(){
         return $this->belongsTo(User::class,'owner_user_id');
