@@ -102,7 +102,7 @@
                                         <div>
                                             <h2 class="text-white fs-6 ">
                                                 مبلغ المزايدة سيكون اكثر من <em
-                                                    class="yellow">{{ $post->auctions->sum('bid_amount')}}$</em>
+                                                    class="yellow">{{ $post->auction_ceiling}}$</em>
                                             </h2>
                                         </div>
                                     @endif
