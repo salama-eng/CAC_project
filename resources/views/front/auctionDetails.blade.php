@@ -81,9 +81,9 @@
                                         <input type="number" class="input-model text-white p-2 auction-input" required
                                             min="{{ $post->auction_ceiling }}" step="{{ $post->auction_ceiling }}" value=""
                                             name="amount" placeholder="مقدار الزيادة" />
-                                            @if (session()->has('error'))
-                                            <p class="messag">{{ session()->get('error') }}</p>
-                                        @endif
+                                        {{-- @if (session()->has('error')) --}}
+                                        <p class="messagError"></p>
+                                        {{-- @endif --}}
 
                                     </div>
                                 </div>
