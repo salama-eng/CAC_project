@@ -235,7 +235,7 @@
 
                     </div>
                 </div>
-                <ul class="dropdown-menu notification bg-dark">
+                <ul class="dropdown-menu notification bg-dark bg-noty">
                     @if(isset(auth()->user()->unreadNotifications))
                         @foreach (auth()->user()->unreadNotifications as $notification)
                             @if ($notification->type == 'App\Events\AdminNotification')
