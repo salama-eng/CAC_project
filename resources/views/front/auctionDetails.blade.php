@@ -9,7 +9,11 @@
 
     </style>
     </div>
-    
+    @if (session()->has('message'))
+            {
+            <p class="messag">{{ session()->get('message') }}</p>
+            }
+            @endif
     <section class="d-flex container mt-5 flex-wrap col-lg-9">
         <section class="col-12  col-lg-6 mt-5">
             <a href="" class="d-flex card-details fs-6 mb-1"><span class="fa fa-long-arrow-right pt-2 px-2"></span>رجوع</a>
@@ -66,9 +70,7 @@
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul style="list-style: none">
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
+                                            
                                         </ul>
                                     </div>
                                 @endif
@@ -86,9 +88,7 @@
                                         {{-- @endif --}}
 
                                     </div>
-                                    @error('bid_amount')
-                                        <span class="text-end yellow">* {{ $message }} </span>
-                                    @enderror
+                                    
                                 </div>
 
                                 @php

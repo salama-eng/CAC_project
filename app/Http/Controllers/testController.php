@@ -44,13 +44,18 @@ class testController extends Controller
     }
  
     public function index(Request $request){
-        Validator::validate($request->all(),[
+        $validate = Validator::validate($request->all(),[
           'auction_ceiling'   => 'required|min:"'.$request->auction_ceiling.'"|numeric',
         ],[
           'required'          => MessageEnum::REQUIRED,
           'min'               => $this->messageMin($request->auction_ceiling),
           'numeric'           => MessageEnum::MESSAGE_NUMBERS,
         ]);
+        if(isset($validate)){
+          return back()->with([
+            'message'     => ' فشل! تاكد من البيانات المدخلة'
+          ]);
+        }
         $auctionUser = Auction::where('aw_user_id', Auth::id())
                                 ->where('post_id', $request->post_id)
                                 ->where('is_active', 1)->first();
