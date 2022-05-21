@@ -91,7 +91,7 @@ Post::with(['auctions'])->where('is_active',1)->paginate(1);
     $Information = contact_us_info::select()->where('is_active',1)->get();
    
         return view('front.offers', [
-            'Posts' => $posts,
+            'posts' => $posts,
             'category' => $category,
             'cities' => $cities,
             'model' => $model,

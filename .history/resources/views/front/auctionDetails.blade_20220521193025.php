@@ -21,7 +21,6 @@
                     <div class="col-6 col-lg-4">
 
                         <p class="card-details mb-1 fw-bold">العنوان</p>
-                        <p class="card-details mb-1 fw-bold">المدينة</p>
                         <p class="card-details mb-1 fw-bold">الموديل</p>
                         <p class="card-details mb-1 fw-bold">الماركة</p>
                         <p class="card-details mb-5 fw-bold">اللون</p>
@@ -34,7 +33,7 @@
                     </div>
                     <div class="col-6 col-lg-8">
                         <p class="mb-1 text-light ">{{ $post->address }}</p>
-                        <p class="mb-1 text-light ">{{ $post->city }}</p>
+                        <p class="mb-1 text-light ">{{ $post->address }}</p>
                         <p class="mb-1 text-light ">{{ $post->model }}</p>
                         <p class="mb-1 text-light ">{{ $post->category->name }}</p>
                         <p class="mb-5 text-light ">{{ $post->color }}</p>
