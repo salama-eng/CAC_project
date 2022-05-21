@@ -56,7 +56,9 @@
 
                     </div>
                     @php $total = $post->starting_price @endphp
-
+                    @php
+                                    $discount = 0.2 * $post->starting_price;
+                                @endphp
                     @php $userId = [] @endphp
                     <div class=" border-n mt-4 col-10">
                         <form action="{{ route('test') }}" method="get">
@@ -94,9 +96,7 @@
                                     </div>
                                 </div>
 
-                                @php
-                                    $discount = 0.2 * $post->starting_price;
-                                @endphp
+                                
                                 <h3 class="text-white fs-7 mt-2 ">*يجب ان تكون مقدار الزيادة من مضاعفات
                                     <span class="yellow"> {{ $post->auction_ceiling }}$
                                 </h3></span>
