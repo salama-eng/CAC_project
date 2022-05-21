@@ -177,10 +177,10 @@ $('.accordion-button').click(function(){
   $(this).parent().parent().find('.accordion-collapse').slideToggle();
 })
 $('.make-auction').click(function(e){
- e.preventDefault();
- var priceAuction=$('.auction-input').val();
+ e.preventDefault()
+ var priceAuction= $('.auction-input').val();
  if(priceAuction == null){
-   textError = 'هذا الحقل مطلوب';
+   var textError = 'هذا الحقل مطلوب';
    $('.messagError').text(textError)
  }else{
   $('.text-price').text(priceAuction)
