@@ -172,7 +172,7 @@
                                 <div class="modal-content  ">
                                     <form action="{{ route('test') }}" method="get">
                                         @csrf
-                                        <div class="modal-header bg-darkgrey">
+                                        <div class="modal-header bg-darkgrey d-flex flex-column-reverse">
                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                             <input type="hidden" name="post_name" value="{{$post->name}}">
                                             <input type="hidden" name="user_id" value="{{$post->users->id}}">

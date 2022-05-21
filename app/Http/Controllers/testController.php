@@ -44,8 +44,10 @@ class testController extends Controller
  
     public function index(Request $request){
         $auctionUser = Auction::where('aw_user_id', Auth::id())
-                                ->where('post_id', $request->post_id)->first();
-        $count = Auction::where('post_id', $request->post_id)->sum('bid_amount');
+                                ->where('post_id', $request->post_id)
+                                ->where('is_active', 1)->first();
+        $count = Auction::where('post_id', $request->post_id)
+                          ->where('is_active', 1)->sum('bid_amount');
         $starting_price = $request->total + $count;
         if(isset($auctionUser)){
             $bid_amount = $request->bid_amount + $auctionUser->bid_amount;
