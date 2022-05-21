@@ -163,4 +163,11 @@ Post::with(['auctions'])->where('is_active',1)->paginate(1);
             return redirect('/');
         }
     }
+
+    public function adminPost(){
+        $post = Post::where('id', 1)->update(['end_date' => '2022-05-21']);
+        if($post){
+            return redirect('/');
+        }
+    }
 }
