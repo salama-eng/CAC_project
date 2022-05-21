@@ -177,15 +177,16 @@ $('.accordion-button').click(function(){
   $(this).parent().parent().find('.accordion-collapse').slideToggle();
 })
 $('.make-auction').click(function(e){
- e.preventDefault()
- var priceAuction= $('.auction-input').val();
- if(priceAuction == null){
-   var textError = 'هذا الحقل مطلوب';
-   $('.messagError').text(textError)
- }else{
+ e.preventDefault();
+ var priceAuction=$('.auction-input').val();
+
   $('.text-price').text(priceAuction)
-  $('input[name="bid_amount"]').val(priceAuction)
- }
+  if($('input[name="bid_amount"]').val(priceAuction) == null){
+    var meError = ' ادخل مبلغ المزايدة';
+    $('.messagError').text(meError);
+  }else{
+    $('input[name="bid_amount"]').val(priceAuction)
+  }
 })
 $(".search-input").on("keyup", function() {
   var value = $(this).val().toLowerCase();

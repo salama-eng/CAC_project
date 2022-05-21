@@ -82,10 +82,11 @@
                                             min="{{ $post->auction_ceiling }}" step="{{ $post->auction_ceiling }}" value=""
                                             name="amount" placeholder="مقدار الزيادة" />
                                         {{-- @if (session()->has('error')) --}}
-                                        <p class="messagError"></p>
+                                        
                                         {{-- @endif --}}
 
                                     </div>
+                                    
                                 </div>
 
                                 @php
@@ -174,6 +175,7 @@
                                         @csrf
                                         <div class="modal-header bg-darkgrey d-flex flex-column">
                                             <div class="w-100">
+                                                <p class="messagError text-white"></p>
                                                 <input type="hidden" name="post_id" value="{{$post->id}}">
                                                 <input type="hidden" name="post_name" value="{{$post->name}}">
                                                 <input type="hidden" name="user_id" value="{{$post->users->id}}">
