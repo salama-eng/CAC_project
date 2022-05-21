@@ -29,7 +29,7 @@
 </style>
     <section class="">
         @if (session()->has('success'))
-            <p class="messag">{{ session()->get('success') }}</p>
+        <p class="message fs-5">{{ session()->get('success') }}</p>
         @endif
         <div class="landscape  d-flex align-items-start col-12 ">
 

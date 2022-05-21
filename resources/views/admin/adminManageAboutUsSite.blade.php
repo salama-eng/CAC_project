@@ -22,7 +22,7 @@
 
         @foreach($Content as $content)
         
-        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 site-manage"  style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 "  style="border:1px solid gray ;">
             <h4 class="yellow ">نبذه عامة</h4>
             <hr>
             <p class="my-4">{{$content->description}}</p>
@@ -32,7 +32,7 @@
             </a>
         </div>
 
-        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 site-manage" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 " style="border:1px solid gray ;">
             <h4 class="yellow "> النص الاول</h4>
             <hr>
             <p>{{$content->paragraph_one}}</p>
@@ -42,7 +42,7 @@
             </a>
         </div>
 
-        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 site-manage" style="border:1px solid gray ;">
+        <div class=" text-white mb-4 col-12 col-md-10 m-auto shadow p-4 pb-4 " style="border:1px solid gray ;">
             <h4 class="yellow "> النص الثاني</h4>
             <hr>
             <p>{{$content->paragraph_two}}</p>
@@ -67,17 +67,17 @@
     <form action="{{ route('add_about_us_content') }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- Start content -->
-                <div class="mb-3 row site-manage">
+                <div class="mb-3 row ">
                     <label class="col-sm-2 col-form-label text-white">  نبذة عامة </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="description" cols="30" class="form-control mt-4 mb-0"  style="border:none ;  background-color:transparent !important; rows="7">
+                        <textarea name="description" cols="30" class="form-control mt-4 mb-0"  style="  background-color:transparent !important;" rows="7">
                            الاس، تكساس، تعد كوبارت الشركة الرائدة على مستوى العالم في مزادات السيارات على الإنترنت، ووجهة رئيسية لإعادة بيع وإعادة تسويق السيارات. تقنية كوبارت المبتكرة ومنصة المزادات على الإنترنت تربط بين البائعين و لمشترين حول العالم. كوبارت تقوم بتشغيل أكثر من 200 موقع في 11 بلد، وأكثر من 150,000 سيارة للمزاد كل يوم.                        </textarea>
                         @error('description')
                             <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                     </div>
                 </div>
-                <div class="mb-3 row site-manage">
+                <div class="mb-3 row ">
                     <label class="col-sm-2 col-form-label text-white">  النص الاول </label>
                     <div class="col-sm-8 col-md-9">   
                     <textarea name="paragraph_one" cols="30" class="form-control mt-4 mb-0"  rows="7">
@@ -88,7 +88,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="mb-3 row site-manage">
+                <div class="mb-3 row ">
                     <label class="col-sm-2 col-form-label text-white">  النص الثاني </label>
                     <div class="col-sm-8 col-md-9">
                         <textarea name="paragraph_two" cols="30" class="form-control mt-4 mb-0"  rows="7">
@@ -102,7 +102,7 @@
                 <!-- End edit content -->
 
                 <!-- Start Submit -->
-                <div class="mb-2 row site-manage">
+                <div class="mb-2 row ">
                     <div class="offset-sm-2 col-sm-10">
                         <input type="submit" value="  النص الافتراضي" class=" btn p-2 contact">
                     </div>
@@ -131,7 +131,7 @@
                 <input type="hidden" name="column" value="{{$column}}">
                 <!-- Start content -->
                     <label class="col-sm-2 col-form-label active fs-4 my-4">  {{$name}}  </label>
-                    <div class="col-sm-8 col-md-9 site-manage 
+                    <div class="col-sm-8 col-md-9  
                     p-4">
                         <textarea name="{{$column}}" cols="40" class="form-control  mb-0"  style="border:none ;  background-color:transparent !important; " rows="7">
                         {{$Content[0]->$column}}

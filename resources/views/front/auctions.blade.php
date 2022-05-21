@@ -5,6 +5,9 @@
 
             <div class="d-flex  flex-wrap  auctions-bg-child ">
                 <div></div>
+                @if (session()->has('success'))
+                <p class="message fs-5">{{ session()->get('success') }}</p>
+                @endif
                 <h1 class="fw-bold w-100 text-center active mb-5">
                     مستكشف المركبات
                 </h1>

@@ -197,12 +197,12 @@
                 </p>
 
             </div>
-            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2">
+            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2" style="width: fit-content">
                 <h6 class="active pt-3 pb-1">تواصل معنا</h6>
                 @if(isset($Information))
                 @foreach($Information as $information)
 
-                <p class="text-light mt-3 "><i class="{{$information->icon}} ps-3 active"></i>{{$information->link}}</p>
+                <p class="text-light mt-3 "><i class="{{$information->icon}} ps-3 active" ></i>{{$information->link}}</p>
                 <!-- <p class="text-light my-2"><i class="fa fa-envelope-o ps-3 active"></i>cac@gmail.com</p>
                 <p class="text-light my-2"><i class="fa fa-instagram ps-3 active"></i>@cacMazad</p>
                 <p class="text-light my-2"><i class="fa fa-phone ps-3 active"></i> 777 777 777</p> -->
@@ -215,24 +215,24 @@
                 <div class="d-flex mt-3">
                     <div class="mx-1">
 
-                        <input type="text" placeholder="الاسم" name="name" class="d-block my-1 py-2 text-light">
+                        <input type="text" placeholder="الاسم" name="name" value="{{old('name')}}" class="d-block my-1 py-2 text-light">
                         @error('name')
-                        <span class="text-end yellow"> {{ $message }}  </span>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
-                        <input type="text" placeholder="الايميل" name="email" class="d-block my-1 py-2 text-light">
+                        <input type="text" placeholder="الايميل" name="email" value="{{old('email')}}" class="d-block my-1 py-2 text-light">
                         @error('email')
-                        <span class="text-end yellow"> {{ $message }}  </span>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
-                        <input type="text" placeholder="رقم الهاتف" name="phone" class="d-block my-1 py-2 text-light">
+                        <input type="text" placeholder="رقم الهاتف" name="phone" value="{{old('phone')}}" class="d-block my-1 py-2 text-light">
                         @error('phone')
-                        <span class="text-end yellow"> {{ $message }}  </span>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                     </div>
                     <div class="mx-1">
                         <textarea  id="" name="message" placeholder="نص الرسالة"
-                            class=" py-2 text-light d-block px-sm-2 my-1"></textarea>
+                            class=" py-2 text-light d-block px-sm-2 my-1">{{old('message')}}</textarea>
                         @error('message')
-                        <span class="text-end yellow"> {{ $message }}  </span>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                         <button class=" text-light rounded-0 py-2">
                             ارسال

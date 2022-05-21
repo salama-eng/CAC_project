@@ -193,7 +193,7 @@
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label text-white">  الوصف  </label>
             <div class="col-sm-8 col-md-9">
-                <textarea name="description"  placeholder=" اضف  الوصف" class="form-control  " style="width:103%" id="" rows="5" >{{old('description')}}</textarea>
+                <textarea name="description"  placeholder=" اضف  الوصف" class="form-control mb-0 " style="width:99%" id="" rows="5" >{{old('description')}}</textarea>
                 @error('description')
                     <span class="text-end yellow">* {{ $message }}  </span>
                 @enderror
@@ -203,7 +203,7 @@
         <!-- End membership -->
 
         <!-- Start Active -->
-        <div class="form-check d-flex  justify-content-center mb-5 ">
+        <div class="form-check d-flex  justify-content-center my-5 ">
             <input class="form-check-input col-7" type="checkbox" id="blankCheckbox" name="active" value="1"
                 aria-label="...">
             <label class="col-6 mx-5 text-white" for="">تفعيل</label>
@@ -297,7 +297,8 @@
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label text-white">  الوصف  </label>
                     <div class="col-sm-8 col-md-9">
-                        <textarea name="description" placeholder=" اضف الوصف " class="form-control  " style="width:103%" id="" rows="5" ></textarea>
+                        <textarea name="description" placeholder=" اضف الوصف " class="form-control mb-0 " style="width:103%" id="" rows="5" >
+                        {{$membership->description}}</textarea>
                         @error('description')
                             <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
@@ -307,7 +308,7 @@
                 <!-- End membership -->
 
                 <!-- Start Submit -->
-                <div class="mb-2 row">
+                <div class="mb-2 mt-5 row">
                     <div class="offset-sm-2 col-sm-10">
                         <input type="submit" value="تعديل  معلومة الشركة" class=" btn p-2 contact ">
                     </div>
