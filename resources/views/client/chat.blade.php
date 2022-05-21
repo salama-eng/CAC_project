@@ -60,6 +60,7 @@
             <input type="hidden" id="user_id" name="user_id" value="{{Auth::id()}}">
             <input type="hidden" id="owner_user_id" name="owner_user_id" value="{{$auction->owner_user_id}}">
             <input type="hidden" id="username" name="username" value="{{ auth()->user()->name}}">
+            <input type="hidden" id="admin" name="admin" value="1">
             <div class="modal-body d-flex justify-content-around col-12 mt-5">
                 <input type="text" class="form-control col-10 text-end" id="message" name="message"
                     placeholder="ادخل نص الرسالة " value="">
