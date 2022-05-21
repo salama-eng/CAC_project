@@ -195,7 +195,7 @@
                                                 @php $mess = 0 @endphp
                                                 @if(isset($userAuction))
                                                     @foreach($userAuction as $user)
-                                                        @if($user->aw_user_id == Auth::id())
+                                                        @if(isset($user->aw_user_id))
                                                             <h1></h1>
                                                         @else
                                                             @php $mess++ @endphp
