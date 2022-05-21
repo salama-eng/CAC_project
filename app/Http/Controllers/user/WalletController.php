@@ -20,7 +20,7 @@ class WalletController extends Controller
        $balance=$user->balance;
        $wallet=Wallet::where('holder_id',$user_id)->get();
  
-       return view('client.wallet', [
+       return view('client.Wallet', [
         'balance' => $balance,
        'user'=> $user,
        'transaction'=> $transaction,
