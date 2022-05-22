@@ -56,6 +56,7 @@ class testController extends Controller
         //     'message'     => ' فشل! تاكد من البيانات المدخلة'
         //   ]);
         // }
+        $bid_amounts = 200;
         $auctionUser = Auction::where('aw_user_id', Auth::id())
                                 ->where('post_id', $request->post_id)
                                 ->where('is_active', 1)->first();
@@ -63,8 +64,8 @@ class testController extends Controller
                           ->where('is_active', 1)->sum('bid_amount');
         $starting_price = $request->total + $count;
         if(isset($auctionUser)){
-            $bid_amount = $request->bid_amount + $auctionUser->bid_amount;
-            $total = $request->bid_amount + $auctionUser->max('bid_total');
+            $bid_amount = $bid_amounts + $auctionUser->bid_amount;
+            $total = $bid_amounts + $auctionUser->max('bid_total');
             $auctionUser = Auction::where('aw_user_id', Auth::id())
                                     ->where('post_id', $request->post_id)
                                     ->update([
@@ -79,8 +80,8 @@ class testController extends Controller
             $auction                = new Auction;
             $auction->invoice_id    = $invoice_id;
             $auction->date          = now();
-            $auction->bid_amount    = $request->bid_amount;
-            $auction->bid_total     = $starting_price + $request->bid_amount;
+            $auction->bid_amount    = $bid_amounts;
+            $auction->bid_total     = $starting_price + $bid_amount;
             $auction->owner_user_id = $request->user_id;
             $auction->aw_user_id    = Auth::id();
             $auction->post_id       = $request->post_id;
@@ -142,8 +143,8 @@ class testController extends Controller
                       CURLOPT_CUSTOMREQUEST       => "POST",
                       CURLOPT_POSTFIELDS          => json_encode($data),        
                       CURLOPT_HTTPHEADER          => array(               
-                          "private-key: rRQ26GcsZzoEhbrP2HZvLYDbn9C9et",
-                          "public-key: HGvTMLDssJghr9tlN9gr4DVYt0qyBy",
+                          "private-key: Llg5xOpbfUjLSwSnu3h71SBRyICCALw3IVW7ACTQsrSRrmTGHL",
+                          "public-key: bDUuV1dTZFSH7Tt7IfHTYIXxq",
                           "Content-Type:  application/x-www-form-urlencoded"
                       ),
                   ));
