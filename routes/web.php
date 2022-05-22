@@ -117,6 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/accept', [AuctionsAdminController::class, 'editActive'])->name('accept');
         Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
         Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
+        Route::get('/ShowEndData', [AuctionsAdminController::class, 'ShowEndData'])->name('ShowEndData');
         
         // Admin Manage Ended Auction
         Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');

@@ -126,8 +126,8 @@ class testController extends Controller
                         )],
                     "currency"            => "YER",
                     "total_amount"        => $request->discount,
-                    "success_url"         => "http://127.0.0.1:8000/test/response",
-                    "cancel_url"          => "http://127.0.0.1:8000/test/cancel",
+                    "success_url"         => "http://localhost:8000/test/response",
+                    "cancel_url"          => "http://localhost:8000/test/cancel",
                     "metadata"            => [
                         "Customer name" => "somename",
                         "order id" => $request->post_id
@@ -155,7 +155,8 @@ class testController extends Controller
                 if ($err) {
                   echo " Error #:" . $err;
                 } else {
-                  echo $response;
+                  $in = json_decode($response);
+                  return redirect($in->invoice->next_url);
                 }
             }
         }

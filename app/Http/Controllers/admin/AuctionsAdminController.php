@@ -134,4 +134,26 @@ class AuctionsAdminController extends Controller
             return back()->with(['error'=>'خطاء هناك مشكلة في عملية الموافقة على المزاد']);
         }
     }
+
+    // public function ShowEndData(){
+    //     $auctions = Auction::with(['auction_post','userOwner','userAw'])->get();
+    //     $posts=Post::with(['auctions.userOwner','auctions.userAw','auctions'])
+    //                 ->where('end_date', '<', date('Y-m-d'))->get();
+    //     foreach($posts as $post){
+    //         $auctions = Auction::where('post_id', $post->id)
+    //                             ->where('bid_amount', $post->auctions->max('bid_amount'))
+    //                             ->get();
+    //         foreach($auctions as $auc){
+    //             if($auc->admin_confirm == 0){
+    //                 // echo $auc->bid_amount . "<br>";
+    //                 $user = User::find($auc->aw_user_id);
+    //                 $lesson = $this->lessonNotification($user->id, 'تم بيع سيارتك يمكنك التواصل مع المشتري', '', 'chat/'); 
+    //                 $notify = $this->pusherNotifications($user);
+    //                 $user = User::find($auc->owner_user_id);
+    //                 $lesson = $this->lessonNotification($user->id, 'لقد ربحت في المزاد يمكنك الان التواصل مع البائع', '', 'chat/'); 
+    //                 $notify = $this->pusherNotifications($user);
+    //             }
+    //         }
+    //     }
+    // }
 } 
