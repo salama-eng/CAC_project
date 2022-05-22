@@ -43,9 +43,16 @@
         </p>
         <a href="{{route('auctiondetails',$post->id)}}" class="card-link active  fs-7">تفاصيل<i class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
     </div>
-    
+    <div class="text-center">
+    <form action="chat" method="post">
+        @csrf
+        <input type="hidden" value="{{$auction->id}} " name="auction">     
+<button type="submit"  class=" active bg-darkgrey p-1  px-2 m-1 text-center mx-5 my-2 fs-7 m-auto"> <i class="bi bi-chat-right-text-fill"></i> الذهاب للدردشة</button>
+
+</form>  
+</div>
     <div class="card-body d-flex justify-content-between py-0">
-                    
+                   
       
 @if ($auction->user_confirm==0)
 <a href="#" data-bs-toggle="modal" data-bs-target="#active{{$post->id}} "class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white">تاكيد الاستلام </a>
@@ -56,12 +63,7 @@
         <a href="#" class="card-link card-details fs-7 bg-yellow p-1 px-3 m-1 card-btn text-white" data-bs-toggle="modal" data-bs-target="#payment{{ $post->id }}"> ارسال المبلغ </a>
          </div>
          {{-- <a href="chat/{{$auction->id}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-center w-75 m-auto my-2 fs-7"> الذهاب للدردشة  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a> --}}
-         <form action="chat" method="post"> 
-            @csrf
-            <input type="hidden" value="{{$auction->id}} " name="auction">     
-            <input type="submit"  value="الذهاب للدردشة " class="card-link active bg-darkgrey p-1 card-btn px-2 m-1 text-center w-75 m-auto my-2 fs-7"> <i class="fa fa-long-arrow-left p-2 pt-1"> </i>
-  
-      </form>
+   
 </div>
 
 

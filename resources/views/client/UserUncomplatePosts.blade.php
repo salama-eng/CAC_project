@@ -34,13 +34,13 @@
     </div>
     <div class="card-body d-flex justify-content-between py-0">
         {{-- <a href="chat/{{$auction->id}}" class="card-link active bg-darkgrey p-1 card-btn px-3 m-1 text-center w-75 m-auto my-2 fs-7"> الذهاب للدردشة  <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a> --}}
+        <div class="text-center">
             <form action="chat" method="post">
                 @csrf
                 <input type="hidden" value="{{$auction->id}} " name="auction">     
-        <button type="submit"  class=" active bg-darkgrey p-1  px-2 m-1 text-center  my-2 fs-7"> <i class="bi bi-chat-right-text-fill"></i> دردشة</button>
-  
-      </form>  
-      
+        <button type="submit"  class=" active bg-darkgrey p-1  px-2 m-1 text-center mx-5 my-2 fs-7 m-auto"> <i class="bi bi-chat-right-text-fill"></i> الذهاب للدردشة</button>
+        
+        </form> 
          </div>@if($auction->user_confirm==0)
 
          <div class="d-flex "><p class="card-link card-details fs-7  p-1 px-2 m-1 bg-red card-btn w-50 text-white">لم يتم الاستلام </p>
@@ -52,7 +52,7 @@
          @if ($auction->money_confirm==0)
          <p class="card-link card-details fs-7 bg-red p-1 px-3 m-1 card-btn w-75 text-white">لم يتم ارسال المبلغ  </p>
         @else
-        <p class="card-link card-details fs-7 bg-green-1 px-3 m-1 card-btn w-75 text-white"> تم ارسال المبلغ  </p>
+        <p class="card-link card-details fs-7 bg-green p-1 px-3 m-1 card-btn w-75 text-white"> تم ارسال المبلغ  </p>
 
          @endif
        
