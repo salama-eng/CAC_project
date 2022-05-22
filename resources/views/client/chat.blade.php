@@ -9,7 +9,7 @@
                         للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>
                 <div class="col-lg-3 col-6">
                     <h2>  </h2>
-                    <h3 class="d-lg-block d-none chat-count"><p class="fs-4">{{Auth::user()->name}}</p> <small class="fs-6 text-white">يوجد <span data-count="{{ $chatCount }}" class="bg-danger rounded-circle mx-2 px-1 notif-chat"> {{$chatCount}} </span> رسالة</small></h3>
+                    <h3 class="d-lg-block d-none chat-count"><p class="fs-6">{{Auth::user()->name}}</p> يوجد  {{$chatCount}} رسالة</h3>
                     <p class="align-self-end mr-auto d-block d-lg-none " style="font-size:12px"><a
                             href="{{ route('UserDash') }}" class="card-link active text-warning mt-3 mb-2"> العودة
                             للرئيسية <i class="fa fa-long-arrow-left p-2 pt-1"> </i></a></p>

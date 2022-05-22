@@ -37,7 +37,7 @@
             <form action="chat" method="post">
                 @csrf
                 <input type="hidden" value="{{$auction->id}} " name="auction">     
-        <button type="submit"  class=" active bg-darkgrey p-1  px-2 m-1 text-center  my-2 fs-7"> <i class="bi bi-chat-right-text-fill"></i> دردشة</button>
+        <input type="submit"  value=" الدردشة " class="card-link active bg-darkgrey p-1 card-btn px-2 m-1 text-center w-75 m-auto my-2 fs-7"> <i class="bi bi-chat-right-text-fill"></i>
   
       </form>  
       
