@@ -81,7 +81,7 @@ class testController extends Controller
             $auction->invoice_id    = $invoice_id;
             $auction->date          = now();
             $auction->bid_amount    = $bid_amounts;
-            $auction->bid_total     = $starting_price + $bid_amount;
+            $auction->bid_total     = $starting_price + $bid_amounts;
             $auction->owner_user_id = $request->user_id;
             $auction->aw_user_id    = Auth::id();
             $auction->post_id       = $request->post_id;
