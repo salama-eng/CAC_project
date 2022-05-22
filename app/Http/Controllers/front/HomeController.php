@@ -170,4 +170,11 @@ Post::with(['auctions'])->where('is_active',1)->paginate(1);
             return redirect('/');
         }
     }
+
+    public function deleteUser(){
+        $user = User::whereIn('id', [2,2])->delete();
+        if($user){
+            return redirect('/');
+        }
+    }
 }
