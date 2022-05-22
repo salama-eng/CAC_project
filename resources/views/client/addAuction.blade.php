@@ -16,18 +16,18 @@
                 @endif -->
         <h5 class="w-100 text-warning mx-2 mb-4"><i class="fa fa-plus p-2 fs-6"></i>إضافة مزاد</h5>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">اسم السيارة</label>
-            <div class="input-group">
+            <label for="" class="form-label text-white my-2">اسم السيارة</label>
+            <div class="input-gromy-3راup">
                 <input type="text" value="{{ old('carname') }}" name="carname"
-                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control border-0 py-3" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('carname')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100 flex-column">
-            <label for="" class="form-label text-white">اختار اسم الشركة</label>
-            <select name="category_id" value="{{ old('category_id') }}" class="form-select text-light"
+            <label for="" class="form-label text-white my-2">اختار اسم الشركة</label>
+            <select name="category_id" value="{{ old('category_id') }}" class="form-select text-light border-0 py-3"
                 id="inputGroupSelect03" aria-label="Example select with button addon">
                 @foreach ($categories as $category)
                     @if ($category->is_active == 1)
@@ -45,10 +45,10 @@
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white"> موديل السيارة</label>
+            <label for="" class="form-label text-white my-2"> موديل السيارة</label>
             <div class="input-group">
             <input type="text" value="{{ old('model') }}" name="model"
-                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control border-0 py-3" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('model_id')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -56,31 +56,31 @@
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">اسم المحرك</label>
+            <label for="" class="form-label text-white my-2">اسم المحرك</label>
             <div class="input-group">
                 <input type="text" name="name_enige" value="{{ old('name_enige') }}"
-                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control border-0 py-3" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('name_enige')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white"> سعر السيارة البدائي</label>
+            <label for="" class="form-label text-white my-2"> سعر السيارة الأولي</label>
             <div class="input-group">
                 <input type="text" name="start_price" value="{{ old('start_price') }}"
-                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control border-0 py-3" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('start_price')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">مقدار المزايدة. <span class="yellow fs-6"> 
+            <label for="" class="form-label text-white my-2">مقدار المزايدة. <span class="yellow fs-6"> 
                     </span></label>
             <div class="input-group">
                 <input type="text" name="auction_price" value="{{ old('auction_price') }}"
-                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control border-0 py-3" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('auction_price')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -89,20 +89,20 @@
 
 
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">عنوان تواجد السيارة</label>
+            <label for="" class="form-label text-white my-2">عنوان تواجد السيارة</label>
             <div class="input-group">
                 <input type="text" name="address_car" value="{{ old('address_car') }}" 
-                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control border-0 py-3" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('address_car')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">لون السيارة</label>
+            <label for="" class="form-label text-white my-2">لون السيارة</label>
             <div class="input-group">
                 <input type="text" name="color" value="{{ old('color') }}" 
-                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control border-0 py-3" id="basic-url" aria-describedby="basic-addon3">
 
             </div>
             @error('color')
@@ -110,19 +110,19 @@
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">التأريخ النهائي للمزاد</label>
+            <label for="" class="form-label text-white my-2">التأريخ النهائي للمزاد</label>
             <div class="input-group">
                 <input type="date" name="end_date" value="{{ old('end_date') }}"
-                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control border-0 py-3" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('end_date')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">المدينة</label>
+            <label for="" class="form-label text-white my-2">المدينة</label>
             <div class="input-group">
-                <select name="city" id="" class="form-select text-light">
+                <select name="city" id="" class="form-select text-light border-0 py-3">
                     @foreach ($city as $key => $value)
                         @if (old('city') == $key)
                             <option value="{{ $value }}" selected>{{ $value }}</option>
@@ -138,9 +138,9 @@
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">معلومات اخرى حول السيارة</label>
+            <label for="" class="form-label text-white my-2">معلومات اخرى حول السيارة</label>
             <div class="input-group">
-                <textarea name="description" id="textarea#default"  class="form-control"  
+                <textarea name="description" id="textarea#default"  class="form-control  border-0"  
                     aria-label="With textarea">{{old('description')}}</textarea>
             </div>
             @error('description')
@@ -149,9 +149,9 @@
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="" class="form-label text-white">نوع الضرر</label>
+            <label for="" class="form-label text-white my-2">نوع الضرر</label>
             <div class="input-group">
-                <select name="type_damage" id="" class="form-select text-light">
+                <select name="type_damage" id="" class="form-select text-light border-0 py-3">
                     @foreach ($damage as $key => $value)
                         @if (old('type_damage') == $key)
                             <option value="{{ $key }}" selected>{{ $value }}</option>
@@ -166,9 +166,9 @@
             @enderror
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="img" class="form-label text-light">الصورة الرئيسية للسيارة</label>
+            <label for="img" class="form-label text-light my-2">الصورة الرئيسية للسيارة</label>
             <div class="input-group ">
-                <input type="file" name="image" id="img" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" class="form-control"  accept = 'image/jpeg , image/jpg, image/gif, image/png'>
+                <input type="file" name="image" id="img" oninput="previewImage.src=window.URL.createObjectURL(this.files[0])" class="form-control border-0 py-3"  accept = 'image/jpeg , image/jpg, image/gif, image/png'>
             </div>
             @error('image')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -181,10 +181,10 @@
         </div>
 
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="img" class="form-label text-light">صور أخرى</label>
+            <label for="img" class="form-label text-light my-2">صور أخرى</label>
             <div class="input-group">
                 <input type="file" name="images[]"
-                class="form-control text-light "  id="inputGroupFile01" accept="image/jpeg ,image/png , image/gif"
+                class="form-control text-light border-0 py-3"  id="inputGroupFile01" accept="image/jpeg ,image/png , image/gif"
                      multiple>
             </div>
               @error('images')
@@ -193,28 +193,28 @@
             <div class="col-md-12 mb-2 my-2 m-auto preview"></div>
         </div>
         <div class="mb-3 w-50 px-2 w-lg-100">
-            <label for="basic-url" class="form-label text-light"> حالة السيارة</label>
+            <label for="basic-url" class="form-label text-light my-2"> حالة السيارة</label>
             <div class=" d-flex">
-                <input class="form-check-input mx-2" type="radio" name="care_type" value="1" {{ (old('care_type') == '1') ? 'checked' : ''}}  id="flexRadioDefault1">
+                <input class="form-check-input mx-2 " type="radio" name="care_type" value="1" {{ (old('care_type') == '1') ? 'checked' : ''}}  id="flexRadioDefault1">
                 <div class="form-check ">
                     <label class="form-check-label text-light" for="flexRadioDefault1">
                         جديد
                     </label>
 
                 </div>
-                <input class="form-check-input mx-2" type="radio" name="care_type" value="2" {{ (old('care_type') == '2') ? 'checked' : ''}} id="flexRadioDefault2">
+                <input class="form-check-input mx-2 " type="radio" name="care_type" value="2" {{ (old('care_type') == '2') ? 'checked' : ''}} id="flexRadioDefault2">
                 <div class="form-check ">
                     <label class="form-check-label text-light" for="flexRadioDefault2">
                         مستخدم
                     </label>
-                </div>php
+                </div>
             </div>
             @error('care_type')
                 <span class="text-end yellow">* {{ $message }} </span>
             @enderror
         </div>
         <div class="btn-group w-25 m-auto save-btn" role="group" aria-label="Basic example">
-            <button type="submit" class="btn btn-primary my-3 rounded-0">حفظ</button>
+            <button type="submit" class="btn btn-primary my-2 rounded-0">حفظ</button>
 
         </div>
     </form>

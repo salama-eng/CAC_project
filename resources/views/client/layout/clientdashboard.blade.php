@@ -194,7 +194,7 @@
                 </ul>
             </div>
             <div class="dropdown-divider"></div>
-            <div class="w-100  vh-100">
+            <div class="w-100 ">
 
 
                 @yield('content')
