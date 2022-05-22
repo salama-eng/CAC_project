@@ -4,6 +4,11 @@
 
 <h1 class="text-center fs-3 text-white mb-5">ادارة  طلبات المزاد </h1>
     <div class="container">
+        @if(session()->has('error'))
+            <div class="alert alert-danger message">
+                {{ session()->get('error') }}
+            </div>
+        @endif
         @if(session()->has('success'))
             <div class="alert alert-success message">
                 {{ session()->get('success') }}

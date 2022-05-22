@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('invoice_id')->default(0);
             $table->date('date');
-            $table->string('bid_amount');
-            $table->string('bid_total');
+            $table->float('bid_amount');
+            $table->float('bid_total');
             
             $table->unsignedBigInteger('owner_user_id');
             $table->foreign('owner_user_id')->constrained()

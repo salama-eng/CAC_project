@@ -24,21 +24,17 @@ class contactUsInfoController extends Controller
             'link'=>['required','string'],
             'icon'=>['required']
         ],[
-            'required'=>MessageEnum::REQUIRED,
-            'name.between'=>$this->messageBetween(3, 20),
-            'name.string'=>MessageEnum::MESSAGE_STRING,
-            'link.string'=>MessageEnum::MESSAGE_STRING,
+            'required'          => MessageEnum::REQUIRED,
+            'name.between'      => $this->messageBetween(3, 20),
+            'name.string'       => MessageEnum::MESSAGE_STRING,
+            'link.string'       => MessageEnum::MESSAGE_STRING,
         ]);
 
         $informartion = new contact_us_info;
         $informartion->name = $request->name;
         $informartion->icon = $request->icon;
         $informartion->link = $request->link;
-
-        if($informartion->save())
-        return redirect('manage_contact_us')
-        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
+        return $this->messageRedirectAdd($informartion->save(), 'manage_contact_us');
     }
 
     
@@ -48,10 +44,10 @@ class contactUsInfoController extends Controller
             'link'=>['required','string'],
             'icon'=>['required']
         ],[
-            'required'=>MessageEnum::REQUIRED,
-            'name.between'=>$this->messageBetween(3, 20),
-            'name.string'=>MessageEnum::MESSAGE_STRING,
-            'link.string'=>MessageEnum::MESSAGE_STRING,
+            'required'          =>MessageEnum::REQUIRED,
+            'name.between'      =>$this->messageBetween(3, 20),
+            'name.string'       =>MessageEnum::MESSAGE_STRING,
+            'link.string'       =>MessageEnum::MESSAGE_STRING,
         ]);
 
         $informartion=contact_us_info::find($id);
@@ -61,30 +57,17 @@ class contactUsInfoController extends Controller
 
         if($request->active != null)
             $informartion->is_active = 1;
-        // else 
-        // $informartion->is_active=1;
-        
-        if($informartion->save())
-
-        
-        return redirect('manage_contact_us')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+            
+        return $this->messageRedirectUpdate($informartion->save(), 'manage_contact_us');
     }
 
-
     function activeContactUs($id){
-
         $informartion=contact_us_info::find($id);
-    
         if($informartion->is_active==0)
-        $informartion->is_active=1;
+            $informartion->is_active=1;
         else 
-        $informartion->is_active=0;
-        if($informartion->save())
-        return redirect('manage_contact_us')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
+            $informartion->is_active=0;
+        return $this->messageRedirectUpdate($informartion->save(), 'manage_contact_us');
         
     }
 }

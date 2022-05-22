@@ -5,6 +5,11 @@
 <h1 class="text-center fs-3  text-white my-5">  المزايدات الحالية </h1>
 
     <div class="container">
+        @if(session()->has('error'))
+            <div class="alert alert-danger message">
+                {{ session()->get('error') }}
+            </div>
+        @endif
         @if(session()->has('success'))
             <div class="alert alert-success message">
                 {{ session()->get('success') }}
@@ -55,7 +60,7 @@
                                 </a> --}}
                                 @if($auction->is_active == 1)
                                    
-                                    <label class="switch" data-bs-toggle="modal" data-bs-target="#active{{$auction->auction_post->id}}">
+                                    <label class="switch" data-bs-toggle="modal" data-bs-target="#active{{$auction->id}}">
                                         <input type="checkbox" checked>
                                         <span class="slider"></span>
                                       </label>

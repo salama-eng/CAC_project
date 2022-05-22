@@ -19,6 +19,7 @@ jQuery(document).ready(function($){
             owner_user_id: jQuery('#owner_user_id').val(),
             user_id: jQuery('#user_id').val(),
             username: jQuery('#username').val(),
+            username: jQuery('#admin').val(),
            
         };
         var state = jQuery('#btn-save').val();

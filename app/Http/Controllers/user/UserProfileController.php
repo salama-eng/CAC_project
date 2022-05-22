@@ -56,9 +56,9 @@ class UserProfileController extends Controller
   }
     public function save_profile(Request $request){
         Validator::validate($request->all(),[
-            'address'=>'required|string|between:3,20',
-            'phone'=>'required|regex:/^([0-9]*)$/|not_regex:/[a-z]/|min:9|max:9|starts_with:77,73,71,70',
-            'avatar'=>'required',
+            'address'             =>'required|string|between:3,20',
+            'phone'               =>'required|regex:/^([0-9]*)$/|not_regex:/[a-z]/|min:9|max:9|starts_with:77,73,71,70',
+            'avatar'              =>'required',
         ],[
             'between'             => $this->messageBetween(3, 20),
             'required'            => MessageEnum::REQUIRED,
@@ -86,10 +86,10 @@ class UserProfileController extends Controller
     public function save_edit_profile(Request $request){
       Validator::validate($request->all(),[
 
-          'name'=>'required|string|between:3,20',
-          'email'=>'required|email',
-          'address'=>'required|string|between:3,20',
-          'phone'=>'required|regex:/^([0-9]*)$/|not_regex:/[a-z]/|min:9|max:9|starts_with:77,73,71,70',
+          'name'                =>'required|string|between:3,20',
+          'email'               =>'required|email',
+          'address'             =>'required|string|between:3,20',
+          'phone'               =>'required|regex:/^([0-9]*)$/|not_regex:/[a-z]/|min:9|max:9|starts_with:77,73,71,70',
       ],[
           'between'             => $this->messageBetween(3, 20),
           'required'            => MessageEnum::REQUIRED,
@@ -100,14 +100,14 @@ class UserProfileController extends Controller
           'phone.max'           => 'يجب ان لا يزيد عن 9 ارقام',
           'phone.starts_with'   => 'يمكنك ادخال 77 او 73 او 71 او 70 في البداية',
       ]);
-        $name = $request->name;
-        $email = $request->email;
+        $name                   = $request->name;
+        $email                  = $request->email;
         $userSave = User::where('id',Auth::id())->update([
           'name'    => $name,
           'email'   => $email,
         ]);
-        $address = $request->address;
-        $phone = $request->phone;
+        $address                = $request->address;
+        $phone                  = $request->phone;
         $profileSave = UserProfile::where('user_id', Auth::id())->update([
           'address'   => $address,
           'phone'     => $phone
@@ -122,7 +122,7 @@ class UserProfileController extends Controller
 
     public function editImageProfile(Request $request){
       Validator::validate($request->all(),[
-          'image'=>'required|mimes:jpeg,png,jpg,gif,svg|max:6000',
+          'image'           =>'required|mimes:jpeg,png,jpg,gif,svg|max:6000',
       ],[
           'image.required'  =>MessageEnum::REQUIRED,
           'image.mimes'     => MessageEnum::MESSAGE_IMAGES,

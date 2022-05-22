@@ -10,6 +10,6 @@ class Transaction extends Model
     use HasFactory;
     public function wallet()
     {
-        return $this->belongsTo(wallet::class,'wallet_id');
+        return $this->belongsTo(Wallet::class,'wallet_id');
     }
 }

@@ -120,8 +120,8 @@
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content  ">
-                                    <form action="{{ route('bid_auction', $post->id) }}" method="post">
-                                        @csrf
+                                    {{-- <form action="{{ route('bid_auction', $post->id) }}" method="post">
+                                        @csrf --}}
                                         <div class="modal-header bg-darkgrey">
 
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -140,11 +140,11 @@
                                                 data-bs-dismiss="modal">تراجع</button>
                                             <input type="submit" class="btn bg-yellow text-white fs-5" value=" تاكيد  " />
                                         </div>
-                                    </form>
+                                    {{-- </form> --}}
                                 </div>
                             </div>
 
-                        </div>
+                        </div> 
                     @endif
                 @endif
             @endforeach

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use App\Models\User;
-use App\Models\Order;
+use App\Models\order;
 use App\Models\Post;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -23,7 +23,7 @@ class AdminHomeController extends Controller
         // return $posts;
         /*** عدد مرات المزايدة */
         $Auctions=Auction::get()->Count();
-        $orders=Order::get()->Count();
+        $orders=order::get()->Count();
         $posts_now=Post::where('end_date','>',now())->get()->Count();
         $posts_uncomplate=Post::where('end_date','<',now())->where('status_auction','!=',1)->get()->Count();
         $u= User::whereMonth('created_at', date('m'))
@@ -53,7 +53,7 @@ class AdminHomeController extends Controller
         $n_complated_posts= $complated_posts / $posts * 100;
 
         // االمزادات المكتملة
-        $order_posts=Order::get()->Count();
+        $order_posts=order::get()->Count();
         $n_order_posts= $order_posts / $posts * 100;
         // return $order_posts;
 

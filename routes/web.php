@@ -53,8 +53,12 @@ Route::get('/ddemail', [HomeController::class, 'email'])->name('ddemail');
 
 Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
 Route::get('/errorsProfile', [HomeController::class, 'errorsRedirect'])->name('errorsProfile');
+Route::get('/active_auction', [HomeController::class, 'errorsRedirect'])->name('active_auction');
 Route::get('/adminRole', [HomeController::class, 'adminRole']);
 Route::get('/clientRole', [HomeController::class, 'clientRole']);
+Route::get('/adminUser', [HomeController::class, 'adminUser']);
+Route::get('/adminPost', [HomeController::class, 'adminPost']);
+Route::get('/deleteUser', [HomeController::class, 'deleteUser']);
 // generate role
 Route::get('/generate_roles',[settingsController::class,'generateRoles'])->name('generate_roles');
 Route::get('/login',[AuthController::class,'showLogin'])->name('login');
@@ -113,6 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/accept', [AuctionsAdminController::class, 'editActive'])->name('accept');
         Route::get('/un_complate', [AuctionsAdminController::class, 'showAdminAuction'])->name('un_complate');
         Route::post('/sendnotification', [AuctionsAdminController::class, 'sendnotification'])->name('sendnotification');
+        Route::get('/ShowEndData', [AuctionsAdminController::class, 'ShowEndData'])->name('ShowEndData');
         
         // Admin Manage Ended Auction
         Route::get('/endede_acution', [AuctionsAdminController::class, 'showAdminAuction'])->name('endede_acution');
@@ -268,7 +273,7 @@ Route::get('/emaill', function () {
 Route::get('/auctions',[HomeController::class,'show_auctions'])->name('auctions');
 
 /******** bid auction **************/
-Route::post('/bid_auction/{id}',[UserAuctionController::class,'bid_auction'])->name('bid_auction');
+// Route::post('/bid_auction/{id}',[UserAuctionController::class,'bid_auction'])->name('bid_auction');
 Route::get('/offers',[HomeController::class,'show_offers'])->name('offers');
 
 Route::get('/contact_us', [HomeController::class,'showContactUs'])->name('contact_us');

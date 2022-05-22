@@ -121,7 +121,7 @@
                         class="fa fa-long-arrow-left p-2 pt-1"> </i></a>
             </div>
             <div class="d-flex flex-wrap gap-5 col-11 col-lg-8 current-offers">
-
+                @if(isset($Posts))
                 @foreach ($Posts as $post)
                     @if (!isset($post->auctions[0]->is_active))
                         <div class="card animate text-light m-auto  py-0 mb-5" style="width: 18rem;">
@@ -150,7 +150,7 @@
                         </div>
                     @endif
                 @endforeach
-
+                @endif
                 {{-- <div class="card animate text-light m-auto mb-3" style="width: 18rem;">
                     <img src="/images/1.png" class="card-img-top p-3" height="220" alt="...">
                     <div class="card-body py-0">

@@ -180,7 +180,7 @@ $('.make-auction').click(function(e){
  e.preventDefault();
  var priceAuction=$('.auction-input').val();
  $('.text-price').text(priceAuction)
- 
+ $('input[name="bid_amount"]').val(priceAuction)
 })
 $(".search-input").on("keyup", function() {
   var value = $(this).val().toLowerCase();
@@ -188,8 +188,8 @@ $(".search-input").on("keyup", function() {
     $(this).parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
   });
 });
-$('.submit').on('click',function(){
-  $('input[name="bid_amount"]').val($('.text-price').text())
-})
+// $('.submit').on('click',function(){
+//   $('input[name="bid_amount"]').val($('.text-price').text())
+// })
 });
 

@@ -47,7 +47,7 @@
                 @foreach ($posts as $post)
                     
                     @if (isset($post->auctions[0]->post_id))
-                        @if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date < date('Y-m-d') && $post->auctions->max('bid_amount'))
+                        @if($post->is_active == 1 && $post->status_auction == 0 && $post->end_date < now())
                         @foreach($post->auctions as $bid_total)
                             @if($bid_total->post_id == $post->id && $bid_total->bid_amount == $post->auctions->max('bid_amount'))
                                 @php $user_id = $bid_total->userAw->id @endphp

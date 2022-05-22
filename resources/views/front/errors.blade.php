@@ -20,5 +20,13 @@
                 </a>
             </div> 
         </section>
+    @elseif($route == 'active_auction')
+        <section class="container d-flex mt-4 vh-100 align-items-center text-center justify-content-center">
+            <div class="d-flex flex-wrap mt-4 justify-content-center align-items-center text-center">
+                <h6 class="col-10 mt-4 fs-2">  اوبس! لا يوجد انترنت </h6>
+                <img class=" image-fluid m-auto col-9 col-lg-4" src="assets/images/error.png"  height=""alt="">
+                
+            </div> 
+        </section>
     @endif
 @endsection

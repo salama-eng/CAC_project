@@ -17,4 +17,5 @@ class MessageEnum extends Controller
     const MESSAGE_NUMBERS               = "يحب ان يكون هذا الحقل من نوع ارقم ";
     const MESSAGE_IMAGES                = "يجب ان يكون الامتداد من نوع صور";
     const MESSAGE_PAYMENT_SUCCESS       = "تم عملية المزايدة بنجاح";
+    const MESSAGE_PAYMENT_ERROR         = "فشل عملية المزايدة ";
 }

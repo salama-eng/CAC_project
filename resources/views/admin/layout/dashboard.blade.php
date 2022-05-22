@@ -228,7 +228,7 @@
 
                     </div>
                 </div>
-                <ul class="dropdown-menu notification bg-noty">
+                <ul class="dropdown-menu notification bg-dark bg-noty">
                     @if(isset(auth()->user()->unreadNotifications))
                         @foreach (auth()->user()->unreadNotifications as $notification)
                             @if ($notification->type == 'App\Events\AdminNotification')
@@ -248,10 +248,10 @@
 
                 </ul>
 
-                <ul class="dropdown-menu bg-noty p-0  w-19 userinfo text-center">
+                <ul class="dropdown-menu bg-dark userinfo text-center">
                     <li>
-                        <div class="d-flex m-0 p-0 justify-content-center flex-wrap">
-                            <div class="bg-yellow p-2 m-0 mb-2 col-8  w-100 m-auto">
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <div class="bg-yellow p-2  mb-2 col-8  w-100 m-auto">
 
                                 @if (isset(Auth::user()->profile->avatar))
                                     <img src="/images/{{ Auth::user()->profile->avatar }}" width="80"
@@ -337,5 +337,5 @@ integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="ano
         notificationsCountElem.attr('data-count', notificationsCount);
         notificationsWrapper.find('.notif-count').text(notificationsCount);
         notificationsWrapper.show();
-    });
+    }); 
 </script>

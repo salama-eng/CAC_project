@@ -15,90 +15,44 @@ use Illuminate\Http\Request;
 
 class UserAuctionController extends Controller
 {
-    public function bid_auction(Request $request,$id)
-    {
-        $auction=new Auction();
-        $post=Post::find($id);
-        $payment= PaymentMethode::select()->where('user_id', Auth::id())->get();
-       $available=$post->auction_ceiling;
-        Validator::validate($request->all(),[
-
-            'amount' => "required|numeric|min:$available",
-        ],[
-            'amount.required'=>' مبلغ المزايدة مطلوب  ',
-            'amount.numeric'=>' صيغة المبلغ غير مقبولة ',
-            'amount.min'=>" لاتقبل المزايدة بمبلغ اقل من  $available ",
-        ]);
-
-       
-        
-     $money=50000;
-
-     if($money>=$request->discount)
-    {
-        $auction->date= now();
-        $auction->bid_amount=$request->amount;
-        $auction->owner_user_id=$post->user_id;
-        $auction->post_id=$post->id;
-        $auction->is_active=1;
-        $auction->payment_methode_id=$payment->id;
-
-    }
-        $user_id=Auth::id();
-    
-    }
-
 
     public function showauctions(){
-     
-        $id=Auth::id();
         $posts=Post::with(['auctions'])->get();
-       
-    //    return $posts;
         return view('client.showauctions', [
             'posts'     => $posts
-    
         ]);
-}
-
-public function complate(){
-       
-    $id=Auth::id();
-    $order = order::With(['post.auctions'])->where('user_id', $id)->get();
-
-    return view('client.UserComplateAuctions', [
-        'orders' => $order,
-        
-    ]);
-}
-
-
-public function uncomplate(){
-
-$posts=Post::with(['auctions'])->get();
-    return view('client.UserUncomplateAuctions', [
-        'posts'     => $posts
-    ]);
-
-}
-public function user_confirm(Request $request){
-
-    $auction_id = $request->auction_id;
-    $auction=Auction::find($auction_id);
-    if($auction->payment_confirm==1)
-   {
-    $user_confirm = Auction::where('id',$auction_id)->update(['user_confirm'=> 1]);
-   
-    if($user_confirm){
-    return redirect('UserUncomplateAuctions')
-     ->with(['success'=>'تم  تاكيد الاستلام']);
     }
- 
-     else{
-             return back()->with(['error'=>'خطاء هناك مشكلة']);
-         }
-     }
-     else{
-        return back()->with(['message'=>' عذرا يجب عليك تاكيد الدفع اولا  ']);
+
+    public function complate(){
+        $id=Auth::id();
+        $order = order::With(['post.auctions'])->where('user_id', $id)->get();
+        return view('client.UserComplateAuctions', [
+            'orders' => $order,   
+        ]);
     }
-} }
+
+    public function uncomplate(){
+
+    $posts=Post::with(['auctions'])->get();
+        return view('client.UserUncomplateAuctions', [
+            'posts'     => $posts
+        ]);
+
+    }
+    public function user_confirm(Request $request){
+        $auction_id = $request->auction_id;
+        $auction=Auction::find($auction_id);
+        if($auction->payment_confirm==1)
+        {
+            $user_confirm = Auction::where('id',$auction_id)->update(['user_confirm'=> 1]);
+            if($user_confirm){
+                return redirect('UserUncomplateAuctions')
+                        ->with(['success'=>'تم  تاكيد الاستلام']);
+            }else{
+                return back()->with(['error'=>'خطاء هناك مشكلة']);
+            }
+        }else{
+            return back()->with(['message'=>' عذرا يجب عليك تاكيد الدفع اولا  ']);
+        }
+    }
+}

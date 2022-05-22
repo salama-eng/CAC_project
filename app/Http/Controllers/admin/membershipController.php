@@ -24,44 +24,41 @@ class membershipController extends Controller
         function addMembership(Request $request){
       
         Validator::validate($request->all(),[
-            'name'=>'required',
-            'email' => ['required', 'email', 'unique:users,email'],
-            'image'=>['required'],
-            'address'=>'required',
-            'phone'=>'required',
+            'name'              =>'required',
+            'email'             => ['required', 'email', 'unique:users,email'],
+            'image'             =>['required'],
+            'address'           =>'required',
+            'phone'             =>'required',
         ],[
-            'required'=>MessageEnum::REQUIRED,
-            'email.unique' => 'هذا الايميل غير متاح',
-            'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
+            'required'          =>MessageEnum::REQUIRED,
+            'email.unique'      => 'هذا الايميل غير متاح',
+            'email.email'       => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
         ]);
 
         $member = new membership();
-        $member->name = $request->name;
-        $member->email = $request->email;
-        $member->address = $request->address;
-        $member->phone = $request->phone;
-        $member->description = $request->description;
+        $member->name           = $request->name;
+        $member->email          = $request->email;
+        $member->address        = $request->address;
+        $member->phone          = $request->phone;
+        $member->description    = $request->description;
         if($request->hasFile('image'))
             $member->image=$this->uploadFile($request->file('image'));
         if($request->active != null){
             $member->is_active=1;
         }
-        if($member->save())
-        return redirect('membership')
-        ->with(['success'=>MessageEnum::MESSAGE_ADD_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_ADD_ERROR]);
+        return $this->messageRedirectAdd($member->save(), 'membership');
     }
 
     function editMembership(Request $request,$id){
             Validator::validate($request->all(),[
-            'name'=>'required',
-            'email' => ['required', 'email'],
-            'image'=>['required'],
-            'address'=>'required',
-            'phone'=>'required',
+            'name'          => 'required',
+            'email'         => ['required', 'email'],
+            'image'         => ['required'],
+            'address'       => 'required',
+            'phone'         => 'required',
         ],[
-            'required'=>MessageEnum::REQUIRED,
-            'email.email' => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
+            'required'      => MessageEnum::REQUIRED,
+            'email.email'   => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
         ]);
 
         $member=membership::find($id);
@@ -69,49 +66,25 @@ class membershipController extends Controller
 
         if($request->active != null)
             $member->is_active = 1;
-        // else 
-        // $image->is_active=1;
         
-        $member->name = $request->name;
-        $member->email = $request->email;
-        $member->address = $request->address;
-        $member->phone = $request->phone;
-        $member->description = $request->description;
+        $member->name           = $request->name;
+        $member->email          = $request->email;
+        $member->address        = $request->address;
+        $member->phone          = $request->phone;
+        $member->description    = $request->description;
         if($request->hasFile('image'))
-        $member->image=$this->uploadFile($request->file('image'));
+            $member->image=$this->uploadFile($request->file('image'));
         else
-        $member->image=$old;
-        if($member->save())
-
-        
-        return redirect('membership')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
-    }
-
-    public function uploadFile($files)
-    {
-        
-            $file= $files;
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('Images'), $filename);
-            return $filename;
-      
-
+            $member->image=$old;
+        return $this->messageRedirectUpdate($member->save(), 'membership');
     }
 
     function activeMembership($id){
-
         $member=membership::find($id);
-    
         if($member->is_active==0)
-        $member->is_active=1;
+            $member->is_active=1;
         else 
-        $member->is_active=0;
-        if($member->save())
-        return redirect('membership')
-        ->with(['success'=>MessageEnum::MESSAGE_UPDATE_SUCCESS]);
-        return back()->with(['error'=>MessageEnum::MESSAGE_UPDATE_ERROR]);
-        
+            $member->is_active=0;
+        return $this->messageRedirectUpdate($member->save(), 'membership');
     }
 }

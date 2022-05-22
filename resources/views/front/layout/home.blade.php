@@ -60,7 +60,7 @@
         
                 </ul>
                @if (Auth::user()==null)
-                  <a href="login">  <button class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 me-auto ms-5 ">
+                  <a href="{{url('login')}}">  <button class="nav-item text-center border-0  contact text-light fs-6 py-2 px-4 me-auto ms-5 ">
                         <i class="fa fa-sign-in"></i>&nbsp;تسجيل الدخول
                     </button></a>
                     @else
@@ -197,7 +197,7 @@
                 </p>
 
             </div>
-            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2">
+            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2" style='width:fit-content'>
                 <h6 class="active pt-3 pb-1">تواصل معنا</h6>
                 @if(isset($Information))
                 @foreach($Information as $information)
