@@ -95,8 +95,8 @@ class TestUserController extends Controller
                 )],
                 "currency" => "YER",
                 "total_amount" => $request->price,
-                "success_url" => "http://127.0.0.1:8000/testPayment/response",
-                "cancel_url" => "http://127.0.0.1:8000/testPayment/cancel",
+                "success_url" => "http://polar-garden-78668.herokuapp.com/testPayment/response",
+                "cancel_url" => "http://polar-garden-78668.herokuapp.com/testPayment/cancel",
                 "metadata" => [
                 "Customer name" => "somename",
                 "order id" => $request->post_id
