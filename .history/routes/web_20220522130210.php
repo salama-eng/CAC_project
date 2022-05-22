@@ -48,7 +48,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('test/response/{info}', [testController::class, 'showTest'])->name('test/response');
+Route::get('test/cancel/{cancel}', [testController::class, 'testCancel'])->name('testCancel');
+Route::get('testPayment/response/{info}', [TestUserController::class, 'showTest'])->name('testPayment/response');
+Route::get('testPayment/cancel/{cancel}', [TestUserController::class, 'testCancel'])->name('testPayment/cancel');
 Route::get('/ddemail', [HomeController::class, 'email'])->name('ddemail');
 
 Route::get('/errorsRedirect', [HomeController::class, 'errorsRedirect'])->name('errorsRedirect');
@@ -214,10 +217,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::any('test', [testController::class, 'index'])->name('test');
     Route::get('test/cancel', [testController::class, 'viewCancel'])->name('viewCancel');
     Route::any('testPayment', [TestUserController::class, 'index'])->name('testPayment');
-    Route::get('test/response/{info}', [testController::class, 'showTest'])->name('test/response');
-    Route::get('test/cancel/{cancel}', [testController::class, 'testCancel'])->name('testCancel');
-    Route::get('testPayment/response/{info}', [TestUserController::class, 'showTest'])->name('testPayment/response');
-    Route::get('testPayment/cancel/{cancel}', [TestUserController::class, 'testCancel'])->name('testPayment/cancel');
+   
     Route::get('test/cancel', [TestUserController::class, 'viewCancel'])->name('testCancelPayment');
     Route::get('/Start_auction', [PostsAdminController::class, 'showAdminPosts'])->name('Start_auction');
     // client profile Manage

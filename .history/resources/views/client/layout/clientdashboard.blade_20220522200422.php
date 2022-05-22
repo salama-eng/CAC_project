@@ -77,7 +77,9 @@
                             <li><a href="{{route('postedcars')}}" class="{{ Request::segment(1) === 'postedcars' ? 'active' : 'text-light' }} text-light  p-3"><i class="bi bi-box-arrow-in-down active me-5 p-2"></i> السيارات المضافة في المزاد</a></li>
                             <li><a href="{{route('UserUncomplatePosts')}}"class="{{ Request::segment(1) === 'UserUncomplatePosts' ? 'active' : 'text-light' }}text-light p-3"><i class="bi bi-clipboard-x  active me-5 p-2"></i>  مزادات غير مكتملة البيع</a></li>
                             <li><a href="{{route('UserComplatePosts')}}"class="{{ Request::segment(1) === 'UserComplatePosts' ? 'active' : 'text-light' }}text-light  p-3"><i class="bi bi-clipboard-check active me-5 p-2"></i> المزادات المكتملة</a></li>
-
+<style>.dropdown-toggle ,.collapse ,.list-unstyled {
+    display: inline-block;
+}</style>
                         </ul>
                     </li>
                    

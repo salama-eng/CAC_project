@@ -74,9 +74,9 @@
                             طلبات إضافة مزاد</a></h6>
                         <ul class="collapse list-unstyled fs-6" id="manage">
                             <li><a href="{{route('addAuction')}}"class="{{ Request::segment(1) === 'addAuction' ? 'active' : 'text-light' }} text-light  p-3"><i class="bi bi-clipboard-plus active me-5 p-2"></i>  إضافة مزاد</a></li>
-                            <li><a href="{{route('postedcars')}}" class="{{ Request::segment(1) === 'postedcars' ? 'active' : 'text-light' }} text-light  p-3"><i class="bi bi-box-arrow-in-down active me-5 p-2"></i> السيارات المضافة في المزاد</a></li>
-                            <li><a href="{{route('UserUncomplatePosts')}}"class="{{ Request::segment(1) === 'UserUncomplatePosts' ? 'active' : 'text-light' }}text-light p-3"><i class="bi bi-clipboard-x  active me-5 p-2"></i>  مزادات غير مكتملة البيع</a></li>
-                            <li><a href="{{route('UserComplatePosts')}}"class="{{ Request::segment(1) === 'UserComplatePosts' ? 'active' : 'text-light' }}text-light  p-3"><i class="bi bi-clipboard-check active me-5 p-2"></i> المزادات المكتملة</a></li>
+                            <li><a href="{{route('postedcars')}}" class="text-light  p-3"><i class="bi bi-box-arrow-in-down active me-5 p-2"></i> السيارات المضافة في المزاد</a></li>
+                            <li><a href="{{route('UserUncomplatePosts')}}" class="text-light p-3"><i class="bi bi-clipboard-x  active me-5 p-2"></i>  مزادات غير مكتملة البيع</a></li>
+                            <li><a href="{{route('UserComplatePosts')}}" class="text-light  p-3"><i class="bi bi-clipboard-check active me-5 p-2"></i> المزادات المكتملة</a></li>
 
                         </ul>
                     </li>
@@ -86,9 +86,9 @@
                         aria-expanded="false"> <i class="bi bi-menu-button-fill active mx-4"></i> إدارة
                         طلبات المزايدة</a></h6>
                         <ul class="collapse list-unstyled fs-6" id="manage2">
-                            <li><a href="{{route('AuctionCars')}}" class="{{ Request::segment(1) === 'AuctionCars' ? 'active' : 'text-light' }} text-light p-3">  <i class="bi bi-clipboard-check active me-5 p-2"></i> سيارات تمت المزايدة عليها</a></li>
-                            <li><a href="{{route('UserUncomplateAuctions')}}" class="{{ Request::segment(1) === 'UserUncomplateAuctions' ? 'active' : 'text-light' }}text-light  p-3"><i class="bi bi-clipboard-x  active me-5 p-2"></i> المزادات الغير مكتملة الشراء</a></li>
-                            <li><a href="{{route('UserComplateAuctions')}}" class="{{ Request::segment(1) === 'UserComplateAuctions' ? 'active' : 'text-light' }} text-light  p-3"> <i class="bi bi-clipboard-check active me-5 p-2"></i> المزادات المكتملة</a></li>
+                            <li><a href="{{route('AuctionCars')}}" class="text-light p-3">  <i class="bi bi-clipboard-check active me-5 p-2"></i> سيارات تمت المزايدة عليها</a></li>
+                            <li><a href="{{route('UserUncomplateAuctions')}}" class="text-light  p-3"><i class="bi bi-clipboard-x  active me-5 p-2"></i> المزادات الغير مكتملة الشراء</a></li>
+                            <li><a href="{{route('UserComplateAuctions')}}" class="text-light  p-3"> <i class="bi bi-clipboard-check active me-5 p-2"></i> المزادات المكتملة</a></li>
 
 
                         </ul>

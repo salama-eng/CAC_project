@@ -82,23 +82,24 @@
                         </li>
                         <li>
                             <a href="{{ route('Start_auction') }}"
-                                class="{{ Request::segment(1) === 'Start_auction' ? 'active' : 'text-light' }}  py-3 ps-3 pe-2"><i class="bi bi-card-checklist me-5 p-2 active"></i>  إدارة
+                                class="{{ Request::segment(1) === 'Start_auction' ? 'active' : 'text-light' }}  py-3 ps-3 pe-2"><i class="bi bi-card-checklist me-5 p-2 "></i>  إدارة
                                 العروض</a>
                         </li>
                         <li class="">
                             <a href="{{ route('admin_acution') }}"
-                                class="{{ Request::segment(1) === 'admin_acution' ? 'active' : 'text-light' }}  py-3 ps-3 pe-2"><i class="bi bi-clipboard2-plus-fill me-5 p-2 active"></i>   إدارة
+                                class="{{ Request::segment(1) === 'admin_acution' ? 'active' : 'text-light' }}  py-3 ps-3 pe-2"><i class="bi bi-clipboard2-plus-fill me-5 p-2"></i>   إدارة
                                 المزادات
                                 الحالية</a>
                         </li>
                         <li>
                             <a href="{{ route('un_complate') }}"
-                                class="{{ Request::segment(1) === 'un_complate' ? 'active' : 'text-light' }}  py-3 ps-3 pe-2"><i class="bi bi-clipboard2-x-fill  me-5 p-2 active"></i>  إدارة
+                                class="{{ Request::segment(1) === 'un_complate' ? 'active' : 'text-light' }}  py-3 ps-3 pe-2"><i class="bi bi-clipboard2-x-fill  me-5 p-2"></i>  إدارة
                                 المزادات المعلقة</a>
                         </li>
-                        <li>
-                           <a href="{{ route('endede_acution') }}"
-                                class="{{ Request::segment(1) === 'endede_acution' ? 'active' : 'text-light' }} py-3 ps-3 pe-2"> <i class="bi bi-clipboard2-check-fill me-5 p-2 active"></i> إدارة
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'endede_acution' ? 'contact' : 'bg-light' }} my-auto branch"
+                                style="height: 8px;width: 8px"></p><a href="{{ route('endede_acution') }}"
+                                class="{{ Request::segment(1) === 'endede_acution' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">إدارة
                                 المزادات المكتملة</a>
                         </li>
 
@@ -106,20 +107,20 @@
                   
                     <li>
                         <a href="{{ route('showAllUsers') }}"
-                            class=" p-3 {{ Request::segment(1) === 'showAllUsers' ? 'active' : 'text-light' }}"><i class="bi bi-people-fill active mx-2"></i>  إدارة
+                            class="text-center p-3 {{ Request::segment(1) === 'showAllUsers' ? 'active' : 'text-light' }}">إدارة
                             المستخدمين</a>
 
                     </li>
                     <li>
                         <a href="{{ route('admincategories') }}"
-                            class=" p-3 {{ Request::segment(1) === 'admincategories' ? 'active' : 'text-light' }}"> <i class="bi bi-ui-checks-grid active mx-2"></i> إدارة
+                            class="text-center p-3 {{ Request::segment(1) === 'admincategories' ? 'active' : 'text-light' }}">إدارة
                             تصنيفات
                             السيارات</a>
 
                     </li>
                     <li>
                         <a href="{{ route('adminPayments') }}"
-                            class=" p-3 {{ Request::segment(1) === 'adminPayments' ? 'active' : 'text-light' }}"><i class="bi bi-credit-card active mx-2"></i>  إدارة
+                            class="text-center p-3 {{ Request::segment(1) === 'adminPayments' ? 'active' : 'text-light' }}">إدارة
                             طرق الدفع</a>
 
                     </li>
@@ -127,42 +128,44 @@
 
 
                     <li class="active dropdown2">
-                        <a class="dropdown-toggle text-light p-3" data-toggle="collapse"
-                            aria-expanded="false"><i class="bi bi-gear-fill active mx-2"></i>  إدارة
+                        <a class="dropdown-toggle text-center text-light p-3" data-toggle="collapse"
+                            aria-expanded="false">إدارة
                             محتويات الموقع</a>
-
                     </li>
                     <ul class="collapse list-unstyled fs-6 mt-0" id="manage2">
-                        <li >
-                            <a href="{{ route('manage_home') }}"
-                                class="{{ Request::segment(1) === 'home_site' ? 'active' : 'text-light' }}  py-3 ps-3 pe-2">
-                                <i class="bi bi-house-door  me-5 p-2 active"></i>     ادارة
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'manage_home' ? 'contact' : 'bg-light' }} my-auto branch"
+                                style="height: 8px;width: 8px"></p><a href="{{ route('manage_home') }}"
+                                class="{{ Request::segment(1) === 'home_site' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
+                                ادارة
                                 الصفحة
                                 الرئيسية </a>
                         </li>
-                        <li>
-                            <a href="{{ route('slider_image') }}"
-                                class="{{ Request::segment(1) === 'slider_image' ? 'active' : 'text-light' }}  py-3 ps-3 pe-2">
-                                <i class="bi bi-images me-5 p-2 active"></i> صور
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'slider_image' ? 'contact' : 'bg-light' }} my-auto branch"
+                                style="height: 8px;width: 8px"></p><a href="{{ route('slider_image') }}"
+                                class="{{ Request::segment(1) === 'slider_image' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
+                                صور
                                 السلايدر
                             </a>
                         </li>
-                        <li >
-                            <a href="{{ route('membership') }}"
-                                class="{{ Request::segment(1) === 'membership' ? 'active' : 'text-light' }} py-3 ps-3 pe-2">
-                                <i class="bi bi-globe2 me-5 p-2 active"></i>   ادارة
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'membership' ? 'contact' : 'bg-light' }} my-auto branch"
+                                style="height: 8px;width: 8px"></p><a href="{{ route('membership') }}"
+                                class="{{ Request::segment(1) === 'membership' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
+                                ادارة
                                 شركائنا</a>
                         </li>
-                        <li >
-                            <a
-                                href="{{ route('manage_contact_us') }}" class="{{ Request::segment(1) === 'manage_contact_us' ? 'active' : 'text-light' }} py-3 ps-3 pe-2"> 
-                                <i class="bi bi-telephone-x-fill me-5 p-2 active"></i>   ادارة صفحة تواصل معنا
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'manage_contact_us' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('manage_contact_us') }}" class="{{ Request::segment(1) === 'manage_contact_us' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> 
+                               ادارة صفحة تواصل معنا
                             </a>
                         </li>
-                        <li >
-                            <a
-                                href="{{ route('manage_about_us') }}" class="{{ Request::segment(1) === 'manage_about_us' ? 'active' : 'text-light' }} py-3 ps-3 pe-2">
-                                <i class="bi bi-person-video3 me-5 p-2 active"></i>   ادارة صفحة من نحن
+                        <li class="d-flex align-items-center justify-content-center">
+                            <p class="{{ Request::segment(1) === 'manage_about_us' ? 'contact' : 'bg-light' }} my-auto branch" style="height: 8px;width: 8px"></p><a
+                                href="{{ route('manage_about_us') }}" class="{{ Request::segment(1) === 'manage_about_us' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
+                                 ادارة صفحة من نحن
                                 </a>
                         </li>
                     </ul>

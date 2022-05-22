@@ -155,14 +155,14 @@
                         </li>
                         <li >
                             <a
-                                href="{{ route('manage_contact_us') }}" class="{{ Request::segment(1) === 'manage_contact_us' ? 'active' : 'text-light' }} py-3 ps-3 pe-2"> 
-                                <i class="bi bi-telephone-x-fill me-5 p-2 active"></i>   ادارة صفحة تواصل معنا
+                                href="{{ route('manage_contact_us') }}" class="{{ Request::segment(1) === 'manage_contact_us' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2"> 
+                               ادارة صفحة تواصل معنا
                             </a>
                         </li>
                         <li >
                             <a
-                                href="{{ route('manage_about_us') }}" class="{{ Request::segment(1) === 'manage_about_us' ? 'active' : 'text-light' }} py-3 ps-3 pe-2">
-                                <i class="bi bi-person-video3 me-5 p-2 active"></i>   ادارة صفحة من نحن
+                                href="{{ route('manage_about_us') }}" class="{{ Request::segment(1) === 'manage_about_us' ? 'active' : 'text-light' }} text-center py-3 ps-3 pe-2">
+                                 ادارة صفحة من نحن
                                 </a>
                         </li>
                     </ul>

@@ -27,7 +27,7 @@ class TestUserController extends Controller
                         ->where('user_id', Auth::id())->first();
         if($actives){
             $aor = Order::where('id', $actives->id)->update(['is_active' => 1]);
-            $auc = Auction::where('post_id', $actives->post_id)->update(['money_confirm' => 1]);
+            $auc = Auction::where('post_id', $actives->post_id)->update(['payment_confirm' => 1]);
         }
         $userAdmin = $this->roleUsers();
         $wallet = $this->walletDeposit($userAdmin, $in->customer_account_info->paid_amount, Auth::user()->name);
