@@ -56,7 +56,7 @@ class testController extends Controller
         //     'message'     => ' فشل! تاكد من البيانات المدخلة'
         //   ]);
         // }
-        $bid_amounts = 200;
+        // $bid_amounts = 200;
         $auctionUser = Auction::where('aw_user_id', Auth::id())
                                 ->where('post_id', $request->post_id)
                                 ->where('is_active', 1)->first();
@@ -64,7 +64,7 @@ class testController extends Controller
                           ->where('is_active', 1)->sum('bid_amount');
         $starting_price = $request->total + $count;
         if(isset($auctionUser)){
-            $bid_amount = $bid_amounts + $auctionUser->bid_amount;
+            $bid_amount = $request->bid_amount + $auctionUser->bid_amount;
             $total = $bid_amounts + $auctionUser->max('bid_total');
             $auctionUser = Auction::where('aw_user_id', Auth::id())
                                     ->where('post_id', $request->post_id)
@@ -80,8 +80,8 @@ class testController extends Controller
             $auction                = new Auction;
             $auction->invoice_id    = $invoice_id;
             $auction->date          = now();
-            $auction->bid_amount    = $bid_amounts;
-            $auction->bid_total     = $starting_price + $bid_amounts;
+            $auction->bid_amount    = $request->bid_amount;
+            $auction->bid_total     = $starting_price + $request->bid_amount;
             $auction->owner_user_id = $request->user_id;
             $auction->aw_user_id    = Auth::id();
             $auction->post_id       = $request->post_id;
@@ -126,8 +126,8 @@ class testController extends Controller
                         )],
                     "currency"            => "YER",
                     "total_amount"        => $request->discount,
-                    "success_url"         => "http://polar-garden-78668.herokuapp.com/test/response",
-                    "cancel_url"          => "http://polar-garden-78668.herokuapp.com/test/cancel",
+                    "success_url"         => "http://127.0.0.1:8000/test/response",
+                    "cancel_url"          => "http://127.0.0.1:8000/test/cancel",
                     "metadata"            => [
                         "Customer name" => "somename",
                         "order id" => $request->post_id

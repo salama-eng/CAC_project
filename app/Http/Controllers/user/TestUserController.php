@@ -95,15 +95,15 @@ class TestUserController extends Controller
                 )],
                 "currency" => "YER",
                 "total_amount" => $request->price,
-                "success_url" => "http://polar-garden-78668.herokuapp.com/testPayment/response",
-                "cancel_url" => "http://polar-garden-78668.herokuapp.com/testPayment/cancel",
+                "success_url" => "http://127.0.0.1:8000/testPayment/response",
+                "cancel_url" => "http://127.0.0.1:8000/testPayment/cancel",
                 "metadata" => [
                 "Customer name" => "somename",
                 "order id" => $request->post_id
                 ]];
             $curl = curl_init();
             curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://waslpayment.com/api/v1/merchant/payment_order",
+            CURLOPT_URL => "https://waslpayment.com/api/test/merchant/payment_order",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
