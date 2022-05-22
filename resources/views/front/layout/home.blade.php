@@ -197,7 +197,7 @@
                 </p>
 
             </div>
-            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2">
+            <div class="mt-2 mt-lg-5 col-12 col-md-6 col-lg-2" style='width:fit-content'>
                 <h6 class="active pt-3 pb-1">تواصل معنا</h6>
                 @if(isset($Information))
                 @foreach($Information as $information)
