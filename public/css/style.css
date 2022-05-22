@@ -1228,18 +1228,13 @@ background-color: #222121 !important;
 }
 .input-group-text
 {
-  box-shadow: rgba(1, 1, 1, 0.16) 0px 3px 6px 5px;
   border: none !important;
   padding-bottom: 1rem;
   padding-top: 1rem;
    background-color: rgb(57, 56, 56);
    box-shadow: rgba(1, 1, 1, 0.16)  0px 3px 6px 05px;
 }
-.input-group
-{
- 
-   box-shadow: rgba(1, 1, 1, 0.16)  0px 3px 6px 05px;
-}
+
 .table th  {
     border: none !important;
     padding:1.2rem;
