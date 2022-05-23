@@ -199,6 +199,10 @@
 
                 @yield('content')
             </div>
+
+
+
+            
         </div>
         {{-- <div style="background-repeat: no-repeat;
      background-image: url(assets/back.jpg); background-size:cover"></div>
