@@ -76,7 +76,7 @@
                     <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="color: white !important;"></button>
                 </div>
                 <div class="modal-body">
-                    <h2 class="text-white fs-5">هل انت متاكد انك استلمت سيارة {{$post->name}}/ {{$post->model}}</h2>
+                    <h2 class="text-white fs-5">هل انت متاكد انك استلمت السيارة {{$post->name}}/ {{$post->model}}</h2>
                    <input type="hidden" name="auction_id" value="{{$auction->id}}">
                    
                 </div>

@@ -59,24 +59,28 @@
                  <form action=" {{route('message')}}" method="POST" enctype="multipart/form-data" class="d-flex flex-wrap m-2">
                     @csrf
                     <div class="group col-11 col-md-6  ">
-                        <input type="text" name="name" placeholder="الاسم" id="" class=" my-1 col-11">
+                        <input type="text" name="name" placeholder="الاسم" value="{{old('name')}}" id="" class=" my-1 col-11">
                         @error('name')
-                        <span class="text-end yellow"> {{ $message }}  </span>
+                        </br>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
-                        <input type="text" name="email" id="" placeholder="عنوان البريد الالكتروني" class=" my-1 col-11">
+                        <input type="text" name="email" id="" value="{{old('email')}}" placeholder="عنوان البريد الالكتروني" class=" my-1 col-11">
                         @error('email')
-                        <span class="text-end yellow"> {{ $message }}  </span>
+                        </br>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
-                        <input type="text" name="phone" id="" placeholder="رقم التلفون" class=" my-1 col-11 ">
+                        <input type="text" name="phone" id="" value="{{old('phone')}}" placeholder="رقم التلفون" class=" my-1 col-11 ">
                         @error('phone')
-                        <span class="text-end yellow"> {{ $message }}  </span>
+                        </br>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
 
                     </div>
                     <div class="group col-11 col-md-6 ">
-                        <textarea name="message" id="" cols="30" rows="3" placeholder="نص الرسالة" class="col-11 my-3 my-md-1 "></textarea>
+                        <textarea name="message" id="" cols="30" rows="3" placeholder="نص الرسالة" class="col-11 my-3 my-md-1 ">{{old('message')}}</textarea>
                         @error('message')
-                        <span class="text-end yellow"> {{ $message }}  </span>
+                        </br>
+                        <span class="text-end yellow">* {{ $message }}  </span>
                         @enderror
                         <button type="submit" name="" class="col-11">ارسال </button>
                     </div>

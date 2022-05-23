@@ -106,12 +106,18 @@ class AuthController extends Controller
                 'name' => $request->name, 'email' => $request->email, 'password' => $v,
                 'activation_url' => URL::to('/') . "/verify_email/" . $token . "/".$v
             );
-            Mail::to($request->email)->send(new VerificationEmail($email_data));
-            return view('mail.resend_email', [
-                'email_data' => $email_data,
-            ]);
+             try {
+
+                Mail::to($request->email)->send(new VerificationEmail($email_data));
+                return view('mail.resend_email', [
+                    'email_data' => $email_data,
+                ]);
+
+            } catch (\Exception ) {
+
+                return back()->with(['message'=>'تأكد من كتابة البيانات بالشكل الصحيح ']);
+            }
         }
-        return  redirect()->route('register')->with(['message' => ' تأكد من كتابة البيانات بالشكل الصحيح ']);
     }
 
     public function resendEmail(Request $request)
@@ -121,11 +127,17 @@ class AuthController extends Controller
             'activation_url' => $request->activation_url
         );
 
-        Mail::to($request->email)->send(new VerificationEmail($email_data));
+        try {
 
-        return view('mail.resend_email', [
-            'email_data' => $email_data,
-        ]);
+                Mail::to($request->email)->send(new VerificationEmail($email_data));
+                return view('mail.resend_email', [
+                    'email_data' => $email_data,
+                ]);
+
+            } catch (\Exception ) {
+
+                return back()->with(['message'=>'تأكد من كتابة البيانات بالشكل الصحيح ']);
+            }
     }
 
     public function activeUser($token, $password)
@@ -169,9 +181,16 @@ class AuthController extends Controller
         'activation_url'=>URL::to('/')."/verify_password/".$token);
 
         // print_r ($email_data);
-        Mail::to($request->email)->send(new VerificationPassword($email_data));
-        }
-        return  redirect()->back()->with(['message'=>' يرجى مراجعة الايميل لتستطيع تغيير كلمة المرور ']);
+        try {
+
+            Mail::to($request->email)->send(new VerificationPassword($email_data));
+            return  redirect()->back()->with(['message'=>' يرجى مراجعة الايميل لتستطيع تغيير كلمة المرور ']);
+
+
+            } catch (\Exception ) {
+
+                return back()->with(['message'=>'تأكد من كتابة الايميل بالشكل الصحيح ']);
+            }        }
     }
 
     public function formPassword($token){
