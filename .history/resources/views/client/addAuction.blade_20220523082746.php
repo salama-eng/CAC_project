@@ -17,9 +17,9 @@
         <h5 class="w-100 text-warning mx-2 mb-4"><i class="fa fa-plus p-2 fs-6"></i>إضافة مزاد</h5>
         <div class="mb-3 w-50 px-2 w-lg-100">
             <label for="" class="form-label text-white">اسم السيارة</label>
-            <div class="input-group ">
+            <div class="input-group site-manage">
                 <input type="text" value="{{ old('carname') }}" name="carname"
-                    class="form-control " id="basic-url" aria-describedby="basic-addon3">
+                    class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
             @error('carname')
                 <span class="text-end yellow">* {{ $message }} </span>
@@ -231,12 +231,9 @@
 
 
 </div>
-<div class="mb-3 w-50 px-2 w-lg-100">
-    <label for="basic-url" class="form-label text-light my-2"> حالة السيارة</label>
-            </label>
-        </div>
-    </div>
-    @error('care_type')
-        <span class="text-end yellow">* {{ $message }} </span>
-    @enderror
-</div>
+
+
+@endif
+
+   
+@stop
