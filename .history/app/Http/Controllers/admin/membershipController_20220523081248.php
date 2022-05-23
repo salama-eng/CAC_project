@@ -24,20 +24,11 @@ class membershipController extends Controller
         function addMembership(Request $request){
       
         Validator::validate($request->all(),[
-            'name'=>'required',
             'email' => ['required', 'email', 'unique:users,email'],
             'image'=>['required'],
             'address'=>'required',
             'phone'=>'required',
             'description'=>'required',
-        ],[
-            'required'          =>MessageEnum::REQUIRED,
-            'email.unique'      => 'هذا الايميل غير متاح',
-            'email.email'       => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',
-        ]);
-
-        $member = new membership();
-        $member->name           = $request->name;
         $member->email          = $request->email;
         $member->address        = $request->address;
         $member->phone          = $request->phone;
@@ -52,12 +43,20 @@ class membershipController extends Controller
 
     function editMembership(Request $request,$id){
             Validator::validate($request->all(),[
+<<<<<<< HEAD
+            'name'          => 'required',
+            'email'         => ['required', 'email'],
+            'image'         => ['required'],
+            'address'       => 'required',
+            'phone'         => 'required',
+=======
             'name'=>'required',
             'email' => ['required', 'email'],
             'image'=>['required'],
             'address'=>'required',
             'phone'=>'required',
             'description'=>'required',
+>>>>>>> pr/91
         ],[
             'required'      => MessageEnum::REQUIRED,
             'email.email'   => 'هناك خطأ في كتابة الايميل يرجى التاكد منه',

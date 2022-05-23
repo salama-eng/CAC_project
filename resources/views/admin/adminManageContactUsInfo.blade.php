@@ -107,7 +107,7 @@
 
 @elseif($do == 'Add')
 <!-- start add model -->
-<h1 class="text-center fs-3 mb-5">اضافة طريقة تواصل جدبدة</h1>
+<h1 class="text-center fs-3 mb-5">اضافة طريقة تواصل جديدة</h1>
 <div class="container col-lg-8 col-11">
     @if(session()->has('error'))
         <div class="alert message">
