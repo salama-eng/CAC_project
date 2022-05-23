@@ -21,8 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(aboutUsSeeder::class);
         $this->call(categorySeeder::class);
         $this->call(sliderSeeder::class);
-        $this->call(membership::class);
-        $this->call(siteHomeSeeder::class);
         // \App\Models\User::factory(10)->create();
       
     }
